@@ -56,6 +56,13 @@ and natural. These are the authors' style instructions, not journal rules.
 - Make transitions substantive. Explain why the preceding result motivates the
   next question. Do not connect unrelated observations with “therefore” or
   “furthermore.”
+- Preserve the biological evaluation target when editing for brevity: recovery
+  of bioactive conformations, represented by observed bound ligand geometries.
+  Connect sampling, tolerance, diversity, and molecular complexity to that
+  target; connect multiple references to coverage and sample concentration.
+  Express these links as scientific relationships, not commentary on why the
+  authors chose or arranged an analysis. Do not turn the study into a generic
+  metric comparison or a narrative centered on one model.
 - Keep the central argument visible. Include secondary analyses when they
   strengthen, qualify, or challenge it. Move distracting detail to Methods or
   Supporting Information.

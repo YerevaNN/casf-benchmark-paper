@@ -8,8 +8,8 @@
 
 \subsection{Recovery gains with increased sampling}
 
-Recovery in the core cohort of 94 ligands increased with the candidate
-allowance for every generator (Table~\ref{tab:recovery}). At the principal
+Across the 94 core ligands, recovery of the observed bound geometry
+increased with the candidate allowance for every generator (Table~\ref{tab:recovery}). At the principal
 cutoff of 0.75~\AA{}, the pretrained Qwen 1.7B FSQ model had the highest
 observed recovery at both targets, increasing from 80.9\% at the
 ChEMBL-count target to 91.5\% at 1,000 candidates. Torsional Diffusion
@@ -41,8 +41,10 @@ or computational cost.
 
 \subsection{Recovery rankings at stricter RMSD cutoffs}
 
-LoQI exceeded Qwen in core recovery when closer structural agreement was
-required at the target of 1,000 candidates. At a cutoff of 0.5~\AA{},
+The ranking for bound conformation recovery depended on the required
+structural agreement as well as the sampling allowance. At the target of
+1,000 candidates, LoQI exceeded Qwen when a closer match to the bound
+geometry was required. At a cutoff of 0.5~\AA{},
 recovery was 83.0\% for LoQI and 78.7\% for Qwen, reversing their ordering
 at the principal cutoff. LoQI also had higher recovery at 0.25~\AA{}
 (Figure~\ref{fig:recovery}A).
@@ -57,8 +59,9 @@ in the distance of a typical conformer from the experimental geometry.
 
 \subsection{Geometric diversity and experimental recovery}
 
-Greater geometric diversity did not consistently correspond to higher
-recovery. At the target of 1,000 candidates and a clustering radius of
+Greater geometric diversity did not consistently correspond to better
+recovery of bound ligand conformations. At the target of 1,000 candidates
+and a clustering radius of
 1.0~\AA{}, FlowR produced more clusters than Qwen on core (114.4 versus
 72.8 per ligand) but recovered fewer experimental conformations. Torsion
 perturbation produced a cluster count close to Qwen's with lower recovery,
@@ -80,9 +83,9 @@ biologically accessible states.
 
 \subsection{Lower recovery for larger and more flexible ligands}
 
-At the target of 1,000 candidates, Qwen, LoQI, and FlowR recovered all core
-ligands with fewer than 20 heavy atoms, but their performance diverged for
-larger molecules (Table~\ref{tab:size}; Figure~\ref{fig:size}). Among the
+At the target of 1,000 candidates, Qwen, LoQI, and FlowR recovered the bound
+conformations of all core ligands with fewer than 20 heavy atoms, but their
+performance diverged for larger molecules (Table~\ref{tab:size}; Figure~\ref{fig:size}). Among the
 12 ligands with 30--39 heavy atoms, Qwen recovered twice the fraction
 recovered by FlowR (66.7\% versus 33.3\%), with LoQI and ChEMBL3D-PB
 between them. The core cohort contained only two ligands with at least
@@ -104,7 +107,9 @@ cause of the decline.
 
 \subsection{Reference coverage and sample precision}
 
-Across the separate panel of 23 drug molecules, Qwen and LoQI each covered
+For molecules with multiple experimental conformations, broad reference
+coverage did not imply the same concentration of samples near those
+conformations. Across the panel of 23 drug molecules, Qwen and LoQI each covered
 approximately 91\% of the available experimental conformations
 (Table~\ref{tab:druglike}). The paired coverage difference for Qwen
 relative to LoQI was unresolved (95\% confidence interval, $-9.1$ to

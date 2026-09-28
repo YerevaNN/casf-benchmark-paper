@@ -5,12 +5,13 @@
 A flexible molecule can adopt different three-dimensional conformations
 without changing its chemical identity. Molecular shape comparison,
 pharmacophore screening, and docking therefore often use ensembles of
-conformers rather than a single structure. For applications that depend
-on a ligand's bound geometry, an important requirement is that the
-ensemble contains a conformation close to an experimentally observed
-structure. The probability of recovering such a structure depends on
-both the generator and the number of conformers sampled. Previous work
-has examined how ensemble size, diversity selection, and energy
+conformers rather than a single structure. Ensembles intended for biological
+applications should include conformations relevant to molecular recognition.
+Here, experimentally observed protein-bound ligand geometries serve as
+references for bioactive conformations. Recovery of these geometries provides
+a structural criterion for selecting a generator, with performance dependent
+on both its sampling distribution and the number of conformers available.
+Previous work has examined how ensemble size, diversity selection, and energy
 minimization affect recovery of bioactive conformations and performance
 in screening and docking.\cite{mcnutt2023conformers}
 
@@ -18,8 +19,8 @@ Recovery is distinct from physical validity and geometric diversity.
 Validity checks assess molecular identity and local geometric
 plausibility,\cite{buttenschoen2024posebusters} while diversity measures
 variation within an ensemble. Neither property alone establishes that
-a generated pool contains an observed ligand conformation. Recovery
-can also depend on a small fraction of samples: an ensemble may contain
+a generated pool contains a conformation close to the bound ligand geometry.
+Recovery can also depend on a small fraction of samples: an ensemble may contain
 a close match even when most of its members are distant from the
 experimental geometry. When several conformations have been observed,
 the fraction of references recovered and the fraction of generated
@@ -39,28 +40,34 @@ evaluation. In particular, minimizing the energy of an isolated molecule
 does not directly establish its relevance in a protein
 environment.\cite{mcnutt2023conformers}
 
-Here, we evaluate classical and learned generators, including an
-autoregressive Qwen model, by their recovery of experimentally observed
-ligand conformations. The primary cohort comprises 94 CASF ligand entries
+We evaluate classical and learned generators, including an autoregressive
+Qwen model, for the construction of conformer ensembles intended for
+biological applications. Their ability to recover observed bound ligand
+geometries is the primary criterion for comparison and selection. The primary cohort comprises 94 CASF ligand entries
 matched to ChEMBL3D, whose stored ensembles provide an additional
 comparison.\cite{su2019casf,nikitin2025loqi} Recovery requires at least
 one conformer within a specified root mean square deviation (RMSD) of
 the experimental geometry after alignment. Candidate targets equal to
 the stored ChEMBL3D count or 1,000 conformers per ligand assess performance
 at different sampling allowances, while variation in the RMSD cutoff
-assesses the required structural agreement. Geometric clustering and
-comparisons by molecular size and flexibility characterize variation
-in performance, with a larger reference cohort providing additional
+assesses the accuracy of bound geometry recovery. Cluster counts measure
+geometric diversity alongside recovery, and comparisons by molecular size
+and flexibility identify the ligands for which the bound conformation
+remains difficult to sample. A larger reference cohort provides additional
 observations.
 
-A separate panel of 23 drug molecules with multiple experimental
-conformations permits evaluation of reference coverage and sample
-precision. Coverage measures how much of the observed conformational
+Recovery of a single bound structure establishes that an ensemble contains
+a close match, but does not describe its coverage of other observed
+conformations or the fraction of samples near the references. A separate panel of
+23 drug molecules with multiple experimental conformations measures
+these properties through reference coverage and sample precision. Coverage
+measures how much of the observed conformational
 variation is represented, whereas precision measures the fraction of
-generated samples close to any available reference. These evaluations
-compare generators in terms of their ability to recover observed
-geometries and concentrate samples near them, under specified sampling
-and matching conditions. The comparisons concern the evaluated generation
+generated samples close to any available reference. The resulting comparison
+supports generator selection according to
+recovery of observed conformations and the concentration of generated
+samples near them, under specified sampling and matching conditions. The
+comparisons concern the evaluated generation
 pipelines; they do not isolate the contribution of energetic refinement
 or assume that experimental references exhaust the accessible
 conformations of a molecule.

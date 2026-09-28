@@ -121,3 +121,21 @@ rather than repeating table rows. All numerical table entries remain unchanged.
 Methods retains the settings and denominators required for reproducibility.
 The positive interval for Qwen's precision deficit is the sign reversal of
 the existing Qwen-minus-LoQI interval, not a new statistical calculation.
+
+## Biological framing and transitions
+
+The Introduction and Results transitions were checked against sections 2, 5,
+7, 12, and 14 of `docs/jcim_publication_report_2026_09_14.html`. The guiding
+question is generator selection for recovery of bioactive conformations,
+represented by observed bound ligand geometries. Sampling and matching
+tolerance qualify that recovery; diversity is an incomplete indicator; size
+and flexibility identify difficult ligands; the drug panel distinguishes
+coverage of multiple observations from concentration near them. The report's
+older numerical values, training claims, and proposed additional experiments
+were not imported into the manuscript. Drug reference provenance and common
+filtering remain unresolved as documented above.
+
+The user explicitly confirmed that this perspective governs the whole paper,
+including the Introduction and Results. It must also guide the future
+Discussion, Conclusions, abstract, and title. The report is interpretive
+guidance; corrected exports remain authoritative for the numerical evidence.

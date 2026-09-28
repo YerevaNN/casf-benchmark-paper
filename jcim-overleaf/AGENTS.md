@@ -14,6 +14,22 @@ Use these as authoring guidance, not as evidence that a result has been measured
 or that a journal requirement has been verified. Follow the user's current
 instructions when they change the scope or structure.
 
+The user has explicitly designated the biologist's report as the governing
+scientific perspective for the whole paper, including Introduction and Results.
+Before changing the framing or transitions, consult
+`/mnt/weka/mbedrosian/code/casf-benchmark/docs/jcim_publication_report_2026_09_14.html`
+(especially sections 2, 5, 7, 12, and 14). The central contribution is evaluation
+and selection of generators for recovery of bioactive conformations, using
+observed bound ligand geometries as structural references. Sampling budget
+qualifies recovery; diversity is an incomplete indicator; size and flexibility
+identify difficult ligands; multiple references distinguish coverage from
+concentration near observations. Qwen performance is a result within that
+evaluation, not the organizing purpose. The corrected archived data supply
+the numerical evidence: do not restore the HTML's older values, treat its
+proposed experiments as completed, or reintroduce analyses the user excluded.
+Preserve this framing when drafting Discussion, Conclusions, abstract, and title.
+
+
 Read METHODS_NOTES.md before revising Methods: it records evidence and unresolved
 metadata. methods.tex contains the benchmark Methods draft and is included by
 acs-template.tex. Read RESULTS_NOTES.md before revising results.tex: the HTML

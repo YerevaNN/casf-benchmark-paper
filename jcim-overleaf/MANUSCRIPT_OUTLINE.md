@@ -5,15 +5,34 @@ journal-mandated section sequence. Follow WRITING_GUIDELINES.md for language
 and reasoning, METHODS_NOTES.md for implementation/provenance, and
 RESULTS_NOTES.md for numerical and figure sources.
 
+## Governing perspective
+
+The biologist's `docs/jcim_publication_report_2026_09_14.html` defines the
+scientific perspective throughout the manuscript. The motivation is selecting
+generators for conformer ensembles intended for biological applications.
+The study evaluates recovery of bioactive conformations through observed bound
+ligand geometries, with validity and sampling conditions specified. It does not
+establish improved model training, docking, affinity prediction, or equilibrium
+populations. Use corrected archived results rather than the report's historical
+values. Keep excluded energy-window and training-recipe analyses outside scope.
+
 ## Central question
 
-Which generators produce useful ensembles of bioactive conformations, and how
-does their ranking depend on sampling budget, structural tolerance, validity,
-and molecular complexity? Single-reference recovery measures whether an
+Which generators produce ensembles that recover bioactive conformations,
+using experimentally observed protein-bound ligand geometries as structural
+references, and how does performance depend on sampling budget, structural
+tolerance, validity, and molecular complexity? Single-reference recovery measures whether an
 ensemble reaches an observed geometry. Multi-reference coverage and precision
 distinguish that reach from the concentration of samples near observed states.
 Geometric diversity helps interpret these outcomes but is not assumed to be a
-sufficient objective. Differences in energetic treatment belong to the tested
+sufficient objective. Preserve this purpose through the transitions: sampling
+and tolerance determine recovery of bound geometries; diversity is a possible
+indicator of that recovery; size and flexibility identify difficult ligands;
+multiple references distinguish coverage from the concentration of generated
+samples near observations. Qwen is a finding within this evaluation, not the
+paper's organizing objective. Use “bioactive conformations,” not “bioactive
+compounds”: the task is conformational sampling of specified molecules.
+Differences in energetic treatment belong to the tested
 pipelines and are not isolated as a mechanism in the current study.
 
 Use core94 as the main cohort, ref selectively for supporting analyses, and
@@ -41,14 +60,21 @@ ranking, not a universal winner or a controlled model-scaling study.
    matching-threshold dependence; geometric diversity; size and flexibility;
    separate multi-reference coverage/precision. Three compact tables and four
    figures support this sequence. Do not turn placeholders into findings.
-4. **Discussion (not drafted).** Interpret task-dependent generator selection,
-   best-member versus typical-sample behavior, molecular complexity, and the
-   limits of observed-reference precision. Address
+4. **Discussion (not drafted).** Interpret generator selection for ensembles
+   intended to recover bioactive conformations: recovery from a large pool
+   differs from frequent sampling near the observed set, and diversity alone
+   is insufficient for selection. Discuss molecular complexity and the limits
+   of precision relative to incomplete experimental references. Address
    overlap, checkpoint selection, unequal retained budgets, incomplete
    references, and the absence of downstream docking/affinity measurements.
-5. **Conclusions (not drafted).** Answer the study questions without extending
-   the claims to thermodynamics, downstream utility, or universal superiority.
-6. **Abstract and title.** Finalize after the findings and limitations are fixed.
+5. **Conclusions (not drafted).** State the implications for evaluating and
+   selecting bioactive conformer generators under specified sampling and
+   matching conditions. Keep model comparisons within that scope, without
+   extending the claims to thermodynamics, downstream utility, or universal
+   superiority.
+6. **Abstract and title.** Lead with evaluation of bioactive conformation
+   recovery and its dependence on sampling and ensemble properties. Finalize
+   after the findings and limitations are fixed.
    Front/end matter in the main ACS template still require author completion.
 
 ## Figures and tables
