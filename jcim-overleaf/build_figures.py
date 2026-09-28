@@ -195,20 +195,21 @@ def recovery(summary):
 
 
 def diversity(summary):
+    radii = [(tag, radius) for tag, radius in RADII if radius <= 2.0]
     fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.1))
     fig.subplots_adjust(left=.09, right=.975, top=.85, bottom=.26, wspace=.30)
     for key in reversed(KEYS):
         name, color, marker = STYLE[key]
         row = get_row(summary, 'core', key)
-        a.plot([v for _, v in RADII], [row['clusters_' + t] for t, _ in RADII], marker=marker,
+        a.plot([v for _, v in radii], [row['clusters_' + t] for t, _ in radii], marker=marker,
                color=color, ls='--' if key == 'chembl3d_gt_pb' else '-', lw=1.8 if key == QWEN else 1.1)
         b.scatter(row.clusters_1p0, row.hit_0p75, marker=marker, s=36, c=color, edgecolors='white', linewidths=.4, zorder=3)
         offsets = {QWEN:(5, 7), 'loqi_raw':(-4, 8), 'flowr_raw':(-31, 9), 'torsion_raw':(5, -12), 'chembl3d_gt_pb':(4,-14)}
         if key in offsets:
             b.annotate(name, (row.clusters_1p0, row.hit_0p75), xytext=offsets[key], textcoords='offset points', fontsize=7, color=color)
     a.axvline(1, color='#B6BDC5', ls=':', lw=.8)
-    a.set(xlabel='Clustering RMSD radius (Å)', ylabel='Mean cluster count', xlim=(.4, 3.1), ylim=(0, None))
-    a.set_xticks([.5, 1, 2, 3])
+    a.set(xlabel='Clustering RMSD radius (Å)', ylabel='Mean cluster count', xlim=(.4, 2.1), ylim=(0, None))
+    a.set_xticks([radius for _, radius in radii])
     b.set(xlabel='Mean cluster count at 1.0 Å', ylabel='Recovered targets at 0.75 Å (%)', xlim=(0, 125), ylim=(72, 99))
     style_axis(a, 'A', 'Geometric resolution · core')
     style_axis(b, 'B', 'Diversity and recovery · core')

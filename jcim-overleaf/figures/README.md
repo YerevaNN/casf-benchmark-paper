@@ -4,7 +4,8 @@ Four figures are included in the paper, with captions and placement controlled
 by `../figures.tex` and `../results.tex`:
 
 1. `recovery-thresholds-budget`: RMSD thresholds and candidate-budget endpoints.
-2. `diversity-recovery`: cluster radii and diversity versus recovery.
+2. `diversity-recovery`: cluster radii of 0.5, 1.0, and 2.0 Å and diversity versus recovery.
+   The archived data retain the 3.0 Å results, which are omitted from the plot.
 3. `size-flexibility`: core/ref molecular size and flexibility groups.
 4. `multireference-coverage`: drug-panel recall/precision with molecule bootstrap
    intervals and contrasting paired examples.
