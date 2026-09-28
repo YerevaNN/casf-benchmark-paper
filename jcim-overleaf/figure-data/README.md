@@ -40,7 +40,7 @@ Main CASF figures use all 94 core entries for recovery; supporting tables use
 1,236 ref entries. Both include
 missing outputs as misses. Clustering means are conditional on defined values.
 ChEMBL3D-PB is a stored ensemble, not a newly generated 1,000-sample baseline.
-Figure 1 compares recovery and retained counts at candidate-tier endpoints; it
+Figure 1 compares recovery at the two candidate-tier endpoints; it
 is not a random fixed-valid-K curve.
 
 Energy results in the release are historical and uncorrected relative to the

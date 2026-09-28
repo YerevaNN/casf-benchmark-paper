@@ -43,8 +43,8 @@ requires access to its source databases; do not refresh the evidence silently.
 Numerical source paths beginning with `docs/`, `data/results/` or `src/` in
 notes refer to the separate `YerevaNN/casf-benchmark` analysis repository.
 Figure-source CSVs and the public release record are archived here under
-`figure-data/`. Figure 1 uses core recovery at 0.75 Å and retained counts at both candidate
-targets; the old energy analysis remains a separate diagnostic.
+`figure-data/`. Figure 1 compares core recovery at 0.75 Å between the ChEMBL-count and
+1,000-candidate targets; the old energy analysis remains a separate diagnostic.
 
 ## Preview and verification
 

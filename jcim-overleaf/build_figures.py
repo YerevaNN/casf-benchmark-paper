@@ -174,34 +174,28 @@ def get_row(summary, cohort, key, tier='fixed'):
 
 def recovery(tiers):
     core = tiers[tiers.cohort == 'core']
-    fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.65), sharey=True,
-                              gridspec_kw={'width_ratios': [1.4, 1]})
+    fig, axes = plt.subplots(1, 2, figsize=(7, 4.4), sharex=True, sharey=True)
     fig.subplots_adjust(left=.25, right=.97, top=.86, bottom=.22, wspace=.20)
-    for y, key in enumerate(PANEL):
-        _, color, _ = STYLE[key]
-        rows = core[core.key == key].set_index('tier')
-        for ax, metric in [(a, 'hit_0p75'), (b, 'mean_retained')]:
-            lo, hi = rows.loc[['chembl_count', 'fixed'], metric]
-            ax.plot([lo, hi], [y, y], color=color, lw=1.3)
-            ax.plot(lo, y, 'o', color=color, mfc='white', ms=5, mew=1)
-            ax.plot(hi, y, 's', color=color, ms=4.5)
     ref = core[core.key == 'chembl3d_gt_pb'].iloc[0]
-    for ax, metric in [(a, 'hit_0p75'), (b, 'mean_retained')]:
-        ax.axvline(ref[metric], color='#252525', ls='--', lw=.9)
-        ax.set_ylim(len(PANEL)-.4, -.7)
-    a.set_yticks(range(len(PANEL)), [STYLE[k][0] for k in PANEL])
-    b.tick_params(axis='y', left=False)
-    a.set(xlabel='Recovered ligands at 0.75 Å (%)', xlim=(50, 100))
-    b.set(xlabel='Mean retained conformers', xlim=(0, 1050))
-    b.set_xticks([0, 250, 500, 750, 1000])
-    style_axis(a, 'A', 'Core recovery (n = 94)', grid='x')
-    style_axis(b, 'B', 'Retained ensemble size', grid='x')
-    handles = [Line2D([], [], marker='o', color='#333333', mfc='white', ls='none', label='ChEMBL-count target'),
-               Line2D([], [], marker='s', color='#333333', ls='none', label='1,000-candidate target'),
-               Line2D([], [], color='#252525', ls='--', label='Stored ChEMBL3D-PB')]
-    fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.53, .075),
-               ncol=3, frameon=False, fontsize=7, columnspacing=1.2)
-    fig.text(.53, .025, 'Candidate targets apply before filtering; rejected conformers are not replaced.',
+    for ax, tier, panel, title in zip(axes, ['chembl_count', 'fixed'], ['A', 'B'],
+                                    ['ChEMBL-count target', '1,000-candidate target']):
+        for y, key in enumerate(PANEL):
+            _, color, marker = STYLE[key]
+            row = core[(core.key == key) & (core.tier == tier)].iloc[0]
+            ax.plot(row.hit_0p75, y, marker=marker, color=color, ls='none', ms=5)
+            ax.annotate(f'{row.hit_0p75:.1f}', (row.hit_0p75, y), xytext=(6, 0),
+                        textcoords='offset points', va='center', fontsize=7,
+                        bbox={'facecolor': 'white', 'edgecolor': 'none', 'pad': .3})
+        ax.axvline(ref.hit_0p75, color='#252525', ls='--', lw=.9)
+        ax.set(xlabel='Recovery at 0.75 Å (%)', xlim=(50, 100),
+               ylim=(len(PANEL)-.4, -.7))
+        style_axis(ax, panel, title, grid='x')
+    axes[0].set_yticks(range(len(PANEL)), [STYLE[k][0] for k in PANEL])
+    axes[1].tick_params(axis='y', left=False)
+    fig.legend(handles=[Line2D([], [], color='#252525', ls='--',
+                              label=f'Stored ChEMBL3D-PB: {ref.hit_0p75:.1f}% recovery')],
+               loc='lower center', bbox_to_anchor=(.60, .075), frameon=False, fontsize=7)
+    fig.text(.60, .025, 'Core: 94 ligands · candidate targets apply before PoseBusters filtering.',
              ha='center', fontsize=7, color='#555555')
     save(fig, 'core-recovery-budget')
 

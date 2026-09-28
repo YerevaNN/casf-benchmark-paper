@@ -23,7 +23,8 @@ RDKit configuration without establishing a unique best learned generator.
 
 \input{tables/recovery}
 
-Recovery increased with the candidate allowance for every generator.
+Recovery increased with the candidate allowance for every generator
+(Figure~\ref{fig:recovery}).
 At the ChEMBL-count target, Qwen and the stored ChEMBL3D-PB ensemble
 each retained approximately 80 conformers per ligand. Their recovery
 difference was 2.1 percentage points (95\% confidence interval,
@@ -35,7 +36,7 @@ over that stored ensemble was 12.8 percentage points
 
 The candidate allowance did not determine the retained ensemble size:
 filtering and available outputs left different numbers of conformers for
-different methods (Figure~\ref{fig:recovery}B). ChEMBL3D-PB remained the
+different methods (Table~\ref{tab:recovery}). ChEMBL3D-PB remained the
 same finite stored ensemble in both comparisons. These endpoints therefore
 compare the evaluated pipelines at specified candidate targets, rather
 than at identical retained counts or computational cost.

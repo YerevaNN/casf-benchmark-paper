@@ -6,7 +6,7 @@
 \begin{figure}[htbp]
 \centering
 \paperfigure{core-recovery-budget.pdf}
-\caption{Recovery under the specified sampling and validity constraints for all ten generation pipelines on core. (A) Percentage of the 94 ligands with a PoseBusters-passing conformer within 0.75~\AA{} of the bound geometry. (B) Mean retained conformer count over the same 94 entries. Open circles denote the ChEMBL-count candidate target and filled squares the 1,000-candidate target; horizontal segments join the two endpoints, not uncertainty intervals. The dashed lines indicate the same stored ChEMBL3D-PB ensemble in both comparisons. Candidate targets apply before filtering, and missing outputs are recovery failures. Qwen is the pretrained 1.7B FSQ model.}
+\caption{Core recovery at two candidate targets for all ten generation pipelines. (A) The ChEMBL-count target, equal to the mapped stereoisomer's stored ChEMBL3D conformer count for each ligand. (B) The target of 1,000 candidates per ligand. Both panels show the percentage of all 94 core ligands with a PoseBusters-passing conformer within 0.75~\AA{} of the bound geometry, using identical axes and method order. Point labels give recovery percentages. Dashed lines mark the same finite ChEMBL3D-PB ensemble in both panels. Targets apply before filtering; retained counts are reported in Table~\ref{tab:recovery}, and missing outputs count as misses. Qwen is the pretrained 1.7B FSQ model.}
 \label{fig:recovery}
 \end{figure}}
 
