@@ -3,11 +3,11 @@
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
-\caption{Recovery at a target of 1,000 candidates after PoseBusters filtering. ChEMBL3D-PB is the finite stored comparison ensemble. Hit rates use all 94 core or 1,236 ref entries at 0.75~\AA{}. Core $N$ is the mean retained count over all entries; core RMSD is the mean minimum RMSD over measurable ensembles.}
+\caption{Recovery at a target of 1,000 candidates after PoseBusters filtering. ChEMBL3D-PB is the finite stored comparison ensemble. Hit rates use all 94 core or 1,236 ref entries at 0.75~\AA{}. Core $N$ is the mean retained count over all entries; core mean minimum RMSD averages the distance from each ligand's closest retained conformer to its experimental geometry. This average includes ligands above the recovery cutoff and excludes entries without a defined RMSD.}
 \label{tab:recovery}
 \begin{tabular}{lrrrr}
 \hline
-Method & Core hit (\%) & Core $N$ & Core RMSD (\AA) & Ref hit (\%) \\
+Method & Core hit (\%) & Core $N$ & \shortstack[r]{Core mean\\minimum RMSD (\AA)} & Ref hit (\%) \\
 \hline
 ChEMBL3D-PB & 78.7 & 81.2 & 0.525 & 78.7 \\
 RDKit raw & 80.9 & 999.9 & 0.437 & 81.5 \\
@@ -24,6 +24,6 @@ Qwen 1.7B FSQ & 91.5 & 972.6 & 0.307 & 92.5 \\
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-\footnotesize Core RMSD denominators are 93 for MCF and NExT-Mol and 94 for the other listed methods. Missing recovery outcomes count as misses. The label \emph{raw} may include preprocessing specific to each generator (Methods).
+\footnotesize Core mean minimum RMSD denominators are 93 for MCF and NExT-Mol and 94 for the other listed methods. Missing recovery outcomes count as misses. The label \emph{raw} may include preprocessing specific to each generator (Methods).
 \end{minipage}
 \end{table}
