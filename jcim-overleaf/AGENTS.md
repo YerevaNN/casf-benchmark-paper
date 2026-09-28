@@ -26,5 +26,6 @@ Energy-window and random-K experiments are outside the current manuscript scope.
 upstream examples; Discussion and Conclusions
 are not drafted. Replace
 sample names and claims only with verified information or explicit placeholders.
-For manuscript-only edits, check citations, cross-references, and compilation
-when a TeX toolchain is available; Python pipeline tests are not needed.
+For manuscript-only edits, check citations and cross-references in the source.
+Do not compile local previews: the user reviews changes in Overleaf.
+Python pipeline tests are not needed.

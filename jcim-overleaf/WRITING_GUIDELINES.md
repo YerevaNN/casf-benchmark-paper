@@ -17,6 +17,12 @@ and natural. These are the authors' style instructions, not journal rules.
   when this makes their relationship clearer; avoid merely lengthening sentences.
 - Keep checkpoint step numbers in Methods and provenance records, rather than
   repeating them in the Results narrative or figure captions.
+- Avoid invented hyphenated labels and strings of modifiers. Prefer ordinary
+  phrases such as “recovery of experimental conformations” and “precision
+  relative to the observed references.” Rephrase the sentence rather than
+  simply deleting hyphens. Retain established scientific terms, official method
+  names, mathematical signs, and numerical ranges when needed for clarity.
+  Use dashes for parenthetical interruptions sparingly.
 - Vary sentence length naturally. Avoid repetitive openings, formulaic
   transitions, and stock phrases such as “delve,” “leverage,” and “it is
   important to note.”
@@ -31,6 +37,10 @@ and natural. These are the authors' style instructions, not journal rules.
   understandable, rather than the order they were performed.
 - Give each section a clear purpose. Each paragraph should advance one main
   point, and each sentence should contribute to that point.
+- Write the Introduction for a scientist unfamiliar with this project. Explain
+  the practical problem and define the evaluation outcome before introducing
+  dataset labels or model details. Make the contribution explicit and organize
+  prior work around the question rather than a catalogue of generators.
 - Establish context before introducing a comparison. Explain what is compared,
   why it matters, and which conditions make the comparison meaningful.
 - Connect claims to evidence and evidence to interpretation. Do not jump from a

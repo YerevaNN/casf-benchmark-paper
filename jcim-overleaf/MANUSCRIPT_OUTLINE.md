@@ -19,10 +19,13 @@ ranking, not a universal winner or a controlled model-scaling study.
 
 ## Sections
 
-1. **Introduction (`introduction.tex`).** Motivate experimental-conformation
-   recovery; integrate the relevant classical/learned generation and evaluation
-   literature; distinguish validity, diversity, recovery, and concentration;
-   state the two evaluation settings and the study's questions. No separate
+1. **Introduction (`introduction.tex`).** Begin with why molecular modeling
+   needs conformer ensembles and define recovery of an observed ligand shape.
+   Distinguish recovery from validity and diversity, place the question in
+   prior evaluation work, and explain why sampling budget, matching tolerance,
+   size, and flexibility matter before introducing the datasets. State the
+   contribution as comparing generators under this evaluation perspective,
+   then explain how multiple references separate coverage from concentration. No separate
    literature-review section is planned. Do not claim this is the first bound
    conformer benchmark.
 2. **Methods (`methods.tex`).** Datasets and identity, generator/checkpoint
