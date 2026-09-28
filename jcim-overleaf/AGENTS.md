@@ -1,5 +1,8 @@
 # Manuscript authoring
 
+This is the canonical manuscript directory in `YerevaNN/casf-benchmark-paper`.
+Follow the repository-root AGENTS.md for the authorized commit/push workflow.
+
 Before drafting or revising this paper, read:
 
 - [WRITING_GUIDELINES.md](WRITING_GUIDELINES.md) for language, logical coherence,

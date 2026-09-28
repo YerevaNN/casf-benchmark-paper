@@ -39,6 +39,23 @@ A material threshold result is retained: on core, LoQI exceeds Qwen at 0.5 Å
 text does not claim threshold-invariant superiority. No correlation from the
 old 19-generator panel is presented as a result for the reduced main panel.
 
+## Audit of the opening recovery counts
+
+The five opening counts were independently recounted from the public-release
+SQLite `per_ligand_long` table for `ligand_set=core`, the fixed candidate tier,
+and the exact selected methods. For each of 94 entries, `casf_best_rmsd <= 0.75`
+was checked against `casf_hit_0p75`; all flags agreed. Counts were 86 for
+Qwen, 84 for Torsional Diffusion, 81 for LoQI, 76 for RDKit raw, and 74 for
+ChEMBL3D-PB. They are direct ligand counts, not bootstrap estimates or counts
+of generated conformers. The source hash still matches the public release.
+
+`figure-data/core-recovery-audit.csv` preserves each ligand's minimum RMSD,
+hit flag and retained count; `core-recovery-counts.csv` contains the five
+summary rows. The revised Results defines recovery in its opening paragraph.
+Checkpoint steps are retained in Methods/provenance, not Results/captions.
+Prose was revised throughout Results to connect observations and their
+interpretation without changing the numerical findings.
+
 ## Figures recreated from the public dashboard
 
 On 28 September, GitHub's latest public dashboard release was verified as

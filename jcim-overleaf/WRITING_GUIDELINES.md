@@ -12,6 +12,11 @@ and natural. These are the authors' style instructions, not journal rules.
   rhetorical questions, promotional language, and exaggerated novelty claims.
 - Use active voice when responsibility matters: “We evaluated…” Use passive
   voice when the procedure or observation deserves emphasis.
+- Build connected paragraphs rather than sequences of short, standalone
+  statements. Combine closely related setup, observations, and qualifications
+  when this makes their relationship clearer; avoid merely lengthening sentences.
+- Keep checkpoint step numbers in Methods and provenance records, rather than
+  repeating them in the Results narrative or figure captions.
 - Vary sentence length naturally. Avoid repetitive openings, formulaic
   transitions, and stock phrases such as “delve,” “leverage,” and “it is
   important to note.”

@@ -10,6 +10,10 @@ Streamlit browser session.
 
 ## Files and denominators
 
+- `core-recovery-counts.csv` and `core-recovery-audit.csv`: independent recount
+  of the five opening Results comparisons, with all 94 ligand records per
+  method and the minimum RMSD used to classify recovery.
+
 - `casf_summary.csv`: plotted recovery thresholds, cluster radii, candidate tiers,
   and retained counts, calculated from the public database's per-ligand rows.
 - `casf_selected_entries.csv`: selected fixed-tier source entries, including

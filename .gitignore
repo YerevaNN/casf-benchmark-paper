@@ -1,0 +1,16 @@
+# LaTeX build intermediates
+*.aux
+*.bcf
+*.blg
+*.bbl
+*.log
+*.out
+*.run.xml
+*-blx.bib
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
+__pycache__/
+*.pyc
+jcim-overleaf/jcim-overleaf.zip

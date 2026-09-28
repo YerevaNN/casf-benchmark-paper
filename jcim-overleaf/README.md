@@ -20,36 +20,29 @@ submission-ready article.
 Search for `% AUTHOR` in the LaTeX files for unresolved decisions and analyses.
 The notes are included in the Overleaf ZIP but do not appear in the article.
 
-## Manual Overleaf upload
+## GitHub and Overleaf workflow
 
-1. Upload `jcim-overleaf.zip` as a new Overleaf project.
-2. Select `acs-template.tex` as the main document and use pdfLaTeX.
-3. Recompile; Overleaf should run Biber for the `biblatex` bibliography.
+This directory is the manuscript source in
+[YerevaNN/casf-benchmark-paper](https://github.com/YerevaNN/casf-benchmark-paper),
+on branch `main`. Use `jcim-overleaf/acs-template.tex` as the main document in
+the linked Overleaf project; retain pdfLaTeX and the Biber bibliography setup.
 
-The four figure PDFs are already included. `figures/main-figures.pdf` provides
-a compact gallery of the main figures. Each also has an editable SVG and
-a 450-dpi PNG under `figures/`. `build_figures.py` recreates them from the
-archived public-dashboard values in `figure-data/`, which records release
-identity, database hashes, checkpoint selection, and denominators.
+Future paper edits should be committed and pushed to this repository. Fetch
+incoming changes and preserve edits from Overleaf or other authors before
+pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 
-Figure 1 uses corrected candidate-tier endpoints rather than historical
-random-K curves. Figure 2 uses current diversity results; the older energy
-analysis is saved separately and clearly labeled historical. The drug figure
-still describes supplied pools pending common validity/failure handling.
+The four figure PDFs are included, with a combined gallery in
+`figures/main-figures.pdf`. Each also has an editable SVG and a 450-dpi PNG.
+Run `python jcim-overleaf/build_figures.py` from the repository root to render
+from the archived CSVs; this does not require the benchmark databases.
+The script's `--refresh-data` mode was written for the benchmark checkout and
+requires access to its source databases; do not refresh the evidence silently.
 
-The ZIP is a snapshot. To rebuild it from the repository root:
-
-```python
-from pathlib import Path
-from zipfile import ZipFile, ZIP_DEFLATED
-root = Path('manuscript')
-with ZipFile(root / 'jcim-overleaf.zip', 'w', ZIP_DEFLATED) as archive:
-    for path in sorted(root.rglob('*')):
-        if not path.is_file() or 'preview' in path.relative_to(root).parts:
-            continue
-        if path.suffix in {'.tex', '.bib', '.md', '.txt', '.py', '.csv', '.json'} or 'figures' in path.relative_to(root).parts:
-            archive.write(path, path.relative_to(root))
-```
+Numerical source paths beginning with `docs/`, `data/results/` or `src/` in
+notes refer to the separate `YerevaNN/casf-benchmark` analysis repository.
+Figure-source CSVs and the public release record are archived here under
+`figure-data/`. Figure 1 uses candidate-tier endpoints rather than historical
+random-K curves; the old energy analysis remains a separate diagnostic.
 
 ## Preview and verification
 
