@@ -1,0 +1,38 @@
+% Values archived in figure-data/recovery-table-tiers.csv.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{RMSD summaries for the core cohort at both sampling targets. For each
+ligand, we calculated the minimum and median RMSD to the experimental geometry
+among conformers that passed PoseBusters, then averaged these values across
+entries with defined RMSD. Both summaries include entries above the recovery
+cutoff. Distances are in \AA{}.}
+\label{tab:supporting-rmsd}
+\begin{tabular}{lrrrr}
+\hline
+& \multicolumn{2}{c}{ChEMBL-count target} & \multicolumn{2}{c}{1,000-candidate target} \\
+\cline{2-3}\cline{4-5}
+Method & Mean minimum & Mean median & Mean minimum & Mean median \\
+\hline
+ChEMBL3D-PB & 0.525 & 1.326 & --- & --- \\
+RDKit raw & 0.601 & 1.333 & 0.437 & 1.330 \\
+RDKit minimized & 0.618 & 1.337 & 0.512 & 1.336 \\
+Torsion raw & 0.679 & 1.334 & 0.477 & 1.337 \\
+Torsion minimized & 0.644 & 1.280 & 0.535 & 1.286 \\
+LoQI & 0.536 & 1.290 & 0.339 & 1.305 \\
+Torsional Diffusion & 0.582 & 1.447 & 0.371 & 1.449 \\
+MCF drugs-L & 0.559 & 1.440 & 0.366 & 1.462 \\
+NExT-Mol DMT-L & 0.543 & 1.456 & 0.386 & 1.454 \\
+FlowR & 0.637 & 1.453 & 0.414 & 1.470 \\
+Qwen 1.7B FSQ & 0.506 & 1.292 & 0.307 & 1.318 \\
+\hline
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize ChEMBL3D-PB is the same stored comparison ensemble for both tiers
+and is shown once. At the ChEMBL-count target, RMSD is defined for 93 entries
+for MCF and 92 for NExT-Mol; at the fixed target it is defined for 93 entries
+for each. All other methods have defined RMSD for all 94 entries at both targets.
+\end{minipage}
+\end{table}

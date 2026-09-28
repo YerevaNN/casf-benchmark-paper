@@ -29,7 +29,13 @@ analysis was rerun in this manuscript revision.
 | Drug uncertainty and examples | `docs/publication_tables_2026_09_24/druglike_paired.csv` and `druglike_cases.csv` |
 
 Table 1 contains the full selected generator panel plus ChEMBL3D-PB, with
-core retained counts and RMSD. Table 2 uses four contrasting methods for
+core recovery and retained counts at both the ChEMBL-count and fixed targets.
+Supporting Table S1 contains core RMSD summaries for both tiers, and Table S2
+contains ref recovery and retained counts. The exact 42 selected source rows
+are archived in `figure-data/recovery-table-tiers.csv`; recovery and counts
+agree with `casf_summary.csv` for every overlapping method/tier.
+The main Results now introduce both tiers together before examining matching
+tolerance, diversity, and molecular complexity. Table 2 uses four contrasting methods for
 readability; the export contains the wider panel. Table 3 includes all five
 external methods and the selected Qwen. All three tables are separate LaTeX
 inputs under `tables/` and are included by `results.tex`.

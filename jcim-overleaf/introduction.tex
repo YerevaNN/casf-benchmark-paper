@@ -56,9 +56,11 @@ ChEMBL3D.\cite{su2019casf,nikitin2025loqi} We compare classical and learned
 generators, including an autoregressive Qwen model, with the stored ChEMBL3D
 ensembles as an additional comparison. A ligand is recovered when at least one
 generated conformer matches its experimental geometry within a specified root
-mean square deviation (RMSD) after structural alignment. We use one principal
-cutoff for the main comparison and then examine changes across matching
-tolerances and sampling budgets. Cluster counts describe geometric diversity,
+mean square deviation (RMSD) after structural alignment. We compare two
+candidate targets: the stored ChEMBL3D count for each molecule and a fixed
+allowance of 1,000 conformers. One principal cutoff anchors these comparisons,
+with additional matching tolerances used to examine how closely each method
+reproduces the observed geometries. Cluster counts describe geometric diversity,
 and comparisons by molecular size and flexibility reveal differences concealed
 by cohort averages. A larger collection of matched ligands provides supporting
 evidence.

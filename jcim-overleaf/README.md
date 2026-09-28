@@ -12,6 +12,8 @@ submission-ready article.
 - `methods.tex`: benchmark procedures and author comments for missing details.
 - `results.tex`: recovery-first story using core94 and Qwen 1.7B FSQ step47023.
 - `tables/recovery.tex`, `tables/size.tex`, `tables/druglike.tex`: included tables.
+- `supporting-information.tex`: separate SI document with Tables S1 (core RMSD)
+  and S2 (ref recovery); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `acs-template.bib`: nine verified references.
 - `WRITING_GUIDELINES.md`, `MANUSCRIPT_OUTLINE.md`: agreed writing instructions

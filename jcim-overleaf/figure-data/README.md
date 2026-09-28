@@ -57,3 +57,15 @@ The method palette is consistent across figures, with symbols/line styles as
 additional identifiers. Figure panels intentionally omit additional Qwen
 checkpoints and minimized classical variants; Table 1 retains those classical
 comparisons, while Figure 3 uses the four contrasting methods in Table 2.
+
+## Recovery tables at both sampling targets
+
+`recovery-table-tiers.csv` archives the 42 selected cohort/method/tier rows
+used in Table 1 and supporting Tables S1 and S2. It is a subset of
+`docs/publication_tables_2026_09_24/all_casf_summary.csv` in the benchmark
+repository; hit rates are converted from fractions to percentages. Recovery
+and retained counts were checked against `casf_summary.csv` for every
+overlapping row. The subset also includes the minimized classical methods.
+RMSD averages use entries with defined values; recovery and mean retained
+counts use all mapped entries, including missing outputs. The stored
+ChEMBL3D-PB ensemble is a single reference, not a separately generated tier.

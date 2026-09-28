@@ -37,8 +37,8 @@ ranking, not a universal winner or a controlled model-scaling study.
    definitions, candidate tiers and validity filtering, RMSD and clustering,
    multi-reference metrics, and statistical analysis.
    Comments mark unresolved provenance and unfinished analyses.
-3. **Results (`results.tex`).** Recovery and matching-threshold dependence;
-   sampling effects; geometric diversity; size and flexibility;
+3. **Results (`results.tex`).** Recovery at both sampling targets;
+   matching-threshold dependence; geometric diversity; size and flexibility;
    separate multi-reference coverage/precision. Three compact tables and four
    figures support this sequence. Do not turn placeholders into findings.
 4. **Discussion (not drafted).** Interpret task-dependent generator selection,
@@ -53,7 +53,10 @@ ranking, not a universal winner or a controlled model-scaling study.
 
 ## Figures and tables
 
-- Table 1: selected-panel recovery; core counts and minimum RMSD; ref recovery.
+- Table 1: core94 recovery and retained counts at both the ChEMBL-count and
+  1,000-candidate targets, with the stored ChEMBL3D-PB comparison shown once.
+- Supporting Table S1: core mean minimum and mean ensemble median RMSD at both targets.
+- Supporting Table S2: ref recovery and retained counts at both targets.
 - Table 2: selected-method size strata in core and ref, with group sizes.
 - Table 3: all five external methods plus Qwen in the multi-reference panel.
 - Figure 1: recovery thresholds and candidate-tier sampling endpoints.
@@ -75,4 +78,5 @@ without associated Results. Drug results require common filtering and failure
 handling.
 Training-overlap, checkpoint selection, and source provenance require author
 records. These gaps are marked in LaTeX comments and the notes, not filled by
-assumption. A full SI document has not yet been assembled.
+assumption. The initial `supporting-information.tex` contains Tables S1 and S2; additional
+SI analyses and final title/author metadata remain to be assembled.

@@ -90,11 +90,15 @@ by a common audit.
 
 \subsection{Ensemble sizes and validity filtering}
 
-The main CASF comparison used a target of 1,000 conformers per ligand before
-the common validity filter. A smaller count tier was sampled without
-replacement from each available candidate pool, with a target equal to the
-ChEMBL3D conformer count for the mapped stereoisomer. Subsets were capped at the
-available pool size and then subjected to the same validity filter. The launcher for classical generation used base seed 42; the common
+The main CASF comparison used two candidate targets per ligand, both defined
+before the common validity filter. The ChEMBL-count tier used a target equal
+to the stored ChEMBL3D conformer count for the mapped stereoisomer, while the
+fixed tier used a target of 1,000 conformers. The ChEMBL-count tier was sampled
+without replacement from each available candidate pool. Subsets were capped
+at the available pool size and then subjected to the same validity filter.
+These subsets evaluate the effect of a smaller sampling allowance; they do
+not represent separate generation runs at a matched computational cost.
+The launcher for classical generation used base seed 42; the common
 procedure for assembling ensembles from saved pools used base seed 1729.
 Seeds for each molecule and method were derived from these values.
 

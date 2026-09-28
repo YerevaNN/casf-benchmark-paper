@@ -6,82 +6,86 @@
 \label{sec:results}
 \input{figures}
 
-\subsection{Experimental conformation recovery depended on the required agreement}
+\subsection{Recovery depended on the sampling allowance}
 
-We compared generators on the core cohort of 94 ligands by counting a ligand as
-recovered when at least one conformer passed PoseBusters and lay
-within 0.75~\AA{} of its experimental geometry. Generated ensembles were evaluated
-at a target of 1,000 candidates before filtering, while ChEMBL3D-PB provided
-a comparison with the available stored conformers. Recovery percentages
-therefore describe the fraction of the 94 ligands for which the ensemble
-contained a matching conformer, with missing outputs counted as failures.
+We compared generators on the core cohort of 94 ligands by counting a ligand
+as recovered when at least one conformer passed PoseBusters and lay within
+0.75~\AA{} of its experimental geometry. Table~\ref{tab:recovery} presents
+two sampling conditions: a candidate target equal to the stored ChEMBL3D
+count for each mapped stereoisomer and a fixed target of 1,000 candidates
+per ligand. The first tests recovery at an allowance tied to the available
+comparison ensemble; the second tests recovery with more extensive sampling.
+Both targets apply before filtering, and missing outputs count as failures
+in the full denominator of 94 ligands. ChEMBL3D-PB provides the same stored
+comparison ensemble for both tiers.
 % AUTHOR: document representative-checkpoint selection in Methods; the main
 % Qwen model was not the highest-scoring Qwen on every endpoint.
 
-At this cutoff, the pretrained Qwen 1.7B FSQ model recovered 86 of 94 ligands
-(91.5\%), compared with 84 for Torsional Diffusion (89.4\%) and 81 for
-LoQI (86.2\%). Recovery was lower for RDKit without minimization and
-ChEMBL3D-PB, which recovered 76 (80.9\%) and 74 (78.7\%) ligands,
-respectively (Table~\ref{tab:recovery}). Qwen recovered every ligand
-recovered by ChEMBL3D-PB and 12 additional ligands, giving a paired
-difference of 12.8 percentage points (95\% confidence interval, 6.4--20.2).
-This gain was achieved with a substantially larger ensemble, however:
-Qwen retained 972.6 conformers per ligand on average, compared with 81.2
-in the stored ChEMBL3D-PB ensembles.
+At the ChEMBL-count target, the pretrained Qwen 1.7B FSQ model recovered
+76 of 94 ligands (80.9\%), compared with 74 (78.7\%) for ChEMBL3D-PB,
+70 (74.5\%) for LoQI, and 69 (73.4\%) for Torsional Diffusion.
+Qwen retained a mean of 78.3 conformers per ligand, close to the 81.2 in
+the stored ChEMBL3D-PB ensembles. Its paired advantage over ChEMBL3D-PB
+was two ligands, or 2.1 percentage points (95\% confidence interval,
+$-4.3$ to 8.5), leaving the ordering between them unresolved at this
+sampling target.
 
 \input{tables/recovery}
 
-Requiring a closer structural match changed the ordering between Qwen and
-LoQI, as shown by the threshold curves in Figure~\ref{fig:recovery}A.
+At the target of 1,000 candidates, Qwen recovered 86 of 94 ligands
+(91.5\%), compared with 84 for Torsional Diffusion (89.4\%), 81 for LoQI
+(86.2\%), and 76 for RDKit without minimization (80.9\%). Qwen recovered
+every ligand recovered by ChEMBL3D-PB and 12 additional ligands, giving
+a paired difference of 12.8 percentage points (95\% confidence interval,
+6.4--20.2). This comparison used a mean of 972.6 retained Qwen conformers
+per ligand, however, against the unchanged ChEMBL3D-PB mean of 81.2.
+Showing both tiers makes clear that the larger recovery advantage was
+achieved with a substantially larger ensemble (Figure~\ref{fig:recovery}B).
+
+The larger ref cohort showed a reversal in the Qwen--ChEMBL3D-PB ordering
+between tiers (Table~S2). At the ChEMBL-count target, Qwen recovered 76.3\%
+of entries with a mean of 63.3 retained conformers, compared with 78.7\%
+and 66.2 for ChEMBL3D-PB. The paired difference was $-2.4$ percentage points
+(95\% confidence interval, $-4.7$ to $-0.1$). At 1,000 candidates, Qwen
+recovered 92.5\% of the 1,236 entries, compared with 86.8\% for LoQI and
+78.7\% for ChEMBL3D-PB. The paired advantage over LoQI was 5.7 percentage
+points (3.8--7.7), while excluding compounds shared with core preserved
+the advantage over ChEMBL3D-PB (14.0 points; 11.7--16.4). Overlap between
+the two evaluation cohorts therefore did not explain the latter comparison,
+although this check does not address overlap with model training data.
+
+Together, these comparisons show why recovery rankings must be interpreted
+with the sampling allowance. The ChEMBL-count tier consists of subsets of
+the available candidate pools, and filtering can leave different retained
+counts for different methods. It therefore measures recovery with fewer
+sampled candidates without establishing equal computational cost or a
+ranking at exactly equal numbers of valid conformers.
+
+\subsection{Closer structural agreement changed the recovery ranking}
+
+Sampling allowance was not the only condition affecting the comparison.
+At the target of 1,000 candidates, requiring a closer structural match
+reversed the ordering between Qwen and LoQI (Figure~\ref{fig:recovery}A).
 At 0.5~\AA{}, LoQI recovered 83.0\% of core ligands and Qwen recovered
 78.7\%; at 0.25~\AA{}, the corresponding values were 55.3\% and 53.2\%.
-Qwen's higher recovery at the principal cutoff thus did not imply higher
-recovery at every structural tolerance.
+Qwen's higher recovery at the principal cutoff of 0.75~\AA{} thus did
+not imply higher recovery at every structural tolerance.
 
-The larger ref cohort supported the result at the larger sampling budget at 0.75~\AA{},
-with Qwen recovering 92.5\% of 1,236 entries, compared with 86.8\% for
-LoQI and 78.7\% for ChEMBL3D-PB. The paired advantage over LoQI was
-5.7 percentage points (95\% confidence interval, 3.8--7.7), while excluding
-compounds shared with core preserved the advantage over ChEMBL3D-PB
-(14.0 points; 11.7--16.4). The latter comparison indicates that overlap
-between the two evaluation cohorts did not explain this result, although
-it does not address overlap with model training data.
-
-The improvement in recovery was concentrated in the best members of the
-sampled ensembles. On core, Qwen's mean minimum RMSD was 0.307~\AA{},
-compared with 0.339~\AA{} for LoQI and 0.525~\AA{} for ChEMBL3D-PB,
-whereas the means of their ensemble median RMSDs were similar at 1.318,
-1.305, and 1.326~\AA{}, respectively. The higher recovery therefore did not imply that a typical Qwen conformer
-was closer to the experimental target.
-
-\subsection{Smaller sampling targets changed the comparison}
-
-Because the comparison at a target of 1,000 candidates involved different
-retained ensemble sizes, we next reduced each generated candidate pool to the
-ChEMBL3D count for the mapped stereoisomer before applying the validity filter
-(Figure~\ref{fig:recovery}B). On core, Qwen recovery fell from 91.5\%
-to 80.9\%, with a mean of 78.3 retained conformers, bringing it close to
-ChEMBL3D-PB at 78.7\% recovery and 81.2 conformers. The remaining paired
-difference was two ligands (2.1 percentage points; 95\% confidence interval,
-$-4.3$ to 8.5), so the advantage at the larger target was not resolved at this
-smaller sampling target.
-
-On ref, reducing the target reversed the ordering: Qwen recovered 76.3\%
-of entries with a mean of 63.3 retained conformers, compared with 78.7\%
-and 66.2 for ChEMBL3D-PB. The paired difference of $-2.4$ percentage points
-(95\% confidence interval, $-4.7$ to $-0.1$) shows that better recovery at
-the larger target did not translate into better recovery from a compact
-ensemble. These comparisons establish a dependence on sampling regime,
-but unequal retained counts prevent identification of a crossover at a
-particular number of valid conformers.
+The improvement in recovery also concerned the closest members of the
+sampled ensembles. At the fixed target, Qwen's mean minimum RMSD on core
+was 0.307~\AA{}, compared with 0.339~\AA{} for LoQI and 0.525~\AA{}
+for the stored ChEMBL3D-PB ensembles (Table~S1). In contrast, the means
+of their ensemble median RMSDs were similar at 1.318, 1.305, and
+1.326~\AA{}, respectively. The higher recovery therefore did not imply
+that a typical Qwen conformer was closer to the experimental target.
 
 \recoveryfigure
 
 \subsection{Geometric diversity did not reproduce the recovery ranking}
 
 To examine whether broader geometric sampling accounted for the recovery
-ordering, we compared the number of conformer clusters at a 1.0~\AA{}
-RMSD radius. FlowR produced more clusters than Qwen on core (114.4 versus
+ordering at the target of 1,000 candidates, we compared the number of
+conformer clusters at a 1.0~\AA{} RMSD radius. FlowR produced more clusters than Qwen on core (114.4 versus
 72.8 per ligand), yet recovered fewer targets (86.2\% versus 91.5\%).
 Torsion perturbation likewise produced 74.2 clusters, close to Qwen's
 count, but recovered only 78.7\% of targets; LoQI reached 86.2\%
@@ -103,8 +107,8 @@ accessible states.
 
 \subsection{Recovery varied with molecular size and flexibility}
 
-Stratifying core by heavy-atom count revealed differences that were obscured
-by the overall recovery rates (Table~\ref{tab:size}; Figure~\ref{fig:size}).
+At the target of 1,000 candidates, stratifying core by heavy-atom count
+revealed differences that were obscured by the overall recovery rates (Table~\ref{tab:size}; Figure~\ref{fig:size}).
 Qwen, LoQI, and FlowR each recovered all 39 ligands with fewer than 20 heavy
 atoms, but their performance separated among the 12 ligands with 30--39
 heavy atoms: recovery was 66.7\% for Qwen, 58.3\% for LoQI, 41.7\% for
