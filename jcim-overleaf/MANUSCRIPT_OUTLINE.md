@@ -55,8 +55,9 @@ the report's proposed threshold, training, energy, and random-K experiments.
 
 - Table 1: all ten pipelines, core recovery and mean retained counts at both
   targets, plus the single stored ChEMBL3D-PB comparison.
-- Figure 1: core recovery at 0.75 Å in paired panels for the ChEMBL-count
-  and 1,000-candidate targets. Retained counts remain in Table 1.
+- Figure 1: a compact combined core recovery plot at 0.75 Å, connecting
+  ChEMBL-count and 1,000-candidate endpoints for each method. No second panel;
+  retained counts remain in Table 1.
 - Figure 2: core diversity versus recovery for the full panel, at one clustering radius.
 - Figure 3: core size/flexibility heatmaps for the full panel. Cells show exact
   recovered/total counts; the smallest groups are explicitly marked.

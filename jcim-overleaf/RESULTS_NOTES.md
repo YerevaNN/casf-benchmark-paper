@@ -70,9 +70,9 @@ choices are archived in `figure-data/README.md` and `provenance.json`.
 
 Four main figures are placed by commands in `figures.tex`:
 
-1. `core-recovery-budget.pdf`: paired core recovery panels at 0.75 Å for the
-   ChEMBL-count and 1,000-candidate targets, with the same stored ChEMBL3D-PB
-   comparison in both. Retained counts remain in Table 1.
+1. `core-recovery-budget.pdf`: one compact core recovery plot at 0.75 Å,
+   connecting both candidate-target endpoints for each generator. The stored
+   ChEMBL3D-PB ensemble is a dashed reference; retained counts remain in Table 1.
 2. `diversity-recovery.pdf`: the full main panel at the 1.0 Å clustering radius.
 3. `size-flexibility.pdf`: core-only heatmaps with recovered/total counts for
    all ten pipelines and ChEMBL3D-PB; sparse groups are marked.

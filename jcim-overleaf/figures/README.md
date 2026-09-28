@@ -2,9 +2,9 @@
 
 Four figures are included through `../figures.tex` and `../results.tex`:
 
-1. `core-recovery-budget`: two core recovery panels at 0.75 Å, using the
-   ChEMBL-count and 1,000-candidate targets for all ten pipelines, with the same
-   stored ChEMBL3D-PB reference. Retained counts are reported in Table 1.
+1. `core-recovery-budget`: one compact core recovery plot at 0.75 Å, connecting
+   ChEMBL-count and 1,000-candidate endpoints for each of the ten pipelines,
+   with the stored ChEMBL3D-PB reference. Retained counts are in Table 1.
 2. `diversity-recovery`: all ten pipelines plus ChEMBL3D-PB, core recovery versus
    cluster count at the separate 1.0 Å clustering radius.
 3. `size-flexibility`: core-only heatmaps with recovered/total counts for every
