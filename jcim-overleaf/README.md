@@ -1,7 +1,7 @@
 # JCIM manuscript
 
 The ACS template now includes drafted Introduction, Methods, and Results
-sections, three tables, and four figures. Title, authors,
+sections, two main tables, four figures, and four supporting tables. Title, authors,
 abstract, and end matter still contain upstream examples. Discussion and
 Conclusions remain to be written. This is a working manuscript, not a
 submission-ready article.
@@ -11,9 +11,9 @@ submission-ready article.
 - `introduction.tex`: rationale, relevant literature, and study questions.
 - `methods.tex`: benchmark procedures and author comments for missing details.
 - `results.tex`: recovery-first story using core94 and Qwen 1.7B FSQ step47023.
-- `tables/recovery.tex`, `tables/size.tex`, `tables/druglike.tex`: included tables.
-- `supporting-information.tex`: separate SI document with Tables S1 (core RMSD)
-  and S2 (ref recovery); switch the Overleaf main document to this file to compile it.
+- `tables/recovery.tex`, `tables/druglike.tex`: main tables; size strata are in SI.
+- `supporting-information.tex`: separate SI document with Tables S1--S4 (core RMSD,
+  ref recovery, size strata, and multi-reference matching distances); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `acs-template.bib`: nine verified references.
 - `WRITING_GUIDELINES.md`, `MANUSCRIPT_OUTLINE.md`: agreed writing instructions
@@ -43,12 +43,12 @@ requires access to its source databases; do not refresh the evidence silently.
 Numerical source paths beginning with `docs/`, `data/results/` or `src/` in
 notes refer to the separate `YerevaNN/casf-benchmark` analysis repository.
 Figure-source CSVs and the public release record are archived here under
-`figure-data/`. Figure 1 uses candidate-tier endpoints rather than historical
-random-K curves; the old energy analysis remains a separate diagnostic.
+`figure-data/`. Figure 1 uses core recovery at 0.75 Å and retained counts at both candidate
+targets; the old energy analysis remains a separate diagnostic.
 
 ## Preview and verification
 
-`preview/manuscript-preview.pdf` is a compiled reading copy of the authored
+`preview/manuscript-preview.pdf` is a historical compiled reading copy of earlier
 sections, tables, actual figures, and references. It excludes the
 upstream front/end matter. The preview uses Tectonic with biblatex's BibTeX
 backend; the Overleaf main document retains Biber, so pagination may differ.

@@ -2,7 +2,7 @@
 
 Revised 28 September 2026. The manuscript now follows the agreed recovery-first
 story: core94 anchors the comparison; Qwen 1.7B FSQ pretraining step47023 is
-the sole main-text Qwen; ref supports specific findings; the 23-molecule
+the sole main-text Qwen; ref is reported in SI; the 23-molecule
 multi-reference drug panel is a separate experiment. Additional Qwen variants
 and SFT comparisons are reserved for possible Supporting Information.
 
@@ -19,13 +19,13 @@ analysis was rerun in this manuscript revision.
 
 | Content | Source relative to repository root |
 | --- | --- |
-| Recovery, threshold crossings, retained counts, minimum/median RMSD, diversity | `docs/publication_tables_2026_09_24/all_casf_summary.csv` |
+| Recovery at 0.75 Å, retained counts, minimum/median RMSD, diversity | `docs/publication_tables_2026_09_24/all_casf_summary.csv` |
 | Paired intervals and cohort-overlap sensitivity | `docs/publication_tables_2026_09_24/paired_cluster_bootstrap.csv` |
 | Smaller sampling targets | `docs/publication_tables_2026_09_24/tiers.csv` |
-| Size strata and Table 2 | `docs/publication_tables_2026_09_28/size_strata.csv`, reproduced by `docs/publication_size_analysis_2026_09_28.py` |
+| Size strata and Table S3 | `docs/publication_tables_2026_09_28/size_strata.csv`, reproduced by `docs/publication_size_analysis_2026_09_28.py` |
 | Flexibility | `docs/publication_tables_2026_09_24/flexibility.csv` |
-| Table 3 coverage/MAT | Molecule means of `docs/publication_tables_2026_09_24/druglike_per_molecule.csv` |
-| Table 3 PB | Pooled pass fraction in `docs/publication_tables_2026_09_24/druglike_summary.csv` |
+| Table 2 coverage and Table S4 MAT | Molecule means of `docs/publication_tables_2026_09_24/druglike_per_molecule.csv` |
+| Table 2 PB | Pooled pass fraction in `docs/publication_tables_2026_09_24/druglike_summary.csv` |
 | Drug uncertainty and examples | `docs/publication_tables_2026_09_24/druglike_paired.csv` and `druglike_cases.csv` |
 
 Table 1 contains the full selected generator panel plus ChEMBL3D-PB, with
@@ -34,13 +34,12 @@ Supporting Table S1 contains core RMSD summaries for both tiers, and Table S2
 contains ref recovery and retained counts. The exact 42 selected source rows
 are archived in `figure-data/recovery-table-tiers.csv`; recovery and counts
 agree with `casf_summary.csv` for every overlapping method/tier.
-The main Results now introduce both tiers together before examining matching
-tolerance, diversity, and molecular complexity. Table 2 uses four contrasting methods for
-readability; the export contains the wider panel. Table 3 includes all five
-external methods and the selected Qwen. All three tables are separate LaTeX
-inputs under `tables/` and are included by `results.tex`.
+The main Results introduce both tiers at 0.75 Å before diversity and core
+molecular complexity. The selected-method size table is now Table S3.
+Table 2 reports supplied counts, coverage, precision, and separately assessed
+PB for all five external methods and Qwen; matching distances are Table S4.
 
-A material threshold result is retained: on core, LoQI exceeds Qwen at 0.5 Å
+Historical threshold result (removed from the current single-cutoff manuscript): on core, LoQI exceeds Qwen at 0.5 Å
 (83.0% versus 78.7%) despite Qwen's higher recovery at 0.75 Å. Therefore the
 text does not claim threshold-invariant superiority. No correlation from the
 old 19-generator panel is presented as a result for the reduced main panel.
@@ -69,16 +68,22 @@ On 28 September, GitHub's latest public dashboard release was verified as
 the local files exactly. Figure sources and explicit denominator/checkpoint
 choices are archived in `figure-data/README.md` and `provenance.json`.
 
-Four real figures now replace the placeholders and are inserted near their
-discussion using commands defined in `figures.tex`:
+Four main figures are placed by commands in `figures.tex`:
 
-1. `recovery-thresholds-budget.pdf`: core RMSD thresholds and ChEMBL-count versus
-   fixed candidate endpoints. These are not random valid-K curves.
-2. `diversity-recovery.pdf`: clustering-radius curves and cluster count versus
-   recovery. It does not contain an unverified current energy panel.
-3. `size-flexibility.pdf`: core and supporting ref strata, with group sizes.
-4. `multireference-coverage.pdf`: raw-pool recall/precision with 95% marginal
-   molecule-bootstrap intervals and paired molecule examples.
+1. `core-recovery-budget.pdf`: core recovery at 0.75 Å and retained counts for
+   all ten pipelines at both targets, with the stored ChEMBL3D-PB comparison.
+2. `diversity-recovery.pdf`: the full main panel at the 1.0 Å clustering radius.
+3. `size-flexibility.pdf`: core-only heatmaps with recovered/total counts for
+   all ten pipelines and ChEMBL3D-PB; sparse groups are marked.
+4. `multireference-coverage.pdf`: supplied-pool recall/precision and paired
+   molecules, with the 11 coincident complete-coverage molecules annotated.
+
+The additional core figure sources are `core-comparison.csv` and
+`core-strata.csv`. Their source paths and digests are in
+`core-figure-sources.json`; all overlapping archived strata agree. The full
+panel reveals that MCF recovers 8/11 core ligands with 7–8 rotors versus Qwen's
+6/11; this descriptive result now appears in the text. No new generation or
+hypothesis test was performed. The original bootstrap draw order is preserved.
 
 PDFs, SVGs, and 450-dpi PNGs are in `figures/`. The public release's unchanged
 14 September energy sidecar was recreated as `energy-window-historical.pdf`,
@@ -106,8 +111,8 @@ NExT-Mol core Hit@0.75 differs from the displayed conditional percentage
   training-set overlap, and dataset provenance (see METHODS_NOTES.md).
 - Keep sparse size strata descriptive. Size is not an independent causal
   explanation after stratifying on it alone.
-- Additional Qwen/SFT tables, dynamic tiers, and full threshold combinations
-  can go in SI; no nonexistent SI table numbers are cited.
+- Additional Qwen/SFT and dynamic-tier analyses remain outside the current
+  manuscript; no nonexistent SI table numbers are cited.
 
 The Introduction cites prior experimental-conformation benchmarking rather
 than claiming priority. The added McNutt et al. reference was verified against
@@ -139,3 +144,15 @@ The user explicitly confirmed that this perspective governs the whole paper,
 including the Introduction and Results. It must also guide the future
 Discussion, Conclusions, abstract, and title. The report is interpretive
 guidance; corrected exports remain authoritative for the numerical evidence.
+
+## Presentation decision after reading the prior JCIM paper
+
+McNutt et al., DOI 10.1021/acs.jcim.3c01245, full text:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10647020/
+Their main RDKit/DMCG comparison studies ensemble construction and downstream
+performance. Our Introduction now states the broader method panel and our
+structural selection criteria explicitly. Presentation follows a practical
+question, defined evaluation conditions, then task-specific observations;
+it does not import their downstream claims, numerical thresholds, or conclusions.
+The main paper uses only core recovery at 0.75 Å; ref and the duplicate size
+table are in SI. Figure PDFs were regenerated; manuscript previews were not compiled.

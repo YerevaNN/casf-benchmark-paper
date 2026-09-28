@@ -1,140 +1,122 @@
-% Revised 28 September 2026 following the annotated PDF comments.
-% Numerical sources: publication_tables_2026_09_24 and size strata of 28 September.
-% Core counts independently checked against the public-release per_ligand_long
-% records; see figure-data/core-recovery-audit.csv and core-recovery-counts.csv.
+% Core-focused analysis at the single recovery cutoff of 0.75 Angstrom.
+% Corrected source exports and exact checkpoint identities are in figure-data/.
 \section{Results}
 \label{sec:results}
 \input{figures}
 
-\subsection{Recovery gains with increased sampling}
+\subsection{Recovery under validity and sampling constraints}
 
-Across the 94 core ligands, recovery of the observed bound geometry
-increased with the candidate allowance for every generator (Table~\ref{tab:recovery}). At the principal
-cutoff of 0.75~\AA{}, the pretrained Qwen 1.7B FSQ model had the highest
-observed recovery at both targets, increasing from 80.9\% at the
-ChEMBL-count target to 91.5\% at 1,000 candidates. Torsional Diffusion
-ranked second at the larger target, whereas NExT-Mol ranked second among
-the generators at the smaller target. ChEMBL3D-PB was evaluated as the
-same stored ensemble in both comparisons.
+The ten generation pipelines differed in how often they produced a
+PoseBusters-passing conformer within 0.75~\AA{} of the bound geometry across
+the 94 core ligands (Table~\ref{tab:recovery}; Figure~\ref{fig:recovery}).
+At the 1,000-candidate target, recovery ranged from 78.7\% to 91.5\%.
+The six learned generators each recovered more ligands than the tested
+classical pipelines at this target. Qwen had the highest observed recovery
+in the selected panel, followed by Torsional Diffusion, with only two
+ligands separating them. Qwen exceeded RDKit raw by 10.6 percentage points
+(95\% confidence interval, 4.3--18.1), whereas its difference from LoQI
+was unresolved (5.3 percentage points; 95\% confidence interval,
+$-1.1$ to 11.7). These comparisons support an advantage over the tested
+RDKit configuration without establishing a unique best learned generator.
 % AUTHOR: document representative-checkpoint selection in Methods; the main
 % Qwen model was not the highest-scoring Qwen on every endpoint.
 
-At the ChEMBL-count target, Qwen and ChEMBL3D-PB each retained approximately
-80 conformers per ligand on average. Their recovery difference was 2.1 percentage
-points (95\% confidence interval, $-4.3$ to 8.5), with no resolved advantage
-for Qwen. At the larger target, Qwen retained approximately 973 conformers
-and recovered every ligand recovered by ChEMBL3D-PB, together with 12
-additional ligands. The resulting advantage of 12.8 percentage points
-(95\% confidence interval, 6.4--20.2) was therefore specific to the larger
-sampling allowance (Figure~\ref{fig:recovery}B).
-
 \input{tables/recovery}
 
-In the larger reference cohort, Qwen recovered fewer ligands than
-ChEMBL3D-PB at the smaller target and more at 1,000 candidates (Table~S2).
-The advantage at the larger target persisted after excluding compounds
-shared with core. An advantage over ChEMBL3D-PB was resolved only at the
-larger sampling allowance. Candidate targets were defined
-before filtering, so these
-comparisons do not establish rankings at identical retained ensemble sizes
-or computational cost.
+Recovery increased with the candidate allowance for every generator.
+At the ChEMBL-count target, Qwen and the stored ChEMBL3D-PB ensemble
+each retained approximately 80 conformers per ligand. Their recovery
+difference was 2.1 percentage points (95\% confidence interval,
+$-4.3$ to 8.5), with no resolved advantage for Qwen. At the larger target,
+Qwen retained approximately 973 conformers and recovered every ligand
+recovered by ChEMBL3D-PB, together with 12 additional ligands. Its advantage
+over that stored ensemble was 12.8 percentage points
+(95\% confidence interval, 6.4--20.2).
 
-\subsection{Recovery rankings at stricter RMSD cutoffs}
+The candidate allowance did not determine the retained ensemble size:
+filtering and available outputs left different numbers of conformers for
+different methods (Figure~\ref{fig:recovery}B). ChEMBL3D-PB remained the
+same finite stored ensemble in both comparisons. These endpoints therefore
+compare the evaluated pipelines at specified candidate targets, rather
+than at identical retained counts or computational cost.
 
-The ranking for bound conformation recovery depended on the required
-structural agreement as well as the sampling allowance. At the target of
-1,000 candidates, LoQI exceeded Qwen when a closer match to the bound
-geometry was required. At a cutoff of 0.5~\AA{},
-recovery was 83.0\% for LoQI and 78.7\% for Qwen, reversing their ordering
-at the principal cutoff. LoQI also had higher recovery at 0.25~\AA{}
-(Figure~\ref{fig:recovery}A).
-
-Qwen had a lower mean minimum RMSD than LoQI and ChEMBL3D-PB at the fixed
-target, but the three methods had similar mean ensemble median RMSDs
-(Table~S1). Its higher recovery at 0.75~\AA{} consequently reflected the
-closest conformers in each ensemble, without a corresponding reduction
-in the distance of a typical conformer from the experimental geometry.
+Qwen's lower mean minimum RMSD was not accompanied by a lower mean
+ensemble median RMSD than LoQI or ChEMBL3D-PB (Table~S1). Its higher
+recovery thus concerned the closest members of the pool without evidence
+that the typical conformer was closer to the bound geometry. The larger
+reference cohort is reported separately in Table~S2.
 
 \recoveryfigure
 
-\subsection{Geometric diversity and experimental recovery}
+\subsection{Geometric diversity does not determine recovery}
 
 Greater geometric diversity did not consistently correspond to better
-recovery of bound ligand conformations. At the target of 1,000 candidates
-and a clustering radius of
-1.0~\AA{}, FlowR produced more clusters than Qwen on core (114.4 versus
-72.8 per ligand) but recovered fewer experimental conformations. Torsion
-perturbation produced a cluster count close to Qwen's with lower recovery,
-while LoQI matched FlowR's recovery with substantially fewer clusters
-(Figure~\ref{fig:diversity-recovery}B).
+recovery on core. At the 1,000-candidate target and a clustering radius
+of 1.0~\AA{}, FlowR produced more clusters than Qwen
+(114.4 versus 72.8 per ligand) but recovered fewer bound geometries.
+Torsion perturbation produced a cluster count close to Qwen's with lower
+recovery, while LoQI matched FlowR's recovery with substantially fewer
+clusters (Figure~\ref{fig:diversity-recovery}).
 
-In the larger reference cohort, FlowR also produced more clusters than
-Qwen and LoQI while recovering fewer ligands than either. Cluster counts
-decreased as the clustering radius
-increased (Figure~\ref{fig:diversity-recovery}A), reflecting the resolution
-at which conformers were considered distinct. Because these counts also
-depend on retained ensemble size and clustering order, they quantify
-geometric variation within the sampled pool rather than the number of
-biologically accessible states.
-% AUTHOR: do not reuse a correlation from the 19-checkpoint panel as if it
-% described the smaller selection plotted here.
+Cluster count therefore did not provide a sufficient criterion for
+selecting a generator that recovered the experimental geometry.
+The counts also depend on retained ensemble size and clustering order;
+they describe geometric variation in the sampled pool rather than the
+number of biologically accessible states.
 
 \diversityfigure
 
-\subsection{Lower recovery for larger and more flexible ligands}
+\subsection{Recovery depends on ligand size and flexibility}
 
-At the target of 1,000 candidates, Qwen, LoQI, and FlowR recovered the bound
-conformations of all core ligands with fewer than 20 heavy atoms, but their
-performance diverged for larger molecules (Table~\ref{tab:size}; Figure~\ref{fig:size}). Among the
-12 ligands with 30--39 heavy atoms, Qwen recovered twice the fraction
-recovered by FlowR (66.7\% versus 33.3\%), with LoQI and ChEMBL3D-PB
-between them. The core cohort contained only two ligands with at least
-40 heavy atoms, precluding a reliable comparison in that group.
+Recovery was generally lower for larger core ligands, although the
+relative performance of the generators varied between groups
+(Figure~\ref{fig:size}A). Among the 12 ligands with 30--39 heavy atoms,
+Qwen recovered eight and FlowR recovered four. Only two core ligands
+had at least 40 heavy atoms, so their outcomes cannot establish a
+reliable ranking for large molecules. Size-stratum values for the
+selected comparison methods in both cohorts are provided in Table~S3.
 
-\input{tables/size}
-
-The larger reference cohort showed the same ordering among these methods
-for ligands with 30--39 heavy atoms. Recovery remained poor for the largest
-molecules: Qwen recovered only one-third of the 24 entries with at
-least 40 heavy atoms. Recovery also declined with increasing numbers of
-rotatable bonds, and Qwen's largest absolute advantage over ChEMBL3D-PB
-occurred among ligands with 7--8 rotatable bonds rather than in the most
-flexible group (Figure~\ref{fig:size}). Size and flexibility were not
-adjusted for one another, so neither association establishes an independent
-cause of the decline.
+The flexibility groups also exposed differences hidden by the overall
+ranking (Figure~\ref{fig:size}B). Qwen and Torsional Diffusion each
+recovered 33 of 34 ligands with 4--6 rotatable bonds. Among the 11 ligands
+with 7--8 rotatable bonds, MCF recovered eight, compared with six for
+Qwen and Torsional Diffusion. The most flexible group contained only
+four ligands; its apparently favorable Qwen recovery was based on three
+successes. These small groups identify observed successes and failures,
+but do not establish broadly applicable preferences for a chemical class.
+Size and flexibility were not adjusted for one another.
 
 \sizefigure
 
-\subsection{Reference coverage and sample precision}
+\subsection{Exploratory reference coverage and sample precision}
 
-For molecules with multiple experimental conformations, broad reference
-coverage did not imply the same concentration of samples near those
-conformations. Across the panel of 23 drug molecules, Qwen and LoQI each covered
-approximately 91\% of the available experimental conformations
-(Table~\ref{tab:druglike}). The paired coverage difference for Qwen
-relative to LoQI was unresolved (95\% confidence interval, $-9.1$ to
-8.7 percentage points), whereas a
-larger fraction of LoQI's generated conformers lay near an experimental
-reference. Qwen's precision was lower by 12.2 percentage points
-(95\% confidence interval, 4.7--19.8). Similar mean reference coverage
-therefore coincided with different concentrations of samples near the
-observed geometries (Figure~\ref{fig:druglike}).
+The separate 23-molecule panel assessed whether recovery of observed
+conformations coincided with frequent sampling near them. These estimates
+describe supplied pools without common PoseBusters filtering, and the
+evaluators differed in their treatment of failed RMSD calculations.
+They therefore provide an exploratory comparison rather than a test of
+the common validity criterion used for CASF.
+
+Qwen and LoQI each covered approximately 91\% of the experimental
+references on average (Table~\ref{tab:druglike}). The paired coverage
+difference was unresolved (95\% confidence interval, $-9.1$ to
+8.7 percentage points). LoQI had higher observed-reference precision:
+Qwen's precision was lower by 12.2 percentage points
+(95\% confidence interval, 4.7--19.8; Figure~\ref{fig:druglike}A).
+The difference concerns these supplied pools and requires confirmation
+under common filtering and failure handling. Matching-distance summaries
+are provided in Table~S4.
 
 \input{tables/druglike}
 
-The similarity in mean coverage did not extend to individual molecules:
-Qwen covered substantially more imatinib references, while LoQI covered
-substantially more actinonin references (Figure~\ref{fig:druglike}B).
-These results describe the supplied pools, which differed in validity
-filtering and the treatment of failed RMSD calculations (Methods).
-Moreover, the experimental records need not represent distinct states or
-exhaust the molecule's accessible conformations; low precision relative
-to these records does not establish that unmatched conformers are
-physically inaccessible.
+Similar mean coverage concealed opposing molecule-level outcomes:
+Qwen covered more imatinib references, whereas LoQI covered more
+actinonin references (Figure~\ref{fig:druglike}B).
+Experimental records need not represent distinct states or exhaust
+accessible conformations, so low precision relative to these records
+does not establish that unmatched conformers are physically inaccessible.
 % AUTHOR: harmonize the evaluation before final submission and replace all
 % affected values together. Do not multiply COV by PB yield.
-% AUTHOR: add inspected structures for imatinib and actinonin if space permits;
-% do not assign a ring, torsion, strain, or binding-interaction mechanism without
-% examining the conformers.
+% AUTHOR: inspect conformers before assigning chemical mechanisms to examples.
 
 \drugfigure

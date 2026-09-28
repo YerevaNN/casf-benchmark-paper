@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Matching distances for the exploratory panel of 23 druglike molecules.
+MAT-R averages the nearest generated-conformer distance over references;
+MAT-P averages the nearest reference distance over generated conformers.
+Values below are means over molecules. Supplied pools do not share a common
+PoseBusters filter, and undefined nearest distances are omitted.}
+\label{tab:supporting-druglike}
+\begin{tabular}{lrr}
+\hline
+Method & MAT-R (\AA) & MAT-P (\AA) \\
+\hline
+LoQI & 0.421 & 0.816 \\
+Torsional Diffusion & 0.455 & 1.189 \\
+MCF drugs-L & 0.481 & 1.215 \\
+NExT-Mol DMT-L & 0.464 & 1.172 \\
+FlowR & 0.522 & 1.306 \\
+Qwen 1.7B FSQ & 0.375 & 1.000 \\
+\hline
+\end{tabular}
+\end{table}

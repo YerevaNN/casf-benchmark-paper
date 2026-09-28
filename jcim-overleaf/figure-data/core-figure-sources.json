@@ -1,0 +1,23 @@
+{
+  "checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
+  "cohort": "core",
+  "n": 94,
+  "recovery_cutoff_angstrom": 0.75,
+  "clustering_radius_angstrom": 1.0,
+  "source_repository": "https://github.com/YerevaNN/casf-benchmark",
+  "sources": [
+    {
+      "path": "docs/publication_tables_2026_09_24/all_casf_summary.csv",
+      "sha256": "c07a493649967395e9d74adb66766942113dc75b61d3c5a27463bb93ad2643d8"
+    },
+    {
+      "path": "docs/publication_tables_2026_09_24/flexibility.csv",
+      "sha256": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705"
+    },
+    {
+      "path": "docs/publication_tables_2026_09_28/size_strata.csv",
+      "sha256": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90"
+    }
+  ],
+  "transformations": "Select fixed/reference rows for the main panel. Convert fractional hits to percentages. Reconstruct integer rotor-group hits as round(n * hit_075) and verify against the source fractions. No re-generation or re-scoring."
+}

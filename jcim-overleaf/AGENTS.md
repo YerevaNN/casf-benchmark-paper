@@ -30,6 +30,13 @@ proposed experiments as completed, or reintroduce analyses the user excluded.
 Preserve this framing when drafting Discussion, Conclusions, abstract, and title.
 
 
+The author's latest scope decision is core94 and a single recovery cutoff of
+0.75 Å. Keep ref in SI and remove threshold-sensitivity narratives from the
+main paper. Emphasize selection among the broader method panel under the
+study's identity, validity, and candidate-budget constraints. The 1.0 Å
+clustering radius remains a distinct diversity definition. See the updated
+MANUSCRIPT_OUTLINE.md for current figure and table placement.
+
 Read METHODS_NOTES.md before revising Methods: it records evidence and unresolved
 metadata. methods.tex contains the benchmark Methods draft and is included by
 acs-template.tex. Read RESULTS_NOTES.md before revising results.tex: the HTML

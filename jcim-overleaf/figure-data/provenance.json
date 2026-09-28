@@ -21,5 +21,5 @@
   "budget": "Candidate-tier endpoints, not random fixed-valid-K curves.",
   "energy_status": "Historical September 14 sidecar; diagnostic only, excluded from manuscript.",
   "drug_status": "Supplied pools; no common PB filter; failure policies differ.",
-  "method_selection": "Main curve panel excludes minimized classical variants and additional Qwen checkpoints; full main comparison remains in Table 1."
+  "method_selection": "Main CASF figures include all ten selected pipelines plus the stored ChEMBL3D-PB comparison; core only, recovery at 0.75 \u00c5. Additional Qwen checkpoints are outside the main panel."
 }

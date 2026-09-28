@@ -1,23 +1,24 @@
 # Manuscript figures
 
-Four figures are included in the paper, with captions and placement controlled
-by `../figures.tex` and `../results.tex`:
+Four figures are included through `../figures.tex` and `../results.tex`:
 
-1. `recovery-thresholds-budget`: RMSD thresholds and candidate-budget endpoints.
-2. `diversity-recovery`: cluster radii of 0.5, 1.0, and 2.0 Å and diversity versus recovery.
-   The archived data retain the 3.0 Å results, which are omitted from the plot.
-3. `size-flexibility`: core/ref molecular size and flexibility groups.
-4. `multireference-coverage`: drug-panel recall/precision with molecule bootstrap
-   intervals and contrasting paired examples.
+1. `core-recovery-budget`: core recovery at 0.75 Å and retained conformer counts
+   at both candidate targets, for all ten pipelines and a stored reference.
+2. `diversity-recovery`: all ten pipelines plus ChEMBL3D-PB, core recovery versus
+   cluster count at the separate 1.0 Å clustering radius.
+3. `size-flexibility`: core-only heatmaps with recovered/total counts for every
+   method in the main panel; groups with fewer than five ligands are marked.
+4. `multireference-coverage`: exploratory multi-reference recall/precision and
+   paired molecules; coincident points show multiplicity.
 
 Each has a vector PDF, editable SVG, and 450-dpi PNG at 7 inches wide.
-The paper includes the PDFs. Sources and numerical exports are in
-`../figure-data/`; `../build_figures.py` reproduces the outputs.
+`main-figures.pdf` is regenerated with the same four figures. Sources and
+provenance are archived in `../figure-data/`.
 
-`energy-window-historical` is a separate diagnostic of the older extended
-sidecar in the public release. Its legacy Qwen identity and historical status
-are explicit; it is NOT included in the manuscript or the main figure gallery.
-Current-checkpoint energy windows and fixed-valid-K curves still need updating.
+Run `python jcim-overleaf/build_figures.py` from the paper repository root in
+an environment containing NumPy, pandas, and Matplotlib. Figure rendering does
+not compile or update manuscript previews.
 
-Formatting follows the size, font-legibility, and accessible-color guidance in
-[JCIM's graphics instructions](https://researcher-resources.acs.org/publish/author_guidelines/pdf?coden=jcisd8).
+`energy-window-historical` is unchanged historical evidence, excluded from the
+paper and gallery. Rendering it requires the explicit `--historical-energy`
+option. The removed multi-threshold figure remains available in Git history.

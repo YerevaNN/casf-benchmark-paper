@@ -9,8 +9,8 @@
 We evaluated conformer ensembles against experimental ligand geometries using
 two complementary settings: recovery of one bound conformation per
 protein--ligand complex and coverage of several observed conformations of the
-same molecule. The CASF-2016 core and larger reference ligand collections
-are denoted core and ref, respectively.\cite{su2019casf}
+same molecule. The primary CASF-2016 core cohort and the supporting larger reference
+collection are denoted core and ref, respectively.\cite{su2019casf}
 % AUTHOR: establish the exact source release and construction of CASF16_REF;
 % the CASF citation alone does not document that local collection.
 Ligands were matched to ChEMBL3D by exact canonical, heavy-atom isomeric SMILES.
@@ -130,15 +130,15 @@ that ensemble to fail.
 
 For each ligand, we calculated the minimum and median RMSD over the retained
 ensemble. Hit@$\delta$ was one when at least one conformer had RMSD
-$\leq\delta$, and zero otherwise, at thresholds of 0.25, 0.5, 0.75, and
-2.0~\AA. We used 0.75~\AA{} as the principal recovery cutoff
-and the remaining thresholds to assess sensitivity. Cohort hit rates used all mapped entries as the denominator,
+$\leq\delta$, and zero otherwise. We used the single recovery cutoff
+$\delta=0.75$~\AA{} throughout this study. Cohort hit rates used all mapped entries as the denominator,
 including empty or missing outputs as misses. We averaged the minimum RMSD, ensemble median RMSD, and diversity
 measures only over entries with defined values.
 
 We measured geometric diversity by greedy clustering of the retained
-conformers at a principal heavy-atom RMSD threshold of 1.0~\AA{},
-with additional radii of 0.5 and 2.0~\AA{} for sensitivity analysis. Conformers were visited
+conformers at a heavy-atom RMSD radius of 1.0~\AA{}.
+This radius defines geometric clusters and is distinct from the 0.75~\AA{}
+recovery criterion. Conformers were visited
 in stored order and assigned to the nearest existing cluster representative
 if their RMSD was below the threshold; otherwise, a new cluster was created.
 We reported the mean number of clusters across measurable ensembles.
@@ -189,9 +189,7 @@ They do not include variation across independent generation or training runs.
 % manuscript/build_figures.py, not provided by the public dashboard; see
 % figure-data/drug_coverage_intervals.csv.
 
-As an overlap sensitivity analysis, we repeated ref comparisons after
-excluding the 17 parent compounds also present in core, leaving 1,189
-complex entries from 1,025 compounds. Exploratory size analyses used
+Exploratory size analyses used
 counts of heavy atoms from the experimental ligand after removing hydrogens, grouped
 as fewer than 20, 20--29, 30--39, and at least 40 atoms. Flexibility analyses
 used RDKit counts of rotatable bonds from that same reference, grouped as 0--3,

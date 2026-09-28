@@ -1,6 +1,6 @@
 """Recreate manuscript figures from the public dashboard release.
 
-Run from the project environment: python manuscript/build_figures.py
+Run from the project environment: python jcim-overleaf/build_figures.py
 Use --refresh-data to verify local databases against public-release.json and
 re-export their underlying rows. Default rendering uses the archived CSVs only.
 """
@@ -14,6 +14,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from matplotlib.backends.backend_pdf import PdfPages
+from matplotlib.patches import Rectangle
 import numpy as np
 import pandas as pd
 
@@ -34,6 +36,14 @@ STYLE = {
     'chembl3d_gt_pb': ('ChEMBL3D-PB', '#252525', 'h'),
 }
 KEYS = list(STYLE)
+STYLE.update({
+    'rdkit_random_minimized': ('RDKit minimized', '#999999', 'd'),
+    'torsion_minimized': ('Torsion minimized', '#B39B72', 'p'),
+})
+PANEL = ['rdkit_random_raw', 'rdkit_random_minimized', 'torsion_raw',
+         'torsion_minimized', 'loqi_raw', 'torsional_diffusion_raw',
+         'mcf_drugs_l_raw', 'nextmol_dmt_l_raw', 'flowr_raw', QWEN]
+GALLERY = None
 FOCUS = [QWEN, 'loqi_raw', 'flowr_raw', 'chembl3d_gt_pb']
 DRUG = {QWEN: QWEN, 'loqi_raw': 'loqi_druglike', 'flowr_raw': 'flowr_druglike',
         'torsional_diffusion_raw': 'torsional_diffusion_druglike',
@@ -122,7 +132,7 @@ def refresh_data():
         'budget': 'Candidate-tier endpoints, not random fixed-valid-K curves.',
         'energy_status': 'Historical September 14 sidecar; diagnostic only, excluded from manuscript.',
         'drug_status': 'Supplied pools; no common PB filter; failure policies differ.',
-        'method_selection': 'Main curve panel excludes minimized classical variants and additional Qwen checkpoints; full main comparison remains in Table 1.',
+        'method_selection': 'Main CASF figures include all ten selected pipelines plus the stored ChEMBL3D-PB comparison; core only, recovery at 0.75 Å. Additional Qwen checkpoints are outside the main panel.',
     }, indent=2) + '\n')
 
 
@@ -145,8 +155,12 @@ def save(fig, name):
     OUT.mkdir(exist_ok=True)
     # Fixed 7-inch canvas, embedded vector fonts; 450 dpi color raster companion.
     fig.savefig(OUT / f'{name}.pdf', metadata={'Title': name, 'Creator': 'casf-benchmark manuscript/build_figures.py'})
-    fig.savefig(OUT / f'{name}.svg')
+    svg = OUT / f'{name}.svg'
+    fig.savefig(svg)
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
     fig.savefig(OUT / f'{name}.png', dpi=450)
+    if GALLERY is not None:
+        GALLERY.savefig(fig)
     plt.close(fig)
 
 
@@ -158,96 +172,112 @@ def get_row(summary, cohort, key, tier='fixed'):
     return selected.iloc[0]
 
 
-def recovery(summary):
-    fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.35), gridspec_kw={'width_ratios': [1.05, 1.0]})
-    fig.subplots_adjust(left=.085, right=.98, top=.86, bottom=.25, wspace=.60)
-    for key in reversed(KEYS):
-        _, color, marker = STYLE[key]
-        row = get_row(summary, 'core', key)
-        a.plot([v for _, v in THRESHOLDS], [row['hit_' + t] for t, _ in THRESHOLDS],
-               marker=marker, color=color, ls='--' if key == 'chembl3d_gt_pb' else '-',
-               lw=1.8 if key == QWEN else 1.1, zorder=4 if key == QWEN else 2)
-    a.axvline(.75, color='#B6BDC5', ls=':', lw=.8)
-    a.set(xlabel='Matching RMSD cutoff (Å)', ylabel='Recovered targets (%)', ylim=(15, 103), xlim=(.18, 2.06))
-    a.set_xticks([.25, .5, .75, 1.0, 1.5, 2.0], ['0.25', '0.5', '0.75', '1.0', '1.5', '2.0'])
-    style_axis(a, 'A', 'Recovery thresholds · core (n = 94)')
-    budget = KEYS[:-1]
-    for y, key in enumerate(budget):
-        name, color, _ = STYLE[key]
-        lo = get_row(summary, 'core', key, 'chembl_count').hit_0p75
-        hi = get_row(summary, 'core', key).hit_0p75
-        b.plot([lo, hi], [y, y], color=color, lw=1.6)
-        b.plot(lo, y, 'o', color=color, mfc='white', ms=5, mew=1.1)
-        b.plot(hi, y, 's', color=color, ms=4.5)
-    ref = get_row(summary, 'core', 'chembl3d_gt_pb').hit_0p75
-    b.axvline(ref, color=STYLE['chembl3d_gt_pb'][1], ls='--', lw=1)
-    b.set_yticks(range(len(budget)), [STYLE[k][0] for k in budget])
-    b.set_ylim(len(budget)-.4, -.7)
-    b.set(xlabel='Recovered targets at 0.75 Å (%)', xlim=(50, 100))
-    style_axis(b, 'B', 'Candidate-target comparison', grid='x')
-    b.legend(handles=[Line2D([], [], marker='o', color='#333333', mfc='white', ls='none', label='ChEMBL-count target'),
-                      Line2D([], [], marker='s', color='#333333', ls='none', label='1,000-candidate target')],
-             loc='upper left', bbox_to_anchor=(-.04, 1.02), frameon=False, fontsize=6.4, borderpad=0)
-    # Extra headroom keeps the marker key separate from the first method row.
-    b.set_ylim(len(budget)-.4, -1.8)
-    legend(fig)
-    save(fig, 'recovery-thresholds-budget')
+def recovery(tiers):
+    core = tiers[tiers.cohort == 'core']
+    fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.65), sharey=True,
+                              gridspec_kw={'width_ratios': [1.4, 1]})
+    fig.subplots_adjust(left=.25, right=.97, top=.86, bottom=.22, wspace=.20)
+    for y, key in enumerate(PANEL):
+        _, color, _ = STYLE[key]
+        rows = core[core.key == key].set_index('tier')
+        for ax, metric in [(a, 'hit_0p75'), (b, 'mean_retained')]:
+            lo, hi = rows.loc[['chembl_count', 'fixed'], metric]
+            ax.plot([lo, hi], [y, y], color=color, lw=1.3)
+            ax.plot(lo, y, 'o', color=color, mfc='white', ms=5, mew=1)
+            ax.plot(hi, y, 's', color=color, ms=4.5)
+    ref = core[core.key == 'chembl3d_gt_pb'].iloc[0]
+    for ax, metric in [(a, 'hit_0p75'), (b, 'mean_retained')]:
+        ax.axvline(ref[metric], color='#252525', ls='--', lw=.9)
+        ax.set_ylim(len(PANEL)-.4, -.7)
+    a.set_yticks(range(len(PANEL)), [STYLE[k][0] for k in PANEL])
+    b.tick_params(axis='y', left=False)
+    a.set(xlabel='Recovered ligands at 0.75 Å (%)', xlim=(50, 100))
+    b.set(xlabel='Mean retained conformers', xlim=(0, 1050))
+    b.set_xticks([0, 250, 500, 750, 1000])
+    style_axis(a, 'A', 'Core recovery (n = 94)', grid='x')
+    style_axis(b, 'B', 'Retained ensemble size', grid='x')
+    handles = [Line2D([], [], marker='o', color='#333333', mfc='white', ls='none', label='ChEMBL-count target'),
+               Line2D([], [], marker='s', color='#333333', ls='none', label='1,000-candidate target'),
+               Line2D([], [], color='#252525', ls='--', label='Stored ChEMBL3D-PB')]
+    fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.53, .075),
+               ncol=3, frameon=False, fontsize=7, columnspacing=1.2)
+    fig.text(.53, .025, 'Candidate targets apply before filtering; rejected conformers are not replaced.',
+             ha='center', fontsize=7, color='#555555')
+    save(fig, 'core-recovery-budget')
 
 
-def diversity(summary):
-    radii = [(tag, radius) for tag, radius in RADII if radius <= 2.0]
-    fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.1))
-    fig.subplots_adjust(left=.09, right=.975, top=.85, bottom=.26, wspace=.30)
-    for key in reversed(KEYS):
+def diversity(comparison):
+    fig, ax = plt.subplots(figsize=(7, 3.7))
+    fig.subplots_adjust(left=.10, right=.97, top=.87, bottom=.30)
+    offsets = {QWEN: (6, 6), 'loqi_raw': (-5, 9), 'flowr_raw': (-28, 9),
+               'torsion_raw': (6, -12), 'chembl3d_gt_pb': (6, 6)}
+    for key in PANEL + ['chembl3d_gt_pb']:
+        row = comparison[comparison.key == key].iloc[0]
         name, color, marker = STYLE[key]
-        row = get_row(summary, 'core', key)
-        a.plot([v for _, v in radii], [row['clusters_' + t] for t, _ in radii], marker=marker,
-               color=color, ls='--' if key == 'chembl3d_gt_pb' else '-', lw=1.8 if key == QWEN else 1.1)
-        b.scatter(row.clusters_1p0, row.hit_0p75, marker=marker, s=36, c=color, edgecolors='white', linewidths=.4, zorder=3)
-        offsets = {QWEN:(5, 7), 'loqi_raw':(-4, 8), 'flowr_raw':(-31, 9), 'torsion_raw':(5, -12), 'chembl3d_gt_pb':(4,-14)}
+        ax.scatter(row.clusters_1p0, row.hit_0p75, marker=marker, s=36,
+                   c=color, edgecolors='white', linewidths=.4, zorder=3)
         if key in offsets:
-            b.annotate(name, (row.clusters_1p0, row.hit_0p75), xytext=offsets[key], textcoords='offset points', fontsize=7, color=color)
-    a.axvline(1, color='#B6BDC5', ls=':', lw=.8)
-    a.set(xlabel='Clustering RMSD radius (Å)', ylabel='Mean cluster count', xlim=(.4, 2.1), ylim=(0, None))
-    a.set_xticks([radius for _, radius in radii])
-    b.set(xlabel='Mean cluster count at 1.0 Å', ylabel='Recovered targets at 0.75 Å (%)', xlim=(0, 125), ylim=(72, 99))
-    style_axis(a, 'A', 'Geometric resolution · core')
-    style_axis(b, 'B', 'Diversity and recovery · core')
-    legend(fig)
+            ax.annotate(name, (row.clusters_1p0, row.hit_0p75), xytext=offsets[key],
+                        textcoords='offset points', fontsize=7, color=color)
+    ax.set(xlabel='Mean cluster count at 1.0 Å', ylabel='Recovered ligands at 0.75 Å (%)',
+           xlim=(0, 125), ylim=(75, 96))
+    style_axis(ax, '', 'Diversity and recovery · core (n = 94)')
+    legend(fig, PANEL + ['chembl3d_gt_pb'], ncol=4, y=.01)
     save(fig, 'diversity-recovery')
 
 
 def size_figure(strata):
-    fig, axes = plt.subplots(2, 2, figsize=(7, 5.7), sharey=True)
-    fig.subplots_adjust(left=.09, right=.98, top=.92, bottom=.17, wspace=.20, hspace=.43)
-    for i, cohort in enumerate(['core', 'ref']):
-        for j, descriptor in enumerate(['size', 'rotors']):
-            ax = axes[i, j]
-            example = strata[(strata.cohort == cohort) & (strata.key == QWEN) & (strata.descriptor == descriptor)]
-            labels = example.group.tolist()
-            for key in reversed(FOCUS):
-                rows = strata[(strata.cohort == cohort) & (strata.key == key) & (strata.descriptor == descriptor)].set_index('group').loc[labels]
-                _, color, marker = STYLE[key]
-                ax.plot(range(4), rows.hit, marker=marker, color=color, ls='--' if key=='chembl3d_gt_pb' else '-', lw=1.6)
-            ax.set_xticks(range(4), [f'{g}\nn = {n}' for g,n in zip(labels,example.n)])
-            ax.set(ylim=(-3, 106), xlim=(-.2, 3.2), xlabel='Heavy atoms' if descriptor=='size' else 'Rotatable bonds')
-            if j == 0:
-                ax.set_ylabel('Recovered targets at 0.75 Å (%)')
-            title = f'{cohort.capitalize()} · '+('molecular size' if descriptor=='size' else 'flexibility')
-            style_axis(ax, 'ABCD'[i*2+j], title)
-            if i == 0:
-                ax.axvspan(2.65, 3.2, color='#F1F3F5', zorder=0)
-    legend(fig, FOCUS, ncol=4, y=.025)
+    keys = PANEL + ['chembl3d_gt_pb']
+    fig, axes = plt.subplots(1, 2, figsize=(7, 5.1), sharey=True)
+    fig.subplots_adjust(left=.24, right=.98, top=.84, bottom=.28, wspace=.15)
+    for j, (descriptor, groups) in enumerate([
+        ('size', ['<20', '20–29', '30–39', '≥40']),
+        ('rotors', ['0–3', '4–6', '7–8', '≥9'])]):
+        ax = axes[j]
+        selected = strata[strata.descriptor == descriptor]
+        values = selected.pivot(index='key', columns='group', values='hit').loc[keys, groups]
+        hits = selected.pivot(index='key', columns='group', values='hits').loc[keys, groups]
+        counts = selected.pivot(index='key', columns='group', values='n').loc[keys, groups]
+        assert (counts == counts.iloc[0]).all().all()
+        mesh = ax.imshow(values, cmap='Blues', vmin=0, vmax=100, aspect='auto')
+        for y, key in enumerate(keys):
+            for x, group in enumerate(groups):
+                ax.text(x, y, f'{hits.loc[key, group]}/{counts.loc[key, group]}',
+                        ha='center', va='center', fontsize=7,
+                        color='white' if values.loc[key, group] >= 65 else '#202C34')
+        ns = counts.iloc[0].tolist()
+        ax.set_xticks(range(4), [f'{group}'+('*' if n < 5 else '') for group, n in zip(groups, ns)])
+        ax.set_yticks(range(len(keys)), [STYLE[k][0] for k in keys])
+        ax.set_xlabel('Heavy atoms' if descriptor == 'size' else 'Rotatable bonds')
+        ax.set_title(('A   Molecular size' if j == 0 else 'B   Flexibility'), loc='left', pad=12)
+        ax.tick_params(length=0)
+        ax.set_xticks(np.arange(-.5, 4, 1), minor=True)
+        ax.set_yticks(np.arange(-.5, len(keys), 1), minor=True)
+        ax.grid(which='minor', color='white', linewidth=1)
+        ax.tick_params(which='minor', bottom=False, left=False)
+        for x, n in enumerate(ns):
+            if n < 5:
+                ax.add_patch(Rectangle((x-.5, -.5), 1, len(keys), fill=False,
+                                       edgecolor='#D55E00', linestyle='--', linewidth=1.2))
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+    bar_ax = fig.add_axes([.40, .14, .43, .025])
+    fig.colorbar(mesh, cax=bar_ax, orientation='horizontal', label='Recovered ligands at 0.75 Å (%)')
+    fig.text(.60, .95, 'Cells show recovered / evaluated ligands in core (n = 94).', ha='center', fontsize=7)
+    fig.text(.60, .015, '* Fewer than five ligands: descriptive counts, not stable rankings.',
+             ha='center', fontsize=7, color='#555555')
     save(fig, 'size-flexibility')
 
 
 def drug_figure(drug):
     rng = np.random.default_rng(20260924)
-    keys = list(DRUG)
+    keys = [key for key in PANEL if key in DRUG]
     fig, (a, b) = plt.subplots(1, 2, figsize=(7, 4.05), gridspec_kw={'width_ratios':[1,1]})
     fig.subplots_adjust(left=.19, right=.98, top=.85, bottom=.24, wspace=.37)
     exports = []
-    for y,key in enumerate(keys):
+    # Preserve the archived bootstrap draw order when changing display order.
+    for key in DRUG:
+        y = keys.index(key)
         rows = drug[drug.label == DRUG[key]]
         assert len(rows)==23
         _, color, _ = STYLE[key]
@@ -271,7 +301,14 @@ def drug_figure(drug):
     l = drug[drug.label==DRUG['loqi_raw']].set_index('smiles').reindex(q.index)
     x, y = 100*l.cov_r_075, 100*q.cov_r_075
     b.plot([0,100],[0,100], ls='--', lw=.8, color='#A8ADB5', zorder=1)
-    b.scatter(x,y, s=22, c='#A2A9B1', edgecolors='white', linewidth=.4, zorder=3)
+    points = pd.DataFrame({'x': x, 'y': y}).groupby(['x', 'y']).size().reset_index(name='n')
+    assert points.n.sum() == 23
+    b.scatter(points.x, points.y, s=22 + 12*(points.n-1), c='#A2A9B1',
+              edgecolors='white', linewidth=.4, zorder=3)
+    for point in points[points.n > 1].itertuples():
+        b.annotate(f'{point.n} molecules', (point.x, point.y), xytext=(-62, -18),
+                   textcoords='offset points', fontsize=6.5,
+                   arrowprops={'arrowstyle': '-', 'lw': .6, 'color': '#6B7280'})
     for name, offset in [('Imatinib',(10,8)), ('Actinonin',(-43,13))]:
         select = q.name.str.lower().eq(name.lower()); assert select.sum()==1
         xx,yy=float(x[select].iloc[0]),float(y[select].iloc[0])
@@ -281,7 +318,7 @@ def drug_figure(drug):
     b.set(xlim=(-4,104),ylim=(-4,104),xlabel='LoQI reference coverage (%)',ylabel='Qwen reference coverage (%)',aspect='equal')
     b.set_xticks([0,25,50,75,100]);b.set_yticks([0,25,50,75,100])
     style_axis(b,'B','Molecule-level comparison')
-    fig.text(.5,.025,'23 molecules · supplied pools without a common PoseBusters filter',ha='center',fontsize=7,color='#555555')
+    fig.text(.5,.025,'Exploratory · 23 molecules · supplied pools without a common PoseBusters filter',ha='center',fontsize=7,color='#555555')
     pd.DataFrame(exports).to_csv(DATA/'drug_coverage_intervals.csv',index=False)
     save(fig,'multireference-coverage')
 
@@ -321,19 +358,26 @@ def historical_energy(energy):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--refresh-data',action='store_true')
-    args=parser.parse_args()
+    global GALLERY
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--refresh-data', action='store_true')
+    parser.add_argument('--historical-energy', action='store_true',
+                        help='Also render the separate historical diagnostic.')
+    args = parser.parse_args()
     if args.refresh_data:
         refresh_data()
-    summary=pd.read_csv(DATA/'casf_summary.csv')
-    recovery(summary)
-    diversity(summary)
-    size_figure(pd.read_csv(DATA/'casf_strata.csv'))
-    drug_figure(pd.read_csv(DATA/'drug_molecule_metrics.csv'))
-    historical_energy(pd.read_csv(DATA/'historical_energy_summary.csv'))
-    print('Wrote four manuscript figures and one separate historical diagnostic (PDF, SVG, PNG).')
+    OUT.mkdir(exist_ok=True)
+    with PdfPages(OUT / 'main-figures.pdf') as gallery:
+        GALLERY = gallery
+        recovery(pd.read_csv(DATA / 'recovery-table-tiers.csv'))
+        diversity(pd.read_csv(DATA / 'core-comparison.csv'))
+        size_figure(pd.read_csv(DATA / 'core-strata.csv'))
+        drug_figure(pd.read_csv(DATA / 'drug_molecule_metrics.csv'))
+    GALLERY = None
+    if args.historical_energy:
+        historical_energy(pd.read_csv(DATA / 'historical_energy_summary.csv'))
+    print('Wrote four main figures (PDF, SVG, PNG) and the combined gallery.')
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

@@ -1,20 +1,27 @@
-% Coverage/MAT: molecule means from corrected druglike_per_molecule.csv.
-% PB: pooled pass fraction from druglike_summary.csv.
+% Coverage means and supplied counts: figure-data/drug_molecule_metrics.csv.
+% PB: pooled pass fraction in corrected druglike_summary.csv; assessed separately.
 \begin{table}[htbp]
 \centering
 \small
-\caption{Results with multiple experimental references for 23 drug molecules. COV-R and COV-P use a strict 0.75~\AA{} cutoff; coverage and matching distances are means over molecules. PB is the separate pooled PoseBusters pass percentage. Coverage is calculated without common PB filtering, and the imported evaluations differ in the treatment of failed RMSD calculations. These differences limit direct comparisons between methods.}
+\caption{Exploratory multi-reference results for 23 druglike molecules. Mean $N$ is the supplied conformer count per molecule before a common validity filter. COV-R and COV-P are molecule-averaged coverage percentages at a strict 0.75~\AA{} cutoff. PB is the separately measured, pooled PoseBusters pass percentage.}
 \label{tab:druglike}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrr}
 \hline
-Method & COV-R (\%) & COV-P (\%) & MAT-R (\AA) & MAT-P (\AA) & PB (\%) \\
+Method & Mean $N$ & COV-R (\%) & COV-P (\%) & PB (\%) \\
 \hline
-LoQI & 91.2 & 59.0 & 0.421 & 0.816 & 90.9 \\
-Torsional Diffusion & 78.6 & 42.6 & 0.455 & 1.189 & 83.4 \\
-MCF drugs-L & 82.7 & 39.1 & 0.481 & 1.215 & 63.7 \\
-NExT-Mol DMT-L & 82.7 & 36.9 & 0.464 & 1.172 & 62.2 \\
-FlowR & 81.3 & 36.6 & 0.522 & 1.306 & 78.5 \\
-Qwen 1.7B FSQ & 91.0 & 46.8 & 0.375 & 1.000 & 83.7 \\
+LoQI & 1000.0 & 91.2 & 59.0 & 90.9 \\
+Torsional Diffusion & 1000.0 & 78.6 & 42.6 & 83.4 \\
+MCF drugs-L & 1000.0 & 82.7 & 39.1 & 63.7 \\
+NExT-Mol DMT-L & 1000.0 & 82.7 & 36.9 & 62.2 \\
+FlowR & 961.7 & 81.3 & 36.6 & 78.5 \\
+Qwen 1.7B FSQ & 999.2 & 91.0 & 46.8 & 83.7 \\
 \hline
 \end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize Coverage does not use a common PB filter, and imported evaluations
+handle failed RMSD calculations differently. The coverage columns therefore
+do not measure the common validity criterion used in Table~\ref{tab:recovery}.
+Matching-distance summaries are provided in Table~S4.
+\end{minipage}
 \end{table}

@@ -1,7 +1,10 @@
 # Methods: evidence and author follow-up
 
 Revised 28 September 2026 against the corrected 24 September analysis.
-The main panel uses one Qwen checkpoint (1.7B FSQ step47023). Methods is now
+The main panel uses one Qwen checkpoint (1.7B FSQ step47023). The main CASF figures now use only core and recovery at 0.75 Å; ref is
+reported in SI. Threshold/radius sensitivity prose and the unreported ref
+overlap-sensitivity procedure were removed from Methods. The diversity radius
+remains 1.0 Å. Methods is now
 limited to analyses used in the current Results and tables/figures. Removed
 energy-window sensitivity, the unused dynamic tier, normalized entropy and
 clusters per 100, drug random-K subsampling, and unused paired RMSD statistics.
