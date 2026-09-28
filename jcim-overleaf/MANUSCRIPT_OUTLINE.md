@@ -7,11 +7,14 @@ RESULTS_NOTES.md for numerical and figure sources.
 
 ## Central question
 
-Which generators recover experimentally observed ligand conformations, and
-how does their ranking depend on sampling budget, structural tolerance, and
-molecular complexity? Recovery is the main outcome. Geometric diversity
-helps interpret it. Multi-reference coverage and precision
-address complementary aspects of ensemble usefulness.
+Which generators produce useful ensembles of bioactive conformations, and how
+does their ranking depend on sampling budget, structural tolerance, validity,
+and molecular complexity? Single-reference recovery measures whether an
+ensemble reaches an observed geometry. Multi-reference coverage and precision
+distinguish that reach from the concentration of samples near observed states.
+Geometric diversity helps interpret these outcomes but is not assumed to be a
+sufficient objective. Differences in energetic treatment belong to the tested
+pipelines and are not isolated as a mechanism in the current study.
 
 Use core94 as the main cohort, ref selectively for supporting analyses, and
 Qwen 1.7B FSQ step47023 as the main Qwen representative. This is a contextual
@@ -20,12 +23,14 @@ ranking, not a universal winner or a controlled model-scaling study.
 ## Sections
 
 1. **Introduction (`introduction.tex`).** Begin with why molecular modeling
-   needs conformer ensembles and define recovery of an observed ligand shape.
-   Distinguish recovery from validity and diversity, place the question in
-   prior evaluation work, and explain why sampling budget, matching tolerance,
-   size, and flexibility matter before introducing the datasets. State the
-   contribution as comparing generators under this evaluation perspective,
-   then explain how multiple references separate coverage from concentration. No separate
+   needs conformer ensembles and why usefulness depends on the intended task.
+   Distinguish validity, diversity, recovery, reference coverage, and sample
+   concentration, and explain the limited interpretation of isolated-molecule
+   energetic refinement. Place the question in prior evaluation work and
+   explain why sampling budget, matching tolerance, size, and flexibility
+   matter before introducing the datasets. State the contribution as a
+   task-dependent comparison of generators, then explain how multiple
+   references separate coverage from concentration. No separate
    literature-review section is planned. Do not claim this is the first bound
    conformer benchmark.
 2. **Methods (`methods.tex`).** Datasets and identity, generator/checkpoint
