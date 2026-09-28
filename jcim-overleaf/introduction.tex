@@ -3,18 +3,20 @@
 \label{sec:introduction}
 
 A flexible molecule can adopt different three-dimensional conformations
-without changing its chemical identity. Molecular shape comparison,
-pharmacophore screening, and docking therefore often use ensembles of
-conformers rather than a single structure. Ensembles intended for biological
-applications should include conformations relevant to molecular recognition.
-Here, experimentally observed protein-bound ligand geometries serve as
-references for bioactive conformations. Recovery of these geometries provides
-a structural criterion for selecting a generator, with performance dependent
-on both its sampling distribution and the number of conformers available.
-Previous work has examined how ensemble size, diversity selection, and energy
-minimization affect recovery of bioactive conformations and performance
-in screening and docking.\cite{mcnutt2023conformers}
+without changing its chemical identity. Conformer generators produce
+candidate geometries for molecular modeling when the required structure
+is not known in advance. Molecular shape comparison and pharmacophore
+screening use these geometries to compare spatial arrangements of atoms
+or interaction features, while docking searches for ligand geometries
+compatible with a binding site. Even docking methods that allow ligand
+flexibility may sample only some internal degrees of freedom, making their
+results dependent on the supplied conformations.\cite{mcnutt2023conformers}
 
+Experimentally determined protein--ligand structures provide reference
+geometries for assessing whether a generated ensemble contains a bioactive
+conformation. Previous comparisons have examined how ensemble size,
+diversity selection, and energy minimization affect recovery of these
+geometries and performance in screening and docking.\cite{mcnutt2023conformers}
 Recovery is distinct from physical validity and geometric diversity.
 Validity checks assess molecular identity and local geometric
 plausibility,\cite{buttenschoen2024posebusters} while diversity measures
@@ -42,8 +44,9 @@ environment.\cite{mcnutt2023conformers}
 
 We evaluate classical and learned generators, including an autoregressive
 Qwen model, for the construction of conformer ensembles intended for
-biological applications. Their ability to recover observed bound ligand
-geometries is the primary criterion for comparison and selection. The primary cohort comprises 94 CASF ligand entries
+biological applications. Observed bound ligand geometries serve as references
+for bioactive conformations, and their recovery is the primary criterion
+for comparison and selection. The primary cohort comprises 94 CASF ligand entries
 matched to ChEMBL3D, whose stored ensembles provide an additional
 comparison.\cite{su2019casf,nikitin2025loqi} Recovery requires at least
 one conformer within a specified root mean square deviation (RMSD) of

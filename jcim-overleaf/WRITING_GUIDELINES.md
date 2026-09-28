@@ -48,6 +48,9 @@ and natural. These are the authors' style instructions, not journal rules.
   the practical problem and define the evaluation outcome before introducing
   dataset labels or model details. Make the contribution explicit and organize
   prior work around the question rather than a catalogue of generators.
+  Establish the practical context and supporting literature before introducing
+  what this study does. Replace broad claims about what biological applications
+  “should” require with concrete descriptions of the tasks and their inputs.
 - Establish context before introducing a comparison. Explain what is compared,
   why it matters, and which conditions make the comparison meaningful.
 - Connect claims to evidence and evidence to interpretation. Do not jump from a
