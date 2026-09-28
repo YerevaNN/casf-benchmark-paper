@@ -6,6 +6,15 @@ abstract, and end matter still contain upstream examples. Discussion and
 Conclusions remain to be written. This is a working manuscript, not a
 submission-ready article.
 
+The draft also includes **18 additional figure candidates (C01–C18)** in a
+review appendix. See [FIGURE_CANDIDATES.md](FIGURE_CANDIDATES.md) for the index
+and [the gallery](figures/candidates/additional-figures.pdf) for all options.
+They visualize the HTML report's questions using corrected archived measurements;
+the four main figures remain unchanged. Each candidate has a full caption in
+`figure-candidates.tex`. Remove individual blocks after selection, or comment out
+its input in `acs-template.tex` to hide the whole review appendix.
+Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
+
 ## Files to edit
 
 - `introduction.tex`: rationale, relevant literature, and study questions.

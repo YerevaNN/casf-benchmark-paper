@@ -1,0 +1,29 @@
+{
+  "source_repository": "https://github.com/YerevaNN/casf-benchmark",
+  "source_database": "data/results/casf_analysis_dashboard.sqlite",
+  "source_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+  "exported": "2026-09-28",
+  "selection": "core94; ten main generation pipelines at fixed and chembl_count tiers plus stored ChEMBL3D-PB. No rescoring.",
+  "bootstrap": {
+    "unit": "core entry (94 distinct parent compounds in corrected paired audit), or drug molecule (23)",
+    "resamples": 10000,
+    "seed": 20260928,
+    "interval": "paired percentile 95%; exploratory, no multiplicity or checkpoint-selection correction"
+  },
+  "sources": [
+    {
+      "path": "../drug_molecule_metrics.csv",
+      "sha256": "0534a48066d19ada3b6ee46f10ccff772459cfeb59c093fbc67a3fb0b2dac7ea"
+    },
+    {
+      "path": "../recovery-table-tiers.csv",
+      "sha256": "b2e27f04406038e4649605e77f6c3c605faac01debb66ce38d1572fe7317bc2e"
+    }
+  ],
+  "export_sha256": "b2682cd09501e140caf75eb4b3aec4675b24f60d43cbfda200c5698122c61338",
+  "framing_source": {
+    "path": "docs/jcim_publication_report_2026_09_14.html",
+    "sha256": "18af50e506b1f19a97bfe121b7ee80d3feea8c1d59f5a9c4dd37f3f37a80173a",
+    "role": "Questions and framing only; historical numerical values are superseded."
+  }
+}

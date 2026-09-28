@@ -157,3 +157,22 @@ question, defined evaluation conditions, then task-specific observations;
 it does not import their downstream claims, numerical thresholds, or conclusions.
 The main paper uses only core recovery at 0.75 Å; ref and the duplicate size
 table are in SI. Figure PDFs were regenerated; manuscript previews were not compiled.
+
+## Additional figure review, 28 September 2026
+
+The author requested as many useful figure options from the HTML analyses as
+possible before selecting the final set. `figure-candidates.tex` therefore adds
+18 review-only figures at the end of the current Overleaf draft; these are not
+18 newly endorsed main-text claims. `FIGURE_CANDIDATES.md` maps each option to
+the report and numerical sources. The original four main figures are unchanged.
+
+C01–C10 use the corrected core94 snapshot, the ten selected generation pipelines,
+and the stored reference pool where relevant. C11–C18 retain the exploratory
+23-molecule drug comparison and explicitly distinguish recall, precision, and
+validity. No energy-window, random-K, reference-cohort, training-recipe, or
+additional recovery-threshold narrative is restored. All continuous-distance
+and diversity summaries preserve their measurable-ensemble denominators.
+New paired confidence intervals use 10,000 resamples with seed 20260928 and
+are labeled exploratory, without multiplicity or checkpoint-selection adjustment.
+They are generated from archived per-entry or per-molecule rows; full provenance
+and source hashes are in `figure-data/candidates/provenance.json`.
