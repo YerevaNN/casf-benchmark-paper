@@ -9,9 +9,8 @@
 We evaluated conformer ensembles against experimental ligand geometries using
 two complementary settings: recovery of one bound conformation per
 protein--ligand complex and coverage of several observed conformations of the
-same molecule. The first setting used the project's CASF-2016 core and larger
-reference ligand collections, denoted core and ref.\cite{su2019casf}
-Core was the primary comparison; ref provided a larger supporting cohort.
+same molecule. The CASF-2016 core and larger reference ligand collections
+are denoted core and ref, respectively.\cite{su2019casf}
 % AUTHOR: establish the exact source release and construction of CASF16_REF;
 % the CASF citation alone does not document that local collection.
 Ligands were matched to ChEMBL3D by exact canonical, heavy-atom isomeric SMILES.
@@ -38,8 +37,7 @@ The second setting used a curated set of 23 druglike molecules with 2,450
 stored experimental reference conformations in total, ranging from 23 to 716
 per molecule. We used the supplied molecular identities and reference
 coordinates without treating the frequency of a structure in this collection
-as an equilibrium population. These references represent observed shapes;
-they do not exhaust the conformations that a molecule can adopt.
+as an equilibrium population. The collection is an incomplete set of observed conformations.
 % AUTHOR: add the dataset release, selection and structure-cleaning procedure,
 % and original dataset citation after verifying the supplied collection's lineage.
 
@@ -96,8 +94,8 @@ to the stored ChEMBL3D conformer count for the mapped stereoisomer, while the
 fixed tier used a target of 1,000 conformers. The ChEMBL-count tier was sampled
 without replacement from each available candidate pool. Subsets were capped
 at the available pool size and then subjected to the same validity filter.
-These subsets evaluate the effect of a smaller sampling allowance; they do
-not represent separate generation runs at a matched computational cost.
+The subsets were drawn from existing outputs, without separate generation
+runs or matching of computational cost.
 The launcher for classical generation used base seed 42; the common
 procedure for assembling ensembles from saved pools used base seed 1729.
 Seeds for each molecule and method were derived from these values.
@@ -117,9 +115,9 @@ A conformer passed only if all configured Boolean checks passed. Generated
 CASF ensembles were checked against the matched ChEMBL3D molecular reference;
 the stored ChEMBL3D comparison ensembles were checked against the CASF ligand.
 The same pass mask was applied to the full candidate pool and its sampled
-subsets. Rejected conformers were not replaced after filtering. Thus, the
-target of 1,000 conformers does not imply equal retained ensemble sizes or equal
-numbers of generation attempts. We report retained counts alongside recovery.
+subsets. Rejected conformers were not replaced after filtering. Retained
+ensemble sizes and numbers of generation attempts could differ between
+methods at the same candidate target.
 ChEMBL3D was evaluated as a finite stored ensemble, with a cap of 2,000 conformers for the designated large reference entry, 1tlp, when necessary.
 
 \subsection{Conformational recovery and diversity}
@@ -128,7 +126,7 @@ CASF recovery was evaluated on conformers that passed PoseBusters, using the
 experimental ligand geometry as the target. We removed hydrogens and used
 RDKit's symmetry-aware \texttt{GetBestRMS} alignment. If this alignment raised
 an exception, the CASF implementation attempted \texttt{AlignMol} with atoms matched by their indices. An unresolved, nonfinite RMSD caused analysis of
-that ensemble to fail rather than silently removing the conformer.
+that ensemble to fail.
 
 For each ligand, we calculated the minimum and median RMSD over the retained
 ensemble. Hit@$\delta$ was one when at least one conformer had RMSD
@@ -136,8 +134,7 @@ $\leq\delta$, and zero otherwise, at thresholds of 0.25, 0.5, 0.75, and
 2.0~\AA. We used 0.75~\AA{} as the principal recovery cutoff
 and the remaining thresholds to assess sensitivity. Cohort hit rates used all mapped entries as the denominator,
 including empty or missing outputs as misses. We averaged the minimum RMSD, ensemble median RMSD, and diversity
-measures only over entries with defined values. These conditional summaries were reported
-separately from the hit rates over the full cohort.
+measures only over entries with defined values.
 
 We measured geometric diversity by greedy clustering of the retained
 conformers at a principal heavy-atom RMSD threshold of 1.0~\AA{},
@@ -167,9 +164,8 @@ common PoseBusters filter. Validity was assessed separately. The imported
 Qwen evaluator counted reference or generated conformations with no finite
 RMSD match as coverage misses, whereas the local evaluator for external methods
 excluded them from the corresponding coverage denominator. Both omitted
-undefined distances to the nearest match from MAT. We therefore treat the
-current comparison with multiple references as descriptive pending evaluation under
-a shared failure policy.
+undefined distances to the nearest match from MAT. Differences in filtering
+and failure handling limit the comparability of these coverage estimates.
 
 \subsection{Statistical analysis}
 
@@ -180,14 +176,13 @@ entries belonging to each sampled compound. Each resample used the mean
 over its complex entries, preserving equal weighting of entries while
 accounting for repeated compounds. Missing hits were assigned zero.
 For druglike method differences, we used 10,000 paired resamples of the
-23 molecules. Figure~\ref{fig:druglike}A instead reports intervals for each
-method's mean COV-R and COV-P, calculated from 10,000 molecule resamples.
+23 molecules. Intervals for each method's mean COV-R and COV-P
+(Figure~\ref{fig:druglike}A) used 10,000 resamples of the same molecules.
 
 Intervals were the 2.5th and 97.5th percentiles of the bootstrap distribution,
 using a NumPy random generator initialized with seed 20260924. These
-intervals were calculated from the results for individual molecules for this analysis;
-they describe resampling uncertainty across the evaluated molecules, not
-variation across independent generation or training runs.
+intervals quantify uncertainty from resampling the evaluated molecules.
+They do not include variation across independent generation or training runs.
 % Provenance: CASF/drug paired intervals were calculated in
 % docs/publication_analysis_2026_09_24.py and archived in paired_cluster_bootstrap.csv
 % and druglike_paired.csv. Figure 4 marginal intervals were added by

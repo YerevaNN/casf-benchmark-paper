@@ -112,3 +112,12 @@ NExT-Mol core Hit@0.75 differs from the displayed conditional percentage
 The Introduction cites prior experimental-conformation benchmarking rather
 than claiming priority. The added McNutt et al. reference was verified against
 https://pubs.acs.org/doi/10.1021/acs.jcim.3c01245 on 28 September 2026.
+
+## Editorial revision
+
+The prose now states findings directly, with headings describing the scientific
+comparisons. Results retains selected quantitative contrasts and uncertainty
+rather than repeating table rows. All numerical table entries remain unchanged.
+Methods retains the settings and denominators required for reproducibility.
+The positive interval for Qwen's precision deficit is the sign reversal of
+the existing Qwen-minus-LoQI interval, not a new statistical calculation.

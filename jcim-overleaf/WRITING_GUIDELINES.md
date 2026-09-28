@@ -10,6 +10,10 @@ and natural. These are the authors' style instructions, not journal rules.
   sentences, and only necessary jargon.
 - Maintain a professional, restrained tone. Avoid conversational asides,
   rhetorical questions, promotional language, and exaggerated novelty claims.
+- Write finished scientific prose, not commentary on drafting or presentation.
+  State the observation and its interpretation directly. Avoid phrases such as
+  “showing both tiers makes clear,” “these comparisons show why,” or “this
+  analysis allows us to distinguish.” Keep drafting rationale in author notes.
 - Use active voice when responsibility matters: “We evaluated…” Use passive
   voice when the procedure or observation deserves emphasis.
 - Build connected paragraphs rather than sequences of short, standalone
@@ -35,6 +39,9 @@ and natural. These are the authors' style instructions, not journal rules.
 - Organize the manuscript around the scientific question and the evidence needed
   to answer it. Present experiments in the order that makes the argument
   understandable, rather than the order they were performed.
+- Use concise section headings that name the scientific relationship or a
+  supported finding. Avoid narrative devices or descriptions of the writing
+  process, such as “separating the story” or “extending the comparison.”
 - Give each section a clear purpose. Each paragraph should advance one main
   point, and each sentence should contribute to that point.
 - Write the Introduction for a scientist unfamiliar with this project. Explain
@@ -63,8 +70,14 @@ and natural. These are the authors' style instructions, not journal rules.
 
 ## Evidence and interpretation
 
-- Report relevant comparisons, effect sizes, units, and uncertainty. Prefer
-  concrete results over vague statements of improvement.
+- Let tables and figures carry the full numerical comparisons. In Results,
+  retain only the values needed to establish the magnitude, uncertainty, or
+  scientific importance of the stated finding. Do not recite rows, repeat both
+  counts and percentages for the same result, or list every stratum in prose.
+  Prefer a key contrast or effect size with its uncertainty. Keep numerical
+  details needed for reproducibility in Methods, and essential definitions
+  and denominators in captions. Never remove a limitation merely to shorten
+  the text.
 - Separate observations from explanations. Use “shows” for directly demonstrated
   findings and “suggests” or “is consistent with” for interpretations.
 - Match each claim to its evidence: identify relevant datasets, model variants,
