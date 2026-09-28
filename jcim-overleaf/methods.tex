@@ -1,0 +1,211 @@
+% Revised 28 September 2026 using the corrected 24 September snapshot.
+% Read METHODS_NOTES.md before submission. In particular, training and inference
+% metadata and the provenance of the larger reference cohort remain incomplete.
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Benchmark datasets and molecular identity}
+
+We evaluated conformer ensembles against experimental ligand geometries using
+two complementary settings: recovery of one bound conformation per
+protein--ligand complex and coverage of several observed conformations of the
+same molecule. The first setting used the project's CASF-2016 core and larger
+reference ligand collections, denoted core and ref.\cite{su2019casf}
+Core was the primary comparison; ref provided a larger supporting cohort.
+% AUTHOR: establish the exact source release and construction of CASF16_REF;
+% the CASF citation alone does not document that local collection.
+Ligands were matched to ChEMBL3D by exact canonical, heavy-atom isomeric SMILES.
+ChEMBL3D provided molecular topologies and a separate computed conformer
+ensemble for comparison.\cite{nikitin2025loqi}
+Entries were retained when the ligand could be parsed, a matching topology was
+available, and at least one eligible torsion was identified by the SMARTS
+pattern \texttt{[!\$(*\#*)\&!D1]-!@[!\$(*\#*)\&!D1]}.
+This torsion eligibility rule differs from the rotatable-bond
+descriptor used to stratify the results.
+
+We resolved stereoisomers within each ChEMBL3D parent record using isomeric
+SMILES and the tetrahedral and double-bond stereochemistry layers of InChI.
+The selected topology record was retained in the mapping, and stored
+coordinates were filtered to the matching stereoisomer. Thus, both the
+reference ensemble and its conformer count were specific to the mapped
+stereoisomer. The resulting core cohort contained 94 complex entries and 94
+ChEMBL parent compounds; ref contained 1,236 entries and 1,042 parent compounds.
+The cohorts shared no complex identifiers but included 17 common parent
+compounds. We retained separate complex entries because they provide separate
+experimental reference geometries, while accounting for repeated compounds
+in the uncertainty analysis.
+
+The second setting used a curated set of 23 druglike molecules with 2,450
+stored experimental reference conformations in total, ranging from 23 to 716
+per molecule. We used the supplied molecular identities and reference
+coordinates without treating the frequency of a structure in this collection
+as an equilibrium population. These references represent observed shapes;
+they do not exhaust the conformations that a molecule can adopt.
+% AUTHOR: add the dataset release, selection and structure-cleaning procedure,
+% and original dataset citation after verifying the supplied collection's lineage.
+
+\subsection{Conformer generators}
+
+The main comparison included four classical generators, five external learned
+generators, and one representative Qwen checkpoint. The classical
+generators comprised RDKit distance geometry and torsion perturbation, each
+with and without energy minimization. RDKit conformers were generated with
+ETKDGv3 from a topology-only molecule, using random starting coordinates,
+enforced chirality, and no RMSD pruning.\cite{wang2020etkdg}
+The minimized variant applied MMFF94s for up to 500 iterations. Structures
+that reached the iteration limit were retained if the optimization returned
+normally; convergence was not required. The two variants used independently
+sampled pools.
+
+Torsion perturbation started from the matched ChEMBL3D topology's stored
+geometry. In each trial, every eligible torsion received an independent
+uniform angular displacement between $-120^{\circ}$ and $120^{\circ}$.
+Candidates were rejected if a nonbonded heavy-atom distance was below 0.7
+times its distance-geometry lower bound; bonded and 1,3 pairs were excluded
+from this check. The minimized variant additionally applied MMFF94s and
+repeated the clash check. Candidate generation continued toward the requested
+pool size before the common validity filter was applied.
+
+The external methods were LoQI,\cite{nikitin2025loqi} Torsional
+Diffusion,\cite{jing2022torsional} Molecular Conformer Fields (MCF,
+drugs-L),\cite{wang2024mcf} NExT-Mol
+(DMT-L),\cite{liu2025nextmol} and FLOWR.root, referred to here as
+FlowR.\cite{cremer2025flowr} We evaluated their saved conformer outputs through
+the benchmark adapters. FlowR used the ligand-only v2.2 checkpoint with the
+input atom and bond graph fixed during coordinate generation. Its adapter
+included up to 200 steps of force-field cleanup, using MMFF with UFF as a
+fallback, and stereochemistry checks; mirror reflection was allowed when it
+restored the requested stereoisomer. Remaining stereochemical mismatches
+were rejected. Consequently, an ensemble labeled raw in the benchmark can
+already include preprocessing specific to its generator.
+
+The Qwen generator produced conformations autoregressively from molecular
+SMILES. The main analysis used the 1.7-billion-parameter model with finite
+scalar quantization (FSQ), evaluated at pretraining step 47,023. The
+multi-reference comparison
+used the same representative Qwen checkpoint and the five external methods.
+Training-set overlap with the benchmark molecules has not been established
+by a common audit.
+% AUTHOR: document the checkpoint-selection rule, including any use of these
+% benchmark outcomes. Supply training datasets/splits, representation and decoder
+% details, inference settings, checkpoint hashes, and Qwen/FSQ citations.
+
+\subsection{Ensemble sizes and validity filtering}
+
+The main CASF comparison used a target of 1,000 conformers per ligand before
+the common validity filter. A smaller count tier was sampled without
+replacement from each available candidate pool, with a target equal to the
+stereoisomer-specific ChEMBL3D conformer count. Subsets were capped at the
+available pool size and then subjected to the same validity filter. The
+classical-generation launcher used base seed 42; the common saved-pool
+materializer used base seed 1729, with molecule- and method-specific seeds
+derived from these values.
+
+We applied PoseBusters to assess molecular identity and intramolecular
+plausibility.\cite{buttenschoen2024posebusters} The configured checks covered
+loading, sanitization, InChI conversion, connectivity, radicals, molecular
+formula, bond connectivity, tetrahedral and double-bond stereochemistry,
+bond lengths and angles, internal clashes, planarity, and energy ratio.
+The distance-geometry tolerances were 0.25 for bond lengths and angles and
+0.3 for clashes, with hydrogens excluded from these distance checks.
+Planarity tolerance was 0.25~\AA{} for the specified aromatic rings and
+trigonal carbon--carbon double-bond groups. The energy-ratio threshold was
+100, using a reference ensemble of 50 conformations. No protein-contact
+checks were included.
+
+A conformer passed only if all configured Boolean checks passed. Generated
+CASF ensembles were checked against the matched ChEMBL3D molecular reference;
+the stored ChEMBL3D comparison ensembles were checked against the CASF ligand.
+The same pass mask was applied to the full candidate pool and its sampled
+subsets. Rejected conformers were not replaced after filtering. Thus, the
+1,000-conformer target does not imply equal retained ensemble sizes or equal
+numbers of generation attempts. We report retained counts alongside recovery.
+ChEMBL3D was evaluated as a finite stored ensemble, with a 2,000-conformer
+cap for the designated large reference entry, 1tlp, when necessary.
+
+\subsection{Conformational recovery and diversity}
+
+CASF recovery was evaluated on conformers that passed PoseBusters, using the
+experimental ligand geometry as the target. We removed hydrogens and used
+RDKit's symmetry-aware \texttt{GetBestRMS} alignment. If this alignment raised
+an exception, the CASF implementation attempted \texttt{AlignMol} with an
+atom-index correspondence. An unresolved, nonfinite RMSD caused analysis of
+that ensemble to fail rather than silently removing the conformer.
+
+For each ligand, we calculated the minimum and median RMSD over the retained
+ensemble. Hit@$\delta$ was one when at least one conformer had RMSD
+$\leq\delta$, and zero otherwise, at thresholds of 0.25, 0.5, 0.75, and
+2.0~\AA. We used 0.75~\AA{} as the principal recovery cutoff
+and the remaining thresholds to assess sensitivity. Cohort hit rates used all mapped entries as the denominator,
+including empty or missing outputs as misses. Mean minimum RMSD, mean
+within-ensemble median RMSD, and diversity summaries were calculated only
+over entries with defined values. These conditional summaries were reported
+separately from the full-cohort hit rates.
+
+We measured geometric diversity by greedy clustering of the retained
+conformers at a principal heavy-atom RMSD threshold of 1.0~\AA{},
+with additional radii of 0.5, 2.0, and 3.0~\AA{} for sensitivity analysis. Conformers were visited
+in stored order and assigned to the nearest existing cluster representative
+if their RMSD was below the threshold; otherwise, a new cluster was created.
+We reported the mean number of clusters across measurable ensembles.
+This measure describes geometric spread and depends on ensemble size
+and clustering order.
+
+\subsection{Coverage of multiple experimental conformations}
+
+For each druglike molecule, we compared the supplied generated pool with all
+of its experimental references using aligned heavy-atom RMSD. Recall
+coverage (COV-R) was the fraction of reference conformations with a generated
+neighbor below 0.75~\AA. Precision coverage (COV-P) was the fraction of
+generated conformations with a reference neighbor below the same threshold.
+Matching distances MAT-R and MAT-P were the mean nearest-neighbor RMSDs in
+the reference-to-generated and generated-to-reference directions,
+respectively. Unlike CASF Hit@$\delta$, coverage used a strict inequality.
+We averaged each metric equally across molecules. COV-P measures proximity
+to the available observations; a low value does not establish that the
+remaining conformers are physically inaccessible.
+
+These coverage calculations used the supplied generated pools without a
+common PoseBusters filter. Validity was assessed separately. The imported
+Qwen evaluator counted reference or generated conformations with no finite
+RMSD match as coverage misses, whereas the local external-method evaluator
+excluded them from the corresponding coverage denominator. Both omitted
+undefined nearest-neighbor distances from MAT. We therefore treat the
+current multi-reference comparison as descriptive pending evaluation under
+a shared failure policy.
+
+\subsection{Statistical analysis}
+
+We calculated paired differences in recovery and coverage on the same
+complex entries or druglike molecules. For CASF, 95\% confidence intervals were obtained from
+3,000 bootstrap resamples of ChEMBL parent compounds, retaining all complex
+entries belonging to each sampled compound. Each resample used the mean
+over its complex entries, preserving the entry-weighted estimate while
+accounting for repeated compounds. Missing hits were assigned zero.
+For druglike method differences, we used 10,000 paired resamples of the
+23 molecules. Figure~\ref{fig:druglike}A instead reports intervals for each
+method's mean COV-R and COV-P, calculated from 10,000 molecule resamples.
+
+Intervals were the 2.5th and 97.5th percentiles of the bootstrap distribution,
+using a NumPy random generator initialized with seed 20260924. These
+intervals were calculated from the molecule-level results for this analysis;
+they describe resampling uncertainty across the evaluated molecules, not
+variation across independent generation or training runs.
+% Provenance: CASF/drug paired intervals were calculated in
+% docs/publication_analysis_2026_09_24.py and archived in paired_cluster_bootstrap.csv
+% and druglike_paired.csv. Figure 4 marginal intervals were added by
+% manuscript/build_figures.py, not provided by the public dashboard; see
+% figure-data/drug_coverage_intervals.csv.
+
+As an overlap sensitivity analysis, we repeated ref comparisons after
+excluding the 17 parent compounds also present in core, leaving 1,189
+complex entries from 1,025 compounds. Exploratory size analyses used
+heavy-atom counts from the hydrogen-stripped experimental ligand, grouped
+as fewer than 20, 20--29, 30--39, and at least 40 atoms. Flexibility analyses
+used RDKit rotatable-bond counts from that same reference, grouped as 0--3,
+4--6, 7--8, and at least 9. The reference-derived descriptors assigned each
+entry to the same group for every generator. Stratum hit rates included all
+mapped entries in the group, with missing outputs counted as misses.
+These descriptive analyses did not adjust size effects for flexibility or
+chemical class. Confidence intervals were not adjusted for multiple
+comparisons or checkpoint selection.

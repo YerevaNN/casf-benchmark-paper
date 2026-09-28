@@ -1,0 +1,25 @@
+{
+  "release": "dashboard-data-stereo-identity-v2",
+  "release_url": "https://github.com/YerevaNN/casf-benchmark/releases/tag/dashboard-data-stereo-identity-v2",
+  "published_at": "2026-09-18T09:19:12Z",
+  "verified_on": "2026-09-28",
+  "assets": [
+    {
+      "name": "casf_analysis_dashboard.sqlite",
+      "sha256": "sha256:bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+      "url": "https://github.com/YerevaNN/casf-benchmark/releases/download/dashboard-data-stereo-identity-v2/casf_analysis_dashboard.sqlite"
+    },
+    {
+      "name": "extended_casf_analysis.sqlite",
+      "sha256": "sha256:c09dd93024ec784c050c3b8f197f3b44d88fe61de36fc6f9fb73511b217f4975",
+      "url": "https://github.com/YerevaNN/casf-benchmark/releases/download/dashboard-data-stereo-identity-v2/extended_casf_analysis.sqlite"
+    }
+  ],
+  "qwen_main_checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
+  "hit_denominator": "All mapped entries: core 94; ref 1236; missing outputs are misses.",
+  "cluster_denominator": "Entries with defined clustering results.",
+  "budget": "Candidate-tier endpoints, not random fixed-valid-K curves.",
+  "energy_status": "Historical September 14 sidecar; diagnostic only, excluded from manuscript.",
+  "drug_status": "Supplied pools; no common PB filter; failure policies differ.",
+  "method_selection": "Main curve panel excludes minimized classical variants and additional Qwen checkpoints; full main comparison remains in Table 1."
+}

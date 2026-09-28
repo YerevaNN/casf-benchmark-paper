@@ -1,0 +1,61 @@
+% Drafted 28 September 2026. No claim of first use of bound-conformer recovery.
+\section{Introduction}
+\label{sec:introduction}
+
+Molecular conformer generators provide three-dimensional structures for
+shape comparison, pharmacophore screening, and structure-based molecular
+modeling. For these applications, an ensemble is useful when it contains
+conformations close to those a molecule adopts in the relevant experimental
+setting. Previous work has examined how ensemble size, diversity, and energy
+minimization affect recovery of bioactive conformations and downstream
+screening performance.\cite{mcnutt2023conformers} These observations motivate
+an application-specific evaluation of generated ensembles: how reliably does
+a method recover an experimentally observed ligand geometry, and how much
+sampling is required to do so?
+
+Conformer generators approach this problem through different sampling
+procedures. Distance-geometry methods combine molecular connectivity with
+geometric constraints and experimental torsional preferences.\cite{wang2020etkdg}
+Learned approaches include diffusion over torsional degrees of freedom,
+continuous conformer fields, and models that combine molecular language
+representations with coordinate generation.\cite{jing2022torsional,wang2024mcf,liu2025nextmol}
+Low-energy conformer generation provides another objective, represented here
+by LoQI and its associated computed ensembles.\cite{nikitin2025loqi}
+These methods offer different ways to construct an ensemble, but their
+relative performance must be established for the intended reference
+structures and sampling regime.
+
+Several properties of an ensemble need to be distinguished in that
+comparison. Physical-validity checks assess molecular identity and local
+geometric plausibility.\cite{buttenschoen2024posebusters} Geometric diversity
+describes the spread of generated structures, whereas recovery measures
+whether that spread includes a particular experimental conformation. An
+ensemble can contain many distinct conformers and still miss the target.
+Conversely, a large ensemble can recover the target through a small fraction
+of its samples, even when its typical conformer is relatively distant.
+These measurements do not, by themselves, establish binding affinity or
+an equilibrium conformational population.
+
+We therefore evaluate conformer generators from the perspective of
+experimental-conformation recovery, interpreting their ranking jointly with
+sampling budget, geometric diversity, and molecular complexity. The primary
+comparison uses 94 CASF-associated ligand entries matched to ChEMBL3D, with a
+larger matched collection used to examine the consistency and scope of the
+findings. We compare classical and learned generators, including an
+autoregressive Qwen 1.7B model, at a common candidate target and at smaller
+sampling targets. A specified RMSD cutoff provides the principal comparison;
+threshold curves show how that comparison changes with the required
+structural agreement. Diversity is assessed across clustering radii, and
+recovery is stratified by molecular size and flexibility.
+
+A separate panel of 23 drug molecules extends the question from recovering
+one experimental shape to covering multiple observed conformations. In this
+setting, reference coverage and the fraction of generated samples near a
+reference describe complementary properties of an ensemble. Together, the
+two evaluations distinguish recovery by the best member of a sampled pool
+from the concentration of that pool near observed structures. The intended
+contribution is a comparative account of which generators serve these
+objectives under the evaluated conditions, including where rankings change
+with sampling, structural tolerance, and molecular complexity.
+% AUTHOR: resolve dataset provenance, checkpoint selection and training-overlap
+% audits before claiming performance on unseen molecules or broad generalization.

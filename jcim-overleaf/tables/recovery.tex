@@ -1,0 +1,29 @@
+% Values from docs/publication_tables_2026_09_24/all_casf_summary.csv.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Recovery at the 1,000-candidate target after PoseBusters filtering. ChEMBL3D-PB is the finite stored comparison ensemble. Hit rates use all 94 core or 1,236 ref entries at 0.75~\AA{}. Core $N$ is the mean retained count over all entries; core RMSD is the mean minimum RMSD over measurable ensembles.}
+\label{tab:recovery}
+\begin{tabular}{lrrrr}
+\hline
+Method & Core hit (\%) & Core $N$ & Core RMSD (\AA) & Ref hit (\%) \\
+\hline
+ChEMBL3D-PB & 78.7 & 81.2 & 0.525 & 78.7 \\
+RDKit raw & 80.9 & 999.9 & 0.437 & 81.5 \\
+RDKit minimized & 78.7 & 1000.0 & 0.512 & 77.3 \\
+Torsion raw & 78.7 & 896.5 & 0.477 & 77.7 \\
+Torsion minimized & 79.8 & 1000.0 & 0.535 & 77.1 \\
+LoQI & 86.2 & 999.3 & 0.339 & 86.8 \\
+Torsional Diffusion & 89.4 & 881.4 & 0.371 & 86.2 \\
+MCF drugs-L & 86.2 & 866.8 & 0.366 & 84.6 \\
+NExT-Mol DMT-L & 86.2 & 871.9 & 0.386 & 84.8 \\
+FlowR & 86.2 & 920.0 & 0.414 & 85.5 \\
+Qwen 1.7B FSQ & 91.5 & 972.6 & 0.307 & 92.5 \\
+\hline
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize Core RMSD denominators are 93 for MCF and NExT-Mol and 94 for the other listed methods. Missing recovery outcomes count as misses. The label \emph{raw} may include generator-specific preprocessing (Methods).
+\end{minipage}
+\end{table}

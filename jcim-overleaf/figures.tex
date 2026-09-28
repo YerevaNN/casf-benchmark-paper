@@ -1,0 +1,38 @@
+% Figures recreated from the public dashboard release dashboard-data-stereo-identity-v2.
+% Exact plotted values and provenance are archived in figure-data/.
+% Define floats here; results.tex places each near the relevant discussion.
+\graphicspath{{figures/}{../figures/}}
+\newcommand{\paperfigure}[1]{\includegraphics[width=\linewidth]{#1}}
+
+\newcommand{\recoveryfigure}{%
+\begin{figure}[htbp]
+\centering
+\paperfigure{recovery-thresholds-budget.pdf}
+\caption{Recovery of experimental ligand conformations in core94. (A) Recovery at the four evaluated matching RMSD cutoffs; the dotted line marks the principal cutoff of 0.75~\AA{}. Points are measured values, with connecting lines as visual guides. (B) Recovery at 0.75~\AA{} for the ChEMBL-count candidate target (open circles) and the 1,000-candidate target (filled squares), followed by PoseBusters filtering. The dashed line is recovery by the finite ChEMBL3D-PB ensemble. Retained counts differ between methods; these are candidate-tier endpoints, not fixed-valid-$K$ curves. All hit rates use the full 94-entry denominator. Qwen is FSQ step 47,023; minimized classical variants are reported in Table~\ref{tab:recovery}.}
+\label{fig:recovery}
+\end{figure}}
+
+\newcommand{\diversityfigure}{%
+\begin{figure}[htbp]
+\centering
+\paperfigure{diversity-recovery.pdf}
+\caption{Geometric diversity and experimental-conformation recovery in core94. (A) Mean cluster count at four heavy-atom RMSD clustering radii; the dotted line marks the principal radius of 1.0~\AA{}. (B) Recovery at 0.75~\AA{} versus mean cluster count at 1.0~\AA{}. Generated ensembles use the fixed candidate target after PoseBusters filtering; ChEMBL3D-PB uses its stored pool. Cluster means are conditional on measurable ensembles, whereas recovery includes every mapped entry. Larger cluster counts do not reproduce the recovery ranking. Method colors and symbols match Figure~\ref{fig:recovery}A.}
+\label{fig:diversity-recovery}
+\end{figure}}
+
+\newcommand{\sizefigure}{%
+\begin{figure}[htbp]
+\centering
+\paperfigure{size-flexibility.pdf}
+\caption{Recovery by molecular size and flexibility for four contrasting methods. Core94 is grouped by heavy-atom count (A) and rotatable-bond count (B); the corresponding ref groups are shown in C and D. Group membership uses the same experimental-reference descriptors for every method. Recovery uses the full group denominator at 0.75~\AA{}. Generated ensembles use the fixed target and ChEMBL3D-PB uses its stored pool. Group sizes are displayed below the axes. Shading identifies the sparsely populated largest-size and highest-flexibility core groups; their estimates are descriptive. Lines connect group estimates as visual guides.}
+\label{fig:size}
+\end{figure}}
+
+\newcommand{\drugfigure}{%
+\begin{figure}[htbp]
+\centering
+\paperfigure{multireference-coverage.pdf}
+\caption{Coverage of multiple experimental conformations for 23 drug molecules. (A) Mean COV-R (filled squares) and COV-P (open circles) at a strict 0.75~\AA{} cutoff. Error bars are 95\% percentile intervals from 10,000 molecule bootstrap resamples. (B) Paired molecule-level reference coverage for Qwen 1.7B FSQ and LoQI; the diagonal denotes equal coverage. Imatinib and actinonin illustrate contrasting outcomes. Points can overlap at complete coverage. Metrics describe the supplied pools without common PoseBusters filtering, and RMSD-failure policies differ between imported evaluations; this is not a harmonized valid-ensemble ranking.}
+\label{fig:druglike}
+% AUTHOR: replace the figure and Table 3 together after harmonizing drug scoring.
+\end{figure}}
