@@ -104,10 +104,42 @@
 \maketitle
 
 \begin{abstract}
-  This is an example document for creating \LaTeX{} submissions to the American
-  Chemical Society (ACS) for publication. As ACS does not use \LaTeX{} for
-  typesetting accepted manuscripts, this template does not seek to
-  reproduce the appearance of a published paper.
+Many small molecules adopt more than one biologically relevant
+three-dimensional conformation. The same molecule can have different bound
+geometries across proteins or across complexes with the same protein. For
+protein-binding applications, a practical goal of conformer generation is
+therefore to produce a finite ensemble that represents these observed shapes.
+Generating such ensembles without conditioning on a particular protein makes
+them reusable across targets and supports the preparation of molecular
+libraries and conformational training data. Their usefulness depends on whether
+the sampled variation includes geometries relevant to molecular recognition, as
+well as on the number and diversity of the structures generated.
+
+We compare classical and learned conformer generators using experimentally
+observed bound ligand structures. We first assess recovery of individual
+reference conformations for 94 CASF-2016 ligands matched to ChEMBL3D, comparing
+generated ensembles with the stored ChEMBL3D conformers at corresponding
+candidate counts and at a larger target of 1,000 candidates per molecule. We
+examine recovery together with geometric diversity, structural validity,
+energetic plausibility, molecular size, and flexibility. We then extend the
+evaluation to 23 molecules with multiple bound structures collected from
+PLINDER, measuring both coverage of the experimental references and the
+fraction of generated conformers near those observations.
+
+% AUTHOR: Insert the principal findings from the final evaluation: the main
+% recovery and sampling result, the relationship between diversity and
+% recovery, and the coverage--precision result for the 23-molecule
+% panel. Include only the numerical comparisons needed to support the
+% conclusion.
+
+% AUTHOR: After generation and characterization are complete, state the
+% selected generator, the size and defining properties of the released
+% dataset, and its availability.
+
+Together, these evaluations provide an empirical basis for selecting a
+conformer generator for broad coverage of observed bound geometries and for
+constructing a large conformational resource intended for molecular modeling
+and pharmacophore-conditioned learning.
 \end{abstract}
 
 \section*{Keywords}
