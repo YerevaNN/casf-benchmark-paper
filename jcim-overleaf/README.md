@@ -1,8 +1,8 @@
 # JCIM manuscript
 
 The ACS template now includes drafted Introduction, Methods, and Results
-sections, two main tables, four figures, and four supporting tables. Title, authors,
-abstract, and end matter still contain upstream examples. Discussion and
+sections and a working abstract, three main tables, five figures, and seven supporting
+tables. Title, authors, and end matter still contain upstream examples. Discussion and
 Conclusions remain to be written. This is a working manuscript, not a
 submission-ready article.
 
@@ -20,11 +20,16 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 - `introduction.tex`: rationale, relevant literature, and study questions.
 - `methods.tex`: benchmark procedures and author comments for missing details.
 - `results.tex`: recovery-first story using core94 and Qwen 1.7B FSQ step47023.
-- `tables/recovery.tex`, `tables/druglike.tex`: main tables; size strata are in SI.
-- `supporting-information.tex`: separate SI document with Tables S1--S4 (core RMSD,
-  ref recovery, size strata, and multi-reference matching distances); switch the Overleaf main document to this file to compile it.
+- `tables/generation-methods.tex`: generator configurations (Table 1).
+- `tables/recovery.tex`, `tables/druglike.tex`: Results tables; size strata are in SI.
+- `supporting-information.tex`: separate SI document with Tables S1--S7 (core RMSD,
+  ref recovery, size strata, multi-reference matching distances, and the Plinder-23
+  selection criteria, statistics, and molecule list); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
-- `acs-template.bib`: nine verified references.
+- `dataset-figure.tex`: experimental-panel diagram, with PDF, SVG, and PNG assets.
+- `plinder23-appendix.tex`: selection account and Supporting Tables S5--S7.
+- `method-data/`: working drafts, source CSVs, and selection/transfer provenance.
+- `acs-template.bib`: manuscript references.
 - `WRITING_GUIDELINES.md`, `MANUSCRIPT_OUTLINE.md`: agreed writing instructions
   and structure; `METHODS_NOTES.md`, `RESULTS_NOTES.md`: sources and follow-up.
 
@@ -42,7 +47,7 @@ Future paper edits should be committed and pushed to this repository. Fetch
 incoming changes and preserve edits from Overleaf or other authors before
 pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 
-The four figure PDFs are included, with a combined gallery in
+The four Results figure PDFs are included, with a combined gallery in
 `figures/main-figures.pdf`. Each also has an editable SVG and a 450-dpi PNG.
 Run `python jcim-overleaf/build_figures.py` from the repository root to render
 from the archived CSVs; this does not require the benchmark databases.
@@ -52,7 +57,7 @@ requires access to its source databases; do not refresh the evidence silently.
 Numerical source paths beginning with `docs/`, `data/results/` or `src/` in
 notes refer to the separate `YerevaNN/casf-benchmark` analysis repository.
 Figure-source CSVs and the public release record are archived here under
-`figure-data/`. Figure 1 compares core recovery at 0.75 Å between the ChEMBL-count and
+`figure-data/`. Figure 1 describes the experimental panels. Figure 2 compares core recovery at 0.75 Å between the ChEMBL-count and
 1,000-candidate targets; the old energy analysis remains a separate diagnostic.
 
 ## Preview and verification

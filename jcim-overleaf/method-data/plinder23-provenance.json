@@ -1,0 +1,15 @@
+{
+  "prepared_on": "2026-10-05",
+  "release": "PLINDER 2024-06/v2",
+  "rdkit_for_identity_check_and_heavy_atoms": "2025.09.6",
+  "sources": {
+    "/mnt/weka/hrant/plinder_frequency/2024-06-v2/druglike_curated_shortlist.tsv": "96f749b4848dbc69c4cf8ddc010b5f0f2bff90aadf169aa41f74b46575aabcc5",
+    "/mnt/weka/hrant/plinder_frequency/2024-06-v2/druglike_physchem_screen.tsv": "8bf655c82e2ef40b98f201dec333a939e4de5fc8361adc0cd6ed3210091a1b09",
+    "/mnt/weka/hrant/plinder_frequency/2024-06-v2/ligands_per_system.parquet": "5d4ee32a6ac7b97ba597e6a1eed9d43670b75e869cea09073b4de809e29f810c",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_tables/druglike_selected.csv": "a390219c932875917bbea471fa9f3de50d4cc639a3600a531d7684615397d9aa"
+  },
+  "identity_match": "23 of 23 full InChIKeys",
+  "count_checks": "Per-identity PDB, system and instance counts match source parquet",
+  "evaluated_reference_total": 2450,
+  "selection_system_total": 2433
+}

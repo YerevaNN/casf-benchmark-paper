@@ -1,0 +1,28 @@
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\footnotesize
+\begin{longtable}{@{}p{0.32\linewidth}p{0.61\linewidth}@{}}
+\caption{Physicochemical screening criteria. All conditions must be satisfied; numerical intervals include their endpoints.}\label{tab:plinder23-screen}\\
+\toprule
+Property & Requirement\\
+\midrule
+\endfirsthead
+\toprule
+Property & Requirement\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+RDKit parsing & Valid molecular SMILES\\
+Carbon and elements & At least one C; only C, N, O, S, P, F, Cl, Br, I, B, Si, Se\\
+Molecular weight & 150--650 Da\\
+Crippen cLogP & $-$1 to 6\\
+Hydrogen-bond donors & $\leq$5\\
+Hydrogen-bond acceptors & $\leq$10\\
+Rotatable bonds & $\leq$12\\
+Topological polar surface area & $\leq$140 \AA{}\textsuperscript{2}\\
+Heavy atoms & $\geq$10\\
+Absolute formal charge & $\leq$2\\
+\end{longtable}
+\endgroup

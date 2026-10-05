@@ -1,0 +1,12 @@
+method,representation,training_checkpoint,initialization,postprocessing
+ChEMBL3D-PB,Stored optimized coordinates,Reference dataset,Stored ensemble for the matched stereoisomer,PoseBusters filter; no new generation
+RDKit raw,ETKDGv3 distance geometry,No learned checkpoint,Molecular graph; random starting coordinates,Finite-coordinate check; no added MMFF94s minimization
+RDKit minimized,ETKDGv3 distance geometry,No learned checkpoint,Same embedding procedure; independently sampled pool,"MMFF94s, up to 500 iterations"
+Torsion raw,Uniform torsion perturbations,No learned checkpoint,Matched ChEMBL3D seed geometry; ±120° per eligible torsion,Steric clash filtering
+Torsion minimized,Uniform torsion perturbations,No learned checkpoint,Same seed and perturbation procedure; independently sampled pool,"Clash filtering, MMFF94s, repeat clash check"
+LoQI,Equivariant coordinate diffusion,"ChEMBL3D; upstream checkpoint, exact hash pending",Molecular graph; exact initialization to document,Imported pipeline; postprocessing audit pending
+Torsional Diffusion,Diffusion over rotatable torsions,GEOM-DRUGS checkpoint; exact hash pending,RDKit initial geometry,Imported pipeline; postprocessing audit pending
+MCF drugs-L,Coordinate diffusion with molecular conformer fields,"GEOM-DRUGS; drugs-L checkpoint, exact hash pending",Molecular graph; exact initialization to document,Imported pipeline; postprocessing audit pending
+NExT-Mol DMT-L,Molecular language model with a coordinate diffusion head,"GEOM-DRUGS conformer training; ZINC-15 language-model pretraining; DMT-L, exact hash pending",Molecular representation; exact initialization to document,Imported pipeline; postprocessing audit pending
+FlowR,Coordinate flow matching with a fixed input graph,FLOWR.root v2.2; exact training composition and hash to confirm,Ligand-only harmonic graph inpainting,"Up to 200 cleanup steps (MMFF, UFF fallback); stereochemistry checks"
+Qwen 1.7B FSQ,Autoregressive coordinate-token generation,"Broadly assembled corpus; exact composition pending; pretraining step 47,023",Molecular SMILES; FSQ representation,Coordinate decoding; exact inference settings to document

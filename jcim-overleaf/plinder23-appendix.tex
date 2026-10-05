@@ -1,0 +1,21 @@
+\section*{Selection and composition of the Plinder-23 panel}
+
+Plinder-23 is an exploratory, manually curated selection from PLINDER release \textbf{2024-06/v2}, rather than an official PLINDER split. Selection began with the release's ligand-per-system table. Records were grouped by the complete InChIKey, retaining stereoisomers with different full keys as separate identities. The starting collection contained \textbf{51,280 identities}; the physicochemical requirements in Table~S5 retained \textbf{25,392 (49.5\%)}.
+
+\input{tables/plinder23-screen}
+
+Surviving identities were ranked by descending number of distinct PDB entries, with PLINDER-system count as the secondary ordering. Ranking by PDB entries reduced the influence of multiple systems derived from one multimeric structure. Manual review then selected recognizable drugs and medicinal-chemistry-like protein ligands, excluding common crystallization additives, metabolites, cofactors, and other compounds outside the intended panel. The review also considered carbohydrates, glycosylation residues, amino acids, nucleotides, lipids, fluorescent probes, and predominantly covalently attached biological groups. These were judgment-based categories, not executable exclusion rules; bortezomib, for example, remained despite its reversible covalent mechanism.
+
+The panel is not a random sample or simply the 23 most frequent PLINDER ligands. A later screen based on DrugBank-derived ATC annotations did not define this set, and no ATC-based inclusion requirement or minimum of ten distinct PDB entries should be inferred. Exact reproduction uses the saved molecular identities rather than repeating the manual selection. Subsequent exclusion of these molecules and related training molecules was a separate operation from panel construction.
+
+\clearpage
+\input{tables/plinder23-statistics}
+
+There are \textbf{23 identities}, \textbf{2,433 system memberships} summed across the per-identity PLINDER counts, and \textbf{2,450 reference conformers} in the evaluated collection. Systems and evaluated conformers are different counting units and need not agree for an individual molecule. Distinct PDB counts are reported per identity; their sum is not a count of unique PDB entries across the panel. None of these counts represents a measured number of distinct protein targets or conformational states.
+
+Molecular weights and rotatable-bond counts are taken from the saved shortlist. Heavy-atom counts are calculated from its SMILES. Full InChIKeys, SMILES, selection descriptors, and evaluated reference counts are provided in the companion \texttt{plinder23-molecules.csv}. All 23 full InChIKeys match the archived evaluation identities. Counts in Table~S7 refer to the saved PLINDER release and evaluated collection, not to the current contents of the PDB.
+
+\clearpage
+\input{tables/plinder23-molecules}
+
+% AUTHOR:  selection provenance is now established. The extraction and preprocessing of the evaluated reference coordinates still require documentation, including why evaluated conformer counts differ from the saved system counts, protonation and tautomer handling, alternate locations, and duplicate or nearly identical structures. The present metrics count experimental reference records without a defined clustering of distinct bound states.

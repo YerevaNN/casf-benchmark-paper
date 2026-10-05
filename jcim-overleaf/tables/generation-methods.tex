@@ -1,0 +1,39 @@
+% Exact source: method-data/generation-methods.csv.
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.18}
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.11\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.235\linewidth}>{\raggedright\arraybackslash}p{0.195\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}@{}}
+\caption{Evaluated generation pipelines and the stored comparison ensemble. Settings describe the archived evaluation; unresolved metadata are identified explicitly.}\label{tab:generators}\\
+\toprule
+Method & Representation / sampling & Training data and checkpoint & Input / initialization & Processing before common CASF filtering \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\tablename\ \thetable\ (continued)}\\
+\toprule
+Method & Representation / sampling & Training data and checkpoint & Input / initialization & Processing before common CASF filtering \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on the next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+ChEMBL3D-PB & Stored optimized coordinates & Reference dataset & Stored ensemble for the matched stereoisomer & PoseBusters filter; no new generation \\[3pt]
+RDKit raw & ETKDGv3 distance geometry & No learned checkpoint & Molecular graph; random starting coordinates & Finite-coordinate check; no added MMFF94s minimization \\[3pt]
+RDKit minimized & ETKDGv3 distance geometry & No learned checkpoint & Same embedding procedure; independently sampled pool & MMFF94s, up to 500 iterations \\[3pt]
+Torsion raw & Uniform torsion perturbations & No learned checkpoint & Matched ChEMBL3D seed geometry; $\pm$120$^\circ$ per eligible torsion & Steric clash filtering \\[3pt]
+Torsion minimized & Uniform torsion perturbations & No learned checkpoint & Same seed and perturbation procedure; independently sampled pool & Clash filtering, MMFF94s, repeat clash check \\[3pt]
+LoQI & Equivariant coordinate diffusion & ChEMBL3D; upstream checkpoint, exact hash pending & Molecular graph; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
+Torsional Diffusion & Diffusion over rotatable torsions & GEOM-DRUGS checkpoint; exact hash pending & RDKit initial geometry & Imported pipeline; postprocessing audit pending \\[3pt]
+MCF drugs-L & Coordinate diffusion with molecular conformer fields & GEOM-DRUGS; drugs-L checkpoint, exact hash pending & Molecular graph; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
+NExT-Mol DMT-L & Molecular language model with a coordinate diffusion head & GEOM-DRUGS conformer training; ZINC-15 language-model pretraining; DMT-L, exact hash pending & Molecular representation; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
+FlowR & Coordinate flow matching with a fixed input graph & FLOWR.root v2.2; exact training composition and hash to confirm & Ligand-only harmonic graph inpainting & Up to 200 cleanup steps (MMFF, UFF fallback); stereochemistry checks \\[3pt]
+Qwen 1.7B FSQ & Autoregressive coordinate-token generation & Broadly assembled corpus; exact composition pending; pretraining step 47,023 & Molecular SMILES; FSQ representation & Coordinate decoding; exact inference settings to document \\[3pt]
+\end{longtable}
+\noindent All CASF ensembles subsequently undergo the specified PoseBusters checks.
+``Raw'' does not imply an absence of generator-specific processing. Qwen is the
+initial step-47,023 checkpoint, not a model retrained after benchmark exclusions.
+Exact executed settings and checkpoint hashes remain to be confirmed where marked.
+Training-set overlap has not been ruled out for the external checkpoints.
+\endgroup

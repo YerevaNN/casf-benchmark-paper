@@ -1,5 +1,27 @@
 # Methods: evidence and author follow-up
 
+## Working Methods and appendix transfer, 5 October 2026
+
+The current `methods.tex` follows the author's working Markdown draft, archived
+with its source map in `method-data/methods-working.md`. It supersedes the older
+scope description below, including a clearly marked pending energy analysis.
+Plinder-23 release and identity-selection provenance are now established:
+Supporting Tables S5–S7 report the screen, statistics, and all 23 identities.
+Reference-coordinate preprocessing remains unresolved. Table 1 describes the
+generators; Figure 1 shows the experimental panels. Existing Results tables,
+figures, and bootstrap intervals are retained and renumbered automatically.
+The Qwen tokenizer citation remains commented out with the requested visible TODO.
+
+Both documents were compiled in an isolated directory with Tectonic and the
+BibTeX fallback for local layout checks. The committed source retains Biber;
+the historical preview is unchanged. The fallback emits bibliography rerun
+warnings, but all cited keys and reference labels resolve in the source and
+the PDFs contain no unresolved-reference markers or overflowing text. CSVs
+and PDF/SVG/PNG artwork are included.
+
+## Earlier audit (28 September 2026)
+
+
 Revised 28 September 2026 against the corrected 24 September analysis.
 The main panel uses one Qwen checkpoint (1.7B FSQ step47023). The main CASF figures now use only core and recovery at 0.75 Å; ref is
 reported in SI. Threshold/radius sensitivity prose and the unreported ref
