@@ -1,0 +1,23 @@
+{
+  "prepared_on": "2026-10-05",
+  "source_database": "data/results/casf_analysis_dashboard.sqlite",
+  "sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+  "query": "SELECT mol_id, greedy_clusters_0p5, greedy_clusters_1p0, post_pb_confs FROM per_ligand_long WHERE ligand_set = ? AND method = ?",
+  "ligand_set": "core",
+  "methods": [
+    "qwen_1p7b_fsq_bigdata_step47023_chembl_count",
+    "torsion_raw_chembl_count",
+    "flowr_raw_chembl_count",
+    "torsional_diffusion_raw_chembl_count",
+    "rdkit_random_raw_chembl_count",
+    "nextmol_dmt_l_raw_chembl_count",
+    "mcf_drugs_l_raw_chembl_count",
+    "loqi_raw_chembl_count",
+    "torsion_minimized_chembl_count",
+    "chembl3d_gt_pb",
+    "rdkit_random_minimized_chembl_count"
+  ],
+  "aggregation": "Arithmetic mean over entries with defined clustering values; both radii have identical measurable-entry sets per method. Retained counts use all 94 entries.",
+  "sort": "Descending unrounded mean cluster count at 0.5 Angstrom; ties retain source order.",
+  "note": "Read-only aggregation of archived cluster counts; no new conformer generation or clustering."
+}

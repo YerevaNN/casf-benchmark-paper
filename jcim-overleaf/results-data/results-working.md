@@ -2,29 +2,29 @@
 
 > **Data status:** Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. Energy results and release counts remain pending.
 
-A useful conformational resource should represent a range of molecular shapes while retaining coverage of geometries observed in protein complexes. We begin by examining the variation present in the generated ensembles, before asking whether that variation includes the experimental bound conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target, placing each generator alongside the stored ChEMBL3D ensemble for the same molecules. Table 2 summarizes geometric diversity through cluster counts at 1.0 Å, together with the retained ensemble sizes.
+A useful conformational resource should represent a range of molecular shapes while retaining coverage of geometries observed in protein complexes. We begin by examining the variation present in the generated ensembles, before asking whether that variation includes the experimental bound conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target, placing each generator alongside the stored ChEMBL3D ensemble for the same molecules. Table 2 summarizes geometric diversity through cluster counts at 0.5 and 1.0 Å, together with the retained ensemble sizes.
 
 <!-- results-table-2:start -->
 **Table 2. Geometric diversity at the ChEMBL-count target on the 94-entry core panel.**
 
-| Method | Mean retained conformers | Mean clusters at 1.0 Å |
-| --- | --- | --- |
-| ChEMBL3D-PB | 81.2 | 7.7 |
-| RDKit raw | 81.2 | 14.7 |
-| RDKit minimized | 81.2 | 11.0 |
-| Torsion raw | 71.1 | 21.8 |
-| Torsion minimized | 81.2 | 11.7 |
-| LoQI | 81.2 | 9.2 |
-| Torsional Diffusion | 69.3 | 17.5 |
-| MCF drugs-L | 66.1 | 14.2 |
-| NExT-Mol DMT-L | 66.4 | 14.2 |
-| FlowR | 72.7 | 29.1 |
-| Qwen 1.7B FSQ | 78.3 | 22.7 |
+| Method | Mean retained conformers | Mean clusters at 0.5 Å | Mean clusters at 1.0 Å |
+| --- | --- | --- | --- |
+| Qwen 1.7B FSQ | 78.3 | 55.3 | 22.7 |
+| Torsion raw | 71.1 | 54.2 | 21.8 |
+| FlowR | 72.7 | 54.1 | 29.1 |
+| Torsional Diffusion | 69.3 | 40.9 | 17.5 |
+| RDKit raw | 81.2 | 34.3 | 14.7 |
+| NExT-Mol DMT-L | 66.4 | 31.6 | 14.2 |
+| MCF drugs-L | 66.1 | 31.2 | 14.2 |
+| LoQI | 81.2 | 25.0 | 9.2 |
+| Torsion minimized | 81.2 | 21.9 | 11.7 |
+| ChEMBL3D-PB | 81.2 | 21.7 | 7.7 |
+| RDKit minimized | 81.2 | 21.7 | 11.0 |
 
-ChEMBL3D-PB is the available stored ensemble. Retained counts are averaged over all 94 entries, including empty outputs. Cluster counts are means over entries with defined clustering measurements; these are geometric clusters, not energy basins. Source: [selected CASF records](results_tables/casf_selected.csv).
+Rows are ordered by the unrounded mean cluster count at 0.5 Å. ChEMBL3D-PB is the available stored ensemble. Retained counts are averaged over all 94 entries, including empty outputs. Cluster counts are means over entries with defined clustering measurements, using the same entries at both radii; these are geometric clusters, not energy basins. Source: [clustering-radius comparison](results_tables/clustering_radius_comparison.csv).
 <!-- results-table-2:end -->
 
-The initial comparison shows that methods differ substantially in the geometric variation they produce. Broad torsional perturbation generates many distinct shapes, while learned generators also vary considerably in how widely they explore conformational space. FlowR and Qwen illustrate that substantial diversity can arise from different generation procedures, whereas LoQI provides a contrasting ensemble shaped by its low-energy objective. These observations describe the geometry of the sampled pools; they do not yet establish whether the additional shapes are energetically plausible or close to experimentally observed conformations.
+The comparison shows clear differences in geometric diversity at both clustering radii, although the exact ordering of methods changes. Qwen, random torsion sampling, and FlowR produce the largest cluster counts at both radii. Their counts are close at 0.5 Å, whereas FlowR has the highest count at 1.0 Å. LoQI, the minimized baselines, and the stored ChEMBL3D ensembles form fewer clusters at both radii. Thus, broad differences in geometric variation persist across the two resolutions, even when individual methods exchange ranks. These observations describe the geometry of the sampled pools; they do not yet establish whether the additional shapes are energetically plausible or close to experimentally observed conformations.
 
 [Update the method-specific observations and their magnitudes from the final ChEMBL-count evaluation; do not transfer rankings from the 1,000-candidate comparison to this target.]
 

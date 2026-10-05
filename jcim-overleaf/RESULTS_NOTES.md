@@ -1,5 +1,16 @@
 # Results: sources and author follow-up
 
+## Two clustering radii in Table 2, 5 October 2026
+
+Table 2 now reports mean clusters at 0.5 and 1.0 Å, sorted by the unrounded
+0.5 Å mean. Both columns use identical measurable entries per method: 92 for
+NExT-Mol, 93 for MCF, and 94 for the others. The read-only database digest
+matches the corrected September snapshot, and every recomputed 1.0 Å mean
+matches the previous table. The CSV and query provenance are in `results-data/`.
+The text describes persistent differences in geometric diversity despite rank
+changes, not statistical significance or a ranking of overall conformer quality.
+Other figures and Table 4 retain the 1.0 Å radius.
+
 ## Current working Results transfer, 5 October 2026
 
 The author's Markdown Results and Discussion now supply the LaTeX body. The

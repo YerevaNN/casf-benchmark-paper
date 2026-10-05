@@ -10,17 +10,18 @@ coverage of geometries observed in protein complexes. We begin by examining the 
 the generated ensembles, before asking whether that variation includes the experimental bound
 conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target,
 placing each generator alongside the stored ChEMBL3D ensemble for the same molecules.
-Table~\ref{tab:diversity} summarizes geometric diversity through cluster counts at 1.0 \AA{},
+Table~\ref{tab:diversity} summarizes geometric diversity through cluster counts at 0.5 and 1.0 \AA{},
 together with the retained ensemble sizes.
 
 \input{tables/diversity}
 
-The initial comparison shows that methods differ substantially in the geometric variation they
-produce. Broad torsional perturbation generates many distinct shapes, while learned generators also
-vary considerably in how widely they explore conformational space. FlowR and Qwen illustrate that
-substantial diversity can arise from different generation procedures, whereas LoQI provides a
-contrasting ensemble shaped by its low-energy objective. These observations describe the geometry of
-the sampled pools; they do not yet establish whether the additional shapes are energetically
+The comparison shows clear differences in geometric diversity at both clustering radii, although the
+exact ordering of methods changes. Qwen, random torsion sampling, and FlowR produce the largest
+cluster counts at both radii. Their counts are close at 0.5 \AA{}, whereas FlowR has the highest
+count at 1.0 \AA{}. LoQI, the minimized baselines, and the stored ChEMBL3D ensembles form fewer
+clusters at both radii. Thus, broad differences in geometric variation persist across the two
+resolutions, even when individual methods exchange ranks. These observations describe the geometry
+of the sampled pools; they do not yet establish whether the additional shapes are energetically
 plausible or close to experimentally observed conformations.
 
 % AUTHOR: Update the method-specific observations and their magnitudes from the final ChEMBL-count

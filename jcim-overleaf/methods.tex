@@ -185,8 +185,8 @@ Conformers are grouped using greedy clustering in their stored order. Each confo
 the nearest existing representative when the aligned RMSD is strictly below the clustering radius;
 otherwise, it starts a new cluster. Representatives are retained rather than updated. If all
 distances to existing representatives are nonfinite, the implementation creates a new cluster. We
-use a radius of 1.0 \AA{} for the main comparison and average cluster counts over entries with
-defined measurements. The count depends on the size and ordering of the retained pool and describes
+report clustering radii of 0.5 and 1.0 \AA{} in Table~\ref{tab:diversity}, using the same entries
+with defined measurements for both means. The remaining diversity comparisons use 1.0 \AA{}. The count depends on the size and ordering of the retained pool and describes
 geometric variation rather than occupied energy basins.
 
 \subsection{Energy analysis}

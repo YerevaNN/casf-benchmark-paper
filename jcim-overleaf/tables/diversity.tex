@@ -1,4 +1,4 @@
-% Values transferred without recalculation from results-data/results-working.md.
+% Archived per-entry counts: results-data/clustering_radius_comparison.csv.
 \begin{table}[htbp]
 \centering
 \footnotesize
@@ -7,25 +7,25 @@
 \caption{Geometric diversity at the ChEMBL-count target on the 94-entry core panel.}
 \label{tab:diversity}
 \par\smallskip
-\begin{tabular}{@{}lrr@{}}
+\begin{tabular}{@{}lrrr@{}}
 \toprule
-Method & \shortstack{Mean retained\\conformers} & \shortstack{Mean clusters\\at 1.0 \AA{}} \\
+Method & \shortstack{Mean retained\\conformers} & \shortstack{Mean clusters\\at 0.5 \AA{}} & \shortstack{Mean clusters\\at 1.0 \AA{}} \\
 \midrule
-ChEMBL3D-PB & 81.2 & 7.7 \\
-RDKit raw & 81.2 & 14.7 \\
-RDKit minimized & 81.2 & 11.0 \\
-Torsion raw & 71.1 & 21.8 \\
-Torsion minimized & 81.2 & 11.7 \\
-LoQI & 81.2 & 9.2 \\
-Torsional Diffusion & 69.3 & 17.5 \\
-MCF drugs-L & 66.1 & 14.2 \\
-NExT-Mol DMT-L & 66.4 & 14.2 \\
-FlowR & 72.7 & 29.1 \\
-Qwen 1.7B FSQ & 78.3 & 22.7 \\
+Qwen 1.7B FSQ & 78.3 & 55.3 & 22.7 \\
+Torsion raw & 71.1 & 54.2 & 21.8 \\
+FlowR & 72.7 & 54.1 & 29.1 \\
+Torsional Diffusion & 69.3 & 40.9 & 17.5 \\
+RDKit raw & 81.2 & 34.3 & 14.7 \\
+NExT-Mol DMT-L & 66.4 & 31.6 & 14.2 \\
+MCF drugs-L & 66.1 & 31.2 & 14.2 \\
+LoQI & 81.2 & 25.0 & 9.2 \\
+Torsion minimized & 81.2 & 21.9 & 11.7 \\
+ChEMBL3D-PB & 81.2 & 21.7 & 7.7 \\
+RDKit minimized & 81.2 & 21.7 & 11.0 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-ChEMBL3D-PB is the available stored ensemble. Retained counts are averaged over all 94 entries, including empty outputs. Cluster counts are means over entries with defined clustering measurements; these are geometric clusters, not energy basins. 
+Rows are ordered by the unrounded mean cluster count at 0.5 \AA{}. ChEMBL3D-PB is the available stored ensemble. Retained counts are averaged over all 94 entries, including empty outputs. Cluster counts are means over entries with defined clustering measurements, using the same entries at both radii; these are geometric clusters, not energy basins.
 \end{minipage}
 \end{table}

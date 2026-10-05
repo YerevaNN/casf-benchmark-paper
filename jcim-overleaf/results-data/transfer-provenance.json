@@ -1,10 +1,11 @@
 {
-  "results_working.md": "f5bfb3f79387b481872efad2f28ebb3f1f88d6c203c1a07b4e5202239ff55315",
+  "results_working.md": "f94359b5c408921985ef29c802467a3c3a145f311da1bd9687e88a7e6f0593cf",
   "results_tables/casf_selected.csv": "0f6c0ea0cc4b9b422a9807ae3eed68938cb29d991f3f2f0fe0c019a6fda4b96c",
   "results_tables/druglike_selected.csv": "a390219c932875917bbea471fa9f3de50d4cc639a3600a531d7684615397d9aa",
   "results_tables/druglike_means.csv": "98c227f9c934025e924aec150e117ddcb966a0ae85fbe3d73cb0c3e2630cffd4",
   "results_figures/figure-5-multiple-references.pdf": "82c081bc4b7cd67eaff2b92fb9ccf21961cb1931fbbede22cae13cba62e5f4d7",
   "results_figures/figure-4-size-flexibility.pdf": "38bc1cdf592237447786dc4d9c62da72b7e32eb89f76f8e9258e0f01930a6d63",
   "results_figures/figure-2-diversity-recovery.pdf": "6282bc1a76dc5907ea75923efd9da48404b558f37f2a0f5f13b865568e12a54d",
-  "results_figures/figure-3-sampling-budget.pdf": "7f4d654364b57e94db8f5f208ccfceeda06972e31681038f59409fa98390a1bb"
+  "results_figures/figure-3-sampling-budget.pdf": "7f4d654364b57e94db8f5f208ccfceeda06972e31681038f59409fa98390a1bb",
+  "results_tables/clustering_radius_comparison.csv": "84a0d92d635533237c92c2de43ade1b8d01ac9a5965a8b7c4a33302c06646de6"
 }
