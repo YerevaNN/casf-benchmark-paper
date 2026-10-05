@@ -11,8 +11,9 @@ account and original input hashes are archived alongside it. All 23 full
 InChIKeys and per-identity PDB/system/instance counts were verified against the
 saved PLINDER 2024-06/v2 inputs during preparation.
 
-Only Methods and its appendix are transferred in this revision. The older
-LaTeX Results retains its confidence intervals; Methods therefore retains the
-corresponding statistical procedure, while the newer Markdown figure set is
-still separate. Numbered references within the article use LaTeX labels.
+This archive records the Methods/appendix transfer. A subsequent revision
+transferred the working Results and Discussion, archived in `results-data/`.
+The current figures do not display confidence intervals; their earlier
+statistical procedures remain in METHODS_NOTES.md. Numbered references
+within the article use LaTeX labels.
 Pending energy and training-exclusion results are not reported as completed.

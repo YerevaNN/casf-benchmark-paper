@@ -1,36 +1,32 @@
-% Figures rendered from corrected, archived values in figure-data/.
-\graphicspath{{figures/}{../figures/}}
-\newcommand{\paperfigure}[1]{\includegraphics[width=\linewidth]{#1}}
+% Figures transferred from the working Results; sources are in results-data/.
+\newcommand{\diversityfigure}{%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figure-2-diversity-recovery.pdf}
+\caption{Geometric diversity and experimental recovery at the ChEMBL-count target. Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. Clustering uses a 1.0 \AA{} radius, whereas recovery requires at least one retained conformer at RMSD $\leq$ 0.75 \AA{}. Cluster counts are averaged over defined measurements; recovery uses all 94 entries, including failures. Retained ensemble sizes differ despite matched candidate targets. These are descriptive method summaries, not a causal analysis of diversity.}
+\label{fig:diversity-recovery}
+\end{figure}}
 
 \newcommand{\recoveryfigure}{%
 \begin{figure}[htbp]
 \centering
-\paperfigure{core-recovery-budget.pdf}
-\caption{Core recovery at two candidate targets for all ten generation pipelines. Open circles denote the ChEMBL-count target, equal to the mapped stereoisomer's stored ChEMBL3D conformer count for each ligand; filled squares denote 1,000 candidates per ligand. Horizontal segments connect the two recovery estimates for each method, not uncertainty intervals. Recovery is the percentage of all 94 core ligands with a PoseBusters-passing conformer within 0.75~\AA{} of the bound geometry. The dashed line marks recovery by the same finite ChEMBL3D-PB ensemble. Targets apply before filtering; retained counts are reported in Table~\ref{tab:recovery}, and missing outputs count as misses. Qwen is the pretrained 1.7B FSQ model.}
+\includegraphics[width=\linewidth]{figures/figure-3-sampling-budget.pdf}
+\caption{Recovery and diversity at the two candidate targets. Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table~\ref{tab:recovery}.}
 \label{fig:recovery}
-\end{figure}}
-
-\newcommand{\diversityfigure}{%
-\begin{figure}[htbp]
-\centering
-\paperfigure{diversity-recovery.pdf}
-\caption{Geometric diversity and recovery on core for the ten generation pipelines and ChEMBL3D-PB. Recovery uses the single 0.75~\AA{} cutoff and all 94 mapped entries. Diversity is the mean number of clusters at a separate 1.0~\AA{} clustering radius, conditional on measurable ensembles. Generated ensembles use the 1,000-candidate target after PoseBusters filtering; ChEMBL3D-PB uses its finite stored pool. Cluster counts depend on ensemble size and stored order. Colors identify the same methods as in Figure~\ref{fig:recovery}.}
-\label{fig:diversity-recovery}
 \end{figure}}
 
 \newcommand{\sizefigure}{%
 \begin{figure}[htbp]
 \centering
-\paperfigure{size-flexibility.pdf}
-\caption{Core recovery by molecular size (A) and flexibility (B) for all ten generation pipelines and the stored ChEMBL3D-PB ensemble. Each cell reports recovered ligands divided by all evaluated ligands in that group; color represents recovery percentage at 0.75~\AA{}. Missing outputs count as misses. Group membership uses common experimental-reference descriptors for every method. Generated ensembles use the 1,000-candidate target after PoseBusters filtering. Asterisks and dashed outlines identify groups with fewer than five ligands, whose counts do not establish reliable method rankings.}
+\includegraphics[width=\linewidth]{figures/figure-4-size-flexibility.pdf}
+\caption{Recovery by molecular size and flexibility. Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.}
 \label{fig:size}
 \end{figure}}
 
 \newcommand{\drugfigure}{%
 \begin{figure}[htbp]
 \centering
-\paperfigure{multireference-coverage.pdf}
-\caption{Exploratory coverage of multiple experimental conformations for 23 druglike molecules. (A) Mean COV-R (filled squares) and COV-P (open circles) at a strict 0.75~\AA{} cutoff. Error bars are 95\% percentile intervals from 10,000 molecule bootstrap resamples. (B) Reference coverage by Qwen 1.7B FSQ and LoQI, paired by molecule; the diagonal denotes equal coverage. Imatinib and actinonin are labeled. Coincident points are combined, with marker area increasing with multiplicity and the molecule count annotated. Metrics describe supplied pools without common PoseBusters filtering; the treatment of failed RMSD calculations also differs between imported evaluations. These differences limit direct method comparisons.}
+\includegraphics[width=\linewidth]{figures/figure-5-multiple-references.pdf}
+\caption{Coverage of multiple bound references and precision relative to those observations. (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD $<$ 0.75 \AA{} criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.}
 \label{fig:druglike}
-% AUTHOR: replace this figure and Table 2 together after harmonizing drug scoring.
 \end{figure}}

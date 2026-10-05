@@ -1,5 +1,36 @@
 # Results: sources and author follow-up
 
+## Current working Results transfer, 5 October 2026
+
+The author's Markdown Results and Discussion now supply the LaTeX body. The
+opening was softened to introduce the purpose of conformational variation
+before the first comparison. The sequence is diversity at the ChEMBL-count
+target, pending energy analysis, recovery at that target, diversity versus
+recovery, the 1,000-candidate comparison, molecular difficulty, multiple
+references, and the planned dataset release. Values were transferred without
+recalculation. `results-data/results-working.md` preserves the edited source.
+
+Tables 2–6 and Figures 2–5 follow that sequence; Table 4 keeps its A/B panels.
+Methods still holds Table 1 and Figure 1. Discussion is in `discussion.tex`.
+Table 6 is explicitly a pending-release checklist, not a measured result.
+Author instructions remain source comments, while the planned status of
+energy, training exclusions, and dataset release remains visible in the prose.
+
+The current figures are the uniform working-draft figures, including the
+ChEMBL-count diversity/recovery plot and descriptive multi-reference plot
+without intervals. The older interval prose and figure definitions have been
+replaced; the archived bootstrap calculations below remain available for later
+editing. Methods no longer claims that the current displays show intervals.
+The current source CSVs, artwork hashes, and unchanged original figure script
+are archived in `results-data/`. Historical assets remain separate.
+
+Local render check: isolated Tectonic compilation with the BibTeX fallback;
+the committed Overleaf source retains Biber. Tables, figures, and Discussion
+were visually inspected; the historical preview was left unchanged.
+
+## Previous Results audit (28 September 2026)
+
+
 Revised 28 September 2026. The manuscript now follows the agreed recovery-first
 story: core94 anchors the comparison; Qwen 1.7B FSQ pretraining step47023 is
 the sole main-text Qwen; ref is reported in SI; the 23-molecule

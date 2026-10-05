@@ -1,16 +1,17 @@
 # JCIM manuscript
 
-The ACS template now includes drafted Introduction, Methods, and Results
-sections and a working abstract, three main tables, five figures, and seven supporting
-tables. Title, authors, and end matter still contain upstream examples. Discussion and
-Conclusions remain to be written. This is a working manuscript, not a
+The ACS template now includes a working abstract, Introduction, Methods, Results,
+and Discussion, with six main tables, five figures, and seven supporting tables.
+Table 6 records pending dataset-release items and is not a measured result.
+Title, authors, and end matter still contain upstream examples; Conclusions
+remain to be written. This is a working manuscript, not a
 submission-ready article.
 
 The draft also includes **18 additional figure candidates (C01–C18)** in a
 review appendix. See [FIGURE_CANDIDATES.md](FIGURE_CANDIDATES.md) for the index
 and [the gallery](figures/candidates/additional-figures.pdf) for all options.
 They visualize the HTML report's questions using corrected archived measurements;
-the four main figures remain unchanged. Each candidate has a full caption in
+the candidates remain separate from the current main figures. Each candidate has a full caption in
 `figure-candidates.tex`. Remove individual blocks after selection, or comment out
 its input in `acs-template.tex` to hide the whole review appendix.
 Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
@@ -19,16 +20,20 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 
 - `introduction.tex`: rationale, relevant literature, and study questions.
 - `methods.tex`: benchmark procedures and author comments for missing details.
-- `results.tex`: recovery-first story using core94 and Qwen 1.7B FSQ step47023.
+- `results.tex`: geometric diversity, energy plan, single-reference recovery,
+  candidate targets, size/flexibility, multiple references, and dataset plans.
+- `discussion.tex`: the working Discussion transferred from the Markdown draft.
 - `tables/generation-methods.tex`: generator configurations (Table 1).
-- `tables/recovery.tex`, `tables/druglike.tex`: Results tables; size strata are in SI.
+- `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
+  `tables/druglike.tex`, `tables/release-status.tex`: Tables 2–6.
 - `supporting-information.tex`: separate SI document with Tables S1--S7 (core RMSD,
   ref recovery, size strata, multi-reference matching distances, and the Plinder-23
   selection criteria, statistics, and molecule list); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: experimental-panel diagram, with PDF, SVG, and PNG assets.
 - `plinder23-appendix.tex`: selection account and Supporting Tables S5--S7.
-- `method-data/`: working drafts, source CSVs, and selection/transfer provenance.
+- `method-data/`: Methods/appendix drafts, source CSVs, and provenance.
+- `results-data/`: current Results/Discussion snapshot, source CSVs, and figure provenance.
 - `acs-template.bib`: manuscript references.
 - `WRITING_GUIDELINES.md`, `MANUSCRIPT_OUTLINE.md`: agreed writing instructions
   and structure; `METHODS_NOTES.md`, `RESULTS_NOTES.md`: sources and follow-up.
@@ -47,18 +52,20 @@ Future paper edits should be committed and pushed to this repository. Fetch
 incoming changes and preserve edits from Overleaf or other authors before
 pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 
-The four Results figure PDFs are included, with a combined gallery in
-`figures/main-figures.pdf`. Each also has an editable SVG and a 450-dpi PNG.
-Run `python jcim-overleaf/build_figures.py` from the repository root to render
-from the archived CSVs; this does not require the benchmark databases.
-The script's `--refresh-data` mode was written for the benchmark checkout and
-requires access to its source databases; do not refresh the evidence silently.
+The current Results artwork is `figures/figure-2-diversity-recovery.*`,
+`figure-3-sampling-budget.*`, `figure-4-size-flexibility.*`, and
+`figure-5-multiple-references.*`, each in PDF, editable SVG, and 350-dpi PNG.
+Figure 1 is the experimental-panel diagram in Methods. The current figures
+come from the benchmark's `docs/results_figures/build_figures.py`; an unchanged
+copy is archived as `results-data/source-build-figures.py` for provenance.
+That script runs in the original analysis checkout and also updates its
+working Markdown; it is not a standalone renderer for this paper checkout.
 
-Numerical source paths beginning with `docs/`, `data/results/` or `src/` in
-notes refer to the separate `YerevaNN/casf-benchmark` analysis repository.
-Figure-source CSVs and the public release record are archived here under
-`figure-data/`. Figure 1 describes the experimental panels. Figure 2 compares core recovery at 0.75 Å between the ChEMBL-count and
-1,000-candidate targets; the old energy analysis remains a separate diagnostic.
+The older `build_figures.py`, `figure-data/`, and `figures/main-figures.pdf`
+remain historical assets. They do not reproduce the newly transferred main
+figures. Numerical source paths beginning with `docs/`, `data/results/`, or
+`src/` refer to the separate `YerevaNN/casf-benchmark` analysis repository.
+The current transfer performs no new generation, scoring, or energy analysis.
 
 ## Preview and verification
 

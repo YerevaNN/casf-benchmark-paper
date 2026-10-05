@@ -274,18 +274,11 @@ size-stratum export from 28 September. The same ten CASF pipelines and the store
 ensemble are used throughout, and the 23-molecule comparison uses the five external learned
 generators and the same Qwen checkpoint. We preserve the distinction between whole-panel recovery
 and conditional means of defined RMSD or diversity measurements. Figure lines connecting the two
-candidate targets do not imply intermediate measurements, and uncertainty is reported for the
-comparisons and coverage estimates described below.
+candidate targets do not imply intermediate measurements. The displayed comparisons are descriptive;
+confidence intervals from the earlier analysis remain documented with the archived findings.
 
-For the paired CASF comparisons reported in Results, 95\% confidence intervals were
-calculated from 3,000 bootstrap resamples of ChEMBL parent compounds, retaining all
-complex entries for each sampled compound and averaging over those entries. Missing
-hits were assigned zero. For the 23-molecule panel, paired differences used 10,000
-paired molecule resamples; the mean COV-R and COV-P intervals in
-Figure~\ref{fig:druglike} used 10,000 molecule resamples. Intervals were the 2.5th and
-97.5th percentiles, using a NumPy random generator initialized with seed 20260924.
-These intervals do not account for training or generation variability, checkpoint
-selection, or multiple comparisons.
+% AUTHOR: Archived paired bootstrap procedures are documented in METHODS_NOTES.md.
+% The current Results tables and figures do not display these intervals.
 
 Source records, exact Qwen identity, and input hashes are archived with the table and figure
 exports. No new generation, scoring, or force-field calculation is implied by rendering these

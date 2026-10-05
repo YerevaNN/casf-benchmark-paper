@@ -1,35 +1,57 @@
-% Values archived in figure-data/recovery-table-tiers.csv.
-\begin{table}[htbp]
+% Values transferred without recalculation from results-data/results-working.md.
+\begin{table}[p]
 \centering
-\small
-\setlength{\tabcolsep}{5pt}
-\caption{Core recovery under the specified validity and sampling constraints for all ten generation pipelines and the stored comparison ensemble (94 ligands). The ChEMBL-count target uses the stored ChEMBL3D conformer count for each mapped stereoisomer; the fixed target is 1,000 candidates per ligand. Recovery is the percentage of all 94 ligands with at least one conformer that passes PoseBusters and matches the experimental geometry within 0.75~\AA{}. Mean $N$ is the retained conformer count averaged over all 94 entries; the two target sizes are defined before filtering.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Recovery and geometric diversity at the two candidate targets on the 94-entry core panel.}
 \label{tab:recovery}
-\begin{tabular}{lrrrr}
-\hline
-& \multicolumn{2}{c}{ChEMBL-count target} & \multicolumn{2}{c}{1,000-candidate target} \\
-\cline{2-3}\cline{4-5}
-Method & Recovery (\%) & Mean $N$ & Recovery (\%) & Mean $N$ \\
-\hline
-ChEMBL3D-PB & 78.7 & 81.2 & --- & --- \\
-RDKit raw & 66.0 & 81.2 & 80.9 & 999.9 \\
-RDKit minimized & 70.2 & 81.2 & 78.7 & 1000.0 \\
-Torsion raw & 66.0 & 71.1 & 78.7 & 896.5 \\
-Torsion minimized & 68.1 & 81.2 & 79.8 & 1000.0 \\
-LoQI & 74.5 & 81.2 & 86.2 & 999.3 \\
-Torsional Diffusion & 73.4 & 69.3 & 89.4 & 881.4 \\
-MCF drugs-L & 71.3 & 66.1 & 86.2 & 866.8 \\
-NExT-Mol DMT-L & 76.6 & 66.4 & 86.2 & 871.9 \\
-FlowR & 70.2 & 72.7 & 86.2 & 920.0 \\
-Qwen 1.7B FSQ & 80.9 & 78.3 & 91.5 & 972.6 \\
-\hline
+\par\smallskip
+\textbf{A. Recovery at the two candidate targets}
+\par\smallskip
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Method & \shortstack{ChEMBL-count\\Hit (\%)} & \shortstack{ChEMBL-count\\retained $N$} & \shortstack{ChEMBL-count\\min. RMSD (\AA{})} & \shortstack{1,000\\Hit (\%)} & \shortstack{1,000\\retained $N$} & \shortstack{1,000\\min. RMSD (\AA{})} \\
+\midrule
+ChEMBL3D-PB & 78.7 & 81.2 & 0.525 & --- & --- & --- \\
+RDKit raw & 66.0 & 81.2 & 0.601 & 80.9 & 999.9 & 0.437 \\
+RDKit minimized & 70.2 & 81.2 & 0.618 & 78.7 & 1000.0 & 0.512 \\
+Torsion raw & 66.0 & 71.1 & 0.679 & 78.7 & 896.5 & 0.477 \\
+Torsion minimized & 68.1 & 81.2 & 0.644 & 79.8 & 1000.0 & 0.535 \\
+LoQI & 74.5 & 81.2 & 0.536 & 86.2 & 999.3 & 0.339 \\
+Torsional Diffusion & 73.4 & 69.3 & 0.582 & 89.4 & 881.4 & 0.371 \\
+MCF drugs-L & 71.3 & 66.1 & 0.559 & 86.2 & 866.8 & 0.366 \\
+NExT-Mol DMT-L & 76.6 & 66.4 & 0.543 & 86.2 & 871.9 & 0.386 \\
+FlowR & 70.2 & 72.7 & 0.637 & 86.2 & 920.0 & 0.414 \\
+Qwen 1.7B FSQ & 80.9 & 78.3 & 0.506 & 91.5 & 972.6 & 0.307 \\
+\bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-\footnotesize ChEMBL3D-PB is the same stored comparison ensemble for both tiers;
-its values are shown once in the first pair of columns. Missing outputs count
-as recovery failures. Targets apply before filtering, so retained counts can
-differ between methods. The label \emph{raw} may include preprocessing
-specific to each generator (Methods).
+Hit uses the 0.75 \AA{} cutoff and all 94 entries. Retained N and minimum RMSD are means, with the same denominator conventions as Table~\ref{tab:count-recovery}. At the 1,000-candidate target, minimum RMSD is defined for 93 entries for MCF and NExT-Mol and all 94 for the other pipelines. ChEMBL3D-PB is shown once because its stored ensemble does not grow. These comparisons do not match retained counts or computational cost.
+\end{minipage}
+\par\bigskip
+\textbf{B. Geometric diversity in the larger ensembles}
+\par\smallskip
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & \shortstack{Mean retained\\conformers} & \shortstack{Mean clusters\\at 1.0 \AA{}} \\
+\midrule
+ChEMBL3D-PB & 81.2 & 7.7 \\
+RDKit raw & 999.9 & 35.9 \\
+RDKit minimized & 1000.0 & 20.2 \\
+Torsion raw & 896.5 & 74.2 \\
+Torsion minimized & 1000.0 & 25.1 \\
+LoQI & 999.3 & 20.2 \\
+Torsional Diffusion & 881.4 & 54.9 \\
+MCF drugs-L & 866.8 & 34.0 \\
+NExT-Mol DMT-L & 871.9 & 31.5 \\
+FlowR & 920.0 & 114.4 \\
+Qwen 1.7B FSQ & 972.6 & 72.8 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+Generated methods use the 1,000-candidate target; ChEMBL3D-PB remains the same stored ensemble. Cluster means use defined measurements, as in Table~\ref{tab:diversity}.
 \end{minipage}
 \end{table}

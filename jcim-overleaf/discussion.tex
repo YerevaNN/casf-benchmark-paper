@@ -1,0 +1,32 @@
+% Working Discussion, transferred without substantive revision.
+\section{Discussion}
+\label{sec:discussion}
+
+The central purpose of this study is to identify a practical procedure for constructing a large
+conformational dataset with coverage of experimentally observed ligand geometries. The benchmark
+separates several properties that are often combined under the general description of conformer
+quality. Structural validity determines whether a sample satisfies the specified identity and
+geometry requirements. Geometric diversity describes the variation represented in an ensemble.
+Energy analysis characterizes that variation under a common molecular model, while
+experimental-conformation recovery assesses whether the ensemble includes shapes observed in protein
+complexes.
+
+The preliminary results support the value of considering these properties together. Broad geometric
+exploration does not guarantee recovery, and strong recovery by the closest member of an ensemble
+does not establish that most samples lie near observed conformations. The comparison between
+single-reference recovery and multi-reference coverage makes this distinction explicit. It also
+explains why the preferred generator may depend on whether the immediate objective is to recover at
+least one useful conformation, cover several experimental conformations, or concentrate sampling
+near those observations.
+
+These evaluations inform dataset construction without establishing that every generated conformer is
+biologically relevant. The experimental collections sample only part of the accessible
+conformational space, and the force-field calculations do not represent binding free energies. The
+results are also conditional on the selected molecules, generation settings, and sampling budgets.
+Conclusions about Qwen's generalization will depend on the evaluation after benchmark molecules have
+been excluded from its training data.
+
+The proposed public release is intended to provide a reproducible resource for learning molecular
+geometry, particularly for pharmacophore-conditioned generation. Its demonstrated properties will be
+the structural coverage, diversity, and validity measured in this study. Whether training on this
+resource improves a particular downstream model remains a separate question for future work.

@@ -1,5 +1,32 @@
 # JCIM manuscript outline
 
+## Current author sequence, 5 October 2026
+
+The working Markdown now governs the Introduction, Methods, Results, and
+Discussion. It supersedes the older recovery-first ordering below. Results
+builds from geometric variation and the planned energy analysis to CASF
+single-reference recovery, joint diversity/recovery, larger candidate pools,
+size and flexibility, PLINDER multiple-reference coverage and precision,
+and the planned conformer resource. The softer opening establishes the
+purpose of this progression before introducing Table 2.
+
+- Methods: generator summary (Table 1), experimental panels (Figure 1).
+- Results: ChEMBL-count diversity (Table 2), recovery (Table 3), joint plot
+  (Figure 2), two-target recovery/diversity (Table 4A/B and Figure 3),
+  size/flexibility (Figure 4), multiple references (Table 5 and Figure 5).
+- Dataset plans: Table 6 is explicitly an unfinished release checklist.
+- Supporting Information: existing S1–S4 plus PLINDER selection criteria,
+  statistics, and all 23 molecules (S5–S7).
+- Discussion: transferred working prose; Conclusions still pending.
+
+Energy results, cleaned Qwen evaluation, and the dataset release are pending.
+Current figures are descriptive and show no uncertainty intervals. Archived
+interval calculations and older display designs remain evidence, not the
+current presentation. See RESULTS_NOTES.md and `results-data/`.
+
+## Earlier outline (28 September 2026)
+
+
 Updated 28 September 2026 following the author's scope decision.
 
 ## Governing question and contribution

@@ -1,0 +1,13 @@
+{
+  "prepared_on": "2026-10-05",
+  "qwen_checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
+  "core_recovery_denominator": 94,
+  "drug_molecules": 23,
+  "sources": {
+    "docs/publication_tables_2026_09_24/all_casf_summary.csv": "c07a493649967395e9d74adb66766942113dc75b61d3c5a27463bb93ad2643d8",
+    "docs/publication_tables_2026_09_24/druglike_per_molecule.csv": "f1c195d97049a710c7ca68d5e94d39127465881c8d436d104e070dca1d039ae3",
+    "docs/publication_tables_2026_09_24/druglike_summary.csv": "69c8168eea38974510b3b4f5d843e6bf0742904ed64dfac9b13c2e332e62a975",
+    "docs/publication_tables_2026_09_24/source_snapshot.json": "f01149d88346bfe321882fd638d6edba8b48633365204846c77b4be89b571654"
+  },
+  "note": "Archived findings, not new conformer generation or a leakage-excluded rerun."
+}

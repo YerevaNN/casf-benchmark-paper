@@ -1,0 +1,31 @@
+% Values transferred without recalculation from results-data/results-working.md.
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Geometric diversity at the ChEMBL-count target on the 94-entry core panel.}
+\label{tab:diversity}
+\par\smallskip
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & \shortstack{Mean retained\\conformers} & \shortstack{Mean clusters\\at 1.0 \AA{}} \\
+\midrule
+ChEMBL3D-PB & 81.2 & 7.7 \\
+RDKit raw & 81.2 & 14.7 \\
+RDKit minimized & 81.2 & 11.0 \\
+Torsion raw & 71.1 & 21.8 \\
+Torsion minimized & 81.2 & 11.7 \\
+LoQI & 81.2 & 9.2 \\
+Torsional Diffusion & 69.3 & 17.5 \\
+MCF drugs-L & 66.1 & 14.2 \\
+NExT-Mol DMT-L & 66.4 & 14.2 \\
+FlowR & 72.7 & 29.1 \\
+Qwen 1.7B FSQ & 78.3 & 22.7 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+ChEMBL3D-PB is the available stored ensemble. Retained counts are averaged over all 94 entries, including empty outputs. Cluster counts are means over entries with defined clustering measurements; these are geometric clusters, not energy basins. 
+\end{minipage}
+\end{table}

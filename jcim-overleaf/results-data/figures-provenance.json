@@ -1,0 +1,76 @@
+{
+  "prepared_on": "2026-10-05",
+  "qwen_checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
+  "sources": {
+    "docs/results_tables/casf_selected.csv": "0f6c0ea0cc4b9b422a9807ae3eed68938cb29d991f3f2f0fe0c019a6fda4b96c",
+    "docs/results_tables/druglike_selected.csv": "a390219c932875917bbea471fa9f3de50d4cc639a3600a531d7684615397d9aa",
+    "docs/results_tables/druglike_means.csv": "98c227f9c934025e924aec150e117ddcb966a0ae85fbe3d73cb0c3e2630cffd4",
+    "docs/publication_tables_2026_09_28/size_strata.csv": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90",
+    "docs/publication_tables_2026_09_24/flexibility.csv": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705"
+  },
+  "style": {
+    "chembl3d_gt_pb": [
+      "ChEMBL3D-PB",
+      "#333A43",
+      "h"
+    ],
+    "rdkit_random_raw": [
+      "RDKit raw",
+      "#6F7782",
+      "o"
+    ],
+    "rdkit_random_minimized": [
+      "RDKit minimized",
+      "#6F7782",
+      "s"
+    ],
+    "torsion_raw": [
+      "Torsion raw",
+      "#987049",
+      "o"
+    ],
+    "torsion_minimized": [
+      "Torsion minimized",
+      "#987049",
+      "s"
+    ],
+    "loqi_raw": [
+      "LoQI",
+      "#CE6428",
+      "s"
+    ],
+    "torsional_diffusion_raw": [
+      "Torsional Diffusion",
+      "#AA589B",
+      "D"
+    ],
+    "mcf_drugs_l_raw": [
+      "MCF drugs-L",
+      "#998000",
+      "v"
+    ],
+    "nextmol_dmt_l_raw": [
+      "NExT-Mol DMT-L",
+      "#399BBB",
+      "P"
+    ],
+    "flowr_raw": [
+      "FlowR",
+      "#00866B",
+      "^"
+    ],
+    "qwen_1p7b_fsq_bigdata_step47023": [
+      "Qwen 1.7B FSQ",
+      "#0072B2",
+      "o"
+    ]
+  },
+  "figure_files": [
+    "figure-1-datasets",
+    "figure-2-diversity-recovery",
+    "figure-3-sampling-budget",
+    "figure-4-size-flexibility",
+    "figure-5-multiple-references"
+  ],
+  "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The corrected energy figure and dataset-release figures remain pending."
+}

@@ -43,11 +43,11 @@ acs-template.tex. Read RESULTS_NOTES.md before revising results.tex: the HTML
 report supplies the interpretation, while corrected exports supply the numbers.
 introduction.tex is the Introduction draft. Tables are in tables/ and numbered
 figure definitions are in figures.tex, with artwork in figures/.
-The reproducible renderer is build_figures.py; figure-data/ records the public
-release and the denominator differences from dashboard summaries. Methods must describe only the analyses used in Results, tables, or figures.
+The current figure artwork and source records are identified in README.md and
+results-data/. The older build_figures.py and figure-data/ remain historical. Methods must describe only the analyses used in Results, tables, or figures.
 Energy-window and random-K experiments are outside the current manuscript scope. Front and end matter still contain
-upstream examples; Discussion and Conclusions
-are not drafted. Replace
+upstream examples; Discussion is a working draft and Conclusions remain
+to be written. Replace
 sample names and claims only with verified information or explicit placeholders.
 For manuscript-only edits, check citations and cross-references in the source.
 Do not compile local previews: the user reviews changes in Overleaf.

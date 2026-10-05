@@ -1,27 +1,27 @@
-% Coverage means and supplied counts: figure-data/drug_molecule_metrics.csv.
-% PB: pooled pass fraction in corrected druglike_summary.csv; assessed separately.
+% Values transferred without recalculation from results-data/results-working.md.
 \begin{table}[htbp]
 \centering
-\small
-\caption{Exploratory multi-reference results for 23 druglike molecules. Mean $N$ is the supplied conformer count per molecule before a common validity filter. COV-R and COV-P are molecule-averaged coverage percentages at a strict 0.75~\AA{} cutoff. PB is the separately measured, pooled PoseBusters pass percentage.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Exploratory coverage and precision for the 23-molecule PLINDER panel.}
 \label{tab:druglike}
-\begin{tabular}{lrrrr}
-\hline
-Method & Mean $N$ & COV-R (\%) & COV-P (\%) & PB (\%) \\
-\hline
-LoQI & 1000.0 & 91.2 & 59.0 & 90.9 \\
-Torsional Diffusion & 1000.0 & 78.6 & 42.6 & 83.4 \\
-MCF drugs-L & 1000.0 & 82.7 & 39.1 & 63.7 \\
-NExT-Mol DMT-L & 1000.0 & 82.7 & 36.9 & 62.2 \\
-FlowR & 961.7 & 81.3 & 36.6 & 78.5 \\
-Qwen 1.7B FSQ & 999.2 & 91.0 & 46.8 & 83.7 \\
-\hline
+\par\smallskip
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Method & \shortstack{Mean\\supplied $N$} & \shortstack{COV-R\\(\%)} & \shortstack{COV-P\\(\%)} & \shortstack{MAT-R\\(\AA{})} & \shortstack{MAT-P\\(\AA{})} & \shortstack{PB pass\\(\%)} \\
+\midrule
+LoQI & 1000.0 & 91.2 & 59.0 & 0.421 & 0.816 & 90.9 \\
+Torsional Diffusion & 1000.0 & 78.6 & 42.6 & 0.455 & 1.189 & 83.4 \\
+MCF drugs-L & 1000.0 & 82.7 & 39.1 & 0.481 & 1.215 & 63.7 \\
+NExT-Mol DMT-L & 1000.0 & 82.7 & 36.9 & 0.464 & 1.172 & 62.2 \\
+FlowR & 961.7 & 81.3 & 36.6 & 0.522 & 1.306 & 78.5 \\
+Qwen 1.7B FSQ & 999.2 & 91.0 & 46.8 & 0.375 & 1.000 & 83.7 \\
+\bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-\footnotesize Coverage does not use a common PB filter, and imported evaluations
-handle failed RMSD calculations differently. The coverage columns therefore
-do not measure the common validity criterion used in Table~\ref{tab:recovery}.
-Matching-distance summaries are provided in Table~S4.
+COV-R and COV-P use a strict RMSD $<$ 0.75 \AA{} cutoff in the existing evaluation; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 23 molecules, with 2,450 reference records in total. PB pass is the separately measured pooled pass fraction. The coverage and distance columns use supplied pools without a common PB filter, and the evaluators differ in RMSD-failure handling. They therefore remain descriptive, pending harmonized evaluation; unmatched conformers are not necessarily physically inaccessible.
+
 \end{minipage}
 \end{table}

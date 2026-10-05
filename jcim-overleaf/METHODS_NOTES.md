@@ -8,8 +8,10 @@ scope description below, including a clearly marked pending energy analysis.
 Plinder-23 release and identity-selection provenance are now established:
 Supporting Tables S5–S7 report the screen, statistics, and all 23 identities.
 Reference-coordinate preprocessing remains unresolved. Table 1 describes the
-generators; Figure 1 shows the experimental panels. Existing Results tables,
-figures, and bootstrap intervals are retained and renumbered automatically.
+generators; Figure 1 shows the experimental panels. The initial Methods transfer retained the older Results and intervals. The
+subsequent Results transfer on the same date replaces them with the working
+Markdown tables and figures, which show no intervals; bootstrap provenance
+below remains an archived analysis.
 The Qwen tokenizer citation remains commented out with the requested visible TODO.
 
 Both documents were compiled in an isolated directory with Tectonic and the
