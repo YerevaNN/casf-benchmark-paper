@@ -25,6 +25,9 @@ purpose of this progression before introducing Table 2.
   size/flexibility (Figure 3), multiple references (Table 4 and Figure 4).
   Table 1 compares 0.5 and 1.0 Å cluster counts and largest-cluster occupancy
   at 1.0 Å, ordered by increasing 0.5 Å count with the stored reference last.
+  Table 2 reports Hit@0.75, Hit@2.0, and Best RMSD (mean of per-entry minima),
+  ordered by decreasing RMSD with the stored reference separate and last.
+  Figure 1 plots 0.5 Å cluster count against Best RMSD; lower right is favorable.
 - Dataset plans: Table 5 is explicitly an unfinished release checklist.
 - Supporting Information: S1–S7 retain the earlier analyses and Plinder-23
   selection account; S8 describes generator mechanisms and training resources.
@@ -64,8 +67,9 @@ the report's proposed threshold, training, energy, and random-K experiments.
 ## Scope
 
 - **Core94 is the main CASF cohort.** Ref results remain in SI.
-- **0.75 Å is the only recovery/coverage cutoff presented.** Keep the separate
-  1.0 Å clustering radius clearly distinguished from recovery.
+- **0.75 Å is the primary recovery/coverage cutoff.** The author's 6 October
+  revision adds Hit@2.0 to Table 2. Keep 0.5/1.0 Å clustering radii distinct
+  from these recovery cutoffs.
 - Qwen 1.7B FSQ step47023 remains the main Qwen representative. Explain its
   selection and avoid universal-winner claims from a selected checkpoint panel.
 - The 23-molecule multi-reference panel remains exploratory. Its supplied pools

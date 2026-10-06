@@ -1,31 +1,32 @@
-% Values transferred without recalculation from results-data/results-working.md.
+% Source: results-data/casf_selected.csv; verified against archived per-entry minimum RMSDs.
 \begin{table}[htbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{6pt}
 \renewcommand{\arraystretch}{1.15}
 \caption{Recovery of the CASF bound conformation at the ChEMBL-count target.}
 \label{tab:count-recovery}
 \par\smallskip
-\begin{tabular}{@{}lrrrrr@{}}
+\begin{tabular}{@{}lrrr@{}}
 \toprule
-Method & \shortstack{Recovered\\entries} & \shortstack{Hit@0.75\\(\%)} & \shortstack{Mean minimum\\RMSD (\AA{})} & \shortstack{Measurable\\entries} & \shortstack{Mean retained\\conformers} \\
+Method & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Hit@2.0\\(\%) $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} \\
 \midrule
-ChEMBL3D-PB & 74/94 & 78.7 & 0.525 & 94 & 81.2 \\
-RDKit raw & 62/94 & 66.0 & 0.601 & 94 & 81.2 \\
-RDKit minimized & 66/94 & 70.2 & 0.618 & 94 & 81.2 \\
-Torsion raw & 62/94 & 66.0 & 0.679 & 94 & 71.1 \\
-Torsion minimized & 64/94 & 68.1 & 0.644 & 94 & 81.2 \\
-LoQI & 70/94 & 74.5 & 0.536 & 94 & 81.2 \\
-Torsional Diffusion & 69/94 & 73.4 & 0.582 & 94 & 69.3 \\
-MCF drugs-L & 67/94 & 71.3 & 0.559 & 93 & 66.1 \\
-NExT-Mol DMT-L & 72/94 & 76.6 & 0.543 & 92 & 66.4 \\
-FlowR & 66/94 & 70.2 & 0.637 & 94 & 72.7 \\
-Qwen 1.7B FSQ & 76/94 & 80.9 & 0.506 & 94 & 78.3 \\
+Torsion raw & 66.0 & \underline{98.9} & 0.679 \\
+Torsion minimized & 68.1 & \underline{98.9} & 0.644 \\
+FlowR & 70.2 & \textbf{100.0} & 0.637 \\
+RDKit minimized & 70.2 & \textbf{100.0} & 0.618 \\
+RDKit raw & 66.0 & \textbf{100.0} & 0.601 \\
+Torsional Diffusion & 73.4 & 97.9 & 0.582 \\
+MCF drugs-L & 71.3 & 97.9 & 0.559 \\
+NExT-Mol DMT-L & 76.6 & 96.8 & 0.543 \\
+LoQI & 74.5 & 96.8 & 0.536 \\
+Qwen 1.7B FSQ & \textbf{80.9} & \textbf{100.0} & \textbf{0.506} \\
+\hdashline
+ChEMBL3D-PB & \underline{78.7} & 97.9 & \underline{0.525} \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Recovery requires at least one retained conformer at RMSD $\leq$ 0.75 \AA{}. Missing or unmeasurable outputs count as failures among all 94 entries. Mean minimum RMSD uses only entries with defined RMSD; its denominator is shown explicitly. Candidate targets precede filtering. 
+Hit@$t$ is the percentage of all 94 entries with at least one retained conformer at RMSD $\leq t$ \AA{}; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties and the stored reference. The 2.0 \AA{} cutoff is the next larger archived recovery threshold. Candidate targets precede filtering.
 \end{minipage}
 \end{table}

@@ -30,14 +30,16 @@ proposed experiments as completed, or reintroduce analyses the user excluded.
 Preserve this framing when drafting Discussion, Conclusions, abstract, and title.
 
 
-The author's latest scope decision is core94 and a single recovery cutoff of
-0.75 Å. Keep ref in SI and remove threshold-sensitivity narratives from the
-main paper. Emphasize selection among the broader method panel under the
+The author's latest scope decision is core94 with 0.75 Å as the primary recovery
+cutoff. Table 2 also reports the next larger archived cutoff, 2.0 Å, alongside
+Best RMSD (the mean of per-entry minima), sorted with the lowest RMSD immediately
+above the separate ChEMBL3D-PB row. Keep ref in SI. Emphasize selection among the broader method panel under the
 study's identity, validity, and candidate-budget constraints. Table 1 reports 0.5 and 1.0 Å
 clustering radii, sorted in increasing order by the 0.5 Å mean, with ChEMBL3D-PB
 separate and last. It also reports the mean largest-cluster fraction at 1.0 Å
-(lower indicates less concentration); other diversity displays use 1.0 Å.
-These remain distinct from the recovery cutoff. See the updated
+(lower indicates less concentration). Figure 1 compares 0.5 Å cluster count
+with Best RMSD; the larger-ensemble diversity comparison uses 1.0 Å.
+Clustering radii remain distinct from recovery cutoffs. See the updated
 MANUSCRIPT_OUTLINE.md for current figure and table placement.
 
 Read METHODS_NOTES.md before revising Methods: it records evidence and unresolved

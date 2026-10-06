@@ -17,6 +17,10 @@ order were preserved. Markdown author instructions become LaTeX comments.
 - `source-build-figures.py`: unchanged original renderer, archived for provenance.
   Run the original in the analysis checkout; it assumes that repository layout
   and writes its working Markdown. It is not a paper-repository entrypoint.
+- `source-build-figures-2026-10-06.py`: revised renderer with Figure 1 showing
+  0.5 Å cluster count versus Best RMSD (mean of per-entry minima).
+- `diversity-rmsd-points.csv`: exact coordinates and measurable-entry counts for
+  that figure; the other figure assets were not regenerated for this change.
 
 Artwork is stored as PDF, SVG, and PNG under `figures/figure-2-*` through
 `figure-5-*`. No generation, scoring, or force-field analysis was rerun.

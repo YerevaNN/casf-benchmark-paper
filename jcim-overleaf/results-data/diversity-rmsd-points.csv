@@ -1,0 +1,12 @@
+method,label,clusters_0p5,best_rmsd,n_defined
+chembl3d_gt_pb,ChEMBL3D-PB,21.71276595744681,0.5253817379090603,94
+rdkit_random_raw_chembl_count,RDKit raw,34.265957446808514,0.6008553763626936,94
+rdkit_random_minimized_chembl_count,RDKit minimized,21.71276595744681,0.617848057912921,94
+torsion_raw_chembl_count,Torsion raw,54.159574468085104,0.6785579645953087,94
+torsion_minimized_chembl_count,Torsion minimized,21.861702127659573,0.6438555574117769,94
+loqi_raw_chembl_count,LoQI,24.98936170212766,0.5362343449266861,94
+torsional_diffusion_raw_chembl_count,Torsional Diffusion,40.9468085106383,0.5820703193460611,94
+mcf_drugs_l_raw_chembl_count,MCF drugs-L,31.236559139784948,0.559308190727478,93
+nextmol_dmt_l_raw_chembl_count,NExT-Mol DMT-L,31.597826086956523,0.5430954450070196,92
+flowr_raw_chembl_count,FlowR,54.08510638297872,0.6371202812804084,94
+qwen_1p7b_fsq_bigdata_step47023_chembl_count,Qwen 1.7B FSQ,55.27659574468085,0.5056330030580359,94

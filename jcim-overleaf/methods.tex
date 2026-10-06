@@ -149,7 +149,8 @@ Conformers are grouped using greedy clustering in their stored order. Each confo
 the nearest existing representative when the aligned RMSD is strictly below the clustering radius;
 otherwise, it starts a new cluster. Representatives remain fixed. We
 report clustering radii of 0.5 and 1.0 \AA{} in Table~\ref{tab:diversity}, using the same entries
-with defined measurements for both means. The remaining diversity comparisons use 1.0 \AA{}. The count depends on the size and ordering of the retained pool and describes
+with defined measurements for both means. The joint diversity--RMSD plot also uses 0.5 \AA{};
+the larger-ensemble comparison uses 1.0 \AA{}. The count depends on the size and ordering of the retained pool and describes
 geometric variation rather than occupied energy basins.
 
 To describe how sampling is distributed across clusters, we also calculate the fraction of
@@ -173,9 +174,14 @@ basins nor a binding free energy.
 
 For each CASF entry, we calculate the minimum aligned heavy-atom RMSD between the retained ensemble
 and its experimental reference. An entry is recovered when at least one conformer has RMSD $\leq$
-0.75 \AA{}. Hit@0.75 is the fraction of all mapped entries satisfying this condition. Empty,
-missing, or unmeasurable outputs remain in the denominator as failures. The mean minimum RMSD is
-calculated only over entries with defined measurements, with that denominator reported separately.
+0.75 \AA{}. Hit@0.75 is the fraction of all mapped entries satisfying this condition. Table~\ref{tab:count-recovery}
+also reports Hit@2.0 at the next larger archived cutoff, 2.0 \AA{}, using the same definition.
+Empty, missing, or unmeasurable outputs remain in the denominator as failures. Best RMSD in
+Table~\ref{tab:count-recovery} and Figure~\ref{fig:diversity-recovery} is the mean of the per-entry
+minimum RMSDs, calculated only over entries with defined measurements. It is the same statistic
+described as mean minimum RMSD elsewhere in the manuscript; it is not an average over all conformers
+or the single smallest distance across the panel. The number of measurable entries is given in
+the table notes.
 Mean retained counts use all mapped entries, including zero-count outputs.
 
 The fraction of retained conformers close to the reference addresses how frequently a method samples

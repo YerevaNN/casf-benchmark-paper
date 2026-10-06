@@ -1,5 +1,26 @@
 # Results: sources and author follow-up
 
+## Recovery percentages and diversity--RMSD plot, 6 October 2026
+
+Table 2 now contains three metrics: Hit@0.75, Hit@2.0, and Best RMSD.
+The next larger threshold actually archived in the selected CASF snapshot is
+2.0 Å, not 1.0 or 1.5 Å. Both percentages were verified from the per-entry
+minimum RMSDs against all 94 entries, with undefined outputs counted as misses.
+Best RMSD is the existing mean of those minima, verified without changing its
+denominator (92 NExT-Mol, 93 MCF, 94 others). It is not the mean distance of
+all generated conformers or a single panel-wide minimum. Generators run from
+highest to lowest unrounded RMSD, then ChEMBL3D-PB follows a dashed rule.
+
+Figure 1 now shows 0.5 Å cluster count on x and Best RMSD on y. The favorable
+direction is lower right. All points use unchanged archived measurements;
+axes show the observed region and no uncertainty intervals are added. Qwen
+combines the largest mean cluster count with the lowest Best RMSD, but the
+0.019 Å difference from ChEMBL3D is modest. The Results describes that joint
+position without asserting statistical outlier status or that every generated
+conformer is close. Archived points and the revised renderer are in results-data/.
+The initial Qwen checkpoint and pending benchmark-excluded evaluation remain
+explicit. The source database digest still matches the corrected snapshot.
+
 ## Cluster counts and occupancy, 6 October 2026
 
 Table 1 orders generators by increasing unrounded mean cluster count at 0.5 Å,

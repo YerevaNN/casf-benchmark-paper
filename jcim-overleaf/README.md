@@ -57,8 +57,10 @@ The current Results artwork is `figures/figure-2-diversity-recovery.*`,
 `figure-5-multiple-references.*`, each in PDF, editable SVG, and 350-dpi PNG.
 Supporting Figure S1 is the experimental-panel diagram. Main figure numbers are
 1–4; the artwork filenames retain their original stable identifiers. The current figures
-come from the benchmark's `docs/results_figures/build_figures.py`; an unchanged
-copy is archived as `results-data/source-build-figures.py` for provenance.
+come from the benchmark's `docs/results_figures/build_figures.py`. The initial
+renderer is archived as `results-data/source-build-figures.py`; the 6 October
+revision, with Figure 1 comparing 0.5 Å cluster count and Best RMSD, is archived
+as `results-data/source-build-figures-2026-10-06.py`.
 That script runs in the original analysis checkout and also updates its
 working Markdown; it is not a standalone renderer for this paper checkout.
 
