@@ -1,5 +1,21 @@
 # Results: sources and author follow-up
 
+## Removed redundant displays, 6 October 2026
+
+The author removed the pending-release checklist (former Table 5). Its unused
+TeX file remains historical. Figure 5 is no longer included in Results; Table 4
+retains the multi-reference results. The figure definition and artwork remain
+archived. A threshold-dependent coverage/precision replacement is under discussion,
+not yet included or computed for publication.
+
+All six selected methods have cached 23-molecule RMSD matrices in the analysis
+repository at `data/results/cache/druglike_rmsd_matrices/`. Reaggregating these at
+0.75 Å gives differences from Table 4 of at most 0.0131 percentage points in
+precision and 0.0046 percentage points in reference coverage. Resolve cache
+provenance and these small discrepancies before publishing a threshold sweep;
+the cache availability does not itself resolve common validity filtering.
+No conformers were regenerated, no alignments rerun, and Table 4 is unchanged.
+
 Tables 1–3 now exclude ChEMBL3D from best/second-best highlighting. Values and
 row order are unchanged; tied generated values share the same emphasis.
 

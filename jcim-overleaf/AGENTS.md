@@ -76,3 +76,8 @@ Python pipeline tests are not needed.
 
 For Tables 1–3, best/second-best highlighting ranks generated methods only.
 ChEMBL3D is an unranked baseline, always shown without bold or underlining.
+
+The author removed the dataset-release checklist (former Table 5) and the redundant
+multi-reference Figure 5 from Results. Keep Table 4. Historical assets remain
+archived; do not reinsert them. A threshold-dependent precision/coverage figure
+is only proposed, pending validation of cached RMSD matrices.

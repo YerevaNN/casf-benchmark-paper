@@ -170,36 +170,11 @@ Sources: [molecule-level records](results_tables/druglike_selected.csv) and [unr
 
 <!-- results-table-5:end -->
 
-<!-- results-figure-5:start -->
-![Figure 5](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.png)
-
-**Figure 5. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.
-
-[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.svg)
-<!-- results-figure-5:end -->
-
 In the existing evaluation, LoQI and Qwen achieve similar mean reference coverage, while LoQI has higher observed-reference precision. These preliminary comparisons describe the supplied pools; common validity filtering and consistent treatment of failed RMSD calculations remain necessary for the final evaluation. Thus, similar coverage can be obtained from ensembles that differ in the proportion of samples lying near the available experimental structures. This distinction qualifies the single-reference recovery result and is relevant when considering how generated conformers will populate a training dataset. Experimental references remain incomplete, however, so an unmatched conformer cannot automatically be classified as physically inaccessible or irrelevant to binding.
 
 [Recompute the drug-panel comparison using a common validity filter and RMSD-failure policy. The PLINDER release and molecule-selection criteria are documented in Methods and Appendix A; complete the description of reference-coordinate extraction and handling of repeated or nearly identical structures.]
 
 Together, experimental coverage, geometric variation, and structural and energetic plausibility inform the selection of a generation procedure for the larger dataset. Our current plan is to apply Qwen to molecules drawn from ChEMBL3D, subject to confirmation by the cleaned evaluation. The dataset will be characterized in terms of molecular coverage, conformers per molecule, validity yield, geometric diversity, and energy distributions. These measurements will establish what the selected procedure produces at scale and whether the resulting resource retains the properties that motivated its selection. The intended uses span structure-based drug design and learning molecular geometry, including pharmacophore-conditioned generation; performance in downstream applications remains to be evaluated separately.
-
-<!-- results-table-6:start -->
-**Table 5. Dataset-release reporting status (author working table).**
-
-| Release item | Current status |
-| --- | --- |
-| Molecular source | ChEMBL3D molecules are planned; final selection pending |
-| Generator | Qwen is the planned candidate, subject to the evaluation after benchmark exclusion |
-| Molecule and conformer counts | Pending generation and characterization |
-| Conformers per molecule and validity yield | Pending; benchmark counts above are not release counts |
-| Molecular size and flexibility distributions | Pending final molecular selection |
-| Geometric diversity and energy distributions | Pending analysis of the released pools |
-| Generation settings and checkpoint | Final configuration pending |
-| Public access and version identifier | Pending release |
-
-This table records unfinished release items; it is not a measured dataset result and should be replaced after generation and characterization.
-<!-- results-table-6:end -->
 
 # Discussion
 

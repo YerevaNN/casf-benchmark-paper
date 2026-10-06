@@ -23,7 +23,7 @@ purpose of this progression before introducing Table 1.
 - Results: ChEMBL-count diversity (Table 1), recovery (Table 2), joint plot
   (Figure 1), energy dispersion (Figure 2), two-target recovery/diversity
   (Table 3 and Figure 3), size/flexibility (Figure 4), multiple references
-  (Table 4 and Figure 5).
+  (Table 4; the redundant Figure 5 has been removed).
   Table 1 compares 0.5 and 1.0 Å cluster counts and largest-cluster occupancy
   at 1.0 Å, ordered by increasing 0.5 Å count with the stored reference last.
   Table 2 reports Hit@0.5, Hit@0.75, and Best RMSD (mean of per-entry minima),
@@ -33,7 +33,7 @@ purpose of this progression before introducing Table 1.
   RMSD, Hit@0.75, and 0.5 Å clusters in both groups. Order by decreasing
   1,000-candidate Best RMSD with ChEMBL3D-PB separate and last. Figure 3
   follows this order and compares Hit@0.75 and cluster count at 0.5 Å.
-- Dataset plans: Table 5 is explicitly an unfinished release checklist.
+- Dataset plans remain in prose; the unfinished release checklist (former Table 5) is removed.
 - Supporting Information: S1–S7 retain the earlier analyses and Plinder-23
   selection account; S8 describes generators and S9 reports energy summaries.
 - Discussion: transferred working prose; Conclusions still pending.

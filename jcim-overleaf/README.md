@@ -1,8 +1,9 @@
 # JCIM manuscript
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with five main tables, five main figures, nine supporting tables, and one supporting figure.
-Table 5 records pending dataset-release items and is not a measured result.
+and Discussion, with four main tables, four main figures, nine supporting tables, and one supporting figure.
+The separate sampling display is Figure B1. The release checklist (former Table 5)
+and redundant multi-reference Figure 5 have been removed from the article.
 Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
 submission-ready article.
@@ -25,7 +26,7 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 - `discussion.tex`: the working Discussion transferred from the Markdown draft.
 - `tables/generation-methods.tex`: generator descriptions (Supporting Table S8).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
-  `tables/druglike.tex`, `tables/release-status.tex`: Tables 1–5.
+  `tables/druglike.tex`: Tables 1–4. The unused `tables/release-status.tex` is historical.
 - `supporting-information.tex`: separate SI document with Tables S1--S9 and Figure S1 (core RMSD,
   ref recovery, size strata, multi-reference matching distances, and the Plinder-23
   selection criteria, statistics, molecule list, generator descriptions, and energy summaries); switch the Overleaf main document to this file to compile it.
