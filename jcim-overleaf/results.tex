@@ -53,8 +53,8 @@ variation without being dominated by an extreme high-energy tail.
 % AUTHOR: interpretation.
 
 Having characterized the ensembles themselves, we assess recovery of the experimental bound
-geometries at the ChEMBL-count target. Table~\ref{tab:count-recovery} reports Hit@0.75 and
-Hit@2.0 alongside Best RMSD, the distance from each experimental reference to its closest
+geometries at the ChEMBL-count target. Table~\ref{tab:count-recovery} reports Hit@0.5 and
+Hit@0.75 alongside Best RMSD, the distance from each experimental reference to its closest
 generated conformer, averaged across molecules with a measurable result. The hit rates describe how often
 an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its
 closest approach without imposing a cutoff.
@@ -62,11 +62,11 @@ closest approach without imposing a cutoff.
 \input{tables/count-recovery}
 
 Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9\% of core entries,
-followed by the stored ChEMBL3D ensemble at 78.7\%. At the broader 2.0 \AA{} tolerance,
-all methods recover at least 96.8\% of entries, and several reach 100\%. The larger cutoff
-therefore distinguishes the methods less strongly: an ensemble can approach the experimental
-geometry without reproducing it within the tighter tolerance. Qwen also has the lowest Best
-RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 \AA{}.
+followed by the stored ChEMBL3D ensemble at 78.7\%. At the tighter 0.5 \AA{} tolerance,
+LoQI has the highest hit rate at 67.0\%, followed by ChEMBL3D at 63.8\%; Qwen recovers
+56.4\%. Thus, reaching the experimental geometry within 0.75 \AA{} does not necessarily
+translate into the most frequent matches within 0.5 \AA{}. Qwen nevertheless has the lowest
+Best RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 \AA{}.
 
 Hit rate and Best RMSD need not rank methods in the same order. For example, minimized RDKit
 has a higher Hit@0.75 than raw RDKit, but a higher Best RMSD. Hit rate gives equal credit to
@@ -78,9 +78,11 @@ neither metric establishes that all generated conformers lie near the experiment
 We then consider geometric diversity and proximity to the bound conformation together.
 Figure~\ref{fig:diversity-recovery} places mean cluster count at 0.5 \AA{} against Best RMSD,
 with more clusters and a lower RMSD defining the favorable region toward the lower right.
-Qwen combines the largest cluster count with the lowest Best RMSD in this comparison. Random
-torsion sampling and FlowR produce nearly as many clusters, but their closest conformers remain
-farther from the experimental references on average. LoQI and ChEMBL3D approach the references
+Qwen combines the largest cluster count with the lowest Best RMSD in this comparison. The
+other generators with the highest cluster counts, random torsion sampling and FlowR, produce
+nearly as many clusters but struggle to approach the experimental references as closely: their
+Best RMSDs are higher. Broad geometric diversity therefore does not by itself ensure close
+recovery of the bound conformation. LoQI and ChEMBL3D approach the references
 with fewer clusters. Qwen's distinctive position therefore reflects its combination of broad
 geometric variation and close approaches to the observed structures, rather than a large RMSD
 advantage over every alternative. This combination makes it a candidate for dataset construction

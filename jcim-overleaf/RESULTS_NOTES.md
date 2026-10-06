@@ -1,5 +1,20 @@
 # Results: sources and author follow-up
 
+## Tighter recovery cutoff, 6 October 2026
+
+The author replaced Table 2's nearly saturated Hit@2.0 column with Hit@0.5.
+The current metric order is Hit@0.5, Hit@0.75, Best RMSD; generator row order,
+reference separation, and highlighting conventions are unchanged. Both hit
+rates were verified against per-entry RMSD minima using all 94 entries.
+LoQI leads Hit@0.5 (67.0%), followed by ChEMBL3D (63.8%), while Qwen reaches
+56.4%. The Results now describes that rank change and explicitly notes that
+the other generators with the highest cluster counts, FlowR and random
+torsion sampling, have higher Best RMSD. This does not assert that every
+diverse generator performs poorly or that all Qwen samples are close.
+Figure 1 adds dashed horizontal and vertical guides at the stored ChEMBL3D-PB
+values (21.7128 mean clusters, 0.52538 Å Best RMSD); these are reference guides,
+not an equality line between quantities with different units or a fitted trend.
+
 ## Recovery percentages and diversity--RMSD plot, 6 October 2026
 
 Table 2 now contains three metrics: Hit@0.75, Hit@2.0, and Best RMSD.

@@ -175,7 +175,7 @@ basins nor a binding free energy.
 For each CASF entry, we calculate the minimum aligned heavy-atom RMSD between the retained ensemble
 and its experimental reference. An entry is recovered when at least one conformer has RMSD $\leq$
 0.75 \AA{}. Hit@0.75 is the fraction of all mapped entries satisfying this condition. Table~\ref{tab:count-recovery}
-also reports Hit@2.0 at the next larger archived cutoff, 2.0 \AA{}, using the same definition.
+also reports Hit@0.5 at the tighter 0.5 \AA{} cutoff, using the same definition.
 Empty, missing, or unmeasurable outputs remain in the denominator as failures. Best RMSD in
 Table~\ref{tab:count-recovery} and Figure~\ref{fig:diversity-recovery} is the mean of the per-entry
 minimum RMSDs, calculated only over entries with defined measurements. It is the same statistic

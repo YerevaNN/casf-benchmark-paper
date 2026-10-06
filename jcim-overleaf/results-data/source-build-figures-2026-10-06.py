@@ -111,9 +111,12 @@ for key in KEYS:
 ax.set(xlim=(15,62),ylim=(.45,.73),xlabel='Mean geometric clusters at 0.5 Å (more is better)',
  ylabel='Best RMSD (Å; lower is better)')
 ax.set_xticks([20,30,40,50,60]);ax.set_yticks([.45,.50,.55,.60,.65,.70])
-footer(fig,'Closest conformer per molecule · descriptive means · axes show the observed region')
+reference=row('chembl3d_gt_pb','chembl_count')
+ax.axvline(float(radii.loc['chembl3d_gt_pb','clusters_0p5']),color='#7B838D',lw=.85,ls=(0,(4,3)),zorder=1)
+ax.axhline(float(reference.best_rmsd),color='#7B838D',lw=.85,ls=(0,(4,3)),zorder=1)
+footer(fig,'Dashed guides: ChEMBL3D-PB · lower right: more clusters and lower Best RMSD')
 pd.DataFrame(plot_rows).to_csv(OUT/'diversity-rmsd-points.csv',index=False)
-save(fig,'figure-2-diversity-recovery','**Figure 1. Geometric diversity and proximity to the experimental bound conformation at the ChEMBL-count target.** Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. The horizontal axis gives mean cluster count at 0.5 Å; the vertical axis gives Best RMSD, the per-molecule minimum over retained conformers averaged across entries with defined measurements. More clusters and lower Best RMSD place favorable ensembles toward the lower right. Means use 92 entries for NExT-Mol, 93 for MCF, and 94 for the others. Axes show the observed region for readability. Retained ensemble sizes differ despite matched candidate targets. These are descriptive means without uncertainty intervals; Best RMSD does not describe every generated conformer.')
+save(fig,'figure-2-diversity-recovery','**Figure 1. Geometric diversity and proximity to the experimental bound conformation at the ChEMBL-count target.** Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. The horizontal axis gives mean cluster count at 0.5 Å; the vertical axis gives Best RMSD, the per-molecule minimum over retained conformers averaged across entries with defined measurements. Dashed horizontal and vertical lines mark the ChEMBL3D-PB values. Points to the right and below these guides have more clusters and lower Best RMSD than the stored ensemble. Means use 92 entries for NExT-Mol, 93 for MCF, and 94 for the others. Axes show the observed region for readability. Retained ensemble sizes differ despite matched candidate targets. These are descriptive means without uncertainty intervals; Best RMSD does not describe every generated conformer.')
 
 # 3. Two endpoint comparisons, not interpolated sampling curves.
 fig,(a,b)=plt.subplots(1,2,figsize=(7.2,5.45),sharey=True)

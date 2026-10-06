@@ -31,7 +31,7 @@ Preserve this framing when drafting Discussion, Conclusions, abstract, and title
 
 
 The author's latest scope decision is core94 with 0.75 Å as the primary recovery
-cutoff. Table 2 also reports the next larger archived cutoff, 2.0 Å, alongside
+cutoff. Table 2 also reports the tighter 0.5 Å cutoff alongside
 Best RMSD (the mean of per-entry minima), sorted with the lowest RMSD immediately
 above the separate ChEMBL3D-PB row. Keep ref in SI. Emphasize selection among the broader method panel under the
 study's identity, validity, and candidate-budget constraints. Table 1 reports 0.5 and 1.0 Å

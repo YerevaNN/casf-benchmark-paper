@@ -75,5 +75,5 @@
   ],
   "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The corrected energy figure and dataset-release figures remain pending.",
   "figure_1_updated_on": "2026-10-06",
-  "figure_1_note": "0.5 \u00c5 cluster count versus mean of per-molecule best RMSDs; archived counts and distances, no new scoring. Other figure assets unchanged."
+  "figure_1_note": "0.5 \u00c5 cluster count versus mean of per-molecule best RMSDs, with dashed horizontal and vertical guides at ChEMBL3D-PB values; archived counts and distances, no new scoring. Other figure assets unchanged."
 }

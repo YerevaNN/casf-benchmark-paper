@@ -37,39 +37,39 @@ Energy dispersion provides information that cluster counts alone cannot supply. 
 
 [Here goes the updated MMFF94s energy figure, showing within-molecule energy comparisons, robust summaries of energy spread, and the high-energy tail. Recompute this analysis using the corrected molecular identities and final generated pools before inserting a result-specific interpretation.]
 
-Having characterized the ensembles themselves, we assess recovery of the experimental bound geometries at the ChEMBL-count target. Table 2 reports Hit@0.75 and Hit@2.0 alongside Best RMSD, the distance from each experimental reference to its closest generated conformer, averaged across molecules with a measurable result. The hit rates describe how often an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its closest approach without imposing a cutoff.
+Having characterized the ensembles themselves, we assess recovery of the experimental bound geometries at the ChEMBL-count target. Table 2 reports Hit@0.5 and Hit@0.75 alongside Best RMSD, the distance from each experimental reference to its closest generated conformer, averaged across molecules with a measurable result. The hit rates describe how often an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its closest approach without imposing a cutoff.
 
 <!-- results-table-3:start -->
 **Table 2. Recovery of the CASF bound conformation at the ChEMBL-count target.**
 
-| Method | Hit@0.75 (%) ↑ | Hit@2.0 (%) ↑ | Best RMSD (Å) ↓ |
+| Method | Hit@0.5 (%) ↑ | Hit@0.75 (%) ↑ | Best RMSD (Å) ↓ |
 | --- | --- | --- | --- |
-| Torsion raw | 66.0 | <u>98.9</u> | 0.679 |
-| Torsion minimized | 68.1 | <u>98.9</u> | 0.644 |
-| FlowR | 70.2 | **100.0** | 0.637 |
-| RDKit minimized | 70.2 | **100.0** | 0.618 |
-| RDKit raw | 66.0 | **100.0** | 0.601 |
-| Torsional Diffusion | 73.4 | 97.9 | 0.582 |
-| MCF drugs-L | 71.3 | 97.9 | 0.559 |
-| NExT-Mol DMT-L | 76.6 | 96.8 | 0.543 |
-| LoQI | 74.5 | 96.8 | 0.536 |
-| Qwen 1.7B FSQ | **80.9** | **100.0** | **0.506** |
+| Torsion raw | 35.1 | 66.0 | 0.679 |
+| Torsion minimized | 46.8 | 68.1 | 0.644 |
+| FlowR | 47.9 | 70.2 | 0.637 |
+| RDKit minimized | 45.7 | 70.2 | 0.618 |
+| RDKit raw | 43.6 | 66.0 | 0.601 |
+| Torsional Diffusion | 56.4 | 73.4 | 0.582 |
+| MCF drugs-L | 54.3 | 71.3 | 0.559 |
+| NExT-Mol DMT-L | 53.2 | 76.6 | 0.543 |
+| LoQI | **67.0** | 74.5 | 0.536 |
+| Qwen 1.7B FSQ | 56.4 | **80.9** | **0.506** |
 | ┄┄┄ | ┄┄┄ | ┄┄┄ | ┄┄┄ |
-| ChEMBL3D-PB | <u>78.7</u> | 97.9 | <u>0.525</u> |
+| ChEMBL3D-PB | <u>63.8</u> | <u>78.7</u> | <u>0.525</u> |
 
-Hit@t is the percentage of all 94 entries with at least one retained conformer at RMSD ≤ t Å; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties and the stored reference. The 2.0 Å cutoff is the next larger archived recovery threshold. Candidate targets precede filtering. Source: [selected CASF records](results_tables/casf_selected.csv).
+Hit@t is the percentage of all 94 entries with at least one retained conformer at RMSD ≤ t Å; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties and the stored reference. Candidate targets precede filtering. Source: [selected CASF records](results_tables/casf_selected.csv).
 <!-- results-table-3:end -->
 
-Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9% of core entries, followed by the stored ChEMBL3D ensemble at 78.7%. At the broader 2.0 Å tolerance, all methods recover at least 96.8% of entries, and several reach 100%. The larger cutoff therefore distinguishes the methods less strongly: an ensemble can approach the experimental geometry without reproducing it within the tighter tolerance. Qwen also has the lowest Best RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 Å.
+Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9% of core entries, followed by the stored ChEMBL3D ensemble at 78.7%. At the tighter 0.5 Å tolerance, LoQI has the highest hit rate at 67.0%, followed by ChEMBL3D at 63.8%; Qwen recovers 56.4%. Thus, reaching the experimental geometry within 0.75 Å does not necessarily translate into the most frequent matches within 0.5 Å. Qwen nevertheless has the lowest Best RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 Å.
 
 Hit rate and Best RMSD need not rank methods in the same order. For example, minimized RDKit has a higher Hit@0.75 than raw RDKit, but a higher Best RMSD. Hit rate gives equal credit to all matches within the cutoff and does not measure how far the remaining entries miss it. Best RMSD retains the magnitude of those distances, including large misses, while averaging only over measurable entries. It still describes the closest member of each ensemble; neither metric establishes that all generated conformers lie near the experimental reference.
 
-We then consider geometric diversity and proximity to the bound conformation together. Figure 1 places mean cluster count at 0.5 Å against Best RMSD, with more clusters and a lower RMSD defining the favorable region toward the lower right. Qwen combines the largest cluster count with the lowest Best RMSD in this comparison. Random torsion sampling and FlowR produce nearly as many clusters, but their closest conformers remain farther from the experimental references on average. LoQI and ChEMBL3D approach the references with fewer clusters. Qwen's distinctive position therefore reflects its combination of broad geometric variation and close approaches to the observed structures, rather than a large RMSD advantage over every alternative. This combination makes it a candidate for dataset construction in the preliminary evaluation, subject to confirmation after benchmark molecules have been excluded from its training data.
+We then consider geometric diversity and proximity to the bound conformation together. Figure 1 places mean cluster count at 0.5 Å against Best RMSD, with more clusters and a lower RMSD defining the favorable region toward the lower right. Qwen combines the largest cluster count with the lowest Best RMSD in this comparison. The other generators with the highest cluster counts, random torsion sampling and FlowR, produce nearly as many clusters but struggle to approach the experimental references as closely: their Best RMSDs are higher. Broad geometric diversity therefore does not by itself ensure close recovery of the bound conformation. LoQI and ChEMBL3D approach the references with fewer clusters. Qwen's distinctive position therefore reflects its combination of broad geometric variation and close approaches to the observed structures, rather than a large RMSD advantage over every alternative. This combination makes it a candidate for dataset construction in the preliminary evaluation, subject to confirmation after benchmark molecules have been excluded from its training data.
 
 <!-- results-figure-2:start -->
 ![Figure 1](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-2-diversity-recovery.png)
 
-**Figure 1. Geometric diversity and proximity to the experimental bound conformation at the ChEMBL-count target.** Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. The horizontal axis gives mean cluster count at 0.5 Å; the vertical axis gives Best RMSD, the per-molecule minimum over retained conformers averaged across entries with defined measurements. More clusters and lower Best RMSD place favorable ensembles toward the lower right. Means use 92 entries for NExT-Mol, 93 for MCF, and 94 for the others. Axes show the observed region for readability. Retained ensemble sizes differ despite matched candidate targets. These are descriptive means without uncertainty intervals; Best RMSD does not describe every generated conformer.
+**Figure 1. Geometric diversity and proximity to the experimental bound conformation at the ChEMBL-count target.** Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. The horizontal axis gives mean cluster count at 0.5 Å; the vertical axis gives Best RMSD, the per-molecule minimum over retained conformers averaged across entries with defined measurements. Dashed horizontal and vertical lines mark the ChEMBL3D-PB values. Points to the right and below these guides have more clusters and lower Best RMSD than the stored ensemble. Means use 92 entries for NExT-Mol, 93 for MCF, and 94 for the others. Axes show the observed region for readability. Retained ensemble sizes differ despite matched candidate targets. These are descriptive means without uncertainty intervals; Best RMSD does not describe every generated conformer.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-2-diversity-recovery.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-2-diversity-recovery.svg)
 <!-- results-figure-2:end -->
