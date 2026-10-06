@@ -1,12 +1,12 @@
 % Transferred from docs/abstract_introduction_working.md in casf-benchmark,
-% 30 September 2026, preserving the author-approved working prose.
+% Framing revised 6 October 2026: structure-based drug design as the broad scope.
 \section{Introduction}
 \label{sec:introduction}
 
 Many small molecules do not have a single biologically relevant
 three-dimensional shape. The same molecule can adopt different conformations
 when bound to different proteins, or even in different complexes with the same
-protein. For applications involving protein binding, a useful conformer
+protein. For structure-based drug design, a useful conformer
 ensemble should therefore represent the range of observed bound geometries that
 a molecule can adopt. The practical challenge is to achieve this coverage with
 a finite set of structures, while preserving molecular identity and avoiding
@@ -15,19 +15,17 @@ surveys of protein-bound ligands support this view of molecules as
 conformational ensembles, while also showing that repeated structures can
 belong to a small number of similar conformations.\cite{friedrich2018diversity}
 
-Such ensembles are relevant to several drug-discovery settings. Ligand-based
-pharmacophore modeling uses the spatial arrangement of chemical features shared
-by active compounds, and candidate molecules must be able to adopt
-conformations compatible with those arrangements. Three-dimensional shape
-searching likewise depends on having an appropriate conformation available when
-a molecular library is queried. Large conformer collections also provide
-training data for molecular models that learn from three-dimensional structure.
-In each setting, the value of an ensemble depends on where its conformers lie
-in conformational space, rather than on the number of different structures
-alone. Our particular motivation is to prepare data for
-pharmacophore-conditioned generation, where changes in molecular conformation
-alter the spatial relationships among the chemical features presented during
-training.
+Such ensembles are relevant to structure-based drug design and related
+molecular modeling tasks. They provide candidate ligand geometries for
+molecular docking and binding-pose prediction.\cite{mcnutt2023conformers}
+Reusable conformer libraries also support three-dimensional shape searching
+and pharmacophore screening, while large conformer collections provide
+training data for models that learn molecular geometry. Potential learning
+applications include conformer prediction, molecular representation learning,
+and pharmacophore-conditioned generation. Across these applications, the value
+of an ensemble depends on whether its sampled variation includes geometries
+relevant to molecular recognition, as well as on the number of different
+structures it contains.
 
 For a conformational resource intended to cover millions of molecules, the
 eventual protein targets are often unknown. Generating an ensemble around one
@@ -50,8 +48,8 @@ represent the different bound geometries of the same drug. Their study
 supported the use of reusable conformational libraries for three-dimensional
 screening and showed why several conformations may be needed to represent one
 molecule. We build on this motivation by asking which generation strategies
-provide useful experimental coverage as conformer libraries become large
-training resources. The emphasis is on selecting a distribution of molecular
+provide useful experimental coverage for reusable molecular libraries and
+conformational training resources. The emphasis is on selecting a distribution of molecular
 shapes that combines coverage with geometric variation and physical
 plausibility, including for molecules observed in more than one bound
 conformation.\cite{gunther2006representation}
@@ -133,14 +131,14 @@ observations.\cite{durairaj2024plinder}
 
 Together, these experiments are intended to identify a generation procedure
 that combines useful experimental coverage with geometric variation and
-structural plausibility. The practical objective is to apply the selected
-procedure to a large molecular collection and release the resulting
-conformational dataset. Pharmacophore-conditioned learning is the principal
-intended use, with additional potential applications in conformer prediction
-and molecular representation learning. The present study evaluates the
-structural properties supporting that choice; it does not assume that these
-properties alone establish an improvement in downstream model training.
+structural plausibility. The benchmark provides a basis for selecting reusable
+conformer ensembles for structure-based drug design. The practical objective
+is to apply the selected procedure to a large molecular collection and release
+the resulting conformational dataset for molecular modeling and learning from
+three-dimensional structure. The present study evaluates the structural
+properties supporting that selection; improvements in downstream docking,
+screening, or model training require separate validation.
 % AUTHOR: supply the exact Qwen coordinate-tokenizer paper; the working draft
 % leaves this reference unidentified. Do not substitute a base-model citation.
 % AUTHOR: energy analysis, benchmark-excluded Qwen evaluation, and dataset
-% generation/release remain pending. Current Methods/Results are an earlier draft.
+% generation/release remain pending.

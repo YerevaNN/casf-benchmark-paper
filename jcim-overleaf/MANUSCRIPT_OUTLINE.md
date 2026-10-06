@@ -1,5 +1,13 @@
 # JCIM manuscript outline
 
+## Intended scope, 6 October 2026
+
+The benchmark is intended to guide conformer-generator selection for
+structure-based drug design broadly. Pharmacophore-conditioned generation is
+one potential use of the proposed resource, not its principal organizing
+purpose. Keep the distinction between aligned ligand-conformation coverage
+and improvements in downstream docking, screening, or model training.
+
 ## Current author sequence, 5 October 2026
 
 The working Markdown now governs the Introduction, Methods, Results, and
