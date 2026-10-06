@@ -21,6 +21,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[letterpaper]{article}
 
+% Resolve manuscript assets both from the repository root and this directory.
+\IfFileExists{acs-template.bib}
+  {\newcommand{\manuscriptroot}{}}
+  {\newcommand{\manuscriptroot}{jcim-overleaf/}}
+\makeatletter
+\edef\input@path{{\manuscriptroot}}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Font setup - delete if you are using LuaLaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +54,8 @@
 % details of adjusting the number of authors printed, e.g.
 % "maxnames = 15" to print no more than 15 authors.
 \usepackage[style = chem-acs]{biblatex}
-\addbibresource{acs-template.bib}
+\edef\manuscriptbibliography{\manuscriptroot acs-template.bib}
+\expandafter\addbibresource\expandafter{\manuscriptbibliography}
 % If you are using classical BibTeX, remove the above lines and 
 % uncomment:
 %\usepackage{achemso}
@@ -55,6 +64,8 @@
 %% Graphic inclusion and scheme and chart support
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
+\graphicspath{{\manuscriptroot}}
+\usepackage{amsmath}
 \usepackage{float}
 \usepackage{longtable,booktabs,array}
 \usepackage{arydshln}
@@ -157,15 +168,15 @@ immediately after the keyswords (if required).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Start the main part of the manuscript here.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{introduction} 
+\input{\manuscriptroot introduction}
 
 % Benchmark Methods and Results; front and end matter retain template examples.
-\input{methods}
+\input{\manuscriptroot methods}
 
 % Results draft; see RESULTS_NOTES.md for evidence and unfinished analyses.
-\input{results}
+\input{\manuscriptroot results}
 
-\input{discussion}
+\input{\manuscriptroot discussion}
 
 % AUTHOR: Conclusions remain to be drafted.
 
@@ -214,6 +225,6 @@ The companion identity data are provided in \texttt{plinder23-molecules.csv}.
 \rule{0.05in}{1.75in}
 
 % Review-only options requested by the author; remove this input after selection.
-\input{figure-candidates}
+\input{\manuscriptroot figure-candidates}
 
 \end{document}

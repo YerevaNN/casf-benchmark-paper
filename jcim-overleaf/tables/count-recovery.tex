@@ -16,17 +16,17 @@ Torsion minimized & 46.8 & 68.1 & 0.644 \\
 FlowR & 47.9 & 70.2 & 0.637 \\
 RDKit minimized & 45.7 & 70.2 & 0.618 \\
 RDKit raw & 43.6 & 66.0 & 0.601 \\
-Torsional Diffusion & 56.4 & 73.4 & 0.582 \\
+Torsional Diffusion & \underline{56.4} & 73.4 & 0.582 \\
 MCF drugs-L & 54.3 & 71.3 & 0.559 \\
-NExT-Mol DMT-L & 53.2 & 76.6 & 0.543 \\
-LoQI & \textbf{67.0} & 74.5 & 0.536 \\
-Qwen 1.7B FSQ & 56.4 & \textbf{80.9} & \textbf{0.506} \\
+NExT-Mol DMT-L & 53.2 & \underline{76.6} & 0.543 \\
+LoQI & \textbf{67.0} & 74.5 & \underline{0.536} \\
+Qwen 1.7B FSQ & \underline{56.4} & \textbf{80.9} & \textbf{0.506} \\
 \hdashline
-ChEMBL3D-PB & \underline{63.8} & \underline{78.7} & \underline{0.525} \\
+ChEMBL3D-PB & 63.8 & 78.7 & 0.525 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Hit@$t$ is the percentage of all 94 entries with at least one retained conformer at RMSD $\leq t$ \AA{}; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties and the stored reference. Candidate targets precede filtering.
+Hit@$t$ is the percentage of all 94 entries with at least one retained conformer at RMSD $\leq t$ \AA{}; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. Candidate targets precede filtering.
 \end{minipage}
 \end{table}

@@ -1,7 +1,8 @@
+\providecommand{\manuscriptroot}{}
 % Working Results, transferred 5 October 2026.
 \section{Results}
 \label{sec:results}
-\input{figures}
+\input{\manuscriptroot figures}
 
 % AUTHOR: Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. The energy comparison uses a common-hydrogen recalculation on the archived ensembles; release counts remain pending.
 
@@ -13,7 +14,7 @@ placing each generator alongside the stored ChEMBL3D ensemble for the same molec
 Table~\ref{tab:diversity} summarizes geometric diversity through cluster counts at 0.5 and 1.0 \AA{},
 together with the retained ensemble sizes and the fraction of conformers in the largest cluster.
 
-\input{tables/diversity}
+\input{\manuscriptroot tables/diversity}
 
 Qwen, random torsion sampling, and FlowR produce the most geometrically diverse ensembles by
 cluster count at both radii. Their counts are close at 0.5 \AA{}, with Qwen ranked first, whereas
@@ -42,7 +43,7 @@ generated conformer, averaged across molecules with a measurable result. The hit
 an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its
 closest approach without imposing a cutoff.
 
-\input{tables/count-recovery}
+\input{\manuscriptroot tables/count-recovery}
 
 Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9\% of core entries,
 followed by the stored ChEMBL3D ensemble at 78.7\%. At the tighter 0.5 \AA{} tolerance,
@@ -115,12 +116,12 @@ extends recovery beyond the available stored conformers, but the comparison does
 ChEMBL3D would achieve with an equally enlarged ensemble. The two candidate targets also yield
 different retained counts across methods and do not represent equal computational costs.
 
-\input{tables/recovery}
+\input{\manuscriptroot tables/recovery}
 
 \recoveryfigure
 
 % Review alternatives requested by the author; final figure selection is pending.
-\input{sampling-figure-options}
+\input{\manuscriptroot sampling-figure-options}
 
 Recovery establishes whether an ensemble contains at least one close match. The fraction of retained
 conformers within 0.75 \AA{} of the reference addresses a complementary question: how frequently the
@@ -156,7 +157,7 @@ Reference coverage and sample precision distinguish how many experimental observ
 covers from how frequently it samples near them. Table~\ref{tab:druglike} reports these two
 measurements together with the matching distances defined in Methods.
 
-\input{tables/druglike}
+\input{\manuscriptroot tables/druglike}
 
 \drugfigure
 
@@ -184,4 +185,4 @@ retains the properties that motivated its selection. The intended uses span stru
 drug design and learning molecular geometry, including pharmacophore-conditioned generation;
 performance in downstream applications remains to be evaluated separately.
 
-\input{tables/release-status}
+\input{\manuscriptroot tables/release-status}

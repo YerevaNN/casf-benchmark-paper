@@ -20,9 +20,9 @@ A useful conformational resource should represent a range of molecular shapes wh
 | Torsion raw | 71.1 | <u>54.2</u> | 21.8 | 44.4 |
 | Qwen 1.7B FSQ | <u>78.3</u> | **55.3** | <u>22.7</u> | <u>44.1</u> |
 | ┄┄┄ | ┄┄┄ | ┄┄┄ | ┄┄┄ | ┄┄┄ |
-| ChEMBL3D-PB | **81.2** | 21.7 | 7.7 | 47.2 |
+| ChEMBL3D-PB | 81.2 | 21.7 | 7.7 | 47.2 |
 
-Generators are ordered by increasing unrounded mean cluster count at 0.5 Å; the stored ChEMBL3D-PB ensemble is shown separately. Bold and underlining mark the best and second-best distinct values in each column, including ties and the stored reference. More clusters indicate broader geometric diversity; a smaller largest-cluster fraction indicates less concentration in one cluster. Retained count describes yield, not diversity. Retained counts are averaged over all 94 entries, including empty outputs. Cluster statistics use identical defined-entry sets within each method: 92 for NExT-Mol, 93 for MCF, and 94 for the others. Largest-cluster fractions are calculated per molecule before averaging. These are geometric clusters, not energy basins. Source: [clustering and occupancy comparison](results_tables/clustering_radius_comparison.csv).
+Generators are ordered by increasing unrounded mean cluster count at 0.5 Å; the stored ChEMBL3D-PB ensemble is shown separately. Bold and underlining mark the best and second-best distinct values in each column, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. More clusters indicate broader geometric diversity; a smaller largest-cluster fraction indicates less concentration in one cluster. Retained count describes yield, not diversity. Retained counts are averaged over all 94 entries, including empty outputs. Cluster statistics use identical defined-entry sets within each method: 92 for NExT-Mol, 93 for MCF, and 94 for the others. Largest-cluster fractions are calculated per molecule before averaging. These are geometric clusters, not energy basins. Source: [clustering and occupancy comparison](results_tables/clustering_radius_comparison.csv).
 <!-- results-table-2:end -->
 
 Qwen, random torsion sampling, and FlowR produce the most geometrically diverse ensembles by cluster count at both radii. Their counts are close at 0.5 Å, with Qwen ranked first, whereas FlowR produces the most clusters at 1.0 Å. LoQI, the minimized baselines, and the stored ChEMBL3D ensembles consistently form fewer clusters at both radii, indicating narrower geometric variation under these sampling conditions. The broad separation between these groups therefore persists across the two resolutions, despite changes in their exact ordering.
@@ -43,15 +43,15 @@ Having characterized the ensembles themselves, we assess recovery of the experim
 | FlowR | 47.9 | 70.2 | 0.637 |
 | RDKit minimized | 45.7 | 70.2 | 0.618 |
 | RDKit raw | 43.6 | 66.0 | 0.601 |
-| Torsional Diffusion | 56.4 | 73.4 | 0.582 |
+| Torsional Diffusion | <u>56.4</u> | 73.4 | 0.582 |
 | MCF drugs-L | 54.3 | 71.3 | 0.559 |
-| NExT-Mol DMT-L | 53.2 | 76.6 | 0.543 |
-| LoQI | **67.0** | 74.5 | 0.536 |
-| Qwen 1.7B FSQ | 56.4 | **80.9** | **0.506** |
+| NExT-Mol DMT-L | 53.2 | <u>76.6</u> | 0.543 |
+| LoQI | **67.0** | 74.5 | <u>0.536</u> |
+| Qwen 1.7B FSQ | <u>56.4</u> | **80.9** | **0.506** |
 | ┄┄┄ | ┄┄┄ | ┄┄┄ | ┄┄┄ |
-| ChEMBL3D-PB | <u>63.8</u> | <u>78.7</u> | <u>0.525</u> |
+| ChEMBL3D-PB | 63.8 | 78.7 | 0.525 |
 
-Hit@t is the percentage of all 94 entries with at least one retained conformer at RMSD ≤ t Å; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties and the stored reference. Candidate targets precede filtering. Source: [selected CASF records](results_tables/casf_selected.csv).
+Hit@t is the percentage of all 94 entries with at least one retained conformer at RMSD ≤ t Å; missing or unmeasurable outputs count as failures. Best RMSD is the per-molecule minimum over retained conformers, averaged across entries with defined RMSD (92 for NExT-Mol, 93 for MCF, 94 for the others). It does not average distances over all generated conformers. Generators are sorted by decreasing unrounded Best RMSD, placing the lowest value immediately above the separate ChEMBL3D-PB reference. Bold and underlining identify the best and second-best distinct values, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. Candidate targets precede filtering. Source: [selected CASF records](results_tables/casf_selected.csv).
 <!-- results-table-3:end -->
 
 Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9% of core entries, followed by the stored ChEMBL3D ensemble at 78.7%. At the tighter 0.5 Å tolerance, LoQI has the highest hit rate at 67.0%, followed by ChEMBL3D at 63.8%; Qwen recovers 56.4%. Thus, reaching the experimental geometry within 0.75 Å does not necessarily translate into the most frequent matches within 0.5 Å. Qwen nevertheless has the lowest Best RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 Å.
@@ -98,15 +98,15 @@ The stored ChEMBL3D ensemble remains unchanged, with a hit rate of 78.7%. Additi
 | Torsion raw | 0.477 | 78.7 | <u>296.8</u> | 0.679 | 66.0 | <u>54.2</u> |
 | RDKit raw | 0.437 | 80.9 | 114.6 | 0.601 | 66.0 | 34.3 |
 | FlowR | 0.414 | 86.2 | **298.1** | 0.637 | 70.2 | 54.1 |
-| NExT-Mol DMT-L | 0.386 | 86.2 | 106.5 | 0.543 | 76.6 | 31.6 |
+| NExT-Mol DMT-L | 0.386 | 86.2 | 106.5 | 0.543 | <u>76.6</u> | 31.6 |
 | Torsional Diffusion | 0.371 | <u>89.4</u> | 187.7 | 0.582 | 73.4 | 40.9 |
 | MCF drugs-L | 0.366 | 86.2 | 110.3 | 0.559 | 71.3 | 31.2 |
-| LoQI | <u>0.339</u> | 86.2 | 84.5 | 0.536 | 74.5 | 25.0 |
+| LoQI | <u>0.339</u> | 86.2 | 84.5 | <u>0.536</u> | 74.5 | 25.0 |
 | Qwen 1.7B FSQ | **0.307** | **91.5** | 284.5 | **0.506** | **80.9** | **55.3** |
 | --- | --- | --- | --- | --- | --- | --- |
-| ChEMBL3D-PB | — | — | — | <u>0.525</u> | <u>78.7</u> | 21.7 |
+| ChEMBL3D-PB | — | — | — | 0.525 | 78.7 | 21.7 |
 
-Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties and the stored reference where reported. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.
+Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.
 
 Source: [budget comparison](results_tables/sampling_budget_comparison.csv); [per-entry records](results_tables/sampling_budget_per_entry.csv).
 <!-- results-table-4:end -->

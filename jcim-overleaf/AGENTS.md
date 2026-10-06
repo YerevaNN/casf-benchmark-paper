@@ -70,3 +70,6 @@ sample names and claims only with verified information or explicit placeholders.
 For manuscript-only edits, check citations and cross-references in the source.
 Do not compile local previews: the user reviews changes in Overleaf.
 Python pipeline tests are not needed.
+
+For Tables 1–3, best/second-best highlighting ranks generated methods only.
+ChEMBL3D is an unranked baseline, always shown without bold or underlining.

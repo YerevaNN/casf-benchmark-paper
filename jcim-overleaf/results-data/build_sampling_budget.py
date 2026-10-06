@@ -40,20 +40,22 @@ for r in fixed.itertuples():
 ref=s[s.method.eq('chembl3d_gt_pb')].iloc[0]
 ordered.append((ref.label,None,ref))
 metrics=['best_rmsd','hit_0p75','clusters_0p5']
-# Rank unrounded values, including the stored reference only where it is reported.
+# Rank unrounded values among generated methods only; the stored baseline is unranked.
 ranks={}
 for tier in ['fixed','chembl_count']:
-    rows=s[s.tier.eq(tier) | (s.tier.eq('reference') if tier=='chembl_count' else False)]
+    rows=s[s.tier.eq(tier)]
     for key in metrics:ranks[tier,key]=sorted(set(rows[key]),reverse=key!='best_rmsd')[:2]
 def cell(r,key,tier,tex=False):
     if r is None:return '---' if tex else '—'
     value=float(r[key] if isinstance(r,pd.Series) else getattr(r,key))
     value_text=f'{value:.3f}' if key=='best_rmsd' else f'{value*(100 if key=="hit_0p75" else 1):.1f}'
+    method=r['method'] if isinstance(r,pd.Series) else r.method
+    if method=='chembl3d_gt_pb':return value_text
     best=ranks[tier,key]
     if value==best[0]:return r'\textbf{'+value_text+'}' if tex else '**'+value_text+'**'
     if value==best[1]:return r'\underline{'+value_text+'}' if tex else '<u>'+value_text+'</u>'
     return value_text
-note='Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties and the stored reference where reported. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.'
+note='Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.'
 md=['**Table 3. Recovery and geometric diversity at the two candidate targets.**','',
 '| Method | 1,000: Best RMSD (Å) ↓ | 1,000: Hit@0.75 (%) ↑ | 1,000: clusters at 0.5 Å ↑ | ChEMBL-count: Best RMSD (Å) ↓ | ChEMBL-count: Hit@0.75 (%) ↑ | ChEMBL-count: clusters at 0.5 Å ↑ |',
 '| --- | --- | --- | --- | --- | --- | --- |']

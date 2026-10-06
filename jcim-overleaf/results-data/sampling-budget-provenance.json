@@ -2,7 +2,7 @@
   "database": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite",
   "database_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
   "selected_sha256": "0f6c0ea0cc4b9b422a9807ae3eed68938cb29d991f3f2f0fe0c019a6fda4b96c",
-  "script_sha256": "de24438649b48dec0bfa983bf0520132fbbf5e990acdcbb7a157d376d8594af1",
+  "script_sha256": "424b60d66eae1da21b1c712276e62afd67dd47acb3eb6a92814c60321252133b",
   "cluster_radius_angstrom": 0.5,
   "recovery_cutoff_angstrom": 0.75,
   "sort": "Decreasing unrounded 1,000-candidate Best RMSD; stored reference last",

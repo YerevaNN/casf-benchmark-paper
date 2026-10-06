@@ -3,7 +3,9 @@
 This is the canonical manuscript repository for the CASF benchmark paper:
 https://github.com/YerevaNN/casf-benchmark-paper
 
-- Edit the paper in `jcim-overleaf/`; its main document is `acs-template.tex`.
+- Edit the paper in `jcim-overleaf/`; its manuscript source is `acs-template.tex`.
+  The root `main.tex` is the Overleaf entry point; `jcim-overleaf/main.tex`
+  supports uploads containing only that directory.
 - Read `jcim-overleaf/AGENTS.md` and its linked writing/evidence instructions.
 - The user has requested that future paper changes be committed and pushed here
   using the authorized MenuaB account. The Overleaf-connected branch is `main`.

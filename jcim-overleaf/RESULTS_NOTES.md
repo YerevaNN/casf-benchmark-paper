@@ -1,5 +1,8 @@
 # Results: sources and author follow-up
 
+Tables 1–3 now exclude ChEMBL3D from best/second-best highlighting. Values and
+row order are unchanged; tied generated values share the same emphasis.
+
 ## Sampling alternatives requested for review, 6 October 2026
 
 Figures B1/B2 follow the main budget figure without changing main figure numbers.
@@ -105,7 +108,7 @@ Table 1 orders generators by increasing unrounded mean cluster count at 0.5 Å,
 with Qwen last among generators and ChEMBL3D-PB in a separate final row below
 a dashed rule. Both 0.5 and 1.0 Å counts remain. Bold and underlining identify
 the best and second-best distinct values in each column, including tied values
-and the stored reference; retained-count highlighting concerns yield only.
+among generated methods only; the stored reference is unranked. Retained-count highlighting concerns yield only.
 
 The added column is the mean largest-cluster fraction at 1.0 Å, expressed as
 a percentage. Smaller values indicate less concentration in one cluster.

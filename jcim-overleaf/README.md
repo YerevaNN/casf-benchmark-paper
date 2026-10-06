@@ -45,7 +45,7 @@ The notes are included in the Overleaf ZIP but do not appear in the article.
 
 This directory is the manuscript source in
 [YerevaNN/casf-benchmark-paper](https://github.com/YerevaNN/casf-benchmark-paper),
-on branch `main`. Use `jcim-overleaf/acs-template.tex` as the main document in
+on branch `main`. Use the repository-root `main.tex` as the main document in
 the linked Overleaf project; retain pdfLaTeX and the Biber bibliography setup.
 
 Future paper edits should be committed and pushed to this repository. Fetch
@@ -97,3 +97,7 @@ Two additional sampling figures (B1/B2) are included after Figure 3 for author
 selection. Their source records, exact subset calculations and renderer are in
 `sampling-data/`; `sampling-figure-options.tex` supplies their captions and method.
 Main figure numbering is preserved.
+
+When uploading only the contents of this directory, its `main.tex` also works.
+Both entry files load `acs-template.tex`; manuscript, image, and bibliography
+paths resolve in either layout.
