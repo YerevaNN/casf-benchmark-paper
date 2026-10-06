@@ -46,12 +46,14 @@ Hit@0.75 endpoints reproduce the current manuscript; Hit@1.0 is calculated from
 the same RMSDs. Budgets span 10–1,000 on an integer logarithmic grid including
 10, 25, 50, 100, 250, 500 and 1,000. Lines join evaluated budgets.
 
-Panel A shows pointwise 95% percentile intervals from 2,000 bootstrap
+The archive retains pointwise 95% percentile intervals from 2,000 bootstrap
 resamples of the 94 entries, with seed 20261006. The identical entry weights are
 used across methods, thresholds, and budgets. These intervals describe molecule
 composition uncertainty conditional on the saved pools, not variation across
 independent model runs or new generation pools. They are not simultaneous bands,
-and overlap alone does not test a paired method difference.
+and overlap alone does not test a paired method difference. The approved figure
+does not display these intervals. Both budget axes are linear, panel A uses a
+50–95% recovery range, and endpoint values are labeled directly.
 
 Panel B inverts expected recovery: at each budget it finds the
 smallest observed RMSD threshold with mean recovery at least 80%. Binary search

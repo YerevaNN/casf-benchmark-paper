@@ -61,7 +61,9 @@ The current figure artwork and source records are identified in README.md and
 results-data/. The older build_figures.py and figure-data/ remain historical. Methods must describe only the analyses used in Results, tables, or figures.
 Energy-window experiments remain outside scope. The author has combined the sampling analyses
 after Figure 3 as Figure B1, showing Qwen, LoQI, FlowR, and NExT-Mol only.
-Panel A uses Hit@0.75; panel B gives the RMSD threshold for 80% expected recovery.
+Panel A uses Hit@0.75 on a 50–95% axis without shading; both budget axes are
+linear with direct endpoint labels. Panel B gives the RMSD threshold for 80% expected
+recovery. Keep Results observational and explain sampling in Methods without a formula.
 They use exact uniform-subset recovery with rejected candidates retained in the
 budget; see sampling-data/ and sampling-figure-options.tex. Historical valid-only
 random-K analyses are not their data source. Front and end matter still contain

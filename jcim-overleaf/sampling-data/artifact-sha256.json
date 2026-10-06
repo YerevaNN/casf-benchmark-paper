@@ -1,9 +1,9 @@
 {
-  "plot.py": "c06dc04554489270430a3a40ede3c08e87397c0523675c52b92825bd733fd6fe",
+  "plot.py": "1728388d80a8be3d16865d6b735b99831540105347ab88829c0bc5fa7af53372",
   "recovery_curves.csv": "d255c62ce91043ee72fdff8cd5933d35d4b083a805019571ef8f4cca8ffae74a",
   "candidate_rmsds.npz": "b947125228d89ea815f61c88dfcdd5aab9a8e9df6ce56b07b14a8d616a2610d4",
   "recovery80_frontier.csv": "69e6557229089e217cf152b8411fbf01e7603f1bb4dd5090ab5ea166949e88c1",
-  "README.md": "af0c75068811315e1140b7eaf81bdcac58391695d0f5e995d54df499b6791f2b",
+  "README.md": "ecef2d0abccfb46b57cbcd7a869e4a28260021acbda48cae6b957a7cb4b62f84",
   "endpoints.csv": "e9e70a6aada23a162903bae86ac14a6437da71f7c14920d120e06a99b5b3e34c",
   "extract.py": "74731cef66d2134815974665117a41ef23e0d5cd2971ddbe6c80500b459dea93",
   "reference.json": "d60c1499c65ee5d0b528ff3ed6af4841724e926be24f824b019e2fe2f8691031",
@@ -20,7 +20,7 @@
   "../figures/figure-budget-recovery80.svg": "2f0c6c9ed7979005ca79d9a19465e6d580985d922f5ea7c735f82830ebbfb514",
   "../figures/figure-budget-recovery80.png": "4931ae4fbc359685e9d7a8d45cf70ab6f138bf0939f0c0d527199f2086344796",
   "display.json": "6b9fddc63da394a44aaa4f982fe70fbd32bb686c2b1ec0cf2255ee2b6b684638",
-  "../figures/figure-budget-combined.pdf": "3037802166939d12a5900b3788d484dfc25d60317c29da187eca275195a4f471",
-  "../figures/figure-budget-combined.svg": "16703f5434b0a06672df521a6e40823e785b95c256902eabc9ecb2c99b800a12",
-  "../figures/figure-budget-combined.png": "bf44dbb4d6d6dca3be01809d1985da245423dadff3f0a4f1b732610ded5c5a5e"
+  "../figures/figure-budget-combined.pdf": "973dffd219c1614b4b2295609f27f937c692712821bba388bab58f84db19b75a",
+  "../figures/figure-budget-combined.svg": "28acc79bb7d7f542d4fc48c5457246623252e2995ba0cf304662ed8be2f9882d",
+  "../figures/figure-budget-combined.png": "411884abd678e3e0cf4f657847cf025d36c10d92f06673f2c527e4028d9b7645"
 }

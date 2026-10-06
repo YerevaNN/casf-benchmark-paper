@@ -121,13 +121,11 @@ Source: [budget comparison](results_tables/sampling_budget_comparison.csv); [per
 
 <!-- sampling-options:start -->
 
-### Combined sampling figure
-
-This combined figure focuses on four selected generators. Panel A fixes the matching tolerance at 0.75 Å; panel B fixes expected recovery at 80% and reports the required matching tolerance. The underlying sampling calculation and candidate accounting are unchanged.
+Across intermediate budgets, the relative performance of the generators changes (Figure B1). LoQI has the highest recovery among these four methods at small budgets, while Qwen overtakes it as the budget increases. At 1,000 candidates, Qwen recovers 91.5% of entries at 0.75 Å, compared with 86.2% for LoQI, FlowR, and NExT-Mol. When recovery is fixed at 80%, LoQI reaches this target at a slightly tighter RMSD threshold than Qwen at the largest budget, 0.479 versus 0.506 Å. The ordering therefore depends on both the sampling budget and the required proximity to the experimental conformation.
 
 ![Figure B1](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.png)
 
-**Figure B1.** Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A) Expected recovery at RMSD ≤ 0.75 Å as a function of candidate budget; higher is better. Shading gives pointwise 95% percentile intervals from 2,000 paired entry-bootstrap resamples. (B) Smallest RMSD threshold required for 80% expected recovery at each budget; lower is better. The threshold varies in panel B, while the recovery target is fixed. Both panels use exact recovery probabilities for uniform subsets drawn without replacement from the saved pre-PoseBusters candidate pools, averaged over all 94 CASF entries. Rejected candidates consume budget, empty retained ensembles count as failures, and budgets are capped at the available candidate count. Dashed lines show the full stored ChEMBL3D-PB ensemble at the corresponding criterion. Intervals in A are conditional on the saved pools; panel B is descriptive without uncertainty bands. The 80% target is a presentation choice, and neither panel extrapolates beyond 1,000 candidates.
+**Figure B1.** Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A) Expected recovery within 0.75 Å of the experimental conformation; higher is better. (B) Smallest RMSD threshold required for 80% expected recovery; lower is better. Both panels summarize uniform subsets of the saved candidate pools across all 94 CASF entries. Rejected candidates consume budget. Dashed lines show the full stored ChEMBL3D-PB ensemble. Budget axes are linear, and the recovery axis in A spans 50–95%. Curves are descriptive; uncertainty intervals are not displayed.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.svg)
 

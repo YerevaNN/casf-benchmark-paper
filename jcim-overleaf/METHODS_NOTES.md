@@ -3,14 +3,16 @@
 ## Sampling alternatives requested for review, 6 October 2026
 
 The current Figure B1 combines two panels and displays only Qwen, LoQI,
-FlowR, and NExT-Mol. Panel A shows expected Hit@0.75 against budget, with
-pointwise 95% intervals from 2,000 paired entry-bootstrap resamples. Panel B
+FlowR, and NExT-Mol. Panel A shows expected Hit@0.75 against budget without shading; its y-axis
+spans 50–95%. Both budget axes are linear and have direct endpoint labels. Panel B
 shows the RMSD threshold for 80% expected recovery. This replaces the two
 separate B1/B2 displays without changing their calculations or main figure numbers.
 Both use exact hypergeometric probabilities for uniform subsets of the saved
 pre-PoseBusters pools. Rejected candidates consume budget; K is capped at N.
 They are conditional finite-pool analyses, not new generation or timing tests.
-The author will select the final figure later; no universal winner is inferred.
+The author approved this display. Sampling procedures are described in Methods
+without a formula; Results reports the observations. Archived bootstrap intervals
+remain available but are not displayed. No universal winner is inferred.
 
 All 884,399 retained RMSDs were recalculated without optimization and checked
 against archived per-entry minima and medians. Full-pool recovery agrees with
