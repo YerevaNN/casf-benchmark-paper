@@ -5,8 +5,10 @@ Results paragraph was substantively revised; scientific values and narrative
 order were preserved. Markdown author instructions become LaTeX comments.
 
 - `results-working.md`: source text, table rows, and figure captions.
-- `clustering_radius_comparison.csv`, `clustering-radius-provenance.json`: Table 2
-  counts at 0.5/1.0 Å and the read-only extraction query and database hash.
+- `clustering_radius_comparison.csv`, `clustering-radius-provenance.json`: Table 1
+  counts at 0.5/1.0 Å, largest-cluster fraction at 1.0 Å, and the read-only
+  extraction query and database hash. Generators are sorted by increasing
+  0.5 Å count; the stored reference is last.
 - `casf_selected.csv`: selected CASF summaries for both candidate targets.
 - `druglike_selected.csv`, `druglike_means.csv`: molecule records and summaries.
 - `strata.csv`, `paired_reference_coverage.csv`: values underlying Figures 4–5.

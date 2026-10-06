@@ -1,23 +1,24 @@
 {
-  "prepared_on": "2026-10-05",
+  "prepared_on": "2026-10-06",
   "source_database": "data/results/casf_analysis_dashboard.sqlite",
   "sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
-  "query": "SELECT mol_id, greedy_clusters_0p5, greedy_clusters_1p0, post_pb_confs FROM per_ligand_long WHERE ligand_set = ? AND method = ?",
+  "query": "SELECT mol_id, greedy_clusters_0p5, greedy_clusters_1p0, largest_cluster_fraction_1p0, post_pb_confs FROM per_ligand_long WHERE ligand_set = ? AND method = ?",
   "ligand_set": "core",
   "methods": [
-    "qwen_1p7b_fsq_bigdata_step47023_chembl_count",
-    "torsion_raw_chembl_count",
-    "flowr_raw_chembl_count",
-    "torsional_diffusion_raw_chembl_count",
-    "rdkit_random_raw_chembl_count",
-    "nextmol_dmt_l_raw_chembl_count",
-    "mcf_drugs_l_raw_chembl_count",
-    "loqi_raw_chembl_count",
+    "rdkit_random_minimized_chembl_count",
     "torsion_minimized_chembl_count",
-    "chembl3d_gt_pb",
-    "rdkit_random_minimized_chembl_count"
+    "loqi_raw_chembl_count",
+    "mcf_drugs_l_raw_chembl_count",
+    "nextmol_dmt_l_raw_chembl_count",
+    "rdkit_random_raw_chembl_count",
+    "torsional_diffusion_raw_chembl_count",
+    "flowr_raw_chembl_count",
+    "torsion_raw_chembl_count",
+    "qwen_1p7b_fsq_bigdata_step47023_chembl_count",
+    "chembl3d_gt_pb"
   ],
-  "aggregation": "Arithmetic mean over entries with defined clustering values; both radii have identical measurable-entry sets per method. Retained counts use all 94 entries.",
-  "sort": "Descending unrounded mean cluster count at 0.5 Angstrom; ties retain source order.",
-  "note": "Read-only aggregation of archived cluster counts; no new conformer generation or clustering."
+  "aggregation": "Arithmetic means of cluster counts and largest-cluster fractions over identical defined-entry sets per method: 92 NExT-Mol, 93 MCF, 94 others. Largest-cluster fraction is max(cluster population)/retained ensemble size per molecule, displayed as a percentage. Retained counts use all 94 entries.",
+  "sort": "Ascending unrounded mean cluster count at 0.5 Angstrom; stored ChEMBL3D-PB ensemble placed last separately.",
+  "note": "Read-only aggregation of archived cluster counts; no new conformer generation or clustering.",
+  "highlighting": "Largest two distinct unrounded values for retained count and cluster counts; smallest two for largest-cluster fraction. Ties share formatting, including the stored reference. Retained count describes yield, not diversity."
 }

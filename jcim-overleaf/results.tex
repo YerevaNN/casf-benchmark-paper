@@ -11,18 +11,26 @@ the generated ensembles, before asking whether that variation includes the exper
 conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target,
 placing each generator alongside the stored ChEMBL3D ensemble for the same molecules.
 Table~\ref{tab:diversity} summarizes geometric diversity through cluster counts at 0.5 and 1.0 \AA{},
-together with the retained ensemble sizes.
+together with the retained ensemble sizes and the fraction of conformers in the largest cluster.
 
 \input{tables/diversity}
 
-The comparison shows clear differences in geometric diversity at both clustering radii, although the
-exact ordering of methods changes. Qwen, random torsion sampling, and FlowR produce the largest
-cluster counts at both radii. Their counts are close at 0.5 \AA{}, whereas FlowR has the highest
-count at 1.0 \AA{}. LoQI, the minimized baselines, and the stored ChEMBL3D ensembles form fewer
-clusters at both radii. Thus, broad differences in geometric variation persist across the two
-resolutions, even when individual methods exchange ranks. These observations describe the geometry
-of the sampled pools; they do not yet establish whether the additional shapes are energetically
-plausible or close to experimentally observed conformations.
+Qwen, random torsion sampling, and FlowR produce the most geometrically diverse ensembles by
+cluster count at both radii. Their counts are close at 0.5 \AA{}, with Qwen ranked first, whereas
+FlowR produces the most clusters at 1.0 \AA{}. LoQI, the minimized baselines, and the stored
+ChEMBL3D ensembles consistently form fewer clusters at both radii, indicating narrower geometric
+variation under these sampling conditions. The broad separation between these groups therefore
+persists across the two resolutions, despite changes in their exact ordering.
+
+Cluster occupancy provides a complementary description of how the samples are distributed.
+At 1.0 \AA{}, FlowR and Qwen have the smallest mean fractions of conformers in the largest
+cluster, at 42.4\% and 44.1\%, respectively; random torsion sampling is close at 44.4\%.
+LoQI and minimized torsion sampling are more concentrated, with 53.7\% and 56.4\% in the
+largest cluster. ChEMBL3D has fewer clusters but a less concentrated largest cluster than these
+two methods, illustrating that the number of represented shapes and their sampling balance
+describe different aspects of diversity. These observations concern the geometry of the retained
+pools, whose sizes differ between methods; they do not establish whether the additional shapes
+are energetically plausible or close to experimentally observed conformations.
 
 % AUTHOR: Update the method-specific observations and their magnitudes from the final ChEMBL-count
 % AUTHOR: evaluation; do not transfer rankings from the 1,000-candidate comparison to this target.

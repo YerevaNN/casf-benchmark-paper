@@ -23,6 +23,8 @@ purpose of this progression before introducing Table 2.
 - Results: ChEMBL-count diversity (Table 1), recovery (Table 2), joint plot
   (Figure 1), two-target recovery/diversity (Table 3A/B and Figure 2),
   size/flexibility (Figure 3), multiple references (Table 4 and Figure 4).
+  Table 1 compares 0.5 and 1.0 Å cluster counts and largest-cluster occupancy
+  at 1.0 Å, ordered by increasing 0.5 Å count with the stored reference last.
 - Dataset plans: Table 5 is explicitly an unfinished release checklist.
 - Supporting Information: S1–S7 retain the earlier analyses and Plinder-23
   selection account; S8 describes generator mechanisms and training resources.

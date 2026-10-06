@@ -1,5 +1,22 @@
 # Results: sources and author follow-up
 
+## Cluster counts and occupancy, 6 October 2026
+
+Table 1 orders generators by increasing unrounded mean cluster count at 0.5 Å,
+with Qwen last among generators and ChEMBL3D-PB in a separate final row below
+a dashed rule. Both 0.5 and 1.0 Å counts remain. Bold and underlining identify
+the best and second-best distinct values in each column, including tied values
+and the stored reference; retained-count highlighting concerns yield only.
+
+The added column is the mean largest-cluster fraction at 1.0 Å, expressed as
+a percentage. Smaller values indicate less concentration in one cluster.
+This directly interpretable occupancy measure complements cluster count;
+it does not imply identical rankings or biological relevance. The database
+digest matches the corrected snapshot. Read-only extraction confirms that
+all three cluster statistics share identical measurable-entry sets within
+each method (92 NExT-Mol, 93 MCF, 94 others) and reproduces all prior counts.
+The query and aggregation conventions are archived with the updated CSV.
+
 ## Display relocation, 6 October 2026
 
 Methods' dataset diagram and generator summary moved to Supporting Figure S1

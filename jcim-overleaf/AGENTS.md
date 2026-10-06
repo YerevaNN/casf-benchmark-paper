@@ -34,7 +34,9 @@ The author's latest scope decision is core94 and a single recovery cutoff of
 0.75 Å. Keep ref in SI and remove threshold-sensitivity narratives from the
 main paper. Emphasize selection among the broader method panel under the
 study's identity, validity, and candidate-budget constraints. Table 1 reports 0.5 and 1.0 Å
-clustering radii, sorted by the 0.5 Å mean; other diversity displays use 1.0 Å.
+clustering radii, sorted in increasing order by the 0.5 Å mean, with ChEMBL3D-PB
+separate and last. It also reports the mean largest-cluster fraction at 1.0 Å
+(lower indicates less concentration); other diversity displays use 1.0 Å.
 These remain distinct from the recovery cutoff. See the updated
 MANUSCRIPT_OUTLINE.md for current figure and table placement.
 
