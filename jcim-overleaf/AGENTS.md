@@ -59,8 +59,9 @@ introduction.tex is the Introduction draft. Tables are in tables/ and numbered
 figure definitions are in figures.tex, with artwork in figures/.
 The current figure artwork and source records are identified in README.md and
 results-data/. The older build_figures.py and figure-data/ remain historical. Methods must describe only the analyses used in Results, tables, or figures.
-Energy-window experiments remain outside scope. The author has now requested two
-sampling alternatives, included after Figure 3 as Figures B1/B2 for selection.
+Energy-window experiments remain outside scope. The author has combined the sampling analyses
+after Figure 3 as Figure B1, showing Qwen, LoQI, FlowR, and NExT-Mol only.
+Panel A uses Hit@0.75; panel B gives the RMSD threshold for 80% expected recovery.
 They use exact uniform-subset recovery with rejected candidates retained in the
 budget; see sampling-data/ and sampling-figure-options.tex. Historical valid-only
 random-K analyses are not their data source. Front and end matter still contain

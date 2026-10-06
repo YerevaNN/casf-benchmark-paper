@@ -1,7 +1,9 @@
-# Sampling-budget figure alternatives
+# Combined sampling-budget figure
 
-Two author-requested review options, using the same ten fixed-target pipelines
-and core94 panel as main Table 3. Qwen is the initial 1.7B FSQ step47023 model;
+The displayed figure combines two panels for Qwen, LoQI, FlowR, and NExT-Mol.
+Panel A shows only Hit@0.75; panel B shows the RMSD threshold for 80% expected
+recovery. The archived analysis retains all ten fixed-target pipelines and
+thresholds on the same core94 panel as main Table 3. Qwen is the initial 1.7B FSQ step47023 model;
 benchmark-excluded retraining is still pending. These are new calculations on
 the saved pools, not new generation runs or reuse of the older valid-only K curves.
 
@@ -44,18 +46,18 @@ Hit@0.75 endpoints reproduce the current manuscript; Hit@1.0 is calculated from
 the same RMSDs. Budgets span 10–1,000 on an integer logarithmic grid including
 10, 25, 50, 100, 250, 500 and 1,000. Lines join evaluated budgets.
 
-The first figure shows pointwise 95% percentile intervals from 2,000 bootstrap
+Panel A shows pointwise 95% percentile intervals from 2,000 bootstrap
 resamples of the 94 entries, with seed 20261006. The identical entry weights are
 used across methods, thresholds, and budgets. These intervals describe molecule
 composition uncertainty conditional on the saved pools, not variation across
 independent model runs or new generation pools. They are not simultaneous bands,
 and overlap alone does not test a paired method difference.
 
-The second figure inverts expected recovery: at each budget it finds the
+Panel B inverts expected recovery: at each budget it finds the
 smallest observed RMSD threshold with mean recovery at least 80%. Binary search
 uses the actual observed RMSDs, not a discretized threshold grid. This is the
 threshold of the mean recovery function, not a mean of thresholds computed for
-random draws. The 80% target is a presentation choice; this figure is descriptive
+random draws. The 80% target is a presentation choice; this panel is descriptive
 and has no uncertainty bands. At the full pool it agrees with the 76th ordered
 per-entry minimum (at least 80% of 94 entries).
 
@@ -65,8 +67,10 @@ No curve is extrapolated beyond the saved pools.
 
 ## Outputs and reproduction
 
-- `figure-budget-thresholds.*`: three panels for Hit@0.5, Hit@0.75, Hit@1.0.
-- `figure-budget-recovery80.*`: RMSD threshold needed for 80% expected recovery.
+- `figure-budget-combined.*`: the current four-method, two-panel display.
+- `display.json`: selected methods and the 0.75 Å recovery cutoff for panel A.
+- The original separate figures remain historical assets; they are no longer included
+  in the manuscript. Their renderer is available in the earlier repository history.
 - `recovery_curves.csv`, `recovery80_frontier.csv`: exact plotted values.
 - `entry_probabilities.npz`: per-entry probabilities for all plotted thresholds.
 - `endpoints.csv`, `reference.json`: endpoint and stored-reference checks.
@@ -83,8 +87,8 @@ python docs/sampling_analysis/plot.py
 Once extracted, `analyze.py` and `plot.py` can run directly beside the archived
 NPZ/config/palette files in the manuscript repository. Source SDFs and the main
 benchmark database are never modified. `cache/` is a resumable execution aid,
-not part of the manuscript archive. All figures use the established method
-colors; dashed colored curves distinguish the minimized classical variants.
+not part of the manuscript archive. The combined figure uses the established method colors. Only the stored
+ChEMBL3D reference levels are dashed; no minimized variants are displayed.
 
 Validation checked all current-table endpoints, within-pool minima/medians,
 monotonic recovery and thresholds, the frontier's crossing on both sides,

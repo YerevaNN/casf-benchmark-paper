@@ -41,8 +41,9 @@ purpose of this progression before introducing Table 1.
 Energy results use a common-hydrogen MMFF94s single-point calculation without coordinate optimization on the archived
 ChEMBL-count ensembles. The cleaned Qwen evaluation and dataset release are pending.
 Main figures are descriptive and show no uncertainty intervals. The author-requested
-sampling alternatives B1/B2 follow Figure 3 for review: B1 includes pointwise
-entry-bootstrap intervals; B2 shows the 80% expected-recovery threshold. Archived
+combined sampling Figure B1 follows Figure 3: panel A shows Hit@0.75 with
+pointwise entry-bootstrap intervals; panel B shows the 80% expected-recovery
+threshold. Both panels display Qwen, LoQI, FlowR, and NExT-Mol only. Archived
 interval calculations and older display designs remain evidence, not the
 current presentation. See RESULTS_NOTES.md and `results-data/`.
 

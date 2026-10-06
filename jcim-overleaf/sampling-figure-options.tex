@@ -1,4 +1,4 @@
-% Author-requested alternatives; remove either or both after figure selection.
+% Combined author-selected sampling panels; main figure numbering is preserved.
 \clearpage
 \newcounter{samplingfigurebackup}
 \setcounter{samplingfigurebackup}{\value{figure}}
@@ -6,9 +6,9 @@
 \renewcommand{\thefigure}{B\arabic{figure}}
 \ifdefined\theHfigure\renewcommand{\theHfigure}{budgetoption.\arabic{figure}}\fi
 \setcounter{figure}{0}
-\section*{Sampling figures for selection}
-These two alternatives use the same fixed-target ensembles as Table~\ref{tab:recovery}
-and the initial Qwen checkpoint. They are included for figure selection.
+\section*{Combined sampling figure}
+This figure presents Qwen, LoQI, FlowR, and NExT-Mol using the same fixed-target
+ensembles as Table~\ref{tab:recovery} and the initial Qwen checkpoint.
 For each entry, let $N$ be the number of candidates presented to PoseBusters,
 $h(t)$ the number of retained conformers within RMSD threshold $t$, and
 $k=\min(K,N)$ for requested budget $K$. A uniform subset without replacement
@@ -18,22 +18,14 @@ recovers the entry with probability
 \]
 Rejected candidates remain non-hits. We average these probabilities over all
 94 entries. This evaluates sampling within the saved pools, rather than raw
-generation attempts or computational cost. Uncertainty in the first option
+generation attempts or computational cost. Uncertainty in panel A
 uses the same bootstrap entry weights across methods, thresholds, and budgets.
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-budget-thresholds.pdf}
-\caption{Recovery as a function of candidate budget at RMSD thresholds of 0.5, 0.75, and 1.0 \AA{}. Each curve gives the expected fraction of the 94 CASF entries recovered by a uniform subset drawn without replacement from the saved pre-PoseBusters candidate pool. Rejected candidates consume budget and count as non-hits; empty retained ensembles remain in the denominator. Budgets are capped at the available candidate count. Expectations are calculated exactly, and shading gives pointwise 95\% percentile intervals from 2,000 paired entry-bootstrap resamples. The intervals are conditional on the saved pools and do not measure variation between generation runs. The dashed black line is recovery by the full stored ChEMBL3D-PB ensemble. Dashed colored curves distinguish minimized classical variants. Lines join evaluated budgets; no extrapolation beyond 1,000 candidates is implied.}
+\includegraphics[width=\linewidth]{figures/figure-budget-combined.pdf}
+\caption{Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A) Expected recovery at RMSD $\leq$ 0.75 \AA{} as a function of candidate budget; higher is better. Shading gives pointwise 95\% percentile intervals from 2,000 paired entry-bootstrap resamples. (B) Smallest RMSD threshold required for 80\% expected recovery at each budget; lower is better. The threshold varies in panel B, while the recovery target is fixed. Both panels use exact recovery probabilities for uniform subsets drawn without replacement from the saved pre-PoseBusters candidate pools, averaged over all 94 CASF entries. Rejected candidates consume budget, empty retained ensembles count as failures, and budgets are capped at the available candidate count. Dashed lines show the full stored ChEMBL3D-PB ensemble at the corresponding criterion. Intervals in A are conditional on the saved pools; panel B is descriptive without uncertainty bands. The 80\% target is a presentation choice, and neither panel extrapolates beyond 1,000 candidates.}
 \label{fig:sampling-option-b1}
-\end{figure}
-\clearpage
-
-\begin{figure}[p]
-\centering
-\includegraphics[width=\linewidth]{figures/figure-budget-recovery80.pdf}
-\caption{Smallest RMSD threshold required for 80\% expected recovery at each candidate budget. Lower curves indicate closer matches for the same recovery target and budget. Thresholds are obtained by inverting the exact mean recovery function over the 94 CASF entries using observed RMSD values; they are not averages of thresholds from random subset draws. Rejected candidates consume budget, and sampling is capped at the available candidate pool. The 80\% target is a presentation choice. The dashed black line marks the corresponding threshold for the full stored ChEMBL3D-PB ensemble. This descriptive figure has no uncertainty bands and does not extrapolate beyond the saved pools.}
-\label{fig:sampling-option-b2}
 \end{figure}
 \clearpage
 \endgroup

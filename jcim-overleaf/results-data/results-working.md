@@ -121,21 +121,15 @@ Source: [budget comparison](results_tables/sampling_budget_comparison.csv); [per
 
 <!-- sampling-options:start -->
 
-### Sampling figures for selection
+### Combined sampling figure
 
-These two alternatives are included for figure selection. They use the same fixed-target ensembles as Table 3 and the initial Qwen checkpoint. Smaller budgets are evaluated by uniform sampling without replacement from the candidates presented to PoseBusters. For an entry with N candidates and h valid matches at threshold t, recovery at budget k has probability 1 − C(N − h, k)/C(N, k), with k capped at N. We average these probabilities over all 94 entries. This measures recovery within the available pools, rather than raw generation attempts or computational cost.
+This combined figure focuses on four selected generators. Panel A fixes the matching tolerance at 0.75 Å; panel B fixes expected recovery at 80% and reports the required matching tolerance. The underlying sampling calculation and candidate accounting are unchanged.
 
-![Figure B1](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-thresholds.png)
+![Figure B1](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.png)
 
-**Figure B1.** Recovery as a function of candidate budget at RMSD thresholds of 0.5, 0.75, and 1.0 Å. Each curve gives the expected fraction of the 94 CASF entries recovered by a uniform subset drawn without replacement from the saved pre-PoseBusters candidate pool. Rejected candidates consume budget and count as non-hits; empty retained ensembles remain in the denominator. Budgets are capped at the available candidate count. Expectations are calculated exactly, and shading gives pointwise 95% percentile intervals from 2,000 paired entry-bootstrap resamples. The intervals are conditional on the saved pools and do not measure variation between generation runs. The dashed black line is recovery by the full stored ChEMBL3D-PB ensemble. Dashed colored curves distinguish minimized classical variants. Lines join evaluated budgets; no extrapolation beyond 1,000 candidates is implied.
+**Figure B1.** Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A) Expected recovery at RMSD ≤ 0.75 Å as a function of candidate budget; higher is better. Shading gives pointwise 95% percentile intervals from 2,000 paired entry-bootstrap resamples. (B) Smallest RMSD threshold required for 80% expected recovery at each budget; lower is better. The threshold varies in panel B, while the recovery target is fixed. Both panels use exact recovery probabilities for uniform subsets drawn without replacement from the saved pre-PoseBusters candidate pools, averaged over all 94 CASF entries. Rejected candidates consume budget, empty retained ensembles count as failures, and budgets are capped at the available candidate count. Dashed lines show the full stored ChEMBL3D-PB ensemble at the corresponding criterion. Intervals in A are conditional on the saved pools; panel B is descriptive without uncertainty bands. The 80% target is a presentation choice, and neither panel extrapolates beyond 1,000 candidates.
 
-[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-thresholds.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-thresholds.svg)
-
-![Figure B2](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-recovery80.png)
-
-**Figure B2.** Smallest RMSD threshold required for 80% expected recovery at each candidate budget. Lower curves indicate closer matches for the same recovery target and budget. Thresholds are obtained by inverting the exact mean recovery function over the 94 CASF entries using observed RMSD values; they are not averages of thresholds from random subset draws. Rejected candidates consume budget, and sampling is capped at the available candidate pool. The 80% target is a presentation choice. The dashed black line marks the corresponding threshold for the full stored ChEMBL3D-PB ensemble. This descriptive figure has no uncertainty bands and does not extrapolate beyond the saved pools.
-
-[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-recovery80.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-recovery80.svg)
+[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/sampling_analysis/figure-budget-combined.svg)
 
 <!-- sampling-options:end -->
 

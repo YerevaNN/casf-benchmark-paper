@@ -1,0 +1,10 @@
+{
+  "methods": [
+    "qwen_1p7b_fsq_bigdata_step47023_fixed",
+    "loqi_raw_fixed",
+    "flowr_raw_fixed",
+    "nextmol_dmt_l_raw_fixed"
+  ],
+  "hit_threshold": 0.75,
+  "figure_name": "figure-budget-combined"
+}

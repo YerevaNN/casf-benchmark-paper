@@ -93,8 +93,9 @@ have a reproducible read-only export dated 28 September 2026.
 - The section drafts, references, tables, figure slots, and author guidance are
   local additions. The template supports ACS submission, not published layout.
 
-Two additional sampling figures (B1/B2) are included after Figure 3 for author
-selection. Their source records, exact subset calculations and renderer are in
+One combined sampling figure (B1) is included after Figure 3, with Hit@0.75
+and the RMSD threshold for 80% expected recovery for Qwen, LoQI, FlowR, and
+NExT-Mol. Source records, exact subset calculations and the renderer are in
 `sampling-data/`; `sampling-figure-options.tex` supplies their captions and method.
 Main figure numbering is preserved.
 

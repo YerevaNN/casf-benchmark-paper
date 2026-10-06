@@ -2,10 +2,11 @@
 
 ## Sampling alternatives requested for review, 6 October 2026
 
-Figures B1/B2 follow the main budget figure without changing main figure numbers.
-B1 shows expected recovery against candidate budget at 0.5, 0.75, and 1.0 Å,
-with pointwise 95% intervals from 2,000 paired entry-bootstrap resamples. B2
-shows the smallest observed RMSD threshold reaching 80% expected recovery.
+The current Figure B1 combines two panels and displays only Qwen, LoQI,
+FlowR, and NExT-Mol. Panel A shows expected Hit@0.75 against budget, with
+pointwise 95% intervals from 2,000 paired entry-bootstrap resamples. Panel B
+shows the RMSD threshold for 80% expected recovery. This replaces the two
+separate B1/B2 displays without changing their calculations or main figure numbers.
 Both use exact hypergeometric probabilities for uniform subsets of the saved
 pre-PoseBusters pools. Rejected candidates consume budget; K is capped at N.
 They are conditional finite-pool analyses, not new generation or timing tests.
