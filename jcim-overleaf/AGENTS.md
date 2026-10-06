@@ -59,7 +59,11 @@ introduction.tex is the Introduction draft. Tables are in tables/ and numbered
 figure definitions are in figures.tex, with artwork in figures/.
 The current figure artwork and source records are identified in README.md and
 results-data/. The older build_figures.py and figure-data/ remain historical. Methods must describe only the analyses used in Results, tables, or figures.
-Energy-window and random-K experiments are outside the current manuscript scope. Front and end matter still contain
+Energy-window experiments remain outside scope. The author has now requested two
+sampling alternatives, included after Figure 3 as Figures B1/B2 for selection.
+They use exact uniform-subset recovery with rejected candidates retained in the
+budget; see sampling-data/ and sampling-figure-options.tex. Historical valid-only
+random-K analyses are not their data source. Front and end matter still contain
 upstream examples; Discussion is a working draft and Conclusions remain
 to be written. Replace
 sample names and claims only with verified information or explicit placeholders.

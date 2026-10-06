@@ -1,5 +1,28 @@
 # Methods: evidence and author follow-up
 
+## Sampling alternatives requested for review, 6 October 2026
+
+Figures B1/B2 follow the main budget figure without changing main figure numbers.
+B1 shows expected recovery against candidate budget at 0.5, 0.75, and 1.0 Å,
+with pointwise 95% intervals from 2,000 paired entry-bootstrap resamples. B2
+shows the smallest observed RMSD threshold reaching 80% expected recovery.
+Both use exact hypergeometric probabilities for uniform subsets of the saved
+pre-PoseBusters pools. Rejected candidates consume budget; K is capped at N.
+They are conditional finite-pool analyses, not new generation or timing tests.
+The author will select the final figure later; no universal winner is inferred.
+
+All 884,399 retained RMSDs were recalculated without optimization and checked
+against archived per-entry minima and medians. Full-pool recovery agrees with
+Table 3; source SDF hashes and candidate counts are archived in sampling-data/.
+The 940 pools have 939,646 candidates before PoseBusters, including 55,247
+rejections. Seventeen pools are shorter than 1,000; two have no retained output.
+The old random-valid-K tables and other Qwen checkpoints were not reused.
+
+The tolerance changes the high-budget ranking: LoQI has Hit@0.5 of 83.0%,
+versus Qwen's 78.7%, while Qwen leads at 0.75 and 1.0 Å (91.5% and 97.9%).
+At 1,000 candidates, 80% recovery requires 0.479 Å for LoQI and 0.506 Å for
+Qwen. These are descriptive differences; band overlap is not a paired test.
+
 ## Completed common-hydrogen energy analysis, 6 October 2026
 
 The new ChEMBL-count energy comparison supersedes the pending-energy notes

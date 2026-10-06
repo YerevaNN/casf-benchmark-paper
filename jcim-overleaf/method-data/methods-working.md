@@ -34,7 +34,7 @@ Qwen represents autoregressive generation of a molecular coordinate representati
 
 ## Sampling targets and retained ensembles
 
-We use two sampling targets to reflect different aspects of dataset construction. At the ChEMBL-count target, each method is assigned the stored conformer count for the corresponding ChEMBL3D stereoisomer. The subset is drawn without replacement from the available candidate pool and capped at the pool size. The second target uses a pool of up to 1,000 candidates per molecule. These are two targets applied to existing pools, rather than independent generation runs at each target or a continuous sampling-efficiency experiment.
+We use two sampling targets to reflect different aspects of dataset construction. At the ChEMBL-count target, each method is assigned the stored conformer count for the corresponding ChEMBL3D stereoisomer. The subset is drawn without replacement from the available candidate pool and capped at the pool size. The second target uses a pool of up to 1,000 candidates per molecule. These are two targets applied to existing pools, rather than independent generation runs at each target. The additional sampling figures evaluate uniform subsets of the fixed-target candidate pools, retaining rejected candidates as non-hits and capping each budget at the available candidate count.
 
 Both targets are defined before PoseBusters filtering. Rejected conformers are not replaced, so retained ensemble sizes differ between methods. ChEMBL3D-PB remains the same finite stored ensemble when generators receive the larger allowance. Candidate selection is reproducible using fixed seeds; the comparisons do not match retained ensemble sizes or computational cost.
 

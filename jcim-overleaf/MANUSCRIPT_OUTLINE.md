@@ -40,7 +40,9 @@ purpose of this progression before introducing Table 1.
 
 Energy results use a common-hydrogen MMFF94s single-point calculation without coordinate optimization on the archived
 ChEMBL-count ensembles. The cleaned Qwen evaluation and dataset release are pending.
-Current figures are descriptive and show no uncertainty intervals. Archived
+Main figures are descriptive and show no uncertainty intervals. The author-requested
+sampling alternatives B1/B2 follow Figure 3 for review: B1 includes pointwise
+entry-bootstrap intervals; B2 shows the 80% expected-recovery threshold. Archived
 interval calculations and older display designs remain evidence, not the
 current presentation. See RESULTS_NOTES.md and `results-data/`.
 

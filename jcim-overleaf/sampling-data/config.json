@@ -1,0 +1,12 @@
+{
+  "database_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+  "workers": 8,
+  "min_budget": 10,
+  "max_budget": 1000,
+  "budget_grid_points": 61,
+  "explicit_budgets": [10, 25, 50, 100, 250, 500, 1000],
+  "rmsd_thresholds": [0.5, 0.75, 1.0],
+  "target_recovery": 0.8,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261006
+}
