@@ -1,5 +1,23 @@
 # Results: sources and author follow-up
 
+## Sampling-budget revision, 6 October 2026
+
+Table 3 now presents the 1,000-candidate target on the left and ChEMBL-count
+on the right, with Best RMSD, Hit@0.75, and mean clusters at 0.5 Å for each.
+Rows are sorted by decreasing unrounded 1,000-candidate Best RMSD, placing
+Qwen immediately above the separate stored reference. The earlier A/B table
+layout is superseded. The existing best/second-best highlighting is retained.
+Figure 3 uses the same order, threshold definitions, and method palette as the
+other current plots. Its connectors join measured endpoints only.
+
+The new 0.5 Å summaries are extracted from the same pinned database, with all
+recovery, RMSD, and retained-count summaries verified against casf_selected.csv.
+The exported per-entry data and script are archived in results-data/ alongside
+sampling-budget-provenance.json. No generation, clustering, or energy scoring
+was rerun. Qwen's cluster count increases from 55.3 to 284.5; FlowR (298.1)
+and random torsions (296.8) have more clusters at 1,000 candidates, while Qwen
+has the lowest Best RMSD (0.307 Å) and highest Hit@0.75 (91.5%).
+
 ## Energy results and revised sequence, 6 October 2026
 
 Results now follows geometric diversity, recovery and the joint plot, energy,

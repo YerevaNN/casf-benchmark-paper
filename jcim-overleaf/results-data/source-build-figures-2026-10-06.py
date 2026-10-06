@@ -59,6 +59,7 @@ def point(ax,key,x,y,size=65):
 def save(fig,name,caption):
  fig.savefig(OUT/(name+'.pdf'))
  fig.savefig(OUT/(name+'.svg'))
+ svg=OUT/(name+'.svg');svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
  fig.savefig(OUT/(name+'.png'),dpi=350)
  figures.append((name,caption))
  plt.close(fig)
@@ -119,11 +120,16 @@ pd.DataFrame(plot_rows).to_csv(OUT/'diversity-rmsd-points.csv',index=False)
 save(fig,'figure-2-diversity-recovery','**Figure 1. Geometric diversity and proximity to the experimental bound conformation at the ChEMBL-count target.** Each point represents one evaluated pipeline or the stored ChEMBL3D-PB ensemble. The horizontal axis gives mean cluster count at 0.5 Å; the vertical axis gives Best RMSD, the per-molecule minimum over retained conformers averaged across entries with defined measurements. Dashed horizontal and vertical lines mark the ChEMBL3D-PB values. Points to the right and below these guides have more clusters and lower Best RMSD than the stored ensemble. Means use 92 entries for NExT-Mol, 93 for MCF, and 94 for the others. Axes show the observed region for readability. Retained ensemble sizes differ despite matched candidate targets. These are descriptive means without uncertainty intervals; Best RMSD does not describe every generated conformer.')
 
 # 3. Two endpoint comparisons, not interpolated sampling curves.
+budget_path=TABLES/'sampling_budget_comparison.csv'
+inputs.append(budget_path)
+budget=pd.read_csv(budget_path).set_index('method')
+budget_keys=[m.removesuffix('_fixed') for m in budget[budget.tier.eq('fixed')].sort_values('best_rmsd',ascending=False).index]+['chembl3d_gt_pb']
 fig,(a,b)=plt.subplots(1,2,figsize=(7.2,5.45),sharey=True)
 fig.subplots_adjust(left=.235,right=.97,top=.86,bottom=.19,wspace=.25)
-for i,key in enumerate(KEYS):
- r0=row(key,'chembl_count');r1=row(key,'fixed');color=STYLE[key][1]
- for ax,col,scale in [(a,'hit_0p75',100),(b,'clusters',1)]:
+for i,key in enumerate(budget_keys):
+ r0=budget.loc[key if key=='chembl3d_gt_pb' else key+'_chembl_count']
+ r1=r0 if key=='chembl3d_gt_pb' else budget.loc[key+'_fixed'];color=STYLE[key][1]
+ for ax,col,scale in [(a,'hit_0p75',100),(b,'clusters_0p5',1)]:
   x0=r0[col]*scale;x1=r1[col]*scale
   if key=='chembl3d_gt_pb':point(ax,key,x0,i,50)
   else:
@@ -131,17 +137,19 @@ for i,key in enumerate(KEYS):
    ax.scatter(x0,i,s=33,facecolors='white',edgecolors=color,linewidth=1.3,zorder=3)
    ax.scatter(x1,i,s=37,color=color,edgecolors='white',linewidth=.5,zorder=4)
  for ax in (a,b):ax.axhspan(i-.42,i+.42,color='#F5F7F9' if i%2==0 else 'white',zorder=-1)
-a.set_yticks(range(len(KEYS)),[STYLE[k][0] for k in KEYS]);a.set_ylim(len(KEYS)-.4,-.6)
+a.set_yticks(range(len(budget_keys)),[STYLE[k][0] for k in budget_keys]);a.set_ylim(len(budget_keys)-.4,-.6)
 a.set(xlim=(58,100),xlabel='Recovery at 0.75 Å (%)');a.set_xticks([60,70,80,90,100])
-b.set(xlim=(0,125),xlabel='Mean clusters at 1.0 Å');b.set_xticks([0,40,80,120])
+b.set(xlim=(0,330),xlabel='Mean clusters at 0.5 Å');b.set_xticks([0,100,200,300])
 axis(a,'A   Experimental recovery','x');axis(b,'B   Geometric diversity','x')
-for ax in(a,b):ax.tick_params(axis='y',length=0)
+for ax in(a,b):
+ ax.tick_params(axis='y',length=0)
+ ax.axhline(len(budget_keys)-1.5,color='#7B838D',lw=.7,ls=(0,(4,3)))
 fig.legend(handles=[Line2D([],[],marker='o',color='#697581',mfc='white',ls='none',label='ChEMBL-count target'),
  Line2D([],[],marker='o',color='#697581',ls='none',label='1,000-candidate target'),
  Line2D([],[],marker='h',color='#333A43',ls='none',label='Stored ChEMBL3D-PB')],
  loc='lower center',bbox_to_anchor=(.53,.07),frameon=False,ncol=3,fontsize=7.5,handletextpad=.4,columnspacing=1.2)
 footer(fig,'Lines join two evaluated targets; retained counts and computing costs are not matched.')
-save(fig,'figure-3-sampling-budget','**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.')
+save(fig,'figure-3-sampling-budget','**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery at 0.75 Å uses all 94 CASF entries; mean cluster counts at 0.5 Å use defined measurements. Rows follow Table 3, ordered by decreasing Best RMSD at 1,000 candidates; the dashed line separates the stored reference. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering and do not imply equal retained ensemble sizes or computational costs.')
 
 # 4. Reconstruct strata from the original size/flexibility exports.
 sizepath=ROOT/'docs/publication_tables_2026_09_28/size_strata.csv'
@@ -207,12 +215,14 @@ b.set(xlim=(-5,106),ylim=(-5,106),xlabel='LoQI coverage (%)',ylabel='Qwen covera
 footer(fig,'Exploratory · 23 molecules · supplied pools without a common PoseBusters filter')
 save(fig,'figure-5-multiple-references','**Figure 5. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.')
 
-status='These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison is rendered separately from the common-hydrogen rescoring; dataset-release figures remain pending.'
+status='These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison is rendered separately from the common-hydrogen single-point scoring without coordinate optimization; dataset-release figures remain pending.'
 gallery='# Results figures\n\n'+status+'\n\n'
 for name,caption in figures:
  gallery+=f'![{name}]({OUT/name}.png)\n\n{caption}\n\n[PDF]({OUT/name}.pdf) · [Editable SVG]({OUT/name}.svg)\n\n'
 (OUT/'gallery.md').write_text(gallery)
-(OUT/'provenance.json').write_text(json.dumps({'prepared_on':'2026-10-05','qwen_checkpoint':Q,'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},'style':STYLE,'figure_files':[n for n,_ in figures],'notes':status},indent=2)+'\n')
+energy_sources=[ROOT/'docs/energy_analysis'/name for name in ['summary.csv','protocol.json','provenance.json']]
+inputs.extend(p for p in energy_sources if p.exists())
+(OUT/'provenance.json').write_text(json.dumps({'prepared_on':'2026-10-06','qwen_checkpoint':Q,'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},'style':STYLE,'figure_files':[n for n,_ in figures]+(['figure-energy-dispersion'] if all(p.exists() for p in energy_sources) else []),'notes':status},indent=2)+'\n')
 # Place figures at the existing placeholders. Keep inserted figures outside table markers.
 p=ROOT/'docs/results_working.md';s=p.read_text();discussion=s.split('# Discussion\n',1)[1]
 methods_path=ROOT/'docs/appendix_working.md'

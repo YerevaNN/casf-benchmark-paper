@@ -41,7 +41,11 @@ separate and last. It also reports the mean largest-cluster fraction at 1.0 Å
 with Best RMSD. Figure 2 compares 0.5 Å cluster counts with median within-ensemble
 energy SD, after recovery and before the larger-budget comparison. Energy results
 use the unoptimized common-hydrogen MMFF94s protocol in energy-data/, not archived mixed-hydrogen
-energies. The larger-ensemble diversity comparison uses 1.0 Å.
+energies. The larger-ensemble diversity comparison uses 0.5 Å. Table 3 places the
+1,000-candidate results left of ChEMBL-count results, each with Best RMSD,
+Hit@0.75, and 0.5 Å clusters. Sort by decreasing 1,000-candidate Best RMSD;
+keep the stored reference last, separated by a dashed rule. Figure 3 uses
+the same row order and the common method colors from the current renderer.
 Clustering radii remain distinct from recovery cutoffs. See the updated
 MANUSCRIPT_OUTLINE.md for current figure and table placement.
 

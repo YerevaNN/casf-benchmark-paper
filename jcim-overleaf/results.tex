@@ -97,20 +97,23 @@ Supporting Table S9 reports both summaries and the corresponding energy levels. 
 difference in mean energy relative to the same molecule's ChEMBL3D ensemble is +20.7 kcal/mol for
 Qwen and +0.8 kcal/mol for FlowR.
 
-Constructing a large conformational resource also requires understanding what additional sampling
-provides. We therefore extend the comparison to the target of 1,000 candidates per molecule. This
-tests whether the relationship between diversity and recovery persists as the ensembles grow and
-whether additional samples reach experimental geometries missed at the smaller target.
+Matching the stored ChEMBL3D conformer counts establishes how the generators compare with an
+existing conformational resource. Constructing a larger dataset also requires understanding what
+additional sampling provides. We therefore extend the candidate target to 1,000 per molecule and
+examine whether the larger ensembles recover bound geometries missed at the smaller target, while
+increasing their geometric diversity.
 
-Increasing the candidate allowance improves recovery in the initial evaluation. Qwen recovers
-additional bound conformations at the 1,000-candidate target, including conformations absent from
-the stored ChEMBL3D pools. This suggests that additional generated sampling can extend the
-structural coverage available for the same molecules. The comparison with ChEMBL3D concerns its
-available stored conformers: its ensemble does not grow when the generated methods receive a larger
-sampling allowance. The high-budget comparison therefore measures the additional coverage supplied
-by generation rather than superiority over an equally extended ChEMBL3D sampling procedure.
-Differences in retained counts also mean that the candidate targets should not be interpreted as
-identical valid ensemble sizes or computational costs.
+All ten generation pipelines have higher Hit@0.75 and lower Best RMSD at the larger target. Qwen
+retains the highest hit rate and lowest Best RMSD, increasing recovery from 80.9\% to 91.5\% and
+reducing Best RMSD from 0.506 to 0.307 \AA{}. Its mean number of clusters at 0.5 \AA{} increases
+from 55.3 to 284.5. FlowR and random torsion sampling produce the largest cluster counts at 1,000
+candidates, but their recovery remains below that of Qwen. The increase in geometric diversity
+therefore does not translate into the same recovery across generators.
+
+The stored ChEMBL3D ensemble remains unchanged, with a hit rate of 78.7\%. Additional sampling
+extends recovery beyond the available stored conformers, but the comparison does not describe what
+ChEMBL3D would achieve with an equally enlarged ensemble. The two candidate targets also yield
+different retained counts across methods and do not represent equal computational costs.
 
 \input{tables/recovery}
 

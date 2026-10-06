@@ -1,13 +1,14 @@
 {
-  "prepared_on": "2026-10-05",
+  "prepared_on": "2026-10-06",
   "qwen_checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
   "sources": {
     "docs/results_tables/casf_selected.csv": "0f6c0ea0cc4b9b422a9807ae3eed68938cb29d991f3f2f0fe0c019a6fda4b96c",
     "docs/results_tables/druglike_selected.csv": "a390219c932875917bbea471fa9f3de50d4cc639a3600a531d7684615397d9aa",
     "docs/results_tables/druglike_means.csv": "98c227f9c934025e924aec150e117ddcb966a0ae85fbe3d73cb0c3e2630cffd4",
+    "docs/results_tables/clustering_radius_comparison.csv": "e9cd54afa391e09087012c96430630fdeaf1f2e59fe818b81092988baa3d423b",
+    "docs/results_tables/sampling_budget_comparison.csv": "097a06517138ee783be3abea2c845fd66f7aa423360f3b91e71001f5c7775257",
     "docs/publication_tables_2026_09_28/size_strata.csv": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90",
     "docs/publication_tables_2026_09_24/flexibility.csv": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705",
-    "docs/results_tables/clustering_radius_comparison.csv": "e9cd54afa391e09087012c96430630fdeaf1f2e59fe818b81092988baa3d423b",
     "docs/energy_analysis/summary.csv": "b82c254034b58c018cce657dc3db455643f6e6de6421aa5c8351beabcdf43f36",
     "docs/energy_analysis/protocol.json": "1c90ef8bae82fbfebb174b682096eb71dcbbdf880b18d9cb820d600631bba0a6",
     "docs/energy_analysis/provenance.json": "fb598d8f7a8e65bab458ca608c84c62025f7931eaa7c65b58ba8d8ea52528605"
@@ -77,8 +78,5 @@
     "figure-4-size-flexibility",
     "figure-5-multiple-references"
   ],
-  "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison uses a common-hydrogen single-point calculation without coordinate optimization; dataset-release figures remain pending.",
-  "figure_1_updated_on": "2026-10-06",
-  "figure_1_note": "0.5 \u00c5 cluster count versus mean of per-molecule best RMSDs, with dashed horizontal and vertical guides at ChEMBL3D-PB values; archived counts and distances, no new scoring. Other figure assets unchanged.",
-  "energy_figure_added_on": "2026-10-06"
+  "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison is rendered separately from the common-hydrogen single-point scoring without coordinate optimization; dataset-release figures remain pending."
 }

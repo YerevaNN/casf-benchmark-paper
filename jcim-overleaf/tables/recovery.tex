@@ -1,57 +1,32 @@
-% Values transferred without recalculation from results-data/results-working.md.
-\begin{table}[p]
-\centering
-\footnotesize
+% Source: results-data/sampling_budget_comparison.csv.
+\begin{table}[htbp]
+\centering\footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
 \caption{Recovery and geometric diversity at the two candidate targets on the 94-entry core panel.}
 \label{tab:recovery}
-\par\smallskip
-\textbf{A. Recovery at the two candidate targets}
-\par\smallskip
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular}{@{}lrrr@{\hspace{14pt}}rrr@{}}
 \toprule
-Method & \shortstack{ChEMBL-count\\Hit (\%)} & \shortstack{ChEMBL-count\\retained $N$} & \shortstack{ChEMBL-count\\min. RMSD (\AA{})} & \shortstack{1,000\\Hit (\%)} & \shortstack{1,000\\retained $N$} & \shortstack{1,000\\min. RMSD (\AA{})} \\
+& \multicolumn{3}{c}{1,000-candidate target} & \multicolumn{3}{c}{ChEMBL-count target} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Method & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\at 0.5 \AA{} $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\at 0.5 \AA{} $\uparrow$} \\
 \midrule
-ChEMBL3D-PB & 78.7 & 81.2 & 0.525 & --- & --- & --- \\
-RDKit raw & 66.0 & 81.2 & 0.601 & 80.9 & 999.9 & 0.437 \\
-RDKit minimized & 70.2 & 81.2 & 0.618 & 78.7 & 1000.0 & 0.512 \\
-Torsion raw & 66.0 & 71.1 & 0.679 & 78.7 & 896.5 & 0.477 \\
-Torsion minimized & 68.1 & 81.2 & 0.644 & 79.8 & 1000.0 & 0.535 \\
-LoQI & 74.5 & 81.2 & 0.536 & 86.2 & 999.3 & 0.339 \\
-Torsional Diffusion & 73.4 & 69.3 & 0.582 & 89.4 & 881.4 & 0.371 \\
-MCF drugs-L & 71.3 & 66.1 & 0.559 & 86.2 & 866.8 & 0.366 \\
-NExT-Mol DMT-L & 76.6 & 66.4 & 0.543 & 86.2 & 871.9 & 0.386 \\
-FlowR & 70.2 & 72.7 & 0.637 & 86.2 & 920.0 & 0.414 \\
-Qwen 1.7B FSQ & 80.9 & 78.3 & 0.506 & 91.5 & 972.6 & 0.307 \\
+Torsion minimized & 0.535 & 79.8 & 60.0 & 0.644 & 68.1 & 21.9 \\
+RDKit minimized & 0.512 & 78.7 & 52.1 & 0.618 & 70.2 & 21.7 \\
+Torsion raw & 0.477 & 78.7 & \underline{296.8} & 0.679 & 66.0 & \underline{54.2} \\
+RDKit raw & 0.437 & 80.9 & 114.6 & 0.601 & 66.0 & 34.3 \\
+FlowR & 0.414 & 86.2 & \textbf{298.1} & 0.637 & 70.2 & 54.1 \\
+NExT-Mol DMT-L & 0.386 & 86.2 & 106.5 & 0.543 & 76.6 & 31.6 \\
+Torsional Diffusion & 0.371 & \underline{89.4} & 187.7 & 0.582 & 73.4 & 40.9 \\
+MCF drugs-L & 0.366 & 86.2 & 110.3 & 0.559 & 71.3 & 31.2 \\
+LoQI & \underline{0.339} & 86.2 & 84.5 & 0.536 & 74.5 & 25.0 \\
+Qwen 1.7B FSQ & \textbf{0.307} & \textbf{91.5} & 284.5 & \textbf{0.506} & \textbf{80.9} & \textbf{55.3} \\
+\hdashline
+ChEMBL3D-PB & --- & --- & --- & \underline{0.525} & \underline{78.7} & 21.7 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Hit uses the 0.75 \AA{} cutoff and all 94 entries. Retained N uses all 94 entries; minimum RMSD is the mean of per-entry best RMSDs, with the same denominator convention as Table~\ref{tab:count-recovery}. At the 1,000-candidate target, minimum RMSD is defined for 93 entries for MCF and NExT-Mol and all 94 for the other pipelines. ChEMBL3D-PB is shown once because its stored ensemble does not grow. These comparisons do not match retained counts or computational cost.
-\end{minipage}
-\par\bigskip
-\textbf{B. Geometric diversity in the larger ensembles}
-\par\smallskip
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Method & \shortstack{Mean retained\\conformers} & \shortstack{Mean clusters\\at 1.0 \AA{}} \\
-\midrule
-ChEMBL3D-PB & 81.2 & 7.7 \\
-RDKit raw & 999.9 & 35.9 \\
-RDKit minimized & 1000.0 & 20.2 \\
-Torsion raw & 896.5 & 74.2 \\
-Torsion minimized & 1000.0 & 25.1 \\
-LoQI & 999.3 & 20.2 \\
-Torsional Diffusion & 881.4 & 54.9 \\
-MCF drugs-L & 866.8 & 34.0 \\
-NExT-Mol DMT-L & 871.9 & 31.5 \\
-FlowR & 920.0 & 114.4 \\
-Qwen 1.7B FSQ & 972.6 & 72.8 \\
-\bottomrule
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\linewidth}
-Generated methods use the 1,000-candidate target; ChEMBL3D-PB remains the same stored ensemble. Cluster means use defined measurements, as in Table~\ref{tab:diversity}.
+Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties and the stored reference where reported. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.
 \end{minipage}
 \end{table}

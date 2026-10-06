@@ -82,54 +82,39 @@ The methods with the largest cluster counts differ in energy spread. Qwen and Fl
 
 The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion, the mean per-molecule standard deviation is 1,628.4 kcal/mol, compared with its median of 26.5 kcal/mol. For Qwen, the corresponding summaries are 49.0 and 17.6 kcal/mol. The median therefore retains the differences in typical energy spread while reducing the influence of exceptional molecules. Supporting Table S9 reports both summaries and the corresponding energy levels. The median paired difference in mean energy relative to the same molecule's ChEMBL3D ensemble is +20.7 kcal/mol for Qwen and +0.8 kcal/mol for FlowR.
 
-Constructing a large conformational resource also requires understanding what additional sampling provides. We therefore extend the comparison to the target of 1,000 candidates per molecule. This tests whether the relationship between diversity and recovery persists as the ensembles grow and whether additional samples reach experimental geometries missed at the smaller target.
+Matching the stored ChEMBL3D conformer counts establishes how the generators compare with an existing conformational resource. Constructing a larger dataset also requires understanding what additional sampling provides. We therefore extend the candidate target to 1,000 per molecule and examine whether the larger ensembles recover bound geometries missed at the smaller target, while increasing their geometric diversity.
 
-Increasing the candidate allowance improves recovery in the initial evaluation. Qwen recovers additional bound conformations at the 1,000-candidate target, including conformations absent from the stored ChEMBL3D pools. This suggests that additional generated sampling can extend the structural coverage available for the same molecules. The comparison with ChEMBL3D concerns its available stored conformers: its ensemble does not grow when the generated methods receive a larger sampling allowance. The high-budget comparison therefore measures the additional coverage supplied by generation rather than superiority over an equally extended ChEMBL3D sampling procedure. Differences in retained counts also mean that the candidate targets should not be interpreted as identical valid ensemble sizes or computational costs.
+All ten generation pipelines have higher Hit@0.75 and lower Best RMSD at the larger target. Qwen retains the highest hit rate and lowest Best RMSD, increasing recovery from 80.9% to 91.5% and reducing Best RMSD from 0.506 to 0.307 Å. Its mean number of clusters at 0.5 Å increases from 55.3 to 284.5. FlowR and random torsion sampling produce the largest cluster counts at 1,000 candidates, but their recovery remains below that of Qwen. The increase in geometric diversity therefore does not translate into the same recovery across generators.
+
+The stored ChEMBL3D ensemble remains unchanged, with a hit rate of 78.7%. Additional sampling extends recovery beyond the available stored conformers, but the comparison does not describe what ChEMBL3D would achieve with an equally enlarged ensemble. The two candidate targets also yield different retained counts across methods and do not represent equal computational costs.
 
 <!-- results-table-4:start -->
-**Table 3A. Recovery at the two candidate targets.**
+**Table 3. Recovery and geometric diversity at the two candidate targets.**
 
-| Method | ChEMBL-count: Hit (%) | ChEMBL-count: retained N | ChEMBL-count: min. RMSD (Å) | 1,000: Hit (%) | 1,000: retained N | 1,000: min. RMSD (Å) |
+| Method | 1,000: Best RMSD (Å) ↓ | 1,000: Hit@0.75 (%) ↑ | 1,000: clusters at 0.5 Å ↑ | ChEMBL-count: Best RMSD (Å) ↓ | ChEMBL-count: Hit@0.75 (%) ↑ | ChEMBL-count: clusters at 0.5 Å ↑ |
 | --- | --- | --- | --- | --- | --- | --- |
-| ChEMBL3D-PB | 78.7 | 81.2 | 0.525 | — | — | — |
-| RDKit raw | 66.0 | 81.2 | 0.601 | 80.9 | 999.9 | 0.437 |
-| RDKit minimized | 70.2 | 81.2 | 0.618 | 78.7 | 1000.0 | 0.512 |
-| Torsion raw | 66.0 | 71.1 | 0.679 | 78.7 | 896.5 | 0.477 |
-| Torsion minimized | 68.1 | 81.2 | 0.644 | 79.8 | 1000.0 | 0.535 |
-| LoQI | 74.5 | 81.2 | 0.536 | 86.2 | 999.3 | 0.339 |
-| Torsional Diffusion | 73.4 | 69.3 | 0.582 | 89.4 | 881.4 | 0.371 |
-| MCF drugs-L | 71.3 | 66.1 | 0.559 | 86.2 | 866.8 | 0.366 |
-| NExT-Mol DMT-L | 76.6 | 66.4 | 0.543 | 86.2 | 871.9 | 0.386 |
-| FlowR | 70.2 | 72.7 | 0.637 | 86.2 | 920.0 | 0.414 |
-| Qwen 1.7B FSQ | 80.9 | 78.3 | 0.506 | 91.5 | 972.6 | 0.307 |
+| Torsion minimized | 0.535 | 79.8 | 60.0 | 0.644 | 68.1 | 21.9 |
+| RDKit minimized | 0.512 | 78.7 | 52.1 | 0.618 | 70.2 | 21.7 |
+| Torsion raw | 0.477 | 78.7 | <u>296.8</u> | 0.679 | 66.0 | <u>54.2</u> |
+| RDKit raw | 0.437 | 80.9 | 114.6 | 0.601 | 66.0 | 34.3 |
+| FlowR | 0.414 | 86.2 | **298.1** | 0.637 | 70.2 | 54.1 |
+| NExT-Mol DMT-L | 0.386 | 86.2 | 106.5 | 0.543 | 76.6 | 31.6 |
+| Torsional Diffusion | 0.371 | <u>89.4</u> | 187.7 | 0.582 | 73.4 | 40.9 |
+| MCF drugs-L | 0.366 | 86.2 | 110.3 | 0.559 | 71.3 | 31.2 |
+| LoQI | <u>0.339</u> | 86.2 | 84.5 | 0.536 | 74.5 | 25.0 |
+| Qwen 1.7B FSQ | **0.307** | **91.5** | 284.5 | **0.506** | **80.9** | **55.3** |
+| --- | --- | --- | --- | --- | --- | --- |
+| ChEMBL3D-PB | — | — | — | <u>0.525</u> | <u>78.7</u> | 21.7 |
 
-Hit uses the 0.75 Å cutoff and all 94 entries. Retained N uses all 94 entries; minimum RMSD is the mean of per-entry best RMSDs, with the same denominator convention as Table 2. At the 1,000-candidate target, minimum RMSD is defined for 93 entries for MCF and NExT-Mol and all 94 for the other pipelines. ChEMBL3D-PB is shown once because its stored ensemble does not grow. These comparisons do not match retained counts or computational cost.
+Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties and the stored reference where reported. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.
 
-**Table 3B. Geometric diversity in the larger ensembles.**
-
-| Method | Mean retained conformers | Mean clusters at 1.0 Å |
-| --- | --- | --- |
-| ChEMBL3D-PB | 81.2 | 7.7 |
-| RDKit raw | 999.9 | 35.9 |
-| RDKit minimized | 1000.0 | 20.2 |
-| Torsion raw | 896.5 | 74.2 |
-| Torsion minimized | 1000.0 | 25.1 |
-| LoQI | 999.3 | 20.2 |
-| Torsional Diffusion | 881.4 | 54.9 |
-| MCF drugs-L | 866.8 | 34.0 |
-| NExT-Mol DMT-L | 871.9 | 31.5 |
-| FlowR | 920.0 | 114.4 |
-| Qwen 1.7B FSQ | 972.6 | 72.8 |
-
-Generated methods use the 1,000-candidate target; ChEMBL3D-PB remains the same stored ensemble. Cluster means use defined measurements, as in Table 1. Source for both panels: [selected CASF records](results_tables/casf_selected.csv).
-
-[Here goes the figure connecting recovery at the two candidate targets. Replace preliminary Qwen findings after the evaluation with benchmark molecules excluded from training.]
+Source: [budget comparison](results_tables/sampling_budget_comparison.csv); [per-entry records](results_tables/sampling_budget_per_entry.csv).
 <!-- results-table-4:end -->
 
 <!-- results-figure-3:start -->
 ![Figure 3](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.png)
 
-**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.
+**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery at 0.75 Å uses all 94 CASF entries; mean cluster counts at 0.5 Å use defined measurements. Rows follow Table 3, ordered by decreasing Best RMSD at 1,000 candidates; the dashed line separates the stored reference. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering and do not imply equal retained ensemble sizes or computational costs.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.svg)
 <!-- results-figure-3:end -->
@@ -170,7 +155,7 @@ COV-R and COV-P use a strict RMSD < 0.75 Å cutoff in the existing evaluation; M
 
 Sources: [molecule-level records](results_tables/druglike_selected.csv) and [unrounded table values](results_tables/druglike_means.csv).
 
-[Here goes the coverage-versus-precision figure with representative molecule-level comparisons.]
+
 <!-- results-table-5:end -->
 
 <!-- results-figure-5:start -->
