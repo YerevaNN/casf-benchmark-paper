@@ -8,9 +8,9 @@
     "docs/publication_tables_2026_09_28/size_strata.csv": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90",
     "docs/publication_tables_2026_09_24/flexibility.csv": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705",
     "docs/results_tables/clustering_radius_comparison.csv": "e9cd54afa391e09087012c96430630fdeaf1f2e59fe818b81092988baa3d423b",
-    "docs/energy_analysis/summary.csv": "17aca456d7c9abb90444b1d716a08a1b2d062c0d51b28cabb24bb4a9bb7b8b8b",
-    "docs/energy_analysis/protocol.json": "7134567a6a0323ee69a0ac606a23794fcfa083c63666542368bcc14699931c89",
-    "docs/energy_analysis/provenance.json": "582ed35867387743665f1813c908da6e26aa376ee268a078389421d0e85da5d7"
+    "docs/energy_analysis/summary.csv": "b82c254034b58c018cce657dc3db455643f6e6de6421aa5c8351beabcdf43f36",
+    "docs/energy_analysis/protocol.json": "1c90ef8bae82fbfebb174b682096eb71dcbbdf880b18d9cb820d600631bba0a6",
+    "docs/energy_analysis/provenance.json": "fb598d8f7a8e65bab458ca608c84c62025f7931eaa7c65b58ba8d8ea52528605"
   },
   "style": {
     "chembl3d_gt_pb": [
@@ -77,7 +77,7 @@
     "figure-4-size-flexibility",
     "figure-5-multiple-references"
   ],
-  "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison uses a common-hydrogen recalculation; dataset-release figures remain pending.",
+  "notes": "These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison uses a common-hydrogen single-point calculation without coordinate optimization; dataset-release figures remain pending.",
   "figure_1_updated_on": "2026-10-06",
   "figure_1_note": "0.5 \u00c5 cluster count versus mean of per-molecule best RMSDs, with dashed horizontal and vertical guides at ChEMBL3D-PB values; archived counts and distances, no new scoring. Other figure assets unchanged.",
   "energy_figure_added_on": "2026-10-06"

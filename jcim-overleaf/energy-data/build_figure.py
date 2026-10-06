@@ -35,11 +35,11 @@ for ax,key,title,xlabel in [(a,'mean_clusters_0p5','A   Geometric diversity','Me
 a.set_yticks(y,labels=[r['label'] for r in rows]);a.invert_yaxis()
 b.tick_params(labelleft=False)
 fig.suptitle('ChEMBL-count target · geometry and energy spread',x=.235,ha='left',y=.96,fontsize=11)
-fig.text(.6,.052,'Common MMFF94s protocol · hydrogens relaxed with heavy atoms fixed',ha='center',fontsize=7.3,color='#626C78')
+fig.text(.6,.052,'Common MMFF94s protocol · unoptimized hydrogens · original heavy-atom coordinates',ha='center',fontsize=7.3,color='#626C78')
 for ext in ['pdf','svg','png']:fig.savefig(OUT/('figure-energy-dispersion.'+ext),dpi=350)
 plt.close(fig)
 svg=OUT/'figure-energy-dispersion.svg';svg.write_text('\n'.join(x.rstrip() for x in svg.read_text().splitlines())+'\n')
-CAPTION='**Figure 2. Geometric diversity and energy dispersion at the ChEMBL-count target.** (A) Mean geometric cluster count at 0.5 Å. (B) Median across molecules of the population standard deviation of conformer energies within each retained ensemble, in kcal/mol. Energies were recalculated with MMFF94s after rebuilding and relaxing hydrogens while fixing every heavy atom. Each method uses the same measurable entries in both panels: 92 for NExT-Mol, 93 for MCF, and 94 for the others. The dashed line separates the stored ChEMBL3D-PB ensemble. Smaller energy SD indicates a narrower distribution; it does not establish lower absolute energy or the absence of high-energy conformers. Means, paired energy differences, and calculation completeness are reported in Supporting Table S9.'
+CAPTION='**Figure 2. Geometric diversity and energy dispersion at the ChEMBL-count target.** (A) Mean geometric cluster count at 0.5 Å. (B) Median across molecules of the population standard deviation of conformer energies within each retained ensemble, in kcal/mol. Energies were recalculated with MMFF94s after rebuilding hydrogen coordinates without optimizing any atom. Each method uses the same measurable entries in both panels: 92 for NExT-Mol, 93 for MCF, and 94 for the others. The dashed line separates the stored ChEMBL3D-PB ensemble. Smaller energy SD indicates a narrower distribution; it does not establish lower absolute energy or the absence of high-energy conformers. Means, paired energy differences, and calculation completeness are reported in Supporting Table S9.'
 (OUT/'figure-energy-dispersion-caption.md').write_text(CAPTION+'\n')
 # Preserve the manuscript's placement when either renderer is rerun.
 import re

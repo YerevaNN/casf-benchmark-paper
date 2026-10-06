@@ -115,16 +115,16 @@ Sources: [method papers, repositories, and local adapter evidence](results_table
 
 | Method | Molecules | Median energy SD | Mean energy SD | Median mean energy | Median paired mean-energy difference |
 | --- | --- | --- | --- | --- | --- |
-| RDKit minimized | 94 | 1.9 | 2.6 | 26.4 | -6.1 |
-| Torsion minimized | 94 | 2.1 | 2.4 | 26.5 | -5.7 |
-| LoQI | 94 | 1.9 | 2.8 | 34.1 | +0.2 |
-| MCF drugs-L | 93 | 3.6 | 9.5 | 43.3 | +5.1 |
-| NExT-Mol DMT-L | 92 | 3.0 | 4.0 | 37.9 | +3.1 |
-| RDKit raw | 94 | 7.2 | 8.1 | 60.0 | +28.3 |
-| Torsional Diffusion | 94 | 14.0 | 271.2 | 71.6 | +32.2 |
-| FlowR | 94 | 8.8 | 12.8 | 33.5 | -0.8 |
-| Torsion raw | 94 | 15.3 | 15.2 | 51.3 | +23.1 |
-| Qwen 1.7B FSQ | 94 | 9.1 | 10.2 | 51.6 | +13.6 |
-| ChEMBL3D-PB | 94 | 1.8 | 2.3 | 32.6 | +0.0 |
+| RDKit minimized | 94 | 2.7 | 63.4 | 35.1 | -5.8 |
+| Torsion minimized | 94 | 2.8 | 4.5 | 35.0 | -5.8 |
+| LoQI | 94 | 3.7 | 4.5 | 44.8 | +1.1 |
+| MCF drugs-L | 93 | 5.0 | 11.6 | 51.6 | +6.4 |
+| NExT-Mol DMT-L | 92 | 4.8 | 6.0 | 49.1 | +4.1 |
+| RDKit raw | 94 | 9.1 | 367.5 | 77.7 | +33.4 |
+| Torsional Diffusion | 94 | 26.5 | 1628.4 | 96.9 | +47.2 |
+| FlowR | 94 | 11.6 | 15.3 | 43.7 | +0.8 |
+| Torsion raw | 94 | 40.5 | 1089.6 | 89.2 | +41.0 |
+| Qwen 1.7B FSQ | 94 | 17.6 | 49.0 | 64.3 | +20.7 |
+| ChEMBL3D-PB | 94 | 2.7 | 3.5 | 42.5 | +0.0 |
 
-Energies use the common hydrogen preparation described in Methods. SD and mean are calculated within each molecule before aggregation; paired differences use that molecule’s ChEMBL3D mean energy. All retained conformers have finite energies and converged hydrogen relaxations; no heavy atom moved. Empty ensembles have no defined energy distribution. See the [energy protocol and records](energy_analysis/README.md).
+Energies use the common hydrogen preparation described in Methods. SD and mean are calculated within each molecule before aggregation; paired differences use that molecule’s ChEMBL3D mean energy. All retained conformers have finite single-point energies; neither hydrogen nor heavy-atom coordinates were optimized. Empty ensembles have no defined energy distribution. See the [energy protocol and records](energy_analysis/README.md).

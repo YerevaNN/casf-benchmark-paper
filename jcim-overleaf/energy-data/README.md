@@ -12,13 +12,23 @@ Qwen output lacks explicit hydrogens while other generators generally include
 them. Those archived values therefore do not supply a consistent comparison.
 They are retained in the audit CSV for traceability, not used in the new figure.
 
-`rescore.py` removes explicit hydrogens, reconstructs them from each heavy-atom
-structure, and relaxes only hydrogen coordinates using MMFF94s. Every heavy atom
-is fixed, and unchanged coordinates are checked for every conformer. All methods
-use the same preparation, parameters and tolerances in `protocol.json`.
-Existing energy properties are ignored. No molecule files or databases are
-modified. RDKit's [force-field documentation](https://www.rdkit.org/docs/source/rdkit.ForceField.rdForceField.html)
-defines fixed atoms, convergence status, and kcal/mol energy units.
+`rescore.py` removes explicit hydrogens and reconstructs their coordinates from
+each original heavy-atom structure using RDKit. It then evaluates a single-point
+MMFF94s energy without optimizing any coordinates. Every method uses this same
+hydrogen placement. Heavy-atom coordinates are checked for zero displacement;
+previously stored energy properties are ignored. No molecule files or databases
+are modified. The minimized baseline ensembles retain the geometries produced by
+their generation pipelines, but receive no further minimization during scoring.
+RDKit's [force-field documentation](https://www.rdkit.org/docs/source/rdkit.ForceField.rdForceField.html)
+defines the energy calculation and kcal/mol units.
+
+This protocol supersedes the earlier hydrogen-relaxed calculation at the author's
+request. That calculation is preserved in paper commit `55ee5fa`; its values must
+not be mixed with the current unoptimized results. The original archived energies
+also remain unsuitable for this comparison because hydrogen representation varied.
+The current calculation measures raw heavy-atom geometries with a common,
+unoptimized hydrogen placement, not the original hydrogen coordinates supplied
+by each generator.
 
 The 94 stored ChEMBL3D reference ensembles are reconstructed using the repository's
 identity-matched loader. All 94 have zero PoseBusters rejections in the pinned

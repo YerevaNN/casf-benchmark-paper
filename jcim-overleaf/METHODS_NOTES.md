@@ -7,12 +7,14 @@ below. The archived routine used the supplied hydrogen representation and
 sometimes a saved minimization energy. Inspection found no explicit hydrogens
 in Qwen's retained records, while other methods generally supplied them.
 The new calculation therefore removes/rebuilds hydrogens for every conformer,
-relaxes only hydrogen coordinates with MMFF94s, and ignores saved energies.
+evaluates single-point MMFF94s energies without optimizing any coordinates, and
+ignores saved energies. This supersedes the hydrogen-relaxed protocol in commit
+55ee5fa, which the author rejected in favor of raw geometries.
 All heavy atoms are fixed and checked for zero displacement. The population
 energy SD is calculated within each molecule and then summarized by its median
 across molecules. Means and paired differences from ChEMBL3D are in Table S9.
 
-The full protocol, RDKit version, convergence records, input hashes, and
+The full protocol, RDKit version, calculation-status records, input hashes, and
 per-conformer/per-molecule outputs are archived in `energy-data/`. The optimized
 reference loader batches coordinate reads while preserving atom and stereo
 checks. All 94 ChEMBL3D entries had zero archived PB rejections; their counts

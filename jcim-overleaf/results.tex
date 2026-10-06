@@ -76,26 +76,26 @@ excluded from its training data.
 
 We next examine energy variation in the same retained ensembles. Figure~\ref{fig:energy-dispersion}
 compares geometric cluster counts with the median of the per-molecule energy standard deviations,
-using a common MMFF94s calculation with hydrogen coordinates relaxed and heavy atoms fixed.
+using a common MMFF94s calculation with unoptimized hydrogen coordinates and unchanged heavy-atom positions.
 The two panels describe the number of represented shapes and the spread of their force-field
 energies at the ChEMBL-count target.
 
 \energyfigure
 
-The methods with the largest cluster counts differ in energy spread. Qwen and FlowR have
-median energy standard deviations of 9.1 and 8.8 kcal/mol, respectively, compared with
-15.3 kcal/mol for random torsion sampling and 14.0 kcal/mol for Torsional Diffusion. LoQI and
-the minimized baselines have narrower energy distributions, with medians around 1.9--2.1 kcal/mol,
-alongside their lower cluster counts. The stored ChEMBL3D ensemble has a median energy standard
-deviation of 1.8 kcal/mol.
+The methods with the largest cluster counts differ in energy spread. Qwen and FlowR have median
+energy standard deviations of 17.6 and 11.6 kcal/mol, respectively, compared with 40.5 kcal/mol for
+random torsion sampling and 26.5 kcal/mol for Torsional Diffusion. LoQI has a narrower energy
+distribution, with a median of 3.7 kcal/mol, while the minimized baselines have medians of 2.7--2.8
+kcal/mol, alongside their lower cluster counts. The stored ChEMBL3D ensemble has a median energy
+standard deviation of 2.7 kcal/mol.
 
-The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion,
-the mean per-molecule standard deviation is 271.2 kcal/mol, compared with its median of
-14.0 kcal/mol. For Qwen, these summaries are closer, at 10.2 and 9.1 kcal/mol.
-The median therefore retains the differences in typical energy spread while reducing the influence
-of exceptional molecules. Supporting Table S9 reports both summaries and the corresponding
-energy levels. The median paired difference in mean energy relative to the same molecule's
-ChEMBL3D ensemble is +13.6 kcal/mol for Qwen and -0.8 kcal/mol for FlowR.
+The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion, the
+mean per-molecule standard deviation is 1,628.4 kcal/mol, compared with its median of 26.5 kcal/mol.
+For Qwen, the corresponding summaries are 49.0 and 17.6 kcal/mol. The median therefore retains the
+differences in typical energy spread while reducing the influence of exceptional molecules.
+Supporting Table S9 reports both summaries and the corresponding energy levels. The median paired
+difference in mean energy relative to the same molecule's ChEMBL3D ensemble is +20.7 kcal/mol for
+Qwen and +0.8 kcal/mol for FlowR.
 
 Constructing a large conformational resource also requires understanding what additional sampling
 provides. We therefore extend the comparison to the target of 1,000 candidates per molecule. This

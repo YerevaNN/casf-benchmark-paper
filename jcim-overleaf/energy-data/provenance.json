@@ -2,11 +2,7 @@
   "prepared_on": "2026-10-06",
   "protocol": {
     "force_field": "MMFF94s",
-    "hydrogens": "Remove explicit hydrogens, rebuild explicit hydrogens with coordinates, and relax only hydrogen coordinates",
-    "max_iterations": 1000,
-    "max_minimization_calls": 5,
-    "force_tolerance": 0.0001,
-    "energy_tolerance": 1e-06,
+    "hydrogens": "Remove explicit hydrogens and rebuild explicit hydrogen coordinates; evaluate without any coordinate optimization",
     "heavy_coordinate_tolerance_angstrom": 1e-10,
     "nonbonded_threshold": 100.0,
     "ignore_interfragment_interactions": true,
@@ -14,11 +10,12 @@
     "workers": 8,
     "ligand_set": "core",
     "target": "chembl_count",
-    "source_database_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116"
+    "source_database_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+    "coordinate_optimization": false
   },
   "fingerprint": {
-    "config_sha256": "7134567a6a0323ee69a0ac606a23794fcfa083c63666542368bcc14699931c89",
-    "script_sha256": "03094317f32fb4294fc3a3d9f1ebed38c508fb5bf8844d56a9e76f42f0d6f249",
+    "config_sha256": "1c90ef8bae82fbfebb174b682096eb71dcbbdf880b18d9cb820d600631bba0a6",
+    "script_sha256": "104afd74d0a6d8be80574459ae818661c50370c8be58d549e629e6aeb61c2db6",
     "mapping_sha256": "3b961cefdd332177581a53eb59ccb0c119d123c2e1e5d25a9e0da32c62edd258",
     "rdkit": "2025.09.6"
   },

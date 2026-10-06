@@ -38,20 +38,13 @@ def rescore(mol):
     ff = AllChem.MMFFGetMoleculeForceField(prepared, props,
         nonBondedThresh=CONFIG['nonbonded_threshold'],
         ignoreInterfragInteractions=CONFIG['ignore_interfragment_interactions'])
-    for i in range(heavy.GetNumAtoms()):
-        ff.AddFixedPoint(i)
+    # Single-point energy: neither hydrogens nor heavy atoms are optimized.
     ff.Initialize()
-    status = 1
-    for _ in range(CONFIG['max_minimization_calls']):
-        status = ff.Minimize(maxIts=CONFIG['max_iterations'],
-            forceTol=CONFIG['force_tolerance'], energyTol=CONFIG['energy_tolerance'])
-        if status == 0:
-            break
     change = np.max(np.abs(np.asarray(prepared.GetConformer().GetPositions())[:len(xyz)]-xyz))
     assert change <= CONFIG['heavy_coordinate_tolerance_angstrom'], change
     energy = float(ff.CalcEnergy())
     return dict(energy=energy if math.isfinite(energy) else None,
-        status='converged' if status == 0 and math.isfinite(energy) else 'not_converged',
+        status='evaluated' if math.isfinite(energy) else 'nonfinite_energy',
         original_hydrogens=original_h, explicit_hydrogens=prepared.GetNumAtoms()-heavy.GetNumAtoms(),
         max_heavy_coordinate_change=float(change))
 
@@ -132,7 +125,7 @@ def main():
         old=by_id[result['method'],result['mol_id']]
         vals=np.array([x['energy'] for x in result['records'] if x['energy'] is not None],float)
         per.append(dict(method=result['method'],mol_id=result['mol_id'],n_retained=old['post_pb_confs'],n_energy=len(vals),
-            n_unconverged=sum(x['status']!='converged' for x in result['records']),
+            n_failed=sum(x['status']!='evaluated' for x in result['records']),
             mean_energy=float(vals.mean()) if len(vals) else None,std_energy=float(vals.std(ddof=0)) if len(vals) else None,
             min_energy=float(vals.min()) if len(vals) else None,max_energy=float(vals.max()) if len(vals) else None,
             median_energy=float(np.median(vals)) if len(vals) else None,clusters_0p5=old['greedy_clusters_0p5'],
@@ -145,7 +138,7 @@ def main():
         rs=[r for r in per if r['method']==label['method'] and r['n_energy']>0]
         std=[r['std_energy'] for r in rs]
         summary.append(dict(method=label['method'],label=label['display_label'],n_molecules=len(rs),n_conformers=sum(r['n_energy'] for r in rs),
-            n_unconverged=sum(r['n_unconverged'] for r in rs),mean_clusters_0p5=float(np.mean([r['clusters_0p5'] for r in rs])),
+            n_failed=sum(r['n_failed'] for r in rs),mean_clusters_0p5=float(np.mean([r['clusters_0p5'] for r in rs])),
             median_energy_std=float(np.median(std)),mean_energy_std=float(np.mean(std)),median_mean_energy=float(np.median([r['mean_energy'] for r in rs])),
             median_mean_energy_delta_chembl=float(np.median([r['mean_energy']-ref[r['mol_id']]['mean_energy'] for r in rs])),
             median_archived_std=float(np.median([r['archived_std'] for r in rs]))))

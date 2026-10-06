@@ -12,14 +12,15 @@ Supporting Table S9 reports mean/median SD, median per-molecule mean energy,
 and median paired mean-energy differences from the same molecule's ChEMBL3D
 ensemble. Every method retains its original measurable-entry set.
 
-Qwen and FlowR have median SDs of 9.1 and 8.8 kcal/mol, respectively; random
-torsion sampling and Torsional Diffusion have 15.3 and 14.0. LoQI and minimized
-baselines have 1.9–2.1, and ChEMBL3D 1.8. Torsional Diffusion's mean SD is
-271.2, showing the influence of extreme entries. The paired mean-energy
-difference from ChEMBL3D is +13.6 for Qwen and -0.8 for FlowR: similar spreads
-do not imply similar energy levels. These recalculated values replace the
-mixed-hydrogen archived energy summaries, including the earlier 6.0 kcal/mol
-Qwen median. See METHODS_NOTES.md and energy-data/ for the audit.
+Qwen and FlowR have median SDs of 17.6 and 11.6 kcal/mol, respectively; random
+torsion sampling and Torsional Diffusion have 40.5 and 26.5. LoQI has 3.7,
+minimized baselines have 2.7–2.8, and ChEMBL3D 2.7. Torsional Diffusion's mean
+SD is 1,628.4, and Qwen's is 49.0, showing the influence of extreme entries.
+The paired mean-energy difference from ChEMBL3D is +20.7 for Qwen and +0.8 for
+FlowR. These single-point calculations use rebuilt, unoptimized hydrogens and
+supersede both the original mixed-hydrogen energies and the hydrogen-relaxed
+calculation in commit 55ee5fa. No atom is optimized during energy evaluation.
+See METHODS_NOTES.md and energy-data/ for the audit.
 
 ## Tighter recovery cutoff, 6 October 2026
 

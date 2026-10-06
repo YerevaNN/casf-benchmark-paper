@@ -40,7 +40,7 @@ separate and last. It also reports the mean largest-cluster fraction at 1.0 Å
 (lower indicates less concentration). Figure 1 compares 0.5 Å cluster count
 with Best RMSD. Figure 2 compares 0.5 Å cluster counts with median within-ensemble
 energy SD, after recovery and before the larger-budget comparison. Energy results
-use the common-hydrogen MMFF94s protocol in energy-data/, not archived mixed-hydrogen
+use the unoptimized common-hydrogen MMFF94s protocol in energy-data/, not archived mixed-hydrogen
 energies. The larger-ensemble diversity comparison uses 1.0 Å.
 Clustering radii remain distinct from recovery cutoffs. See the updated
 MANUSCRIPT_OUTLINE.md for current figure and table placement.

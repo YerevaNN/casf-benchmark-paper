@@ -162,11 +162,11 @@ a single cluster and complement the number of clusters represented in an ensembl
 \subsection{Energy analysis}
 
 We evaluate the retained ChEMBL-count ensembles with MMFF94s\cite{halgren1999mmff94s} using a common hydrogen
-preparation for every method. Existing hydrogens are removed and rebuilt, then their coordinates
-are relaxed while all heavy atoms remain fixed. This preserves the conformations used for
+preparation for every method. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
+energy is calculated without optimizing either hydrogen or heavy-atom positions. This preserves the conformations used for
 clustering and recovery and avoids differences arising from whether a generator supplied
 hydrogen coordinates. Previously stored energy values are not reused. Calculation settings,
-convergence checks, and source records are archived with the energy results.
+coordinate-preservation checks, and source records are archived with the energy results.
 
 For each molecule and method, we calculate the mean energy and population standard deviation
 across conformers. Figure~\ref{fig:energy-dispersion} reports the median of these standard

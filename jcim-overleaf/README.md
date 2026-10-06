@@ -69,7 +69,7 @@ remain historical assets. They do not reproduce the newly transferred main
 figures. Numerical source paths beginning with `docs/`, `data/results/`, or
 `src/` refer to the separate `YerevaNN/casf-benchmark` analysis repository.
 The 6 October energy addition recalculates MMFF94s energies on the archived
-ChEMBL-count ensembles using a common hydrogen preparation and fixed heavy atoms.
+ChEMBL-count ensembles using a common hydrogen preparation without optimizing any coordinates.
 It does not regenerate conformers or change the clustering and RMSD results.
 The exact protocol, source digests, calculations, and energy renderer are archived
 in `energy-data/`. Run `docs/energy_analysis/build_figure.py` in the analysis

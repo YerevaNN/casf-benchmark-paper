@@ -34,7 +34,7 @@ purpose of this progression before introducing Table 1.
   selection account; S8 describes generators and S9 reports energy summaries.
 - Discussion: transferred working prose; Conclusions still pending.
 
-Energy results use a common-hydrogen MMFF94s recalculation on the archived
+Energy results use a common-hydrogen MMFF94s single-point calculation without coordinate optimization on the archived
 ChEMBL-count ensembles. The cleaned Qwen evaluation and dataset release are pending.
 Current figures are descriptive and show no uncertainty intervals. Archived
 interval calculations and older display designs remain evidence, not the
