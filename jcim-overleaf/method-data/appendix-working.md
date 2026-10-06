@@ -75,3 +75,36 @@ Molecular weights and rotatable-bond counts are taken from the saved shortlist. 
 The source of the selection description is the author-supplied Plinder-23 selection provenance. The molecular identities and descriptors were read from the saved shortlist, and all per-identity PDB, system, and instance counts were checked against the release's ligand-per-system table. Reference counts were matched to the archived Qwen evaluation by full InChIKey. The same counts are used for the other methods in the working multi-reference comparison. No manual selection was repeated and no conformers were generated or rescored.
 
 Source paths and input hashes are recorded in [appendix provenance](plinder23_appendix/provenance.json). The accompanying [source selection note](plinder23_appendix/selection_provenance.md) retains the supplied selection account without the surrounding conversation.
+
+
+## B. Evaluation panels and generation methods
+
+<!-- results-figure-1:start -->
+![Figure S1](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-1-datasets.png)
+
+**Figure S1. Experimental evaluation panels.** CASF-2016 is matched to ChEMBL3D by molecular identity and stereochemistry, followed by eligibility filtering, to obtain 94 core entries. The stored ChEMBL3D ensemble is the computed comparison resource. The separate 23-molecule PLINDER panel assesses several references per molecule. The larger 1,236-entry collection remains in Supporting Information. Arrows describe evaluation design, not a quantified exclusion funnel. For PLINDER 2024-06/v2, physicochemical screening reduced 51,280 identities to 25,392; ranking by distinct PDB entries and manual review yielded the 23-molecule panel (Methods; Appendix A). The supplied-pool comparison does not yet use the common CASF validity filter; reference-coordinate preprocessing remains to be documented.
+
+[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-1-datasets.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-1-datasets.svg)
+<!-- results-figure-1:end -->
+
+<!-- results-table-1:start -->
+**Table S8. Evaluated generation pipelines and stored comparison ensemble.**
+
+| Method | Representation / sampling | Training data and model | Input / initialization | Processing before common CASF filtering |
+| --- | --- | --- | --- | --- |
+| ChEMBL3D-PB | Stored optimized conformers | ChEMBL3D reference resource | Matched stereoisomer and its stored coordinates | PoseBusters filtering; no new generation |
+| RDKit raw | ETKDGv3 distance geometry with experimental torsion preferences | No learned model | Molecular graph; random-coordinate embedding | Chirality enforcement and finite-coordinate check; no added minimization |
+| RDKit minimized | ETKDGv3 distance geometry with experimental torsion preferences | No learned model | Same embedding procedure; separately sampled pool | MMFF94s minimization, up to 500 iterations |
+| Torsion raw | Uniform perturbation of eligible torsions | No learned model | Stored matched geometry; displacements within ±120° | Steric clash filtering |
+| Torsion minimized | Uniform perturbation of eligible torsions | No learned model | Same seed procedure; separately sampled pool | Clash filtering, MMFF94s minimization, repeat clash check |
+| LoQI | Stereochemistry-aware equivariant coordinate diffusion | Low-energy ChEMBL3D structures; released diffusion model | Stereochemical molecular graph; Gaussian coordinate prior | Direct coordinate output; no added minimization in the inspected CASF adapter |
+| Torsional Diffusion | Diffusion over rotatable-bond torsion angles | GEOM-DRUGS; drugs_default model | RDKit seed conformers with randomized torsions | Preserves seed local geometry; optional MMFF relaxation is disabled by default in the adapter |
+| MCF drugs-L | Diffusion of coordinate fields over graph Laplacian features | GEOM-DRUGS; large MCF model | Graph spectral features and Gaussian coordinate noise; RDKit graph preparation | Coordinate rescaling; no added minimization in the inspected CASF adapter |
+| NExT-Mol DMT-L | Coordinate diffusion transformer with atom and pair representations | GEOM-DRUGS; DMT-L, without MoLlama conditioning | Molecular graph; Gaussian coordinate noise | Direct coordinate output; no added minimization in the inspected CASF adapter |
+| FlowR | Equivariant flow matching with the molecular graph held fixed | Published ligand pretraining: ZINC3D, PubChem3D, Enamine REAL, OMol25; local v2.2_mol model | Ligand-only generation; harmonic graph-based coordinate prior | Force-field cleanup (MMFF, UFF fallback) and stereochemistry checks |
+| Qwen 1.7B FSQ | Autoregressive generation of discrete coordinate tokens | Project-assembled conformer corpus; 1.7B FSQ model, step 47,023 | Molecular SMILES; sequential coordinate-token sampling | FSQ coordinate decoding before common validity filtering |
+
+Descriptions combine the original method papers and repositories with the inspected CASF adapters. FlowR training resources describe the published ligand-pretraining recipe; the exact training lineage of the local v2.2_mol checkpoint still requires confirmation. NExT-Mol DMT-L is evaluated without MoLlama conditioning. Optional upstream processing is not assumed to have been enabled. All CASF ensembles subsequently undergo the specified PoseBusters filtering. Exact historical checkpoint hashes and runtime overrides remain author audit items. Qwen training composition and its coordinate-tokenizer citation remain to be documented; its benchmark-excluded evaluation is pending.
+
+Sources: [method papers, repositories, and local adapter evidence](results_tables/generator_sources.md).
+<!-- results-table-1:end -->

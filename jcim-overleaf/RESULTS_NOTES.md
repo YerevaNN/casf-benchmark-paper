@@ -1,5 +1,13 @@
 # Results: sources and author follow-up
 
+## Display relocation, 6 October 2026
+
+Methods' dataset diagram and generator summary moved to Supporting Figure S1
+and Table S8. Main Results tables are now 1–5 and figures 1–4. Stable labels,
+CSV values, and artwork filenames are unchanged. The display numbers in the
+historical audit sections below refer to earlier manuscript layouts.
+
+
 ## Two clustering radii in Table 2, 5 October 2026
 
 Table 2 now reports mean clusters at 0.5 and 1.0 Å, sorted by the unrounded

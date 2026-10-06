@@ -1,8 +1,12 @@
 \documentclass[12pt]{article}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[style = chem-acs]{biblatex}
+\addbibresource{acs-template.bib}
 \usepackage{longtable,booktabs,array}
 \usepackage[margin=1in]{geometry}
 \renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
 \begin{document}
 \begin{center}
 {\Large Supporting Information}\\[0.4em]
@@ -20,4 +24,14 @@ ChEMBL3D-PB denotes the stored comparison ensemble after PoseBusters filtering.
 \input{tables/supporting-druglike}
 \clearpage
 \input{plinder23-appendix}
+\clearpage
+\section*{Evaluation panels and conformer generators}
+\input{dataset-figure}
+\clearpage
+\input{tables/generation-methods}
+\clearpage
+\begingroup
+\setlength{\emergencystretch}{1em}
+\printbibliography
+\endgroup
 \end{document}

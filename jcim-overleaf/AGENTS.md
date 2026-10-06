@@ -33,7 +33,7 @@ Preserve this framing when drafting Discussion, Conclusions, abstract, and title
 The author's latest scope decision is core94 and a single recovery cutoff of
 0.75 Å. Keep ref in SI and remove threshold-sensitivity narratives from the
 main paper. Emphasize selection among the broader method panel under the
-study's identity, validity, and candidate-budget constraints. Table 2 reports 0.5 and 1.0 Å
+study's identity, validity, and candidate-budget constraints. Table 1 reports 0.5 and 1.0 Å
 clustering radii, sorted by the 0.5 Å mean; other diversity displays use 1.0 Å.
 These remain distinct from the recovery cutoff. See the updated
 MANUSCRIPT_OUTLINE.md for current figure and table placement.
@@ -42,6 +42,8 @@ Read METHODS_NOTES.md before revising Methods: it records evidence and unresolve
 metadata. methods.tex contains the benchmark Methods draft and is included by
 acs-template.tex. Read RESULTS_NOTES.md before revising results.tex: the HTML
 report supplies the interpretation, while corrected exports supply the numbers.
+The dataset diagram and generator table are Supporting Figure S1 and Table S8.
+Main Methods describes scientific procedures without code-level syntax.
 introduction.tex is the Introduction draft. Tables are in tables/ and numbered
 figure definitions are in figures.tex, with artwork in figures/.
 The current figure artwork and source records are identified in README.md and

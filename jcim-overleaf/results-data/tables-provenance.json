@@ -1,5 +1,5 @@
 {
-  "prepared_on": "2026-10-05",
+  "prepared_on": "2026-10-06",
   "qwen_checkpoint": "qwen_1p7b_fsq_bigdata_step47023",
   "core_recovery_denominator": 94,
   "drug_molecules": 23,
@@ -9,7 +9,9 @@
     "docs/publication_tables_2026_09_24/druglike_summary.csv": "69c8168eea38974510b3b4f5d843e6bf0742904ed64dfac9b13c2e332e62a975",
     "docs/publication_tables_2026_09_24/source_snapshot.json": "f01149d88346bfe321882fd638d6edba8b48633365204846c77b4be89b571654",
     "docs/results_tables/clustering_radius_comparison.csv": "84a0d92d635533237c92c2de43ade1b8d01ac9a5965a8b7c4a33302c06646de6",
-    "docs/results_tables/clustering-radius-provenance.json": "00207409bf0f40d74313f24195f5948821ac96d88638598595c1320b12eadf09"
+    "docs/results_tables/clustering-radius-provenance.json": "00207409bf0f40d74313f24195f5948821ac96d88638598595c1320b12eadf09",
+    "docs/results_tables/methods.csv": "fc9b43955ca671fd034a747d39ee86a51b37499239a7c79e17c7b9737fe2dd1b",
+    "docs/results_tables/generator_sources.md": "43a240fa88b12e411de8b202459747e403a4bc27701cd63662080d64819cb50c"
   },
   "note": "Archived findings, not new conformer generation or a leakage-excluded rerun."
 }

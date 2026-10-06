@@ -1,5 +1,25 @@
 # Methods: evidence and author follow-up
 
+## Simplified Methods and generator audit, 6 October 2026
+
+Main Methods now describes the scientific procedure without SMARTS syntax,
+function names, optimizer return codes, or validity-mask implementation.
+`method-data/implementation-audit-2026-10-06.md` preserves the earlier detail,
+including numerical PoseBusters tolerances and seeds, the optional reference
+cap, saved-energy reuse and missing mean-energy export, and alignment fallbacks.
+The corrected energy analysis remains planned, not completed.
+
+The dataset figure and generator table move to Supporting Figure S1 and
+Table S8. The table is filled from original papers/repos and local adapters;
+`method-data/generator-sources.md` records the evidence and its limits.
+NExT-Mol's evaluated DMT-L adapter has `use_llm=False`; ZINC/MoLlama pretraining
+must not be attributed to that model. FlowR launchers specify the local
+`flowr_root_v2.2_mol.ckpt`. Public `flowr_root_v2.2.ckpt` is a different,
+joint-model designation; its full complex-training recipe is not inferred for
+the local ligand-only checkpoint. Only published ligand-pretraining resources
+are summarized as context until its exact training lineage is confirmed.
+
+
 ## Working Methods and appendix transfer, 5 October 2026
 
 The current `methods.tex` follows the author's working Markdown draft, archived

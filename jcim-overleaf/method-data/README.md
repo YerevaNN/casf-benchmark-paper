@@ -17,3 +17,9 @@ The current figures do not display confidence intervals; their earlier
 statistical procedures remain in METHODS_NOTES.md. Numbered references
 within the article use LaTeX labels.
 Pending energy and training-exclusion results are not reported as completed.
+
+
+On 6 October, main Methods was simplified and its displays moved to Supporting
+Figure S1 and Table S8. `implementation-audit-2026-10-06.md` preserves the prior
+implementation detail. `generator-sources.md` records the sources used to fill
+the generator table and distinguishes upstream descriptions from local runs.

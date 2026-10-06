@@ -1,12 +1,12 @@
 method,representation,training_checkpoint,initialization,postprocessing
-ChEMBL3D-PB,Stored optimized coordinates,Reference dataset,Stored ensemble for the matched stereoisomer,PoseBusters filter; no new generation
-RDKit raw,ETKDGv3 distance geometry,No learned checkpoint,Molecular graph; random starting coordinates,Finite-coordinate check; no added MMFF94s minimization
-RDKit minimized,ETKDGv3 distance geometry,No learned checkpoint,Same embedding procedure; independently sampled pool,"MMFF94s, up to 500 iterations"
-Torsion raw,Uniform torsion perturbations,No learned checkpoint,Matched ChEMBL3D seed geometry; ±120° per eligible torsion,Steric clash filtering
-Torsion minimized,Uniform torsion perturbations,No learned checkpoint,Same seed and perturbation procedure; independently sampled pool,"Clash filtering, MMFF94s, repeat clash check"
-LoQI,Equivariant coordinate diffusion,"ChEMBL3D; upstream checkpoint, exact hash pending",Molecular graph; exact initialization to document,Imported pipeline; postprocessing audit pending
-Torsional Diffusion,Diffusion over rotatable torsions,GEOM-DRUGS checkpoint; exact hash pending,RDKit initial geometry,Imported pipeline; postprocessing audit pending
-MCF drugs-L,Coordinate diffusion with molecular conformer fields,"GEOM-DRUGS; drugs-L checkpoint, exact hash pending",Molecular graph; exact initialization to document,Imported pipeline; postprocessing audit pending
-NExT-Mol DMT-L,Molecular language model with a coordinate diffusion head,"GEOM-DRUGS conformer training; ZINC-15 language-model pretraining; DMT-L, exact hash pending",Molecular representation; exact initialization to document,Imported pipeline; postprocessing audit pending
-FlowR,Coordinate flow matching with a fixed input graph,FLOWR.root v2.2; exact training composition and hash to confirm,Ligand-only harmonic graph inpainting,"Up to 200 cleanup steps (MMFF, UFF fallback); stereochemistry checks"
-Qwen 1.7B FSQ,Autoregressive coordinate-token generation,"Broadly assembled corpus; exact composition pending; pretraining step 47,023",Molecular SMILES; FSQ representation,Coordinate decoding; exact inference settings to document
+ChEMBL3D-PB,Stored optimized conformers,ChEMBL3D reference resource,Matched stereoisomer and its stored coordinates,PoseBusters filtering; no new generation
+RDKit raw,ETKDGv3 distance geometry with experimental torsion preferences,No learned model,Molecular graph; random-coordinate embedding,Chirality enforcement and finite-coordinate check; no added minimization
+RDKit minimized,ETKDGv3 distance geometry with experimental torsion preferences,No learned model,Same embedding procedure; separately sampled pool,"MMFF94s minimization, up to 500 iterations"
+Torsion raw,Uniform perturbation of eligible torsions,No learned model,Stored matched geometry; displacements within ±120°,Steric clash filtering
+Torsion minimized,Uniform perturbation of eligible torsions,No learned model,Same seed procedure; separately sampled pool,"Clash filtering, MMFF94s minimization, repeat clash check"
+LoQI,Stereochemistry-aware equivariant coordinate diffusion,Low-energy ChEMBL3D structures; released diffusion model,Stereochemical molecular graph; Gaussian coordinate prior,Direct coordinate output; no added minimization in the inspected CASF adapter
+Torsional Diffusion,Diffusion over rotatable-bond torsion angles,GEOM-DRUGS; drugs_default model,RDKit seed conformers with randomized torsions,Preserves seed local geometry; optional MMFF relaxation is disabled by default in the adapter
+MCF drugs-L,Diffusion of coordinate fields over graph Laplacian features,GEOM-DRUGS; large MCF model,Graph spectral features and Gaussian coordinate noise; RDKit graph preparation,Coordinate rescaling; no added minimization in the inspected CASF adapter
+NExT-Mol DMT-L,Coordinate diffusion transformer with atom and pair representations,"GEOM-DRUGS; DMT-L, without MoLlama conditioning",Molecular graph; Gaussian coordinate noise,Direct coordinate output; no added minimization in the inspected CASF adapter
+FlowR,Equivariant flow matching with the molecular graph held fixed,"Published ligand pretraining: ZINC3D, PubChem3D, Enamine REAL, OMol25; local v2.2_mol model",Ligand-only generation; harmonic graph-based coordinate prior,"Force-field cleanup (MMFF, UFF fallback) and stereochemistry checks"
+Qwen 1.7B FSQ,Autoregressive generation of discrete coordinate tokens,"Project-assembled conformer corpus; 1.7B FSQ model, step 47,023",Molecular SMILES; sequential coordinate-token sampling,FSQ coordinate decoding before common validity filtering

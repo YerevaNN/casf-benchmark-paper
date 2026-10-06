@@ -3,15 +3,15 @@
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.18}
 \footnotesize
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.11\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.235\linewidth}>{\raggedright\arraybackslash}p{0.195\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}@{}}
-\caption{Evaluated generation pipelines and the stored comparison ensemble. Settings describe the archived evaluation; unresolved metadata are identified explicitly.}\label{tab:generators}\\
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.195\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}@{}}
+\caption{Evaluated generation pipelines and the stored comparison ensemble. Published method descriptions and inspected CASF adapters are distinguished in the notes.}\label{tab:generators}\\
 \toprule
-Method & Representation / sampling & Training data and checkpoint & Input / initialization & Processing before common CASF filtering \\
+Method & Representation / sampling & Training data and model & Input / initialization & Processing before common CASF filtering \\
 \midrule
 \endfirsthead
 \multicolumn{5}{l}{\tablename\ \thetable\ (continued)}\\
 \toprule
-Method & Representation / sampling & Training data and checkpoint & Input / initialization & Processing before common CASF filtering \\
+Method & Representation / sampling & Training data and model & Input / initialization & Processing before common CASF filtering \\
 \midrule
 \endhead
 \midrule
@@ -19,21 +19,18 @@ Method & Representation / sampling & Training data and checkpoint & Input / init
 \endfoot
 \bottomrule
 \endlastfoot
-ChEMBL3D-PB & Stored optimized coordinates & Reference dataset & Stored ensemble for the matched stereoisomer & PoseBusters filter; no new generation \\[3pt]
-RDKit raw & ETKDGv3 distance geometry & No learned checkpoint & Molecular graph; random starting coordinates & Finite-coordinate check; no added MMFF94s minimization \\[3pt]
-RDKit minimized & ETKDGv3 distance geometry & No learned checkpoint & Same embedding procedure; independently sampled pool & MMFF94s, up to 500 iterations \\[3pt]
-Torsion raw & Uniform torsion perturbations & No learned checkpoint & Matched ChEMBL3D seed geometry; $\pm$120$^\circ$ per eligible torsion & Steric clash filtering \\[3pt]
-Torsion minimized & Uniform torsion perturbations & No learned checkpoint & Same seed and perturbation procedure; independently sampled pool & Clash filtering, MMFF94s, repeat clash check \\[3pt]
-LoQI & Equivariant coordinate diffusion & ChEMBL3D; upstream checkpoint, exact hash pending & Molecular graph; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
-Torsional Diffusion & Diffusion over rotatable torsions & GEOM-DRUGS checkpoint; exact hash pending & RDKit initial geometry & Imported pipeline; postprocessing audit pending \\[3pt]
-MCF drugs-L & Coordinate diffusion with molecular conformer fields & GEOM-DRUGS; drugs-L checkpoint, exact hash pending & Molecular graph; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
-NExT-Mol DMT-L & Molecular language model with a coordinate diffusion head & GEOM-DRUGS conformer training; ZINC-15 language-model pretraining; DMT-L, exact hash pending & Molecular representation; exact initialization to document & Imported pipeline; postprocessing audit pending \\[3pt]
-FlowR & Coordinate flow matching with a fixed input graph & FLOWR.root v2.2; exact training composition and hash to confirm & Ligand-only harmonic graph inpainting & Up to 200 cleanup steps (MMFF, UFF fallback); stereochemistry checks \\[3pt]
-Qwen 1.7B FSQ & Autoregressive coordinate-token generation & Broadly assembled corpus; exact composition pending; pretraining step 47,023 & Molecular SMILES; FSQ representation & Coordinate decoding; exact inference settings to document \\[3pt]
+ChEMBL3D-PB\cite{nikitin2025loqi} & Stored optimized conformers & ChEMBL3D reference resource & Matched stereoisomer and its stored coordinates & PoseBusters filtering; no new generation \\[3pt]
+RDKit raw\cite{wang2020etkdg} & ETKDGv3 distance geometry with experimental torsion preferences & No learned model & Molecular graph; random-coordinate embedding & Chirality enforcement and finite-coordinate check; no added minimization \\[3pt]
+RDKit minimized\cite{wang2020etkdg} & ETKDGv3 distance geometry with experimental torsion preferences & No learned model & Same embedding procedure; separately sampled pool & MMFF94s minimization, up to 500 iterations \\[3pt]
+Torsion raw & Uniform perturbation of eligible torsions & No learned model & Stored matched geometry; displacements within $\pm$120$^\circ$ & Steric clash filtering \\[3pt]
+Torsion minimized & Uniform perturbation of eligible torsions & No learned model & Same seed procedure; separately sampled pool & Clash filtering, MMFF94s minimization, repeat clash check \\[3pt]
+LoQI\cite{nikitin2025loqi} & Stereochemistry-aware equivariant coordinate diffusion & Low-energy ChEMBL3D structures; released diffusion model & Stereochemical molecular graph; Gaussian coordinate prior & Direct coordinate output; no added minimization in the inspected CASF adapter \\[3pt]
+Torsional Diffusion\cite{jing2022torsional} & Diffusion over rotatable-bond torsion angles & GEOM-DRUGS; drugs\_default model & RDKit seed conformers with randomized torsions & Preserves seed local geometry; optional MMFF relaxation is disabled by default in the adapter \\[3pt]
+MCF drugs-L\cite{wang2024mcf} & Diffusion of coordinate fields over graph Laplacian features & GEOM-DRUGS; large MCF model & Graph spectral features and Gaussian coordinate noise; RDKit graph preparation & Coordinate rescaling; no added minimization in the inspected CASF adapter \\[3pt]
+NExT-Mol DMT-L\cite{liu2025nextmol} & Coordinate diffusion transformer with atom and pair representations & GEOM-DRUGS; DMT-L, without MoLlama conditioning & Molecular graph; Gaussian coordinate noise & Direct coordinate output; no added minimization in the inspected CASF adapter \\[3pt]
+FlowR\cite{cremer2025flowr} & Equivariant flow matching with the molecular graph held fixed & Published ligand pretraining: ZINC3D, PubChem3D, Enamine REAL, OMol25; local v2.2\_mol model & Ligand-only generation; harmonic graph-based coordinate prior & Force-field cleanup (MMFF, UFF fallback) and stereochemistry checks \\[3pt]
+Qwen 1.7B FSQ & Autoregressive generation of discrete coordinate tokens & Project-assembled conformer corpus; 1.7B FSQ model, step 47,023 & Molecular SMILES; sequential coordinate-token sampling & FSQ coordinate decoding before common validity filtering \\[3pt]
 \end{longtable}
-\noindent All CASF ensembles subsequently undergo the specified PoseBusters checks.
-``Raw'' does not imply an absence of generator-specific processing. Qwen is the
-initial step-47,023 checkpoint, not a model retrained after benchmark exclusions.
-Exact executed settings and checkpoint hashes remain to be confirmed where marked.
-Training-set overlap has not been ruled out for the external checkpoints.
+\noindent Descriptions combine the original method papers and repositories with the inspected CASF adapters. FlowR training resources describe the published ligand-pretraining recipe; the exact training lineage of the local v2.2\_mol checkpoint still requires confirmation. NExT-Mol DMT-L is evaluated without MoLlama conditioning. Optional upstream processing is not assumed to have been enabled. All CASF ensembles subsequently undergo the specified PoseBusters filtering. Exact historical checkpoint hashes and runtime overrides remain author audit items. Qwen training composition and its coordinate-tokenizer citation remain to be documented; its benchmark-excluded evaluation is pending.
+% AUTHOR: verify exact run metadata; do not substitute current upstream defaults for historical settings.
 \endgroup

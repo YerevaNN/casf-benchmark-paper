@@ -1,8 +1,8 @@
 # JCIM manuscript
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with six main tables, five figures, and seven supporting tables.
-Table 6 records pending dataset-release items and is not a measured result.
+and Discussion, with five main tables, four main figures, eight supporting tables, and one supporting figure.
+Table 5 records pending dataset-release items and is not a measured result.
 Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
 submission-ready article.
@@ -23,14 +23,14 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 - `results.tex`: geometric diversity, energy plan, single-reference recovery,
   candidate targets, size/flexibility, multiple references, and dataset plans.
 - `discussion.tex`: the working Discussion transferred from the Markdown draft.
-- `tables/generation-methods.tex`: generator configurations (Table 1).
+- `tables/generation-methods.tex`: generator descriptions (Supporting Table S8).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
-  `tables/druglike.tex`, `tables/release-status.tex`: Tables 2–6.
-- `supporting-information.tex`: separate SI document with Tables S1--S7 (core RMSD,
+  `tables/druglike.tex`, `tables/release-status.tex`: Tables 1–5.
+- `supporting-information.tex`: separate SI document with Tables S1--S8 and Figure S1 (core RMSD,
   ref recovery, size strata, multi-reference matching distances, and the Plinder-23
-  selection criteria, statistics, and molecule list); switch the Overleaf main document to this file to compile it.
+  selection criteria, statistics, molecule list, and generator descriptions); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
-- `dataset-figure.tex`: experimental-panel diagram, with PDF, SVG, and PNG assets.
+- `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
 - `plinder23-appendix.tex`: selection account and Supporting Tables S5--S7.
 - `method-data/`: Methods/appendix drafts, source CSVs, and provenance.
 - `results-data/`: current Results/Discussion snapshot, source CSVs, and figure provenance.
@@ -55,7 +55,8 @@ pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 The current Results artwork is `figures/figure-2-diversity-recovery.*`,
 `figure-3-sampling-budget.*`, `figure-4-size-flexibility.*`, and
 `figure-5-multiple-references.*`, each in PDF, editable SVG, and 350-dpi PNG.
-Figure 1 is the experimental-panel diagram in Methods. The current figures
+Supporting Figure S1 is the experimental-panel diagram. Main figure numbers are
+1–4; the artwork filenames retain their original stable identifiers. The current figures
 come from the benchmark's `docs/results_figures/build_figures.py`; an unchanged
 copy is archived as `results-data/source-build-figures.py` for provenance.
 That script runs in the original analysis checkout and also updates its
