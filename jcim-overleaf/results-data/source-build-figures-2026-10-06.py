@@ -141,7 +141,7 @@ fig.legend(handles=[Line2D([],[],marker='o',color='#697581',mfc='white',ls='none
  Line2D([],[],marker='h',color='#333A43',ls='none',label='Stored ChEMBL3D-PB')],
  loc='lower center',bbox_to_anchor=(.53,.07),frameon=False,ncol=3,fontsize=7.5,handletextpad=.4,columnspacing=1.2)
 footer(fig,'Lines join two evaluated targets; retained counts and computing costs are not matched.')
-save(fig,'figure-3-sampling-budget','**Figure 2. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.')
+save(fig,'figure-3-sampling-budget','**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.')
 
 # 4. Reconstruct strata from the original size/flexibility exports.
 sizepath=ROOT/'docs/publication_tables_2026_09_28/size_strata.csv'
@@ -177,7 +177,7 @@ for j,(desc,groups,labels) in enumerate([('size',['<20','20-29','30-39','40+'],[
  for spine in ax.spines.values():spine.set_visible(False)
 cax=fig.add_axes([.39,.14,.44,.024]);fig.colorbar(mesh,cax=cax,orientation='horizontal',label='Recovery at 0.75 Å (%)')
 footer(fig,'Cells show recovered / total entries.  * Fewer than five entries: interpret descriptively.')
-save(fig,'figure-4-size-flexibility','**Figure 3. Recovery by molecular size and flexibility.** Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.')
+save(fig,'figure-4-size-flexibility','**Figure 4. Recovery by molecular size and flexibility.** Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.')
 
 # 5. Mean coverage/precision plus the paired 23-molecule comparison.
 fig,(a,b)=plt.subplots(1,2,figsize=(7.2,4.25));fig.subplots_adjust(left=.095,right=.975,top=.84,bottom=.23,wspace=.36)
@@ -205,9 +205,9 @@ for name,offset in [('Imatinib',(8,7)),('Actinonin',(-8,12))]:
  arrowprops={'arrowstyle':'-','color':'#8A96A3','lw':.6})
 b.set(xlim=(-5,106),ylim=(-5,106),xlabel='LoQI coverage (%)',ylabel='Qwen coverage (%)');b.set_xticks([0,50,100]);b.set_yticks([0,50,100])
 footer(fig,'Exploratory · 23 molecules · supplied pools without a common PoseBusters filter')
-save(fig,'figure-5-multiple-references','**Figure 4. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.')
+save(fig,'figure-5-multiple-references','**Figure 5. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.')
 
-status='These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The corrected energy figure and dataset-release figures remain pending.'
+status='These figures use the archived corrected findings. Qwen is the initial 1.7B FSQ step-47,023 model, not the pending benchmark-excluded model. The energy comparison is rendered separately from the common-hydrogen rescoring; dataset-release figures remain pending.'
 gallery='# Results figures\n\n'+status+'\n\n'
 for name,caption in figures:
  gallery+=f'![{name}]({OUT/name}.png)\n\n{caption}\n\n[PDF]({OUT/name}.pdf) · [Editable SVG]({OUT/name}.svg)\n\n'
@@ -222,7 +222,7 @@ prefixes=['[Here goes the dataset construction diagram,','[Here goes the cluster
  '[Here goes the figure showing recovery at the 1,000-candidate target by',
  '[Here goes the coverage-versus-precision figure with representative']
 for i,((name,caption),prefix) in enumerate(zip(figures,prefixes),1):
- block=f'<!-- results-figure-{i}:start -->\n![Figure {"S1" if i == 1 else i-1}]({OUT/name}.png)\n\n{caption}\n\n[PDF]({OUT/name}.pdf) · [Editable SVG]({OUT/name}.svg)\n<!-- results-figure-{i}:end -->'
+ block=f'<!-- results-figure-{i}:start -->\n![Figure {"S1" if i == 1 else (1 if i == 2 else i)}]({OUT/name}.png)\n\n{caption}\n\n[PDF]({OUT/name}.pdf) · [Editable SVG]({OUT/name}.svg)\n<!-- results-figure-{i}:end -->'
  pattern=rf'<!-- results-figure-{i}:start -->.*?<!-- results-figure-{i}:end -->'
  if i == 1 and methods_text is not None:
   methods_text,n=re.subn(pattern,lambda _:block,methods_text,flags=re.S)

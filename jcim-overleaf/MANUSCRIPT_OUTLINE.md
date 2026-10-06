@@ -12,17 +12,18 @@ and improvements in downstream docking, screening, or model training.
 
 The working Markdown now governs the Introduction, Methods, Results, and
 Discussion. It supersedes the older recovery-first ordering below. Results
-builds from geometric variation and the planned energy analysis to CASF
-single-reference recovery, joint diversity/recovery, larger candidate pools,
+builds from geometric variation to CASF single-reference recovery and the joint
+diversity/recovery plot, followed by energy dispersion and larger candidate pools,
 size and flexibility, PLINDER multiple-reference coverage and precision,
 and the planned conformer resource. The softer opening establishes the
-purpose of this progression before introducing Table 2.
+purpose of this progression before introducing Table 1.
 
 - Main Methods: scientific procedures; dataset diagram and generator summary
   are now Supporting Figure S1 and Table S8.
 - Results: ChEMBL-count diversity (Table 1), recovery (Table 2), joint plot
-  (Figure 1), two-target recovery/diversity (Table 3A/B and Figure 2),
-  size/flexibility (Figure 3), multiple references (Table 4 and Figure 4).
+  (Figure 1), energy dispersion (Figure 2), two-target recovery/diversity
+  (Table 3A/B and Figure 3), size/flexibility (Figure 4), multiple references
+  (Table 4 and Figure 5).
   Table 1 compares 0.5 and 1.0 Å cluster counts and largest-cluster occupancy
   at 1.0 Å, ordered by increasing 0.5 Å count with the stored reference last.
   Table 2 reports Hit@0.5, Hit@0.75, and Best RMSD (mean of per-entry minima),
@@ -30,10 +31,11 @@ purpose of this progression before introducing Table 2.
   Figure 1 plots 0.5 Å cluster count against Best RMSD; lower right is favorable.
 - Dataset plans: Table 5 is explicitly an unfinished release checklist.
 - Supporting Information: S1–S7 retain the earlier analyses and Plinder-23
-  selection account; S8 describes generator mechanisms and training resources.
+  selection account; S8 describes generators and S9 reports energy summaries.
 - Discussion: transferred working prose; Conclusions still pending.
 
-Energy results, cleaned Qwen evaluation, and the dataset release are pending.
+Energy results use a common-hydrogen MMFF94s recalculation on the archived
+ChEMBL-count ensembles. The cleaned Qwen evaluation and dataset release are pending.
 Current figures are descriptive and show no uncertainty intervals. Archived
 interval calculations and older display designs remain evidence, not the
 current presentation. See RESULTS_NOTES.md and `results-data/`.

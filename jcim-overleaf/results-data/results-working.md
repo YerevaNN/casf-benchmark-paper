@@ -1,6 +1,6 @@
 # Results
 
-> **Data status:** Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. Energy results and release counts remain pending.
+> **Data status:** Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. Energy results use the separate common-hydrogen rescoring; release counts remain pending.
 
 A useful conformational resource should represent a range of molecular shapes while retaining coverage of geometries observed in protein complexes. We begin by examining the variation present in the generated ensembles, before asking whether that variation includes the experimental bound conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target, placing each generator alongside the stored ChEMBL3D ensemble for the same molecules. Table 1 summarizes geometric diversity through cluster counts at 0.5 and 1.0 Å, together with the retained ensemble sizes and the fraction of conformers in the largest cluster.
 
@@ -30,12 +30,6 @@ Qwen, random torsion sampling, and FlowR produce the most geometrically diverse 
 Cluster occupancy provides a complementary description of how the samples are distributed. At 1.0 Å, FlowR and Qwen have the smallest mean fractions of conformers in the largest cluster, at 42.4% and 44.1%, respectively; random torsion sampling is close at 44.4%. LoQI and minimized torsion sampling are more concentrated, with 53.7% and 56.4% in the largest cluster. ChEMBL3D has fewer clusters but a less concentrated largest cluster than these two methods, illustrating that the number of represented shapes and their sampling balance describe different aspects of diversity. These observations concern the geometry of the retained pools, whose sizes differ between methods; they do not establish whether the additional shapes are energetically plausible or close to experimentally observed conformations.
 
 [Update the method-specific observations and their magnitudes from the final ChEMBL-count evaluation; do not transfer rankings from the 1,000-candidate comparison to this target.]
-
-We next examine the energies associated with this geometric variation. The planned MMFF94s analysis will assess whether broad geometric sampling is accompanied by a substantial high-energy tail, using within-molecule comparisons and the robust summaries described in Methods.
-
-Energy dispersion provides information that cluster counts alone cannot supply. An ensemble may contain many geometrically different conformers while assigning substantial sampling effort to highly strained structures. Conversely, a narrow energy distribution does not necessarily imply limited geometric variation, since distinct conformations can have similar energies. We therefore interpret this analysis as a measure of energetic plausibility and dispersion, rather than as a count of occupied energy basins. The intended dataset should preserve meaningful structural variation without being dominated by an extreme high-energy tail.
-
-[Here goes the updated MMFF94s energy figure, showing within-molecule energy comparisons, robust summaries of energy spread, and the high-energy tail. Recompute this analysis using the corrected molecular identities and final generated pools before inserting a result-specific interpretation.]
 
 Having characterized the ensembles themselves, we assess recovery of the experimental bound geometries at the ChEMBL-count target. Table 2 reports Hit@0.5 and Hit@0.75 alongside Best RMSD, the distance from each experimental reference to its closest generated conformer, averaged across molecules with a measurable result. The hit rates describe how often an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its closest approach without imposing a cutoff.
 
@@ -73,6 +67,20 @@ We then consider geometric diversity and proximity to the bound conformation tog
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-2-diversity-recovery.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-2-diversity-recovery.svg)
 <!-- results-figure-2:end -->
+
+We next examine energy variation in the same retained ensembles. Figure 2 compares geometric cluster counts with the median of the per-molecule energy standard deviations, using a common MMFF94s calculation with hydrogen coordinates relaxed and heavy atoms fixed. The two panels describe the number of represented shapes and the spread of their force-field energies at the ChEMBL-count target.
+
+<!-- results-figure-energy:start -->
+![Figure 2](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-energy-dispersion.png)
+
+**Figure 2. Geometric diversity and energy dispersion at the ChEMBL-count target.** (A) Mean geometric cluster count at 0.5 Å. (B) Median across molecules of the population standard deviation of conformer energies within each retained ensemble, in kcal/mol. Energies were recalculated with MMFF94s after rebuilding and relaxing hydrogens while fixing every heavy atom. Each method uses the same measurable entries in both panels: 92 for NExT-Mol, 93 for MCF, and 94 for the others. The dashed line separates the stored ChEMBL3D-PB ensemble. Smaller energy SD indicates a narrower distribution; it does not establish lower absolute energy or the absence of high-energy conformers. Means, paired energy differences, and calculation completeness are reported in Supporting Table S9.
+
+[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-energy-dispersion.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-energy-dispersion.svg)
+<!-- results-figure-energy:end -->
+
+The methods with the largest cluster counts differ in energy spread. Qwen and FlowR have median energy standard deviations of 9.1 and 8.8 kcal/mol, respectively, compared with 15.3 kcal/mol for random torsion sampling and 14.0 kcal/mol for Torsional Diffusion. LoQI and the minimized baselines have narrower energy distributions, with medians around 1.9–2.1 kcal/mol, alongside their lower cluster counts. The stored ChEMBL3D ensemble has a median energy standard deviation of 1.8 kcal/mol.
+
+The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion, the mean per-molecule standard deviation is 271.2 kcal/mol, compared with its median of 14.0 kcal/mol. For Qwen, these summaries are closer, at 10.2 and 9.1 kcal/mol. The median therefore retains the differences in typical energy spread while reducing the influence of exceptional molecules. Supporting Table S9 reports both summaries and the corresponding energy levels. The median paired difference in mean energy relative to the same molecule's ChEMBL3D ensemble is +13.6 kcal/mol for Qwen and -0.8 kcal/mol for FlowR.
 
 Constructing a large conformational resource also requires understanding what additional sampling provides. We therefore extend the comparison to the target of 1,000 candidates per molecule. This tests whether the relationship between diversity and recovery persists as the ensembles grow and whether additional samples reach experimental geometries missed at the smaller target.
 
@@ -119,9 +127,9 @@ Generated methods use the 1,000-candidate target; ChEMBL3D-PB remains the same s
 <!-- results-table-4:end -->
 
 <!-- results-figure-3:start -->
-![Figure 2](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.png)
+![Figure 3](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.png)
 
-**Figure 2. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.
+**Figure 3. Recovery and diversity at the two candidate targets.** Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery uses all 94 CASF entries; cluster means use defined measurements. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering; retained counts are given in Table 3.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-3-sampling-budget.svg)
 <!-- results-figure-3:end -->
@@ -133,9 +141,9 @@ Recovery establishes whether an ensemble contains at least one close match. The 
 Overall recovery can conceal substantial differences between molecules. We therefore compare recovery across groups defined by rotatable-bond and heavy-atom counts to assess how aggregate performance changes with molecular flexibility and size.
 
 <!-- results-figure-4:start -->
-![Figure 3](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-4-size-flexibility.png)
+![Figure 4](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-4-size-flexibility.png)
 
-**Figure 3. Recovery by molecular size and flexibility.** Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.
+**Figure 4. Recovery by molecular size and flexibility.** Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-4-size-flexibility.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-4-size-flexibility.svg)
 <!-- results-figure-4:end -->
@@ -166,9 +174,9 @@ Sources: [molecule-level records](results_tables/druglike_selected.csv) and [unr
 <!-- results-table-5:end -->
 
 <!-- results-figure-5:start -->
-![Figure 4](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.png)
+![Figure 5](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.png)
 
-**Figure 4. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.
+**Figure 5. Coverage of multiple bound references and precision relative to those observations.** (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD < 0.75 Å criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/results_figures/figure-5-multiple-references.svg)
 <!-- results-figure-5:end -->

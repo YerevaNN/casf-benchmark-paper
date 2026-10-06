@@ -1,0 +1,33 @@
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Energy summaries after common hydrogen preparation at the ChEMBL-count target. All energy values are in kcal/mol.}
+\label{tab:energy-summary}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Method & $n$ & \shortstack{Median\\energy SD} & \shortstack{Mean\\energy SD} & \shortstack{Median\\mean energy} & \shortstack{Median paired\\mean-energy difference} \\
+\midrule
+RDKit minimized & 94 & 1.9 & 2.6 & 26.4 & -6.1 \\
+Torsion minimized & 94 & 2.1 & 2.4 & 26.5 & -5.7 \\
+LoQI & 94 & 1.9 & 2.8 & 34.1 & +0.2 \\
+MCF drugs-L & 93 & 3.6 & 9.5 & 43.3 & +5.1 \\
+NExT-Mol DMT-L & 92 & 3.0 & 4.0 & 37.9 & +3.1 \\
+RDKit raw & 94 & 7.2 & 8.1 & 60.0 & +28.3 \\
+Torsional Diffusion & 94 & 14.0 & 271.2 & 71.6 & +32.2 \\
+FlowR & 94 & 8.8 & 12.8 & 33.5 & -0.8 \\
+Torsion raw & 94 & 15.3 & 15.2 & 51.3 & +23.1 \\
+Qwen 1.7B FSQ & 94 & 9.1 & 10.2 & 51.6 & +13.6 \\
+\hdashline
+ChEMBL3D-PB & 94 & 1.8 & 2.3 & 32.6 & +0.0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+$n$ is the number of nonempty ensembles with defined energies. Energy SD is the population standard deviation within each molecule's ensemble; its median and mean are then taken across molecules. Mean energy is likewise calculated within each ensemble before taking the median. Paired mean-energy differences are calculated against the stored ChEMBL3D ensemble for the same molecule before aggregation; positive values indicate higher mean energy under this force field. They are not differences of aggregate medians or binding energies.
+
+RDKit 2025.09.6 was used with MMFF94s. Hydrogen relaxation allowed up to 5,000 iterations, with force and energy tolerances of $10^{-4}$ and $10^{-6}$, respectively.
+
+All 77,986 retained conformers produced finite energies and converged hydrogen relaxations, with no heavy-atom displacement. The three empty method--molecule outputs (two NExT-Mol and one MCF) have no defined energy distribution and are excluded from these means and medians. Per-molecule and per-conformer records are archived with the analysis. Taking a median across molecules does not remove extreme structures from the ensembles.
+\end{minipage}
+\end{table}

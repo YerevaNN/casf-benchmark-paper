@@ -23,6 +23,6 @@ order were preserved. Markdown author instructions become LaTeX comments.
   that figure; the other figure assets were not regenerated for this change.
 
 Artwork is stored as PDF, SVG, and PNG under `figures/figure-2-*` through
-`figure-5-*`. No generation, scoring, or force-field analysis was rerun.
-Qwen remains the initial 1.7B FSQ step-47023 checkpoint. Energy results,
-benchmark-excluded evaluation, and the public dataset release remain pending.
+`figure-5-*`. Clustering and RMSD measurements are unchanged. The new energy calculation
+and Figure 2 are archived separately in `../energy-data/`.
+Qwen remains the initial 1.7B FSQ step-47023 checkpoint. The benchmark-excluded evaluation and public dataset release remain pending.

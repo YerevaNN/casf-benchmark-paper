@@ -4,6 +4,7 @@
 \usepackage[style = chem-acs]{biblatex}
 \addbibresource{acs-template.bib}
 \usepackage{longtable,booktabs,array}
+\usepackage{arydshln}
 \usepackage[margin=1in]{geometry}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
@@ -29,6 +30,9 @@ ChEMBL3D-PB denotes the stored comparison ensemble after PoseBusters filtering.
 \input{dataset-figure}
 \clearpage
 \input{tables/generation-methods}
+\clearpage
+\section*{Energy comparison}
+\input{tables/energy-summary}
 \clearpage
 \begingroup
 \setlength{\emergencystretch}{1em}

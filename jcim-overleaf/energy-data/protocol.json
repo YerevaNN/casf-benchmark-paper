@@ -1,0 +1,16 @@
+{
+  "force_field": "MMFF94s",
+  "hydrogens": "Remove explicit hydrogens, rebuild explicit hydrogens with coordinates, and relax only hydrogen coordinates",
+  "max_iterations": 1000,
+  "max_minimization_calls": 5,
+  "force_tolerance": 0.0001,
+  "energy_tolerance": 0.000001,
+  "heavy_coordinate_tolerance_angstrom": 1e-10,
+  "nonbonded_threshold": 100.0,
+  "ignore_interfragment_interactions": true,
+  "std_ddof": 0,
+  "workers": 8,
+  "ligand_set": "core",
+  "target": "chembl_count",
+  "source_database_sha256": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116"
+}

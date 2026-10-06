@@ -16,7 +16,8 @@ transferred the working Results and Discussion, archived in `results-data/`.
 The current figures do not display confidence intervals; their earlier
 statistical procedures remain in METHODS_NOTES.md. Numbered references
 within the article use LaTeX labels.
-Pending energy and training-exclusion results are not reported as completed.
+The common-hydrogen energy analysis is recorded in `../energy-data/`. The
+training-exclusion evaluation remains pending.
 
 
 On 6 October, main Methods was simplified and its displays moved to Supporting

@@ -3,7 +3,7 @@
 \label{sec:results}
 \input{figures}
 
-% AUTHOR: Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. Energy results and release counts remain pending.
+% AUTHOR: Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. The energy comparison uses a common-hydrogen recalculation on the archived ensembles; release counts remain pending.
 
 A useful conformational resource should represent a range of molecular shapes while retaining
 coverage of geometries observed in protein complexes. We begin by examining the variation present in
@@ -34,23 +34,6 @@ are energetically plausible or close to experimentally observed conformations.
 
 % AUTHOR: Update the method-specific observations and their magnitudes from the final ChEMBL-count
 % AUTHOR: evaluation; do not transfer rankings from the 1,000-candidate comparison to this target.
-
-We next examine the energies associated with this geometric variation. The planned MMFF94s analysis
-will assess whether broad geometric sampling is accompanied by a substantial high-energy tail, using
-within-molecule comparisons and the robust summaries described in Methods.
-
-Energy dispersion provides information that cluster counts alone cannot supply. An ensemble may
-contain many geometrically different conformers while assigning substantial sampling effort to
-highly strained structures. Conversely, a narrow energy distribution does not necessarily imply
-limited geometric variation, since distinct conformations can have similar energies. We therefore
-interpret this analysis as a measure of energetic plausibility and dispersion, rather than as a
-count of occupied energy basins. The intended dataset should preserve meaningful structural
-variation without being dominated by an extreme high-energy tail.
-
-% AUTHOR: Here goes the updated MMFF94s energy figure, showing within-molecule energy comparisons, robust
-% AUTHOR: summaries of energy spread, and the high-energy tail. Recompute this analysis using the
-% AUTHOR: corrected molecular identities and final generated pools before inserting a result-specific
-% AUTHOR: interpretation.
 
 Having characterized the ensembles themselves, we assess recovery of the experimental bound
 geometries at the ChEMBL-count target. Table~\ref{tab:count-recovery} reports Hit@0.5 and
@@ -90,6 +73,29 @@ in the preliminary evaluation, subject to confirmation after benchmark molecules
 excluded from its training data.
 
 \diversityfigure
+
+We next examine energy variation in the same retained ensembles. Figure~\ref{fig:energy-dispersion}
+compares geometric cluster counts with the median of the per-molecule energy standard deviations,
+using a common MMFF94s calculation with hydrogen coordinates relaxed and heavy atoms fixed.
+The two panels describe the number of represented shapes and the spread of their force-field
+energies at the ChEMBL-count target.
+
+\energyfigure
+
+The methods with the largest cluster counts differ in energy spread. Qwen and FlowR have
+median energy standard deviations of 9.1 and 8.8 kcal/mol, respectively, compared with
+15.3 kcal/mol for random torsion sampling and 14.0 kcal/mol for Torsional Diffusion. LoQI and
+the minimized baselines have narrower energy distributions, with medians around 1.9--2.1 kcal/mol,
+alongside their lower cluster counts. The stored ChEMBL3D ensemble has a median energy standard
+deviation of 1.8 kcal/mol.
+
+The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion,
+the mean per-molecule standard deviation is 271.2 kcal/mol, compared with its median of
+14.0 kcal/mol. For Qwen, these summaries are closer, at 10.2 and 9.1 kcal/mol.
+The median therefore retains the differences in typical energy spread while reducing the influence
+of exceptional molecules. Supporting Table S9 reports both summaries and the corresponding
+energy levels. The median paired difference in mean energy relative to the same molecule's
+ChEMBL3D ensemble is +13.6 kcal/mol for Qwen and -0.8 kcal/mol for FlowR.
 
 Constructing a large conformational resource also requires understanding what additional sampling
 provides. We therefore extend the comparison to the target of 1,000 candidates per molecule. This

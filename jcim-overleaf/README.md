@@ -1,7 +1,7 @@
 # JCIM manuscript
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with five main tables, four main figures, eight supporting tables, and one supporting figure.
+and Discussion, with five main tables, five main figures, nine supporting tables, and one supporting figure.
 Table 5 records pending dataset-release items and is not a measured result.
 Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
@@ -20,15 +20,15 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 
 - `introduction.tex`: rationale, relevant literature, and study questions.
 - `methods.tex`: benchmark procedures and author comments for missing details.
-- `results.tex`: geometric diversity, energy plan, single-reference recovery,
+- `results.tex`: geometric diversity, single-reference recovery, energy dispersion,
   candidate targets, size/flexibility, multiple references, and dataset plans.
 - `discussion.tex`: the working Discussion transferred from the Markdown draft.
 - `tables/generation-methods.tex`: generator descriptions (Supporting Table S8).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
   `tables/druglike.tex`, `tables/release-status.tex`: Tables 1–5.
-- `supporting-information.tex`: separate SI document with Tables S1--S8 and Figure S1 (core RMSD,
+- `supporting-information.tex`: separate SI document with Tables S1--S9 and Figure S1 (core RMSD,
   ref recovery, size strata, multi-reference matching distances, and the Plinder-23
-  selection criteria, statistics, molecule list, and generator descriptions); switch the Overleaf main document to this file to compile it.
+  selection criteria, statistics, molecule list, generator descriptions, and energy summaries); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
 - `plinder23-appendix.tex`: selection account and Supporting Tables S5--S7.
@@ -53,10 +53,10 @@ incoming changes and preserve edits from Overleaf or other authors before
 pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 
 The current Results artwork is `figures/figure-2-diversity-recovery.*`,
-`figure-3-sampling-budget.*`, `figure-4-size-flexibility.*`, and
+`figure-energy-dispersion.*`, `figure-3-sampling-budget.*`, `figure-4-size-flexibility.*`, and
 `figure-5-multiple-references.*`, each in PDF, editable SVG, and 350-dpi PNG.
 Supporting Figure S1 is the experimental-panel diagram. Main figure numbers are
-1–4; the artwork filenames retain their original stable identifiers. The current figures
+1–5; the artwork filenames retain their original stable identifiers. The current figures
 come from the benchmark's `docs/results_figures/build_figures.py`. The initial
 renderer is archived as `results-data/source-build-figures.py`; the 6 October
 revision, with Figure 1 comparing 0.5 Å cluster count and Best RMSD, is archived
@@ -68,7 +68,12 @@ The older `build_figures.py`, `figure-data/`, and `figures/main-figures.pdf`
 remain historical assets. They do not reproduce the newly transferred main
 figures. Numerical source paths beginning with `docs/`, `data/results/`, or
 `src/` refer to the separate `YerevaNN/casf-benchmark` analysis repository.
-The current transfer performs no new generation, scoring, or energy analysis.
+The 6 October energy addition recalculates MMFF94s energies on the archived
+ChEMBL-count ensembles using a common hydrogen preparation and fixed heavy atoms.
+It does not regenerate conformers or change the clustering and RMSD results.
+The exact protocol, source digests, calculations, and energy renderer are archived
+in `energy-data/`. Run `docs/energy_analysis/build_figure.py` in the analysis
+checkout after the main figure renderer to update the energy display.
 
 ## Preview and verification
 

@@ -1,5 +1,26 @@
 # Methods: evidence and author follow-up
 
+## Completed common-hydrogen energy analysis, 6 October 2026
+
+The new ChEMBL-count energy comparison supersedes the pending-energy notes
+below. The archived routine used the supplied hydrogen representation and
+sometimes a saved minimization energy. Inspection found no explicit hydrogens
+in Qwen's retained records, while other methods generally supplied them.
+The new calculation therefore removes/rebuilds hydrogens for every conformer,
+relaxes only hydrogen coordinates with MMFF94s, and ignores saved energies.
+All heavy atoms are fixed and checked for zero displacement. The population
+energy SD is calculated within each molecule and then summarized by its median
+across molecules. Means and paired differences from ChEMBL3D are in Table S9.
+
+The full protocol, RDKit version, convergence records, input hashes, and
+per-conformer/per-molecule outputs are archived in `energy-data/`. The optimized
+reference loader batches coordinate reads while preserving atom and stereo
+checks. All 94 ChEMBL3D entries had zero archived PB rejections; their counts
+and archived energy fingerprints were verified before rescoring. This is new
+energy scoring of existing retained pools, not new conformer generation or
+the pending Qwen benchmark-exclusion evaluation. The primary MMFF94s citation
+is Halgren (1999), verified against the publisher's record.
+
 ## Simplified Methods and generator audit, 6 October 2026
 
 Main Methods now describes the scientific procedure without SMARTS syntax,

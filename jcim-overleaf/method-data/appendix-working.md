@@ -108,3 +108,23 @@ Descriptions combine the original method papers and repositories with the inspec
 
 Sources: [method papers, repositories, and local adapter evidence](results_tables/generator_sources.md).
 <!-- results-table-1:end -->
+
+## C. Energy summaries
+
+**Table S9. Energy summaries at the ChEMBL-count target (kcal/mol).**
+
+| Method | Molecules | Median energy SD | Mean energy SD | Median mean energy | Median paired mean-energy difference |
+| --- | --- | --- | --- | --- | --- |
+| RDKit minimized | 94 | 1.9 | 2.6 | 26.4 | -6.1 |
+| Torsion minimized | 94 | 2.1 | 2.4 | 26.5 | -5.7 |
+| LoQI | 94 | 1.9 | 2.8 | 34.1 | +0.2 |
+| MCF drugs-L | 93 | 3.6 | 9.5 | 43.3 | +5.1 |
+| NExT-Mol DMT-L | 92 | 3.0 | 4.0 | 37.9 | +3.1 |
+| RDKit raw | 94 | 7.2 | 8.1 | 60.0 | +28.3 |
+| Torsional Diffusion | 94 | 14.0 | 271.2 | 71.6 | +32.2 |
+| FlowR | 94 | 8.8 | 12.8 | 33.5 | -0.8 |
+| Torsion raw | 94 | 15.3 | 15.2 | 51.3 | +23.1 |
+| Qwen 1.7B FSQ | 94 | 9.1 | 10.2 | 51.6 | +13.6 |
+| ChEMBL3D-PB | 94 | 1.8 | 2.3 | 32.6 | +0.0 |
+
+Energies use the common hydrogen preparation described in Methods. SD and mean are calculated within each molecule before aggregation; paired differences use that molecule’s ChEMBL3D mean energy. All retained conformers have finite energies and converged hydrogen relaxations; no heavy atom moved. Empty ensembles have no defined energy distribution. See the [energy protocol and records](energy_analysis/README.md).

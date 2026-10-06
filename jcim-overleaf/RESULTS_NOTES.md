@@ -1,5 +1,26 @@
 # Results: sources and author follow-up
 
+## Energy results and revised sequence, 6 October 2026
+
+Results now follows geometric diversity, recovery and the joint plot, energy,
+then the larger candidate budget. The energy paragraph reports observations;
+it does not equate low energy SD with thermodynamic stability or absence of
+implausible conformers. Figure 2 pairs mean 0.5 Å cluster counts with the median
+per-molecule energy SD from the common-hydrogen recalculation. Later figures
+are now 3 (budget), 4 (size/flexibility), and 5 (multiple references).
+Supporting Table S9 reports mean/median SD, median per-molecule mean energy,
+and median paired mean-energy differences from the same molecule's ChEMBL3D
+ensemble. Every method retains its original measurable-entry set.
+
+Qwen and FlowR have median SDs of 9.1 and 8.8 kcal/mol, respectively; random
+torsion sampling and Torsional Diffusion have 15.3 and 14.0. LoQI and minimized
+baselines have 1.9–2.1, and ChEMBL3D 1.8. Torsional Diffusion's mean SD is
+271.2, showing the influence of extreme entries. The paired mean-energy
+difference from ChEMBL3D is +13.6 for Qwen and -0.8 for FlowR: similar spreads
+do not imply similar energy levels. These recalculated values replace the
+mixed-hydrogen archived energy summaries, including the earlier 6.0 kcal/mol
+Qwen median. See METHODS_NOTES.md and energy-data/ for the audit.
+
 ## Tighter recovery cutoff, 6 October 2026
 
 The author replaced Table 2's nearly saturated Hit@2.0 column with Hit@0.5.
