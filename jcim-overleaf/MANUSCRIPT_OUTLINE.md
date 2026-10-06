@@ -23,7 +23,7 @@ purpose of this progression before introducing Table 1.
 - Results: ChEMBL-count diversity (Table 1), recovery (Table 2), joint plot
   (Figure 1), energy dispersion (Figure 2), two-target recovery/diversity
   (Table 3 and Figure 3), size/flexibility (Figure 4), multiple references
-  (Table 4; the redundant Figure 5 has been removed).
+  (Table 4 and threshold-dependent coverage/precision in Figure 5).
   Table 1 compares 0.5 and 1.0 Å cluster counts and largest-cluster occupancy
   at 1.0 Å, ordered by increasing 0.5 Å count with the stored reference last.
   Table 2 reports Hit@0.5, Hit@0.75, and Best RMSD (mean of per-entry minima),

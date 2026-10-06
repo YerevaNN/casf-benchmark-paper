@@ -1,0 +1,692 @@
+[
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m0_e0"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m0_e1"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m0_e2"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m0_e3"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m0_e4"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m0_e5"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m0_e6"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m0_e7"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m0_e8"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m0_e9"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m0_e10"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m0_e11"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m0_e12"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m0_e13"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m0_e14"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m0_e15"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m0_e16"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m0_e17"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m0_e18"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m0_e19"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m0_e20"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m0_e21"
+  },
+  {
+    "method": "qwen_1p7b_fsq_bigdata_step47023",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m0_e22"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m1_e0"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m1_e1"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m1_e2"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m1_e3"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m1_e4"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m1_e5"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m1_e6"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m1_e7"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m1_e8"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m1_e9"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m1_e10"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m1_e11"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m1_e12"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m1_e13"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m1_e14"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m1_e15"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m1_e16"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m1_e17"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m1_e18"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m1_e19"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m1_e20"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m1_e21"
+  },
+  {
+    "method": "loqi_druglike",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m1_e22"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m2_e0"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m2_e1"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m2_e2"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m2_e3"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m2_e4"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m2_e5"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m2_e6"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m2_e7"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m2_e8"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m2_e9"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m2_e10"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m2_e11"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m2_e12"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m2_e13"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m2_e14"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m2_e15"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m2_e16"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m2_e17"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m2_e18"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m2_e19"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m2_e20"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m2_e21"
+  },
+  {
+    "method": "torsional_diffusion_druglike",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m2_e22"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m3_e0"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m3_e1"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m3_e2"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m3_e3"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m3_e4"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m3_e5"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m3_e6"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m3_e7"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m3_e8"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m3_e9"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m3_e10"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m3_e11"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m3_e12"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m3_e13"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m3_e14"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m3_e15"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m3_e16"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m3_e17"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m3_e18"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m3_e19"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m3_e20"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m3_e21"
+  },
+  {
+    "method": "mcf_drugs_l_druglike",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m3_e22"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m4_e0"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m4_e1"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m4_e2"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m4_e3"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m4_e4"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m4_e5"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m4_e6"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m4_e7"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m4_e8"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m4_e9"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m4_e10"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m4_e11"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m4_e12"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m4_e13"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m4_e14"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m4_e15"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m4_e16"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m4_e17"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m4_e18"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m4_e19"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m4_e20"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m4_e21"
+  },
+  {
+    "method": "flowr_druglike",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m4_e22"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "O=CN(O)CCCP(=O)(O)O",
+    "key": "m5_e0"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "key": "m5_e1"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "key": "m5_e2"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "key": "m5_e3"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "key": "m5_e4"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "key": "m5_e5"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "key": "m5_e6"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "key": "m5_e7"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "key": "m5_e8"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "key": "m5_e9"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "key": "m5_e10"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "key": "m5_e11"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "key": "m5_e12"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "key": "m5_e13"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "key": "m5_e14"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+    "key": "m5_e15"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "key": "m5_e16"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "key": "m5_e17"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "key": "m5_e18"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "key": "m5_e19"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "key": "m5_e20"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "key": "m5_e21"
+  },
+  {
+    "method": "nextmol_dmt_l_druglike",
+    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "key": "m5_e22"
+  }
+]

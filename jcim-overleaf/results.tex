@@ -159,6 +159,15 @@ measurements together with the matching distances defined in Methods.
 
 \input{\manuscriptroot tables/druglike}
 
+The threshold curves show that this comparison depends on the required geometric tolerance
+(Figure~\ref{fig:druglike}). At 0.5 \AA{}, LoQI covers 75.7\% of the experimental references and
+Qwen covers 71.7\%. Their coverage is nearly equal at 0.75 \AA{}, while Qwen has higher coverage at
+1.0 \AA{}. LoQI has higher sample precision at all three cutoffs. Similar coverage at the primary
+cutoff therefore coexists with different concentrations of generated conformers near the observed
+structures.
+
+\drugfigure
+
 In the existing evaluation, LoQI and Qwen achieve similar mean reference coverage, while LoQI has
 higher observed-reference precision. These preliminary comparisons describe the supplied pools;
 common validity filtering and consistent treatment of failed RMSD calculations remain necessary for

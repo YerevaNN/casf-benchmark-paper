@@ -1,0 +1,21 @@
+{
+  "cache_sha256": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/qwen_1p7b_fsq_bigdata_step47023.npz": "d2cde9487c8b0d1ff59947165302b18799bf7b5d0841ab9cd6f1e50854199335",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/loqi_druglike.npz": "651a8f775c2e0a505e3a77acaaf6500d1c79adf7ee8c16c8d931124edc47b181",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/torsional_diffusion_druglike.npz": "541e2b0c2d7babaa51b6ed5dd62fcb1e6054a3d163ee4aa811173041693fb3e1",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/mcf_drugs_l_druglike.npz": "e7cb3749a4179493b52e2affd40d8ef59d9665b4281332a1475c9328d72d9012",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/flowr_druglike.npz": "fee91de201672e983fe4a372304edc957dd7fad9d3f405f684cfe97002b75c10",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/nextmol_dmt_l_druglike.npz": "6f38bd2d88f250c2c442195588bb481f16a80dc97f829b9e8652d8714ea8f25c"
+  },
+  "n_molecules": 23,
+  "threshold_rule": "strict <",
+  "threshold_range": [
+    0,
+    1.5
+  ],
+  "threshold_step": 0.005,
+  "aggregation": "equal-weight molecule mean",
+  "validity": "supplied pools; no common PB filtering",
+  "alignment_recomputed": false,
+  "table_unchanged": true
+}

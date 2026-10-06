@@ -1,0 +1,57 @@
+{
+  "chembl3d_gt_pb": [
+    "ChEMBL3D-PB",
+    "#333A43",
+    "h"
+  ],
+  "rdkit_random_raw": [
+    "RDKit raw",
+    "#6F7782",
+    "o"
+  ],
+  "rdkit_random_minimized": [
+    "RDKit minimized",
+    "#6F7782",
+    "s"
+  ],
+  "torsion_raw": [
+    "Torsion raw",
+    "#987049",
+    "o"
+  ],
+  "torsion_minimized": [
+    "Torsion minimized",
+    "#987049",
+    "s"
+  ],
+  "loqi_raw": [
+    "LoQI",
+    "#CE6428",
+    "s"
+  ],
+  "torsional_diffusion_raw": [
+    "Torsional Diffusion",
+    "#AA589B",
+    "D"
+  ],
+  "mcf_drugs_l_raw": [
+    "MCF drugs-L",
+    "#998000",
+    "v"
+  ],
+  "nextmol_dmt_l_raw": [
+    "NExT-Mol DMT-L",
+    "#399BBB",
+    "P"
+  ],
+  "flowr_raw": [
+    "FlowR",
+    "#00866B",
+    "^"
+  ],
+  "qwen_1p7b_fsq_bigdata_step47023": [
+    "Qwen 1.7B FSQ",
+    "#0072B2",
+    "o"
+  ]
+}

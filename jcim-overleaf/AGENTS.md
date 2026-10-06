@@ -77,7 +77,8 @@ Python pipeline tests are not needed.
 For Tables 1–3, best/second-best highlighting ranks generated methods only.
 ChEMBL3D is an unranked baseline, always shown without bold or underlining.
 
-The author removed the dataset-release checklist (former Table 5) and the redundant
-multi-reference Figure 5 from Results. Keep Table 4. Historical assets remain
-archived; do not reinsert them. A threshold-dependent precision/coverage figure
-is only proposed, pending validation of cached RMSD matrices.
+The dataset-release checklist (former Table 5) remains removed. Figure 5 now
+shows COV-R and COV-P versus RMSD threshold for the six PLINDER generators,
+with 0.75 Å marked. Preserve Table 4 and the earlier figure assets as history.
+The curves use cached distances and are archived in plinder-threshold-data/.
+Small cache/table differences remain an explicit author follow-up before final evaluation.

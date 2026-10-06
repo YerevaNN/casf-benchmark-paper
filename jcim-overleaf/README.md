@@ -1,9 +1,10 @@
 # JCIM manuscript
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with four main tables, four main figures, nine supporting tables, and one supporting figure.
-The separate sampling display is Figure B1. The release checklist (former Table 5)
-and redundant multi-reference Figure 5 have been removed from the article.
+and Discussion, with four main tables, five main figures, nine supporting tables, and one supporting figure.
+The separate sampling display is Figure B1. The release checklist (former Table 5) remains removed. Figure 5 now shows
+coverage and precision across RMSD thresholds; its data and renderer are in
+`plinder-threshold-data/`. The earlier redundant Figure 5 is archived.
 Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
 submission-ready article.

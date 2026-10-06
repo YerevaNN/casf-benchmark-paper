@@ -34,7 +34,7 @@
 \newcommand{\drugfigure}{%
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-5-multiple-references.pdf}
-\caption{Coverage of multiple bound references and precision relative to those observations. (A) Molecule-averaged COV-R and COV-P for six learned generators, using the existing strict RMSD $<$ 0.75 \AA{} criterion. Axes are restricted to the observed range for readability. (B) Paired reference coverage for Qwen and LoQI across all 23 molecules; the diagonal denotes equal coverage. Coincident points are grouped and labeled, including 11 molecules with complete coverage by both methods. Imatinib and actinonin are the examples retained from the earlier draft. These are descriptive supplied-pool results with differing RMSD-failure conventions, not a comparison after common validity filtering. No uncertainty intervals are shown; paired uncertainty is documented in the archived findings.}
+\includegraphics[width=\linewidth]{figures/figure-5-threshold-coverage.pdf}
+\caption{Coverage and precision across RMSD thresholds for the 23-molecule PLINDER panel. (A) Fraction of experimental references matched by at least one generated conformer (COV-R). (B) Fraction of generated conformers matched by at least one experimental reference (COV-P). Each molecule receives equal weight. A match requires RMSD strictly below the threshold. Dashed lines and points mark 0.75 \AA{}, the cutoff used in Table~\ref{tab:druglike}. Curves use cached nearest distances from the supplied ensembles without a common PoseBusters filter; no new conformers or structural alignments were calculated. These comparisons are descriptive and show no uncertainty intervals.}
 \label{fig:druglike}
 \end{figure}}

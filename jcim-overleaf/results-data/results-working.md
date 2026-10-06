@@ -170,6 +170,16 @@ Sources: [molecule-level records](results_tables/druglike_selected.csv) and [unr
 
 <!-- results-table-5:end -->
 
+The threshold curves show that this comparison depends on the required geometric tolerance (Figure 5). At 0.5 Å, LoQI covers 75.7% of the experimental references and Qwen covers 71.7%. Their coverage is nearly equal at 0.75 Å, while Qwen has higher coverage at 1.0 Å. LoQI has higher sample precision at all three cutoffs. Similar coverage at the primary cutoff therefore coexists with different concentrations of generated conformers near the observed structures.
+
+<!-- results-figure-5:start -->
+![Figure 5](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.png)
+
+**Figure 5.** Coverage and precision across RMSD thresholds for the 23-molecule PLINDER panel. (A) Fraction of experimental references matched by at least one generated conformer (COV-R). (B) Fraction of generated conformers matched by at least one experimental reference (COV-P). Each molecule receives equal weight. A match requires RMSD strictly below the threshold. Dashed lines and points mark 0.75 Å, the cutoff used in Table 4. Curves use cached nearest distances from the supplied ensembles without a common PoseBusters filter; no new conformers or structural alignments were calculated. These comparisons are descriptive and show no uncertainty intervals.
+
+[PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.svg)
+<!-- results-figure-5:end -->
+
 In the existing evaluation, LoQI and Qwen achieve similar mean reference coverage, while LoQI has higher observed-reference precision. These preliminary comparisons describe the supplied pools; common validity filtering and consistent treatment of failed RMSD calculations remain necessary for the final evaluation. Thus, similar coverage can be obtained from ensembles that differ in the proportion of samples lying near the available experimental structures. This distinction qualifies the single-reference recovery result and is relevant when considering how generated conformers will populate a training dataset. Experimental references remain incomplete, however, so an unmatched conformer cannot automatically be classified as physically inaccessible or irrelevant to binding.
 
 [Recompute the drug-panel comparison using a common validity filter and RMSD-failure policy. The PLINDER release and molecule-selection criteria are documented in Methods and Appendix A; complete the description of reference-coordinate extraction and handling of repeated or nearly identical structures.]

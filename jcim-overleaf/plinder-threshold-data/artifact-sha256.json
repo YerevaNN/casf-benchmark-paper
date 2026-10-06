@@ -1,0 +1,14 @@
+{
+  "plot.py": "dd48520ab8f9e5e66865d1c92e2c729435590614a3412884a94e1a1f6c1afbe5",
+  "provenance.json": "d59fb87e66896c253b71857f7661ec908c71edd33a753279147ec26a52bcb923",
+  "entries.json": "f53180dc4e92a1844ec3bde21de0eb7de8433cd1d307284202932f4d8411ea14",
+  "palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
+  "cache_table_comparison.csv": "549980bfcb6737ec012d7931fd2858b06489449309688ea6b40e2a8fdd74f155",
+  "threshold_curves.csv": "a8eeb573c1a080b1d3e4c18a329aef7cecca3cd2e866402429ce6ad0f98696a0",
+  "nearest_distances.npz": "1db616a807ad587d64531538c2e3641b95e7968a05793c3a6da11969ceb9381b",
+  "README.md": "e1f21fd1bcd534401e293fb268c7c1c7915bb0ca520a41e46896636f03a6f4a6",
+  "source-preview.py": "c8ec282dd9048107e7011b0b5537fc4de0bdcf97bf98b56c814b5348ab104c9d",
+  "../figures/figure-5-threshold-coverage.pdf": "333732cd3024d9504a0735efbe340d49081a9dc93685d1190dd06f6961ff150b",
+  "../figures/figure-5-threshold-coverage.png": "04d4480467b71a6d554b6d35fc9342a5aaa712672dc1b004304d18b68ef1fdfd",
+  "../figures/figure-5-threshold-coverage.svg": "6191bbc3ad26e3a20460f31a504b0452df86f36a35c68188f4d9708df156d87a"
+}

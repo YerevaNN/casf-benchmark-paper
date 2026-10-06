@@ -1,5 +1,18 @@
 # Methods: evidence and author follow-up
 
+## Threshold-dependent PLINDER Figure 5, 6 October 2026
+
+The author approved the two-panel preview for the working paper. Figure 5 now
+shows molecule-averaged COV-R and COV-P against RMSD threshold, with 0.75 Å
+marked. All six methods retain their established colors; no uncertainty shading
+or selective emphasis was added. The earlier Figure 5 stays archived.
+`plinder-threshold-data/` preserves curves, per-molecule nearest distances,
+cache hashes, table comparisons, and the renderer. All 23 identities and all
+reference/generated counts match table records. All nearest distances are finite.
+No new generation or alignments were run. Table 4 stays unchanged. The previously
+identified cache/table discrepancies remain to be reconciled before final evaluation;
+they are below 0.014 percentage points, and plotted one-decimal summaries agree.
+
 ## Sampling alternatives requested for review, 6 October 2026
 
 The current Figure B1 combines two panels and displays only Qwen, LoQI,
