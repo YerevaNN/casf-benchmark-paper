@@ -1,0 +1,45 @@
+================================================================================
+COVMAT EVALUATION RESULTS
+================================================================================
+
+EVALUATION SUMMARY
+----------------------------------------
+Processed file: /mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_raw_druglike/generation_results.pickle
+Ground truth file: /mnt/weka/vtarasov/druglike_smi.pickle
+Total molecules generated: 23
+Total conformers generated: 23000
+Total molecules in ground truth: 23
+Total conformers in ground truth: 2450
+Missing molecules (no conformers): 0
+All-NaN RMSD keys: 0
+
+EXECUTION RUNTIME
+----------------------------------------
+Total processing: 0.6385 min
+CovMat processing: 0.6385 min
+PoseBusters processing: 0 min
+
+COVERAGE AND RECALL METRICS
+----------------------------------------
+Threshold: 0.75
+Coverage-Recall (COV-R):
+  Mean:   0.6828
+  Median: 0.9688
+Coverage-Precision (COV-P):
+  Mean:   0.4493
+  Median: 0.3890
+Matching-Recall (MAT-R):
+  Mean:   0.5695
+  Median: 0.4239
+Matching-Precision (MAT-P):
+  Mean:   1.0124
+  Median: 0.8486
+
+Censored matching (restricted mean, dmax=3 A)
+Molecule success rate: 1.0000
+Censored Matching-Recall (cMAT-R):
+  Mean:   0.5695
+  Median: 0.4239
+Censored Matching-Precision (cMAT-P):
+  Mean:   1.0091
+  Median: 0.8486

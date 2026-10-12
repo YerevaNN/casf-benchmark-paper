@@ -149,25 +149,25 @@ The core panel contains relatively few molecules in the largest and most flexibl
 
 The CASF analysis asks whether an ensemble contains a close match to one observed conformation for each entry. A broader training resource should also represent variation among the conformations that the same molecule adopts in different experimental structures. We therefore extend the evaluation to a panel of 23 drug-like molecules with multiple observed bound conformations selected from PLINDER release 2024-06/v2 by physicochemical screening, PDB-frequency ranking, and manual review (Methods; Appendix A). For each molecule, the same protein-independent ensemble is compared with all of its experimental references. This tests coverage of several observed geometries without generating a separate ensemble for each complex. [PLINDER](https://www.biorxiv.org/content/10.1101/2024.07.17.603955v3)
 
-Reference coverage and sample precision distinguish how many experimental observations an ensemble covers from how frequently it samples near them. Table 4 reports these two measurements together with the matching distances defined in Methods.
+Reference coverage and sample precision distinguish how many experimental observations an ensemble covers from how frequently it samples near them. Table 4 reports these two measurements together with the matching distances defined in Methods, including RDKit raw and a torsion baseline initialized from an experimental reference.
 
 <!-- results-table-5:start -->
 **Table 4. Exploratory coverage and precision for the 23-molecule PLINDER panel.**
 
-| Method | Mean supplied N | COV-R (%) | COV-P (%) | MAT-R (Å) | MAT-P (Å) | PB pass (%) |
+| Method | Mean supplied N | COV-R (%) ↑ | COV-P (%) ↑ | MAT-R (Å) ↓ | MAT-P (Å) ↓ | PB pass (%) ↑ |
 | --- | --- | --- | --- | --- | --- | --- |
-| LoQI | 1000.0 | 91.2 | 59.0 | 0.421 | 0.816 | 90.9 |
-| Torsional Diffusion | 1000.0 | 78.6 | 42.6 | 0.455 | 1.189 | 83.4 |
-| MCF drugs-L | 1000.0 | 82.7 | 39.1 | 0.481 | 1.215 | 63.7 |
-| NExT-Mol DMT-L | 1000.0 | 82.7 | 36.9 | 0.464 | 1.172 | 62.2 |
+| RDKit raw | **1000.0** | 68.3 | 44.9 | 0.569 | 1.012 | 60.9 |
+| Torsion raw† | **1000.0** | 79.3 | <u>48.9</u> | 0.480 | <u>0.929</u> | 60.7 |
+| LoQI | **1000.0** | **91.2** | **59.0** | <u>0.421</u> | **0.816** | **90.9** |
+| Torsional Diffusion | **1000.0** | 78.6 | 42.6 | 0.455 | 1.189 | 83.4 |
+| MCF drugs-L | **1000.0** | 82.7 | 39.1 | 0.481 | 1.215 | 63.7 |
+| NExT-Mol DMT-L | **1000.0** | 82.7 | 36.9 | 0.464 | 1.172 | 62.2 |
 | FlowR | 961.7 | 81.3 | 36.6 | 0.522 | 1.306 | 78.5 |
-| Qwen 1.7B FSQ | 999.2 | 91.0 | 46.8 | 0.375 | 1.000 | 83.7 |
+| Qwen 1.7B FSQ | <u>999.2</u> | <u>91.0</u> | 46.8 | **0.375** | 1.000 | <u>83.7</u> |
 
-COV-R and COV-P use a strict RMSD < 0.75 Å cutoff in the existing evaluation; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 23 molecules, with 2,450 reference records in total. PB pass is the separately measured pooled pass fraction. The coverage and distance columns use supplied pools without a common PB filter, and the evaluators differ in RMSD-failure handling. They therefore remain descriptive, pending harmonized evaluation; unmatched conformers are not necessarily physically inaccessible.
+COV-R and COV-P use a strict RMSD < 0.75 Å cutoff; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 23 molecules, with 2,450 reference records in total. PB pass is the separately measured pooled pass fraction. Bold and underlining mark the best and second-best distinct unrounded values across the eight methods, including ties. Higher COV-R, COV-P, and PB pass and lower MAT-R and MAT-P are preferred; supplied counts are highlighted by size only and describe budget, not quality. The coverage and distance columns use supplied pools without a common PB filter, and the evaluators differ in RMSD-failure handling. They remain descriptive, pending harmonized evaluation; unmatched conformers are not necessarily physically inaccessible. † Torsion raw starts from the first experimental reference for each molecule and is therefore a reference-seeded baseline.
 
 Sources: [molecule-level records](results_tables/druglike_selected.csv) and [unrounded table values](results_tables/druglike_means.csv).
-
-
 <!-- results-table-5:end -->
 
 The threshold curves show that this comparison depends on the required geometric tolerance (Figure 5). At 0.5 Å, LoQI covers 75.7% of the experimental references and Qwen covers 71.7%. Their coverage is nearly equal at 0.75 Å, while Qwen has higher coverage at 1.0 Å. LoQI has higher sample precision at all three cutoffs. Similar coverage at the primary cutoff therefore coexists with different concentrations of generated conformers near the observed structures.
@@ -175,7 +175,7 @@ The threshold curves show that this comparison depends on the required geometric
 <!-- results-figure-5:start -->
 ![Figure 5](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.png)
 
-**Figure 5.** Coverage and precision across RMSD thresholds for the 23-molecule PLINDER panel. (A) Fraction of experimental references matched by at least one generated conformer (COV-R). (B) Fraction of generated conformers matched by at least one experimental reference (COV-P). Each molecule receives equal weight. A match requires RMSD strictly below the threshold. Dashed lines and points mark 0.75 Å, the cutoff used in Table 4. Curves use cached nearest distances from the supplied ensembles without a common PoseBusters filter; no new conformers or structural alignments were calculated. These comparisons are descriptive and show no uncertainty intervals.
+**Figure 5.** Coverage and precision across RMSD thresholds for the six learned generators on the 23-molecule PLINDER panel. (A) Fraction of experimental references matched by at least one generated conformer (COV-R). (B) Fraction of generated conformers matched by at least one experimental reference (COV-P). Each molecule receives equal weight. A match requires RMSD strictly below the threshold. Dashed lines and points mark 0.75 Å, the cutoff used in Table 4. Curves use cached nearest distances from the supplied ensembles without a common PoseBusters filter; no new conformers or structural alignments were calculated. These comparisons are descriptive and show no uncertainty intervals.
 
 [PDF](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.pdf) · [Editable SVG](/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder_threshold_analysis/figure-5-threshold-coverage.svg)
 <!-- results-figure-5:end -->

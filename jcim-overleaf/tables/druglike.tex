@@ -1,4 +1,4 @@
-% Values transferred without recalculation from results-data/results-working.md.
+% Source: results-data/druglike_selected.csv; rendered by build_druglike_table.py.
 \begin{table}[htbp]
 \centering
 \footnotesize
@@ -9,19 +9,20 @@
 \par\smallskip
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Method & \shortstack{Mean\\supplied $N$} & \shortstack{COV-R\\(\%)} & \shortstack{COV-P\\(\%)} & \shortstack{MAT-R\\(\AA{})} & \shortstack{MAT-P\\(\AA{})} & \shortstack{PB pass\\(\%)} \\
+Method & \shortstack{Mean\\supplied $N$} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & \shortstack{PB pass\\(\%) $\uparrow$} \\
 \midrule
-LoQI & 1000.0 & 91.2 & 59.0 & 0.421 & 0.816 & 90.9 \\
-Torsional Diffusion & 1000.0 & 78.6 & 42.6 & 0.455 & 1.189 & 83.4 \\
-MCF drugs-L & 1000.0 & 82.7 & 39.1 & 0.481 & 1.215 & 63.7 \\
-NExT-Mol DMT-L & 1000.0 & 82.7 & 36.9 & 0.464 & 1.172 & 62.2 \\
+RDKit raw & \textbf{1000.0} & 68.3 & 44.9 & 0.569 & 1.012 & 60.9 \\
+Torsion raw$^{\dagger}$ & \textbf{1000.0} & 79.3 & \underline{48.9} & 0.480 & \underline{0.929} & 60.7 \\
+LoQI & \textbf{1000.0} & \textbf{91.2} & \textbf{59.0} & \underline{0.421} & \textbf{0.816} & \textbf{90.9} \\
+Torsional Diffusion & \textbf{1000.0} & 78.6 & 42.6 & 0.455 & 1.189 & 83.4 \\
+MCF drugs-L & \textbf{1000.0} & 82.7 & 39.1 & 0.481 & 1.215 & 63.7 \\
+NExT-Mol DMT-L & \textbf{1000.0} & 82.7 & 36.9 & 0.464 & 1.172 & 62.2 \\
 FlowR & 961.7 & 81.3 & 36.6 & 0.522 & 1.306 & 78.5 \\
-Qwen 1.7B FSQ & 999.2 & 91.0 & 46.8 & 0.375 & 1.000 & 83.7 \\
+Qwen 1.7B FSQ & \underline{999.2} & \underline{91.0} & 46.8 & \textbf{0.375} & 1.000 & \underline{83.7} \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\linewidth}
-COV-R and COV-P use a strict RMSD $<$ 0.75 \AA{} cutoff in the existing evaluation; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 23 molecules, with 2,450 reference records in total. PB pass is the separately measured pooled pass fraction. The coverage and distance columns use supplied pools without a common PB filter, and the evaluators differ in RMSD-failure handling. They therefore remain descriptive, pending harmonized evaluation; unmatched conformers are not necessarily physically inaccessible.
-
+COV-R and COV-P use a strict RMSD $<$ 0.75 \AA{} cutoff; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 23 molecules, with 2,450 reference records in total. PB pass is the separately measured pooled pass fraction. Bold and underlining mark the best and second-best distinct unrounded values across the eight methods, including ties. Higher COV-R, COV-P, and PB pass and lower MAT-R and MAT-P are preferred; supplied counts are highlighted by size only and describe budget, not quality. The coverage and distance columns use supplied pools without a common PB filter, and the evaluators differ in RMSD-failure handling. They remain descriptive, pending harmonized evaluation; unmatched conformers are not necessarily physically inaccessible. $\dagger$ Torsion raw starts from the first experimental reference for each molecule and is therefore a reference-seeded baseline.
 \end{minipage}
 \end{table}

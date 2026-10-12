@@ -1,0 +1,48 @@
+{
+  "added_on": "2026-10-12",
+  "sources": {
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_raw_druglike/eval_covmat_075/rmsd_matrix.csv": "62f062ba8187052129979e9e85b34cb5ba432429eabc45d81a8c2c77d5a5549a",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_raw_druglike/eval_covmat_075/covmat_results.txt": "0d79daad2a77de7acb9afc440d5100ac92d81f77f79dd26adb12d4de5235bfb7",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/evaluation/rdkit_random_raw_druglike_per_molecule.csv": "6c900f19909bfa000c7a3682f2ba5790b6bd83d7360e1abee93cb761bc8bd928",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/evaluation/rdkit_random_raw_druglike_summary.csv": "cd1dbce6af58ee23a850ef8e3a524177e26e3f5a3ba1e7b80b4b9918418bff0b",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_raw_druglike/generation_summary.json": "aeeaf6b2c56d6418030aa8668fa1788c0929f264c184e1107d056596b1233e1a",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/torsion_raw_druglike/eval_covmat_075/rmsd_matrix.csv": "ee25571af42a64545a7588d4aec92439420de8cb649d32f38f125d23b1b6f625",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/torsion_raw_druglike/eval_covmat_075/covmat_results.txt": "56492069b455ec11fdc4c64691b0ecad444d0b7851e570a0ec178d4aff1a8aa6",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/evaluation/torsion_raw_druglike_per_molecule.csv": "6c77fce2479a3a444e22d7b529203f471414bcc05c1365f5413e222e92bc3691",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/evaluation/torsion_raw_druglike_summary.csv": "1608b4e11f9042f7c57a8ca7aed9ebdbd8bde475af7ef6169582880193f4bd58",
+    "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/torsion_raw_druglike/generation_summary.json": "4e79e658751a4d3c6350116803c27ae2c1a101ac480dfff846737951e7155b08",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/scripts/run_baseline_druglike.py": "3bce8d006818266fcc40d8a91c46e68ee78a2797d90cb59a860ad7aca075324b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/scripts/eval_druglike_covmat.py": "1080adf366ad780b122c1f4b1e85c74314d22ee76f1f5a51292c4dfa11362398",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/scripts/eval_druglike_conformers.py": "ce7e7283b854c8207018408e16ee3ef5a8f42812e8b7806c867f999ae3c3c404"
+  },
+  "new_methods": [
+    "rdkit_random_raw_druglike",
+    "torsion_raw_druglike"
+  ],
+  "n_molecules_per_method": 23,
+  "reference_records_per_method": 2450,
+  "candidate_count_per_molecule": 1000,
+  "aggregation": "Equal molecule means for supplied count, COV-R/P and MAT-R/P; pooled n_pb_pass / n_generated for PB pass. Strict RMSD < 0.75 A.",
+  "initialization": "RDKit removes all coordinates before embedding; torsion perturbs the first experimental reference per molecule. No energy minimization.",
+  "scope": "Append the two completed baseline evaluations; preserve the existing six-method source rows. No new generation, alignment or filtering was run.",
+  "archive_note": "CSV line endings normalized to LF; source hashes describe the original files. Archived hashes below describe the stored copies.",
+  "archived_sha256": {
+    "druglike-baselines/eval_druglike_covmat.py": "1080adf366ad780b122c1f4b1e85c74314d22ee76f1f5a51292c4dfa11362398",
+    "druglike-baselines/eval_druglike_conformers.py": "ce7e7283b854c8207018408e16ee3ef5a8f42812e8b7806c867f999ae3c3c404",
+    "druglike-baselines/run_baseline_druglike.py": "3bce8d006818266fcc40d8a91c46e68ee78a2797d90cb59a860ad7aca075324b",
+    "druglike-baselines/torsion_raw_druglike/covmat_results.txt": "56492069b455ec11fdc4c64691b0ecad444d0b7851e570a0ec178d4aff1a8aa6",
+    "druglike-baselines/torsion_raw_druglike/pb_per_molecule.csv": "6c77fce2479a3a444e22d7b529203f471414bcc05c1365f5413e222e92bc3691",
+    "druglike-baselines/torsion_raw_druglike/rmsd_matrix.csv": "ee25571af42a64545a7588d4aec92439420de8cb649d32f38f125d23b1b6f625",
+    "druglike-baselines/torsion_raw_druglike/pb_summary.csv": "1608b4e11f9042f7c57a8ca7aed9ebdbd8bde475af7ef6169582880193f4bd58",
+    "druglike-baselines/torsion_raw_druglike/generation_summary.json": "4e79e658751a4d3c6350116803c27ae2c1a101ac480dfff846737951e7155b08",
+    "druglike-baselines/rdkit_random_raw_druglike/pb_per_molecule.csv": "6c900f19909bfa000c7a3682f2ba5790b6bd83d7360e1abee93cb761bc8bd928",
+    "druglike-baselines/rdkit_random_raw_druglike/covmat_results.txt": "0d79daad2a77de7acb9afc440d5100ac92d81f77f79dd26adb12d4de5235bfb7",
+    "druglike-baselines/rdkit_random_raw_druglike/rmsd_matrix.csv": "62f062ba8187052129979e9e85b34cb5ba432429eabc45d81a8c2c77d5a5549a",
+    "druglike-baselines/rdkit_random_raw_druglike/pb_summary.csv": "cd1dbce6af58ee23a850ef8e3a524177e26e3f5a3ba1e7b80b4b9918418bff0b",
+    "druglike-baselines/rdkit_random_raw_druglike/generation_summary.json": "aeeaf6b2c56d6418030aa8668fa1788c0929f264c184e1107d056596b1233e1a",
+    "druglike_means.csv": "085ebb64640f4ebaf7875cd240140724ad20fbc1cfff2f0cf7e090ca5a0e232f",
+    "druglike_selected.csv": "1e9f116ad04b1311e1391f40dad2f7d207b7c66aebc7d3b8e5caa72b96479b15",
+    "build_druglike_table.py": "dc3b9a50f308e3fe52876224f7258eae221645378490b195a4593d98dcdbea18",
+    "../tables/druglike.tex": "3c0136c5bced81a420947d43a6ee45119b02fecd7c6170816f9d6bfc1befaa52"
+  }
+}

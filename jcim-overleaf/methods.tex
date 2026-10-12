@@ -228,6 +228,14 @@ are explicitly marked.
 
 \subsection{Coverage of multiple experimental conformations}
 
+The 23-molecule comparison also includes RDKit raw and random torsion sampling, each with 1,000
+supplied conformers per molecule. RDKit removes the reference coordinates before embedding from the
+molecular graph. The torsion baseline instead starts from the first experimental reference for each
+molecule and perturbs its rotatable bonds by up to $\pm120^\circ$, rejecting severe clashes. It
+therefore has access to a bound geometry and is reported as a reference-seeded baseline. Neither
+baseline undergoes energy minimization, and PoseBusters validity is evaluated separately from
+coverage.
+
 For each of the 23 drug-like molecules, we compare one supplied generated ensemble with all
 experimental references using aligned heavy-atom RMSD. COV-R is the fraction of references with at
 least one generated conformer at RMSD < 0.75 \AA{}. COV-P is the fraction of generated conformers
@@ -249,7 +257,7 @@ conformers across molecules, whereas COV and MAT give each molecule equal weight
 records may be redundant and do not exhaust accessible conformational space, so an unmatched
 generated conformer is not automatically physically inaccessible.
 
-For the threshold analysis, we reused cached RMSD matrices for the six methods and retained the
+For the threshold analysis, we reused cached RMSD matrices for the six learned methods and retained the
 nearest generated match for each experimental reference and the nearest experimental match for each
 generated conformer. We evaluated COV-R and COV-P at thresholds from 0 to 1.5 \AA{} in increments of
 0.005 \AA{}, using the same strict inequality and averaging each metric equally across the 23
@@ -265,9 +273,9 @@ ensembles without a common validity filter.
 \subsection{Aggregation, uncertainty, and reproducibility}
 
 The working tables and figures use the corrected findings archived on 24 September 2026, with the
-size-stratum export from 28 September. The same ten CASF pipelines and the stored ChEMBL3D-PB
+size-stratum export from 28 September and the two completed PLINDER baseline evaluations added on 12 October 2026. The same ten CASF pipelines and the stored ChEMBL3D-PB
 ensemble are used throughout, and the 23-molecule comparison uses the five external learned
-generators and the same Qwen checkpoint. We preserve the distinction between whole-panel recovery
+generators and the same Qwen checkpoint, with two additional classical baselines in Table~\ref{tab:druglike}. We preserve the distinction between whole-panel recovery
 and conditional means of defined RMSD or diversity measurements. Figure lines connecting the two
 candidate targets do not imply intermediate measurements. The displayed comparisons are descriptive;
 confidence intervals from the earlier analysis remain documented with the archived findings.

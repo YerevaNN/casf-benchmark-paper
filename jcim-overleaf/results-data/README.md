@@ -34,3 +34,12 @@ archives the underlying entry records and `sampling-budget-provenance.json`
 records the input and output hashes. Run the script in the analysis checkout.
 The 1,000-candidate columns precede ChEMBL-count columns. The stored ChEMBL3D
 ensemble is shown only in the latter; no larger reference pool is invented.
+
+Table 4 includes two classical PLINDER baselines added on 12 October 2026.
+`druglike-baselines/` archives their original evaluation CSVs, reports, generation
+summaries and source scripts; `druglike-baselines-provenance.json` records hashes.
+Run `python jcim-overleaf/results-data/build_druglike_table.py` to rebuild Table 4
+and its working Markdown from the eight-method molecule records. It does not
+rerun generation, alignment or filtering. Best/second-best highlighting uses
+unrounded values, with shared ties. Crystal-seeded torsion is explicitly marked.
+Figure 5 retains its six learned methods and separate threshold-data archive.

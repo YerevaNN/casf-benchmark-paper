@@ -1,5 +1,27 @@
 # Methods: evidence and author follow-up
 
+## Two PLINDER baselines added to Table 4, 12 October 2026
+
+Added `rdkit_random_raw_druglike` and `torsion_raw_druglike` from completed
+baseline COV/MAT and PB outputs. Both cover the same 23 molecular identities,
+2,450 reference records, and 1,000 supplied conformers per molecule. Existing
+six-method source rows remain unchanged. Sources and hashes are archived in
+`results-data/druglike-baselines/` and `druglike-baselines-provenance.json`.
+
+Torsion raw starts from each molecule's first experimental reference; it is
+explicitly labeled as crystal-seeded in Table 4 and described in Methods.
+RDKit removes seed coordinates before embedding. Both PB summaries report
+9,000 tetrahedral-chirality failures and 1,000 double-bond-stereochemistry failures
+(failure categories overlap). The torsion baseline also has 43 energy-ratio
+failures. These are reported results, not corrected or silently filtered pools;
+identity/reference consistency should be audited before the final evaluation.
+
+Bold and underlining rank the best two distinct unrounded values across all
+eight methods, with ties shared. Higher COV-R/P and PB pass and lower MAT-R/P
+are preferred. Supplied counts are highlighted by size only, not as a quality
+claim. Figure 5 remains a six-learned-method comparison. No conformers or
+alignments were recalculated for this table update.
+
 ## Threshold-dependent PLINDER Figure 5, 6 October 2026
 
 The author approved the two-panel preview for the working paper. Figure 5 now

@@ -1,0 +1,2 @@
+label,n_molecules,total_confs,total_pb_pass,overall_pb_pass_rate,mean_per_molecule_pb_pass_rate,pb_check_fail_counts_json
+rdkit_random_raw_druglike,23,23000,14000,0.6086956521739131,0.6086956521739131,"{""tetrahedral_chirality"": 9000, ""double_bond_stereochemistry"": 1000}"

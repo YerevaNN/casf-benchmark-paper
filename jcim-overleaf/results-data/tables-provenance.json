@@ -13,5 +13,15 @@
     "docs/results_tables/methods.csv": "fc9b43955ca671fd034a747d39ee86a51b37499239a7c79e17c7b9737fe2dd1b",
     "docs/results_tables/generator_sources.md": "43a240fa88b12e411de8b202459747e403a4bc27701cd63662080d64819cb50c"
   },
-  "note": "Archived findings, not new conformer generation or a leakage-excluded rerun."
+  "note": "Archived findings, not new conformer generation or a leakage-excluded rerun.",
+  "table4_update": {
+    "date": "2026-10-12",
+    "source": "druglike-baselines-provenance.json",
+    "new_methods": [
+      "rdkit_random_raw_druglike",
+      "torsion_raw_druglike"
+    ],
+    "renderer": "build_druglike_table.py",
+    "original_six_methods_unchanged": true
+  }
 }

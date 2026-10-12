@@ -1,0 +1,192 @@
+{
+  "method": "rdkit_random_raw",
+  "seed": 42,
+  "n_molecules": 23,
+  "total_conformers": 23000,
+  "molecules": [
+    {
+      "molecule_index": 0,
+      "smiles": "O=CN(O)CCCP(=O)(O)O",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 1,
+      "smiles": "CN1CCC[C@H]1c1cccnc1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 2,
+      "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 3,
+      "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 4,
+      "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 5,
+      "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 6,
+      "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 7,
+      "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 8,
+      "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 9,
+      "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 10,
+      "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 11,
+      "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 12,
+      "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 13,
+      "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 14,
+      "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 15,
+      "smiles": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)c1cnccn1)B(O)O",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 16,
+      "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 17,
+      "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 18,
+      "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 19,
+      "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 20,
+      "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 21,
+      "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    },
+    {
+      "molecule_index": 22,
+      "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+      "n_conformers": 1000,
+      "status": "ok",
+      "generated_candidates": 1000,
+      "clash_rejected": 0
+    }
+  ]
+}

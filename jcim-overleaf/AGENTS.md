@@ -82,3 +82,9 @@ shows COV-R and COV-P versus RMSD threshold for the six PLINDER generators,
 with 0.75 Å marked. Preserve Table 4 and the earlier figure assets as history.
 The curves use cached distances and are archived in plinder-threshold-data/.
 Small cache/table differences remain an explicit author follow-up before final evaluation.
+
+Table 4 now includes RDKit raw and crystal-seeded torsion raw alongside the six
+learned methods. Highlight the best two distinct unrounded values, sharing ties:
+higher COV-R/P and PB pass, lower MAT-R/P. Mean supplied count is ranked by
+size only. Keep the reference-seeded torsion label and Methods qualification.
+Figure 5 remains the six-learned-method threshold comparison.
