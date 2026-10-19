@@ -1,5 +1,32 @@
 # JCIM manuscript outline
 
+## Current scope, 19 October 2026
+
+PLINDER's multiple PDB-derived bound conformations now lead the framing.
+CASF core94 and ref remain complementary single-reference evaluations.
+This supersedes the core-first scope and ref-in-SI decisions below.
+
+- Table 1: wide PLINDER/core/ref groups, each with cluster counts at 0.5/1.0 Å
+  and largest-cluster fraction at 1.0 Å. Retained counts stay in source records.
+- Table 2: the same groups, with COV-R at two cutoffs and MAT-R for PLINDER,
+  and Hit at two cutoffs and Best RMSD for CASF.
+- Table 3: CASF core/ref only; paired candidate-target rows under each method.
+  PLINDER does not have the corresponding ChEMBL-count comparison.
+- Existing table method orders, stored-baseline separation, and generated-only
+  best/second-best emphasis are preserved. Figures and Table 4 remain unchanged.
+- Results leads with the multiple-reference question, follows the existing
+  diversity/recovery/energy/sampling/size/precision sequence, and describes trends
+  without repeating table values. Existing CASF figures are explicitly core-only.
+
+The integrated values are the approved previews archived in
+`results-data/three-dataset-tables/`. They retain PLINDER-23, the old Qwen checkpoint,
+and current filtering differences. PLINDER-22 and retrained results are pending.
+The author's reported exclusion policy is core exact/similar removal at a 0.4
+fingerprint-similarity cutoff and ref exact-match removal. These changes do not
+retroactively describe the archived checkpoint.
+
+The following sections record earlier decisions; the scope above takes precedence.
+
 ## Intended scope, 6 October 2026
 
 The benchmark is intended to guide conformer-generator selection for

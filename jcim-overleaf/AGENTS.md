@@ -30,24 +30,30 @@ proposed experiments as completed, or reintroduce analyses the user excluded.
 Preserve this framing when drafting Discussion, Conclusions, abstract, and title.
 
 
-The author's latest scope decision is core94 with 0.75 Å as the primary recovery
-cutoff. Table 2 also reports the tighter 0.5 Å cutoff alongside
-Best RMSD (the mean of per-entry minima), sorted with the lowest RMSD immediately
-above the separate ChEMBL3D-PB row. Keep ref in SI. Emphasize selection among the broader method panel under the
-study's identity, validity, and candidate-budget constraints. Table 1 reports 0.5 and 1.0 Å
-clustering radii, sorted in increasing order by the 0.5 Å mean, with ChEMBL3D-PB
-separate and last. It also reports the mean largest-cluster fraction at 1.0 Å
-(lower indicates less concentration). Figure 1 compares 0.5 Å cluster count
-with Best RMSD. Figure 2 compares 0.5 Å cluster counts with median within-ensemble
-energy SD, after recovery and before the larger-budget comparison. Energy results
-use the unoptimized common-hydrogen MMFF94s protocol in energy-data/, not archived mixed-hydrogen
-energies. The larger-ensemble diversity comparison uses 0.5 Å. Table 3 places the
-1,000-candidate results left of ChEMBL-count results, each with Best RMSD,
-Hit@0.75, and 0.5 Å clusters. Sort by decreasing 1,000-candidate Best RMSD;
-keep the stored reference last, separated by a dashed rule. Figure 3 uses
-the same row order and the common method colors from the current renderer.
-Clustering radii remain distinct from recovery cutoffs. See the updated
-MANUSCRIPT_OUTLINE.md for current figure and table placement.
+The author's latest scope decision (19 October 2026) leads with PLINDER's multiple
+experimental references, with CASF core94 and ref as complementary evaluations.
+Tables 1–2 have three wide column groups in that order. Table 1 repeats cluster
+counts at 0.5/1.0 Å and largest-cluster fraction at 1.0 Å; unavailable PLINDER
+occupancy remains pending. Table 2 uses PLINDER COV-R@0.5, COV-R@0.75 and MAT-R,
+and CASF Hit@0.5, Hit@0.75 and Best RMSD. Retain the existing method order.
+Table 3 excludes PLINDER: core/ref are column groups, with paired 1,000 and
+ChEMBL-count rows per method and the stored baseline separate and last.
+Its order remains decreasing core Best RMSD at 1,000 candidates.
+Rebuild Tables 1–3 with results-data/three-dataset-tables/build_tables.py.
+Results should describe trends without repeating rows of numerical results.
+
+All displayed results still use the original Qwen checkpoint and PLINDER-23.
+Do not relabel them as retrained or PLINDER-22 results. The author reports core
+exclusions at fingerprint similarity 0.4 and ref exact-match exclusions; the
+fingerprint definition, threshold boundary and PLINDER training-overlap policy
+still require records. PLINDER currently uses supplied pools and up-to-200
+subsets for clustering; CASF uses PB-filtered ensembles. Preserve these distinctions.
+
+Figures are unchanged by the table revision: Figures 1–4 and B1 describe core,
+and Figure 5 describes PLINDER. Figure 1 compares 0.5 Å clusters with Best RMSD;
+Figure 2 uses the common-hydrogen MMFF94s energy protocol in energy-data/.
+Figure 3 retains the Table 3 method order. Clustering radii remain distinct
+from recovery cutoffs. See MANUSCRIPT_OUTLINE.md for current placement.
 
 Read METHODS_NOTES.md before revising Methods: it records evidence and unresolved
 metadata. methods.tex contains the benchmark Methods draft and is included by

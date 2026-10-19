@@ -1,32 +1,55 @@
-% Source: results-data/sampling_budget_comparison.csv.
-\begin{table}[htbp]
+% Rebuild with results-data/three-dataset-tables/build_tables.py.
+\begin{table*}[htbp]
 \centering\footnotesize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.15}
-\caption{Recovery and geometric diversity at the two candidate targets on the 94-entry core panel.}
+\caption{Recovery and geometric diversity at two candidate targets on CASF core and ref.}
 \label{tab:recovery}
-\begin{tabular}{@{}lrrr@{\hspace{14pt}}rrr@{}}
+\par\smallskip
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llrrr@{\hspace{12pt}}rrr@{}}
 \toprule
-& \multicolumn{3}{c}{1,000-candidate target} & \multicolumn{3}{c}{ChEMBL-count target} \\
-\cmidrule(lr){2-4}\cmidrule(l){5-7}
-Method & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\at 0.5 \AA{} $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\at 0.5 \AA{} $\uparrow$} \\
+Method & Candidate target & \multicolumn{3}{c}{CASF core (94)} & \multicolumn{3}{c}{CASF ref (1,236)} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-8}
+ & & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\0.5 \AA{} $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Clusters\\0.5 \AA{} $\uparrow$} \\
 \midrule
-Torsion minimized & 0.535 & 79.8 & 60.0 & 0.644 & 68.1 & 21.9 \\
-RDKit minimized & 0.512 & 78.7 & 52.1 & 0.618 & 70.2 & 21.7 \\
-Torsion raw & 0.477 & 78.7 & \underline{296.8} & 0.679 & 66.0 & \underline{54.2} \\
-RDKit raw & 0.437 & 80.9 & 114.6 & 0.601 & 66.0 & 34.3 \\
-FlowR & 0.414 & 86.2 & \textbf{298.1} & 0.637 & 70.2 & 54.1 \\
-NExT-Mol DMT-L & 0.386 & 86.2 & 106.5 & 0.543 & \underline{76.6} & 31.6 \\
-Torsional Diffusion & 0.371 & \underline{89.4} & 187.7 & 0.582 & 73.4 & 40.9 \\
-MCF drugs-L & 0.366 & 86.2 & 110.3 & 0.559 & 71.3 & 31.2 \\
-LoQI & \underline{0.339} & 86.2 & 84.5 & \underline{0.536} & 74.5 & 25.0 \\
-Qwen 1.7B FSQ & \textbf{0.307} & \textbf{91.5} & 284.5 & \textbf{0.506} & \textbf{80.9} & \textbf{55.3} \\
+Torsion minimized & 1,000 & 0.535 & 79.8 & 60.0 & 0.543 & 77.1 & 62.6 \\
+ & ChEMBL-count & 0.644 & 68.1 & 21.9 & 0.647 & 65.8 & 21.1 \\
+\addlinespace[2pt]
+RDKit minimized & 1,000 & 0.512 & 78.7 & 52.1 & 0.528 & 77.3 & 63.6 \\
+ & ChEMBL-count & 0.618 & 70.2 & 21.7 & 0.620 & 68.9 & 22.3 \\
+\addlinespace[2pt]
+Torsion raw & 1,000 & 0.477 & 78.7 & \underline{296.8} & 0.485 & 77.7 & 255.7 \\
+ & ChEMBL-count & 0.679 & 66.0 & \underline{54.2} & 0.709 & 60.3 & 41.5 \\
+\addlinespace[2pt]
+RDKit raw & 1,000 & 0.437 & 80.9 & 114.6 & 0.469 & 81.5 & 125.2 \\
+ & ChEMBL-count & 0.601 & 66.0 & 34.3 & 0.624 & 68.4 & 31.8 \\
+\addlinespace[2pt]
+FlowR & 1,000 & 0.414 & 86.2 & \textbf{298.1} & 0.423 & 85.5 & \textbf{273.0} \\
+ & ChEMBL-count & 0.637 & 70.2 & 54.1 & 0.651 & 66.1 & \underline{41.7} \\
+\addlinespace[2pt]
+NExT-Mol DMT-L & 1,000 & 0.386 & 86.2 & 106.5 & 0.448 & 84.8 & 98.4 \\
+ & ChEMBL-count & 0.543 & \underline{76.6} & 31.6 & 0.642 & 70.6 & 27.7 \\
+\addlinespace[2pt]
+Torsional Diffusion & 1,000 & 0.371 & \underline{89.4} & 187.7 & 0.391 & 86.2 & 178.4 \\
+ & ChEMBL-count & 0.582 & 73.4 & 40.9 & 0.628 & 69.7 & 33.8 \\
+\addlinespace[2pt]
+MCF drugs-L & 1,000 & 0.366 & 86.2 & 110.3 & 0.449 & 84.6 & 101.5 \\
+ & ChEMBL-count & 0.559 & 71.3 & 31.2 & 0.667 & 69.8 & 27.7 \\
+\addlinespace[2pt]
+LoQI & 1,000 & \underline{0.339} & 86.2 & 84.5 & \underline{0.382} & \underline{86.8} & 86.2 \\
+ & ChEMBL-count & \underline{0.536} & 74.5 & 25.0 & \underline{0.585} & \underline{74.3} & 22.2 \\
+\addlinespace[2pt]
+Qwen 1.7B FSQ & 1,000 & \textbf{0.307} & \textbf{91.5} & 284.5 & \textbf{0.316} & \textbf{92.5} & \underline{257.3} \\
+ & ChEMBL-count & \textbf{0.506} & \textbf{80.9} & \textbf{55.3} & \textbf{0.558} & \textbf{76.3} & \textbf{42.9} \\
+\addlinespace[2pt]
 \hdashline
-ChEMBL3D-PB & --- & --- & --- & 0.525 & 78.7 & 21.7 \\
+ChEMBL3D-PB & Stored & 0.525 & 78.7 & 21.7 & 0.552 & 78.7 & 21.9 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Hit@0.75 uses all 94 entries, with missing outputs counted as failures. Best RMSD is the mean of the per-entry minimum RMSD; cluster counts are also averaged over entries with defined measurements. At the 1,000-candidate target, these means use 93 entries for MCF and NExT-Mol and 94 for the others; at the ChEMBL-count target, they use 93 for MCF, 92 for NExT-Mol, and 94 for the others. Generators are sorted by decreasing unrounded Best RMSD at 1,000 candidates. Bold and underlining identify the best and second-best distinct values in each column, including ties among generated methods only; the stored ChEMBL3D baseline is excluded from ranking. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Candidate targets precede filtering and do not match retained counts or computational cost.
+Targets precede PoseBusters filtering. Hit@0.75 uses all 94 core or 1,236 ref entries and counts missing outputs as failures. Best RMSD and cluster counts use defined entries; method-specific denominators and retained counts are archived with the source data. ChEMBL3D-PB is the same stored ensemble and has no 1,000-candidate result. Generators follow decreasing unrounded core Best RMSD at 1,000 candidates. Bold and underlining mark the best and second-best distinct unrounded values among generated methods within each dataset and candidate target; ChEMBL3D-PB is unranked. Targets do not imply equal retained counts or computational costs. Qwen results precede retraining with the updated benchmark exclusions.
 \end{minipage}
-\end{table}
+\end{table*}

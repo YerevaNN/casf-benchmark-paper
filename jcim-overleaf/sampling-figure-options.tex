@@ -6,12 +6,11 @@
 \renewcommand{\thefigure}{B\arabic{figure}}
 \ifdefined\theHfigure\renewcommand{\theHfigure}{budgetoption.\arabic{figure}}\fi
 \setcounter{figure}{0}
-Across intermediate budgets, the relative performance of the generators changes
+Across intermediate budgets on CASF core, the relative performance of the generators changes
 (Figure~\ref{fig:sampling-option-b1}). LoQI has the highest recovery among these four methods at
-small budgets, while Qwen overtakes it as the budget increases. At 1,000 candidates, Qwen recovers
-91.5\% of entries at 0.75 \AA{}, compared with 86.2\% for LoQI, FlowR, and NExT-Mol. When recovery
+small budgets, while Qwen overtakes it as the budget increases. When recovery
 is fixed at 80\%, LoQI reaches this target at a slightly tighter RMSD threshold than Qwen at the
-largest budget, 0.479 versus 0.506 \AA{}. The ordering therefore depends on both the sampling budget
+largest budget. The ordering therefore depends on both the sampling budget
 and the required proximity to the experimental conformation.
 
 \begin{figure}[p]

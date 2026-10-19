@@ -1,0 +1,25 @@
+{
+  "purpose": "layout preview only; manuscript unchanged",
+  "sources": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/clustering_radius_comparison.csv": "e9cd54afa391e09087012c96430630fdeaf1f2e59fe818b81092988baa3d423b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/druglike_selected.csv": "1e9f116ad04b1311e1391f40dad2f7d207b7c66aebc7d3b8e5caa72b96479b15",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116"
+  },
+  "aggregation": "Equal-weight molecule means, complete cases across all three CASF metrics. Fractions multiplied by 100.",
+  "plinder_missing": "Largest-cluster fraction is not present in the matched manuscript CSV. Not inferred from entropy or other runs.",
+  "qwen": "Original 1.7B FSQ step47023, not the pending retrained checkpoint.",
+  "training_exclusions_user_reported": {
+    "core94": "exact and similar structures removed from big data, fingerprint similarity threshold 0.4; fingerprint definition and boundary unspecified",
+    "casf_ref": "exact matches removed, similar structures not excluded",
+    "plinder": "training exclusion policy not specified in this request"
+  },
+  "plinder_count": "23 in archive; 22 planned after covalently annotated molecule exclusion",
+  "notes": [
+    "Layout preview using archived results. The three clustering metrics are repeated for each dataset; retained counts would move to a companion table or supplement.",
+    "\u00b9 PLINDER remains n = 23 here. Recompute all means after removing the covalently annotated molecule before labeling it PLINDER-22.",
+    "\u00b2 Largest = mean per-molecule largest-cluster fraction at 1.0 \u00c5. \u201cpending\u201d = absent from the matched PLINDER manuscript archive; \u2014 = no matched result.",
+    "\u00b3 Qwen values are from the original 1.7B FSQ step-47023 checkpoint, before the new training exclusions. They are not results of the ongoing retraining.",
+    "\u2074 PLINDER torsion sampling starts from an experimental reference. PLINDER uses supplied pools without a common PB filter; CASF uses PB-filtered ensembles. Raw counts across datasets therefore reflect different budgets and filters.",
+    "All values are molecule-level means. CASF defined denominators vary by method (core: 92\u201394; ref: 1,220\u20131,236); PLINDER has 23 defined molecules for each reported method. Row order follows current Table 1."
+  ]
+}

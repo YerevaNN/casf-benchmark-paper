@@ -1,5 +1,24 @@
 # Methods: evidence and author follow-up
 
+## Three-set table integration, 19 October 2026
+
+Methods now describes PLINDER as the multiple-reference evaluation and includes
+CASF ref in the main tables. Candidate-budget and energy analyses remain CASF-only;
+the energy and existing CASF figures use core. PLINDER clustering uses up to 200
+supplied conformers, whereas its coverage and matching distances use the full pool.
+Table 2 reaggregates cached reference minima for all eight methods; all reference
+minima are finite. The Table 4 historical summaries remain unchanged, with small
+differences documented in `results-data/three-dataset-tables/cache-table-comparison.csv`.
+
+The author reports that the revised training corpus removes core94 exact matches
+and similar molecules at fingerprint similarity 0.4; ref exact matches are removed
+without an additional similarity exclusion for that panel. Retraining is ongoing.
+These are author-provided protocol details, not a completed manifest audit. Record
+the fingerprint definition, similarity coefficient, threshold equality convention,
+training-data hashes and PLINDER exclusion policy before the final evaluation.
+Do not apply these claims to the old checkpoint displayed in the current tables.
+PLINDER-22 results also require recomputation after the covalent-entry exclusion.
+
 ## Two PLINDER baselines added to Table 4, 12 October 2026
 
 Added `rdkit_random_raw_druglike` and `torsion_raw_druglike` from completed

@@ -1,0 +1,23 @@
+{
+  "purpose": "Table 2 preview; manuscript unchanged",
+  "layout": "User-selected wide layout from Table 1, PLINDER then core then ref",
+  "sources": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/casf_selected.csv": "0f6c0ea0cc4b9b422a9807ae3eed68938cb29d991f3f2f0fe0c019a6fda4b96c",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/druglike_selected.csv": "1e9f116ad04b1311e1391f40dad2f7d207b7c66aebc7d3b8e5caa72b96479b15",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/clustering_radius_comparison.csv": "e9cd54afa391e09087012c96430630fdeaf1f2e59fe818b81092988baa3d423b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder-threshold-data/nearest_distances.npz": "1db616a807ad587d64531538c2e3641b95e7968a05793c3a6da11969ceb9381b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder-threshold-data/entries.json": "f53180dc4e92a1844ec3bde21de0eb7de8433cd1d307284202932f4d8411ea14",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/torsion_raw_druglike.npz": "1b30c46d6b5b3fdc2e16813fde8488dde90812c613c00457c7d60568a7a4780e",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/rdkit_random_raw_druglike.npz": "4f3e0124641d65207c75f039303464d62f473f9d6bde8f02eb6723a012126d09"
+  },
+  "notes": [
+    "COV-R: fraction of experimental references recovered within the cutoff, computed per molecule and then averaged. MAT-R: mean nearest-generated RMSD over references, then averaged equally across molecules.",
+    "Hit: fraction of CASF entries with a recovered reference; missing outputs count as failures. Best RMSD: mean per-entry minimum over defined entries. These are the single-reference counterparts of COV-R and MAT-R, with differing missing-output denominators.",
+    "\u00b9 PLINDER uses all 23 molecules and supplied ensembles without a common PB filter; CASF uses PB-filtered ChEMBL-count ensembles. Archived PLINDER cutoffs use RMSD < t; CASF uses RMSD \u2264 t. These conditions require harmonization for final evaluation.",
+    "\u00b2 Qwen is the original 1.7B FSQ step-47023 checkpoint, before retraining. \u00b3 PLINDER torsion is seeded from an experimental reference. \u2014 = no matched archived result.",
+    "PLINDER values are recomputed from cached nearest-reference distances; small differences from the earlier manuscript table are recorded in the accompanying audit. No conformers or alignments were recomputed. PLINDER-22 and retrained results remain pending.",
+    "Method order follows current Table 2. CASF recovery denominators are 94 and 1,236; continuous-distance denominators vary by method and are recorded in the accompanying CSV. The stored ChEMBL3D-PB baseline is shown separately."
+  ],
+  "new_structural_calculations": false
+}

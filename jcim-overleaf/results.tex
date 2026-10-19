@@ -1,194 +1,137 @@
 \providecommand{\manuscriptroot}{}
-% Working Results, transferred 5 October 2026.
 \section{Results}
 \label{sec:results}
 \input{\manuscriptroot figures}
 
-% AUTHOR: Tables use the corrected findings archived on 24 September 2026. Qwen values belong to the initial 1.7B FSQ checkpoint at step 47,023; they do not describe the pending evaluation after benchmark exclusions. The energy comparison uses a common-hydrogen recalculation on the archived ensembles; release counts remain pending.
+% AUTHOR: Tables 1--2 lead with PLINDER, followed by CASF core and ref. Table 3 is
+% CASF-only. All Qwen values still belong to the original FSQ step-47023 checkpoint.
+% Recompute after retraining and removal of the covalently annotated PLINDER entry.
 
-A useful conformational resource should represent a range of molecular shapes while retaining
-coverage of geometries observed in protein complexes. We begin by examining the variation present in
-the generated ensembles, before asking whether that variation includes the experimental bound
-conformations. The first comparison uses the 94-entry CASF core panel at the ChEMBL-count target,
-placing each generator alongside the stored ChEMBL3D ensemble for the same molecules.
-Table~\ref{tab:diversity} summarizes geometric diversity through cluster counts at 0.5 and 1.0 \AA{},
-together with the retained ensemble sizes and the fraction of conformers in the largest cluster.
+We evaluate whether protein-independent conformer ensembles represent the bound geometries
+observed for a molecule across experimental structures. The PLINDER panel provides multiple
+PDB-derived references for each molecule, allowing recovery of observed conformations to be
+distinguished from the concentration of generated samples near them.\cite{durairaj2024plinder}
+The CASF core and ref panels complement this comparison with one reference per complex and a
+stored ChEMBL3D ensemble. We examine geometric variation and experimental recovery across all
+three sets, then assess sampling effects within CASF and sample precision within PLINDER.
+
+The current results use the archived PLINDER-23 panel and the original Qwen checkpoint.
+They precede the removal of a covalently annotated PLINDER molecule and evaluation after the
+updated training exclusions. PLINDER measurements use supplied ensembles without a common
+PoseBusters filter, whereas CASF measurements use filtered ensembles. Comparisons therefore
+describe performance within each evaluation setting rather than a common level of difficulty
+across datasets.
+
+Table~\ref{tab:diversity} compares cluster counts at two geometric resolutions. Across the
+three sets, FlowR, Qwen, and raw torsion sampling generally produce more clusters than LoQI
+and the minimized CASF baselines. Their exact ordering depends on the dataset and clustering
+radius: FlowR has the most clusters on PLINDER at both radii, while Qwen leads the finer-radius
+CASF comparisons. This broad separation persists despite differences in ensemble size and
+filtering, although absolute counts across datasets are not directly comparable.
 
 \input{\manuscriptroot tables/diversity}
 
-Qwen, random torsion sampling, and FlowR produce the most geometrically diverse ensembles by
-cluster count at both radii. Their counts are close at 0.5 \AA{}, with Qwen ranked first, whereas
-FlowR produces the most clusters at 1.0 \AA{}. LoQI, the minimized baselines, and the stored
-ChEMBL3D ensembles consistently form fewer clusters at both radii, indicating narrower geometric
-variation under these sampling conditions. The broad separation between these groups therefore
-persists across the two resolutions, despite changes in their exact ordering.
+For CASF, cluster occupancy distinguishes the number of represented shapes from how evenly
+they are sampled. FlowR has the smallest mean largest-cluster fraction in both panels,
+whereas LoQI and minimized torsion sampling concentrate more of their conformers in one
+cluster. The stored ChEMBL3D ensembles combine relatively few clusters with less concentration
+than those two methods. Cluster counts and occupancy thus describe different aspects of
+geometric variation; neither establishes proximity to the observed bound conformations.
 
-Cluster occupancy provides a complementary description of how the samples are distributed.
-At 1.0 \AA{}, FlowR and Qwen have the smallest mean fractions of conformers in the largest
-cluster, at 42.4\% and 44.1\%, respectively; random torsion sampling is close at 44.4\%.
-LoQI and minimized torsion sampling are more concentrated, with 53.7\% and 56.4\% in the
-largest cluster. ChEMBL3D has fewer clusters but a less concentrated largest cluster than these
-two methods, illustrating that the number of represented shapes and their sampling balance
-describe different aspects of diversity. These observations concern the geometry of the retained
-pools, whose sizes differ between methods; they do not establish whether the additional shapes
-are energetically plausible or close to experimentally observed conformations.
-
-% AUTHOR: Update the method-specific observations and their magnitudes from the final ChEMBL-count
-% AUTHOR: evaluation; do not transfer rankings from the 1,000-candidate comparison to this target.
-
-Having characterized the ensembles themselves, we assess recovery of the experimental bound
-geometries at the ChEMBL-count target. Table~\ref{tab:count-recovery} reports Hit@0.5 and
-Hit@0.75 alongside Best RMSD, the distance from each experimental reference to its closest
-generated conformer, averaged across molecules with a measurable result. The hit rates describe how often
-an ensemble reaches a specified tolerance, whereas Best RMSD describes the distance of its
-closest approach without imposing a cutoff.
+Table~\ref{tab:count-recovery} measures this proximity using reference coverage and matching
+distance. On PLINDER, COV-R records the fraction of experimental references recovered for
+each molecule, while MAT-R averages the distance from each reference to its closest generated
+conformer. The CASF sections report the corresponding single-reference outcomes, Hit and
+Best RMSD, with their respective missing-output conventions.
 
 \input{\manuscriptroot tables/count-recovery}
 
-Qwen has the highest Hit@0.75 in the initial comparison, recovering 80.9\% of core entries,
-followed by the stored ChEMBL3D ensemble at 78.7\%. At the tighter 0.5 \AA{} tolerance,
-LoQI has the highest hit rate at 67.0\%, followed by ChEMBL3D at 63.8\%; Qwen recovers
-56.4\%. Thus, reaching the experimental geometry within 0.75 \AA{} does not necessarily
-translate into the most frequent matches within 0.5 \AA{}. Qwen nevertheless has the lowest
-Best RMSD, although its difference from ChEMBL3D is modest, at 0.506 versus 0.525 \AA{}.
+LoQI and Qwen have similar PLINDER coverage at the primary cutoff. LoQI covers more references
+at the tighter tolerance, while Qwen has the lowest mean matching distance. The two CASF
+panels show a related dependence on the metric: among generated methods, LoQI leads at the
+tighter cutoff, whereas Qwen has the highest recovery at the primary cutoff and the lowest
+Best RMSD. The stored ChEMBL3D ensembles remain competitive; on ref, their primary-cutoff
+recovery exceeds that of every generator at the ChEMBL-count target. A method's ranking
+therefore depends on whether the objective is frequent close matches or a smaller average
+distance to the reference.
 
-Hit rate and Best RMSD need not rank methods in the same order. For example, minimized RDKit
-has a higher Hit@0.75 than raw RDKit, but a higher Best RMSD. Hit rate gives equal credit to
-all matches within the cutoff and does not measure how far the remaining entries miss it.
-Best RMSD retains the magnitude of those distances, including large misses, while averaging
-only over measurable entries. It still describes the closest member of each ensemble;
-neither metric establishes that all generated conformers lie near the experimental reference.
-
-We then consider geometric diversity and proximity to the bound conformation together.
-Figure~\ref{fig:diversity-recovery} places mean cluster count at 0.5 \AA{} against Best RMSD,
-with more clusters and a lower RMSD defining the favorable region toward the lower right.
-Qwen combines the largest cluster count with the lowest Best RMSD in this comparison. The
-other generators with the highest cluster counts, random torsion sampling and FlowR, produce
-nearly as many clusters but struggle to approach the experimental references as closely: their
-Best RMSDs are higher. Broad geometric diversity therefore does not by itself ensure close
-recovery of the bound conformation. LoQI and ChEMBL3D approach the references
-with fewer clusters. Qwen's distinctive position therefore reflects its combination of broad
-geometric variation and close approaches to the observed structures, rather than a large RMSD
-advantage over every alternative. This combination makes it a candidate for dataset construction
-in the preliminary evaluation, subject to confirmation after benchmark molecules have been
-excluded from its training data.
+Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
+FlowR produces the most clusters but covers fewer references than LoQI, whose ensembles
+contain substantially fewer clusters. The core comparison in Figure~\ref{fig:diversity-recovery}
+shows a similar distinction: raw torsion sampling and FlowR approach Qwen's cluster count
+but have higher Best RMSD, while LoQI and ChEMBL3D approach the references with fewer
+clusters. Diversity is consequently an incomplete indicator of recovery of experimental
+conformations, rather than a sufficient criterion for selecting a generator.
 
 \diversityfigure
 
-We next examine energy variation in the same retained ensembles. Figure~\ref{fig:energy-dispersion}
-compares geometric cluster counts with the median of the per-molecule energy standard deviations,
-using a common MMFF94s calculation with unoptimized hydrogen coordinates and unchanged heavy-atom positions.
-The two panels describe the number of represented shapes and the spread of their force-field
-energies at the ChEMBL-count target.
+Energy variation also differs among geometrically diverse ensembles. On CASF core,
+Qwen and FlowR have narrower typical energy distributions than raw torsion sampling and
+Torsional Diffusion, while LoQI, the minimized baselines, and ChEMBL3D have narrower
+distributions still (Figure~\ref{fig:energy-dispersion}). These comparisons use a common
+MMFF94s calculation without coordinate optimization. Exceptional molecules strongly affect
+the mean energy spread, particularly for Torsional Diffusion; the median better represents
+the typical ensemble. Supporting Table S9 reports both summaries and the energy levels.
+A narrower energy distribution does not establish lower absolute energy or thermodynamic
+stability.
 
 \energyfigure
 
-The methods with the largest cluster counts differ in energy spread. Qwen and FlowR have median
-energy standard deviations of 17.6 and 11.6 kcal/mol, respectively, compared with 40.5 kcal/mol for
-random torsion sampling and 26.5 kcal/mol for Torsional Diffusion. LoQI has a narrower energy
-distribution, with a median of 3.7 kcal/mol, while the minimized baselines have medians of 2.7--2.8
-kcal/mol, alongside their lower cluster counts. The stored ChEMBL3D ensemble has a median energy
-standard deviation of 2.7 kcal/mol.
-
-The mean across molecules is more affected by extreme energy spreads. For Torsional Diffusion, the
-mean per-molecule standard deviation is 1,628.4 kcal/mol, compared with its median of 26.5 kcal/mol.
-For Qwen, the corresponding summaries are 49.0 and 17.6 kcal/mol. The median therefore retains the
-differences in typical energy spread while reducing the influence of exceptional molecules.
-Supporting Table S9 reports both summaries and the corresponding energy levels. The median paired
-difference in mean energy relative to the same molecule's ChEMBL3D ensemble is +20.7 kcal/mol for
-Qwen and +0.8 kcal/mol for FlowR.
-
-Matching the stored ChEMBL3D conformer counts establishes how the generators compare with an
-existing conformational resource. Constructing a larger dataset also requires understanding what
-additional sampling provides. We therefore extend the candidate target to 1,000 per molecule and
-examine whether the larger ensembles recover bound geometries missed at the smaller target, while
-increasing their geometric diversity.
-
-All ten generation pipelines have higher Hit@0.75 and lower Best RMSD at the larger target. Qwen
-retains the highest hit rate and lowest Best RMSD, increasing recovery from 80.9\% to 91.5\% and
-reducing Best RMSD from 0.506 to 0.307 \AA{}. Its mean number of clusters at 0.5 \AA{} increases
-from 55.3 to 284.5. FlowR and random torsion sampling produce the largest cluster counts at 1,000
-candidates, but their recovery remains below that of Qwen. The increase in geometric diversity
-therefore does not translate into the same recovery across generators.
-
-The stored ChEMBL3D ensemble remains unchanged, with a hit rate of 78.7\%. Additional sampling
-extends recovery beyond the available stored conformers, but the comparison does not describe what
-ChEMBL3D would achieve with an equally enlarged ensemble. The two candidate targets also yield
-different retained counts across methods and do not represent equal computational costs.
+The CASF panels allow a separate comparison of candidate targets because each molecule has
+a corresponding stored ChEMBL3D ensemble. Increasing the target improves recovery and
+reduces Best RMSD for every evaluated generator in both core and ref
+(Table~\ref{tab:recovery}). Cluster counts also increase, but their ordering does not match
+the recovery ordering. Qwen retains the highest primary-cutoff recovery among generators,
+while FlowR produces the most clusters; raw torsion sampling is also highly diverse.
+Additional sampling therefore expands geometric variation and experimental recovery to
+different degrees across methods.
 
 \input{\manuscriptroot tables/recovery}
 
+The core endpoints are shown in Figure~\ref{fig:recovery}. At the larger target, several
+generators recover references missed by the stored ChEMBL3D ensembles. The stored comparison
+remains finite and unchanged, so this does not establish what ChEMBL3D would achieve with
+an equally enlarged pool. Candidate targets also yield different retained counts and do
+not imply equal computational costs.
+
 \recoveryfigure
 
-% Combined sampling panels requested by the author.
 \input{\manuscriptroot sampling-figure-options}
 
-Recovery establishes whether an ensemble contains at least one close match. The fraction of retained
-conformers within 0.75 \AA{} of the reference addresses a complementary question: how frequently the
-method samples near that observed geometry. This distinction matters for a training resource, where
-the distribution of conformers contributes to the data presented to a model.
-
-% AUTHOR: If included, report this conformer-level fraction separately from ligand-level Hit@0.75, with
-% AUTHOR: its denominator and aggregation rule. Insert its interpretation only after calculation on the
-% AUTHOR: final valid pools.
-
-Overall recovery can conceal substantial differences between molecules. We therefore compare
-recovery across groups defined by rotatable-bond and heavy-atom counts to assess how aggregate
-performance changes with molecular flexibility and size.
+Aggregate recovery can conceal differences in molecular difficulty. The core size and
+flexibility strata identify uneven recovery across chemical groups, but the largest and
+most flexible groups contain too few entries to support stable method rankings
+(Figure~\ref{fig:size}). These results caution against using a panel-wide average as evidence
+of uniform coverage of the chemistry needed for a conformational resource.
 
 \sizefigure
 
-The core panel contains relatively few molecules in the largest and most flexible groups. Its
-stratified results therefore identify observed successes and failures but cannot establish a stable
-ranking in every regime. These differences are relevant to dataset construction because a single
-average recovery rate can hide poor coverage of precisely the molecules that require the most
-extensive conformational sampling.
-
-The CASF analysis asks whether an ensemble contains a close match to one observed conformation for
-each entry. A broader training resource should also represent variation among the conformations that
-the same molecule adopts in different experimental structures. We therefore extend the evaluation to
-a panel of 23 drug-like molecules with multiple observed bound conformations selected from PLINDER
-release 2024-06/v2 by physicochemical screening, PDB-frequency ranking, and manual review (Methods;
-Supporting Information). For each molecule, the same protein-independent ensemble is compared with
-all of its experimental references. This tests coverage of several observed geometries without
-generating a separate ensemble for each complex. \cite{durairaj2024plinder}
-
-Reference coverage and sample precision distinguish how many experimental observations an ensemble
-covers from how frequently it samples near them. Table~\ref{tab:druglike} reports these two
-measurements together with the matching distances defined in Methods, including RDKit raw and a
-torsion baseline initialized from an experimental reference.
+PLINDER's multiple experimental references also distinguish coverage from the concentration
+of generated conformers near the observed set. Table~\ref{tab:druglike} reports sample
+precision alongside reference coverage, matching distances, and separately measured validity.
+LoQI and Qwen attain similar reference coverage, but LoQI places a larger fraction of its
+generated conformers near an observed geometry. Thus, ensembles that cover similar fractions
+of the reference set can distribute their remaining samples differently.
 
 \input{\manuscriptroot tables/druglike}
 
-The threshold curves show that this comparison depends on the required geometric tolerance
-(Figure~\ref{fig:druglike}). At 0.5 \AA{}, LoQI covers 75.7\% of the experimental references and
-Qwen covers 71.7\%. Their coverage is nearly equal at 0.75 \AA{}, while Qwen has higher coverage at
-1.0 \AA{}. LoQI has higher sample precision at all three cutoffs. Similar coverage at the primary
-cutoff therefore coexists with different concentrations of generated conformers near the observed
-structures.
+The threshold curves reinforce this distinction (Figure~\ref{fig:druglike}). LoQI has higher
+coverage at 0.5 \AA{}, while Qwen has higher coverage at 1.0 \AA{};
+LoQI maintains higher sample precision at both and at the primary cutoff. These observations
+describe the supplied pools. Common validity filtering and consistent RMSD-failure handling
+remain necessary for a definitive comparison. Experimental references are also incomplete,
+so an unmatched conformer cannot automatically be classified as physically inaccessible
+or irrelevant to binding.
 
 \drugfigure
 
-In the existing evaluation, LoQI and Qwen achieve similar mean reference coverage, while LoQI has
-higher observed-reference precision. These preliminary comparisons describe the supplied pools;
-common validity filtering and consistent treatment of failed RMSD calculations remain necessary for
-the final evaluation. Thus, similar coverage can be obtained from ensembles that differ in the
-proportion of samples lying near the available experimental structures. This distinction qualifies
-the single-reference recovery result and is relevant when considering how generated conformers will
-populate a training dataset. Experimental references remain incomplete, however, so an unmatched
-conformer cannot automatically be classified as physically inaccessible or irrelevant to binding.
+% AUTHOR: Reconcile cached distances with the earlier Table 4 summaries; apply common
+% validity and RMSD-failure conventions. Recompute all PLINDER metrics after covalent exclusion.
 
-% AUTHOR: Recompute the drug-panel comparison using a common validity filter and RMSD-failure policy. The
-% AUTHOR: PLINDER release and molecule-selection criteria are documented in Methods and Supporting Information;
-% AUTHOR: complete the description of reference-coordinate extraction and handling of repeated or nearly
-% AUTHOR: identical structures.
-
-Together, experimental coverage, geometric variation, and structural and energetic plausibility
-inform the selection of a generation procedure for the larger dataset. Our current plan is to
-apply Qwen to molecules drawn from ChEMBL3D, subject to confirmation by the cleaned evaluation.
-The dataset will be characterized in terms of molecular coverage, conformers per molecule,
-validity yield, geometric diversity, and energy distributions. These measurements will
-establish what the selected procedure produces at scale and whether the resulting resource
-retains the properties that motivated its selection. The intended uses span structure-based
-drug design and learning molecular geometry, including pharmacophore-conditioned generation;
-performance in downstream applications remains to be evaluated separately.
+Together, the three evaluation sets support selecting generators by experimental coverage
+and sample concentration, with geometric diversity and energetic dispersion as complementary
+descriptors. Qwen remains a candidate for constructing a larger conformational resource,
+subject to confirmation after retraining and benchmark curation. The resulting resource
+will require its own characterization of molecular coverage, validity, diversity, and
+energy distributions. Its value for downstream structure-based applications remains to be
+evaluated separately.

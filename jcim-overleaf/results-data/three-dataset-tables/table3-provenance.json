@@ -1,0 +1,15 @@
+{
+  "purpose": "Table 3 layout preview; manuscript unchanged",
+  "layout": "CASF core/ref with paired budget rows; PLINDER removed at user request",
+  "sources": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/sampling_budget_comparison.csv": "097a06517138ee783be3abea2c845fd66f7aa423360f3b91e71001f5c7775257",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite": "bfd6093b269333f00864e7040bbac47b82dbd4c0f2b682659af94774cb7ab116"
+  },
+  "notes": [
+    "Two rows per generator compare the 1,000-candidate and ChEMBL-count targets. Method order follows current Table 3; ChEMBL3D-PB is a separate stored ensemble with no 1,000-candidate result.",
+    "Hit@0.75 uses all 94 core or 1,236 ref entries, counting missing outputs as failures. Best RMSD averages per-entry minima over defined entries; cluster counts also use defined entries. Denominators are recorded in the accompanying CSV.",
+    "Recovery uses RMSD \u2264 0.75 \u00c5; clustering uses a 0.5 \u00c5 radius. Candidate targets precede filtering and do not imply equal retained counts or computational cost.",
+    "\u00b9 Qwen is the original 1.7B FSQ step-47023 checkpoint. Results from retraining with the updated training exclusions remain pending."
+  ],
+  "new_structural_calculations": false
+}

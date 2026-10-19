@@ -1,5 +1,31 @@
 # Results: sources and author follow-up
 
+## Three-set tables and PLINDER-led Results, 19 October 2026
+
+The author approved wide PLINDER/core/ref layouts for Tables 1–2, and a core/ref-only
+Table 3 with paired budget rows. The accepted preview data and source hashes are
+archived in `results-data/three-dataset-tables/`; its renderer rebuilds the three
+LaTeX tables without reading cluster databases. Labels and existing method orders
+are preserved, as is generated-only best/second-best highlighting.
+
+Table 1 PLINDER counts use up-to-200 supplied-conformer subsets. Largest-cluster
+fractions are absent from the matched archive and remain explicitly pending.
+Table 2 PLINDER COV-R and MAT-R are computed consistently from cached nearest
+distances for eight methods. The audit records small differences from Table 4;
+for example RDKit MAT-R rounds to 0.570 here and 0.569 in Table 4. Table 4 is not
+overwritten. CASF means and recovery are from the same hash-verified historical
+database, with the core values checked against the existing tables.
+
+Results now leads with multiple observed conformations and reports trends across
+the three sets, without numerical row-by-row retelling. The existing figure
+sequence and artwork are unchanged; the text identifies core-only analyses.
+The sampling prose included through `sampling-figure-options.tex` is also shortened.
+
+All Qwen values predate the current retraining, and PLINDER still contains 23
+molecules. Recompute after removal of the covalently annotated entry. Harmonized
+filtering, RMSD-failure handling, and cache lineage remain unresolved; the paper
+does not present the archived values as results under the revised training exclusions.
+
 ## Two PLINDER baselines added to Table 4, 12 October 2026
 
 Added `rdkit_random_raw_druglike` and `torsion_raw_druglike` from completed
