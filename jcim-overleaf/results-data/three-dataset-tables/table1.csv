@@ -1,34 +1,34 @@
 method,cohort,n_total,n_defined,clusters_0p5,clusters_1p0,largest_percent,status
 RDKit minimized,core,94,94,21.71276595744681,10.98936170212766,49.838095275290875,archived
 RDKit minimized,ref,1236,1235,22.268016194331985,10.792712550607288,53.07042631812684,archived
-RDKit minimized,plinder,23,0,,,,no matched manuscript result
+RDKit minimized,plinder,22,0,,,,no matched manuscript result
 Torsion minimized,core,94,94,21.861702127659573,11.670212765957446,56.4484692110228,archived
 Torsion minimized,ref,1236,1235,21.136032388663967,10.563562753036438,58.93893639198049,archived
-Torsion minimized,plinder,23,0,,,,no matched manuscript result
+Torsion minimized,plinder,22,0,,,,no matched manuscript result
 LoQI,core,94,94,24.98936170212766,9.202127659574469,53.65444518590655,archived
 LoQI,ref,1236,1236,22.22977346278317,9.147249190938512,56.75338383547769,archived
-LoQI,plinder,23,23,42.65217391304348,15.26086956521739,,largest-cluster fraction not in manuscript archive
+LoQI,plinder,22,22,112.1818181818182,32.27272727272727,46.54545454545454,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 MCF drugs-L,core,94,93,31.236559139784948,14.150537634408602,47.254270231959225,archived
 MCF drugs-L,ref,1236,1221,27.723177723177724,11.703521703521703,48.49862112321769,archived
-MCF drugs-L,plinder,23,23,71.91304347826087,27.869565217391305,,largest-cluster fraction not in manuscript archive
+MCF drugs-L,plinder,22,22,189.13636363636363,56.77272727272727,25.79545454545455,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 NExT-Mol DMT-L,core,94,92,31.597826086956523,14.152173913043478,46.35724563305338,archived
 NExT-Mol DMT-L,ref,1236,1220,27.660655737704918,11.954098360655738,48.92180084078701,archived
-NExT-Mol DMT-L,plinder,23,23,72.6086956521739,28.043478260869566,,largest-cluster fraction not in manuscript archive
+NExT-Mol DMT-L,plinder,22,22,193.6818181818182,59.36363636363637,21.5590909090909,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 RDKit raw,core,94,94,34.265957446808514,14.702127659574469,46.12807651337057,archived
 RDKit raw,ref,1236,1236,31.764563106796118,14.385113268608414,47.38744799205899,archived
-RDKit raw,plinder,23,23,53.130434782608695,22.91304347826087,,largest-cluster fraction not in manuscript archive
+RDKit raw,plinder,22,22,144.54545454545453,44.86363636363637,29.45454545454545,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 Torsional Diffusion,core,94,94,40.9468085106383,17.51063829787234,44.728815962421564,archived
 Torsional Diffusion,ref,1236,1229,33.830756712774615,14.738812042310823,45.991480049714795,archived
-Torsional Diffusion,plinder,23,23,90.65217391304348,39.08695652173913,,largest-cluster fraction not in manuscript archive
+Torsional Diffusion,plinder,22,22,289.3181818181818,115.04545454545456,26.35,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 FlowR,core,94,94,54.08510638297872,29.138297872340427,42.42189805093425,archived
 FlowR,ref,1236,1232,41.695616883116884,24.156655844155843,43.554488127976946,archived
-FlowR,plinder,23,23,114.0,68.08695652173913,,largest-cluster fraction not in manuscript archive
+FlowR,plinder,22,22,423.8181818181818,227.1818181818182,18.65444595609884,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 Torsion raw,core,94,94,54.159574468085104,21.829787234042552,44.37568817793253,archived
 Torsion raw,ref,1236,1230,41.53821138211382,18.160162601626016,45.19737377766788,archived
-Torsion raw,plinder,23,23,102.21739130434783,45.95652173913044,,largest-cluster fraction not in manuscript archive
+Torsion raw,plinder,22,22,366.6818181818182,135.72727272727272,28.690909090909088,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 Qwen 1.7B FSQ,core,94,94,55.276595744680854,22.659574468085108,44.091472627515735,archived; Qwen predates retraining
 Qwen 1.7B FSQ,ref,1236,1236,42.89967637540453,18.57443365695793,48.25987534123615,archived; Qwen predates retraining
-Qwen 1.7B FSQ,plinder,23,23,103.34782608695652,41.56521739130435,,largest-cluster fraction not in manuscript archive
+Qwen 1.7B FSQ,plinder,22,22,359.54545454545456,107.04545454545456,24.59030246366082,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 ChEMBL3D-PB,core,94,94,21.71276595744681,7.691489361702128,47.2002555749098,archived
 ChEMBL3D-PB,ref,1236,1236,21.87864077669903,7.296925566343042,49.846636259618485,archived
-ChEMBL3D-PB,plinder,23,0,,,,no matched manuscript result
+ChEMBL3D-PB,plinder,22,0,,,,no matched manuscript result

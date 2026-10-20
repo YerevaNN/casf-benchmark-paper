@@ -29,7 +29,7 @@ is based on molecular identity rather than similarity to the experimental coordi
 criteria yield 94 core complexes representing 94 ChEMBL parent compounds. Applying the same
 procedure to the larger reference collection yields 1,236 complexes representing 1,042 parent
 compounds. The collections share 17 parent compounds but no complex identifiers. Both collections
-are included in the main tables; the existing CASF figures use the core panel.
+are included in the main tables; the diversity--proximity figure compares both panels, while energy, sampling, and size figures use core.
 
 For each molecule, the stored ChEMBL3D ensemble establishes how much of the experimental geometry is
 already represented in an existing computed dataset. This comparison distinguishes coverage already
@@ -39,7 +39,7 @@ conformational coverage within this intersection rather than coverage of the ent
 space. The analysis permits a deterministic cap of 2,000 stored conformers for the designated large
 reference entry, 1tlp, when its available ensemble exceeds that size.
 
-The multiple-reference evaluation uses an exploratory panel of 23 ligand identities selected from PLINDER
+The multiple-reference evaluation uses a cleaned panel of 22 ligand identities derived from an initial 23-molecule selection from PLINDER
 release 2024-06/v2, an annotated resource of protein--ligand complexes from the Protein Data Bank.
 Records in the ligand-per-system table were grouped by full InChIKey so that different stereoisomers
 remained separate. Of 51,280 starting identities, 25,392 passed an RDKit-based physicochemical
@@ -51,22 +51,26 @@ Survivors were ranked by the number of distinct PDB entries, with PLINDER-system
 secondary ordering. Distinct PDB entries were preferred because one multimeric structure can
 contribute many systems. Manual review then selected recognizable drugs and medicinal-chemistry-like
 protein ligands, excluding common crystallization additives, metabolites, cofactors, and other
-compounds outside the intended scope. The resulting Plinder-23 panel is a manually curated
+compounds outside the intended scope. The initial panel was a manually curated
 exploratory set, not an official PLINDER split or a purely algorithmic selection. Exact reproduction
 uses the saved identities. The molecule list and panel statistics are provided in Supporting
 Information.
 
-The evaluated panel contains 2,450 reference conformers, with 23--716 per molecule. Each generated
-ensemble is compared with all supplied references for that molecule. The saved PDB and system
-frequencies describe selection, whereas these conformer counts describe the evaluated coordinate
-collection. Coverage concerns reference records rather than a separately defined set of distinct
-conformational states. The displayed results retain all 23 molecules; recomputation after removal
-of one molecule with covalent annotations is pending.
+The cleaned collection excludes bortezomib because of covalent annotations and contains 1,067
+reference conformations across 22 molecules, with 8--117 per molecule. The supplied structures
+were deduplicated at a symmetry-aware RMSD threshold of 0.05 \AA{} and aligned using a fixed
+anchor atom triplet for each molecule. Subsequent stereochemical inspection removed two
+chloramphenicol records and one staurosporine record with inverted stereocentres. We evaluate
+the retained representatives equally within each molecule, without weighting them by the number
+of original records in their duplicate clusters. This reduces repeated-coordinate weighting but
+does not define biologically distinct conformational states. Supporting Tables S6--S7 describe
+the cleaned coordinate collection; original selection frequencies are archived separately.
 
-% AUTHOR:  confirm the source release and construction of the larger CASF reference collection. For
-% Plinder-23, the release and identity-selection procedure are now documented; reference-coordinate
-% extraction and preprocessing still need to be specified, including protonation and tautomer handling
-% and treatment of repeated or nearly identical experimental structures.
+% AUTHOR: Cleaned SDF source paths, record identities, and source hashes are archived.
+% Confirm the source release and construction of the larger CASF reference collection.
+% The upstream extraction/cleaning script, protonation and tautomer rules, and alternate-location
+% handling still require documentation. The original selection release is 2024-06/v2;
+% the cleaned delivery has not independently supplied its upstream release manifest.
 
 The evaluation panels are summarized in Supporting Figure S1.
 
@@ -106,7 +110,7 @@ training resources, and preparation steps are summarized in Supporting Table S8.
 Qwen represents autoregressive generation of a molecular coordinate representation conditioned on
 molecular SMILES. The archived comparison uses the 1.7-billion-parameter FSQ model at pretraining
 step 47,023 for both CASF and the
-23-molecule experiment. Its initial training corpus was broadly assembled, and these results do not
+22-molecule experiment. Its initial training corpus was broadly assembled, and these results do not
 establish generalization after exclusion of benchmark molecules. The revised training corpus
 excludes exact matches to core94 and similar molecules using a fingerprint-similarity cutoff of
 0.4. For CASF ref, exact matches are excluded, without an additional similarity exclusion for
@@ -161,7 +165,7 @@ consistency, bond lengths and angles, steric clashes, planarity, and excessive s
 a reference conformer ensemble.\cite{buttenschoen2024posebusters} No protein-contact checks are
 used. Passing these checks does not guarantee compatibility with a receptor or uniformly favorable
 energies under the separate energy analysis. Retained ensemble sizes are recorded with the archived
-table data. For the 23-molecule panel, PoseBusters validity is assessed separately from
+table data. For the 22-molecule panel, PoseBusters validity is assessed separately from
 coverage, as described below.
 
 \subsection{Geometric comparison and diversity}
@@ -177,16 +181,15 @@ otherwise, it starts a new cluster. Representatives remain fixed. We
 report clustering radii of 0.5 and 1.0 \AA{} in Table~\ref{tab:diversity}, using the same entries
 with defined measurements for both means. The joint diversity--RMSD plot also uses 0.5 \AA{};
 the larger-ensemble comparison also uses 0.5 \AA{}. The count depends on the size and ordering of the retained pool and describes
-geometric variation rather than occupied energy basins. PLINDER cluster counts use a subset of
-up to 200 supplied conformers per molecule without a common PoseBusters filter, whereas CASF
-counts use retained ensembles. PLINDER recovery metrics use the full supplied ensembles.
+geometric variation rather than occupied energy basins. PLINDER clustering and recovery both use
+the full supplied ensembles without PoseBusters filtering, whereas CASF uses retained ensembles.
 
 To describe how sampling is distributed across clusters, we also calculate the fraction of
 retained conformers assigned to the largest cluster at 1.0 \AA{}. This is the largest cluster
 population divided by the retained ensemble size for each molecule, averaged over the same
 entries with defined clustering measurements. Smaller fractions indicate less concentration in
 a single cluster and complement the number of clusters represented in an ensemble. This
-statistic is reported for CASF; the matched PLINDER archive lacks it, so its cells remain pending.
+statistic is reported for all three panels; PLINDER uses its full supplied ensemble as the denominator.
 
 \subsection{Energy analysis}
 
@@ -241,62 +244,42 @@ are explicitly marked.
 
 \subsection{Coverage of multiple experimental conformations}
 
-The 23-molecule comparison also includes RDKit raw and random torsion sampling, each with 1,000
+The 22-molecule comparison includes RDKit raw and random torsion sampling, each with 1,000
 supplied conformers per molecule. RDKit removes the reference coordinates before embedding from the
-molecular graph. The torsion baseline instead starts from the first experimental reference for each
-molecule and perturbs its rotatable bonds by up to $\pm120^\circ$, rejecting severe clashes. It
-therefore has access to a bound geometry and is reported as a reference-seeded baseline. Neither
-baseline undergoes energy minimization, and PoseBusters validity is evaluated separately from
-coverage.
+molecular graph. The torsion baseline instead starts from the first experimental reference in the
+original collection and perturbs its rotatable bonds by up to $\pm120^\circ$, rejecting severe clashes.
+It therefore has access to a bound geometry and is reported as a reference-seeded baseline.
+Neither baseline undergoes energy minimization. The existing generated pools are evaluated against
+the cleaned reference collection; reference curation does not imply regeneration of the pools.
 
-For each of the 23 drug-like molecules, we compare one supplied generated ensemble with all
-experimental references using aligned heavy-atom RMSD. COV-R is the fraction of references with at
-least one generated conformer at RMSD < 0.75 \AA{}. COV-P is the fraction of generated conformers
-with at least one reference below the same threshold. Unlike CASF recovery, the existing coverage
-implementation uses a strict inequality. MAT-R averages the distance from each reference to its
-nearest generated conformer; MAT-P averages the distance from each generated conformer to its
-nearest reference. Each metric is calculated per molecule and then averaged equally across the 23
-molecules. Table~\ref{tab:count-recovery} also reports COV-R at 0.5 \AA{} using the same
-strict cutoff convention.
+For each molecule, we compare its supplied generated ensemble with all retained experimental
+references using aligned heavy-atom RMSD. COV-R is the fraction of references with at least one
+generated conformer at RMSD $\leq 0.75$ \AA{}. COV-P is the fraction of generated conformers
+with at least one reference within the same threshold. MAT-R averages the distance from each
+reference to its nearest generated conformer; MAT-P averages the distance from each generated
+conformer to its nearest reference. Each metric is calculated per molecule and then averaged
+equally across the 22 molecules. Table~\ref{tab:count-recovery} also reports COV-R at 0.5 \AA{}.
+All methods now use the same inclusive cutoff convention, consistent with CASF recovery.
 
-Failed RMSD calculations are handled differently in the archived evaluations: the external-method
-evaluator excludes reference or generated structures without a finite comparison from the
-corresponding coverage denominator, whereas the Qwen evaluator counts these cases as coverage
-misses. Both omit undefined distances from MAT. These conventions must be harmonized before making
-a definitive method ranking.
+Tables~\ref{tab:count-recovery} and \ref{tab:druglike}, Supporting Table S4, and
+Figure~\ref{fig:druglike} use the same refreshed distances. Every reference and generated
+conformer has a finite nearest distance. The threshold curves apply these distances at cutoffs
+from 0 to 1.5 \AA{} in increments of 0.005 \AA{}, giving each molecule equal weight.
 
-Coverage and matching distances currently use the supplied pools without a common PoseBusters
-filter. The PB pass percentage in Table~\ref{tab:druglike} is assessed separately and pools passing
-conformers across molecules, whereas COV and MAT give each molecule equal weight. Experimental
-records may be redundant and do not exhaust accessible conformational space, so an unmatched
+Coverage, matching distances, and clustering use supplied pools without PoseBusters filtering.
+The PB pass percentage in Table~\ref{tab:druglike} is assessed separately and pools passing
+conformers across molecules, whereas COV and MAT give each molecule equal weight.
+Experimental references do not exhaust accessible conformational space, so an unmatched
 generated conformer is not automatically physically inaccessible.
-
-For Table~\ref{tab:count-recovery}, we reaggregated cached reference-to-generated nearest
-distances for all eight PLINDER methods at the two cutoffs and calculated MAT-R from the same
-distances. Every reference has at least one finite comparison. Small differences from the
-earlier Table~\ref{tab:druglike} summaries remain recorded in the source audit; that table
-retains its earlier evaluation records.
-
-For the threshold curves, we reused cached RMSD matrices for the six learned methods and retained the
-nearest generated match for each experimental reference and the nearest experimental match for each
-generated conformer. We evaluated COV-R and COV-P at thresholds from 0 to 1.5 \AA{} in increments of
-0.005 \AA{}, using the same strict inequality and averaging each metric equally across the 23
-molecules. All reference and generated structures in these caches have at least one finite
-comparison. Molecular identities and ensemble sizes were checked against the table records. This
-analysis requires no new conformer generation or structural alignment and uses the supplied
-ensembles without a common validity filter.
-
-% AUTHOR: Figure 5 reaggregates cached distances. At 0.75 A, cache/table differences are at most
-% 0.0131 percentage points for precision and 0.0046 for coverage. Reconcile cache provenance
-% before the final evaluation; do not silently overwrite Table 4.
 
 \subsection{Aggregation, uncertainty, and reproducibility}
 
-The working tables and figures use the corrected findings archived on 24 September 2026, with the
-size-stratum export from 28 September and the two completed PLINDER baseline evaluations added on 12 October 2026. The same ten CASF pipelines and the stored ChEMBL3D-PB
-ensemble are used throughout, and the 23-molecule comparison uses the five external learned
+The CASF tables and figures use the corrected findings archived on 24 September 2026 and the
+size-stratum export from 28 September. PLINDER uses the cleaned reference collection and refreshed
+evaluations from 20 October 2026. The same ten CASF pipelines and the stored ChEMBL3D-PB
+ensemble are used throughout, and the 22-molecule comparison uses the five external learned
 generators and the same Qwen checkpoint, with two additional classical baselines in
-Tables~\ref{tab:diversity}, \ref{tab:count-recovery}, and \ref{tab:druglike}. We preserve the distinction between whole-panel recovery
+Tables~\ref{tab:diversity}, \ref{tab:count-recovery}, and \ref{tab:druglike} and Figure~\ref{fig:druglike}. We preserve the distinction between whole-panel recovery
 and conditional means of defined RMSD or diversity measurements. Figure lines connecting the two
 candidate targets do not imply intermediate measurements. The displayed comparisons are descriptive;
 confidence intervals from the earlier analysis remain documented with the archived findings.

@@ -1,5 +1,20 @@
 # Methods: evidence and author follow-up
 
+## Cleaned reference evaluation, 21 October 2026
+
+This supersedes earlier PLINDER counts, 200-conformer clustering, strict-cutoff
+and cache/table discrepancy notes. The 20 October panel exports cover 22 molecules
+and 1,067 references after bortezomib exclusion and removal of three wrong-stereo
+records. Full supplied pools provide clustering/occupancy and COV/MAT; PB is
+separate. All eight methods use inclusive RMSD cutoffs and have finite nearest
+distances throughout. Tables 2/4/S4 and curves now agree within 1e-12.
+
+The original Qwen checkpoint is retained. Original selection frequencies remain
+archived separately from cleaned PDB/system/reference counts. Upstream cleaning
+code/release lineage, protonation/tautomer and alternate-location details remain
+outstanding; training-exclusion metadata is also unchanged. See
+[PLINDER-22 provenance and reproduction](plinder22-data/README.md).
+
 ## Three-set table integration, 19 October 2026
 
 Methods now describes PLINDER as the multiple-reference evaluation and includes

@@ -1,7 +1,8 @@
 """Render the optional figure-review appendix from archived corrected data.
 
 Run: python jcim-overleaf/build_candidate_figures.py
-No database access, manuscript compilation, or changes to the four main figures.
+Use --plinder-only to refresh PLINDER candidates and the gallery while preserving CASF assets.
+No database access or manuscript compilation.
 """
 from pathlib import Path
 import json
@@ -32,7 +33,7 @@ def finish(fig, slug, title, caption, source, drug=False):
     number = len(CATALOG) + 1
     code = f'C{number:02d}'
     fig.suptitle(f'{code}  |  {title}', fontsize=11, x=.02, ha='left')
-    status = ('Exploratory drug set · 23 molecules · supplied pools without common PB filtering'
+    status = ('Exploratory drug set · 22 molecules · supplied pools without common PB filtering'
               if drug else 'CASF core · 94 ligands · recovery cutoff 0.75 Å')
     fig.text(.02, .012, status, fontsize=7, color='#555555')
     fig.tight_layout(rect=(0, .045, 1, .94))
@@ -193,46 +194,46 @@ def core_figures(entries, tiers):
 def drug_figures(drug):
     drug = drug.copy(); drug['name'] = drug.name.str.strip()
     matrices = {metric: drug.pivot(index='smiles', columns='label', values=metric).reindex(columns=[DRUG[k] for k in DK]) for metric in ['cov_r_075', 'cov_p_075', 'pb_pass_rate', 'mat_r', 'mat_p']}
-    assert all(m.shape == (23, 6) and m.notna().all().all() for m in matrices.values())
+    assert all(m.shape == (22, 6) and m.notna().all().all() for m in matrices.values())
     names = drug.drop_duplicates('smiles').set_index('smiles').name
     order = names.sort_values().index
     def mat(metric): return matrices[metric].loc[order].to_numpy()
     labels = [label(k) for k in DK]
-    common = r'All drug metrics describe supplied pools without a common PoseBusters mask; failed-RMSD handling also differs between imported evaluations. These are exploratory comparisons.'
+    common = r'All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.'
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 7.5))
     for ax, metric, title in zip(axes, ['cov_r_075', 'cov_p_075'], ['Reference coverage / recall (COV-R, %)', 'Observed-reference precision (COV-P, %)']):
         annotated_heatmap(ax, mat(metric)*100, names.loc[order].tolist(), labels)
         ax.set_title(title, fontsize=9)
     finish(fig, 'drug-coverage-matrix', 'Coverage and precision for every drug molecule',
-           r'Molecule-level COV-R and COV-P at the strict 0.75~\AA{} cutoff for all six selected generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    offsets = [(6, 10), (6, 4), (6, 12), (6, -13), (-8, -10), (6, -13)]
+    offsets = [(6, 10), (6, 4), (6, 12), (-8, -13), (8, -10), (6, -13)]
     for key, offset in zip(DK, offsets):
         row = drug[drug.label.eq(DRUG[key])]
         x, y = row.cov_r_075.mean()*100, row.cov_p_075.mean()*100
         ax.scatter(x, y, c=STYLE[key][1], marker=STYLE[key][2], s=55)
-        ax.annotate(label(key), (x, y), xytext=offset, textcoords='offset points', fontsize=8, ha='right' if key == 'flowr_raw' else 'left')
+        ax.annotate(label(key), (x, y), xytext=offset, textcoords='offset points', fontsize=8, ha='right' if offset[0] < 0 else 'left')
     ax.set(xlabel='Mean reference coverage / recall (%)', ylabel='Mean observed-reference precision (%)', xlim=(75, 98), ylim=(30, 65)); ax.grid(alpha=.15)
     finish(fig, 'drug-tradeoff', 'Coverage and concentration define different preferences',
-           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected generators. Each of the 23 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. '+common, 'HTML §§7,12; drug_molecule_metrics.csv', True)
+           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. '+common, 'HTML §§7,12; results-data/druglike_selected.csv', True)
 
     delta_r = (matrices['cov_r_075'][DRUG[QWEN]] - matrices['cov_r_075'][DRUG['loqi_raw']])*100
     ordered = delta_r.sort_values().index
     fig, axes = plt.subplots(1, 2, figsize=(9, 7), sharey=True)
     for ax, metric, title in zip(axes, ['cov_r_075', 'cov_p_075'], ['Recall difference (percentage points)', 'Precision difference (percentage points)']):
         delta = (matrices[metric][DRUG[QWEN]] - matrices[metric][DRUG['loqi_raw']]).loc[ordered]*100
-        ax.hlines(range(23), 0, delta, color='#bbbbbb'); ax.scatter(delta, range(23), c=np.where(delta>=0, STYLE[QWEN][1], STYLE['loqi_raw'][1]), s=25)
+        ax.hlines(range(22), 0, delta, color='#bbbbbb'); ax.scatter(delta, range(22), c=np.where(delta>=0, STYLE[QWEN][1], STYLE['loqi_raw'][1]), s=25)
         ax.axvline(0, color='#555555', lw=.8); ax.set_xlabel(title); ax.grid(axis='x', alpha=.15)
-    axes[0].set_yticks(range(23), names.loc[ordered]); axes[0].invert_yaxis()
+    axes[0].set_yticks(range(22), names.loc[ordered]); axes[0].invert_yaxis()
     finish(fig, 'drug-paired-molecules', 'Similar mean recall can hide opposing molecule-level outcomes',
-           r'Paired molecule-level differences, Qwen 1.7B FSQ minus LoQI, in recall and precision at 0.75~\AA{}. Molecules are sorted by the recall difference and retain that ordering in both panels. Positive values favor Qwen, negative values favor LoQI. These descriptive differences are not per-molecule confidence intervals. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'Paired molecule-level differences, Qwen 1.7B FSQ minus LoQI, in recall and precision at 0.75~\AA{}. Molecules are sorted by the recall difference and retain that ordering in both panels. Positive values favor Qwen, negative values favor LoQI. These descriptive differences are not per-molecule confidence intervals. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 7.5))
     annotated_heatmap(ax, mat('pb_pass_rate')*100, names.loc[order].tolist(), labels)
     finish(fig, 'drug-validity', 'Chemical validity varies strongly across molecules and methods',
-           r'PoseBusters pass percentages for each supplied drug molecule--method pool. The common color scale spans 0--100\%. Validity is reported separately from coverage and precision: coverage cannot be adjusted by multiplying it by these percentages because the passing conformers and recovered references need not coincide. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'PoseBusters pass percentages for each supplied drug molecule--method pool. The common color scale spans 0--100\%. Validity is reported separately from coverage and precision: coverage cannot be adjusted by multiplying it by these percentages because the passing conformers and recovered references need not coincide. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 4.2))
     for y, key in enumerate(DK):
@@ -241,19 +242,19 @@ def drug_figures(drug):
     method_axis(ax, DK); ax.set_xlabel('Mean matching distance (Å; lower is better)')
     ax.legend(handles=[Line2D([], [], marker='s', ls='', color='#444444', label='MAT-R: reference to generated'), Line2D([], [], marker='o', ls='', color='#444444', markerfacecolor='white', label='MAT-P: generated to reference')], loc='lower right', fontsize=7)
     finish(fig, 'drug-matching-distance', 'Continuous matching distances complement coverage',
-           r'Molecule-mean MAT-R and MAT-P for the six selected generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'Molecule-mean MAT-R and MAT-P for the six selected generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     refs = drug.groupby('smiles').num_true_confs
     assert refs.nunique().eq(1).all()
-    counts = refs.first().sort_values(); assert counts.sum() == 2450
+    counts = refs.first().sort_values(); assert counts.sum() == 1067
     fig, ax = plt.subplots(figsize=(8, 7))
-    ax.barh(range(23), counts, color='#668daa'); ax.set_yticks(range(23), names.loc[counts.index]); ax.invert_yaxis()
-    for y, n in enumerate(counts): ax.text(n+8, y, str(int(n)), va='center', fontsize=7)
+    ax.barh(range(22), counts, color='#668daa'); ax.set_yticks(range(22), names.loc[counts.index]); ax.invert_yaxis()
+    for y, n in enumerate(counts): ax.text(n+1, y, str(int(n)), va='center', fontsize=7)
     ax.set_xlim(0, counts.max()*1.12); ax.set_xlabel('Number of stored experimental reference conformers'); ax.grid(axis='x', alpha=.15); ax.set_axisbelow(True)
     finish(fig, 'drug-reference-counts', 'The experimental reference collection is unevenly sampled',
-           r'Numbers of stored experimental reference conformers for the 23 drug molecules (2,450 in total). Reference counts are not counts of unique conformational states: redundant or very similar geometries may recur. Reported coverage and precision aggregates average molecules equally, so reference-rich molecules do not receive extra aggregate weight.', 'HTML §§1,7; drug_molecule_metrics.csv', True)
+           r'Numbers of stored experimental reference conformers for the 22 drug molecules (1,067 in total). References were deduplicated at 0.05~\AA{}; these representatives are not a partition into biologically distinct conformational states. Reported coverage and precision aggregates average molecules equally, so reference-rich molecules do not receive extra aggregate weight.', 'HTML §§1,7; results-data/druglike_selected.csv', True)
 
-    indices = np.random.default_rng(SEED).integers(0, 23, (NBOOT, 23))
+    indices = np.random.default_rng(SEED).integers(0, 22, (NBOOT, 22))
     other = [k for k in DK if k != 'loqi_raw']; rows=[]
     fig, axes = plt.subplots(1, 2, figsize=(9, 4.3), sharey=True)
     for ax, metric, title in zip(axes, ['cov_r_075', 'cov_p_075'], ['Recall difference (percentage points)', 'Precision difference (percentage points)']):
@@ -266,10 +267,10 @@ def drug_figures(drug):
     axes[0].set_yticks(range(len(other)), [label(k) for k in other]); axes[0].invert_yaxis()
     pd.DataFrame(rows).to_csv(OUT / 'drug-paired-intervals.csv', index=False)
     finish(fig, 'drug-paired-uncertainty', 'How uncertain are differences from LoQI?',
-           r'Paired differences from LoQI in molecule-mean COV-R and COV-P at 0.75~\AA{}. Error bars are exploratory 95\% percentile intervals from 10,000 paired molecule bootstrap samples (23 molecules; seed 20260928). These newly rendered intervals can differ slightly from earlier exports because the resampling seed differs. Intervals are not adjusted for multiple comparisons; an interval crossing zero does not establish equivalence. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'Paired differences from LoQI in molecule-mean COV-R and COV-P at 0.75~\AA{}. Error bars are exploratory 95\% percentile intervals from 10,000 paired molecule bootstrap samples (22 molecules; seed 20260928). These newly rendered intervals can differ slightly from earlier exports because the resampling seed differs. Intervals are not adjusted for multiple comparisons; an interval crossing zero does not establish equivalence. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
-    cases = ['Imatinib', 'Actinonin', 'Bortezomib', 'Dexamethasone']
-    fig, axes = plt.subplots(2, 2, figsize=(9, 6.5))
+    cases = ['Imatinib', 'Actinonin', 'Dexamethasone']
+    fig, axes = plt.subplots(1, 3, figsize=(11, 3.8))
     for ax, name in zip(axes.flat, cases):
         subset = drug[drug.name.str.casefold().eq(name.casefold())].set_index('label')
         assert len(subset) == 6
@@ -278,16 +279,16 @@ def drug_figures(drug):
             bars = ax.bar(np.arange(3)+shift, row[['cov_r_075','cov_p_075','pb_pass_rate']].to_numpy(float)*100, width=.34, color=STYLE[key][1], label=label(key))
             ax.bar_label(bars, fmt='%.1f', fontsize=6, padding=2)
         ax.set_title(f'{name} · {int(subset.num_true_confs.iloc[0])} references'); ax.set_xticks(range(3), ['Recall', 'Precision', 'PB pass']); ax.set_ylim(0, 110); ax.set_ylabel('Percent'); ax.grid(axis='y', alpha=.15); ax.set_axisbelow(True)
-    axes[0, 0].legend(fontsize=7)
+    axes[0].legend(fontsize=7)
     finish(fig, 'drug-case-profiles', 'Illustrative failures differ across constraints',
-           r'Four post hoc illustrative molecules comparing LoQI and Qwen 1.7B FSQ: recall, precision, and PoseBusters pass rate. Coverage uses the strict 0.75~\AA{} cutoff. The cases illustrate opposing recall preferences and disagreements between geometric coverage and chemical validity; they are not a representative sample or a structural explanation. '+common, 'HTML §7; drug_molecule_metrics.csv', True)
+           r'Three retained post hoc illustrative molecules comparing LoQI and Qwen 1.7B FSQ: recall, precision, and PoseBusters pass rate. Coverage uses the inclusive 0.75~\AA{} cutoff. The cases illustrate opposing recall preferences and disagreements between geometric coverage and chemical validity; they are not a representative sample or a structural explanation. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
 
 def write_catalog():
     (OUT / 'catalog.json').write_text(json.dumps(CATALOG, indent=2) + '\n')
     text = [r'% Generated by build_candidate_figures.py; review-only figure options.',
             r'\clearpage', r'\section*{Additional figure candidates for review}',
-            r'These optional figures expand the analyses discussed in the HTML report using corrected archived data. They are included for figure selection, not as a proposed final figure count. The four main figures remain unchanged. Core analyses retain the single 0.75~\AA{} recovery cutoff; drug analyses remain exploratory. Historical energy and random-subsampling analyses are excluded.',
+            r'These optional figures expand the analyses discussed in the HTML report using corrected archived data. They are included for figure selection, not as a proposed final figure count. Core analyses retain the single 0.75~\AA{} recovery cutoff; drug analyses remain exploratory. Historical energy and random-subsampling analyses are excluded.',
             r'\begingroup', r'\renewcommand{\thefigure}{C\ifnum\value{figure}<10 0\fi\arabic{figure}}', r'\setcounter{figure}{0}']
     for item in CATALOG:
         text += [r'\clearpage', r'\begin{figure}[p]', r'\centering',
@@ -297,20 +298,20 @@ def write_catalog():
     text += [r'\clearpage', r'\endgroup', '']
     (ROOT / 'figure-candidates.tex').write_text('\n'.join(text))
     md = ['# Additional figure candidates', '',
-          '18 optional figures derived from the HTML report’s questions and corrected archived measurements. All are included at the end of the Overleaf draft through `figure-candidates.tex`. Comment out that input to hide the entire review appendix; remove individual figure blocks to select candidates. The four main figures are unchanged.', '',
+          '18 optional figures derived from the HTML report’s questions and corrected archived measurements. All are included at the end of the Overleaf draft through `figure-candidates.tex`. Comment out that input to hide the entire review appendix; remove individual figure blocks to select candidates. ', '',
           'Gallery: [additional-figures.pdf](figures/candidates/additional-figures.pdf). Every candidate also has PDF, SVG, and PNG artwork.', '',
           '| ID | Candidate | Report connection |', '| --- | --- | --- |']
     for item in CATALOG:
         md.append(f"| {item['id']} | [{item['title']}](figures/candidates/{item['stem']}.pdf) | {item['source']} |")
     md += ['', '## Reproduction and interpretation', '',
            '`python jcim-overleaf/build_candidate_figures.py` recreates the artwork and appendix using archived data only. Source hashes, cohort selection, and bootstrap settings are recorded in `figure-data/candidates/provenance.json`. Derived recovery matrices and confidence intervals are alongside the figures.', '',
-           'C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected generators on the 23-molecule drug set; coverage is not harmonized by PoseBusters filtering and failure handling. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.', '',
+           'C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected generators on the 22-molecule drug set; coverage uses supplied pools without PoseBusters filtering. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.', '',
            'These are alternatives as well as additions: C01/C02 emphasize uncertainty versus individual gains and losses; C03/C04 show individual outcomes versus pairwise complementarity; C11/C13/C18 show complete molecule profiles versus selected comparisons and examples. Keep the versions that serve the final story.', '']
     (ROOT / 'FIGURE_CANDIDATES.md').write_text('\n'.join(md))
 
 
 def main():
-    global GALLERY
+    global GALLERY, OUT
     OUT.mkdir(exist_ok=True, parents=True)
     manifest = json.loads((DATA / 'candidates/provenance.json').read_text())
     assert hashlib.sha256((DATA / 'candidates/core-entries.csv').read_bytes()).hexdigest() == manifest['export_sha256']
@@ -318,13 +319,42 @@ def main():
         assert hashlib.sha256((DATA / 'candidates' / src['path']).read_bytes()).hexdigest() == src['sha256']
     entries = pd.read_csv(DATA / 'candidates/core-entries.csv')
     tiers = pd.read_csv(DATA / 'recovery-table-tiers.csv')
-    drug = pd.read_csv(DATA / 'drug_molecule_metrics.csv')
+    drug = pd.read_csv(ROOT / 'results-data/druglike_selected.csv')
+    drug = drug.loc[drug.label.isin(DRUG.values())]
     with PdfPages(OUT / 'additional-figures.pdf') as gallery:
         GALLERY = gallery
-        core_figures(entries, tiers)
+        # Rebuild the combined gallery while preserving CASF artwork byte-for-byte.
+        import sys
+        import tempfile
+        if '--plinder-only' in sys.argv:
+            saved_out = OUT
+            with tempfile.TemporaryDirectory() as temporary:
+                OUT = Path(temporary)
+                core_figures(entries, tiers)
+            OUT = saved_out
+        else:
+            core_figures(entries, tiers)
         drug_figures(drug)
     assert len(CATALOG) == 18
-    write_catalog()
+    if '--plinder-only' in sys.argv:
+        import re
+        (OUT / 'catalog.json').write_text(json.dumps(CATALOG, indent=2) + '\n')
+        path = ROOT / 'figure-candidates.tex'
+        text = path.read_text()
+        for item in CATALOG[10:]:
+            # Restrict substitution to the figure containing the matching label.
+            blocks = text.split(r'\begin{figure}')
+            for i, block in enumerate(blocks):
+                if 'fig:candidate-' + item['stem'] + '}' in block:
+                    block = re.sub(r'\\caption\{.*?\}\s*(?=\\label)',
+                        lambda _: r'\caption{\textbf{' + item['title'] + '.} ' + item['caption'] + '}\n',
+                        block, flags=re.S)
+                    blocks[i] = block
+            text = r'\begin{figure}'.join(blocks)
+        text = text.replace('The four main figures remain unchanged. ', '')
+        path.write_text(text)
+    else:
+        write_catalog()
     print(f'Rendered {len(CATALOG)} candidate figures and the review appendix.')
 
 

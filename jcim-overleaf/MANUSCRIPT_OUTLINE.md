@@ -1,5 +1,18 @@
 # JCIM manuscript outline
 
+## Current scope, 21 October 2026
+
+This supersedes the earlier PLINDER-23 display instructions below.
+Tables 1/2 keep wide PLINDER/core/ref sections; Table 3 remains CASF-only.
+The PLINDER panel now has 22 molecules and 1,067 cleaned references; full-pool
+cluster occupancy is available. Tables 2/4/S4 share one distance source.
+Figure 1 combines PLINDER diversity/proximity, COV-R and COV-P. Figure 2
+compares CASF core/ref diversity/proximity. Core energy, sampling and size
+follow, using unchanged measurements. PLINDER SI and review candidates are
+refreshed. Results describes trends, with PLINDER leading the abstract and
+Introduction as well. Qwen remains the original checkpoint pending retraining.
+See [current data and reproduction](plinder22-data/README.md).
+
 ## Current scope, 19 October 2026
 
 PLINDER's multiple PDB-derived bound conformations now lead the framing.

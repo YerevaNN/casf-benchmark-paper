@@ -128,20 +128,17 @@ libraries and conformational training data. Their usefulness depends on whether
 the sampled variation includes geometries relevant to molecular recognition, as
 well as on the number and diversity of the structures generated.
 
-We compare classical and learned conformer generators using experimentally
-observed bound ligand structures. We first assess recovery of individual
-reference conformations for 94 CASF-2016 ligands matched to ChEMBL3D, comparing
-generated ensembles with the stored ChEMBL3D conformers at corresponding
-candidate counts and at a larger target of 1,000 candidates per molecule. We
-examine recovery together with geometric diversity, structural validity,
-energetic plausibility, molecular size, and flexibility. We then extend the
-evaluation to 23 molecules with multiple bound structures collected from
-PLINDER, measuring both coverage of the experimental references and the
-fraction of generated conformers near those observations.
+We compare classical and learned conformer generators using experimentally observed bound ligand
+structures. A cleaned PLINDER panel of 22 molecules with multiple bound conformations measures
+both coverage of experimental references and the fraction of generated conformers near those
+observations. Complementary CASF core and ref panels assess recovery of individual references
+and compare generated ensembles with stored ChEMBL3D conformers at corresponding candidate
+counts and at a larger target of 1,000 candidates per molecule. We examine recovery alongside
+geometric diversity, structural validity, energy dispersion, molecular size, and flexibility.
 
 % AUTHOR: Insert the principal findings from the final evaluation: the main
 % recovery and sampling result, the relationship between diversity and
-% recovery, and the coverage--precision result for the 23-molecule
+% recovery, and the coverage--precision result for the 22-molecule
 % panel. Include only the numerical comparisons needed to support the
 % conclusion.
 
@@ -190,10 +187,10 @@ thank \ldots''.
 Supporting Information includes core RMSD summaries at both sampling targets
 (Table~S1), recovery and retained ensemble sizes in the larger reference
 cohort (Table~S2), size-stratified recovery in both cohorts (Table~S3),
-exploratory multi-reference matching distances (Table~S4), and Plinder-23
+exploratory multi-reference matching distances (Table~S4), and PLINDER-22
 selection criteria, panel statistics, and molecular identities (Tables~S5--S7),
 the evaluation-panel diagram (Figure~S1), generator descriptions (Table~S8), and energy summaries (Table~S9).
-The companion identity data are provided in \texttt{plinder23-molecules.csv}.
+The companion identity data are provided in \texttt{plinder22-molecules.csv}.
 % AUTHOR: compile supporting-information.tex as the separate SI document and
 % complete its manuscript title and author information before submission.
 

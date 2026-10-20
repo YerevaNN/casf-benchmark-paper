@@ -1,6 +1,6 @@
 # Additional figure candidates
 
-18 optional figures derived from the HTML report’s questions and corrected archived measurements. All are included at the end of the Overleaf draft through `figure-candidates.tex`. Comment out that input to hide the entire review appendix; remove individual figure blocks to select candidates. The four main figures are unchanged.
+18 optional figures derived from the HTML report’s questions and corrected archived measurements. All are included at the end of the Overleaf draft through `figure-candidates.tex`. Comment out that input to hide the entire review appendix; remove individual figure blocks to select candidates. PLINDER candidates use the cleaned 20 October release.
 
 Gallery: [additional-figures.pdf](figures/candidates/additional-figures.pdf). Every candidate also has PDF, SVG, and PNG artwork.
 
@@ -27,8 +27,8 @@ Gallery: [additional-figures.pdf](figures/candidates/additional-figures.pdf). Ev
 
 ## Reproduction and interpretation
 
-`python jcim-overleaf/build_candidate_figures.py` recreates the artwork and appendix using archived data only. Source hashes, cohort selection, and bootstrap settings are recorded in `figure-data/candidates/provenance.json`. Derived recovery matrices and confidence intervals are alongside the figures.
+`python jcim-overleaf/build_candidate_figures.py --plinder-only` recreates the artwork and appendix using archived data only. Source hashes, cohort selection, and bootstrap settings are recorded in `figure-data/candidates/provenance.json`. Derived recovery matrices and confidence intervals are alongside the figures.
 
-C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected generators on the 23-molecule drug set; coverage is not harmonized by PoseBusters filtering and failure handling. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.
+C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected generators on the 22-molecule drug set; coverage uses supplied pools without PoseBusters filtering; all nearest distances are finite. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.
 
 These are alternatives as well as additions: C01/C02 emphasize uncertainty versus individual gains and losses; C03/C04 show individual outcomes versus pairwise complementarity; C11/C13/C18 show complete molecule profiles versus selected comparisons and examples. Keep the versions that serve the final story.

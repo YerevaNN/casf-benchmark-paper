@@ -1,0 +1,10 @@
+{
+  "rdkit_random_raw_druglike": "RDKit raw",
+  "torsion_raw_druglike": "Torsion raw",
+  "loqi_druglike": "LoQI",
+  "torsional_diffusion_druglike": "Torsional Diffusion",
+  "mcf_drugs_l_druglike": "MCF drugs-L",
+  "nextmol_dmt_l_druglike": "NExT-Mol DMT-L",
+  "flowr_druglike": "FlowR",
+  "qwen_1p7b_fsq_bigdata_step47023": "Qwen 1.7B FSQ"
+}

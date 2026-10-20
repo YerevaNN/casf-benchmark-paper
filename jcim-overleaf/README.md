@@ -1,10 +1,18 @@
 # JCIM manuscript
 
+## Current PLINDER release, 21 October 2026
+
+All active PLINDER tables and figures now use the cleaned 22-molecule,
+1,067-reference release. Figure 1 combines PLINDER diversity/proximity and
+coverage/precision; Figure 2 compares CASF core/ref. CASF measurements and
+Table 3 are unchanged. See [PLINDER-22 data and reproduction](plinder22-data/README.md).
+Earlier figure scripts and provenance are retained as history.
+
 The ACS template now includes a working abstract, Introduction, Methods, Results,
 and Discussion, with four main tables, five main figures, nine supporting tables, and one supporting figure.
-The separate sampling display is Figure B1. The release checklist (former Table 5) remains removed. Figure 5 now shows
-coverage and precision across RMSD thresholds; its data and renderer are in
-`plinder-threshold-data/`. The earlier redundant Figure 5 is archived.
+The separate sampling display is Figure B1. The release checklist (former Table 5) remains removed.
+The current combined PLINDER figure is rendered from `plinder22-data/`;
+`plinder-threshold-data/` preserves the previous 23-molecule threshold figure.
 Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
 submission-ready article.
@@ -29,7 +37,7 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
   `tables/druglike.tex`: Tables 1–4. The unused `tables/release-status.tex` is historical.
 - `supporting-information.tex`: separate SI document with Tables S1--S9 and Figure S1 (core RMSD,
-  ref recovery, size strata, multi-reference matching distances, and the Plinder-23
+  ref recovery, size strata, multi-reference matching distances, and the PLINDER
   selection criteria, statistics, molecule list, generator descriptions, and energy summaries); switch the Overleaf main document to this file to compile it.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
@@ -54,17 +62,14 @@ Future paper edits should be committed and pushed to this repository. Fetch
 incoming changes and preserve edits from Overleaf or other authors before
 pushing. The older `casf-benchmark/manuscript/` directory is a historical copy.
 
-The current Results artwork is `figures/figure-2-diversity-recovery.*`,
-`figure-energy-dispersion.*`, `figure-3-sampling-budget.*`, `figure-4-size-flexibility.*`, and
-`figure-5-multiple-references.*`, each in PDF, editable SVG, and 350-dpi PNG.
-Supporting Figure S1 is the experimental-panel diagram. Main figure numbers are
-1–5; the artwork filenames retain their original stable identifiers. The current figures
-come from the benchmark's `docs/results_figures/build_figures.py`. The initial
-renderer is archived as `results-data/source-build-figures.py`; the 6 October
-revision, with Figure 1 comparing 0.5 Å cluster count and Best RMSD, is archived
-as `results-data/source-build-figures-2026-10-06.py`.
-That script runs in the original analysis checkout and also updates its
-working Markdown; it is not a standalone renderer for this paper checkout.
+The current Results artwork, in figure order, is `figure-plinder-combined.*`,
+`figure-casf-diversity-recovery.*`, `figure-energy-dispersion.*`,
+`figure-3-sampling-budget.*`, and `figure-4-size-flexibility.*` under `figures/`.
+PDF, editable SVG, and PNG versions are provided. Main figure numbers are 1–5;
+stable filenames need not match display numbers. Current PLINDER and CASF scatter
+renderers are listed in `plinder22-data/README.md`. Supporting Figure S1 is the
+updated experimental-panel diagram. Earlier figure sources in `results-data/`
+and the benchmark `docs/results_figures/` remain historical.
 
 The older `build_figures.py`, `figure-data/`, and `figures/main-figures.pdf`
 remain historical assets. They do not reproduce the newly transferred main

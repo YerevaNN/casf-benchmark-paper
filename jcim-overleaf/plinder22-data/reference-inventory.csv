@@ -1,0 +1,23 @@
+smiles,name,ccd,num_true_confs,n_pdbs,n_systems,represented_raw_references
+CC/C(=C(\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,4-Hydroxytamoxifen,OHT,40,14,39,81
+CC(=O)Nc1nnc(S(N)(=O)=O)s1,Acetazolamide,AZM,81,37,81,92
+CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C,Actinonin,BB2,82,38,79,99
+CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1,Amprenavir,478,29,25,29,30
+CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12,Bromosporine,BMF,22,15,21,23
+O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl,Chloramphenicol,CLM,67,25,66,155
+COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2,Colchicine,LOC,29,19,29,30
+NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O,Cyclothiazide,CYZ,63,28,63,146
+C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO,Dexamethasone,DEX,31,19,31,32
+O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl,Diclofenac,DIF,50,20,45,55
+OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F,Fluconazole,TPF,27,17,27,32
+O=CN(O)CCCP(=O)(O)O,Fosmidomycin,FOM,26,15,26,28
+CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21,IBMX,IBM,38,20,38,57
+Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1,Imatinib,STI,50,28,50,57
+COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1,Indomethacin,IMN,33,23,31,54
+CN1CCC[C@H]1c1cccnc1,Nicotine,NCT,62,20,62,76
+Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1,Pleconaril,W11,8,8,8,716
+O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1,S-thalidomide,EF2,40,23,40,73
+CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4,Staurosporine,STO,117,82,116,176
+CC(/C=C/C(=O)NO)=C\[C@@H](C)C(=O)c1ccc(N(C)C)cc1,Trichostatin A,TSN,33,15,29,35
+Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl,Triclosan,TCL,81,32,79,151
+COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,Trimethoprim,TOP,58,29,56,60

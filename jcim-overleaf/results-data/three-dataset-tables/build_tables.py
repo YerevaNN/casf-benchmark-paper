@@ -1,4 +1,4 @@
-"""Render Tables 1–3 from the author-approved archived preview values."""
+"""Render Tables 1–3 from the archived CASF and refreshed PLINDER-22 values."""
 import csv
 import math
 from pathlib import Path
@@ -55,11 +55,10 @@ def write(name, caption, ref, columns, head, body, notes):
 rank_note = ('Bold and underlining mark the best and second-best distinct unrounded values '
              'among generated methods within each dataset' )
 status_note = ('Qwen results precede retraining with the updated benchmark exclusions. ')
-plinder_status = ('PLINDER results still use 23 molecules, before removal of the covalently '
-                  'annotated entry. ')
+plinder_status = ('PLINDER uses the cleaned 22-molecule reference collection. ')
 seed_note = (r'$\dagger$ PLINDER torsion sampling starts from an experimental reference. ')
 group_head = [
-    r'Method & \multicolumn{3}{c}{PLINDER (23)} & \multicolumn{3}{c}{CASF core (94)} & \multicolumn{3}{c}{CASF ref (1,236)} \\',
+    r'Method & \multicolumn{3}{c}{PLINDER (22)} & \multicolumn{3}{c}{CASF core (94)} & \multicolumn{3}{c}{CASF ref (1,236)} \\',
     r'\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}',
 ]
 columns = r'@{}lrrr@{\hspace{10pt}}rrr@{\hspace{10pt}}rrr@{}'
@@ -85,13 +84,12 @@ for method in methods:
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'Entries are molecule-level means. Largest cluster denotes the fraction of conformers '
          r'in the largest cluster at 1.0 \AA{}, calculated per molecule before averaging. '
-         'PLINDER clustering uses up to 200 supplied conformers per molecule without a common '
+         'PLINDER clustering uses the full supplied pool of conformers per molecule without a common '
          'PoseBusters filter; CASF uses the retained ChEMBL-count ensembles. Absolute cluster counts '
          'therefore reflect different sampling and filtering conditions. CASF means use 92--94 '
          'defined entries on core and 1,220--1,236 on ref, depending on method; PLINDER uses all '
-         '23 molecules for each reported method. Retained counts are archived with the source data. '
-         r'\textit{Pending} denotes a largest-cluster fraction absent from the matched PLINDER archive; '
-         'dashes denote no matched result. ' + rank_note +
+         '22 molecules for each reported method. Retained counts are archived with the source data. '
+         'Dashes denote no matched result. ' + rank_note +
          '; ChEMBL3D-PB is unranked. Cluster counts describe geometric diversity, not recovery. ' +
          seed_note + status_note + plinder_status)
 write('diversity.tex', 'Geometric diversity across three evaluation sets.', 'tab:diversity', columns, head, body, notes)
@@ -113,14 +111,14 @@ for method in methods:
         values += [cell(row, m, peers, digits=3 if m == 'distance' else 1)
                    for m in ('recovery_0p5', 'recovery_0p75', 'distance')]
     body.append(' & '.join([label(method, True)] + values) + r' \\')
-notes = (r'Cutoffs and distances are in \AA{}. PLINDER COV-R is the fraction of experimental references matched at RMSD $<t$; '
+notes = (r'Cutoffs and distances are in \AA{}. PLINDER COV-R is the fraction of experimental references matched at RMSD $\leq t$; '
          'MAT-R averages the nearest-generated RMSD over references. Both are calculated within '
-         r'each molecule and then averaged equally over 23 molecules. CASF Hit uses RMSD $\leq t$ '
+         r'each molecule and then averaged equally over 22 molecules. CASF Hit uses RMSD $\leq t$ '
          'and all 94 core or 1,236 ref entries, counting missing outputs as failures. Best RMSD '
          'averages per-entry minima over defined entries (92--94 on core; 1,220--1,236 on ref). '
          'PLINDER uses supplied pools without a common PoseBusters filter; CASF uses retained '
-         'ChEMBL-count ensembles. Dashes denote no matched result. PLINDER values use cached '
-         r'nearest distances; small differences from Table~\ref{tab:druglike} remain under audit. ' +
+         'ChEMBL-count ensembles. Dashes denote no matched result. PLINDER values use the same '
+         r'cleaned reference distances as Table~\ref{tab:druglike}; all nearest distances are finite. ' +
          rank_note + '; ChEMBL3D-PB is unranked. ' + seed_note + status_note + plinder_status)
 write('count-recovery.tex', 'Recovery of observed bound conformations across three evaluation sets.',
       'tab:count-recovery', columns, head, body, notes)

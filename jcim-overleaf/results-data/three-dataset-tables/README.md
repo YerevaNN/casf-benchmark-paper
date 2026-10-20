@@ -1,3 +1,15 @@
+# Current three-dataset table sources
+
+PLINDER rows in Tables 1 and 2 were replaced on 21 October 2026 using the
+validated cleaned release in `../../plinder22-data/`. CASF rows and Table 3
+are unchanged. `plinder-per-molecule.csv` contains the refreshed source records.
+The original preview provenance files and cache/table comparison below describe
+the superseded PLINDER-23 snapshot and remain historical CASF/source lineage.
+Current PLINDER hashes and validation are in `../../plinder22-data/provenance.json`.
+Rebuild with `build_tables.py`; `plot_casf.py` renders the two-panel CASF scatter.
+
+## Original preview archive (historical PLINDER values)
+
 # Tables 1–3: approved wide layouts
 
 Integrated 19 October 2026 from the author's reviewed previews in the analysis

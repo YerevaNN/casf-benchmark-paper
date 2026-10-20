@@ -1,5 +1,42 @@
 # Manuscript authoring
 
+## Cleaned PLINDER-22 update, 21 October 2026
+
+This section supersedes earlier PLINDER counts and display instructions below.
+All active PLINDER displays now use 22 molecules and 1,067 cleaned references
+from the 20 October release. Bortezomib and three wrong-stereo reference records
+are excluded. Clustering and occupancy use full supplied pools, not 200-conformer
+subsets. Coverage uses RMSD <= threshold for every method; all nearest distances
+are finite. PB is measured separately and is not applied to coverage/clustering.
+The Qwen identity remains 1.7B FSQ step47023; no retrained outputs are substituted.
+
+`plinder22-data/` archives per-molecule results, nearest distances, reference
+records, input hashes, and reproduction scripts. Tables 1/2 retain PLINDER first,
+then CASF core/ref; PLINDER largest-cluster fractions are now populated. Table 3
+remains CASF-only. Tables 2/4/S4 and all curves share one consistent distance source.
+S6/S7 and Supporting Figure S1 describe the cleaned collection. S5 retains the
+original identity-screen criteria. Historical files named plinder23 are retained
+where needed for stable includes/labels; the current companion identity CSV is
+`method-data/plinder22-molecules.csv`.
+
+Figure 1 now combines PLINDER diversity versus MAT-R, COV-R, and COV-P for eight
+methods. Figure 2 compares CASF core/ref diversity versus Best RMSD. The remaining
+energy, budget, and size figures are core-only, using unchanged measurements.
+The old standalone PLINDER threshold figure is no longer included. PLINDER review
+candidates C11-C18 are refreshed; C18 retains three examples after bortezomib removal.
+CASF artwork and Table 3 are unchanged. Preserve the existing colors and wide tables.
+
+Rebuild tables with `results-data/three-dataset-tables/build_tables.py` and
+`results-data/build_druglike_table.py`; current plots/inventory with the scripts in
+`plinder22-data/` and `results-data/three-dataset-tables/plot_casf.py`.
+Do not compile a local manuscript preview. Validate values and source references;
+the user reviews the compiled paper in Overleaf.
+
+Outstanding upstream metadata: original cleaning/extraction code, full reference
+release lineage, protonation/tautomer and alternate-location handling. Existing
+Qwen training-exclusion and retraining follow-ups remain. The refreshed caches
+resolve the old table/curve inconsistency, not those separate metadata questions.
+
 This is the canonical manuscript directory in `YerevaNN/casf-benchmark-paper`.
 Follow the repository-root AGENTS.md for the authorized commit/push workflow.
 
@@ -30,7 +67,9 @@ proposed experiments as completed, or reintroduce analyses the user excluded.
 Preserve this framing when drafting Discussion, Conclusions, abstract, and title.
 
 
-The author's latest scope decision (19 October 2026) leads with PLINDER's multiple
+## Historical scope before the cleaned release
+
+The author's scope decision (19 October 2026) leads with PLINDER's multiple
 experimental references, with CASF core94 and ref as complementary evaluations.
 Tables 1–2 have three wide column groups in that order. Table 1 repeats cluster
 counts at 0.5/1.0 Å and largest-cluster fraction at 1.0 Å; unavailable PLINDER

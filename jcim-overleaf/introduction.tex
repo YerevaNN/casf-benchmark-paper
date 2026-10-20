@@ -64,14 +64,15 @@ alone.\cite{wang2020etkdg,jing2022torsional,nikitin2025loqi,wang2024mcf,liu2025n
 % \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
 \textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}
 
-We first evaluate recovery of individual bound conformations using CASF-2016, a curated dataset of
-285 protein--ligand crystal complexes. Matching its ligands to ChEMBL3D by molecular identity and
-stereochemistry, followed by eligibility filtering, yields a core panel of 94 entries with stored
-conformers for comparison. We compare the generators at candidate budgets matched to the ChEMBL3D
-counts and at a larger target of 1,000 candidates per molecule. We then extend the evaluation to 23
-molecules with multiple bound structures selected from PLINDER, an annotated collection of
-protein--ligand complexes from the Protein Data Bank. For each molecule, the same generated ensemble
-is compared with all of its experimental references.\cite{su2019casf,durairaj2024plinder}
+We evaluate coverage of multiple bound conformations using a cleaned panel of 22 molecules
+selected from PLINDER, an annotated collection of protein--ligand complexes from the Protein
+Data Bank. For each molecule, the same generated ensemble is compared with all retained
+experimental references. Complementary single-reference evaluations use CASF core and ref.
+Matching CASF-2016 ligands to ChEMBL3D by identity and stereochemistry, followed by eligibility
+filtering, yields a core panel of 94 entries with stored conformers for comparison; the larger
+ref panel contains 1,236 entries. We compare generators at candidate budgets matched to the
+ChEMBL3D counts and at a larger target of 1,000 candidates per molecule.
+\cite{su2019casf,durairaj2024plinder}
 
 These experiments distinguish recovery of one bound conformation from coverage of several
 observations of the same molecule. We also measure sample precision, the proportion of generated

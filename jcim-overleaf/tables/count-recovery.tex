@@ -9,20 +9,20 @@
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}lrrr@{\hspace{10pt}}rrr@{\hspace{10pt}}rrr@{}}
 \toprule
-Method & \multicolumn{3}{c}{PLINDER (23)} & \multicolumn{3}{c}{CASF core (94)} & \multicolumn{3}{c}{CASF ref (1,236)} \\
+Method & \multicolumn{3}{c}{PLINDER (22)} & \multicolumn{3}{c}{CASF core (94)} & \multicolumn{3}{c}{CASF ref (1,236)} \\
 \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}
  & \shortstack{COV-R@0.5\\(\%) $\uparrow$} & \shortstack{COV-R@0.75\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.5\\(\%) $\uparrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} & \shortstack{Hit@0.5\\(\%) $\uparrow$} & \shortstack{Hit@0.75\\(\%) $\uparrow$} & \shortstack{Best RMSD\\(\AA{}) $\downarrow$} \\
 \midrule
-Torsion raw$^{\dagger}$ & 63.6 & 79.3 & 0.480 & 35.1 & 66.0 & 0.679 & 35.1 & 60.3 & 0.709 \\
+Torsion raw$^{\dagger}$ & 65.4 & 83.0 & 0.461 & 35.1 & 66.0 & 0.679 & 35.1 & 60.3 & 0.709 \\
 Torsion minimized & --- & --- & --- & 46.8 & 68.1 & 0.644 & 45.9 & 65.8 & 0.647 \\
-FlowR & 64.4 & 81.3 & 0.522 & 47.9 & 70.2 & 0.637 & 43.6 & 66.1 & 0.651 \\
+FlowR & 67.7 & 85.4 & 0.466 & 47.9 & 70.2 & 0.637 & 43.6 & 66.1 & 0.651 \\
 RDKit minimized & --- & --- & --- & 45.7 & 70.2 & 0.618 & 48.2 & 68.9 & 0.620 \\
-RDKit raw & 52.3 & 68.3 & 0.570 & 43.6 & 66.0 & 0.601 & 43.8 & 68.4 & 0.624 \\
-Torsional Diffusion & 67.5 & 78.6 & 0.455 & \underline{56.4} & 73.4 & 0.582 & 51.0 & 69.7 & 0.628 \\
-MCF drugs-L & 70.4 & 82.7 & 0.481 & 54.3 & 71.3 & 0.559 & 48.4 & 69.8 & 0.667 \\
-NExT-Mol DMT-L & 69.6 & 82.7 & 0.464 & 53.2 & \underline{76.6} & 0.543 & 50.8 & 70.6 & 0.642 \\
-LoQI & \textbf{75.7} & \textbf{91.2} & \underline{0.421} & \textbf{67.0} & 74.5 & \underline{0.536} & \textbf{57.6} & \underline{74.3} & \underline{0.585} \\
-Qwen 1.7B FSQ & \underline{71.7} & \underline{91.0} & \textbf{0.375} & \underline{56.4} & \textbf{80.9} & \textbf{0.506} & \underline{53.7} & \textbf{76.3} & \textbf{0.558} \\
+RDKit raw & 54.3 & 70.3 & 0.557 & 43.6 & 66.0 & 0.601 & 43.8 & 68.4 & 0.624 \\
+Torsional Diffusion & 69.9 & 80.2 & 0.439 & \underline{56.4} & 73.4 & 0.582 & 51.0 & 69.7 & 0.628 \\
+MCF drugs-L & 72.7 & 85.0 & 0.463 & 54.3 & 71.3 & 0.559 & 48.4 & 69.8 & 0.667 \\
+NExT-Mol DMT-L & 71.6 & 84.7 & 0.447 & 53.2 & \underline{76.6} & 0.543 & 50.8 & 70.6 & 0.642 \\
+LoQI & \textbf{76.2} & \underline{91.8} & \underline{0.417} & \textbf{67.0} & 74.5 & \underline{0.536} & \textbf{57.6} & \underline{74.3} & \underline{0.585} \\
+Qwen 1.7B FSQ & \underline{73.9} & \textbf{93.5} & \textbf{0.360} & \underline{56.4} & \textbf{80.9} & \textbf{0.506} & \underline{53.7} & \textbf{76.3} & \textbf{0.558} \\
 \hdashline
 ChEMBL3D-PB & --- & --- & --- & 63.8 & 78.7 & 0.525 & 59.5 & 78.7 & 0.552 \\
 \bottomrule
@@ -30,6 +30,6 @@ ChEMBL3D-PB & --- & --- & --- & 63.8 & 78.7 & 0.525 & 59.5 & 78.7 & 0.552 \\
 }
 \par\smallskip
 \begin{minipage}{\linewidth}
-Cutoffs and distances are in \AA{}. PLINDER COV-R is the fraction of experimental references matched at RMSD $<t$; MAT-R averages the nearest-generated RMSD over references. Both are calculated within each molecule and then averaged equally over 23 molecules. CASF Hit uses RMSD $\leq t$ and all 94 core or 1,236 ref entries, counting missing outputs as failures. Best RMSD averages per-entry minima over defined entries (92--94 on core; 1,220--1,236 on ref). PLINDER uses supplied pools without a common PoseBusters filter; CASF uses retained ChEMBL-count ensembles. Dashes denote no matched result. PLINDER values use cached nearest distances; small differences from Table~\ref{tab:druglike} remain under audit. Bold and underlining mark the best and second-best distinct unrounded values among generated methods within each dataset; ChEMBL3D-PB is unranked. $\dagger$ PLINDER torsion sampling starts from an experimental reference. Qwen results precede retraining with the updated benchmark exclusions. PLINDER results still use 23 molecules, before removal of the covalently annotated entry.
+Cutoffs and distances are in \AA{}. PLINDER COV-R is the fraction of experimental references matched at RMSD $\leq t$; MAT-R averages the nearest-generated RMSD over references. Both are calculated within each molecule and then averaged equally over 22 molecules. CASF Hit uses RMSD $\leq t$ and all 94 core or 1,236 ref entries, counting missing outputs as failures. Best RMSD averages per-entry minima over defined entries (92--94 on core; 1,220--1,236 on ref). PLINDER uses supplied pools without a common PoseBusters filter; CASF uses retained ChEMBL-count ensembles. Dashes denote no matched result. PLINDER values use the same cleaned reference distances as Table~\ref{tab:druglike}; all nearest distances are finite. Bold and underlining mark the best and second-best distinct unrounded values among generated methods within each dataset; ChEMBL3D-PB is unranked. $\dagger$ PLINDER torsion sampling starts from an experimental reference. Qwen results precede retraining with the updated benchmark exclusions. PLINDER uses the cleaned 22-molecule reference collection.
 \end{minipage}
 \end{table*}

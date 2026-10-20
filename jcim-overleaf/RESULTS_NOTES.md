@@ -1,5 +1,21 @@
 # Results: sources and author follow-up
 
+## Refreshed PLINDER displays, 21 October 2026
+
+This supersedes the historical PLINDER-23 results below. Tables 1/2/4/S4/S6/S7,
+Supporting Figure S1 and PLINDER candidates C11–C18 use the cleaned 22-molecule
+release. The pending occupancy cells are filled from full-pool clustering.
+Qwen leads COV-R at 0.75 Å and has the lowest MAT-R; LoQI leads COV-R at
+0.5 Å and COV-P at 0.75 Å; FlowR has the most clusters and lowest largest-cluster
+fraction. These are descriptive results on supplied pools, not PB-filtered COV.
+
+Figure 1 uses the accepted combined PLINDER layout. Figure 2 pairs CASF core/ref
+scatter panels; the remaining core figures retain their measurements. The old
+standalone PLINDER curve figure is no longer included. C18 retains three existing
+examples after bortezomib removal. All eight main-table methods share consistent
+cached distances; no new Qwen checkpoint is substituted. See
+[PLINDER-22 data and checks](plinder22-data/README.md).
+
 ## Three-set tables and PLINDER-led Results, 19 October 2026
 
 The author approved wide PLINDER/core/ref layouts for Tables 1–2, and a core/ref-only
