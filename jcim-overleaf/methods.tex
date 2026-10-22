@@ -233,14 +233,18 @@ near that observation, rather than whether it finds at least one match. This con
 
 \subsection{Molecular size and flexibility}
 
-We stratify the core panel using descriptors calculated from the experimental ligand after removing
-hydrogens. Heavy-atom groups are fewer than 20, 20--29, 30--39, and at least 40 atoms. Flexibility
+We stratify PLINDER, CASF core, and CASF ref using descriptors of the reference ligand identities.
+Heavy-atom groups are fewer than 20, 20--29, 30--39, and at least 40 atoms. Flexibility
 uses RDKit's rotatable-bond count, grouped as 0--3, 4--6, 7--8, and at least 9. The same
-reference-derived group assignment is used for every generator. Recovery within each group includes
-all mapped entries, with missing outputs counted as failures, and is accompanied by recovered and
-total counts. Size and flexibility are analyzed separately; neither analysis adjusts for the other
-descriptor or establishes an independent cause of difficulty. Groups with fewer than five entries
-are explicitly marked.
+reference-derived group assignment is used for every generator. CASF group recovery uses the
+PB-filtered 1,000-candidate ensembles, includes all mapped entries with missing outputs counted
+as failures, and is accompanied by recovered and total counts. ChEMBL3D-PB uses its stored pool.
+For PLINDER, we average per-molecule reference coverage at 0.75 \AA{} equally within each group,
+using full supplied pools without PB filtering. This is coverage of multiple references,
+rather than the fraction of single-reference entries recovered in CASF. Size and flexibility
+are analyzed separately; neither analysis adjusts for the other descriptor or establishes an
+independent cause of difficulty. Groups with fewer than five molecules or entries are marked;
+empty groups remain unreported.
 
 \subsection{Coverage of multiple experimental conformations}
 

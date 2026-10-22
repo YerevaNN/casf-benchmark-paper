@@ -1,5 +1,13 @@
 # JCIM manuscript
 
+## Approved tables and Figure 5, 22 October 2026
+
+Tables 1–4 use the refined wide layout (option A), preserving every value and
+method order. Table 4 groups reference agreement and pool checks; supplied count
+is unranked. Figure 5 now shows PLINDER first, then CASF core/ref, with separate
+size and flexibility panels. See [Figure 5 data and reproduction](results-data/size-flexibility/README.md).
+The local manuscript preview remains historical; review the compiled update in Overleaf.
+
 ## Current PLINDER release, 21 October 2026
 
 All active PLINDER tables and figures now use the cleaned 22-molecule,

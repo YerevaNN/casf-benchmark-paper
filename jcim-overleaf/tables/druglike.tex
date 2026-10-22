@@ -1,28 +1,34 @@
 % Source: results-data/druglike_selected.csv; rendered by build_druglike_table.py.
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.35}
 \caption{Exploratory coverage and precision for the 22-molecule PLINDER panel.}
 \label{tab:druglike}
 \par\smallskip
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{\hspace{10pt}}rr@{}}
 \toprule
-Method & \shortstack{Mean\\supplied $N$} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & \shortstack{PB pass\\(\%) $\uparrow$} \\
+ & \multicolumn{4}{c}{\textcolor{plinderTeal}{\textbf{Reference agreement}}} & \multicolumn{2}{c}{\textbf{Pool checks}} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+\textbf{Method} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & Supplied $N$ & \shortstack{PB pass\\(\%) $\uparrow$} \\
 \midrule
-RDKit raw & \textbf{1000.0} & 70.3 & 46.9 & 0.557 & 0.978 & 63.6 \\
-Torsion raw$^{\dagger}$ & \textbf{1000.0} & 83.0 & \underline{51.1} & 0.461 & \underline{0.891} & 63.5 \\
-LoQI & \textbf{1000.0} & \underline{91.8} & \textbf{60.5} & \underline{0.417} & \textbf{0.796} & \textbf{90.7} \\
-Torsional Diffusion & \textbf{1000.0} & 80.2 & 44.4 & 0.439 & 1.159 & 83.5 \\
-MCF drugs-L & \textbf{1000.0} & 85.0 & 40.6 & 0.463 & 1.195 & 65.4 \\
-NExT-Mol DMT-L & \textbf{1000.0} & 84.7 & 38.3 & 0.447 & 1.149 & 63.9 \\
-FlowR & 960.0 & 85.4 & 38.2 & 0.466 & 1.222 & 82.2 \\
-Qwen 1.7B FSQ & \underline{999.2} & \textbf{93.5} & 48.7 & \textbf{0.360} & 0.960 & \underline{87.3} \\
+\rowcolor{tableShade}
+RDKit raw & 70.3 & 46.9 & 0.557 & 0.978 & 1000.0 & 63.6 \\
+Torsion raw$^{\dagger}$ & 83.0 & \underline{51.1} & 0.461 & \underline{0.891} & 1000.0 & 63.5 \\
+\rowcolor{tableShade}
+LoQI & \underline{91.8} & \textbf{60.5} & \underline{0.417} & \textbf{0.796} & 1000.0 & \textbf{90.7} \\
+Torsional Diffusion & 80.2 & 44.4 & 0.439 & 1.159 & 1000.0 & 83.5 \\
+\rowcolor{tableShade}
+MCF drugs-L & 85.0 & 40.6 & 0.463 & 1.195 & 1000.0 & 65.4 \\
+NExT-Mol DMT-L & 84.7 & 38.3 & 0.447 & 1.149 & 1000.0 & 63.9 \\
+\rowcolor{tableShade}
+FlowR & 85.4 & 38.2 & 0.466 & 1.222 & 960.0 & 82.2 \\
+Qwen 1.7B FSQ & \textbf{93.5} & 48.7 & \textbf{0.360} & 0.960 & 999.2 & \underline{87.3} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-COV-R and COV-P use an RMSD $\leq$ 0.75 \AA{} cutoff; MAT-R and MAT-P are continuous distances. Coverage, precision, matching distances, and supplied counts are means over 22 molecules, with 1,067 deduplicated reference conformers in total. PB pass is the separately measured pooled pass fraction. Bold and underlining mark the best and second-best distinct unrounded values across the eight methods, including ties. Higher COV-R, COV-P, and PB pass and lower MAT-R and MAT-P are preferred; supplied counts are highlighted by size only and describe budget, not quality. Coverage and distance columns use supplied pools without PB filtering. All nearest distances are finite and the same distances supply Table 2 and the threshold curves. Unmatched conformers are not necessarily physically inaccessible. $\dagger$ Torsion raw starts from the first experimental reference in the original collection for each molecule and is therefore a reference-seeded baseline.
+COV-R/P use RMSD $\leq$ 0.75 \AA{}; MAT-R/P are matching distances. Coverage, precision, distances, and supplied counts are equal-weight means over 22 molecules with 1,067 cleaned references. Full supplied pools are used without PB filtering; PB pass is measured separately and pooled across conformers. Bold/underlining mark the best/second-best distinct unrounded performance values, sharing ties. Supplied counts are descriptive and unranked. $\dagger$ Torsion raw is seeded from the first experimental reference in the original collection.
 \end{minipage}
-\end{table}
+\end{table*}

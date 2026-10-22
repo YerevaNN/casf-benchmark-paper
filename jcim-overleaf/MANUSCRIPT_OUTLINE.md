@@ -1,5 +1,14 @@
 # JCIM manuscript outline
 
+## Layout and size/flexibility scope, 22 October 2026
+
+The author selected refined wide option A for all main tables. Table 3 retains
+paired targets and excludes PLINDER. Table 4 separates reference agreement
+from pool checks and leaves supplied counts unranked. Figure 5 now places
+PLINDER, CASF core, and CASF ref in rows, with size and flexibility in columns.
+PLINDER uses COV-R; CASF uses Hit. Energy and sampling figures remain core-only.
+See [Figure 5 sources](results-data/size-flexibility/README.md).
+
 ## Current scope, 21 October 2026
 
 This supersedes the earlier PLINDER-23 display instructions below.

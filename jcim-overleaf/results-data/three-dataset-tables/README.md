@@ -1,5 +1,12 @@
 # Current three-dataset table sources
 
+## Refined wide layout, 22 October 2026
+
+The author selected option A: shorter headers, full-width tabular spacing,
+light row shading, and concise notes. The same renderer preserves all source
+values, method orders, and generated-only best/second-best emphasis. Tables
+1/2 remain PLINDER/core/ref; Table 3 remains CASF-only with paired targets.
+
 PLINDER rows in Tables 1 and 2 were replaced on 21 October 2026 using the
 validated cleaned release in `../../plinder22-data/`. CASF rows and Table 3
 are unchanged. `plinder-per-molecule.csv` contains the refreshed source records.

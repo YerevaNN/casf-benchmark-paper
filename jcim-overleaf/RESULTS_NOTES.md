@@ -1,5 +1,16 @@
 # Results: sources and author follow-up
 
+## Approved layout and Figure 5 expansion, 22 October 2026
+
+Main tables now use refined wide option A; all values and orders are preserved.
+Table 4 supplied counts are no longer ranked. Figure 5 includes PLINDER first,
+CASF core second, and CASF ref third. The CASF core values reproduce all 88
+previous cells. Ref uses the corresponding archived fixed-target exports;
+PLINDER groups equal-weight molecule COV-R@0.75 from cleaned full-pool records.
+The small PLINDER strata are descriptive. Size and flexibility patterns do not
+establish independent effects. Sources and validation are archived in
+`results-data/size-flexibility/`.
+
 ## Refreshed PLINDER displays, 21 October 2026
 
 This supersedes the historical PLINDER-23 results below. Tables 1/2/4/S4/S6/S7,

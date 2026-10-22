@@ -1,5 +1,14 @@
 # Methods: evidence and author follow-up
 
+## Size/flexibility extension, 22 October 2026
+
+Figure 5 now stratifies all three sets using the same heavy-atom/rotatable-bond
+bins. CASF core/ref use archived PB-filtered fixed-target Hit@0.75; the stored
+baseline is unchanged. PLINDER uses an equal-weight mean of per-molecule
+COV-R@0.75 without PB filtering. No scoring or conformer generation was rerun.
+Sparse groups and the empty PLINDER heavy-atom >=40 group are explicit.
+See `results-data/size-flexibility/` for inputs, hashes, and reproduction.
+
 ## Cleaned reference evaluation, 21 October 2026
 
 This supersedes earlier PLINDER counts, 200-conformer clustering, strict-cutoff

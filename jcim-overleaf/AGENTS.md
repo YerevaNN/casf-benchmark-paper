@@ -1,5 +1,22 @@
 # Manuscript authoring
 
+## Approved layout refinement, 22 October 2026
+
+The author selected option A for all four main tables: full-width typeset tables,
+short headers, light alternating shading, and no resizebox shrinkage. Tables 1/2
+retain PLINDER/core/ref groups. Table 3 retains paired targets per method and
+CASF core/ref only. Table 4 groups reference agreement separately from pool
+checks; supplied count is descriptive and no longer ranked. All values and
+method orders are unchanged.
+
+Figure 5 now contains PLINDER/core/ref rows and size/flexibility columns.
+PLINDER reports mean COV-R@0.75 from full supplied pools; CASF reports Hit@0.75
+from PB-filtered fixed-target pools, with the stored baseline unchanged. Sparse
+and empty groups remain explicit. Its renderer and source lineage are in
+`results-data/size-flexibility/`; the stable artwork filename is
+`figures/figure-4-size-flexibility.*`. Energy and sampling figures remain core-only.
+This section supersedes conflicting earlier layout and size-figure instructions.
+
 ## Cleaned PLINDER-22 update, 21 October 2026
 
 This section supersedes earlier PLINDER counts and display instructions below.

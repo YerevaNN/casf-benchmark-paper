@@ -24,10 +24,10 @@
 \end{figure}}
 
 \newcommand{\sizefigure}{%
-\begin{figure}[htbp]
+\begin{figure}[p]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-4-size-flexibility.pdf}
-\caption{Recovery by molecular size and flexibility. Generated methods use the 1,000-candidate target; ChEMBL3D-PB uses its stored ensemble. Every cell gives recovered/total CASF entries, with the color indicating the corresponding percentage. Dashed outlines mark groups with fewer than five entries. Heavy-atom and rotatable-bond groups are analyzed separately and do not isolate independent effects of size and flexibility. Sparse groups cannot establish stable method rankings.}
+\includegraphics[width=\linewidth,height=0.79\textheight,keepaspectratio]{figures/figure-4-size-flexibility.pdf}
+\caption{Recovery by molecular size and flexibility in PLINDER (top), CASF core (middle), and CASF ref (bottom), at an RMSD cutoff of 0.75 \AA{}. PLINDER cells show mean reference coverage (COV-R, \%), giving each molecule equal weight and using full supplied pools without PB filtering. CASF cells show recovered/total entries at the 1,000-candidate target after PB filtering; ChEMBL3D-PB uses its stored pool. Color indicates the percentage for the stated outcome. Group sizes are shown below each panel; dashes denote unavailable methods or empty groups. Dashed outlines and asterisks mark groups with fewer than five molecules or entries. $\dagger$ denotes reference-seeded torsion sampling. The outcomes and pool conditions differ across datasets. Separate size and flexibility strata do not isolate independent effects, and sparse groups cannot establish stable rankings.}
 \label{fig:size}
 \end{figure}}
 

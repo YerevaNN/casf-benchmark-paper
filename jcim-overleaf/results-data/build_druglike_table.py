@@ -18,6 +18,7 @@ METHODS = [
     ('qwen_1p7b_fsq_bigdata_step47023', 'Qwen 1.7B FSQ'),
 ]
 COLUMNS = ['num_gen_confs', 'cov_r_075', 'cov_p_075', 'mat_r', 'mat_p', 'pooled_pb_pass']
+DISPLAY_COLUMNS = ['cov_r_075', 'cov_p_075', 'mat_r', 'mat_p', 'num_gen_confs', 'pooled_pb_pass']
 LOWER_IS_BETTER = {'mat_r', 'mat_p'}
 with (DATA / 'druglike_selected.csv').open() as handle:
     records = list(csv.DictReader(handle))
@@ -48,6 +49,8 @@ ranks = {k: sorted({r[k] for r in rows}, reverse=k not in LOWER_IS_BETTER)[:2] f
 def display(row, key, tex=False):
     value = row[key]
     shown = f'{value:.3f}' if key in LOWER_IS_BETTER else f'{value if key == "num_gen_confs" else value * 100:.1f}'
+    if key == 'num_gen_confs':
+        return shown
     # Rank distinct unrounded values; ties share emphasis.
     rank = next((i for i, best in enumerate(ranks[key]) if math.isclose(value, best, rel_tol=0, abs_tol=1e-12)), None)
     if rank is None:
@@ -56,44 +59,43 @@ def display(row, key, tex=False):
         return ('\\textbf{' if rank == 0 else '\\underline{') + shown + '}'
     return '**' + shown + '**' if rank == 0 else '<u>' + shown + '</u>'
 
-note = ('COV-R and COV-P use an RMSD ≤ 0.75 Å cutoff; MAT-R and MAT-P are continuous distances. '
-        'Coverage, precision, matching distances, and supplied counts are means over 22 molecules, with '
-        '1,067 deduplicated reference conformers in total. PB pass is the separately measured pooled pass fraction. '
-        'Bold and underlining mark the best and second-best distinct unrounded values across the eight methods, '
-        'including ties. Higher COV-R, COV-P, and PB pass and lower MAT-R and MAT-P are preferred; supplied '
-        'counts are highlighted by size only and describe budget, not quality. '
-        'Coverage and distance columns use supplied pools without PB filtering. All nearest distances '
-        'are finite and the same distances supply Table 2 and the threshold curves. Unmatched '
-        'conformers are not necessarily physically inaccessible. '
-        '† Torsion raw starts from the first experimental reference in the original collection for each molecule and is therefore a '
-        'reference-seeded baseline.')
+note = ('COV-R/P use RMSD ≤ 0.75 Å; MAT-R/P are matching distances. Coverage, precision, distances, '
+        'and supplied counts are equal-weight means over 22 molecules with 1,067 cleaned references. '
+        'Full supplied pools are used without PB filtering; PB pass is measured separately and pooled '
+        'across conformers. Bold/underlining mark the best/second-best distinct unrounded performance '
+        'values, sharing ties. Supplied counts are descriptive and unranked. '
+        '† Torsion raw is seeded from the first experimental reference in the original collection.')
 tex_rows = []
 md_rows = []
-for row in rows:
+for index, row in enumerate(rows):
     seeded = row['label'] == 'torsion_raw_druglike'
     tex_name = row['display_label'] + ('$^{\\dagger}$' if seeded else '')
-    tex_rows.append(' & '.join([tex_name] + [display(row, k, True) for k in COLUMNS]) + r' \\')
-    md_rows.append('| ' + ' | '.join([row['display_label'] + ('†' if seeded else '')] + [display(row, k) for k in COLUMNS]) + ' |')
+    if index % 2 == 0:
+        tex_rows.append(r'\rowcolor{tableShade}')
+    tex_rows.append(' & '.join([tex_name] + [display(row, k, True) for k in DISPLAY_COLUMNS]) + r' \\')
+    md_rows.append('| ' + ' | '.join([row['display_label'] + ('†' if seeded else '')] + [display(row, k) for k in DISPLAY_COLUMNS]) + ' |')
 tex_note = note.replace('Å', r'\AA{}').replace('†', r'$\dagger$').replace('≤', r'$\leq$')
 tex = r'''% Source: results-data/druglike_selected.csv; rendered by build_druglike_table.py.
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.35}
 \caption{Exploratory coverage and precision for the 22-molecule PLINDER panel.}
 \label{tab:druglike}
 \par\smallskip
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{\hspace{10pt}}rr@{}}
 \toprule
-Method & \shortstack{Mean\\supplied $N$} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & \shortstack{PB pass\\(\%) $\uparrow$} \\
+ & \multicolumn{4}{c}{\textcolor{plinderTeal}{\textbf{Reference agreement}}} & \multicolumn{2}{c}{\textbf{Pool checks}} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+\textbf{Method} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & Supplied $N$ & \shortstack{PB pass\\(\%) $\uparrow$} \\
 \midrule
 ''' + '\n'.join(tex_rows) + '\n' + r'''\bottomrule
-\end{tabular}
+\end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
 ''' + tex_note + '\n' + r'''\end{minipage}
-\end{table}
+\end{table*}
 '''
 (PAPER / 'tables/druglike.tex').write_text(tex)
 # Supporting Table S4 uses the same eight methods and unrounded means.

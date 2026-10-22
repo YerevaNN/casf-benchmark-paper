@@ -1,0 +1,10 @@
+{
+  "casf-size-source.csv": {
+    "original_path": "/mnt/weka/mbedrosian/code/casf-benchmark/docs/publication_tables_2026_09_28/size_strata.csv",
+    "sha256": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90"
+  },
+  "casf-flexibility-source.csv": {
+    "original_path": "/mnt/weka/mbedrosian/code/casf-benchmark/docs/publication_tables_2026_09_24/flexibility.csv",
+    "sha256": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705"
+  }
+}
