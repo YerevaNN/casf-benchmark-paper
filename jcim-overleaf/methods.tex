@@ -29,7 +29,8 @@ is based on molecular identity rather than similarity to the experimental coordi
 criteria yield 94 core complexes representing 94 ChEMBL parent compounds. Applying the same
 procedure to the larger reference collection yields 1,236 complexes representing 1,042 parent
 compounds. The collections share 17 parent compounds but no complex identifiers. Both collections
-are included in the main tables; the diversity--proximity figure compares both panels, while energy, sampling, and size figures use core.
+are included in the main tables and the diversity--proximity, energy, and sampling figures.
+The size and flexibility comparison additionally includes PLINDER.
 
 For each molecule, the stored ChEMBL3D ensemble establishes how much of the experimental geometry is
 already represented in an existing computed dataset. This comparison distinguishes coverage already
@@ -140,15 +141,16 @@ ensemble when generators receive the larger allowance. Candidate selection is re
 fixed seeds; the comparisons do not match retained ensemble sizes or computational cost.
 PLINDER uses the supplied generated ensembles and is not included in this two-target comparison.
 
-To examine how recovery changes with candidate budget, we evaluated Qwen, LoQI, FlowR, and NExT-Mol at 63
-candidate budgets from 10 to 1,000 using their saved fixed-target pools. For each entry and budget,
+To examine how recovery changes with candidate budget, we evaluated each CASF panel at 63
+candidate budgets from 10 to 1,000 using the saved fixed-target pools.
+Figure~\ref{fig:sampling-option-b1} shows Qwen, LoQI, FlowR, and NExT-Mol. For each entry and budget,
 we calculated the exact probability that a uniformly selected subset without replacement would
 contain at least one retained conformer within the RMSD cutoff. We used the candidate count and the
 number of qualifying conformers to calculate this probability directly, rather than repeatedly
 drawing random subsets. Rejected candidates consume budget but cannot produce a hit. Budgets are
 capped at the available candidate count, and entries with no retained conformers have zero recovery
-probability. Expected recovery is the equally weighted average of these probabilities over all 94
-entries.
+probability. Expected recovery is the equally weighted average of these probabilities over all
+94 core or 1,236 ref entries, calculated separately for each panel.
 
 We report expected recovery at a fixed RMSD cutoff of 0.75 \AA{} and, separately, the smallest RMSD
 threshold at which expected recovery reaches 80\% at each budget. The latter is found among the
@@ -193,11 +195,12 @@ statistic is reported for all three panels; PLINDER uses its full supplied ensem
 
 \subsection{Energy analysis}
 
-We evaluate the retained CASF core ChEMBL-count ensembles with MMFF94s\cite{halgren1999mmff94s} using a common hydrogen
+We evaluate the retained CASF core and ref ChEMBL-count ensembles with MMFF94s\cite{halgren1999mmff94s} using a common hydrogen
 preparation for every method. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
 energy is calculated without optimizing either hydrogen or heavy-atom positions. This preserves the conformations used for
 clustering and recovery and avoids differences arising from whether a generator supplied
-hydrogen coordinates. Previously stored energy values are not reused. Calculation settings,
+hydrogen coordinates. Saved PoseBusters membership is preserved in both panels.
+Previously stored energy values are not reused. Calculation settings,
 coordinate-preservation checks, and source records are archived with the energy results.
 
 For each molecule and method, we calculate the mean energy and population standard deviation
@@ -279,7 +282,8 @@ generated conformer is not automatically physically inaccessible.
 \subsection{Aggregation, uncertainty, and reproducibility}
 
 The CASF tables and figures use the corrected findings archived on 24 September 2026 and the
-size-stratum export from 28 September. PLINDER uses the cleaned reference collection and refreshed
+size-stratum export from 28 September, with the completed ref energy and sampling calculations
+archived on 22 October. PLINDER uses the cleaned reference collection and refreshed
 evaluations from 20 October 2026. The same ten CASF pipelines and the stored ChEMBL3D-PB
 ensemble are used throughout, and the 22-molecule comparison uses the five external learned
 generators and the same Qwen checkpoint, with two additional classical baselines in

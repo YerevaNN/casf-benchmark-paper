@@ -1,0 +1,24 @@
+{
+  "manuscript_changed": false,
+  "source_hashes": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/three-dataset-tables/table1.csv": "24516adca017fd6bf096a063c168087ff1736398fd18fe59d8f2ce55632dbf47",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/three-dataset-tables/table3.csv": "59620659fa43708ea9069bfa6ea10090e43fbe9ed0f81f93f121dd2bb3cfc033",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/energy-data/summary.csv": "b82c254034b58c018cce657dc3db455643f6e6de6421aa5c8351beabcdf43f36",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/energy-data/protocol.json": "1c90ef8bae82fbfebb174b682096eb71dcbbdf880b18d9cb820d600631bba0a6",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/recovery_curves.csv": "d255c62ce91043ee72fdff8cd5933d35d4b083a805019571ef8f4cca8ffae74a",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/recovery80_frontier.csv": "69e6557229089e217cf152b8411fbf01e7603f1bb4dd5090ab5ea166949e88c1",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/reference.json": "d60c1499c65ee5d0b528ff3ed6af4841724e926be24f824b019e2fe2f8691031",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/display.json": "6b9fddc63da394a44aaa4f982fe70fbd32bb686c2b1ec0cf2255ee2b6b684638",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-ref-protocol/data/results/ref_protocol/ref/summary.csv": "e1596aa183b4cfdd7d5197b2dfc5d8445a47b62f87be9777341823470d7f07c6",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-ref-protocol/data/results/ref_protocol/ref/provenance.json": "a8dde09253018bdf925c28f1c0279bd9eaa8118da75354cacc0a4aa1f2c5739d",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-ref-protocol/data/results/ref_protocol/ref/recovery_curves.csv": "134f9b8f3c9477e9f00eaebac3718396c3d6d978b7fe2631565ee1e9d5b269a7",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-ref-protocol/data/results/ref_protocol/ref/recovery80_frontier.csv": "08dd206b28cefb18ea65676a39b624bac4e951a130ee101e5ed94e4c7850a2da",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-ref-protocol/data/results/casf_analysis_dashboard.sqlite": "626ac32e96a302bfb0e8c6c9c49a9f529c023366ac193b5805b5892cd84be804"
+  },
+  "figure3": "Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.",
+  "figure4": "All core/ref endpoints from current Table 3; same method order and scales.",
+  "figureB1": "Both datasets: exact pre-PoseBusters finite-pool curves; rejected candidates consume budget. Ref endpoint and threshold checks agree with archived per-entry minima.",
+  "qwen": "Original 1.7B FSQ step47023 in all panels.",
+  "missing_inputs": []
+}

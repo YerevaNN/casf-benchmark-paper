@@ -1,5 +1,16 @@
 # JCIM manuscript outline
 
+## Completed core/ref figures, 26 October 2026
+
+Figures 3 (diversity/energy), 4 (two targets), and B1 (sampling curves) now show
+CASF core and ref in rows, preserving the approved style. Ref energy and sampling
+results are fully calculated using the core protocol. Results emphasizes shared
+energy-spread patterns, outlier sensitivity, and the dataset-dependent ordering
+for 80% recovery. Methods, captions, and Supporting Table S9 cover both sets.
+PLINDER remains the lead multiple-reference evaluation; its sampling budget
+analysis remains excluded. This supersedes earlier core-only scope statements.
+See [current inputs and reproduction](results-data/core-ref-protocol/README.md).
+
 ## Layout and size/flexibility scope, 22 October 2026
 
 The author selected refined wide option A for all main tables. Table 3 retains

@@ -1,0 +1,11 @@
+{
+  "figure_values_match_approved_previews": true,
+  "all_figure_input_hashes_verified": true,
+  "ref_inputs_match_completed_calculation": true,
+  "ref_energy_summary_reaggregated_from_per_entry_results": true,
+  "s9_core_rows_unchanged_ref_rows_added": true,
+  "results_sampling_trends_verified": true,
+  "edited_tex_braces_environments_citations_labels_and_artwork_verified": true,
+  "artwork_visually_reviewed": true,
+  "manuscript_compiled": false
+}

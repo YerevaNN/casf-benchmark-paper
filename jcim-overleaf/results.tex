@@ -69,14 +69,14 @@ an incomplete indicator of recovery of experimental conformations.
 
 \diversityfigure
 
-Energy variation also differs among geometrically diverse ensembles. On CASF core,
+Energy variation also differs among geometrically diverse ensembles. On both CASF panels,
 Qwen and FlowR have narrower typical energy distributions than raw torsion sampling and
 Torsional Diffusion, while LoQI, the minimized baselines, and ChEMBL3D have narrower
-distributions still (Figure~\ref{fig:energy-dispersion}). These comparisons use a common
-MMFF94s calculation without coordinate optimization. Exceptional molecules strongly affect
-the mean energy spread, particularly for Torsional Diffusion; the median better represents
-the typical ensemble. Supporting Table S9 reports both summaries and the energy levels.
-A narrower energy distribution does not establish lower absolute energy or thermodynamic
+distributions still (Figure~\ref{fig:energy-dispersion}). Under the common MMFF94s calculation,
+extreme ensembles make mean energy spreads much larger than medians for several methods.
+LoQI on ref illustrates that a narrow typical distribution can coexist with pronounced
+outliers (Supporting Table S9). Geometric breadth and energy dispersion therefore describe different properties of an
+ensemble; a narrow energy spread does not establish low absolute energy or thermodynamic
 stability.
 
 \energyfigure
@@ -92,8 +92,8 @@ different degrees across methods.
 
 \input{\manuscriptroot tables/recovery}
 
-The core endpoints are shown in Figure~\ref{fig:recovery}. At the larger target, several
-generators recover references missed by the stored ChEMBL3D ensembles. The stored comparison
+Figure~\ref{fig:recovery} shows these changes in both CASF panels. At the larger target,
+several generators exceed the recovery of the full stored ChEMBL3D ensembles. The stored comparison
 remains finite and unchanged, so this does not establish what ChEMBL3D would achieve with
 an equally enlarged pool. Candidate targets also yield different retained counts and do
 not imply equal computational costs.

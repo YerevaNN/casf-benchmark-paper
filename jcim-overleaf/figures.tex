@@ -8,18 +8,18 @@
 \end{figure}}
 
 \newcommand{\energyfigure}{%
-\begin{figure}[htbp]
+\begin{figure}[p]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-energy-dispersion.pdf}
-\caption{(A) Mean geometric cluster count at 0.5 \AA{}. (B) Median across molecules of the population standard deviation of conformer energies within each retained ensemble, in kcal/mol. Energies were recalculated with MMFF94s after rebuilding hydrogen coordinates without optimizing any atom. Each method uses the same measurable entries in both panels: 92 for NExT-Mol, 93 for MCF, and 94 for the others. The dashed line separates the stored ChEMBL3D-PB ensemble. Smaller energy SD indicates a narrower distribution; it does not establish lower absolute energy or the absence of high-energy conformers. Means, paired energy differences, and calculation completeness are reported in Supporting Table S9.}
+\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-energy-dispersion.pdf}
+\caption{Geometric diversity and energy dispersion at the ChEMBL-count target on CASF core (A--B) and ref (C--D), after PoseBusters filtering. (A, C) Mean cluster count at 0.5 \AA{}. (B, D) Median within-ensemble population energy SD, in kcal/mol. Energies use MMFF94s after rebuilding hydrogen coordinates without optimizing any atom. Each method uses the same measurable entries for both quantities: 92--94 on core and 1,220--1,236 on ref. Dashed lines separate the stored ChEMBL3D-PB ensemble. Smaller SD does not establish lower absolute energy or absence of high-energy conformers. Supporting Table S9 reports means, paired energy differences, and calculation completeness.}
 \label{fig:energy-dispersion}
 \end{figure}}
 
 \newcommand{\recoveryfigure}{%
-\begin{figure}[htbp]
+\begin{figure}[p]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-3-sampling-budget.pdf}
-\caption{Recovery and diversity at the two candidate targets. Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target. Each row follows the same method between the two targets. The stored ChEMBL3D-PB ensemble is shown once as a hexagon. Recovery at 0.75 \AA{} uses all 94 CASF entries; mean cluster counts at 0.5 \AA{} use defined measurements. Rows follow Table~\ref{tab:recovery}, ordered by decreasing Best RMSD at 1,000 candidates; the dashed line separates the stored reference. Lines connect observed endpoints and do not represent random-subsampling curves or intermediate measurements. Targets precede PoseBusters filtering and do not imply equal retained ensemble sizes or computational costs.}
+\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-3-sampling-budget.pdf}
+\caption{Recovery and diversity at two candidate targets on CASF core (A--B) and ref (C--D). Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target; hexagons show the unchanged stored ChEMBL3D-PB ensemble. (A, C) Recovery at 0.75 \AA{} across all 94 core or 1,236 ref entries. (B, D) Mean cluster count at 0.5 \AA{} over defined measurements. Rows follow Table~\ref{tab:recovery}, ordered by decreasing core Best RMSD at 1,000 candidates. Lines join observed endpoints, not intermediate measurements. Targets precede PoseBusters filtering and do not imply equal retained ensemble sizes or computational costs.}
 \label{fig:recovery}
 \end{figure}}
 

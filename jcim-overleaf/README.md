@@ -1,5 +1,15 @@
 # JCIM manuscript
 
+## Completed energy and sampling figures, 26 October 2026
+
+Figures 3, 4, and B1 now show CASF core and ref in the approved paired layout.
+The artwork uses completed common-protocol energy calculations and exact sampling
+curves; review-only preview labels are removed. Results, Methods, captions, and
+Supporting Table S9 describe both panels. Table S9 stacks core/ref sections to
+keep the energy summaries readable. See [inputs, validation, and reproduction](results-data/core-ref-protocol/README.md).
+This supersedes earlier core-only descriptions. The historical compiled previews
+are unchanged; review the manuscript in Overleaf.
+
 ## Approved tables and Figure 5, 22 October 2026
 
 Tables 1–4 use the refined wide layout (option A), preserving every value and

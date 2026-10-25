@@ -1,5 +1,19 @@
 # Manuscript authoring
 
+## Completed core/ref energy and sampling, 26 October 2026
+
+Figures 3, 4, and B1 now contain CASF core/ref rows using the approved style.
+Their stable artwork names are `figure-energy-dispersion`,
+`figure-3-sampling-budget`, and `figure-budget-combined`. Rebuild them with
+`results-data/core-ref-protocol/build_figures.py`. Supporting Table S9 has two
+stacked dataset sections, rebuilt by `build_energy_table.py` in that directory.
+The ref energies are completed common-hydrogen MMFF94s calculations, not archived
+energies or placeholders. Sampling curves use the same exact pre-PB protocol as
+core. Preserve finite outliers and record the one undefined ref FlowR energy.
+Results describes trends and the different core/ref ordering at 80% recovery.
+Main tables, PLINDER, and original Qwen identity remain as previously approved.
+This supersedes all earlier core-only energy/sampling instructions below.
+
 ## Approved layout refinement, 22 October 2026
 
 The author selected option A for all four main tables: full-width typeset tables,

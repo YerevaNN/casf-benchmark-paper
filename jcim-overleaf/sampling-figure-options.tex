@@ -6,17 +6,17 @@
 \renewcommand{\thefigure}{B\arabic{figure}}
 \ifdefined\theHfigure\renewcommand{\theHfigure}{budgetoption.\arabic{figure}}\fi
 \setcounter{figure}{0}
-Across intermediate budgets on CASF core, the relative performance of the generators changes
-(Figure~\ref{fig:sampling-option-b1}). LoQI has the highest recovery among these four methods at
-small budgets, while Qwen overtakes it as the budget increases. When recovery
-is fixed at 80\%, LoQI reaches this target at a slightly tighter RMSD threshold than Qwen at the
-largest budget. The ordering therefore depends on both the sampling budget
-and the required proximity to the experimental conformation.
+The sampling curves show a similar transition in both CASF panels
+(Figure~\ref{fig:sampling-option-b1}): LoQI leads these four methods at the smallest budget,
+while Qwen overtakes it as the budget increases. The ordering also depends on the matching
+criterion and dataset. At the largest budget, LoQI reaches 80\% recovery at a tighter RMSD
+threshold than Qwen on core, whereas Qwen reaches it at the tightest threshold on ref.
+A ranking at one budget and tolerance therefore does not fully describe sampling performance.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{figures/figure-budget-combined.pdf}
-\caption{Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A) Expected recovery within 0.75 \AA{} of the experimental conformation; higher is better. (B) Smallest RMSD threshold required for 80\% expected recovery; lower is better. Both panels summarize uniform subsets of the saved candidate pools across all 94 CASF entries. Rejected candidates consume budget. Dashed lines show the full stored ChEMBL3D-PB ensemble. Budget axes are linear, and the recovery axis in A spans 50--95\%. Curves are descriptive; uncertainty intervals are not displayed.}
+\caption{Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol on CASF core (A--B) and ref (C--D). (A, C) Expected recovery within 0.75 \AA{} of the experimental conformation; higher is better. (B, D) Smallest RMSD threshold required for 80\% expected recovery; lower is better. Uniform subsets of the saved candidate pools are evaluated across all 94 core or 1,236 ref entries. Rejected candidates consume budget, which is capped at the available pool size. Dashed lines show each dataset's full stored ChEMBL3D-PB ensemble. Budget axes are linear; recovery axes span 50--95\%. Curves are descriptive; uncertainty intervals are not displayed.}
 \label{fig:sampling-option-b1}
 \end{figure}
 \clearpage

@@ -1,5 +1,21 @@
 # Results: sources and author follow-up
 
+## Completed core/ref energies and sampling, 26 October 2026
+
+Figures 3/4/B1 now use the approved core/ref layout. Figure 3 uses the same
+common-hydrogen MMFF94s protocol for both cohorts. Qwen/FlowR have narrower typical
+energy spreads than raw torsion and Torsional Diffusion in both; LoQI, minimized
+baselines, and ChEMBL3D are narrower still. Means can be dominated by extreme
+ensembles, particularly LoQI on ref despite its narrow median. S9 preserves
+these finite values rather than clipping them.
+
+In both sets LoQI leads the displayed methods at budget 10, then Qwen overtakes
+it. At budget 1,000 the smallest threshold for 80% recovery is LoQI on core but
+Qwen on ref. Results makes this dataset dependence explicit without repeating
+figure values. The two-target comparison uses unchanged Table 3 endpoints.
+See `results-data/core-ref-protocol/` for source hashes and numerical checks.
+This update supersedes earlier core-only energy/sampling scope statements.
+
 ## Approved layout and Figure 5 expansion, 22 October 2026
 
 Main tables now use refined wide option A; all values and orders are preserved.

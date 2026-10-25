@@ -1,0 +1,45 @@
+cohort,method,metric,value
+core,RDKit minimized,clusters,21.71276595744681
+core,Torsion minimized,clusters,21.861702127659573
+core,LoQI,clusters,24.98936170212766
+core,MCF drugs-L,clusters,31.236559139784948
+core,NExT-Mol DMT-L,clusters,31.597826086956523
+core,RDKit raw,clusters,34.265957446808514
+core,Torsional Diffusion,clusters,40.9468085106383
+core,FlowR,clusters,54.08510638297872
+core,Torsion raw,clusters,54.159574468085104
+core,Qwen 1.7B FSQ,clusters,55.27659574468085
+core,ChEMBL3D-PB,clusters,21.71276595744681
+core,RDKit minimized,energy,2.7259932122062542
+core,Torsion minimized,energy,2.799149810546582
+core,LoQI,energy,3.7212925538382486
+core,MCF drugs-L,energy,4.970196879243358
+core,NExT-Mol DMT-L,energy,4.784864237216029
+core,RDKit raw,energy,9.115256150119643
+core,Torsional Diffusion,energy,26.49916951632652
+core,FlowR,energy,11.590867674680114
+core,Torsion raw,energy,40.50150047575613
+core,Qwen 1.7B FSQ,energy,17.64133832359883
+core,ChEMBL3D-PB,energy,2.6893698646152
+ref,RDKit minimized,clusters,22.268016194331985
+ref,Torsion minimized,clusters,21.136032388663967
+ref,LoQI,clusters,22.22977346278317
+ref,MCF drugs-L,clusters,27.723177723177724
+ref,NExT-Mol DMT-L,clusters,27.66065573770492
+ref,RDKit raw,clusters,31.76456310679612
+ref,Torsional Diffusion,clusters,33.830756712774615
+ref,FlowR,clusters,41.69561688311688
+ref,Torsion raw,clusters,41.53821138211382
+ref,Qwen 1.7B FSQ,clusters,42.89967637540453
+ref,ChEMBL3D-PB,clusters,21.87864077669903
+ref,RDKit minimized,energy,3.079234372737408
+ref,Torsion minimized,energy,3.114390036853227
+ref,LoQI,energy,3.25986824777571
+ref,MCF drugs-L,energy,4.865482249896108
+ref,NExT-Mol DMT-L,energy,4.76242116533578
+ref,RDKit raw,energy,9.285811744836284
+ref,Torsional Diffusion,energy,19.31294508296865
+ref,FlowR,energy,8.485282804767357
+ref,Torsion raw,energy,27.589577210727757
+ref,Qwen 1.7B FSQ,energy,13.72606804942751
+ref,ChEMBL3D-PB,energy,2.7880779081516427

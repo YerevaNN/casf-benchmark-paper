@@ -1,5 +1,23 @@
 # Methods: evidence and author follow-up
 
+## Completed ref common-protocol analysis, 26 October 2026
+
+Figures 3/4/B1 and Table S9 now include core/ref. Ref calculations were completed
+on 22 October, using RDKit 2025.09.6, MMFF94s, rebuilt hydrogens, no optimization,
+and preserved saved PB membership. Ref yielded 835,972 finite energies from
+835,973 retained conformers; the one undefined FlowR energy is explicitly missing.
+All finite outliers are retained. Ref energy summaries omit 50 empty outputs;
+core summaries omit three. Each geometric/energy pair uses the same entries.
+
+Sampling uses exact uniform subsets of pre-PB fixed pools for all 1,236 ref
+entries, including rejections in the budget and zero-output entries in the mean.
+The 63 budgets, inclusive RMSD cutoffs, and exact inversion for 80% recovery match
+core. Four methods are displayed; uncertainty bands remain undisplayed.
+The calculation archive includes 2,000 paired bootstrap resamples with seed
+20261006. Core parity and ref full-pool endpoint checks passed upstream.
+See `results-data/core-ref-protocol/README.md` for calculation sources, release,
+and saved-membership reconstruction. This supersedes earlier core-only scope.
+
 ## Size/flexibility extension, 22 October 2026
 
 Figure 5 now stratifies all three sets using the same heavy-atom/rotatable-bond
