@@ -1,6 +1,8 @@
 {
   "rdkit_random_raw_druglike": "RDKit raw",
+  "rdkit_random_minimized_22_druglike": "RDKit minimized",
   "torsion_raw_druglike": "Torsion raw",
+  "torsion_minimized_22_druglike": "Torsion minimized",
   "loqi_druglike": "LoQI",
   "torsional_diffusion_druglike": "Torsional Diffusion",
   "mcf_drugs_l_druglike": "MCF drugs-L",

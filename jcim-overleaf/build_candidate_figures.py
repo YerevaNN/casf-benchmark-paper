@@ -206,7 +206,7 @@ def drug_figures(drug):
         annotated_heatmap(ax, mat(metric)*100, names.loc[order].tolist(), labels)
         ax.set_title(title, fontsize=9)
     finish(fig, 'drug-coverage-matrix', 'Coverage and precision for every drug molecule',
-           r'Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected learned generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 4.8))
     offsets = [(6, 10), (6, 4), (6, 12), (-8, -13), (8, -10), (6, -13)]
@@ -217,7 +217,7 @@ def drug_figures(drug):
         ax.annotate(label(key), (x, y), xytext=offset, textcoords='offset points', fontsize=8, ha='right' if offset[0] < 0 else 'left')
     ax.set(xlabel='Mean reference coverage / recall (%)', ylabel='Mean observed-reference precision (%)', xlim=(75, 98), ylim=(30, 65)); ax.grid(alpha=.15)
     finish(fig, 'drug-tradeoff', 'Coverage and concentration define different preferences',
-           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. '+common, 'HTML §§7,12; results-data/druglike_selected.csv', True)
+           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected learned generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. '+common, 'HTML §§7,12; results-data/druglike_selected.csv', True)
 
     delta_r = (matrices['cov_r_075'][DRUG[QWEN]] - matrices['cov_r_075'][DRUG['loqi_raw']])*100
     ordered = delta_r.sort_values().index
@@ -242,7 +242,7 @@ def drug_figures(drug):
     method_axis(ax, DK); ax.set_xlabel('Mean matching distance (Å; lower is better)')
     ax.legend(handles=[Line2D([], [], marker='s', ls='', color='#444444', label='MAT-R: reference to generated'), Line2D([], [], marker='o', ls='', color='#444444', markerfacecolor='white', label='MAT-P: generated to reference')], loc='lower right', fontsize=7)
     finish(fig, 'drug-matching-distance', 'Continuous matching distances complement coverage',
-           r'Molecule-mean MAT-R and MAT-P for the six selected generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Molecule-mean MAT-R and MAT-P for the six selected learned generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
 
     refs = drug.groupby('smiles').num_true_confs
     assert refs.nunique().eq(1).all()
@@ -305,7 +305,7 @@ def write_catalog():
         md.append(f"| {item['id']} | [{item['title']}](figures/candidates/{item['stem']}.pdf) | {item['source']} |")
     md += ['', '## Reproduction and interpretation', '',
            '`python jcim-overleaf/build_candidate_figures.py` recreates the artwork and appendix using archived data only. Source hashes, cohort selection, and bootstrap settings are recorded in `figure-data/candidates/provenance.json`. Derived recovery matrices and confidence intervals are alongside the figures.', '',
-           'C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected generators on the 22-molecule drug set; coverage uses supplied pools without PoseBusters filtering. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.', '',
+           'C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected learned generators on the 22-molecule drug set; coverage uses supplied pools without PoseBusters filtering. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.', '',
            'These are alternatives as well as additions: C01/C02 emphasize uncertainty versus individual gains and losses; C03/C04 show individual outcomes versus pairwise complementarity; C11/C13/C18 show complete molecule profiles versus selected comparisons and examples. Keep the versions that serve the final story.', '']
     (ROOT / 'FIGURE_CANDIDATES.md').write_text('\n'.join(md))
 

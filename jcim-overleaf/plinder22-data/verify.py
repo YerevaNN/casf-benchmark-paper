@@ -18,7 +18,7 @@ means = pd.read_csv(PAPER / 'results-data/druglike_means.csv').set_index('label'
 curves = pd.read_csv(HERE / 'threshold-curves.csv')
 inventory = pd.read_csv(HERE / 'reference-inventory.csv')
 records = pd.read_csv(HERE / 'reference-records.csv')
-assert len(frame) == 176 and len(inventory) == 22 and len(records) == 1067
+assert len(frame) == 22 * len(methods) and len(inventory) == 22 and len(records) == 1067
 assert inventory.num_true_confs.sum() == 1067
 assert records.pdb_id.nunique() == 552 and records.system_id.nunique() == 1045
 assert not records.duplicated(['ccd','conf_index']).any()
@@ -125,4 +125,4 @@ for root in ['acs-template.tex','supporting-information.tex']:
     citations={key.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',text) for key in group.split(',')}
     assert citations.issubset(bibkeys),(root,citations-bibkeys)
     print(f'{root}: {len(seen)} source files, {len(labels)} labels, {len(refs)} references, {len(citations)} citations checked.')
-print('Verified 176 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged CASF data.')
+print('Verified 220 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged CASF data.')

@@ -1,5 +1,21 @@
 # Results: sources and author follow-up
 
+## Minimized PLINDER classical pools, 26 October 2026
+
+Added the finalized minimized_22 runs to Tables 1/2/4/S4 and Figures 1/5.
+Both have fewer clusters and more COV-R at 0.75 Å than their respective raw
+pools, but less COV-R at 0.5 Å. Both improve COV-P at 0.75 Å. Minimized torsion
+has the highest COV-P and lowest MAT-P across all ten methods; its experimental
+seed remains explicit. Qwen still leads COV-R@0.75 and MAT-R; LoQI leads
+COV-R@0.5 and precision among learned generators. Do not describe LoQI as the
+highest-precision method across all ten pipelines.
+
+Corrected raw-baseline PB checks use reference-aligned atom ordering; only their
+PB and PB-subset energy fields were refreshed from the other checkout's export.
+The 23-reference-panel geometric summaries there were deliberately not imported.
+All earlier PLINDER full-pool geometric metrics and every CASF value are preserved.
+The six-learned-method review candidates retain their stated subset.
+
 ## Completed core/ref energies and sampling, 26 October 2026
 
 Figures 3/4/B1 now use the approved core/ref layout. Figure 3 uses the same

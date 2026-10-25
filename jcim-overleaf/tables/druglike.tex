@@ -14,21 +14,24 @@
 \textbf{Method} & \shortstack{COV-R\\(\%) $\uparrow$} & \shortstack{COV-P\\(\%) $\uparrow$} & \shortstack{MAT-R\\(\AA{}) $\downarrow$} & \shortstack{MAT-P\\(\AA{}) $\downarrow$} & Supplied $N$ & \shortstack{PB pass\\(\%) $\uparrow$} \\
 \midrule
 \rowcolor{tableShade}
-RDKit raw & 70.3 & 46.9 & 0.557 & 0.978 & 1000.0 & 63.6 \\
-Torsion raw$^{\dagger}$ & 83.0 & \underline{51.1} & 0.461 & \underline{0.891} & 1000.0 & 63.5 \\
+RDKit raw & 70.3 & 46.9 & 0.557 & 0.978 & 1000.0 & \textbf{100.0} \\
+RDKit minimized & 84.0 & 56.5 & 0.509 & 0.868 & 1000.0 & \underline{100.0} \\
 \rowcolor{tableShade}
-LoQI & \underline{91.8} & \textbf{60.5} & \underline{0.417} & \textbf{0.796} & 1000.0 & \textbf{90.7} \\
+Torsion raw$^{\dagger}$ & 83.0 & 51.1 & 0.461 & 0.891 & 1000.0 & 99.8 \\
+Torsion minimized$^{\dagger}$ & 88.2 & \textbf{65.6} & 0.484 & \textbf{0.717} & 1000.0 & 98.3 \\
+\rowcolor{tableShade}
+LoQI & \underline{91.8} & \underline{60.5} & \underline{0.417} & \underline{0.796} & 1000.0 & 90.7 \\
 Torsional Diffusion & 80.2 & 44.4 & 0.439 & 1.159 & 1000.0 & 83.5 \\
 \rowcolor{tableShade}
 MCF drugs-L & 85.0 & 40.6 & 0.463 & 1.195 & 1000.0 & 65.4 \\
 NExT-Mol DMT-L & 84.7 & 38.3 & 0.447 & 1.149 & 1000.0 & 63.9 \\
 \rowcolor{tableShade}
 FlowR & 85.4 & 38.2 & 0.466 & 1.222 & 960.0 & 82.2 \\
-Qwen 1.7B FSQ & \textbf{93.5} & 48.7 & \textbf{0.360} & 0.960 & 999.2 & \underline{87.3} \\
+Qwen 1.7B FSQ & \textbf{93.5} & 48.7 & \textbf{0.360} & 0.960 & 999.2 & 87.3 \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-COV-R/P use RMSD $\leq$ 0.75 \AA{}; MAT-R/P are matching distances. Coverage, precision, distances, and supplied counts are equal-weight means over 22 molecules with 1,067 cleaned references. Full supplied pools are used without PB filtering; PB pass is measured separately and pooled across conformers. Bold/underlining mark the best/second-best distinct unrounded performance values, sharing ties. Supplied counts are descriptive and unranked. $\dagger$ Torsion raw is seeded from the first experimental reference in the original collection.
+COV-R/P use RMSD $\leq$ 0.75 \AA{}; MAT-R/P are matching distances. Coverage, precision, distances, and supplied counts are equal-weight means over 22 molecules with 1,067 cleaned references. Full supplied pools are used without PB filtering; PB pass is measured separately and pooled across conformers. Bold/underlining mark the best/second-best distinct unrounded performance values, sharing ties. Supplied counts are descriptive and unranked. $\dagger$ Both torsion baselines are seeded from the first experimental reference in the original collection.
 \end{minipage}
 \end{table*}

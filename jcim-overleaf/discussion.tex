@@ -19,6 +19,13 @@ explains why the preferred generator may depend on whether the immediate objecti
 least one useful conformation, cover several experimental conformations, or concentrate sampling
 near those observations.
 
+The paired PLINDER classical baselines further separate geometric exploration from proximity
+to observed conformations. Minimization reduces diversity while improving coverage at the
+primary tolerance and concentrating more samples near references, yet it reduces coverage at
+the tighter tolerance. Its benefit therefore depends on the matching criterion. The high
+precision of minimized torsion was measured with initialization from an observed bound
+geometry; it does not establish the same performance from a protein-independent starting pose.
+
 These evaluations inform dataset construction without establishing that every generated conformer is
 biologically relevant. The experimental collections sample only part of the accessible
 conformational space, and the force-field calculations do not represent binding free energies. The

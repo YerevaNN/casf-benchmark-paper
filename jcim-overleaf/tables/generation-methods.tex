@@ -33,4 +33,11 @@ Qwen 1.7B FSQ & Autoregressive generation of discrete coordinate tokens & Projec
 \end{longtable}
 \noindent Descriptions combine the original method papers and repositories with the inspected CASF adapters. FlowR training resources describe the published ligand-pretraining recipe; the exact training lineage of the local v2.2\_mol checkpoint still requires confirmation. NExT-Mol DMT-L is evaluated without MoLlama conditioning. Optional upstream processing is not assumed to have been enabled. All CASF ensembles subsequently undergo the specified PoseBusters filtering. Exact historical checkpoint hashes and runtime overrides remain author audit items. Qwen training composition and its coordinate-tokenizer citation remain to be documented; its benchmark-excluded evaluation is pending.
 % AUTHOR: verify exact run metadata; do not substitute current upstream defaults for historical settings.
+\par\smallskip
+\noindent For PLINDER, RDKit and torsion also include minimized variants of the existing raw
+pools, preserving conformer order rather than drawing new pools. Hydrogens are rebuilt before
+MMFF94s optimization (up to 500 iterations) and removed afterward; unconverged outputs at the
+iteration limit are retained. Both torsion variants start from an experimental reference.
+No additional clash or PB filter is applied to their coverage or clustering. Classical-pool
+validity checks use atom ordering matched to the reference topology.
 \endgroup

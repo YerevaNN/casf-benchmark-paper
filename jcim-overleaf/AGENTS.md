@@ -1,5 +1,21 @@
 # Manuscript authoring
 
+## Finalized PLINDER minimized baselines, 26 October 2026
+
+PLINDER now contains ten methods, adding `rdkit_random_minimized_22_druglike`
+and `torsion_minimized_22_druglike`. Tables 1/2/4/S4 and Figures 1/5 include both.
+Use the existing wide layouts and palette; raw classical curves are dashed,
+minimized curves dotted. Mark both PLINDER torsion variants as reference-seeded.
+These runs minimize the existing raw conformers, unlike the separately sampled
+CASF pools. The paper archive records 22 x 1,000 conformers per run, MMFF94s,
+rebuilt hydrogens, 500 iterations, and retention of unconverged outputs.
+Raw baseline validity/energy records use corrected atom-order checks restricted
+to the cleaned 22 identities; their COV/MAT/clustering remain unchanged.
+Minimized torsion now leads PLINDER COV-P and MAT-P at the primary cutoff;
+LoQI leads precision among learned methods. The six-learned-method review
+candidates keep their stated subset. See `plinder22-data/minimized-runs/README.md`.
+This supersedes earlier eight-method and raw-only PLINDER statements below.
+
 ## Completed core/ref energy and sampling, 26 October 2026
 
 Figures 3, 4, and B1 now contain CASF core/ref rows using the approved style.

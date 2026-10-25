@@ -9,7 +9,9 @@ DATA = Path(__file__).resolve().parent
 PAPER = DATA.parent
 METHODS = [
     ('rdkit_random_raw_druglike', 'RDKit raw'),
+    ('rdkit_random_minimized_22_druglike', 'RDKit minimized'),
     ('torsion_raw_druglike', 'Torsion raw'),
+    ('torsion_minimized_22_druglike', 'Torsion minimized'),
     ('loqi_druglike', 'LoQI'),
     ('torsional_diffusion_druglike', 'Torsional Diffusion'),
     ('mcf_drugs_l_druglike', 'MCF drugs-L'),
@@ -64,11 +66,11 @@ note = ('COV-R/P use RMSD ≤ 0.75 Å; MAT-R/P are matching distances. Coverage,
         'Full supplied pools are used without PB filtering; PB pass is measured separately and pooled '
         'across conformers. Bold/underlining mark the best/second-best distinct unrounded performance '
         'values, sharing ties. Supplied counts are descriptive and unranked. '
-        '† Torsion raw is seeded from the first experimental reference in the original collection.')
+        '† Both torsion baselines are seeded from the first experimental reference in the original collection.')
 tex_rows = []
 md_rows = []
 for index, row in enumerate(rows):
-    seeded = row['label'] == 'torsion_raw_druglike'
+    seeded = row['label'] in {'torsion_raw_druglike', 'torsion_minimized_22_druglike'}
     tex_name = row['display_label'] + ('$^{\\dagger}$' if seeded else '')
     if index % 2 == 0:
         tex_rows.append(r'\rowcolor{tableShade}')
@@ -98,14 +100,14 @@ tex = r'''% Source: results-data/druglike_selected.csv; rendered by build_drugli
 \end{table*}
 '''
 (PAPER / 'tables/druglike.tex').write_text(tex)
-# Supporting Table S4 uses the same eight methods and unrounded means.
+# Supporting Table S4 uses the same ten methods and unrounded means.
 support = r"""\begin{table}[htbp]
 \centering\small
 \caption{Matching distances for the cleaned 22-molecule PLINDER panel.
 MAT-R averages nearest generated-conformer distances over references; MAT-P averages
 nearest reference distances over generated conformers. Values are equal-weight molecule means.
 Supplied pools are not filtered by PoseBusters; all nearest distances are finite.
-The torsion baseline is seeded from an experimental reference.}
+Both torsion baselines are seeded from an experimental reference.}
 \label{tab:supporting-druglike}
 \begin{tabular}{lrr}
 \toprule
@@ -113,7 +115,7 @@ Method & MAT-R (\AA{}) & MAT-P (\AA{}) \\
 \midrule
 """
 for row in rows:
-    name = row['display_label'] + (' (reference-seeded)' if row['label']=='torsion_raw_druglike' else '')
+    name = row['display_label'] + (' (reference-seeded)' if row['label'] in {'torsion_raw_druglike', 'torsion_minimized_22_druglike'} else '')
     support += f"{name} & {row['mat_r']:.3f} & {row['mat_p']:.3f}" + r' \\' + '\n'
 support += r"""\bottomrule
 \end{tabular}

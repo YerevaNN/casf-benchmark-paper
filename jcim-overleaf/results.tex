@@ -54,6 +54,10 @@ recovery exceeds that of every generator at the ChEMBL-count target. A method's 
 therefore depends on whether the objective is frequent close matches or a smaller average
 distance to the reference.
 
+Minimizing the existing PLINDER classical pools reduces geometric diversity and increases
+coverage at the primary cutoff, but coverage falls at the tighter cutoff. The smaller
+cluster counts therefore do not imply a uniform change in recovery of bound geometries.
+
 Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
 FlowR produces the most clusters but covers fewer references than LoQI, whose ensembles
 contain substantially fewer clusters (Figure~\ref{fig:druglike}A--B). The coverage and precision
@@ -115,15 +119,18 @@ as uniform coverage of the chemistry needed for a conformational resource.
 PLINDER's multiple experimental references also distinguish coverage from the concentration
 of generated conformers near the observed set. Table~\ref{tab:druglike} reports sample
 precision alongside reference coverage, matching distances, and separately measured validity.
-Qwen covers more references at the primary cutoff, whereas LoQI places a larger fraction of
-its generated conformers near an observed geometry. Reference coverage and sample precision therefore
-favor different methods.
+Qwen covers the most references at the primary cutoff, whereas minimized torsion places the
+largest fraction of samples near an observed geometry. Among the learned generators, LoQI
+has the highest precision. Reference coverage and sample precision therefore favor different
+methods, with the torsion comparison additionally qualified by its reference-seeded initialization.
 
 \input{\manuscriptroot tables/druglike}
 
 The threshold curves reinforce this distinction (Figure~\ref{fig:druglike}). LoQI has higher
 coverage at 0.5 \AA{}, while Qwen has higher coverage at 1.0 \AA{};
-LoQI maintains higher sample precision at both and at the primary cutoff. These observations
+LoQI maintains higher sample precision than Qwen at both and at the primary cutoff.
+Minimized torsion has higher precision than either across these cutoffs, despite lower
+coverage at the tighter tolerance. These observations
 describe the supplied pools; they do not establish the same ordering after validity filtering.
 Experimental references are also incomplete,
 so an unmatched conformer cannot automatically be classified as physically inaccessible

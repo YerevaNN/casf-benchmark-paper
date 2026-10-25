@@ -36,7 +36,7 @@ def cell(row, metric, peers, digits=1, pending=False):
 
 
 def label(method, plinder):
-    return method + (r'$^{\dagger}$' if plinder and method == 'Torsion raw' else '')
+    return method + (r'$^{\dagger}$' if plinder and method in {'Torsion raw', 'Torsion minimized'} else '')
 
 
 def write(name, caption, ref, columns, head, body, notes):

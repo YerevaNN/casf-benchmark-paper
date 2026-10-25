@@ -7,3 +7,5 @@ flowr_druglike,FlowR,#00866B,^,423.8181818181818,0.4657768272883658
 nextmol_dmt_l_druglike,NExT-Mol DMT-L,#399BBB,P,193.6818181818182,0.4470481762674389
 rdkit_random_raw_druglike,RDKit raw,#6F7782,o,144.54545454545453,0.5573588979498088
 torsion_raw_druglike,Torsion raw,#987049,o,366.6818181818182,0.4613120557170274
+rdkit_random_minimized_22_druglike,RDKit minimized,#6F7782,s,102.1818181818182,0.5090977102544136
+torsion_minimized_22_druglike,Torsion minimized,#987049,s,113.8181818181818,0.4836061917652527

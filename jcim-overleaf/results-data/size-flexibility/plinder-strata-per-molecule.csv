@@ -21,6 +21,28 @@ rdkit_random_raw_druglike,CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5
 rdkit_random_raw_druglike,CC(/C=C/C(=O)NO)=C\[C@@H](C)C(=O)c1ccc(N(C)C)cc1,Trichostatin A,22,6,20-29,4-6,0.303030303030303
 rdkit_random_raw_druglike,Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl,Triclosan,17,2,<20,0-3,0.9876543209876544
 rdkit_random_raw_druglike,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,Trimethoprim,21,5,20-29,4-6,1.0
+rdkit_random_minimized_22_druglike,CC/C(=C(\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,4-Hydroxytamoxifen,29,8,20-29,7-8,1.0
+rdkit_random_minimized_22_druglike,CC(=O)Nc1nnc(S(N)(=O)=O)s1,Acetazolamide,13,2,<20,0-3,0.925925925925926
+rdkit_random_minimized_22_druglike,CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C,Actinonin,27,11,20-29,9+,0.4268292682926829
+rdkit_random_minimized_22_druglike,CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1,Amprenavir,35,11,30-39,9+,0.0
+rdkit_random_minimized_22_druglike,CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12,Bromosporine,28,5,20-29,4-6,0.7727272727272727
+rdkit_random_minimized_22_druglike,O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl,Chloramphenicol,20,6,20-29,4-6,0.835820895522388
+rdkit_random_minimized_22_druglike,COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2,Colchicine,29,5,20-29,4-6,1.0
+rdkit_random_minimized_22_druglike,NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O,Cyclothiazide,24,2,20-29,0-3,0.984126984126984
+rdkit_random_minimized_22_druglike,C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO,Dexamethasone,28,2,20-29,0-3,0.967741935483871
+rdkit_random_minimized_22_druglike,O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl,Diclofenac,19,4,<20,4-6,0.88
+rdkit_random_minimized_22_druglike,OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F,Fluconazole,22,5,20-29,4-6,0.925925925925926
+rdkit_random_minimized_22_druglike,O=CN(O)CCCP(=O)(O)O,Fosmidomycin,11,5,<20,4-6,1.0
+rdkit_random_minimized_22_druglike,CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21,IBMX,16,2,<20,0-3,1.0
+rdkit_random_minimized_22_druglike,Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1,Imatinib,37,7,30-39,7-8,0.08
+rdkit_random_minimized_22_druglike,COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1,Indomethacin,25,4,20-29,4-6,0.9090909090909092
+rdkit_random_minimized_22_druglike,CN1CCC[C@H]1c1cccnc1,Nicotine,12,1,<20,0-3,1.0
+rdkit_random_minimized_22_druglike,Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1,Pleconaril,27,6,20-29,4-6,1.0
+rdkit_random_minimized_22_druglike,O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1,S-thalidomide,19,1,<20,0-3,1.0
+rdkit_random_minimized_22_druglike,CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4,Staurosporine,35,2,30-39,0-3,1.0
+rdkit_random_minimized_22_druglike,CC(/C=C/C(=O)NO)=C\[C@@H](C)C(=O)c1ccc(N(C)C)cc1,Trichostatin A,22,6,20-29,4-6,0.8484848484848485
+rdkit_random_minimized_22_druglike,Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl,Triclosan,17,2,<20,0-3,1.0
+rdkit_random_minimized_22_druglike,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,Trimethoprim,21,5,20-29,4-6,0.9310344827586208
 torsion_raw_druglike,CC/C(=C(\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,4-Hydroxytamoxifen,29,8,20-29,7-8,1.0
 torsion_raw_druglike,CC(=O)Nc1nnc(S(N)(=O)=O)s1,Acetazolamide,13,2,<20,0-3,0.9876543209876544
 torsion_raw_druglike,CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C,Actinonin,27,11,20-29,9+,0.0
@@ -43,6 +65,28 @@ torsion_raw_druglike,CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccc
 torsion_raw_druglike,CC(/C=C/C(=O)NO)=C\[C@@H](C)C(=O)c1ccc(N(C)C)cc1,Trichostatin A,22,6,20-29,4-6,1.0
 torsion_raw_druglike,Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl,Triclosan,17,2,<20,0-3,1.0
 torsion_raw_druglike,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,Trimethoprim,21,5,20-29,4-6,1.0
+torsion_minimized_22_druglike,CC/C(=C(\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,4-Hydroxytamoxifen,29,8,20-29,7-8,1.0
+torsion_minimized_22_druglike,CC(=O)Nc1nnc(S(N)(=O)=O)s1,Acetazolamide,13,2,<20,0-3,0.9506172839506172
+torsion_minimized_22_druglike,CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C,Actinonin,27,11,20-29,9+,0.524390243902439
+torsion_minimized_22_druglike,CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1,Amprenavir,35,11,30-39,9+,0.0
+torsion_minimized_22_druglike,CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12,Bromosporine,28,5,20-29,4-6,1.0
+torsion_minimized_22_druglike,O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl,Chloramphenicol,20,6,20-29,4-6,0.835820895522388
+torsion_minimized_22_druglike,COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2,Colchicine,29,5,20-29,4-6,1.0
+torsion_minimized_22_druglike,NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O,Cyclothiazide,24,2,20-29,0-3,0.984126984126984
+torsion_minimized_22_druglike,C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO,Dexamethasone,28,2,20-29,0-3,0.967741935483871
+torsion_minimized_22_druglike,O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl,Diclofenac,19,4,<20,4-6,0.88
+torsion_minimized_22_druglike,OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F,Fluconazole,22,5,20-29,4-6,0.925925925925926
+torsion_minimized_22_druglike,O=CN(O)CCCP(=O)(O)O,Fosmidomycin,11,5,<20,4-6,1.0
+torsion_minimized_22_druglike,CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21,IBMX,16,2,<20,0-3,1.0
+torsion_minimized_22_druglike,Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1,Imatinib,37,7,30-39,7-8,0.66
+torsion_minimized_22_druglike,COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1,Indomethacin,25,4,20-29,4-6,0.9090909090909092
+torsion_minimized_22_druglike,CN1CCC[C@H]1c1cccnc1,Nicotine,12,1,<20,0-3,0.967741935483871
+torsion_minimized_22_druglike,Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1,Pleconaril,27,6,20-29,4-6,1.0
+torsion_minimized_22_druglike,O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1,S-thalidomide,19,1,<20,0-3,1.0
+torsion_minimized_22_druglike,CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4,Staurosporine,35,2,30-39,0-3,0.9743589743589745
+torsion_minimized_22_druglike,CC(/C=C/C(=O)NO)=C\[C@@H](C)C(=O)c1ccc(N(C)C)cc1,Trichostatin A,22,6,20-29,4-6,0.8787878787878788
+torsion_minimized_22_druglike,Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl,Triclosan,17,2,<20,0-3,1.0
+torsion_minimized_22_druglike,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,Trimethoprim,21,5,20-29,4-6,0.9482758620689656
 loqi_druglike,CC/C(=C(\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1,4-Hydroxytamoxifen,29,8,20-29,7-8,1.0
 loqi_druglike,CC(=O)Nc1nnc(S(N)(=O)=O)s1,Acetazolamide,13,2,<20,0-3,0.9753086419753086
 loqi_druglike,CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C,Actinonin,27,11,20-29,9+,0.6707317073170732

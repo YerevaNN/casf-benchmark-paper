@@ -1,5 +1,15 @@
 # JCIM manuscript outline
 
+## Ten-method PLINDER comparison, 26 October 2026
+
+Tables 1/2/4/S4 and Figures 1/5 now include RDKit minimized and torsion minimized.
+Results and Discussion distinguish coverage from precision after minimization:
+primary-cutoff coverage improves, tighter-cutoff coverage declines, and minimized
+torsion leads precision with its reference-seeded qualification. Methods/S8
+separate the paired PLINDER optimization from separately sampled CASF pools.
+The PLINDER-first framing and approved wide tables remain unchanged. Earlier
+raw-only/eight-method statements are superseded by this update.
+
 ## Completed core/ref figures, 26 October 2026
 
 Figures 3 (diversity/energy), 4 (two targets), and B1 (sampling curves) now show

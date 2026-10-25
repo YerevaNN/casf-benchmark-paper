@@ -4,7 +4,9 @@ Run in the benchmark environment: python export.py /path/to/casf-benchmark
 No generation, alignment, clustering, or energy calculation is performed.
 """
 from pathlib import Path
+import argparse
 import csv
+import shutil
 import hashlib
 import json
 import sys
@@ -16,10 +18,21 @@ from casf_benchmark.analysis.plinder_panel import DEFAULT_REFERENCE_DIR, load_re
 
 HERE = Path(__file__).resolve().parent
 PAPER = HERE.parent
-BENCHMARK = Path(sys.argv[1]).resolve()
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('benchmark', type=Path)
+parser.add_argument('--minimized-benchmark', type=Path, required=True,
+                    help='Checkout containing the finalized minimized_22 panel exports and RMSD caches')
+parser.add_argument('--baseline-runs', type=Path, required=True,
+                    help='Run directory containing gen_results and corrected baseline evaluation')
+args = parser.parse_args()
+BENCHMARK = args.benchmark.resolve()
+MINIMIZED_BENCHMARK = args.minimized_benchmark.resolve()
+BASELINE_RUNS = args.baseline_runs.resolve()
 METHODS = {
     'rdkit_random_raw_druglike': 'RDKit raw',
+    'rdkit_random_minimized_22_druglike': 'RDKit minimized',
     'torsion_raw_druglike': 'Torsion raw',
+    'torsion_minimized_22_druglike': 'Torsion minimized',
     'loqi_druglike': 'LoQI',
     'torsional_diffusion_druglike': 'Torsional Diffusion',
     'mcf_drugs_l_druglike': 'MCF drugs-L',
@@ -66,11 +79,49 @@ assert sum(int(r['cluster_size']) for r in records) == 2258
 frames, summaries, curve_rows, entries, minima = [], [], [], [], {}
 thresholds = np.linspace(0, 1.5, 301)
 for mi, (method, display) in enumerate(METHODS.items()):
-    folder = BENCHMARK / 'data/results/plinder_panel' / method
+    minimized = '_minimized_22_' in method
+    source_root = MINIMIZED_BENCHMARK if minimized else BENCHMARK
+    folder = source_root / 'data/results/plinder_panel' / method
     frame = pd.read_csv(record(folder / 'per_molecule.csv'))
     summary = pd.read_csv(record(folder / 'summary.csv')).iloc[0]
     cached_curves = pd.read_csv(record(folder / 'recovery.csv'))
-    cache = record(BENCHMARK / 'data/results/cache/plinder_rmsd_matrices' / f'{method}.npz')
+    cache_folder = 'druglike_rmsd_matrices' if minimized else 'plinder_rmsd_matrices'
+    cache = record(source_root / 'data/results/cache' / cache_folder / f'{method}.npz')
+    if minimized:
+        generation = BASELINE_RUNS / 'gen_results' / method
+        manifest = record(generation / 'generation_summary.json')
+        record(generation / 'generation_results.pickle')
+        info = json.loads(manifest.read_text())
+        included = [r for r in info['molecules'] if r['n_conformers'] > 0]
+        assert len(included) == 22 and sum(r['n_conformers'] for r in included) == 22000
+        assert set(r['smiles'] for r in included) == set(references)
+        assert all(r['failed'] == 0 for r in included)
+        audit = HERE / 'minimized-runs'
+        audit.mkdir(exist_ok=True)
+        shutil.copy2(manifest, audit / f'{method}-generation.json')
+        for relative in ['scripts/run_baseline_druglike.py', 'scripts/eval_druglike_conformers.py',
+                         'src/casf_benchmark/generation/conformer_sets.py',
+                         'src/casf_benchmark/analysis/plinder_panel.py',
+                         'src/casf_benchmark/analysis/druglike_covmat.py']:
+            record(MINIMIZED_BENCHMARK / relative)
+        shutil.copy2(MINIMIZED_BENCHMARK / 'scripts/run_baseline_druglike.py', audit / 'run_baseline_druglike.py')
+        shutil.copy2(MINIMIZED_BENCHMARK / 'scripts/eval_druglike_conformers.py', audit / 'eval_druglike_conformers.py')
+    elif method in {'rdkit_random_raw_druglike', 'torsion_raw_druglike'}:
+        # Corrected atom-order handling affects validity and its energy subset only.
+        # The other checkout's geometric summaries use an older reference panel;
+        # preserve the cleaned full-pool COV/MAT and clustering already archived here.
+        updated_path = record(MINIMIZED_BENCHMARK / 'data/results/plinder_panel' / method / 'per_molecule.csv')
+        updated = pd.read_csv(updated_path).set_index('smiles').loc[frame.smiles]
+        assert (updated.n_generated.to_numpy() == frame.n_generated.to_numpy()).all()
+        columns = ['n_pb_pass', 'pb_pass_rate', 'energy_count', 'energy_min', 'energy_max', 'energy_median', 'energy_std']
+        for column in columns:
+            frame[column] = updated[column].to_numpy()
+        summary['mean_pb_pass_rate'] = frame.pb_pass_rate.mean()
+        for column in columns[2:]:
+            summary[column] = frame[column].mean()
+        (HERE / 'minimized-runs').mkdir(exist_ok=True)
+        updated[columns].to_csv(HERE / 'minimized-runs' / f'{method}-corrected-validity-energy.csv')
+        record(BASELINE_RUNS / 'gen_results' / method / 'generation_results.pickle')
     matrices = load_rmsd_matrices(cache)
     assert len(frame) == frame.smiles.nunique() == 22
     assert set(frame.smiles) == set(matrices) == set(references)
@@ -145,7 +196,9 @@ for number in [1, 2]:
         writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
         writer.writeheader(); writer.writerows(rows)
 (HERE / 'provenance.json').write_text(json.dumps(dict(
-    release='Cleaned PLINDER references, 2026-10-20', molecules=22, references=1067,
+    release='Cleaned PLINDER references, 2026-10-20; finalized minimized_22 runs added 2026-10-26', molecules=22, references=1067,
+    minimized_protocol='Existing raw pools, rebuilt H, MMFF94s up to 500 iterations; statuses 0/1 retained; no UFF fallback; 22 x 1000 conformers each',
+    baseline_validity='Raw baseline PB and PB-subset energy records refreshed from corrected atom-order evaluation, restricted to the same 22 identities; coverage and clustering unchanged',
     source_sha256=sources, methods=METHODS,
     export_environment=dict(python=sys.version, numpy=np.__version__, pandas=pd.__version__, rdkit=rdBase.rdkitVersion),
     clustering='Full supplied pools; no PB filter; greedy radii 0.5/1.0 angstrom',
@@ -153,10 +206,10 @@ for number in [1, 2]:
     pb='Separate geometry/identity evaluation; not applied to coverage or clustering',
     qwen='Original 1.7B FSQ step47023; no retrained checkpoint substituted',
     reference_weight='Equal deduplicated representatives within each molecule; not weighted by cluster_size',
-    checks=['full InChIKeys match the original selection', '22 identical molecular identities for all eight methods', '1067 references per method',
+    checks=['full InChIKeys match the original selection', '22 identical molecular identities for all ten methods', '1067 references per method',
             'cache shapes agree with full generated pools', 'all nearest distances finite',
             'per-molecule and aggregate COV/MAT match released CSVs within 1e-12',
             'published recovery curves agree within 1e-12', 'all curves bounded and monotonic',
             'cluster counts and occupancy reproduce released summaries', 'CASF CSV cells preserved']
 ), indent=2) + '\n')
-print('Validated 8 methods × 22 molecules against 1,067 cleaned references; archived unified PLINDER sources.')
+print('Validated 10 methods × 22 molecules against 1,067 cleaned references; archived unified PLINDER sources.')

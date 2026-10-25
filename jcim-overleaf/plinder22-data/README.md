@@ -1,9 +1,9 @@
 # Cleaned PLINDER-22 paper results
 
 The 20 October 2026 evaluation replaces PLINDER-23 in all active manuscript
-PLINDER displays. The selected eight methods retain their original generated
-pools and Qwen 1.7B FSQ step47023 identity. This is a reference/evaluation update,
-not a retrained-model result.
+PLINDER displays. The original eight methods retain their generated pools, and two minimized
+classical variants are added. Qwen retains its 1.7B FSQ step47023 identity;
+no retrained-model result is substituted.
 
 The cleaned panel excludes bortezomib and three wrong-stereo reference records
 (two chloramphenicol and one staurosporine). It contains 1,067 representatives
@@ -11,6 +11,9 @@ across 22 molecules, 552 PDB entries, and 1,045 systems. Representatives were
 supplied after 0.05 Å deduplication and anchor-triplet alignment; duplicate-cluster
 sizes are not evaluation weights. Full upstream cleaning code/release lineage
 remains outstanding. `reference-source-notes.md` preserves the delivery audit.
+
+See [finalized minimized-run provenance](minimized-runs/README.md) for the paired
+minimization protocol and corrected raw-baseline validity records.
 
 ## Data and definitions
 
@@ -27,7 +30,7 @@ remains outstanding. `reference-source-notes.md` preserves the delivery audit.
   membership. SDF hashes are in `provenance.json`; structures are not duplicated.
 - `methods.json`: exact method identities and display names.
 - `provenance.json`: source paths, SHA-256 hashes, evaluation conventions and
-  checks against all eight refreshed caches. The older `druglike_cleaned` tables
+  checks against all ten refreshed caches. The older `druglike_cleaned` tables
   are not mixed in: the panel export supplies full-pool clustering and occupancy.
 - `rendered-files.json`: hashes of current display inputs, renderers and outputs.
 
@@ -46,7 +49,8 @@ python jcim-overleaf/build_candidate_figures.py --plinder-only
 python jcim-overleaf/plinder22-data/verify.py
 ```
 
-`export.py /path/to/casf-benchmark` refreshes the archived inputs from the local
+`export.py /path/to/casf-benchmark --minimized-benchmark /path/to/minimized-checkout
+--baseline-runs /path/to/druglike_baselines` refreshes the archived inputs from the local
 benchmark release and requires its environment/RDKit. It validates cache shapes,
 identities, finite minima, COV/MAT at each headline cutoff, the published curves,
 and cluster summaries before replacing the PLINDER table data. It does not run
@@ -54,7 +58,8 @@ new generation, alignment, clustering or energy calculations. CASF CSV cells
 are preserved.
 
 The combined PLINDER figure is main Figure 1; CASF core/ref diversity–proximity
-is Figure 2. Core energy, budget and size figures retain their measurements.
+is Figure 2. Energy and sampling figures compare CASF core/ref; Figure 5 includes all three datasets
+and all ten PLINDER methods.
 Table 3 remains CASF-only. PLINDER review candidates C11–C18 retain the six learned
 methods; C18 keeps the three previously chosen examples that remain in the panel.
 The earlier PLINDER-23 figures and dated audit files are historical and are not

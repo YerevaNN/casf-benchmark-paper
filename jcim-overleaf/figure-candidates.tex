@@ -79,14 +79,14 @@ These optional figures expand the analyses discussed in the HTML report using co
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/candidates/c11-drug-coverage-matrix.pdf}
-\caption{\textbf{Coverage and precision for every drug molecule.} Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
+\caption{\textbf{Coverage and precision for every drug molecule.} Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected learned generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
 \label{fig:candidate-c11-drug-coverage-matrix}
 \end{figure}
 \clearpage
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/candidates/c12-drug-tradeoff.pdf}
-\caption{\textbf{Coverage and concentration define different preferences.} Molecule-mean recall and precision at 0.75~\AA{} for the six selected generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
+\caption{\textbf{Coverage and concentration define different preferences.} Molecule-mean recall and precision at 0.75~\AA{} for the six selected learned generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
 \label{fig:candidate-c12-drug-tradeoff}
 \end{figure}
 \clearpage
@@ -107,7 +107,7 @@ These optional figures expand the analyses discussed in the HTML report using co
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/candidates/c15-drug-matching-distance.pdf}
-\caption{\textbf{Continuous matching distances complement coverage.} Molecule-mean MAT-R and MAT-P for the six selected generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
+\caption{\textbf{Continuous matching distances complement coverage.} Molecule-mean MAT-R and MAT-P for the six selected learned generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.}
 \label{fig:candidate-c15-drug-matching-distance}
 \end{figure}
 \clearpage

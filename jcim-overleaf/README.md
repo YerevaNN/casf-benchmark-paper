@@ -1,5 +1,13 @@
 # JCIM manuscript
 
+## PLINDER minimized runs, 26 October 2026
+
+Tables 1, 2, 4 and S4 and Figures 1 and 5 include the finalized RDKit minimized
+and torsion minimized PLINDER-22 runs. Methods, Results, Discussion, captions,
+and S8 now distinguish paired minimization of the PLINDER raw pools from the
+separate CASF pools. Table 4 also uses corrected raw-baseline validity checks.
+See [run lineage and checks](plinder22-data/minimized-runs/README.md).
+
 ## Completed energy and sampling figures, 26 October 2026
 
 Figures 3, 4, and B1 now show CASF core and ref in the approved paired layout.

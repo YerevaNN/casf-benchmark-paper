@@ -15,8 +15,12 @@ methods = {
     'mcf_drugs_l_druglike':'mcf_drugs_l_raw', 'flowr_druglike':'flowr_raw',
     'nextmol_dmt_l_druglike':'nextmol_dmt_l_raw',
     'rdkit_random_raw_druglike':'rdkit_random_raw', 'torsion_raw_druglike':'torsion_raw',
+    'rdkit_random_minimized_22_druglike':'rdkit_random_minimized',
+    'torsion_minimized_22_druglike':'torsion_minimized',
 }
 classical = {'rdkit_random_raw_druglike','torsion_raw_druglike'}
+minimized = {'rdkit_random_minimized_22_druglike','torsion_minimized_22_druglike'}
+seeded = {'torsion_raw_druglike','torsion_minimized_22_druglike'}
 summary = pd.read_csv(HERE / 'summary.csv').set_index('label')
 points = pd.DataFrame([dict(method=m, name=styles[k][0], color=styles[k][1],
     marker=styles[k][2], clusters_0p5=summary.loc[m, 'mean_clusters_0p5'],
@@ -40,18 +44,18 @@ for ax in axes:
     ax.tick_params(length=3,width=.6)
 a=axes[0]
 a.set_title('A   Diversity versus proximity',loc='left',pad=27)
-offsets={'RDKit raw':(10,7),'Torsion raw':(-10,12),'LoQI':(10,8),
-         'Torsional Diffusion':(10,-15),'MCF drugs-L':(-10,13),
+offsets={'RDKit minimized':(-8,7),'Torsion minimized':(10,-12),'RDKit raw':(10,7),'Torsion raw':(-10,12),'LoQI':(10,8),
+         'Torsional Diffusion':(10,-15),'MCF drugs-L':(10,17),
          'NExT-Mol DMT-L':(10,5),'FlowR':(-12,7),'Qwen 1.7B FSQ':(-12,-19)}
 for r in points.itertuples():
     a.scatter(r.clusters_0p5,r.mat_r,s=65,marker=r.marker,color=r.color,
               edgecolor='white',linewidth=.65,zorder=5)
     dx,dy=offsets[r.name]
-    a.annotate(r.name+('†' if r.method=='torsion_raw_druglike' else ''),
+    a.annotate(r.name+('†' if r.method in seeded else ''),
                (r.clusters_0p5,r.mat_r),xytext=(dx,dy),textcoords='offset points',
                ha='right' if dx<0 else 'left',va='bottom',fontsize=8,color=r.color,
                arrowprops={'arrowstyle':'-','color':r.color,'lw':.55,'alpha':.6})
-a.set(xlim=(75,480),ylim=(.33,.60),xlabel='Mean geometric clusters at 0.5 Å',
+a.set(xlim=(0,480),ylim=(.33,.60),xlabel='Mean geometric clusters at 0.5 Å',
       ylabel='MAT-R (Å; lower is better)')
 a.set_xticks([100,200,300,400]);a.set_yticks([.35,.40,.45,.50,.55,.60])
 for ax,col,title in zip(axes[1:],['recall','precision'],
@@ -60,8 +64,8 @@ for ax,col,title in zip(axes[1:],['recall','precision'],
         name,color,marker=styles[key]
         d=curves.loc[curves.method.eq(method)]
         ax.plot(d.threshold,100*d[col],color=color,lw=2,
-                ls=(0,(4,2)) if method in classical else '-',
-                label=name+('†' if method=='torsion_raw_druglike' else ''))
+                ls=(0,(1,1.5)) if method in minimized else (0,(4,2)) if method in classical else '-',
+                label=name+('†' if method in seeded else ''))
         value=100*d.loc[d.threshold.eq(.75),col].iloc[0]
         ax.scatter([.75],[value],s=20,color=color,zorder=4,edgecolor='white',linewidth=.4)
     ax.axvline(.75,color='#626C78',ls=(0,(4,3)),lw=1,zorder=1)
@@ -73,11 +77,11 @@ for ax,col,title in zip(axes[1:],['recall','precision'],
 axes[1].set_ylabel('Reference coverage, COV-R (%)')
 axes[2].set_ylabel('Sample precision, COV-P (%)')
 handles,labels=axes[1].get_legend_handles_labels()
-fig.legend(handles,labels,loc='lower center',bbox_to_anchor=(.53,.135),ncol=4,
+fig.legend(handles,labels,loc='lower center',bbox_to_anchor=(.53,.135),ncol=5,
            frameon=False,fontsize=8.5,columnspacing=2.3,handlelength=2.7)
 fig.text(.52,.093,'Full supplied pools for clustering, MAT-R and curves. RMSD ≤ threshold; no PB filter. Equal weight per molecule.',
          ha='center',fontsize=7.7,color='#626C78')
-fig.text(.52,.052,'† Torsion raw is seeded from an experimental reference. Dashed colored curves denote classical baselines.',
+fig.text(.52,.052,'† Both torsion baselines start from an experimental reference. Classical curves: dashed, raw; dotted, minimized.',
          ha='center',fontsize=7.7,color='#626C78')
 for ext in ['png','pdf','svg']:fig.savefig(OUT/f'figure-plinder-combined.{ext}',dpi=300)
 plt.close(fig)

@@ -1,10 +1,10 @@
 method,cohort,n_total,n_defined,clusters_0p5,clusters_1p0,largest_percent,status
 RDKit minimized,core,94,94,21.71276595744681,10.98936170212766,49.838095275290875,archived
 RDKit minimized,ref,1236,1235,22.268016194331985,10.792712550607288,53.07042631812684,archived
-RDKit minimized,plinder,22,0,,,,no matched manuscript result
+RDKit minimized,plinder,22,22,102.1818181818182,41.09090909090909,35.63181818181818,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 Torsion minimized,core,94,94,21.861702127659573,11.670212765957446,56.4484692110228,archived
 Torsion minimized,ref,1236,1235,21.136032388663967,10.563562753036438,58.93893639198049,archived
-Torsion minimized,plinder,22,0,,,,no matched manuscript result
+Torsion minimized,plinder,22,22,113.8181818181818,52.31818181818182,45.590909090909086,PLINDER-22 full supplied pool; cleaned references 2026-10-20
 LoQI,core,94,94,24.98936170212766,9.202127659574469,53.65444518590655,archived
 LoQI,ref,1236,1236,22.22977346278317,9.147249190938512,56.75338383547769,archived
 LoQI,plinder,22,22,112.1818181818182,32.27272727272727,46.54545454545454,PLINDER-22 full supplied pool; cleaned references 2026-10-20

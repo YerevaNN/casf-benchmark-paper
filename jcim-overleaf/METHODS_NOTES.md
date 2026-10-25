@@ -1,5 +1,25 @@
 # Methods: evidence and author follow-up
 
+## Finalized paired PLINDER minimization, 26 October 2026
+
+The new methods are rdkit_random_minimized_22_druglike and
+torsion_minimized_22_druglike from the finalized 23 October exports. Each
+minimizes the existing raw pool in its original order after rebuilding H,
+using MMFF94s for up to 500 iterations, then removes H. Status 0/1 outputs
+are retained, with no extra sampling, clash filter, or PB filtering of COV/MAT.
+All 22 included molecules have 1,000 conformers in both runs. The manifest's
+23 attempted molecules includes unsupported bortezomib, which is absent from
+both generated output dictionaries and the cleaned reference panel. No UFF
+fallback is used. Unconverged retained counts are recorded in the manifests.
+These paired pools must not be described as separately sampled CASF-style pools.
+Both torsion variants inherit the experimental seed.
+
+The corrected raw-baseline PB evaluator renumbers atoms to the reference topology
+before checking identity and stereochemistry. Its PB/energy fields are imported
+only for the existing cleaned 22 identities; COV/MAT and full-pool clustering
+are unchanged. See `plinder22-data/minimized-runs/` for code snapshots, hashes,
+and per-molecule corrected values. No scientific scoring was rerun for this edit.
+
 ## Completed ref common-protocol analysis, 26 October 2026
 
 Figures 3/4/B1 and Table S9 now include core/ref. Ref calculations were completed

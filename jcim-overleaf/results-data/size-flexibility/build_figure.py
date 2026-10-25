@@ -87,7 +87,7 @@ def sizefigure(cohorts):
                         r=d.loc[(key,g)];text=f'{int(r.hits)}/{int(r.n)}'
                     ax.text(x,y,text,ha='center',va='center',fontsize=7.2,color='white' if value>=65 else ink)
             ax.set_xticks(range(4),[f'{label}{"*" if 0<n<5 else ""}\n(n={n})' for label,n in zip(labels[descriptor],counts)],fontsize=7.4)
-            ax.set_yticks(range(len(keys)),[styles[k][0]+('†' if cohort=='plinder' and k=='torsion_raw' else '') for k in keys] if j==0 else [],fontsize=7.4)
+            ax.set_yticks(range(len(keys)),[styles[k][0]+('†' if cohort=='plinder' and k in {'torsion_raw','torsion_minimized'} else '') for k in keys] if j==0 else [],fontsize=7.4)
             ax.tick_params(which='both',length=0)
             ax.set_xticks(np.arange(-.5,4),minor=True);ax.set_yticks(np.arange(-.5,len(keys)),minor=True);ax.grid(which='minor',color='white',lw=.9)
             ax.set_title(f'{TITLES[cohort]} · {metric}@0.75\n'+('Heavy atoms' if j==0 else 'Rotatable bonds'),loc='left',fontsize=8.2,pad=9)
@@ -115,6 +115,6 @@ sources = [OUT/'casf-size-source.csv', OUT/'casf-flexibility-source.csv',
     'aggregation':'PLINDER: equal-molecule mean COV-R at inclusive 0.75 Angstrom, no PB mask. CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.',
     'qwen':'Original Qwen 1.7B FSQ step47023; no retrained outputs substituted.',
     'checks':['All 88 existing CASF core cells reproduced','CASF group denominators sum to 94/1236',
-              'Same 22 molecules across all eight PLINDER methods','No missing PLINDER COV-R measurements']
+              'Same 22 molecules across all ten PLINDER methods','No missing PLINDER COV-R measurements']
 },indent=2)+'\n')
 print('Built Figure 5 for PLINDER/core/ref; all 88 original core cells reproduced.')

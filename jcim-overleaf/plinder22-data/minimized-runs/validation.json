@@ -1,0 +1,17 @@
+{
+  "method_count": 10,
+  "molecule_count": 22,
+  "reference_count_per_method": 1067,
+  "method_molecule_rows": 220,
+  "minimized_conformers_per_method": 22000,
+  "source_hashes_verified": true,
+  "nearest_distance_and_curve_checks_tolerance": 1e-12,
+  "preexisting_plinder_geometry_and_nearest_distances_preserved": true,
+  "all_six_learned_method_records_preserved": true,
+  "all_existing_figure5_cells_preserved": true,
+  "raw_baseline_pb_and_energy_corrected_from_atom_order_fixed_evaluation": true,
+  "minimization_trends_and_convergence_counts_verified": true,
+  "table_reproduction_and_main_si_crossreferences_verified": true,
+  "figures_visually_reviewed": true,
+  "manuscript_compiled": false
+}

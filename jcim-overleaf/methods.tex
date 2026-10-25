@@ -88,9 +88,10 @@ RDKit ETKDGv3 generates conformers from the molecular graph using distance geome
 experimental torsional preferences, with stereochemistry enforced. We compare the generated
 coordinates with a second pipeline that adds MMFF94s minimization.\cite{wang2020etkdg} The random
 torsion baseline instead perturbs eligible torsions in a stored matched geometry, with
-displacements sampled uniformly within $\pm120^\circ$, and rejects severe steric clashes. Its
+displacements sampled uniformly within $\pm120^\circ$, and rejects severe steric clashes. In CASF, its
 minimized variant adds MMFF94s optimization and a further clash check. Raw and minimized pipelines
-use separately sampled pools, rather than a paired before-and-after experiment.
+use separately sampled pools, rather than a paired before-and-after experiment. The paired
+PLINDER minimization procedure is described below.
 
 % AUTHOR:  the shared reference loader can fall back to a stereochemically matching CASF MOL2 when the
 % ChEMBL3D topology cannot be loaded. This fallback can also supply the torsion seed, not only the
@@ -256,8 +257,14 @@ supplied conformers per molecule. RDKit removes the reference coordinates before
 molecular graph. The torsion baseline instead starts from the first experimental reference in the
 original collection and perturbs its rotatable bonds by up to $\pm120^\circ$, rejecting severe clashes.
 It therefore has access to a bound geometry and is reported as a reference-seeded baseline.
-Neither baseline undergoes energy minimization. The existing generated pools are evaluated against
-the cleaned reference collection; reference curation does not imply regeneration of the pools.
+The raw baselines undergo no energy minimization. Their minimized counterparts optimize the
+same conformers individually with MMFF94s after rebuilding hydrogens, for up to 500 iterations.
+Hydrogens are then removed. All conformers of the 22 included molecules are retained, including
+those that reach the iteration limit without convergence; no replacement sampling or additional
+clash filtering is applied. Both torsion variants retain the reference-seeded initialization.
+The resulting four classical pools each contain 1,000 conformers per included molecule and are
+evaluated against the same cleaned references. This paired comparison differs from the
+separately sampled raw and minimized CASF pools.
 
 For each molecule, we compare its supplied generated ensemble with all retained experimental
 references using aligned heavy-atom RMSD. COV-R is the fraction of references with at least one
@@ -275,7 +282,9 @@ from 0 to 1.5 \AA{} in increments of 0.005 \AA{}, giving each molecule equal wei
 
 Coverage, matching distances, and clustering use supplied pools without PoseBusters filtering.
 The PB pass percentage in Table~\ref{tab:druglike} is assessed separately and pools passing
-conformers across molecules, whereas COV and MAT give each molecule equal weight.
+conformers across molecules, whereas COV and MAT give each molecule equal weight. For the
+classical baselines, atom ordering is matched to the reference topology before the validity
+checks; the raw-baseline results use the corrected evaluation with this mapping.
 Experimental references do not exhaust accessible conformational space, so an unmatched
 generated conformer is not automatically physically inaccessible.
 
@@ -284,9 +293,10 @@ generated conformer is not automatically physically inaccessible.
 The CASF tables and figures use the corrected findings archived on 24 September 2026 and the
 size-stratum export from 28 September, with the completed ref energy and sampling calculations
 archived on 22 October. PLINDER uses the cleaned reference collection and refreshed
-evaluations from 20 October 2026. The same ten CASF pipelines and the stored ChEMBL3D-PB
+evaluations from 20 October 2026, supplemented by the finalized minimized classical runs
+and corrected raw-baseline validity checks from 23 October. The same ten CASF pipelines and the stored ChEMBL3D-PB
 ensemble are used throughout, and the 22-molecule comparison uses the five external learned
-generators and the same Qwen checkpoint, with two additional classical baselines in
+generators and the same Qwen checkpoint, with four classical baselines in
 Tables~\ref{tab:diversity}, \ref{tab:count-recovery}, and \ref{tab:druglike} and Figure~\ref{fig:druglike}. We preserve the distinction between whole-panel recovery
 and conditional means of defined RMSD or diversity measurements. Figure lines connecting the two
 candidate targets do not imply intermediate measurements. The displayed comparisons are descriptive;

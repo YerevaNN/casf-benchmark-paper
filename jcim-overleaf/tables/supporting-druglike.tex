@@ -4,14 +4,16 @@
 MAT-R averages nearest generated-conformer distances over references; MAT-P averages
 nearest reference distances over generated conformers. Values are equal-weight molecule means.
 Supplied pools are not filtered by PoseBusters; all nearest distances are finite.
-The torsion baseline is seeded from an experimental reference.}
+Both torsion baselines are seeded from an experimental reference.}
 \label{tab:supporting-druglike}
 \begin{tabular}{lrr}
 \toprule
 Method & MAT-R (\AA{}) & MAT-P (\AA{}) \\
 \midrule
 RDKit raw & 0.557 & 0.978 \\
+RDKit minimized & 0.509 & 0.868 \\
 Torsion raw (reference-seeded) & 0.461 & 0.891 \\
+Torsion minimized (reference-seeded) & 0.484 & 0.717 \\
 LoQI & 0.417 & 0.796 \\
 Torsional Diffusion & 0.439 & 1.159 \\
 MCF drugs-L & 0.463 & 1.195 \\
