@@ -3,23 +3,17 @@
     "results-data/size-flexibility/casf-size-source.csv": "edb512b4e5244fce41297bb614563f43ef835c477b334982e0727448f7e75d90",
     "results-data/size-flexibility/casf-flexibility-source.csv": "66e5a32a7d61ada1c3d6f05d7c4558f40d2415baad751728aaebe974ed220705",
     "results-data/strata.csv": "51f1cd87b35d023e29a2d9828d22819f5d7e7faf6e9883b33f68bab80b08a807",
-    "plinder22-data/per-molecule.csv": "a9cca497372a1bfd7c9bce91bfe52ec3934170072a5d881d4c4e9676e6f8ef2d",
-    "method-data/plinder22-molecules.csv": "e39c82600c8b24dbed1dd09925cd25ac6ddab263515a44fe494720bcab372fe7",
-    "plinder22-data/methods.json": "4503f09d3e33535cc83c7a5324acfbeed6574003dfee1b171a3aaf8b18d85926",
     "sampling-data/palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
     "results-data/three-dataset-tables/table1.csv": "3696257fe73eb7b9c71d8a328f924ac9bad43c1f5a97a64fc588abb7bf7a75ae"
   },
   "datasets": [
-    "PLINDER-22",
     "CASF core94",
     "CASF ref1236"
   ],
-  "aggregation": "PLINDER: equal-molecule mean COV-R at inclusive 0.75 Angstrom, no PB mask. CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.",
+  "aggregation": "CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.",
   "qwen": "Original Qwen 1.7B FSQ step47023; no retrained outputs substituted.",
   "checks": [
     "All 88 existing CASF core cells reproduced",
-    "CASF group denominators sum to 94/1236",
-    "Same 22 molecules across all ten PLINDER methods",
-    "No missing PLINDER COV-R measurements"
+    "CASF group denominators sum to 94/1236"
   ]
 }

@@ -1,5 +1,13 @@
 # Manuscript authoring
 
+## Figure 5 scope, 26 October 2026
+
+Figure 5 now shows CASF core and ref only, in two rows with size and flexibility
+columns. The author removed PLINDER from this display; do not restore it when
+refreshing figures. PLINDER measurements remain archived, and its other figures
+and tables retain their approved scope. This supersedes earlier three-dataset
+Figure 5 instructions below.
+
 ## Additional Qwen run and molecule-level figure, 26 October 2026
 
 Table 4 and S4 now add Qwen 0.6B CASF-dedup binned PM12 step64000 alongside
