@@ -3,7 +3,7 @@
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
-\caption{Recovery in the larger reference cohort at the ChEMBL-count and 1,000-candidate targets. Recovery uses a cutoff of 0.75~\AA{} after PoseBusters filtering, with all 1,236 mapped entries in the denominator. Mean $N$ is the retained conformer count averaged over those entries.}
+\caption{Recovery in the larger reference cohort at the ChEMBL-count and 1,000-candidate targets. Recovery uses a cutoff of 0.75~\AA{}. Mean $N$ is the mean retained conformer count.}
 \label{tab:supporting-recovery}
 \begin{tabular}{lrrrr}
 \hline
@@ -27,9 +27,6 @@ Qwen 1.7B FSQ & 76.3 & 63.3 & 92.5 & 967.9 \\
 \par\smallskip
 \begin{minipage}{\linewidth}
 \footnotesize ChEMBL3D-PB is the same stored comparison ensemble for both tiers;
-its values are shown once in the first pair of columns. Missing outputs count
-as recovery failures. Targets apply before filtering, so retained counts can
-differ between methods. The label \emph{raw} may include preprocessing
-specific to each generator (Methods).
+its values are shown once in the first pair of columns.
 \end{minipage}
 \end{table}

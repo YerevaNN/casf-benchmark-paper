@@ -57,7 +57,7 @@ fig, axes = plt.subplots(1,2,figsize=(12,5.5))
 fig.subplots_adjust(left=.075,right=.975,top=.79,bottom=.22,wspace=.27)
 fig.suptitle('Geometric diversity and proximity to observed bound conformations',
              x=.055,y=.975,ha='left',fontsize=13)
-fig.text(.055,.928,'CASF core and ref · ChEMBL-count target · PoseBusters-filtered ensembles',
+fig.text(.055,.928,'CASF core and ref · ChEMBL-count target',
          fontsize=9,color='#626C78')
 annotations=[]
 for ax, cohort, title, subtitle in zip(axes, ['core','ref'],

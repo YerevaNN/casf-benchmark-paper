@@ -15,18 +15,11 @@ The CASF core and ref panels complement this comparison with one reference per c
 stored ChEMBL3D ensemble. We examine geometric variation and experimental recovery across all
 three sets, then assess sampling effects within CASF and sample precision within PLINDER.
 
-The PLINDER results use the cleaned 22-molecule reference collection. The Qwen results retain
-the original checkpoint and precede evaluation after the updated training exclusions.
-PLINDER measurements use full supplied ensembles without PoseBusters filtering, whereas CASF
-measurements use filtered ensembles. Comparisons therefore describe performance within each
-evaluation setting rather than a common level of difficulty across datasets.
-
 Table~\ref{tab:diversity} compares cluster counts at two geometric resolutions. Across the
 three sets, FlowR, Qwen, and raw torsion sampling generally produce more clusters than LoQI
 and the minimized CASF baselines. Their exact ordering depends on the dataset and clustering
 radius: FlowR has the most clusters on PLINDER at both radii, while Qwen leads the finer-radius
-CASF comparisons. This broad separation persists despite differences in ensemble size and
-filtering, although absolute counts across datasets are not directly comparable.
+CASF comparisons.
 
 \input{\manuscriptroot tables/diversity}
 
@@ -37,11 +30,8 @@ The stored ChEMBL3D ensembles combine relatively few clusters with less concentr
 than those two methods. Cluster counts and occupancy thus describe different aspects of
 geometric variation; neither establishes proximity to the observed bound conformations.
 
-Table~\ref{tab:count-recovery} measures this proximity using reference coverage and matching
-distance. On PLINDER, COV-R records the fraction of experimental references recovered for
-each molecule, while MAT-R averages the distance from each reference to its closest generated
-conformer. The CASF sections report the corresponding single-reference outcomes, Hit and
-Best RMSD, with their respective missing-output conventions.
+Table~\ref{tab:count-recovery} compares proximity to the experimental conformations through
+reference coverage and matching distance.
 
 \input{\manuscriptroot tables/count-recovery}
 
@@ -61,8 +51,7 @@ cluster counts therefore do not imply a uniform change in recovery of bound geom
 Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
 FlowR produces the most clusters but covers fewer references than LoQI, whose ensembles
 contain substantially fewer clusters (Figure~\ref{fig:druglike}A--B). The coverage and precision
-curves also separate recovery of the observed set from concentration near it: LoQI places more
-of its generated samples near a reference even where Qwen covers more references.
+curves separate recovery of the observed set from concentration near it.
 
 \drugfigure
 
@@ -79,9 +68,8 @@ Torsional Diffusion, while LoQI, the minimized baselines, and ChEMBL3D have narr
 distributions still (Figure~\ref{fig:energy-dispersion}). Under the common MMFF94s calculation,
 extreme ensembles make mean energy spreads much larger than medians for several methods.
 LoQI on ref illustrates that a narrow typical distribution can coexist with pronounced
-outliers (Supporting Table S9). Geometric breadth and energy dispersion therefore describe different properties of an
-ensemble; a narrow energy spread does not establish low absolute energy or thermodynamic
-stability.
+outliers (Supporting Table S9). Geometric breadth and energy dispersion therefore describe
+different properties of an ensemble.
 
 \energyfigure
 
@@ -97,10 +85,7 @@ different degrees across methods.
 \input{\manuscriptroot tables/recovery}
 
 Figure~\ref{fig:recovery} shows these changes in both CASF panels. At the larger target,
-several generators exceed the recovery of the full stored ChEMBL3D ensembles. The stored comparison
-remains finite and unchanged, so this does not establish what ChEMBL3D would achieve with
-an equally enlarged pool. Candidate targets also yield different retained counts and do
-not imply equal computational costs.
+several generators exceed the recovery of the stored ChEMBL3D ensembles.
 
 \recoveryfigure
 
@@ -122,17 +107,13 @@ precision alongside reference coverage, matching distances, and separately measu
 Qwen covers the most references at the primary cutoff, whereas minimized torsion places the
 largest fraction of samples near an observed geometry. Among the learned generators, LoQI
 has the highest precision. Reference coverage and sample precision therefore favor different
-methods, with the torsion comparison additionally qualified by its reference-seeded initialization.
+methods.
 
 \input{\manuscriptroot tables/druglike}
 
 The threshold curves reinforce this distinction (Figure~\ref{fig:druglike}). LoQI has higher
 coverage at 0.5 \AA{}, while Qwen has higher coverage at 1.0 \AA{};
 LoQI maintains higher sample precision than Qwen at both and at the primary cutoff.
-These observations describe the supplied pools; they do not establish the same ordering after validity filtering.
-Experimental references are also incomplete,
-so an unmatched conformer cannot automatically be classified as physically inaccessible
-or irrelevant to binding.
 
 Together, the three evaluation sets support selecting generators by experimental coverage
 and sample concentration, with geometric diversity and energetic dispersion as complementary

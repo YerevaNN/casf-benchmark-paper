@@ -115,3 +115,9 @@ and natural. These are the authors' style instructions, not journal rules.
 
 Edit for clarity, continuity, and concision without making the prose ornate or
 changing the strength of the evidence.
+
+Shared generation, filtering, scoring, weighting, and missing-output rules belong
+in Methods once. Do not repeat those explanations or measurable-entry ranges
+in Results, table notes, and figure captions. Keep captions focused on panels,
+metric definitions, units, and visual keys; retain per-method sample sizes as data
+where relevant. Results should explain trends rather than restate the protocol.

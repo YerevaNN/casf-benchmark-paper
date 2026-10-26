@@ -41,10 +41,8 @@ ChEMBL3D-PB & 1236 & 2.8 & 3.5 & 39.2 & +0.0 \\
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-$n$ counts nonempty ensembles with defined energies. Energy SD is the population standard deviation within each molecule's ensemble, summarized by its median and mean across molecules. Mean energy is calculated within each ensemble before taking the median. Paired mean-energy differences are calculated against ChEMBL3D-PB for the same molecule before aggregation; positive values indicate higher mean energy. They are neither differences of aggregate medians nor binding energies.
+$n$: ensembles included. Energy SD: within-ensemble population standard deviation. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
 
-RDKit 2025.09.6 and MMFF94s were used after removing and rebuilding hydrogens with assigned coordinates. No coordinates were optimized, and heavy-atom coordinates were preserved. All 77,986 retained core conformers and 835,972 of 835,973 retained ref conformers yielded finite energies. One undefined ref FlowR energy was excluded, not replaced by zero. Empty outputs (three on core and 50 on ref) have no energy distribution and are excluded from energy summaries.
-
-Finite extreme values are retained, including those responsible for the large ref LoQI mean SD. A median across molecules does not remove extreme conformers from ensembles. Per-molecule records, the failed calculation, and full per-conformer results are archived with the analysis.
+Finite energies were obtained for all 77,986 retained core conformers and 835,972 of 835,973 retained ref conformers. The undefined energy belongs to FlowR. The large ref LoQI mean SD includes finite extreme values.
 \end{minipage}
 \end{table}

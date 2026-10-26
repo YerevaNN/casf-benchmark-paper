@@ -3,7 +3,7 @@
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/figure-casf-diversity-recovery.pdf}
-\caption{Geometric diversity and proximity to observed bound conformations in CASF core (A) and ref (B), at the ChEMBL-count target after PoseBusters filtering. Each point represents one pipeline or the stored ChEMBL3D-PB ensemble. Mean cluster count at 0.5 \AA{} is compared with Best RMSD, the mean per-entry minimum over retained conformers. Dashed guides mark the stored ensemble within each panel. Means use defined measurements: 92--94 entries on core and 1,220--1,236 on ref, depending on method. Axes are shared and show the observed region. Retained ensemble sizes differ; these descriptive means do not characterize every generated conformer.}
+\caption{Geometric diversity and proximity to observed bound conformations in CASF core (A) and ref (B), at the ChEMBL-count target. Each point represents one pipeline or ChEMBL3D-PB. Mean cluster count at 0.5 \AA{} is compared with Best RMSD. Dashed guides mark the stored ensemble within each panel.}
 \label{fig:diversity-recovery}
 \end{figure}}
 
@@ -11,7 +11,7 @@
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-energy-dispersion.pdf}
-\caption{Geometric diversity and energy dispersion at the ChEMBL-count target on CASF core (A--B) and ref (C--D), after PoseBusters filtering. (A, C) Mean cluster count at 0.5 \AA{}. (B, D) Median within-ensemble population energy SD, in kcal/mol. Energies use MMFF94s after rebuilding hydrogen coordinates without optimizing any atom. Each method uses the same measurable entries for both quantities: 92--94 on core and 1,220--1,236 on ref. Dashed lines separate the stored ChEMBL3D-PB ensemble. Smaller SD does not establish lower absolute energy or absence of high-energy conformers. Supporting Table S9 reports means, paired energy differences, and calculation completeness.}
+\caption{Geometric diversity and energy dispersion at the ChEMBL-count target on CASF core (A--B) and ref (C--D). (A, C) Mean cluster count at 0.5 \AA{}. (B, D) Median within-ensemble population energy SD, in kcal/mol. Dashed lines separate ChEMBL3D-PB. Supporting Table S9 gives the corresponding energy summaries.}
 \label{fig:energy-dispersion}
 \end{figure}}
 
@@ -19,7 +19,7 @@
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-3-sampling-budget.pdf}
-\caption{Recovery and diversity at two candidate targets on CASF core (A--B) and ref (C--D). Open circles denote the ChEMBL-count target and filled circles the 1,000-candidate target; hexagons show the unchanged stored ChEMBL3D-PB ensemble. (A, C) Recovery at 0.75 \AA{} across all 94 core or 1,236 ref entries. (B, D) Mean cluster count at 0.5 \AA{} over defined measurements. Rows follow Table~\ref{tab:recovery}, ordered by decreasing core Best RMSD at 1,000 candidates. Lines join observed endpoints, not intermediate measurements. Targets precede PoseBusters filtering and do not imply equal retained ensemble sizes or computational costs.}
+\caption{Recovery and diversity at two candidate targets on CASF core (A--B) and ref (C--D). Open circles denote the ChEMBL-count target, filled circles the 1,000-candidate target, and hexagons ChEMBL3D-PB. (A, C) Recovery at 0.75 \AA{}. (B, D) Mean cluster count at 0.5 \AA{}. Rows follow Table~\ref{tab:recovery}. Lines join the two evaluated targets.}
 \label{fig:recovery}
 \end{figure}}
 
@@ -27,7 +27,7 @@
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth,height=0.79\textheight,keepaspectratio]{figures/figure-4-size-flexibility.pdf}
-\caption{Recovery by molecular size and flexibility in PLINDER (top), CASF core (middle), and CASF ref (bottom), at an RMSD cutoff of 0.75 \AA{}. PLINDER cells show mean reference coverage (COV-R, \%), giving each molecule equal weight and using full supplied pools without PB filtering. CASF cells show recovered/total entries at the 1,000-candidate target after PB filtering; ChEMBL3D-PB uses its stored pool. Color indicates the percentage for the stated outcome. Group sizes are shown below each panel; dashes denote unavailable methods or empty groups. Dashed outlines and asterisks mark groups with fewer than five molecules or entries. $\dagger$ denotes reference-seeded torsion sampling. The outcomes and pool conditions differ across datasets. Separate size and flexibility strata do not isolate independent effects, and sparse groups cannot establish stable rankings.}
+\caption{Recovery by molecular size and flexibility in PLINDER (top), CASF core (middle), and CASF ref (bottom), at 0.75 \AA{}. PLINDER cells show mean reference coverage (COV-R, \%); CASF cells show recovered/total entries at the 1,000-candidate target. Color indicates the percentage for each outcome. Group sizes appear below the panels; dashes denote unavailable methods or empty groups. Dashed outlines and asterisks mark groups with fewer than five entries. $\dagger$ Reference-seeded.}
 \label{fig:size}
 \end{figure}}
 
@@ -35,6 +35,6 @@
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-plinder-combined.pdf}
-\caption{Diversity, reference coverage, and sample precision on the cleaned PLINDER-22 panel. (A) Mean cluster count at 0.5 \AA{} versus MAT-R, the mean nearest-generated distance from experimental references. (B) Reference coverage, COV-R, and (C) sample precision, COV-P, across RMSD thresholds. Panel A shows all ten methods. Panels B--C show RDKit raw, MCF, FlowR, Torsional Diffusion, NExT-Mol, LoQI, and Qwen. Each molecule receives equal weight. Clustering and matching use full supplied pools without PoseBusters filtering. Matches require RMSD $\leq t$; all nearest distances are finite. Vertical guides mark 0.75 \AA{}, as in Tables~\ref{tab:count-recovery} and \ref{tab:druglike}. Dashed colored curves denote RDKit raw; $\dagger$ in A identifies both reference-seeded torsion variants. The 1,067 deduplicated references do not exhaust accessible conformational space.}
+\caption{Diversity, reference coverage, and sample precision on PLINDER-22. (A) Mean cluster count at 0.5 \AA{} versus MAT-R for all ten methods. (B) COV-R and (C) COV-P across RMSD thresholds for RDKit raw and the six learned methods. Vertical guides mark 0.75 \AA{}; dashed colored curves denote RDKit raw. $\dagger$ Reference-seeded.}
 \label{fig:druglike}
 \end{figure}}

@@ -61,12 +61,8 @@ def display(row, key, tex=False):
         return ('\\textbf{' if rank == 0 else '\\underline{') + shown + '}'
     return '**' + shown + '**' if rank == 0 else '<u>' + shown + '</u>'
 
-note = ('COV-R/P use RMSD ≤ 0.75 Å; MAT-R/P are matching distances. Coverage, precision, distances, '
-        'and supplied counts are equal-weight means over 22 molecules with 1,067 cleaned references. '
-        'Full supplied pools are used without PB filtering; PB pass is measured separately and pooled '
-        'across conformers. Bold/underlining mark the best/second-best distinct unrounded performance '
-        'values, sharing ties. Supplied counts are descriptive and unranked. '
-        '† Both torsion baselines are seeded from the first experimental reference in the original collection.')
+note = ('COV-R/P use RMSD ≤ 0.75 Å; MAT-R/P are in Å. Supplied N is the mean conformer count. '
+        'Bold/underlined: best/second best. † Reference-seeded.')
 tex_rows = []
 md_rows = []
 for index, row in enumerate(rows):
@@ -103,11 +99,7 @@ tex = r'''% Source: results-data/druglike_selected.csv; rendered by build_drugli
 # Supporting Table S4 uses the same ten methods and unrounded means.
 support = r"""\begin{table}[htbp]
 \centering\small
-\caption{Matching distances for the cleaned 22-molecule PLINDER panel.
-MAT-R averages nearest generated-conformer distances over references; MAT-P averages
-nearest reference distances over generated conformers. Values are equal-weight molecule means.
-Supplied pools are not filtered by PoseBusters; all nearest distances are finite.
-Both torsion baselines are seeded from an experimental reference.}
+\caption{Matching distances for PLINDER-22. MAT-R: nearest generated-conformer distance from a reference. MAT-P: nearest reference distance from a generated conformer.}
 \label{tab:supporting-druglike}
 \begin{tabular}{lrr}
 \toprule

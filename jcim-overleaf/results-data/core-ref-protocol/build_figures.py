@@ -79,8 +79,6 @@ for i, cohort in enumerate(['core', 'ref']):
             ax.text(value + (.9 if j == 0 else .65), k, f'{value:.1f}', va='center', fontsize=8)
             energy_points.append(dict(cohort=cohort, method=method, metric=metric, value=value))
 fig.suptitle('ChEMBL-count target · geometry and energy spread', x=.215, ha='left', y=.974, fontsize=11)
-fig.text(.5, .045, 'Both datasets: common MMFF94s protocol, rebuilt hydrogens, no coordinate optimization.\nEnergy dispersion is the median within-ensemble population SD across molecules.',
-         ha='center', fontsize=8, color=MUTED, linespacing=1.5)
 save(fig, 'figure-energy-dispersion')
 pd.DataFrame(energy_points).to_csv(OUT/'figure3-measured-values.csv', index=False)
 
@@ -116,8 +114,6 @@ handles = [Line2D([], [], marker='o', color='#697581', mfc='white', ls='none', l
 fig.suptitle('Candidate targets · recovery and geometric diversity', x=.215, ha='left', y=.974, fontsize=11)
 fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.55, .07), ncol=3,
            frameon=False, fontsize=8, columnspacing=1.1, handletextpad=.5)
-fig.text(.5, .032, 'Lines join two evaluated targets; retained counts and computing costs are not matched.',
-         ha='center', fontsize=7.7, color=MUTED)
 save(fig, 'figure-3-sampling-budget')
 table3.to_csv(OUT/'figure4-source-values.csv', index=False)
 
@@ -188,7 +184,6 @@ handles = [Line2D([],[],color=STYLE[m.removesuffix('_fixed')][1],lw=1.9,label=ST
 handles.append(Line2D([],[],color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2,label='Stored ChEMBL3D-PB'))
 fig.suptitle('Sampling budget, recovery, and matching tolerance',x=.075,ha='left',y=.98,fontsize=11.5)
 fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.065),ncol=3,frameon=False,fontsize=8,columnspacing=1.5)
-fig.text(.5,.025,'Rejected candidates consume budget. Dashed lines show each dataset’s full stored ChEMBL3D-PB ensemble.',ha='center',fontsize=7.5,color=MUTED)
 save(fig,'figure-budget-combined')
 for fig in figures:
     plt.close(fig)

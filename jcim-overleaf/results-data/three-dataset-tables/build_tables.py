@@ -52,10 +52,8 @@ def write(name, caption, ref, columns, head, body, notes):
     (TABLES / name).write_text('\n'.join(line.rstrip() for line in tex) + '\n')
 
 
-rank_note = ('Bold and underlining mark the best and second-best distinct unrounded values '
-             'among generated methods within each dataset' )
-status_note = ('Qwen results precede retraining with the updated benchmark exclusions. ')
-seed_note = (r'$\dagger$ PLINDER torsion sampling starts from an experimental reference. ')
+rank_note = 'Bold/underlined: best/second best. '
+seed_note = r'$\dagger$ Reference-seeded. '
 group_head = [
     r' & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,236)}} \\',
     r'\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}',
@@ -82,11 +80,8 @@ for index, method in enumerate(methods):
                    for m in ('clusters_0p5', 'clusters_1p0', 'largest_percent')]
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'C0.5/C1.0: mean cluster counts at 0.5/1.0 \AA{}. Largest: mean largest-cluster '
-         r'share at 1.0 \AA{} (\%). PLINDER uses full supplied pools without PoseBusters filtering; '
-         'CASF uses PB-filtered ChEMBL-count pools. Means use 22 PLINDER molecules and '
-         '92--94 core/1,220--1,236 ref entries with defined results. Pool sizes and filtering '
-         'differ across datasets. Dashes denote unavailable results. ' + rank_note +
-         '; ChEMBL3D-PB is unranked. ' + seed_note + status_note)
+         r'share at 1.0 \AA{} (\%). CASF uses the ChEMBL-count target. '
+         'Dashes: unavailable. ' + rank_note + seed_note)
 write('diversity.tex', 'Geometric diversity across three evaluation sets.', 'tab:diversity', columns, head, body, notes)
 
 data = read(2)
@@ -108,12 +103,8 @@ for index, method in enumerate(methods):
         values += [cell(row, m, peers, digits=3 if m == 'distance' else 1)
                    for m in ('recovery_0p5', 'recovery_0p75', 'distance')]
     body.append(' & '.join([label(method, True)] + values) + r' \\')
-notes = (r'COV-R/Hit are percentages; cutoffs and distances are in \AA{}. Matches require RMSD $\leq t$. '
-         'PLINDER COV-R and MAT-R give equal weight to each molecule and use full supplied pools '
-         'without PB filtering. CASF uses PB-filtered ChEMBL-count pools: Hit includes all '
-         '94 core/1,236 ref entries, counting missing outputs as failures; Best RMSD averages '
-         'defined minima (92--94 core/1,220--1,236 ref). Dashes denote unavailable results. ' +
-         rank_note + '; ChEMBL3D-PB is unranked. ' + seed_note + status_note)
+notes = (r'COV-R/Hit are percentages; cutoffs and distances are in \AA{}. '
+         'CASF uses the ChEMBL-count target. Dashes: unavailable. ' + rank_note + seed_note)
 write('count-recovery.tex', 'Recovery of observed bound conformations across three evaluation sets.',
       'tab:count-recovery', columns, head, body, notes)
 
@@ -141,11 +132,7 @@ for index, method in enumerate(methods):
         body.append(' & '.join([method if i == 0 else '', target] + values) + r' \\')
     if method != BASELINE:
         body.append(r'\addlinespace[2pt]')
-notes = (r'ChEMBL denotes the stored-conformer-count target; both targets precede PB filtering. '
-         r'Best RMSD is in \AA{}; Hit@0.75 is a percentage; C0.5 is the mean cluster count at 0.5 \AA{}. '
-         'Hit includes missing outputs as failures; RMSD and clusters use defined entries. '
-         'The stored baseline has one unchanged pool. PLINDER has no matched ChEMBL target. ' +
-         rank_note + ' and target; ChEMBL3D-PB is unranked. Targets do not imply equal retained '
-         'counts or computational costs. ' + status_note)
+notes = (r'ChEMBL: stored-conformer-count target. Best RMSD is in \AA{}; '
+         r'Hit@0.75 is a percentage; C0.5 is the mean cluster count at 0.5 \AA{}. ' + rank_note)
 write('recovery.tex', 'Recovery and geometric diversity at two candidate targets on CASF core and ref.',
       'tab:recovery', r'@{\extracolsep{\fill}}llrrr@{\hspace{8pt}}rrr@{}', head, body, notes)

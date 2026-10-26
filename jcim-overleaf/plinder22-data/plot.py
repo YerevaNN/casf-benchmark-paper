@@ -44,7 +44,7 @@ axes = [fig.add_subplot(grid[0, :]), fig.add_subplot(grid[1, 0]),
         fig.add_subplot(grid[1, 1])]
 fig.suptitle('PLINDER: geometric diversity, reference coverage and sample precision',
              x=.09,y=.975,ha='left',fontsize=12)
-fig.text(.09,.942,'22 molecules · 1,067 cleaned references · supplied ensembles · equal weight per molecule',
+fig.text(.09,.942,'22 molecules · 1,067 cleaned references',
          fontsize=9,color='#626C78')
 for ax in axes:
     ax.grid(color='#E7EBEE',lw=.6);ax.set_axisbelow(True)
@@ -86,9 +86,7 @@ axes[2].set_ylabel('Sample precision, COV-P (%)')
 handles,labels=axes[1].get_legend_handles_labels()
 fig.legend(handles,labels,loc='lower center',bbox_to_anchor=(.53,.085),ncol=4,
            frameon=False,fontsize=8.5,columnspacing=2.3,handlelength=2.7)
-fig.text(.53,.055,'Full supplied pools for clustering, MAT-R and curves. RMSD ≤ threshold; no PB filter. Equal weight per molecule.',
-         ha='center',fontsize=7.7,color='#626C78')
-fig.text(.53,.028,'† In A, both torsion baselines start from an experimental reference. In B/C, dashed curves denote RDKit raw.',
+fig.text(.53,.028,'† Reference-seeded. Dashed curves: RDKit raw.',
          ha='center',fontsize=7.7,color='#626C78')
 for ext in ['png','pdf','svg']:fig.savefig(OUT/f'figure-plinder-combined.{ext}',dpi=300)
 plt.close(fig)

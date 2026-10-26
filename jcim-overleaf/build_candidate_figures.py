@@ -93,7 +93,7 @@ def core_figures(entries, tiers):
     ax.set_xlabel('Recovery difference from ChEMBL3D-PB (percentage points)')
     pd.DataFrame(intervals).to_csv(OUT / 'core-paired-intervals.csv', index=False)
     finish(fig, 'paired-recovery', 'How much recovery improves over the stored pool',
-           r'Paired differences in core recovery between each 1,000-candidate pipeline and the finite stored ChEMBL3D-PB pool. Error bars are exploratory 95\% percentile intervals from 10,000 paired bootstrap resamples of the 94 core entries (94 distinct parent compounds; seed 20260928). Missing outputs are misses. The comparison does not match retained count or computing cost, and intervals are not adjusted for multiple comparisons or checkpoint selection.', 'HTML §§3–4; core-entries.csv')
+           r'Paired differences in core recovery between each 1,000-candidate pipeline and the finite stored ChEMBL3D-PB pool. Error bars are exploratory 95\% percentile intervals from 10,000 paired bootstrap resamples of the 94 core entries (94 distinct parent compounds; seed 20260928). Intervals are not adjusted for multiple comparisons or checkpoint selection.', 'HTML §§3–4; core-entries.csv')
 
     fig, ax = plt.subplots(figsize=(8, 4.5))
     max_lost, max_new = 0, 0
@@ -120,7 +120,7 @@ def core_figures(entries, tiers):
     ax.legend(handles=[Line2D([], [], marker='s', ls='', color='#2171b5', label='Recovered'), Line2D([], [], marker='s', ls='', color='#dddddd', label='Missed')], loc='upper left', bbox_to_anchor=(0, 1.13), ncol=2)
     hits.loc[order].to_csv(OUT / 'core-recovery-matrix.csv')
     finish(fig, 'ligand-recovery', 'Which ligands are recovered by which methods?',
-           r'Binary recovery for every core ligand and each of the ten generation pipelines plus ChEMBL3D-PB. Blue cells indicate a PoseBusters-passing conformer within 0.75~\AA{}; gray cells indicate a miss, including missing output. Columns are sorted by the number of methods recovering each ligand. Generated pools use the 1,000-candidate target. This is a descriptive map of correlated outcomes, not an independent set of method trials.', 'HTML §§3,6; core-entries.csv')
+           r'Binary recovery for every core ligand and each of the ten generation pipelines plus ChEMBL3D-PB. Blue cells indicate a PoseBusters-passing conformer within 0.75~\AA{}; gray cells indicate a miss. Columns are sorted by the number of methods recovering each ligand. Generated pools use the 1,000-candidate target. This is a descriptive map of correlated outcomes, not an independent set of method trials.', 'HTML §§3,6; core-entries.csv')
 
     values = np.array([[((hits[a] == 1) & (hits[b] == 0)).sum() for b in KEYS] for a in KEYS])
     fig, ax = plt.subplots(figsize=(8, 6.5))
@@ -139,7 +139,7 @@ def core_figures(entries, tiers):
     axes[0].set_yticks(range(11), [label(k) for k in KEYS]); axes[0].invert_yaxis()
     axes[1].legend(handles=[Line2D([], [], marker='s', ls='', color='#444444', label='Mean minimum'), Line2D([], [], marker='o', ls='', color='#444444', markerfacecolor='white', label='Mean ensemble median')], loc='upper center', bbox_to_anchor=(.5, -.12), ncol=2)
     finish(fig, 'best-typical', 'Best available conformers versus typical conformers',
-           r'Mean per-ligand minimum RMSD (filled squares) and mean per-ligand ensemble-median RMSD (open circles), at both candidate targets. These continuous distances are conditional on measurable ensembles, unlike recovery fractions, whose denominator includes all 94 core entries. ChEMBL3D-PB is the same stored pool in both panels. Connecting segments indicate the difference between two summaries, not confidence intervals or paired transformations.', 'HTML §3; recovery-table-tiers.csv')
+           r'Mean per-ligand minimum RMSD (filled squares) and mean per-ligand ensemble-median RMSD (open circles), at both candidate targets. ChEMBL3D-PB is the same stored pool in both panels. Connecting segments indicate the difference between two summaries, not confidence intervals or paired transformations.', 'HTML §3; recovery-table-tiers.csv')
 
     rmsd = fixed.pivot(index='mol_id', columns='key', values='casf_best_rmsd')
     pairs = [(REF, 'loqi_raw'), (REF, QWEN), ('loqi_raw', QWEN), ('flowr_raw', QWEN)]
@@ -152,7 +152,7 @@ def core_figures(entries, tiers):
         ax.set(xlim=(0, lim), ylim=(0, lim), xlabel=label(a)+' minimum RMSD (Å)', ylabel=label(b)+' minimum RMSD (Å)')
         ax.text(.04, .94, f'{len(pts)} paired ligands', transform=ax.transAxes, va='top', fontsize=7)
     finish(fig, 'paired-rmsd', 'Per-ligand geometric agreement in selected comparisons',
-           r'Minimum RMSD for paired measurable core ensembles in four selected comparisons. Each point is one ligand; the diagonal indicates equal distance and dotted lines mark the sole recovery cutoff, 0.75~\AA{}. Lower values are better. Points below the diagonal favor the vertical-axis method. Generated pools use 1,000 candidates before filtering. Panel-specific sample counts exclude unmeasurable pairs; they are not the recovery denominator.', 'HTML §§3,5; core-entries.csv')
+           r'Minimum RMSD for paired measurable core ensembles in four selected comparisons. Each point is one ligand; the diagonal indicates equal distance and dotted lines mark the sole recovery cutoff, 0.75~\AA{}. Lower values are better. Points below the diagonal favor the vertical-axis method. Generated pools use 1,000 candidates before filtering.', 'HTML §§3,5; core-entries.csv')
 
     size = pd.cut(base.heavy_atoms, [0, 20, 30, 40, np.inf], right=False, labels=['<20', '20–29', '30–39', '≥40'])
     rotor = pd.cut(base.rotatable_bonds, [-1, 3, 6, 8, np.inf], labels=['0–3', '4–6', '7–8', '≥9'])
@@ -188,7 +188,7 @@ def core_figures(entries, tiers):
         ax.set_xticks([0, 1], ['Raw pool', 'Minimized pool']); ax.set_xlim(-.3, 1.35); ax.set_ylabel(title); ax.grid(axis='y', alpha=.15)
     axes[0].legend()
     finish(fig, 'classical-pools', 'Classical raw and minimized pool comparisons',
-           r'Recovery and geometric diversity of RDKit and torsion-based raw and minimized core pools at the 1,000-candidate target. These are separately generated endpoint pools, not paired before-and-after measurements on identical conformers. Lines identify related pipelines and do not establish a causal effect of minimization. Diversity is averaged over measurable ensembles; recovery includes all core ligands.', 'HTML §9; core-entries.csv')
+           r'Recovery and geometric diversity of RDKit and torsion-based raw and minimized core pools at the 1,000-candidate target. These are separately generated endpoint pools, not paired before-and-after measurements on identical conformers. Lines identify related pipelines and do not establish a causal effect of minimization.', 'HTML §9; core-entries.csv')
 
 
 def drug_figures(drug):
@@ -199,14 +199,13 @@ def drug_figures(drug):
     order = names.sort_values().index
     def mat(metric): return matrices[metric].loc[order].to_numpy()
     labels = [label(k) for k in DK]
-    common = r'All drug metrics describe supplied pools without a common PoseBusters mask; all nearest distances are finite and all methods use the same cleaned references. These are exploratory comparisons.'
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 7.5))
     for ax, metric, title in zip(axes, ['cov_r_075', 'cov_p_075'], ['Reference coverage / recall (COV-R, %)', 'Observed-reference precision (COV-P, %)']):
         annotated_heatmap(ax, mat(metric)*100, names.loc[order].tolist(), labels)
         ax.set_title(title, fontsize=9)
     finish(fig, 'drug-coverage-matrix', 'Coverage and precision for every drug molecule',
-           r'Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected learned generators. The two panels share a 0--100\% color scale. COV-R measures the fraction of observed references reached; COV-P measures the fraction of generated conformers near an observed reference. Unmatched conformers are not necessarily biologically impossible. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Molecule-level COV-R and COV-P at the inclusive 0.75~\AA{} cutoff for all six selected learned generators. The two panels share a 0--100\% color scale.', 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 4.8))
     offsets = [(6, 10), (6, 4), (6, 12), (-8, -13), (8, -10), (6, -13)]
@@ -217,7 +216,7 @@ def drug_figures(drug):
         ax.annotate(label(key), (x, y), xytext=offset, textcoords='offset points', fontsize=8, ha='right' if offset[0] < 0 else 'left')
     ax.set(xlabel='Mean reference coverage / recall (%)', ylabel='Mean observed-reference precision (%)', xlim=(75, 98), ylim=(30, 65)); ax.grid(alpha=.15)
     finish(fig, 'drug-tradeoff', 'Coverage and concentration define different preferences',
-           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected learned generators. Each of the 22 molecules receives equal weight regardless of its reference count. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations. '+common, 'HTML §§7,12; results-data/druglike_selected.csv', True)
+           r'Molecule-mean recall and precision at 0.75~\AA{} for the six selected learned generators. Higher values indicate broader observed-reference coverage or greater concentration near the available observations; they do not measure binding affinity or conformer populations.', 'HTML §§7,12; results-data/druglike_selected.csv', True)
 
     delta_r = (matrices['cov_r_075'][DRUG[QWEN]] - matrices['cov_r_075'][DRUG['loqi_raw']])*100
     ordered = delta_r.sort_values().index
@@ -228,12 +227,12 @@ def drug_figures(drug):
         ax.axvline(0, color='#555555', lw=.8); ax.set_xlabel(title); ax.grid(axis='x', alpha=.15)
     axes[0].set_yticks(range(22), names.loc[ordered]); axes[0].invert_yaxis()
     finish(fig, 'drug-paired-molecules', 'Similar mean recall can hide opposing molecule-level outcomes',
-           r'Paired molecule-level differences, Qwen 1.7B FSQ minus LoQI, in recall and precision at 0.75~\AA{}. Molecules are sorted by the recall difference and retain that ordering in both panels. Positive values favor Qwen, negative values favor LoQI. These descriptive differences are not per-molecule confidence intervals. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Paired molecule-level differences, Qwen 1.7B FSQ minus LoQI, in recall and precision at 0.75~\AA{}. Molecules are sorted by the recall difference and retain that ordering in both panels. Positive values favor Qwen, negative values favor LoQI. These descriptive differences are not per-molecule confidence intervals.', 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 7.5))
     annotated_heatmap(ax, mat('pb_pass_rate')*100, names.loc[order].tolist(), labels)
     finish(fig, 'drug-validity', 'Chemical validity varies strongly across molecules and methods',
-           r'PoseBusters pass percentages for each supplied drug molecule--method pool. The common color scale spans 0--100\%. Validity is reported separately from coverage and precision: coverage cannot be adjusted by multiplying it by these percentages because the passing conformers and recovered references need not coincide. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'PoseBusters pass percentages for each supplied drug molecule--method pool. The common color scale spans 0--100\%. Validity is reported separately from coverage and precision: coverage cannot be adjusted by multiplying it by these percentages because the passing conformers and recovered references need not coincide.', 'HTML §7; results-data/druglike_selected.csv', True)
 
     fig, ax = plt.subplots(figsize=(8, 4.2))
     for y, key in enumerate(DK):
@@ -242,7 +241,7 @@ def drug_figures(drug):
     method_axis(ax, DK); ax.set_xlabel('Mean matching distance (Å; lower is better)')
     ax.legend(handles=[Line2D([], [], marker='s', ls='', color='#444444', label='MAT-R: reference to generated'), Line2D([], [], marker='o', ls='', color='#444444', markerfacecolor='white', label='MAT-P: generated to reference')], loc='lower right', fontsize=7)
     finish(fig, 'drug-matching-distance', 'Continuous matching distances complement coverage',
-           r'Molecule-mean MAT-R and MAT-P for the six selected learned generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Molecule-mean MAT-R and MAT-P for the six selected learned generators. MAT-R averages nearest generated-conformer distances from observed references; MAT-P averages nearest observed-reference distances from generated conformers. Lower is better. Segments connect distinct summaries rather than uncertainty bounds.', 'HTML §7; results-data/druglike_selected.csv', True)
 
     refs = drug.groupby('smiles').num_true_confs
     assert refs.nunique().eq(1).all()
@@ -252,7 +251,7 @@ def drug_figures(drug):
     for y, n in enumerate(counts): ax.text(n+1, y, str(int(n)), va='center', fontsize=7)
     ax.set_xlim(0, counts.max()*1.12); ax.set_xlabel('Number of stored experimental reference conformers'); ax.grid(axis='x', alpha=.15); ax.set_axisbelow(True)
     finish(fig, 'drug-reference-counts', 'The experimental reference collection is unevenly sampled',
-           r'Numbers of stored experimental reference conformers for the 22 drug molecules (1,067 in total). References were deduplicated at 0.05~\AA{}; these representatives are not a partition into biologically distinct conformational states. Reported coverage and precision aggregates average molecules equally, so reference-rich molecules do not receive extra aggregate weight.', 'HTML §§1,7; results-data/druglike_selected.csv', True)
+           r'Numbers of stored experimental reference conformers for the 22 drug molecules (1,067 in total). References were deduplicated at 0.05~\AA{}; these representatives are not a partition into biologically distinct conformational states.', 'HTML §§1,7; results-data/druglike_selected.csv', True)
 
     indices = np.random.default_rng(SEED).integers(0, 22, (NBOOT, 22))
     other = [k for k in DK if k != 'loqi_raw']; rows=[]
@@ -267,7 +266,7 @@ def drug_figures(drug):
     axes[0].set_yticks(range(len(other)), [label(k) for k in other]); axes[0].invert_yaxis()
     pd.DataFrame(rows).to_csv(OUT / 'drug-paired-intervals.csv', index=False)
     finish(fig, 'drug-paired-uncertainty', 'How uncertain are differences from LoQI?',
-           r'Paired differences from LoQI in molecule-mean COV-R and COV-P at 0.75~\AA{}. Error bars are exploratory 95\% percentile intervals from 10,000 paired molecule bootstrap samples (22 molecules; seed 20260928). These newly rendered intervals can differ slightly from earlier exports because the resampling seed differs. Intervals are not adjusted for multiple comparisons; an interval crossing zero does not establish equivalence. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Paired differences from LoQI in molecule-mean COV-R and COV-P at 0.75~\AA{}. Error bars are exploratory 95\% percentile intervals from 10,000 paired molecule bootstrap samples (22 molecules; seed 20260928). Intervals are not adjusted for multiple comparisons; an interval crossing zero does not establish equivalence.', 'HTML §7; results-data/druglike_selected.csv', True)
 
     cases = ['Imatinib', 'Actinonin', 'Dexamethasone']
     fig, axes = plt.subplots(1, 3, figsize=(11, 3.8))
@@ -281,7 +280,7 @@ def drug_figures(drug):
         ax.set_title(f'{name} · {int(subset.num_true_confs.iloc[0])} references'); ax.set_xticks(range(3), ['Recall', 'Precision', 'PB pass']); ax.set_ylim(0, 110); ax.set_ylabel('Percent'); ax.grid(axis='y', alpha=.15); ax.set_axisbelow(True)
     axes[0].legend(fontsize=7)
     finish(fig, 'drug-case-profiles', 'Illustrative failures differ across constraints',
-           r'Three retained post hoc illustrative molecules comparing LoQI and Qwen 1.7B FSQ: recall, precision, and PoseBusters pass rate. Coverage uses the inclusive 0.75~\AA{} cutoff. The cases illustrate opposing recall preferences and disagreements between geometric coverage and chemical validity; they are not a representative sample or a structural explanation. '+common, 'HTML §7; results-data/druglike_selected.csv', True)
+           r'Three retained post hoc illustrative molecules comparing LoQI and Qwen 1.7B FSQ: recall, precision, and PoseBusters pass rate. Coverage uses the inclusive 0.75~\AA{} cutoff. The cases illustrate opposing recall preferences and disagreements between geometric coverage and chemical validity; they are not a representative sample or a structural explanation.', 'HTML §7; results-data/druglike_selected.csv', True)
 
 
 def write_catalog():
