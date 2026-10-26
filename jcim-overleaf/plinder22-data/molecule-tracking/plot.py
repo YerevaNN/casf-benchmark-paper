@@ -69,6 +69,8 @@ fig.text(.09,.087,'Outlined markers identify each method’s largest distance; n
 fig.text(.09,.052,'Full supplied ensembles; no common PoseBusters filter. † Torsion raw starts from an experimental conformation.',fontsize=8,color='#626C78')
 fig.text(.09,.022,'Methods are categorical, ordered by mean MAT-R. Connecting lines track identity, not a continuous trend.',fontsize=8,color='#626C78')
 for ext in ['png','pdf','svg']:fig.savefig(OUT/f'plinder22-molecule-tracking.{ext}',dpi=250)
+svg=OUT/'plinder22-molecule-tracking.svg'
+svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
 plt.close(fig)
 
 # Standalone interactive companion: any molecule can be isolated in both panels.
