@@ -15,6 +15,10 @@ remains outstanding. `reference-source-notes.md` preserves the delivery audit.
 See [finalized minimized-run provenance](minimized-runs/README.md) for the paired
 minimization protocol and corrected raw-baseline validity records.
 
+Figure 1 uses A across the top (all ten methods) and B/C side by side below
+(RDKit raw plus the six learned methods). All ten methods remain in the archived
+curves and tables; the figure restriction is a display choice.
+
 ## Data and definitions
 
 - `per-molecule.csv` and `summary.csv`: selected rows from the refreshed

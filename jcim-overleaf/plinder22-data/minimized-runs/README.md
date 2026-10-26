@@ -80,9 +80,9 @@ there is no claim that minimization universally improves validity.
 ## Displays and interpretation
 
 Tables 1/2 fill the existing minimized-method PLINDER cells. Table 4 and S4 add
-two rows, and their rankings are recalculated from unrounded values. Figure 1
-keeps the existing palette and uses square markers/dotted curves for minimized
-classical variants, alongside circles/dashed curves for the raw variants.
+two rows, and their rankings are recalculated from unrounded values. Figure 1 keeps all ten methods in the top scatter panel, using the existing
+palette and square markers for minimized classical variants. The bottom curve
+panels show only RDKit raw and the six learned methods; RDKit raw is dashed.
 Figure 5 fills the existing minimized-method PLINDER rows, leaving CASF cells
 unchanged. Both torsion variants carry the reference-seeded marker.
 

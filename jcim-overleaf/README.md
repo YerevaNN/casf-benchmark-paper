@@ -1,5 +1,13 @@
 # JCIM manuscript
 
+## Figure 1 panel layout, 26 October 2026
+
+Figure 1 places A across the top and B/C at bottom left/right. A retains all ten
+methods. B/C show only RDKit raw, MCF, FlowR, Torsional Diffusion, NExT-Mol, LoQI,
+and Qwen, in that legend order. The existing palette is preserved; RDKit raw
+has a dashed curve. This supersedes the earlier all-ten-method curve scope.
+Tables and Figure 5 retain the minimized and reference-seeded torsion results.
+
 ## PLINDER minimized runs, 26 October 2026
 
 Tables 1, 2, 4 and S4 and Figures 1 and 5 include the finalized RDKit minimized
