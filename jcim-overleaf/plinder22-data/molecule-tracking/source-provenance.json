@@ -1,0 +1,29 @@
+{
+  "database": "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/dashboard_local/extended_casf_analysis.sqlite",
+  "table": "plinder_per_molecule",
+  "source_hashes": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "a9cca497372a1bfd7c9bce91bfe52ec3934170072a5d881d4c4e9676e6f8ef2d",
+    "/mnt/weka/vtarasov/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/qwen_0p6b_casf_dedup_binned_pm12_step64000.npz": "3e035a49f36a755d0ae4e202daf757f1d002846297a60da8992792406293af1e"
+  },
+  "export_sha256": "cabc3366ffc73a8c7dbc57021679fa8431ee88668a8db5be5fc654b539ef7a56",
+  "methods": {
+    "qwen_1p7b_fsq_bigdata_step47023": "Qwen 1.7B\nFSQ",
+    "loqi_druglike": "LoQI",
+    "torsional_diffusion_druglike": "Torsional\nDiffusion",
+    "qwen_0p6b_casf_dedup_binned_pm12_step64000": "Qwen 0.6B\nCASF-dedup\nstep 64000",
+    "nextmol_dmt_l_druglike": "NExT-Mol\nDMT-L",
+    "torsion_raw_druglike": "Torsion raw\u2020",
+    "mcf_drugs_l_druglike": "MCF\ndrugs-L",
+    "flowr_druglike": "FlowR",
+    "rdkit_random_raw_druglike": "RDKit raw"
+  },
+  "molecules": 22,
+  "references_per_method": 1067,
+  "existing_paper_rows_matched": 176,
+  "new_qwen_cache_verified": true,
+  "notes": [
+    "Same eight methods as the preceding plot, plus Qwen 0.6B CASF-dedup step64000.",
+    "CASF-dedup is the run identity; no independent training-leakage audit performed.",
+    "No new alignment, generation, minimization, or filtering."
+  ]
+}

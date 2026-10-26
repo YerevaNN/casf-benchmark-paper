@@ -1,0 +1,16 @@
+{
+  "database": "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/dashboard_local/extended_casf_analysis.sqlite",
+  "source_table": "plinder_per_molecule",
+  "label": "qwen_0p6b_casf_dedup_binned_pm12_step64000",
+  "reference_panel": "22 identities, 1067 cleaned representatives",
+  "cache": "/mnt/weka/vtarasov/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/qwen_0p6b_casf_dedup_binned_pm12_step64000.npz",
+  "cache_sha256": "3e035a49f36a755d0ae4e202daf757f1d002846297a60da8992792406293af1e",
+  "training_exclusion_audited": false,
+  "files": {
+    "per-molecule.csv": "0eea4ce4f09ac2e93e19913aff3294f81cdd08ed32ef31cf3559a9059e3e20ed",
+    "entries.json": "ff5c795e8cec7dde49769119d6074d4530f2cb449e4ef45a1aec1b3a674f8e2d",
+    "nearest-distances.npz": "e926e5efd85e96d99af8699fb3ecf0a96988121ce7f50bf559ef1b7cb90bb210",
+    "table-records.csv": "8887fc3c67dc4045a907040e085daafba5cb5910c0419e176bf3450a0ef53013",
+    "summary.csv": "f8a1dda08df25eaa6df752509bc96497fbdd73fcae18aa0d3c3a6b431d055ba8"
+  }
+}

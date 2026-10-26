@@ -1,0 +1,12 @@
+{
+  "source": "/mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder22_molecule_tracking/molecule_matching_values.csv",
+  "sha256": "cabc3366ffc73a8c7dbc57021679fa8431ee88668a8db5be5fc654b539ef7a56",
+  "highlight_rule": "union of per-method maxima over MAT-R and MAT-P",
+  "highlighted_molecules": [
+    "Actinonin",
+    "Amprenavir",
+    "Imatinib"
+  ],
+  "structural_recalculation": false,
+  "paper_updated": false
+}

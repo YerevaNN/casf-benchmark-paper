@@ -1,5 +1,26 @@
 # JCIM manuscript outline
 
+## Additional Qwen run and molecule-level figure, 26 October 2026
+
+Table 4 and S4 now add Qwen 0.6B CASF-dedup binned PM12 step64000 alongside
+Qwen 1.7B FSQ step47023. Figure 6 follows Table 4 and connects molecule-level
+MAT-R/P for the same eight methods as the approved tracking preview plus the
+new Qwen run. It excludes the minimized variants as a display choice; both
+remain in Table 4. The original ten-method PLINDER archive and other figures
+and tables are unchanged. This supersedes blanket statements that no additional
+Qwen result is included, but does not establish a leakage-free evaluation.
+
+Table 4's renderer combines results-data/druglike_selected.csv with
+plinder22-data/qwen-dedup/table-records.csv; do not overwrite the supplemental
+records when refreshing the original panel. Its new values are COV-R 89.3%,
+COV-P 31.8%, MAT-R 0.441 Å, MAT-P 1.113 Å, supplied N 997.8, and pooled PB 60.5%.
+The new row does not alter the existing best/second-best highlights.
+Figure 6 sources and the approved artwork are in plinder22-data/molecule-tracking/.
+The executed training exclusion manifest, including the PLINDER policy, remains
+outstanding. Different Qwen sizes and coordinate representations prevent
+attributing the observed differences solely to training exclusions.
+
+
 ## Ten-method PLINDER comparison, 26 October 2026
 
 Tables 1/2/4/S4 and Figures 1/5 now include RDKit minimized and torsion minimized.

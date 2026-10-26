@@ -18,12 +18,15 @@ METHODS = [
     ('nextmol_dmt_l_druglike', 'NExT-Mol DMT-L'),
     ('flowr_druglike', 'FlowR'),
     ('qwen_1p7b_fsq_bigdata_step47023', 'Qwen 1.7B FSQ'),
+    ('qwen_0p6b_casf_dedup_binned_pm12_step64000', 'Qwen 0.6B CASF-dedup'),
 ]
 COLUMNS = ['num_gen_confs', 'cov_r_075', 'cov_p_075', 'mat_r', 'mat_p', 'pooled_pb_pass']
 DISPLAY_COLUMNS = ['cov_r_075', 'cov_p_075', 'mat_r', 'mat_p', 'num_gen_confs', 'pooled_pb_pass']
 LOWER_IS_BETTER = {'mat_r', 'mat_p'}
 with (DATA / 'druglike_selected.csv').open() as handle:
     records = list(csv.DictReader(handle))
+with (PAPER / 'plinder22-data/qwen-dedup/table-records.csv').open() as handle:
+    records.extend(csv.DictReader(handle))
 assert {r['label'] for r in records} == {m for m, _ in METHODS}
 rows = []
 identities = None
@@ -73,7 +76,8 @@ for index, row in enumerate(rows):
     tex_rows.append(' & '.join([tex_name] + [display(row, k, True) for k in DISPLAY_COLUMNS]) + r' \\')
     md_rows.append('| ' + ' | '.join([row['display_label'] + ('†' if seeded else '')] + [display(row, k) for k in DISPLAY_COLUMNS]) + ' |')
 tex_note = note.replace('Å', r'\AA{}').replace('†', r'$\dagger$').replace('≤', r'$\leq$')
-tex = r'''% Source: results-data/druglike_selected.csv; rendered by build_druglike_table.py.
+tex = r'''% Sources: results-data/druglike_selected.csv and plinder22-data/qwen-dedup/table-records.csv.
+% Rendered by build_druglike_table.py.
 \begin{table*}[htbp]
 \centering
 \footnotesize
@@ -96,7 +100,7 @@ tex = r'''% Source: results-data/druglike_selected.csv; rendered by build_drugli
 \end{table*}
 '''
 (PAPER / 'tables/druglike.tex').write_text(tex)
-# Supporting Table S4 uses the same ten methods and unrounded means.
+# Supporting Table S4 uses the same eleven methods and unrounded means.
 support = r"""\begin{table}[htbp]
 \centering\small
 \caption{Matching distances for PLINDER-22. MAT-R: nearest generated-conformer distance from a reference. MAT-P: nearest reference distance from a generated conformer.}

@@ -38,3 +38,12 @@
 \caption{Diversity, reference coverage, and sample precision on PLINDER-22. (A) Mean cluster count at 0.5 \AA{} versus MAT-R for all ten methods. (B) COV-R and (C) COV-P across RMSD thresholds for RDKit raw and the six learned methods. Vertical guides mark 0.75 \AA{}; dashed colored curves denote RDKit raw. $\dagger$ Reference-seeded.}
 \label{fig:druglike}
 \end{figure}}
+
+
+\newcommand{\moleculetrackingfigure}{%
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-plinder-molecule-tracking.pdf}
+\caption{Molecule-level matching distances on PLINDER-22. Each line follows one molecule across methods: (A) MAT-R and (B) MAT-P; lower is better. Colored lines identify the three molecules with the largest distance for at least one displayed method in either panel; grey lines show the other 19. Outlined markers identify each method's largest value. Methods are ordered by mean MAT-R. The comparison includes both Qwen variants, the five external learned generators, and the two raw classical baselines. $\dagger$ Reference-seeded.}
+\label{fig:plinder-molecule-tracking}
+\end{figure}}

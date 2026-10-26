@@ -1,0 +1,11 @@
+{
+  "qwen_1p7b_fsq_bigdata_step47023": "Qwen 1.7B\nFSQ",
+  "loqi_druglike": "LoQI",
+  "torsional_diffusion_druglike": "Torsional\nDiffusion",
+  "qwen_0p6b_casf_dedup_binned_pm12_step64000": "Qwen 0.6B\nCASF-dedup\nstep 64000",
+  "nextmol_dmt_l_druglike": "NExT-Mol\nDMT-L",
+  "torsion_raw_druglike": "Torsion raw\u2020",
+  "mcf_drugs_l_druglike": "MCF\ndrugs-L",
+  "flowr_druglike": "FlowR",
+  "rdkit_random_raw_druglike": "RDKit raw"
+}

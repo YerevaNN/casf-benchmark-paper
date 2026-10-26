@@ -115,8 +115,14 @@ step 47,023 for both CASF and the
 establish generalization after exclusion of benchmark molecules. The revised training corpus
 excludes exact matches to core94 and similar molecules using a fingerprint-similarity cutoff of
 0.4. For CASF ref, exact matches are excluded, without an additional similarity exclusion for
-that panel. Retraining and evaluation under these exclusions are ongoing; their results are
-not substituted for the archived checkpoint. External pretrained checkpoints
+that panel. An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
+CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}, Supporting Table S4,
+and Figure~\ref{fig:plinder-molecule-tracking}. It is evaluated on the same cleaned references
+and retains its supplied conformer pools. The original checkpoint remains in the other comparisons.
+The two Qwen runs differ in model size and coordinate representation as well as training data,
+so their comparison does not isolate the effect of training exclusions. The new run name alone
+does not establish exclusion of PLINDER molecules; the executed exclusion manifest remains
+to be documented. External pretrained checkpoints
 are evaluated as supplied, with their documented training provenance and any overlap that can be
 checked.
 
@@ -280,6 +286,12 @@ Figure~\ref{fig:druglike} use the same refreshed distances. Every reference and 
 conformer has a finite nearest distance. The threshold curves apply these distances at cutoffs
 from 0 to 1.5 \AA{} in increments of 0.005 \AA{}.
 
+Figure~\ref{fig:plinder-molecule-tracking} connects the per-molecule MAT-R and MAT-P values
+across methods. Colored trajectories identify the union of molecules with the largest value
+for any displayed method in either metric; all other molecules are shown in grey. This
+display uses the two raw classical baselines, the five external learned methods, and both
+Qwen variants.
+
 Experimental references do not exhaust accessible conformational space, so an unmatched
 generated conformer is not automatically physically inaccessible.
 
@@ -289,10 +301,12 @@ The CASF tables and figures use the corrected findings archived on 24 September 
 size-stratum export from 28 September, with the completed ref energy and sampling calculations
 archived on 22 October. PLINDER uses the cleaned reference collection and refreshed
 evaluations from 20 October 2026, supplemented by the finalized minimized classical runs
-and corrected raw-baseline validity checks from 23 October. The same ten CASF pipelines and the stored ChEMBL3D-PB
+and corrected raw-baseline validity checks from 23 October, and the additional Qwen 0.6B
+CASF-dedup evaluation from 26 October. The same ten CASF pipelines and the stored ChEMBL3D-PB
 ensemble are used throughout, and the 22-molecule comparison uses the five external learned
 generators and the same Qwen checkpoint, with four classical baselines in
 Tables~\ref{tab:diversity}, \ref{tab:count-recovery}, and \ref{tab:druglike} and Figure~\ref{fig:druglike}.
+Table~\ref{tab:druglike} and Supporting Table S4 additionally include the Qwen 0.6B variant.
 Main displays are descriptive and omit uncertainty intervals; archived bootstrap intervals
 are shown only in the review appendix. Bold and underlining in the tables identify the best
 and second-best distinct unrounded values among generated methods, with ties sharing emphasis.

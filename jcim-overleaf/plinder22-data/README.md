@@ -3,7 +3,10 @@
 The 20 October 2026 evaluation replaces PLINDER-23 in all active manuscript
 PLINDER displays. The original eight methods retain their generated pools, and two minimized
 classical variants are added. Qwen retains its 1.7B FSQ step47023 identity;
-no retrained-model result is substituted.
+no retrained-model result is substituted in that ten-method archive.
+Table 4 and S4 additionally include the Qwen 0.6B CASF-dedup run archived
+in `qwen-dedup/`; Figure 6 uses the approved molecule-tracking subset
+in `molecule-tracking/`. The new run is not added to the other displays.
 
 The cleaned panel excludes bortezomib and three wrong-stereo reference records
 (two chloramphenicol and one staurosporine). It contains 1,067 representatives
