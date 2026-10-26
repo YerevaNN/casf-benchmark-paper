@@ -102,6 +102,11 @@ and natural. These are the authors' style instructions, not journal rules.
 
 ## Literature and citations
 
+- Place citations beside the first relevant author, method, dataset, or supported
+  claim in the passage, rather than collecting them at the paragraph end. Split
+  grouped references when they support different methods or claims. Keep
+  sentence-level citations immediately after the supported sentence.
+
 - Integrate the literature into the Introduction by scientific theme and open
   question. Synthesize what prior studies establish and what remains unresolved;
   avoid a paper-by-paper catalogue.

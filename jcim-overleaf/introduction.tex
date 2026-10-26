@@ -5,17 +5,17 @@
 
 Small molecules do not have a single biologically relevant three-dimensional shape. The same
 molecule can adopt different conformations when bound to different proteins, or even in different
-complexes with the same protein. For applications involving protein binding, a practical goal of
+complexes with the same protein.\cite{friedrich2018diversity} For applications involving protein binding, a practical goal of
 conformer generation is therefore to produce a finite set of structures that captures these
-different bound shapes.\cite{friedrich2018diversity}
+different bound shapes.
 
 Such conformer ensembles are important in several drug-discovery settings. Molecular docking uses
-generated structures as starting points for predicting how a ligand binds. Three-dimensional shape
+generated structures as starting points for predicting how a ligand binds.\cite{mcnutt2023conformers} Three-dimensional shape
 searching and pharmacophore screening depend on having conformations with the appropriate shape or
 arrangement of chemical features available in a molecular library. Large collections of conformers
-also provide training data for models that learn molecular geometry. These uses give a practical
+also provide training data for models that learn molecular geometry.\cite{axelrod2022geom} These uses give a practical
 reason to ask what shapes an ensemble contains, beyond simply counting how many structures were
-generated.\cite{mcnutt2023conformers,axelrod2022geom}
+generated.
 
 Generating these ensembles without reference to a particular protein makes them reusable. A
 conformer set can be generated once for each molecule, stored in a molecular library, and used
@@ -26,53 +26,52 @@ geometries to guide that choice and examine how this coverage relates to the div
 the generated conformers.
 
 The question of representing bound conformations with a finite ensemble is not new. G{\"u}nther et
-al. asked in 2006 how well computed conformers could represent the different bound structures
+al.\cite{gunther2006representation} asked in 2006 how well computed conformers could represent the different bound structures
 observed for the same drug. Their study supported the use of conformer libraries for
 three-dimensional screening and showed that selecting only low-energy members could reduce coverage
 of the observed states. We build on this motivation by evaluating modern generators as sources of
 conformational data, with attention to both recovery of experimental geometries and the distribution
-of structures available for a reusable library.\cite{gunther2006representation}
+of structures available for a reusable library.
 
-McNutt et al. examined how choices in constructing an ensemble affect recovery of bound
+McNutt et al.\cite{mcnutt2023conformers} examined how choices in constructing an ensemble affect recovery of bound
 conformations, pharmacophore screening, and molecular docking. Their study showed that improving
 structural recovery does not necessarily improve downstream screening performance, and that the
 preferred ensemble depends on its intended use. Our study focuses on selecting a generation
 procedure for a large conformational resource. We compare a broader set of classical and learned
 methods through their structural coverage, sampling behavior, and validity. This provides evidence
 for dataset construction, while leaving performance in specific docking, screening, or learning
-tasks to separate evaluation.\cite{mcnutt2023conformers}
+tasks to separate evaluation.
 
-The available conformational datasets now span large collections of molecules. GEOM provides
-millions of energy-annotated conformers, while ChEMBL3D contains hundreds of millions of optimized
+The available conformational datasets now span large collections of molecules. GEOM\cite{axelrod2022geom} provides
+millions of energy-annotated conformers, while ChEMBL3D\cite{nikitin2025loqi} contains hundreds of millions of optimized
 geometries for drug-like compounds. These resources support learning molecular geometry, but their
 size alone does not establish how well their ensembles cover conformations observed in protein
 complexes. A geometry favored by an isolated-molecule or implicit-solvent energy model need not be
-the geometry adopted in a binding site. This motivates direct comparison with experimental
+the geometry adopted in a binding site.\cite{friedrich2018diversity} This motivates direct comparison with experimental
 structures when choosing data for applications involving protein
-binding.\cite{axelrod2022geom,nikitin2025loqi,friedrich2018diversity}
+binding.
 
-We compare generators that approach conformational sampling in different ways. RDKit uses distance
+We compare generators that approach conformational sampling in different ways. RDKit\cite{wang2020etkdg} uses distance
 geometry and experimental torsional preferences, while random torsion sampling provides a baseline
-for broad geometric exploration. Torsional Diffusion learns to generate conformers by changing
-torsion angles. LoQI is trained on low-energy conformations, and Qwen generates a molecular
-coordinate representation autoregressively. MCF, NExT-Mol, and FlowR broaden the panel of learned
+for broad geometric exploration. Torsional Diffusion\cite{jing2022torsional} learns to generate conformers by changing
+torsion angles. LoQI\cite{nikitin2025loqi} is trained on low-energy conformations, and Qwen generates a molecular
+coordinate representation autoregressively. MCF,\cite{wang2024mcf} NExT-Mol,\cite{liu2025nextmol} and FlowR\cite{cremer2025flowr} broaden the panel of learned
 methods. These categories describe different aspects of the methods and are not mutually exclusive.
 The comparison concerns the evaluated generation procedures, including their training data and
 processing steps, rather than architecture
-alone.\cite{wang2020etkdg,jing2022torsional,nikitin2025loqi,wang2024mcf,liu2025nextmol,cremer2025flowr}
+alone.
 
 % \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
 \textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}
 
 We evaluate coverage of multiple bound conformations using a cleaned panel of 22 molecules
-selected from PLINDER, an annotated collection of protein--ligand complexes from the Protein
+selected from PLINDER,\cite{durairaj2024plinder} an annotated collection of protein--ligand complexes from the Protein
 Data Bank. For each molecule, the same generated ensemble is compared with all retained
-experimental references. Complementary single-reference evaluations use CASF core and ref.
+experimental references. Complementary single-reference evaluations use CASF\cite{su2019casf} core and ref.
 Matching CASF-2016 ligands to ChEMBL3D by identity and stereochemistry, followed by eligibility
 filtering, yields a core panel of 94 entries with stored conformers for comparison; the larger
 ref panel contains 1,236 entries. We compare generators at candidate budgets matched to the
 ChEMBL3D counts and at a larger target of 1,000 candidates per molecule.
-\cite{su2019casf,durairaj2024plinder}
 
 These experiments distinguish recovery of one bound conformation from coverage of several
 observations of the same molecule. We also measure sample precision, the proportion of generated

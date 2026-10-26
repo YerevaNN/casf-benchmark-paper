@@ -1,5 +1,5 @@
 {
-  "description": "Current display hashes after consolidating shared protocol details in Methods and shortening repeated captions and notes; scientific measurements are unchanged.",
+  "description": "Current display hashes after citation-placement edits; scientific measurements and figure artwork are unchanged.",
   "casf_baseline_commit": "c797287",
   "files": {
     "AGENTS.md": "1863dad0add35fbe91d2f3a045c2b0af06d7b5c8792b239bbcddb4a9fe42a7cc",
@@ -54,10 +54,10 @@
     "figures/figure-plinder-combined.pdf": "48e4deba3e041089ac4b0654ea1679fc63b7e5e8644a592b2aa5833296b76e36",
     "figures/figure-plinder-combined.png": "2e0d76fa0fb9fe6628fcd25dec73efb826b09abf9c55eee861ec60697c68a2d8",
     "figures/figure-plinder-combined.svg": "bd416074b92344c7b4e3fa0e2574c7e0b8b4f13834cdde449bbaf0ee30262b9e",
-    "introduction.tex": "2d3109ec77cefc2f22c4955fe2161c46762bad9d40da0424a9a01431b921aa5d",
+    "introduction.tex": "ffc66bee19721a84cfdab7568569f4616d9d50b0c2366556888a44ad5b769f2c",
     "method-data/plinder22-molecules.csv": "e39c82600c8b24dbed1dd09925cd25ac6ddab263515a44fe494720bcab372fe7",
     "method-data/plinder23-molecules.csv": "a831c7f7f71500c44ed557e345ac2c4424144e5e91fc95e5d6700cef7d3c24d3",
-    "methods.tex": "5f6e8570c9460023560a62dc76e0fb4f54d5ac77a135dbfda1b1a137079e72cb",
+    "methods.tex": "ddedd5dc10ebfeb44608cb36356958f9738bc5622305f735ba50e2bd1ac5bf67",
     "plinder22-data/README.md": "86bfe5d802c45df25095e09d82507aaadf456c77cb2e47f4dbe36ce21415420c",
     "plinder22-data/build_inventory.py": "6b074a9a37421523f517c0d46278b03bca093c8df801bf70fa18eb8147978dee",
     "plinder22-data/entries.json": "5938915dd23bca87afa0f7209229a85261e76bb0761c38c8ad537cd3389ffcd9",
@@ -98,7 +98,7 @@
     "results-data/three-dataset-tables/plot_casf.py": "d0f15a0292df175b955987fba02d841294e246405b4976cfce8dbc44ba858a46",
     "results-data/three-dataset-tables/table1.csv": "3696257fe73eb7b9c71d8a328f924ac9bad43c1f5a97a64fc588abb7bf7a75ae",
     "results-data/three-dataset-tables/table2.csv": "f22d14ac54a78d05bb6ff8799be58216fd5a5bacbf017edf70fc3b7aaab2664f",
-    "results.tex": "b82b8b4c0b0da45b81be02e62ac295c0af41e4a6aee0b479bdbbcc5f55bdc6b7",
+    "results.tex": "69c3c53b93bc78cc486b15f5d2ca2c4b9988567a5eac3d86057466e9341c0969",
     "sampling-data/palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
     "tables/count-recovery.tex": "36166170fdbf447cbd1622db9ef6cc7f25f00687161cc8220d2452415d368e2a",
     "tables/diversity.tex": "4b1139bbb39b7dd0116b8e1ffa5e041cedb304cd9457baae331c7e81eaba47e9",

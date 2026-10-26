@@ -17,10 +17,9 @@ interactions.
 
 \subsection{Experimental references and the ChEMBL3D comparison}
 
-We compare generated and existing conformer ensembles using CASF-2016, a curated dataset of 285
+We compare generated and existing conformer ensembles using CASF-2016,\cite{su2019casf} a curated dataset of 285
 protein--ligand crystal complexes. The bound ligand geometries provide experimental references for
 assessing whether a protein-independent ensemble includes an observed conformation.
-\cite{su2019casf}
 
 We match CASF ligands to ChEMBL3D by molecular connectivity and stereochemistry, retaining only
 conformers of the matching stereoisomer. Molecules must have a usable reference structure, a
@@ -41,12 +40,12 @@ space. The analysis permits a deterministic cap of 2,000 stored conformers for t
 reference entry, 1tlp, when its available ensemble exceeds that size.
 
 The multiple-reference evaluation uses a cleaned panel of 22 ligand identities derived from an initial 23-molecule selection from PLINDER
-release 2024-06/v2, an annotated resource of protein--ligand complexes from the Protein Data Bank.
+release 2024-06/v2,\cite{durairaj2024plinder} an annotated resource of protein--ligand complexes from the Protein Data Bank.
 Records in the ligand-per-system table were grouped by full InChIKey so that different stereoisomers
 remained separate. Of 51,280 starting identities, 25,392 passed an RDKit-based physicochemical
 screen requiring molecular weight 150--650 Da, cLogP $-$1 to 6, and limits on polarity, hydrogen
 bonding, flexibility, charge, and elemental composition. The full criteria are given in Supporting
-Table S5. \cite{durairaj2024plinder}
+Table S5.
 
 Survivors were ranked by the number of distinct PDB entries, with PLINDER-system count as the
 secondary ordering. Distinct PDB entries were preferred because one multimeric structure can
@@ -84,9 +83,9 @@ and processing. These methods differ in training data and inference procedures a
 architecture, so the comparison evaluates the resulting generation pipelines rather than isolating
 any single modeling choice.
 
-RDKit ETKDGv3 generates conformers from the molecular graph using distance geometry and
+RDKit ETKDGv3\cite{wang2020etkdg} generates conformers from the molecular graph using distance geometry and
 experimental torsional preferences, with stereochemistry enforced. We compare the generated
-coordinates with a second pipeline that adds MMFF94s minimization.\cite{wang2020etkdg} The random
+coordinates with a second pipeline that adds MMFF94s\cite{halgren1999mmff94s} minimization. The random
 torsion baseline instead perturbs eligible torsions in a stored matched geometry, with
 displacements sampled uniformly within $\pm120^\circ$, and rejects severe steric clashes. In CASF, its
 minimized variant adds MMFF94s optimization and a further clash check. Raw and minimized pipelines
@@ -100,13 +99,13 @@ PLINDER minimization procedure is described below.
 % independent seed if necessary.
 
 The learned methods represent complementary approaches to conformational sampling. Torsional
-Diffusion generates conformers by updating torsion angles, while LoQI learns low-energy geometries
+Diffusion\cite{jing2022torsional} generates conformers by updating torsion angles, while LoQI\cite{nikitin2025loqi} learns low-energy geometries
 from ChEMBL3D using stereochemistry-aware coordinate
-diffusion.\cite{jing2022torsional,nikitin2025loqi} MCF models molecular coordinates as fields over
-a graph representation, and NExT-Mol DMT-L uses a coordinate diffusion transformer; the evaluated
-DMT-L adapter does not use the optional MoLlama component.\cite{wang2024mcf,liu2025nextmol} FlowR
+diffusion. MCF\cite{wang2024mcf} models molecular coordinates as fields over
+a graph representation, and NExT-Mol DMT-L\cite{liu2025nextmol} uses a coordinate diffusion transformer; the evaluated
+DMT-L adapter does not use the optional MoLlama component. FlowR\cite{cremer2025flowr}
 uses flow matching in a ligand-only configuration with the molecular graph held fixed, followed by
-force-field cleanup and stereochemistry checks.\cite{cremer2025flowr} Their representations,
+force-field cleanup and stereochemistry checks. Their representations,
 training resources, and preparation steps are summarized in Supporting Table S8.
 
 Qwen represents autoregressive generation of a molecular coordinate representation conditioned on
@@ -160,10 +159,10 @@ sampling within the available pools; they do not extrapolate beyond them.
 
 \subsection{Molecular identity and structural validity}
 
-For the CASF comparison, we retain conformers that pass the specified PoseBusters checks for
+For the CASF comparison, we retain conformers that pass the specified PoseBusters\cite{buttenschoen2024posebusters} checks for
 molecular identity, stereochemistry, and intramolecular geometry. These assess chemical
 consistency, bond lengths and angles, steric clashes, planarity, and excessive strain relative to
-a reference conformer ensemble.\cite{buttenschoen2024posebusters} No protein-contact checks are
+a reference conformer ensemble. No protein-contact checks are
 used. Passing these checks does not guarantee compatibility with a receptor or uniformly favorable
 energies under the separate energy analysis.
 
@@ -204,7 +203,7 @@ statistic is reported for all three panels.
 
 \subsection{Energy analysis}
 
-We evaluate the retained CASF core and ref ChEMBL-count ensembles with MMFF94s\cite{halgren1999mmff94s} in RDKit 2025.09.6, using a common hydrogen
+We evaluate the retained CASF core and ref ChEMBL-count ensembles with MMFF94s in RDKit 2025.09.6, using a common hydrogen
 preparation for every method. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
 energy is calculated without optimizing either hydrogen or heavy-atom positions. This preserves the conformations used for
 clustering and recovery and avoids differences arising from whether a generator supplied
