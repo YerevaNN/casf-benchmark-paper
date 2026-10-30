@@ -58,13 +58,13 @@ with np.load(HERE / 'nearest-distances.npz', allow_pickle=False) as archive:
                 scale = 100 if dest == 'largest_percent' or dest.startswith('recovery') else 1
                 np.testing.assert_allclose(row[dest],scale*group[source].mean(),rtol=0,atol=1e-12)
 
-# CASF values remain the approved pre-refresh snapshot, including numeric text precision.
+# Core values remain the approved snapshot. Ref is checked against its selected cohort.
 for number in [1,2,3]:
     path = f'jcim-overleaf/results-data/three-dataset-tables/table{number}.csv'
     prior = subprocess.check_output(['git','show',f'c797287:{path}'],cwd=REPO,text=True)
     old = list(csv.DictReader(io.StringIO(prior)))
     new = list(csv.DictReader((REPO/path).open()))
-    assert [r for r in old if r['cohort'] != 'plinder'] == [r for r in new if r['cohort'] != 'plinder']
+    assert [r for r in old if r['cohort'] == 'core'] == [r for r in new if r['cohort'] == 'core']
 # Verify rendered table cell text against CSVs (including all missing cells).
 for number,name,columns in [(1,'diversity',['clusters_0p5','clusters_1p0','largest_percent']),
                             (2,'count-recovery',['recovery_0p5','recovery_0p75','distance'])]:
@@ -125,4 +125,4 @@ for root in ['acs-template.tex','supporting-information.tex']:
     citations={key.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',text) for key in group.split(',')}
     assert citations.issubset(bibkeys),(root,citations-bibkeys)
     print(f'{root}: {len(seen)} source files, {len(labels)} labels, {len(refs)} references, {len(citations)} citations checked.')
-print('Verified 220 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged CASF data.')
+print('Verified 220 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged CASF core data.')

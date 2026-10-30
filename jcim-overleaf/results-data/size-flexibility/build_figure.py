@@ -14,7 +14,7 @@ PAPER = OUT.parents[1]
 styles = json.loads((PAPER/'sampling-data/palette.json').read_text())
 name_to_key = {v[0]:k for k,v in styles.items()}
 ink = '#29323C'
-TITLES = {'core':'CASF core (94)', 'ref':'CASF ref (1,236)'}
+TITLES = {'core':'CASF core (94)', 'ref':'CASF ref (1,044)'}
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':7.4,'pdf.fonttype':42,
                     'svg.fonttype':'none','svg.hashsalt':'size-flexibility-three-datasets',
                     'text.color':ink,'axes.labelcolor':ink,'savefig.facecolor':'white'})
@@ -25,7 +25,7 @@ keys=[name_to_key[m] for m in order]
 size=pd.read_csv(OUT/'casf-size-source.csv');flex=pd.read_csv(OUT/'casf-flexibility-source.csv')
 strata=[]
 groups={'size':['<20','20-29','30-39','40+'],'rotors':['0-3','4-6','7-8','9+']}
-for cohort,total in [('core',94),('ref',1236)]:
+for cohort,total in [('core',94),('ref',1044)]:
     for key in keys:
         method=key if key=='chembl3d_gt_pb' else key+'_fixed'
         for descriptor,source,col in [('size',size,'heavy_atoms'),('rotors',flex,'rotors')]:
@@ -91,9 +91,9 @@ sources = [OUT/'casf-size-source.csv', OUT/'casf-flexibility-source.csv',
            PAPER/'sampling-data/palette.json', PAPER/'results-data/three-dataset-tables/table1.csv']
 (OUT/'provenance.json').write_text(json.dumps({
     'sources':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
-    'datasets':['CASF core94','CASF ref1236'],
+    'datasets':['CASF core94','CASF ref1044'],
     'aggregation':'CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.',
     'qwen':'Original Qwen 1.7B FSQ step47023; no retrained outputs substituted.',
-    'checks':['All 88 existing CASF core cells reproduced','CASF group denominators sum to 94/1236']
+    'checks':['All 88 existing CASF core cells reproduced','CASF group denominators sum to 94/1044']
 },indent=2)+'\n')
 print('Built Figure 5 for CASF core/ref; all 88 original core cells reproduced.')

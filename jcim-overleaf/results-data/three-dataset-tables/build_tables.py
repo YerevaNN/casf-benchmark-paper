@@ -55,7 +55,7 @@ def write(name, caption, ref, columns, head, body, notes):
 rank_note = 'Bold/underlined: best/second best. '
 seed_note = r'$\dagger$ Reference-seeded. '
 group_head = [
-    r' & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,236)}} \\',
+    r' & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,044)}} \\',
     r'\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}',
 ]
 columns = r'@{\extracolsep{\fill}}lrrr@{\hspace{8pt}}rrr@{\hspace{8pt}}rrr@{}'
@@ -111,7 +111,7 @@ write('count-recovery.tex', 'Recovery of observed bound conformations across thr
 data = read(3)
 fixed = [r for r in data if r['cohort'] == 'core' and r['budget'] == 'fixed']
 methods = [r['method'] for r in sorted(fixed, key=lambda r: number(r, 'distance'), reverse=True)] + [BASELINE]
-head = [r' & & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,236)}} \\',
+head = [r' & & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,044)}} \\',
         r'\cmidrule(lr){3-5}\cmidrule(l){6-8}',
         r'\textbf{Method} & \textbf{Target} & ' + ' & '.join([r'Best RMSD $\downarrow$',
                              r'Hit@0.75 $\uparrow$', r'C0.5 $\uparrow$'] * 2) + r' \\']

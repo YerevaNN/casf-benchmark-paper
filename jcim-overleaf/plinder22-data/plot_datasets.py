@@ -23,7 +23,7 @@ box(.73,.67,.25,.27,'Coverage and precision','1,067 deduplicated references\nMul
 arrow((.28,.805),(.365,.805));arrow((.635,.805),(.72,.805))
 ax.text(.5,.59,'Full supplied ensembles · equal molecule weights · validity assessed separately',ha='center',color='#626C78',fontsize=8.5)
 box(.02,.15,.25,.27,'CASF + ChEMBL3D','Identity and stereochemistry\nmatching; eligibility filters',blue)
-box(.375,.15,.25,.27,'Core: 94 · Ref: 1,236','Stored ChEMBL3D ensembles\nprovide the comparison',blue)
+box(.375,.15,.25,.27,'Core: 94 · Ref: 1,044','Stored ChEMBL3D ensembles\nprovide the comparison',blue)
 box(.73,.15,.25,.27,'Reference recovery','One bound geometry\nper CASF entry',blue)
 arrow((.28,.285),(.365,.285));arrow((.635,.285),(.72,.285))
 ax.text(.5,.06,'ChEMBL-count and 1,000-candidate targets · PoseBusters-filtered ensembles',ha='center',color='#626C78',fontsize=8.5)

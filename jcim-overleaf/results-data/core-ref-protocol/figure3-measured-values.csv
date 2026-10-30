@@ -21,25 +21,25 @@ core,FlowR,energy,11.590867674680114
 core,Torsion raw,energy,40.50150047575613
 core,Qwen 1.7B FSQ,energy,17.64133832359883
 core,ChEMBL3D-PB,energy,2.6893698646152
-ref,RDKit minimized,clusters,22.268016194331985
-ref,Torsion minimized,clusters,21.136032388663967
-ref,LoQI,clusters,22.22977346278317
-ref,MCF drugs-L,clusters,27.723177723177724
-ref,NExT-Mol DMT-L,clusters,27.66065573770492
-ref,RDKit raw,clusters,31.76456310679612
-ref,Torsional Diffusion,clusters,33.830756712774615
-ref,FlowR,clusters,41.69561688311688
-ref,Torsion raw,clusters,41.53821138211382
-ref,Qwen 1.7B FSQ,clusters,42.89967637540453
-ref,ChEMBL3D-PB,clusters,21.87864077669903
-ref,RDKit minimized,energy,3.079234372737408
-ref,Torsion minimized,energy,3.114390036853227
+ref,RDKit minimized,clusters,22.980824544582934
+ref,Torsion minimized,clusters,22.08724832214765
+ref,LoQI,clusters,23.07758620689655
+ref,MCF drugs-L,clusters,28.975775193798448
+ref,NExT-Mol DMT-L,clusters,28.73643410852713
+ref,RDKit raw,clusters,32.900383141762454
+ref,Torsional Diffusion,clusters,35.34522661523626
+ref,FlowR,clusters,44.03557692307693
+ref,Torsion raw,clusters,43.85466794995188
+ref,Qwen 1.7B FSQ,clusters,45.161877394636015
+ref,ChEMBL3D-PB,clusters,22.903256704980844
+ref,RDKit minimized,energy,3.1213845711390595
+ref,Torsion minimized,energy,3.200824214503184
 ref,LoQI,energy,3.25986824777571
-ref,MCF drugs-L,energy,4.865482249896108
-ref,NExT-Mol DMT-L,energy,4.76242116533578
-ref,RDKit raw,energy,9.285811744836284
-ref,Torsional Diffusion,energy,19.31294508296865
-ref,FlowR,energy,8.485282804767357
-ref,Torsion raw,energy,27.589577210727757
-ref,Qwen 1.7B FSQ,energy,13.72606804942751
-ref,ChEMBL3D-PB,energy,2.7880779081516427
+ref,MCF drugs-L,energy,4.941944106018479
+ref,NExT-Mol DMT-L,energy,4.839552941657205
+ref,RDKit raw,energy,9.18510120230761
+ref,Torsional Diffusion,energy,20.90120736010154
+ref,FlowR,energy,9.037717281142488
+ref,Torsion raw,energy,31.108173747706363
+ref,Qwen 1.7B FSQ,energy,14.33278488674356
+ref,ChEMBL3D-PB,energy,2.837514504371126

@@ -1,5 +1,15 @@
 # Current three-dataset table sources
 
+## Current ref data, 30 October 2026
+
+All ref rows now use the 1,044-crystal panel from the published `ref_dedup`
+cohort. The paper calls it ref. Core and PLINDER rows are unchanged. Current
+ref inputs, the one-crystal-per-identity selection manifest, delta audit, and
+numerical checks are in `../ref-panel/`. Rebuild Tables 1–3 with `build_tables.py`
+and Figure 2 with `plot_casf.py`. The older source descriptions below record
+previous exports and are superseded for ref by this update.
+
+
 ## Refined wide layout, 22 October 2026
 
 The author selected option A: shorter headers, full-width tabular spacing,

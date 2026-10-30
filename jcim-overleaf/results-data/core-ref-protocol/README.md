@@ -2,8 +2,10 @@
 
 This archive supplies Figures 3, 4, and B1 and Supporting Table S9, integrated
 on 26 October 2026 from the approved completed previews. Figure colors, method
-orders, paired dataset layout, scales, and values are preserved; review-only
-preview subtitles are removed. Main Tables 1–4 are unchanged.
+orders, paired dataset layout, and scales are preserved; review-only
+preview subtitles are removed. The 30 October update replaces all ref inputs with the published 1,044-crystal
+selection; current selection provenance is in `../ref-panel/`. Tables 1–3 are
+updated consistently; Table 4 remains unchanged.
 
 ## Reproduction
 
@@ -20,7 +22,8 @@ The renderer reads only files in the paper repository. No database access,
 force-field calculation, new sampling, or network access is needed to render.
 `provenance.json` records the manuscript-relative input paths and SHA-256 hashes.
 `approved-preview-provenance.json` retains the original preview input hashes,
-including the independently checked public-dashboard database hash.
+including the independently checked original public-dashboard database hash.
+The current selected-cohort database hash is in `../ref-panel/provenance.json`.
 
 ## Inputs and calculation lineage
 
@@ -65,24 +68,26 @@ for the final energy pools. All energies shown here are newly evaluated under
 the common protocol, rather than copied from those identity-check records.
 
 Core has 77,986 finite energies and three empty method–entry outputs. Ref has
-835,972 finite energies out of 835,973 retained conformers and 50 empty outputs.
+734,206 finite energies out of 734,207 retained conformers and 42 empty outputs.
 The one undefined ref energy is in FlowR entry `2qm9_2qm9_conf0`; it is omitted
 from its ensemble's energy moments and counted explicitly. Finite outliers,
-including the large ref LoQI mean SD, remain in the summaries. Scientific notation
+remain in the summaries. The extreme LoQI mean SD from the older ref panel
+does not occur in the selected panel. Scientific notation
 in S9 shortens the printed value without changing the calculation.
 
 Sampling uses exact uniform subsets of the saved pre-PoseBusters candidate pools,
 with rejected candidates consuming budget and empty retained pools contributing
 zero recovery. Budgets are capped at available candidate counts. Each dataset
-uses all its entries with equal weight: 94 core or 1,236 ref. There are 63 distinct
+uses all its entries with equal weight: 94 core or 1,044 ref. There are 63 distinct
 budgets from 10 to 1,000; the frontier inverts expected recovery over observed RMSD
 values. Confidence intervals from 2,000 paired bootstrap resamples (seed 20261006)
-are archived but not drawn. Ref contains 12,351,409 candidates and 11,597,494
-retained conformers with finite reference RMSDs. Its full-pool endpoints agree
+are archived but not drawn. The ref curves use the selected crystals from the same saved candidate pools.
+Their full-pool endpoints agree
 with the published database; the core protocol reproduces archived curves and
 intervals within 1e-14 in the upstream parity audit.
 
-The completed figure values are checked against the approved previews. S9 core
+Current ref figure values are checked against the published selected-cohort
+rows and archived per-entry values; core retains its previously approved values. S9 core
 values retain their prior rounding; ref rows are aggregated from the archived
 per-entry results. Source citation/cross-reference checks accompany the edit.
 No local manuscript compilation is performed; Overleaf is the review target.

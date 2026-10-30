@@ -15,7 +15,7 @@ PAPER = OUT.parents[1]
 DATA = PAPER / 'results-data/three-dataset-tables'
 STYLE = json.loads((PAPER / 'sampling-data/palette.json').read_text())
 KEYS = {value[0]: key for key, value in STYLE.items()}
-TITLES = {'core': 'CASF core · 94 entries', 'ref': 'CASF ref · 1,236 entries'}
+TITLES = {'core': 'CASF core · 94 entries', 'ref': 'CASF ref · 1,044 entries'}
 INK, MUTED = '#29323C', '#626C78'
 plt.rcParams.update({
     'font.family': 'DejaVu Sans', 'font.size': 9, 'axes.titlesize': 10,
@@ -30,6 +30,7 @@ inputs = [DATA / 'table3.csv', PAPER / 'energy-data/summary.csv',
           PAPER / 'energy-data/protocol.json', PAPER / 'sampling-data/palette.json',
           PAPER / 'sampling-data/recovery_curves.csv', PAPER / 'sampling-data/recovery80_frontier.csv',
           PAPER / 'sampling-data/reference.json', PAPER / 'sampling-data/display.json']
+inputs.append(PAPER / 'results-data/ref-panel/provenance.json')
 table3 = pd.read_csv(inputs[0])
 energy = pd.read_csv(inputs[1])
 ref_results = OUT / "ref"
@@ -188,7 +189,8 @@ save(fig,'figure-budget-combined')
 for fig in figures:
     plt.close(fig)
 (OUT/'provenance.json').write_text(json.dumps({
-    'analysis_commit':'5090d110671731fefbe31c81fb65258c178e6304',
+    'original_protocol_commit':'5090d110671731fefbe31c81fb65258c178e6304',
+    'current_ref_source':'results-data/ref-panel/provenance.json',
     'release':'https://github.com/YerevaNN/casf-benchmark/releases/tag/dashboard-data-ref-protocol-v1',
     'source_hashes':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
     'figure3':'Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.',

@@ -6,11 +6,11 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-21T02:27:11.448474</dc:date>
+    <dc:date>2026-10-30T15:49:56.380198</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -40,7 +40,7 @@ Q 19.9296 67.531968 19.9296 73.043208
 L 19.9296 170.041032
 Q 19.9296 175.552272 30.2976 175.552272
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 275.6736 175.552272
@@ -53,7 +53,7 @@ Q 265.3056 67.531968 265.3056 73.043208
 L 265.3056 170.041032
 Q 265.3056 175.552272 275.6736 175.552272
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 521.0496 175.552272
@@ -66,7 +66,7 @@ Q 510.6816 67.531968 510.6816 73.043208
 L 510.6816 170.041032
 Q 510.6816 175.552272 521.0496 175.552272
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #00866b; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 30.2976 366.608592
@@ -79,7 +79,7 @@ Q 19.9296 258.588288 19.9296 264.099528
 L 19.9296 361.097352
 Q 19.9296 366.608592 30.2976 366.608592
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 275.6736 366.608592
@@ -92,7 +92,7 @@ Q 265.3056 258.588288 265.3056 264.099528
 L 265.3056 361.097352
 Q 265.3056 366.608592 275.6736 366.608592
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 521.0496 366.608592
@@ -105,7 +105,7 @@ Q 510.6816 258.588288 510.6816 264.099528
 L 510.6816 361.097352
 Q 510.6816 366.608592 521.0496 366.608592
 z
-" clip-path="url(#p0d4052595a)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p55537d2482)" style="fill: #f5f8fa; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #00866b" x="114.624" y="100.768876" transform="rotate(-0 114.624 100.768876)">PLINDER</text>
@@ -159,7 +159,7 @@ z
     <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #29323c" transform="translate(55.835016 335.6851)">matching; eligibility filters</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #0072b2" x="360" y="291.825196" transform="rotate(-0 360 291.825196)">Core: 94 · Ref: 1,236</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #0072b2" x="360" y="291.825196" transform="rotate(-0 360 291.825196)">Core: 94 · Ref: 1,044</text>
    </g>
    <g id="text_11">
     <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #29323c" transform="translate(293.410547 324.239351)">Stored ChEMBL3D ensembles</text>
@@ -201,7 +201,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p0d4052595a">
+  <clipPath id="p55537d2482">
    <rect x="14.4" y="49.896" width="691.2" height="367.416"/>
   </clipPath>
  </defs>

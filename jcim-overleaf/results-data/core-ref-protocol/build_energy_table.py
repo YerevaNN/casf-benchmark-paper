@@ -43,7 +43,7 @@ lines.append(r'''\end{tabular*}
 \begin{minipage}{\linewidth}
 $n$: ensembles included. Energy SD: within-ensemble population standard deviation. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
 
-Finite energies were obtained for all 77,986 retained core conformers and 835,972 of 835,973 retained ref conformers. The undefined energy belongs to FlowR. The large ref LoQI mean SD includes finite extreme values.
+Finite energies were obtained for all 77,986 retained core conformers and 734,206 of 734,207 retained ref conformers. The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
 \end{minipage}
 \end{table}''')
 (PAPER / 'tables/energy-summary.tex').write_text('\n'.join(lines) + '\n')

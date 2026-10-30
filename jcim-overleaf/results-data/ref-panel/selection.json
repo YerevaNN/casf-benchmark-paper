@@ -1,0 +1,16 @@
+{
+  "algorithm": "Within each casf_heavy_isomeric_smiles group, select the candidate with the smallest SHA256 hex digest of seed + tab + smiles + tab + ligand_id. Remaining ties break by ligand_id. Rank 1 is selected. The procedure does not read model outputs or RMSDs.",
+  "entries_in_multi_crystal_compounds": 306,
+  "excluded_entries": 192,
+  "mappings_agree": true,
+  "multi_crystal_compounds": 114,
+  "seed": "casf-ref-dedup-v1-20261030",
+  "selected_entries": 1044,
+  "selection_version": "casf-ref-dedup-v1",
+  "source_intersection_csv": "data/mapping/casf16_ref_chembl3d_exact_intersection.csv",
+  "source_intersection_sha256": "ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c",
+  "total_entries": 1236,
+  "unique_smiles": 1044,
+  "weka_intersection_csv": "/mnt/weka/mbedrosian/data/casf16/casf16_ref_chembl3d_exact_intersection.csv",
+  "weka_intersection_sha256": "ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c"
+}

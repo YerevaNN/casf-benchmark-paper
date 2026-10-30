@@ -1,0 +1,57 @@
+{
+  "database": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite",
+  "database_sha256": "006cf341dcee90e51296b6bd7b2763d18369026404f9b2642a05078012a9af0b",
+  "database_cohort": "ref_dedup",
+  "manuscript_cohort": "ref",
+  "selection": {
+    "algorithm": "Within each casf_heavy_isomeric_smiles group, select the candidate with the smallest SHA256 hex digest of seed + tab + smiles + tab + ligand_id. Remaining ties break by ligand_id. Rank 1 is selected. The procedure does not read model outputs or RMSDs.",
+    "entries_in_multi_crystal_compounds": 306,
+    "excluded_entries": 192,
+    "mappings_agree": true,
+    "multi_crystal_compounds": 114,
+    "seed": "casf-ref-dedup-v1-20261030",
+    "selected_entries": 1044,
+    "selection_version": "casf-ref-dedup-v1",
+    "source_intersection_csv": "data/mapping/casf16_ref_chembl3d_exact_intersection.csv",
+    "source_intersection_sha256": "ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c",
+    "total_entries": 1236,
+    "unique_smiles": 1044,
+    "weka_intersection_csv": "/mnt/weka/mbedrosian/data/casf16/casf16_ref_chembl3d_exact_intersection.csv",
+    "weka_intersection_sha256": "ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c"
+  },
+  "counts": {
+    "entries": 1044,
+    "unique_stereochemical_smiles": 1044,
+    "parent_compounds": 1042,
+    "shared_parent_compounds_core": 17,
+    "measurable_count_min": 1032,
+    "measurable_count_max": 1044,
+    "retained_energy_conformers": 734207,
+    "finite_energy_conformers": 734206,
+    "undefined_energies": 1,
+    "empty_energy_ensembles": 42
+  },
+  "protocol": [
+    {
+      "n_entries": 1044,
+      "protocol": "derived-casf-ref-dedup-v1; common-H-MMFF94s-v1; exact-pre-PB-finite-pool-v1",
+      "provenance_json": "{\n  \"algorithm\": \"Within each casf_heavy_isomeric_smiles group, select the candidate with the smallest SHA256 hex digest of seed + tab + smiles + tab + ligand_id. Remaining ties break by ligand_id. Rank 1 is selected. The procedure does not read model outputs or RMSDs.\",\n  \"entries_in_multi_crystal_compounds\": 306,\n  \"excluded_entries\": 192,\n  \"mappings_agree\": true,\n  \"multi_crystal_compounds\": 114,\n  \"seed\": \"casf-ref-dedup-v1-20261030\",\n  \"selected_entries\": 1044,\n  \"selection_version\": \"casf-ref-dedup-v1\",\n  \"source_intersection_csv\": \"data/mapping/casf16_ref_chembl3d_exact_intersection.csv\",\n  \"source_intersection_sha256\": \"ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c\",\n  \"total_entries\": 1236,\n  \"unique_smiles\": 1044,\n  \"weka_intersection_csv\": \"/mnt/weka/mbedrosian/data/casf16/casf16_ref_chembl3d_exact_intersection.csv\",\n  \"weka_intersection_sha256\": \"ddc132826f6bd9941b23fc08bdf0816f48ad9158a36cabb5b6fe3c476a76368c\"\n}\n",
+      "source_hashes_json": "{\"selection_manifest_sha256\": \"991d9565e87b8a5601fd55e8cc73c7f0337951c59a81204f91063d1bfa367e4f\", \"candidate_rmsds_sha256\": \"5332e6801f9e8a27589bf46f574fabd1143b665f4b3742090b4fb18b494c114d\", \"selection_seed\": \"casf-ref-dedup-v1-20261030\", \"selection_version\": \"casf-ref-dedup-v1\"}"
+    }
+  ],
+  "methods": {
+    "RDKit minimized": "rdkit_random_minimized",
+    "Torsion minimized": "torsion_minimized",
+    "LoQI": "loqi_raw",
+    "MCF drugs-L": "mcf_drugs_l_raw",
+    "NExT-Mol DMT-L": "nextmol_dmt_l_raw",
+    "RDKit raw": "rdkit_random_raw",
+    "Torsional Diffusion": "torsional_diffusion_raw",
+    "FlowR": "flowr_raw",
+    "Torsion raw": "torsion_raw",
+    "Qwen 1.7B FSQ": "qwen_1p7b_fsq_bigdata_step47023",
+    "ChEMBL3D-PB": "chembl3d_gt_pb"
+  },
+  "geometric_recalculation": false,
+  "core_and_plinder_preserved": true
+}

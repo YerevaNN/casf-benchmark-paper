@@ -1,8 +1,9 @@
 {
-  "analysis_commit": "5090d110671731fefbe31c81fb65258c178e6304",
+  "original_protocol_commit": "5090d110671731fefbe31c81fb65258c178e6304",
+  "current_ref_source": "results-data/ref-panel/provenance.json",
   "release": "https://github.com/YerevaNN/casf-benchmark/releases/tag/dashboard-data-ref-protocol-v1",
   "source_hashes": {
-    "results-data/three-dataset-tables/table3.csv": "59620659fa43708ea9069bfa6ea10090e43fbe9ed0f81f93f121dd2bb3cfc033",
+    "results-data/three-dataset-tables/table3.csv": "8378ce49df9df4dd24d34611805e688d1b9ebc47ddff21fe9aee2cc563f88643",
     "energy-data/summary.csv": "b82c254034b58c018cce657dc3db455643f6e6de6421aa5c8351beabcdf43f36",
     "energy-data/protocol.json": "1c90ef8bae82fbfebb174b682096eb71dcbbdf880b18d9cb820d600631bba0a6",
     "sampling-data/palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
@@ -10,12 +11,13 @@
     "sampling-data/recovery80_frontier.csv": "69e6557229089e217cf152b8411fbf01e7603f1bb4dd5090ab5ea166949e88c1",
     "sampling-data/reference.json": "d60c1499c65ee5d0b528ff3ed6af4841724e926be24f824b019e2fe2f8691031",
     "sampling-data/display.json": "6b9fddc63da394a44aaa4f982fe70fbd32bb686c2b1ec0cf2255ee2b6b684638",
-    "results-data/core-ref-protocol/ref/summary.csv": "e1596aa183b4cfdd7d5197b2dfc5d8445a47b62f87be9777341823470d7f07c6",
-    "results-data/core-ref-protocol/ref/provenance.json": "a8dde09253018bdf925c28f1c0279bd9eaa8118da75354cacc0a4aa1f2c5739d",
-    "results-data/core-ref-protocol/ref/recovery_curves.csv": "134f9b8f3c9477e9f00eaebac3718396c3d6d978b7fe2631565ee1e9d5b269a7",
-    "results-data/core-ref-protocol/ref/recovery80_frontier.csv": "08dd206b28cefb18ea65676a39b624bac4e951a130ee101e5ed94e4c7850a2da",
-    "results-data/core-ref-protocol/ref/full-pool-endpoints.csv": "0700a69f24e414e272671e9388a1cb33e9feebcdf9779333e481597bcc2bf724",
-    "results-data/core-ref-protocol/ref/reference.json": "1de3bde0f48ccdfc68464d0dd8489a03bbad7ba1c2d0c5f051938e6e6c78f716"
+    "results-data/ref-panel/provenance.json": "514f0968f1089215039ca8fbfceccbe98c6c3c7df20176bba124986edd664ac1",
+    "results-data/core-ref-protocol/ref/summary.csv": "5876a1b5fdeb2753ebe66b0cc4e6174aa6413c791a8c43378723f6c6abb14a94",
+    "results-data/core-ref-protocol/ref/provenance.json": "121795701fc657ed34aa005b0ccffcb35bc56bb443b34e4e2f0ddef48f3ee1e2",
+    "results-data/core-ref-protocol/ref/recovery_curves.csv": "9e5ef0d547d9f980f200479d05db3cb2b0b62a60d1fcbc9169a776f3706f0267",
+    "results-data/core-ref-protocol/ref/recovery80_frontier.csv": "c7d2ec783bbaf49a6e31028d6981148f978bcd7c126a76b7ff6c5961cf77519a",
+    "results-data/core-ref-protocol/ref/full-pool-endpoints.csv": "60111a6eb172fdc765249898cb79658d9f7288835719dd314148da823caf085f",
+    "results-data/core-ref-protocol/ref/reference.json": "f6fd10e4b4f6440463272ad36e99a9e0d2efbc7b7f3c3c5a6c073ab00882ab84"
   },
   "figure3": "Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.",
   "figure4": "All core/ref endpoints from current Table 3; same method order and scales.",

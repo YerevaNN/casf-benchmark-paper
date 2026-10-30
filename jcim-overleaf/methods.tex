@@ -26,8 +26,11 @@ conformers of the matching stereoisomer. Molecules must have a usable reference 
 corresponding ChEMBL3D topology, and at least one bond eligible for torsional sampling. Selection
 is based on molecular identity rather than similarity to the experimental coordinates. These
 criteria yield 94 core complexes representing 94 ChEMBL parent compounds. Applying the same
-procedure to the larger reference collection yields 1,236 complexes representing 1,042 parent
-compounds. The collections share 17 parent compounds but no complex identifiers. Both collections
+procedure to the larger reference collection, we retain one crystal per stereochemical ligand
+identity. When an identity occurs in multiple complexes, a fixed seeded ranking selects one
+crystal independently of model outputs and recovery scores. This yields the ref panel of
+1,044 crystal complexes with distinct stereochemical ligand identities, representing 1,042
+ChEMBL parent compounds. The collections share 17 parent compounds but no complex identifiers. Both collections
 are included in the main tables and the diversity--proximity, energy, and sampling figures.
 
 For each molecule, the stored ChEMBL3D ensemble establishes how much of the experimental geometry is
@@ -172,8 +175,8 @@ used. Passing these checks does not guarantee compatibility with a receptor or u
 energies under the separate energy analysis.
 
 For some CASF method--entry pairs, every candidate is rejected. At the ChEMBL-count target,
-this leaves 92--94 measurable ensembles on core and 1,220--1,236 on ref, depending on the
-method. Recovery includes all 94 core or 1,236 ref entries, counting empty, missing, or
+this leaves 92--94 measurable ensembles on core and 1,032--1,044 on ref, depending on the
+method. Recovery includes all 94 core or 1,044 ref entries, counting empty, missing, or
 unmeasurable outputs as failures. Mean RMSD and diversity summarize entries with defined
 measurements; energy summaries additionally exclude undefined energies. Paired diversity and
 energy summaries use the same entries for each method. Mean retained counts include zeros.
@@ -295,8 +298,11 @@ generated conformer is not automatically physically inaccessible.
 \subsection{Aggregation, uncertainty, and reproducibility}
 
 The CASF tables and figures use the corrected findings archived on 24 September 2026 and the
-size-stratum export from 28 September, with the completed ref energy and sampling calculations
-archived on 22 October. PLINDER uses the cleaned reference collection and refreshed
+size-stratum export from 28 September. Ref summaries use the frozen 1,044-crystal selection
+published on 30 October 2026. The retained per-crystal measurements and common-protocol energy
+calculations are unchanged; recovery, diversity, energy summaries, size strata, and sampling
+curves are aggregated over this selection. The selection manifest and seed are archived with
+the paper data. PLINDER uses the cleaned reference collection and refreshed
 evaluations from 20 October 2026, supplemented by the finalized minimized classical runs
 and corrected raw-baseline validity checks from 23 October, and the additional Qwen 0.6B
 CASF-dedup evaluation from 26 October. The same ten CASF pipelines and the stored ChEMBL3D-PB

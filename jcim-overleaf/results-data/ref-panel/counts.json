@@ -1,0 +1,12 @@
+{
+  "entries": 1044,
+  "unique_stereochemical_smiles": 1044,
+  "parent_compounds": 1042,
+  "shared_parent_compounds_core": 17,
+  "measurable_count_min": 1032,
+  "measurable_count_max": 1044,
+  "retained_energy_conformers": 734207,
+  "finite_energy_conformers": 734206,
+  "undefined_energies": 1,
+  "empty_energy_ensembles": 42
+}

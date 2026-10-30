@@ -48,9 +48,9 @@ offsets = {
         'Torsional Diffusion':(10,7), 'MCF drugs-L':(12,9),
         'NExT-Mol DMT-L':(12,-9), 'FlowR':(-12,-4), 'Qwen 1.7B FSQ':(-12,-17)},
     'ref': {
-        'ChEMBL3D-PB':(10,-20), 'RDKit raw':(10,-24), 'RDKit minimized':(10,-12),
-        'Torsion raw':(10,7), 'Torsion minimized':(10,6), 'LoQI':(10,5),
-        'Torsional Diffusion':(16,8), 'MCF drugs-L':(10,12),
+        'ChEMBL3D-PB':(10,-20), 'RDKit raw':(10,-28), 'RDKit minimized':(10,-9),
+        'Torsion raw':(10,7), 'Torsion minimized':(10,6), 'LoQI':(10,-16),
+        'Torsional Diffusion':(10,-20), 'MCF drugs-L':(10,12),
         'NExT-Mol DMT-L':(-10,-13), 'FlowR':(12,8), 'Qwen 1.7B FSQ':(10,-17)},
 }
 fig, axes = plt.subplots(1,2,figsize=(12,5.5))
@@ -61,7 +61,7 @@ fig.text(.055,.928,'CASF core and ref · ChEMBL-count target',
          fontsize=9,color='#626C78')
 annotations=[]
 for ax, cohort, title, subtitle in zip(axes, ['core','ref'],
-        ['A   CASF core · 94 entries','B   CASF ref · 1,236 entries'],
+        ['A   CASF core · 94 entries','B   CASF ref · 1,044 entries'],
         ['','']):
     ax.set_title(title,loc='left',pad=29,fontsize=11)
     ax.text(0,1.035,subtitle,transform=ax.transAxes,ha='left',fontsize=8,color='#626C78')

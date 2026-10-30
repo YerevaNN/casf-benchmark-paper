@@ -8,27 +8,27 @@
 \par\smallskip
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{\hspace{8pt}}rrr@{\hspace{8pt}}rrr@{}}
 \toprule
- & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,236)}} \\
+ & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,044)}} \\
 \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}
 \textbf{Method} & \shortstack{COV-R\\@0.5 $\uparrow$} & \shortstack{COV-R\\@0.75 $\uparrow$} & MAT-R $\downarrow$ & \shortstack{Hit\\@0.5 $\uparrow$} & \shortstack{Hit\\@0.75 $\uparrow$} & \shortstack{Best\\RMSD $\downarrow$} & \shortstack{Hit\\@0.5 $\uparrow$} & \shortstack{Hit\\@0.75 $\uparrow$} & \shortstack{Best\\RMSD $\downarrow$} \\
 \midrule
 \rowcolor{tableShade}
-Torsion raw$^{\dagger}$ & 65.4 & 83.0 & 0.461 & 35.1 & 66.0 & 0.679 & 35.1 & 60.3 & 0.709 \\
-Torsion minimized$^{\dagger}$ & 52.5 & 88.2 & 0.484 & 46.8 & 68.1 & 0.644 & 45.9 & 65.8 & 0.647 \\
+Torsion raw$^{\dagger}$ & 65.4 & 83.0 & 0.461 & 35.1 & 66.0 & 0.679 & 34.9 & 58.7 & 0.715 \\
+Torsion minimized$^{\dagger}$ & 52.5 & 88.2 & 0.484 & 46.8 & 68.1 & 0.644 & 44.9 & 65.1 & 0.647 \\
 \rowcolor{tableShade}
-FlowR & 67.7 & 85.4 & 0.466 & 47.9 & 70.2 & 0.637 & 43.6 & 66.1 & 0.651 \\
-RDKit minimized & 51.8 & 84.0 & 0.509 & 45.7 & 70.2 & 0.618 & 48.2 & 68.9 & 0.620 \\
+FlowR & 67.7 & 85.4 & 0.466 & 47.9 & 70.2 & 0.637 & 42.3 & 64.8 & 0.655 \\
+RDKit minimized & 51.8 & 84.0 & 0.509 & 45.7 & 70.2 & 0.618 & 47.2 & 67.5 & 0.623 \\
 \rowcolor{tableShade}
-RDKit raw & 54.3 & 70.3 & 0.557 & 43.6 & 66.0 & 0.601 & 43.8 & 68.4 & 0.624 \\
-Torsional Diffusion & 69.9 & 80.2 & 0.439 & \underline{56.4} & 73.4 & 0.582 & 51.0 & 69.7 & 0.628 \\
+RDKit raw & 54.3 & 70.3 & 0.557 & 43.6 & 66.0 & 0.601 & 42.6 & 67.5 & 0.631 \\
+Torsional Diffusion & 69.9 & 80.2 & 0.439 & \underline{56.4} & 73.4 & 0.582 & 49.8 & 68.7 & 0.636 \\
 \rowcolor{tableShade}
-MCF drugs-L & 72.7 & 85.0 & 0.463 & 54.3 & 71.3 & 0.559 & 48.4 & 69.8 & 0.667 \\
-NExT-Mol DMT-L & 71.6 & 84.7 & 0.447 & 53.2 & \underline{76.6} & 0.543 & 50.8 & 70.6 & 0.642 \\
+MCF drugs-L & 72.7 & 85.0 & 0.463 & 54.3 & 71.3 & 0.559 & 48.1 & 69.8 & 0.662 \\
+NExT-Mol DMT-L & 71.6 & 84.7 & 0.447 & 53.2 & \underline{76.6} & 0.543 & 50.0 & 70.1 & 0.644 \\
 \rowcolor{tableShade}
-LoQI & \textbf{76.2} & \underline{91.8} & \underline{0.417} & \textbf{67.0} & 74.5 & \underline{0.536} & \textbf{57.6} & \underline{74.3} & \underline{0.585} \\
-Qwen 1.7B FSQ & \underline{73.9} & \textbf{93.5} & \textbf{0.360} & \underline{56.4} & \textbf{80.9} & \textbf{0.506} & \underline{53.7} & \textbf{76.3} & \textbf{0.558} \\
+LoQI & \textbf{76.2} & \underline{91.8} & \underline{0.417} & \textbf{67.0} & 74.5 & \underline{0.536} & \textbf{56.1} & \underline{73.1} & \underline{0.596} \\
+Qwen 1.7B FSQ & \underline{73.9} & \textbf{93.5} & \textbf{0.360} & \underline{56.4} & \textbf{80.9} & \textbf{0.506} & \underline{52.0} & \textbf{75.5} & \textbf{0.568} \\
 \hdashline
-ChEMBL3D-PB & --- & --- & --- & 63.8 & 78.7 & 0.525 & 59.5 & 78.7 & 0.552 \\
+ChEMBL3D-PB & --- & --- & --- & 63.8 & 78.7 & 0.525 & 58.9 & 78.3 & 0.562 \\
 \bottomrule
 \end{tabular*}
 \par\smallskip

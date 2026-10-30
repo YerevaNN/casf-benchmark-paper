@@ -1,5 +1,33 @@
 # JCIM manuscript outline
 
+## Current ref panel: 1,044 crystals, 30 October 2026
+
+The paper's ref panel is now the published `ref_dedup` cohort: one selected
+crystal per stereochemical ligand identity, with 1,044 crystals and 1,042
+ChEMBL parent compounds. Use “ref” in the manuscript, not “ref dedup” or a
+sensitivity-set label. The frozen selection is independent of model outputs;
+its seed, identity mapping and selection manifest are archived in
+`results-data/ref-panel/`. This supersedes all 1,236-entry ref counts below.
+
+Tables 1–3, S2/S3/S9, Figures 2–5/B1 and Supporting Figure S1 now use this
+selection. Core and PLINDER data, including Table 4 and Figure 6, are unchanged.
+The original Qwen 1.7B FSQ checkpoint remains in CASF comparisons. Table rankings
+are recomputed from unrounded values and ChEMBL3D remains an unranked baseline.
+Published common-protocol energies and exact sampling curves were imported;
+no conformer generation, optimization, or alignment was rerun.
+
+Recovery trends are similar, but the previously extreme ref LoQI mean energy
+SD disappears after selection. The current Results uses Torsional Diffusion
+and raw torsion as examples of high mean versus median energy spreads.
+Ref energy totals are 734,206 finite of 734,207 retained conformers, with one
+undefined FlowR energy and 42 empty method–entry outputs. Continuous count-target
+metrics have 1,032–1,044 measurable entries; recovery uses all 1,044.
+
+Reproduction and checks: `results-data/ref-panel/README.md`. Historical archives
+and dated notes may retain the superseded denominator; they must not supply
+current ref tables or figures. Figure 5 stays CASF-only.
+
+
 ## Additional Qwen run and molecule-level figure, 26 October 2026
 
 Table 4 and S4 now add Qwen 0.6B CASF-dedup binned PM12 step64000 alongside
