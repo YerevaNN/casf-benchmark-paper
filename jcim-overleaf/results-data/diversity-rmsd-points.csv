@@ -9,4 +9,4 @@ torsional_diffusion_raw_chembl_count,Torsional Diffusion,40.9468085106383,0.5820
 mcf_drugs_l_raw_chembl_count,MCF drugs-L,31.236559139784948,0.559308190727478,93
 nextmol_dmt_l_raw_chembl_count,NExT-Mol DMT-L,31.597826086956523,0.5430954450070196,92
 flowr_raw_chembl_count,FlowR,54.08510638297872,0.6371202812804084,94
-qwen_1p7b_fsq_bigdata_step47023_chembl_count,Qwen 1.7B FSQ,55.27659574468085,0.5056330030580359,94
+qwen_1p7b_v2_coordtoken_step41054_chembl_count,Qwen 1.7B FSQ,49.95744680851064,0.5351115538790734,94

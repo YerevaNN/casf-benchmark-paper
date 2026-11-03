@@ -38,12 +38,15 @@ for label, data in [('CASF core', core), ('CASF ref', ref)]:
                   number(row.median_mean_energy_delta_chembl, signed=True)]
         lines.append(' & '.join(values) + r' \\')
     lines.append(r'\midrule' if label == 'CASF core' else r'\bottomrule')
+core_per = pd.read_csv(PAPER / 'energy-data/per_molecule.csv')
+ref_per = pd.read_csv(HERE / 'ref/per_molecule.csv')
+completeness = f'Finite energies were obtained for {int(core_per.n_energy.sum()):,} of {int(core_per.n_retained.sum()):,} retained core conformers and {int(ref_per.n_energy.sum()):,} of {int(ref_per.n_retained.sum()):,} retained ref conformers.'
 lines.append(r'''\end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
 $n$: ensembles included. Energy SD: within-ensemble population standard deviation. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
 
-Finite energies were obtained for all 77,986 retained core conformers and 734,206 of 734,207 retained ref conformers. The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
+''' + completeness + r''' The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
 \end{minipage}
 \end{table}''')
 (PAPER / 'tables/energy-summary.tex').write_text('\n'.join(lines) + '\n')

@@ -64,7 +64,7 @@ for number in [1,2,3]:
     prior = subprocess.check_output(['git','show',f'c797287:{path}'],cwd=REPO,text=True)
     old = list(csv.DictReader(io.StringIO(prior)))
     new = list(csv.DictReader((REPO/path).open()))
-    assert [r for r in old if r['cohort'] == 'core'] == [r for r in new if r['cohort'] == 'core']
+    assert [r for r in old if r['cohort'] == 'core' and r['method'] != 'Qwen 1.7B FSQ'] == [r for r in new if r['cohort'] == 'core' and r['method'] != 'Qwen 1.7B FSQ']
 # Verify rendered table cell text against CSVs (including all missing cells).
 for number,name,columns in [(1,'diversity',['clusters_0p5','clusters_1p0','largest_percent']),
                             (2,'count-recovery',['recovery_0p5','recovery_0p75','distance'])]:
@@ -125,4 +125,4 @@ for root in ['acs-template.tex','supporting-information.tex']:
     citations={key.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',text) for key in group.split(',')}
     assert citations.issubset(bibkeys),(root,citations-bibkeys)
     print(f'{root}: {len(seen)} source files, {len(labels)} labels, {len(refs)} references, {len(citations)} citations checked.')
-print('Verified 220 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged CASF core data.')
+print('Verified 220 PLINDER method–molecule rows, all curves, table cells, inventory and unchanged non-Qwen CASF core data.')

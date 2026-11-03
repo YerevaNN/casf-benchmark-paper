@@ -93,7 +93,7 @@ sources = [OUT/'casf-size-source.csv', OUT/'casf-flexibility-source.csv',
     'sources':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
     'datasets':['CASF core94','CASF ref1044'],
     'aggregation':'CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.',
-    'qwen':'Original Qwen 1.7B FSQ step47023; no retrained outputs substituted.',
-    'checks':['All 88 existing CASF core cells reproduced','CASF group denominators sum to 94/1044']
+    'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054.',
+    'checks':['All 88 current CASF core cells reproduced','CASF group denominators sum to 94/1044']
 },indent=2)+'\n')
-print('Built Figure 5 for CASF core/ref; all 88 original core cells reproduced.')
+print('Built Figure 5 for CASF core/ref; all 88 current core cells reproduced.')

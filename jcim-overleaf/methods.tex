@@ -111,22 +111,22 @@ force-field cleanup and stereochemistry checks. Their representations,
 training resources, and preparation steps are summarized in Supporting Table S8.
 
 Qwen represents autoregressive generation of a molecular coordinate representation conditioned on
-molecular SMILES. The archived comparison uses the 1.7-billion-parameter FSQ model at pretraining
-step 47,023 for both CASF and the
-22-molecule experiment. Its initial training corpus was broadly assembled, and these results do not
-establish generalization after exclusion of benchmark molecules. The revised training corpus
-excludes exact matches to core94 and similar molecules using a fingerprint-similarity cutoff of
-0.4. For CASF ref, exact matches are excluded, without an additional similarity exclusion for
-that panel. An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
+molecular SMILES. We use the 1.7-billion-parameter FSQ model at pretraining step 41,054
+(the v2 CoordToken checkpoint) for CASF core, CASF ref, and the 22-molecule PLINDER panel.
+The coordinate representation is decoded before the common validity evaluation. The checkpoint
+and coordinate-decoder identities are archived with the results.
+
+An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
 CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}, Supporting Table S4,
-and Figure~\ref{fig:plinder-molecule-tracking}. It is evaluated on the same cleaned references
-and retains its supplied conformer pools. The original checkpoint remains in the other comparisons.
-The two Qwen runs differ in model size and coordinate representation as well as training data,
-so their comparison does not isolate the effect of training exclusions. The new run name alone
-does not establish exclusion of PLINDER molecules; the executed exclusion manifest remains
-to be documented. External pretrained checkpoints
-are evaluated as supplied, with their documented training provenance and any overlap that can be
-checked.
+and Figure~\ref{fig:plinder-molecule-tracking}. Both Qwen models use the same cleaned PLINDER
+references and retain their supplied conformer pools. They differ in model size, coordinate
+representation, and training configuration, so their comparison does not isolate the effect
+of training exclusions. The intended exclusion policy removes core94 exact matches and
+similar molecules at a fingerprint-similarity cutoff of 0.4, and exact matches to CASF ref.
+The executed training-corpus manifest, similarity definition, and PLINDER exclusion policy
+remain to be documented before these results can establish generalization to excluded molecules.
+External pretrained checkpoints are evaluated as supplied, with their documented training
+provenance and any overlap that can be checked.
 
 % \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
 \textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}

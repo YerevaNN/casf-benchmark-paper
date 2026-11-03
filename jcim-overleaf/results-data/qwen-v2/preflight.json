@@ -1,0 +1,41 @@
+{
+  "coordtoken": {
+    "checkpoint": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/model.pt",
+    "checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+    "format": "atom12_reg1_prefix_v1",
+    "source_tokenizer": {
+      "num_tokens": 151673,
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/coordtoken_encoding_20261019/source/src/molgen3D/training/tokenizers/Qwen3_tokenizer_coordtoken_atom12_reg1",
+      "sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+      "wrapper_extra_tokens": 256
+    }
+  },
+  "model": {
+    "architecture": {
+      "hidden_size": 2048,
+      "num_attention_heads": 16,
+      "num_hidden_layers": 28,
+      "vocab_size": 151936
+    },
+    "config_sha256": "b179ba37dbd5a98fe8b7eb8bad119dfa635a40fa9d6d432103fa86a668a02ac2",
+    "export_manifest_digest": "1981e60a36e9ca7706785303640a4d9c71ca22772ef43585279f03526821513a",
+    "path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054",
+    "tokenizer_sha256": "66984970ac8929f6c4234bbb2844020ee7bbabda70c5baec23710850ae44de67"
+  },
+  "populations": {
+    "core": 94,
+    "plinder": 22,
+    "ref": 1044
+  },
+  "ref_selection": {
+    "selected_entries": 1044,
+    "selected_mapping": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inputs/casf16_ref_dedup_selected_v1.csv",
+    "selected_mapping_sha256": "2dbc0bae055c236ed3115c697abb567a1a978183c341d2f309eb61771f3d4e14",
+    "selection_manifest": "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/data/mapping/casf16_ref_dedup_selection_v1.csv",
+    "selection_manifest_sha256": "991d9565e87b8a5601fd55e8cc73c7f0337951c59a81204f91063d1bfa367e4f",
+    "selection_version": "casf-ref-dedup-v1",
+    "source_entries": 1236,
+    "unique_selected_ligand_ids": 1044,
+    "unique_selected_smiles": 1044
+  }
+}

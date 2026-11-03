@@ -26,10 +26,10 @@
     "shared_parent_compounds_core": 17,
     "measurable_count_min": 1032,
     "measurable_count_max": 1044,
-    "retained_energy_conformers": 734207,
-    "finite_energy_conformers": 734206,
+    "retained_energy_conformers": 734952,
+    "finite_energy_conformers": 734951,
     "undefined_energies": 1,
-    "empty_energy_ensembles": 42
+    "empty_energy_ensembles": 43
   },
   "protocol": [
     {
@@ -49,9 +49,14 @@
     "Torsional Diffusion": "torsional_diffusion_raw",
     "FlowR": "flowr_raw",
     "Torsion raw": "torsion_raw",
-    "Qwen 1.7B FSQ": "qwen_1p7b_fsq_bigdata_step47023",
+    "Qwen 1.7B FSQ": "qwen_1p7b_v2_coordtoken_step41054",
     "ChEMBL3D-PB": "chembl3d_gt_pb"
   },
   "geometric_recalculation": false,
-  "core_and_plinder_preserved": true
+  "core_and_plinder_preserved": "At original ref update; primary Qwen subsequently replaced in all three panels.",
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
+  }
 }

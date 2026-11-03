@@ -1,6 +1,6 @@
 {
   "methods": [
-    "qwen_1p7b_fsq_bigdata_step47023_fixed",
+    "qwen_1p7b_v2_coordtoken_step41054_fixed",
     "loqi_raw_fixed",
     "flowr_raw_fixed",
     "nextmol_dmt_l_raw_fixed"

@@ -1,0 +1,39 @@
+{
+  "batch_size": 128,
+  "cohort": "plinder",
+  "coordtoken_checkpoint": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/model.pt",
+  "coordtoken_checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+  "coordtoken_contract": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/qwen_tokenizer/coordtoken_contract.json",
+  "coordtoken_format": "atom12_reg1_prefix_v1",
+  "coordtoken_source_contract_sha256": "86a36047e4f5f7dec37708db04a991095872767e1d732d27c123d79c14fe8562",
+  "coordtoken_source_tokenizer_sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+  "coordtoken_training_export_declared_checkpoint_sha256": "29d487cf3783978c801c5a237e3c3c86cc23ab058aa7edea7eff0aa707c4bc4f",
+  "coordtoken_training_manifest_checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+  "coordtoken_training_source_tokenizer": {
+    "num_tokens": 151673,
+    "path": "/mnt/weka/fgeikyan/CoordToken/research/coordtoken_encoding_20261019/source/src/molgen3D/training/tokenizers/Qwen3_tokenizer_coordtoken_atom12_reg1",
+    "sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+    "wrapper_extra_tokens": 256
+  },
+  "derived_model_path": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inference_model",
+  "input_path": "/mnt/weka/vtarasov/druglike_smi.pickle",
+  "input_sha256": "8d3f8eccd4dc4edd081bdfc3247d9e7e2149360fbe6ba7f6f5e3ec24d307fd56",
+  "model_config_sha256": "b179ba37dbd5a98fe8b7eb8bad119dfa635a40fa9d6d432103fa86a668a02ac2",
+  "model_path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054",
+  "model_tokenizer_sha256": "66984970ac8929f6c4234bbb2844020ee7bbabda70c5baec23710850ae44de67",
+  "molgen_source": "/mnt/weka/vtarasov/code/3DMolGen/src",
+  "num_molecules": 22,
+  "num_shards": 1,
+  "run_id": "qwen_1p7b_v2_coordtoken_step41054",
+  "samples_per_molecule": 1000,
+  "seed": 42,
+  "serialization": "coordtoken",
+  "shard_index": 0,
+  "stats": {
+    "mol_parse_fail": 1,
+    "no_eos": 0,
+    "smiles_mismatch": 52
+  },
+  "temperature": 1.0,
+  "top_p": 1.0
+}

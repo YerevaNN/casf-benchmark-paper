@@ -95,7 +95,7 @@
     "mcf_drugs_l_druglike": "MCF drugs-L",
     "nextmol_dmt_l_druglike": "NExT-Mol DMT-L",
     "flowr_druglike": "FlowR",
-    "qwen_1p7b_fsq_bigdata_step47023": "Qwen 1.7B FSQ"
+    "qwen_1p7b_v2_coordtoken_step41054": "Qwen 1.7B FSQ"
   },
   "export_environment": {
     "python": "3.10.20 (main, Mar 24 2026, 22:50:29) [Clang 22.1.1 ]",
@@ -106,7 +106,7 @@
   "clustering": "Full supplied pools; no PB filter; greedy radii 0.5/1.0 angstrom",
   "coverage": "RMSD <= threshold; all reference and generated minima finite; equal molecule weights",
   "pb": "Separate geometry/identity evaluation; not applied to coverage or clustering",
-  "qwen": "Original 1.7B FSQ step47023; no retrained checkpoint substituted",
+  "qwen": "qwen_1p7b_v2_coordtoken_step41054",
   "reference_weight": "Equal deduplicated representatives within each molecule; not weighted by cluster_size",
   "checks": [
     "full InChIKeys match the original selection",
@@ -119,5 +119,10 @@
     "all curves bounded and monotonic",
     "cluster counts and occupancy reproduce released summaries",
     "CASF CSV cells preserved"
-  ]
+  ],
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
+  }
 }

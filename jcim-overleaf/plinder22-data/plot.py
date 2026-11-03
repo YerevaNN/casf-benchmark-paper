@@ -10,7 +10,7 @@ PAPER = HERE.parent
 OUT = PAPER / 'figures'
 styles = json.loads((PAPER / 'sampling-data/palette.json').read_text())
 methods = {
-    'qwen_1p7b_fsq_bigdata_step47023':'qwen_1p7b_fsq_bigdata_step47023',
+    'qwen_1p7b_v2_coordtoken_step41054':'qwen_1p7b_v2_coordtoken_step41054',
     'loqi_druglike':'loqi_raw', 'torsional_diffusion_druglike':'torsional_diffusion_raw',
     'mcf_drugs_l_druglike':'mcf_drugs_l_raw', 'flowr_druglike':'flowr_raw',
     'nextmol_dmt_l_druglike':'nextmol_dmt_l_raw',
@@ -21,7 +21,7 @@ methods = {
 curve_methods = [
     'rdkit_random_raw_druglike', 'mcf_drugs_l_druglike', 'flowr_druglike',
     'torsional_diffusion_druglike', 'nextmol_dmt_l_druglike', 'loqi_druglike',
-    'qwen_1p7b_fsq_bigdata_step47023',
+    'qwen_1p7b_v2_coordtoken_step41054',
 ]
 seeded = {'torsion_raw_druglike','torsion_minimized_22_druglike'}
 summary = pd.read_csv(HERE / 'summary.csv').set_index('label')

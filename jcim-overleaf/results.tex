@@ -4,7 +4,7 @@
 \input{\manuscriptroot figures}
 
 % AUTHOR: Tables 1--2 lead with PLINDER, followed by CASF core and ref. Table 3 is
-% CASF-only. The original FSQ step-47023 checkpoint remains in the main comparisons.
+% CASF-only. The FSQ v2 CoordToken step-41054 checkpoint supplies all primary Qwen comparisons.
 % Table 4 and the molecule-tracking figure additionally include the 0.6B CASF-dedup run.
 
 We evaluate whether protein-independent conformer ensembles represent the bound geometries
@@ -18,8 +18,8 @@ three sets, then assess sampling effects within CASF and sample precision within
 Table~\ref{tab:diversity} compares cluster counts at two geometric resolutions. Across the
 three sets, FlowR, Qwen, and raw torsion sampling generally produce more clusters than LoQI
 and the minimized CASF baselines. Their exact ordering depends on the dataset and clustering
-radius: FlowR has the most clusters on PLINDER at both radii, while Qwen leads the finer-radius
-CASF comparisons.
+radius: FlowR has the most clusters on PLINDER at both radii. At the finer radius, raw torsion
+sampling leads CASF core and Qwen leads ref; FlowR leads both CASF panels at the larger radius.
 
 \input{\manuscriptroot tables/diversity}
 
@@ -35,11 +35,12 @@ reference coverage and matching distance.
 
 \input{\manuscriptroot tables/count-recovery}
 
-Qwen has the highest PLINDER coverage at the primary cutoff and the lowest mean matching
-distance, while LoQI covers more references at the tighter tolerance. The two CASF
+LoQI has the highest PLINDER coverage at both cutoffs, while Qwen has the lowest mean matching
+distance. Their primary-cutoff coverage is close, at 91.8\% and 91.0\%, respectively. The two CASF
 panels show a related dependence on the metric: among generated methods, LoQI leads at the
 tighter cutoff, whereas Qwen has the highest recovery at the primary cutoff and the lowest
-Best RMSD. The stored ChEMBL3D ensembles remain competitive; on ref, their primary-cutoff
+Best RMSD, although its mean distance on core is nearly identical to LoQI's. The stored
+ChEMBL3D ensembles remain competitive; on ref, their primary-cutoff
 recovery exceeds that of every generator at the ChEMBL-count target. A method's ranking
 therefore depends on whether the objective is frequent close matches or a smaller average
 distance to the reference.
@@ -56,7 +57,8 @@ curves separate recovery of the observed set from concentration near it.
 \drugfigure
 
 The CASF comparisons show a related distinction (Figure~\ref{fig:diversity-recovery}).
-Raw torsion sampling and FlowR approach Qwen's cluster count but have higher Best RMSD,
+Raw torsion sampling and FlowR produce similar or greater cluster counts than Qwen but have
+higher Best RMSD,
 while LoQI and ChEMBL3D approach the references with fewer clusters. Diversity is consequently
 an incomplete indicator of recovery of experimental conformations.
 
@@ -102,10 +104,10 @@ as uniform coverage of the chemistry needed for a conformational resource.
 PLINDER's multiple experimental references also distinguish coverage from the concentration
 of generated conformers near the observed set. Table~\ref{tab:druglike} reports sample
 precision alongside reference coverage, matching distances, and separately measured validity.
-Qwen 1.7B FSQ covers the most references at the primary cutoff, whereas minimized torsion places the
-largest fraction of samples near an observed geometry. Among the learned generators, LoQI
-has the highest precision. Reference coverage and sample precision therefore favor different
-methods.
+LoQI covers the most references at the primary cutoff and has the highest precision among
+the learned generators. Qwen has a slightly lower coverage but the lowest MAT-R, while
+minimized torsion places the largest fraction of samples near an observed geometry. Coverage,
+matching distance, and sample precision therefore do not give the same ordering.
 
 \input{\manuscriptroot tables/druglike}
 
@@ -122,16 +124,16 @@ of generated samples near those observations and lower validity.
 The molecule-level distances show that the largest errors arise from different molecules
 across methods (Figure~\ref{fig:plinder-molecule-tracking}). Imatinib has the largest MAT-R
 for LoQI and MCF, whereas Amprenavir has the largest MAT-R for FlowR and NExT-Mol.
-Actinonin is the largest MAT-R outlier for both Qwen variants, with a higher distance for
-the 0.6B model. The same molecule does not necessarily dominate both metrics: Amprenavir
-has the largest MAT-P for both Qwen variants.
+For Qwen 1.7B FSQ, Amprenavir has the largest distance in both directions. The 0.6B model
+has its largest MAT-R for Actinonin and its largest MAT-P for Amprenavir. The same molecule
+therefore need not dominate both metrics or both model variants.
 
 \moleculetrackingfigure
 
 Together, the three evaluation sets support selecting generators by experimental coverage
 and sample concentration, with geometric diversity and energetic dispersion as complementary
 descriptors. Qwen 1.7B FSQ remains a candidate for constructing a larger conformational resource,
-subject to confirmation after retraining. The resulting resource
+with training-overlap documentation still needed to establish generalization. The resulting resource
 will require its own characterization of molecular coverage, validity, diversity, and
 energy distributions. Its value for downstream structure-based applications remains to be
 evaluated separately.

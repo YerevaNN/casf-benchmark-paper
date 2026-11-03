@@ -17,13 +17,14 @@
     },
     {
       "path": "../recovery-table-tiers.csv",
-      "sha256": "b2e27f04406038e4649605e77f6c3c605faac01debb66ce38d1572fe7317bc2e"
+      "sha256": "81c9b5db25638166d0063ad43319c30fff55bdaf0f65dd21de51ff59290dff4b"
     }
   ],
-  "export_sha256": "b2682cd09501e140caf75eb4b3aec4675b24f60d43cbfda200c5698122c61338",
+  "export_sha256": "280b0314fcc4c4ef7e90782c57d0177f2f14cbc249b23766204a088b8a65266b",
   "framing_source": {
     "path": "docs/jcim_publication_report_2026_09_14.html",
     "sha256": "18af50e506b1f19a97bfe121b7ee80d3feea8c1d59f5a9c4dd37f3f37a80173a",
     "role": "Questions and framing only; historical numerical values are superseded."
-  }
+  },
+  "primary_qwen_update": "results-data/qwen-v2/provenance.json"
 }

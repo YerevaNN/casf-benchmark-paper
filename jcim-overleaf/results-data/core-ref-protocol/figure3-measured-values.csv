@@ -8,7 +8,7 @@ core,RDKit raw,clusters,34.265957446808514
 core,Torsional Diffusion,clusters,40.9468085106383
 core,FlowR,clusters,54.08510638297872
 core,Torsion raw,clusters,54.159574468085104
-core,Qwen 1.7B FSQ,clusters,55.27659574468085
+core,Qwen 1.7B FSQ,clusters,49.95744680851064
 core,ChEMBL3D-PB,clusters,21.71276595744681
 core,RDKit minimized,energy,2.7259932122062542
 core,Torsion minimized,energy,2.799149810546582
@@ -19,7 +19,7 @@ core,RDKit raw,energy,9.115256150119643
 core,Torsional Diffusion,energy,26.49916951632652
 core,FlowR,energy,11.590867674680114
 core,Torsion raw,energy,40.50150047575613
-core,Qwen 1.7B FSQ,energy,17.64133832359883
+core,Qwen 1.7B FSQ,energy,15.665414070078931
 core,ChEMBL3D-PB,energy,2.6893698646152
 ref,RDKit minimized,clusters,22.980824544582934
 ref,Torsion minimized,clusters,22.08724832214765
@@ -30,7 +30,7 @@ ref,RDKit raw,clusters,32.900383141762454
 ref,Torsional Diffusion,clusters,35.34522661523626
 ref,FlowR,clusters,44.03557692307693
 ref,Torsion raw,clusters,43.85466794995188
-ref,Qwen 1.7B FSQ,clusters,45.161877394636015
+ref,Qwen 1.7B FSQ,clusters,44.471716203259824
 ref,ChEMBL3D-PB,clusters,22.903256704980844
 ref,RDKit minimized,energy,3.1213845711390595
 ref,Torsion minimized,energy,3.200824214503184
@@ -41,5 +41,5 @@ ref,RDKit raw,energy,9.18510120230761
 ref,Torsional Diffusion,energy,20.90120736010154
 ref,FlowR,energy,9.037717281142488
 ref,Torsion raw,energy,31.108173747706363
-ref,Qwen 1.7B FSQ,energy,14.33278488674356
+ref,Qwen 1.7B FSQ,energy,13.859713850327235
 ref,ChEMBL3D-PB,energy,2.837514504371126

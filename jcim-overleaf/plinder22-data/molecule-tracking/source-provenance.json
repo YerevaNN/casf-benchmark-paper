@@ -2,12 +2,12 @@
   "database": "/mnt/weka/vtarasov/outputs/casf_benchmark_runs/dashboard_local/extended_casf_analysis.sqlite",
   "table": "plinder_per_molecule",
   "source_hashes": {
-    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "a9cca497372a1bfd7c9bce91bfe52ec3934170072a5d881d4c4e9676e6f8ef2d",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "c4c9e87e4b4102abdfbf8c7aeb2af84b35267fc0f02ce44384656fa2cadecd93",
     "/mnt/weka/vtarasov/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/qwen_0p6b_casf_dedup_binned_pm12_step64000.npz": "3e035a49f36a755d0ae4e202daf757f1d002846297a60da8992792406293af1e"
   },
-  "export_sha256": "cabc3366ffc73a8c7dbc57021679fa8431ee88668a8db5be5fc654b539ef7a56",
+  "export_sha256": "f995416eaeb9bab62a0d895370f60e730b2e48431be3442262daeb06d7986fd4",
   "methods": {
-    "qwen_1p7b_fsq_bigdata_step47023": "Qwen 1.7B\nFSQ",
+    "qwen_1p7b_v2_coordtoken_step41054": "Qwen 1.7B\nFSQ",
     "loqi_druglike": "LoQI",
     "torsional_diffusion_druglike": "Torsional\nDiffusion",
     "qwen_0p6b_casf_dedup_binned_pm12_step64000": "Qwen 0.6B\nCASF-dedup\nstep 64000",
@@ -25,5 +25,10 @@
     "Same eight methods as the preceding plot, plus Qwen 0.6B CASF-dedup step64000.",
     "CASF-dedup is the run identity; no independent training-leakage audit performed.",
     "No new alignment, generation, minimization, or filtering."
-  ]
+  ],
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
+  }
 }

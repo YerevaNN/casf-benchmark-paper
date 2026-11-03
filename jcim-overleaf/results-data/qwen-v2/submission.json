@@ -1,0 +1,217 @@
+{
+  "jobs": {
+    "core_generation": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-core",
+        "--partition=research",
+        "--time=01:15:00",
+        "--cpus-per-task=16",
+        "--mem=192G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/core-generation-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/core-generation-%j.err",
+        "--export=ALL,CASF_REPO_ROOT=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2,MOLGEN_ROOT=/mnt/weka/vtarasov/code/3DMolGen,MOLGEN_PYTHON=/mnt/weka/mbedrosian/code/3DMolGen/.venv/bin/python,GEN_MODEL_EXPORT=/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054,GEN_WORK_ROOT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054,GEN_RUN_ID=qwen_1p7b_v2_coordtoken_step41054",
+        "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/scripts/run_v2_coordtoken_generation.sbatch",
+        "core",
+        "1",
+        "128",
+        "1000"
+      ],
+      "dependency": null,
+      "job_id": "374493",
+      "job_name": "v2-17b-ct-core",
+      "partition": "research",
+      "time_limit": "01:15:00"
+    },
+    "core_results": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-core-res",
+        "--partition=research_cpu",
+        "--time=01:00:00",
+        "--cpus-per-task=48",
+        "--mem=192G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/core-results-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/core-results-%j.err",
+        "--dependency=afterok:374493",
+        "--wrap=bash -lc 'set -euo pipefail; source /mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/activate; export PYTHONPATH=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/src:${PYTHONPATH:-}; export CASF_RUNS_ROOT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/casf_benchmark_runs; export PYTHON=/mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/python; export PB_WORKERS=2; export SHARD_PARALLEL=16; export ANALYZE_WORKERS=32; cd /mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2; bash scripts/run_casf_batch_item.sh qwen_1p7b_v2_coordtoken_step41054 core /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_core'"
+      ],
+      "dependency": "374493",
+      "job_id": "374497",
+      "job_name": "v2-17b-ct-core-res",
+      "partition": "research_cpu",
+      "time_limit": "01:00:00"
+    },
+    "plinder_generation": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-pl22",
+        "--partition=research",
+        "--time=00:30:00",
+        "--cpus-per-task=16",
+        "--mem=192G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/plinder-generation-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/plinder-generation-%j.err",
+        "--export=ALL,CASF_REPO_ROOT=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2,MOLGEN_ROOT=/mnt/weka/vtarasov/code/3DMolGen,MOLGEN_PYTHON=/mnt/weka/mbedrosian/code/3DMolGen/.venv/bin/python,GEN_MODEL_EXPORT=/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054,GEN_WORK_ROOT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054,GEN_RUN_ID=qwen_1p7b_v2_coordtoken_step41054",
+        "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/scripts/run_v2_coordtoken_generation.sbatch",
+        "plinder",
+        "1",
+        "128",
+        "1000"
+      ],
+      "dependency": null,
+      "job_id": "374495",
+      "job_name": "v2-17b-ct-pl22",
+      "partition": "research",
+      "time_limit": "00:30:00"
+    },
+    "plinder_results": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-pl22-res",
+        "--partition=research_cpu",
+        "--time=01:00:00",
+        "--cpus-per-task=32",
+        "--mem=192G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/plinder-results-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/plinder-results-%j.err",
+        "--dependency=afterok:374495",
+        "--wrap=bash -lc 'set -euo pipefail; source /mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/activate; export PYTHONPATH=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/src:${PYTHONPATH:-}; cd /mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2; casf-analyze-plinder --labels qwen_1p7b_v2_coordtoken_step41054 --generation-results-root /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results --cache-dir /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_cache --output-dir /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_panel --extended-db /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_v2_only.sqlite --num-workers 16 --molecule-workers 16'"
+      ],
+      "dependency": "374495",
+      "job_id": "374499",
+      "job_name": "v2-17b-ct-pl22-res",
+      "partition": "research_cpu",
+      "time_limit": "01:00:00"
+    },
+    "ref_generation": {
+      "array": "0-3%4",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-ref",
+        "--partition=research",
+        "--time=03:00:00",
+        "--cpus-per-task=16",
+        "--mem=192G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-generation-%A_%a.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-generation-%A_%a.err",
+        "--dependency=afterok:374493",
+        "--array=0-3%4",
+        "--export=ALL,CASF_REPO_ROOT=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2,MOLGEN_ROOT=/mnt/weka/vtarasov/code/3DMolGen,MOLGEN_PYTHON=/mnt/weka/mbedrosian/code/3DMolGen/.venv/bin/python,GEN_MODEL_EXPORT=/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054,GEN_WORK_ROOT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054,GEN_RUN_ID=qwen_1p7b_v2_coordtoken_step41054,GEN_INPUT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inputs/casf16_ref_dedup_selected_v1.csv",
+        "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/scripts/run_v2_coordtoken_generation.sbatch",
+        "ref",
+        "4",
+        "128",
+        "1000"
+      ],
+      "dependency": "374493",
+      "job_id": "374494",
+      "job_name": "v2-17b-ct-ref",
+      "partition": "research",
+      "time_limit": "03:00:00"
+    },
+    "ref_merge": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-ref-merge",
+        "--partition=research_cpu",
+        "--time=00:15:00",
+        "--cpus-per-task=2",
+        "--mem=64G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-merge-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-merge-%j.err",
+        "--dependency=afterok:374494",
+        "--wrap=bash -lc 'set -euo pipefail; source /mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/activate; export PYTHONPATH=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/src:${PYTHONPATH:-}; cd /mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2; /mnt/weka/mbedrosian/code/3DMolGen/.venv/bin/python /mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/scripts/run_v2_coordtoken_generation.py merge-ref --num-shards 4 --input /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inputs/casf16_ref_dedup_selected_v1.csv --work-root /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054 --run-id qwen_1p7b_v2_coordtoken_step41054'"
+      ],
+      "dependency": "374494",
+      "job_id": "374496",
+      "job_name": "v2-17b-ct-ref-merge",
+      "partition": "research_cpu",
+      "time_limit": "00:15:00"
+    },
+    "ref_results": {
+      "array": null,
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=v2-17b-ct-ref-res",
+        "--partition=research_cpu",
+        "--time=03:00:00",
+        "--cpus-per-task=64",
+        "--mem=256G",
+        "--output=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-results-%j.out",
+        "--error=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/slurm/ref-results-%j.err",
+        "--dependency=afterok:374496",
+        "--wrap=bash -lc 'set -euo pipefail; source /mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/activate; export PYTHONPATH=/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/src:${PYTHONPATH:-}; export CASF_RUNS_ROOT=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/casf_benchmark_runs; export PYTHON=/mnt/weka/mbedrosian/code/casf-benchmark/.venv/bin/python; export PB_WORKERS=2; export CASF_MAP_CSV=/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inputs/casf16_ref_dedup_selected_v1.csv; export SHARD_PARALLEL=32; export ANALYZE_WORKERS=64; cd /mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2; bash scripts/run_casf_batch_item.sh qwen_1p7b_v2_coordtoken_step41054 ref /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_ref'"
+      ],
+      "dependency": "374496",
+      "job_id": "374498",
+      "job_name": "v2-17b-ct-ref-res",
+      "partition": "research_cpu",
+      "time_limit": "03:00:00"
+    }
+  },
+  "model_export": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054",
+  "preflight": {
+    "coordtoken": {
+      "checkpoint": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/model.pt",
+      "checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+      "format": "atom12_reg1_prefix_v1",
+      "source_tokenizer": {
+        "num_tokens": 151673,
+        "path": "/mnt/weka/fgeikyan/CoordToken/research/coordtoken_encoding_20261019/source/src/molgen3D/training/tokenizers/Qwen3_tokenizer_coordtoken_atom12_reg1",
+        "sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+        "wrapper_extra_tokens": 256
+      }
+    },
+    "model": {
+      "architecture": {
+        "hidden_size": 2048,
+        "num_attention_heads": 16,
+        "num_hidden_layers": 28,
+        "vocab_size": 151936
+      },
+      "config_sha256": "b179ba37dbd5a98fe8b7eb8bad119dfa635a40fa9d6d432103fa86a668a02ac2",
+      "export_manifest_digest": "1981e60a36e9ca7706785303640a4d9c71ca22772ef43585279f03526821513a",
+      "path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054",
+      "tokenizer_sha256": "66984970ac8929f6c4234bbb2844020ee7bbabda70c5baec23710850ae44de67"
+    },
+    "populations": {
+      "core": 94,
+      "plinder": 22,
+      "ref": 1044
+    },
+    "ref_selection": {
+      "selected_entries": 1044,
+      "selected_mapping": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inputs/casf16_ref_dedup_selected_v1.csv",
+      "selected_mapping_sha256": "2dbc0bae055c236ed3115c697abb567a1a978183c341d2f309eb61771f3d4e14",
+      "selection_manifest": "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2/data/mapping/casf16_ref_dedup_selection_v1.csv",
+      "selection_manifest_sha256": "991d9565e87b8a5601fd55e8cc73c7f0337951c59a81204f91063d1bfa367e4f",
+      "selection_version": "casf-ref-dedup-v1",
+      "source_entries": 1236,
+      "unique_selected_ligand_ids": 1044,
+      "unique_selected_smiles": 1044
+    }
+  },
+  "run_id": "qwen_1p7b_v2_coordtoken_step41054",
+  "source_commit": "15d57d207e1cdefe284601ebb11a02f358488a04",
+  "source_root": "/mnt/weka/mbedrosian/code/casf-benchmark-qwen17b-v2",
+  "submitted_at_utc": "2026-11-03T08:50:29.058052+00:00",
+  "terminal_jobs": [
+    "374497",
+    "374498",
+    "374499"
+  ],
+  "work_root": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054"
+}

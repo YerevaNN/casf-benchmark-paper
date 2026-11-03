@@ -62,7 +62,7 @@ columns = r'@{\extracolsep{\fill}}lrrr@{\hspace{8pt}}rrr@{\hspace{8pt}}rrr@{}'
 cohorts = ('plinder', 'core', 'ref')
 
 data = read(1)
-methods = list(dict.fromkeys(r['method'] for r in data))
+methods = [r['method'] for r in sorted((r for r in data if r['cohort']=='core' and r['method']!=BASELINE), key=lambda r: number(r,'clusters_0p5'))] + [BASELINE]
 head = group_head + [r'\textbf{Method} & ' + ' & '.join([
     r'C0.5 $\uparrow$', r'C1.0 $\uparrow$', r'Largest $\downarrow$'] * 3) + r' \\']
 body = []

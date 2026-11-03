@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 HERE=Path(__file__).resolve().parent
 PAPER=HERE.parents[1];REPO=PAPER.parent
-BASELINE='5123902'
+BASELINE='ed8b4bf'
 manifest=pd.read_csv(HERE/'selection.csv')
 selected=manifest[manifest.selected.astype(str).str.lower().eq('true')]
 assert len(selected)==selected.casf_heavy_isomeric_smiles.nunique()==1044
@@ -23,7 +23,7 @@ for number in [1,2,3]:
  path=T/f'table{number}.csv';data=pd.read_csv(path)
  old=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show',f'{BASELINE}:{path.relative_to(REPO)}'],cwd=REPO,text=True))))
  new=list(csv.DictReader(path.open()))
- assert [r for r in old if r['cohort']!='ref']==[r for r in new if r['cohort']!='ref']
+ assert [r for r in old if r['method']!='Qwen 1.7B FSQ']==[r for r in new if r['method']!='Qwen 1.7B FSQ']
  for row in data[data.cohort.eq('ref')].itertuples():
   key=keys[row.method];m=key if key=='chembl3d_gt_pb' else key+'_'+(row.budget if number==3 else 'chembl_count')
   d=per[per.method.eq(m)];assert row.n_total==1044
@@ -47,7 +47,8 @@ for m,d in e.groupby('method'):
  row=s.loc[m]
  np.testing.assert_allclose([row.n_molecules,row.n_conformers,row.n_failed,row.median_energy_std,row.mean_energy_std,row.median_mean_energy,row.median_mean_energy_delta_chembl,row.mean_clusters_0p5],
  [len(valid),valid.n_energy.sum(),d.n_failed.sum(),valid.std_energy.median(),valid.std_energy.mean(),valid.mean_energy.median(),(valid.set_index('mol_id').mean_energy-base).median(),valid.clusters_0p5.mean()],rtol=1e-12,atol=1e-9)
-assert e.n_energy.sum()==734206 and e.n_retained.sum()==734207 and e.n_failed.sum()==1
+counts=json.loads((HERE/'counts.json').read_text())
+assert e.n_energy.sum()==counts['finite_energy_conformers'] and e.n_retained.sum()==counts['retained_energy_conformers'] and e.n_failed.sum()==1
 curves=pd.read_csv(E/'recovery_curves.csv');front=pd.read_csv(E/'recovery80_frontier.csv')
 assert curves.recovery.between(0,1).all()
 for (m,t),d in curves.groupby(['method','threshold']):
@@ -72,19 +73,20 @@ for file,col,descriptor,bins,labels,right in [('casf-size-source.csv','heavy_ato
  # Core input strings remain exactly as before.
  old=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show',f'{BASELINE}:{(S/file).relative_to(REPO)}'],cwd=REPO,text=True))))
  new=list(csv.DictReader((S/file).open()))
- assert [r for r in old if r['set']=='core']==[r for r in new if r['set']=='core']
+ assert [r for r in old if not r['method'].startswith('qwen_1p7b_')]==[r for r in new if not r['method'].startswith('qwen_1p7b_')]
 # No stale denominators or dashboard-only name in active manuscript source.
 for path in PAPER.rglob('*.tex'):
  if 'preview' in path.parts:continue
  text=re.sub(r'(?<!\\)%[^\n]*','',path.read_text())
  assert not re.search(r'1,236|1236|1,220|835,97[23]|ref[ _-]dedup',text),(path,'stale ref description')
-# Table 4 and PLINDER artwork remain byte-for-byte unchanged.
-for name in ['tables/druglike.tex','tables/supporting-druglike.tex','results-data/druglike_means.csv','plinder22-data/per-molecule.csv','figures/figure-plinder-combined.pdf','figures/figure-plinder-molecule-tracking.pdf']:
- old=subprocess.check_output(['git','show',f'{BASELINE}:jcim-overleaf/{name}'],cwd=REPO)
- assert old==(PAPER/name).read_bytes(),name
+# Non-Qwen PLINDER measurements remain byte-for-byte equal as CSV fields.
+for name in ['plinder22-data/per-molecule.csv']:
+ old=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show',f'{BASELINE}:jcim-overleaf/{name}'],cwd=REPO,text=True))))
+ new=list(csv.DictReader((PAPER/name).open()))
+ assert [r for r in old if not r['label'].startswith('qwen_1p7b_')]==[r for r in new if not r['label'].startswith('qwen_1p7b_')],name
 # Table regeneration is deterministic and does not modify the reviewed source.
 for script,names in [('results-data/three-dataset-tables/build_tables.py',['diversity','count-recovery','recovery']),('results-data/ref-panel/build_supporting.py',['supporting-recovery','size']),('results-data/core-ref-protocol/build_energy_table.py',['energy-summary'])]:
  before={n:(PAPER/f'tables/{n}.tex').read_bytes() for n in names}
  subprocess.run([sys.executable,str(PAPER/script)],check=True,capture_output=True)
  assert all((PAPER/f'tables/{n}.tex').read_bytes()==v for n,v in before.items()),script
-print('Verified 1,044 unique selected identities, 21 ref pools, all ref table metrics, energy summaries, sampling endpoints, and size/flexibility strata. Core and PLINDER preserved; no stale ref counts in TeX.')
+print('Verified 1,044 unique selected identities, 21 ref pools, all ref table metrics, energy summaries, sampling endpoints, and size/flexibility strata. Non-Qwen values preserved; no stale ref counts in TeX.')

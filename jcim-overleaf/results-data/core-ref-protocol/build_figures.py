@@ -196,7 +196,7 @@ for fig in figures:
     'figure3':'Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.',
     'figure4':'All core/ref endpoints from current Table 3; same method order and scales.',
     'figureB1':'Both datasets: exact pre-PoseBusters finite-pool curves; rejected candidates consume budget. Ref endpoint and threshold checks agree with archived per-entry minima.',
-    'qwen':'Original 1.7B FSQ step47023 in all panels.',
+    'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054 in all panels.',
     'missing_inputs':[]
 },indent=2)+'\n')
 print('Completed Figures 3, 4 and B1 with calculated core/ref energies and exact sampling curves.')

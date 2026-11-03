@@ -1,0 +1,4 @@
+method,threshold,recovery
+qwen_1p7b_v2_coordtoken_step41054_fixed,0.5,0.7777777777777778
+qwen_1p7b_v2_coordtoken_step41054_fixed,0.75,0.9166666666666666
+qwen_1p7b_v2_coordtoken_step41054_fixed,1.0,0.9731800766283525

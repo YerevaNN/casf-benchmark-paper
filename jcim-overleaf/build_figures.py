@@ -22,7 +22,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / 'figure-data'
 OUT = ROOT / 'figures'
-QWEN = 'qwen_1p7b_fsq_bigdata_step47023'
+QWEN = 'qwen_1p7b_v2_coordtoken_step41054'
 # Shared colors plus distinct shapes: no scientific distinction relies on color alone.
 STYLE = {
     QWEN: ('Qwen 1.7B FSQ', '#0072B2', 'o'),

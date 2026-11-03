@@ -968,5 +968,10 @@
     "source": "rescore_fast.py",
     "sha256": "8de59546403511a6375a9248bd43ce6c004424e5d97ce3803e9ad33776876fbf",
     "description": "Batched Zarr reads; same template, candidate order, atomic-number and stereoisomer checks. Existing validated cache entries reused without changing the energy protocol."
+  },
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
   }
 }

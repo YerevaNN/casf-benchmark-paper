@@ -1,19 +1,19 @@
 {
   "sources": {
-    "results-data/size-flexibility/casf-size-source.csv": "24d95311df4d54b51952f7d5074a7d8c9cc5434cf0442a36ef2e444e85b544a5",
-    "results-data/size-flexibility/casf-flexibility-source.csv": "131199f35718ac772ddc05c5462f0b012cb27ace15cde7f4638bfba1059e071d",
-    "results-data/strata.csv": "51f1cd87b35d023e29a2d9828d22819f5d7e7faf6e9883b33f68bab80b08a807",
-    "sampling-data/palette.json": "e762c7a6647846381cf27257be3f30c700c7c30884868f56ed9090198f93bc43",
-    "results-data/three-dataset-tables/table1.csv": "6f287d93bf19bbfda477393a07a95a004f6065303ffee47abec467c0255e1651"
+    "results-data/size-flexibility/casf-size-source.csv": "c4a1062204eaaf29386e3ae2ce9893d0b3ceb7ab3c59f90c2a843e78c5490f86",
+    "results-data/size-flexibility/casf-flexibility-source.csv": "887b50f509ab4df80f5657b1ad3e2ba5e41fcbf8930c0af9b2c6f1009b618b7c",
+    "results-data/strata.csv": "637d5deca5b04aaec4c9ffa8410dfa9cb9491091dbd9d8428f24624cd654c612",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "results-data/three-dataset-tables/table1.csv": "72ae936874a10e1d12d320746a94a858e647583ddd4203dbcfbaf041b22df78d"
   },
   "datasets": [
     "CASF core94",
     "CASF ref1044"
   ],
   "aggregation": "CASF: Hit@0.75 at PB-filtered fixed target; stored baseline unchanged.",
-  "qwen": "Original Qwen 1.7B FSQ step47023; no retrained outputs substituted.",
+  "qwen": "Qwen 1.7B FSQ v2 CoordToken step41054.",
   "checks": [
-    "All 88 existing CASF core cells reproduced",
+    "All 88 current CASF core cells reproduced",
     "CASF group denominators sum to 94/1044"
   ]
 }

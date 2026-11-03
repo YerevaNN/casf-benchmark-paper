@@ -5,8 +5,8 @@
   "shared_parent_compounds_core": 17,
   "measurable_count_min": 1032,
   "measurable_count_max": 1044,
-  "retained_energy_conformers": 734207,
-  "finite_energy_conformers": 734206,
+  "retained_energy_conformers": 734952,
+  "finite_energy_conformers": 734951,
   "undefined_energies": 1,
-  "empty_energy_ensembles": 42
+  "empty_energy_ensembles": 43
 }

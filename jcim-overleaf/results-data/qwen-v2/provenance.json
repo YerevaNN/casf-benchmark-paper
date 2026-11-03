@@ -1,0 +1,21 @@
+{
+  "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+  "replaces": "qwen_1p7b_fsq_bigdata_step47023",
+  "display_label": "Qwen 1.7B FSQ",
+  "date": "2026-11-04",
+  "cohorts": {
+    "core": 94,
+    "ref": 1044,
+    "plinder": 22
+  },
+  "plinder_references": 1067,
+  "source_sha256": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite": "9446fc81b8e5375b0d753e0951460c123ec59779dc348f36a58c45620b68075c",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_panel/qwen_1p7b_v2_coordtoken_step41054/per_molecule.csv": "7037fb384161d69da184a33924ded0baf9207e73d191423bbecb881c2cab35cc",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_panel/qwen_1p7b_v2_coordtoken_step41054/summary.csv": "af6b52f5e27a76c909e15ad7de661bd6718a45a4e81ba78c1a534cf0550e73d2",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_cache/qwen_1p7b_v2_coordtoken_step41054.npz": "c920938b64088955a6d0f0c4fb8365f631435682947cf8aa4ed930733fc2e204",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/preflight.json": "ebb2074c4e50622ba4f47c0d6fcd83e7401631fbca519cb84b859b8429c0b84b"
+  },
+  "scope": "Replace primary Qwen only; other methods and the separate Qwen 0.6B CASF-dedup result are preserved. Energy and sampling protocol measurements are separately archived in calculation-provenance.json.",
+  "training_exclusions": "Not inferred from the checkpoint label; executed corpus/exclusion records still require documentation."
+}

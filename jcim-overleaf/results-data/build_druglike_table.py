@@ -17,7 +17,7 @@ METHODS = [
     ('mcf_drugs_l_druglike', 'MCF drugs-L'),
     ('nextmol_dmt_l_druglike', 'NExT-Mol DMT-L'),
     ('flowr_druglike', 'FlowR'),
-    ('qwen_1p7b_fsq_bigdata_step47023', 'Qwen 1.7B FSQ'),
+    ('qwen_1p7b_v2_coordtoken_step41054', 'Qwen 1.7B FSQ'),
     ('qwen_0p6b_casf_dedup_binned_pm12_step64000', 'Qwen 0.6B CASF-dedup'),
 ]
 COLUMNS = ['num_gen_confs', 'cov_r_075', 'cov_p_075', 'mat_r', 'mat_p', 'pooled_pb_pass']

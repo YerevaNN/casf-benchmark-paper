@@ -51,5 +51,10 @@
     "n_entries": 1044,
     "source_cohort": "ref_dedup",
     "note": "Current ref is the frozen one-crystal-per-stereochemical-identity selection; original calculation lineage remains below."
+  },
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
   }
 }

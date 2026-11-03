@@ -6,7 +6,7 @@
   "config_sha256": "2f4dc3f916a2c47724a1926421c62711f53f30eaf2be1ebc70663b16256e6385",
   "metric_sha256": "210ea845bfa34cf39a88d511eea232190f09338492eaf2759242d4d7210e57ac",
   "ligand_directory": "/mnt/weka/mbedrosian/data/casf16/CASF16/core_chembl3d_exact_intersection_ligands",
-  "n_conformers": 884399,
+  "n_conformers": 884604,
   "n_rmsd_failed": 0,
   "protocol": "Uniform subsets of archived pre-PoseBusters candidate pools; k capped at available candidates; rejected candidates and unmeasurable RMSDs count as non-hits. Budget is not raw generator attempts or computing cost.",
   "reference_files_sha256": {
@@ -104,5 +104,10 @@
     "/mnt/weka/mbedrosian/data/casf16/CASF16/core_chembl3d_exact_intersection_ligands/4ogj_4ogj_conf0.mol2": "20bd03a25eafe4df50fadd7f43756528ecead96690efaa5f4302bdaf9bf92f55",
     "/mnt/weka/mbedrosian/data/casf16/CASF16/core_chembl3d_exact_intersection_ligands/5c28_5c28_conf0.mol2": "4284f05804a4edba3347024f6d64ecadd68e86b37f7cfedba48a05a79d124c11",
     "/mnt/weka/mbedrosian/data/casf16/CASF16/core_chembl3d_exact_intersection_ligands/5c2h_5c2h_conf0.mol2": "6e3b5a920e33c84116d5c399484cfb5ff183cebaa44466897e7d94ee805e14a1"
+  },
+  "primary_qwen_update": {
+    "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
+    "provenance": "results-data/qwen-v2/provenance.json",
+    "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
   }
 }

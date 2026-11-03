@@ -1,5 +1,5 @@
 method,name,color,marker,clusters_0p5,mat_r
-qwen_1p7b_fsq_bigdata_step47023,Qwen 1.7B FSQ,#0072B2,o,359.54545454545456,0.3598897439374123
+qwen_1p7b_v2_coordtoken_step41054,Qwen 1.7B FSQ,#0072B2,o,324.09090909090907,0.3956613984353396
 loqi_druglike,LoQI,#CE6428,s,112.1818181818182,0.4167523557485986
 torsional_diffusion_druglike,Torsional Diffusion,#AA589B,D,289.3181818181818,0.4393193976201424
 mcf_drugs_l_druglike,MCF drugs-L,#998000,v,189.13636363636363,0.4631703618221036
