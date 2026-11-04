@@ -1,11 +1,11 @@
 {
-  "description": "Current displays after independent PLINDER torsion replacement; CASF and other methods preserved.",
+  "description": "Current displays after independent PLINDER torsion replacement and consolidated Methods; numerical results and artwork unchanged.",
   "casf_baseline_commit": "c797287",
   "files": {
     "AGENTS.md": "d2244c723a358624818ea8065da5a11020be0f23227c9662bbc015ba7bd63539",
     "FIGURE_CANDIDATES.md": "c4f7f9b47742f3802104c6c6df7f6517879febdc82c34fff7a78ca9be0a5217d",
     "MANUSCRIPT_OUTLINE.md": "3a2bd2fcb4445f467f2c6547268a8643500e697b734d982c2e5ae3f888b9fb27",
-    "METHODS_NOTES.md": "a4b67ebc3874de4676e5adb8aa0604c0b10becfa92efb0554788fd8c8186146c",
+    "METHODS_NOTES.md": "7aff5a3d07071eb3e2d3c2a89411bf0b7cd62e6d85635d890b42dce0a365707e",
     "README.md": "41567fbdc45e28e8b138746801335d671e60d3b3295de1d9e1955ec55c0ff663",
     "RESULTS_NOTES.md": "4d976229616ae205c81c11fd66784ae737c2f0ca700a76941d1e326f8e071b48",
     "acs-template.tex": "73506494baf20c309a7f05a5131e2fb7ab86cadd726dbbc067396e0a5545f874",
@@ -57,7 +57,7 @@
     "introduction.tex": "bc3086c3f1ab5c1fdc898a979bd3575270cfa80890bd1c2ffb558ea609b1e44f",
     "method-data/plinder22-molecules.csv": "e39c82600c8b24dbed1dd09925cd25ac6ddab263515a44fe494720bcab372fe7",
     "method-data/plinder23-molecules.csv": "a831c7f7f71500c44ed557e345ac2c4424144e5e91fc95e5d6700cef7d3c24d3",
-    "methods.tex": "b03f28b8624a8c29c9e4150afee13c56eb656b9e081181efc96d3062b308b0c7",
+    "methods.tex": "abfe97a80641f7b6c32b5bcef757f55aebff248ab04cbec2eaa3b28432dd74a7",
     "plinder22-data/README.md": "2c654ec19dccb5148edb1d08e06c66e63fe20406a7e78197f15ac9f91863d2ee",
     "plinder22-data/build_inventory.py": "6b074a9a37421523f517c0d46278b03bca093c8df801bf70fa18eb8147978dee",
     "plinder22-data/entries.json": "c6fb73e11a90a3f89266366f913944e1d403b22d7aed9ba94294e8b1d6cf7795",

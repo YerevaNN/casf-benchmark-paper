@@ -1,5 +1,55 @@
 # Methods: evidence and author follow-up
 
+## Consolidated Methods, 5 November 2026
+
+This section supersedes the older procedural descriptions below. `methods.tex`
+is the current manuscript source; `method-data/methods-working.md` remains the
+historical October transfer, not a current draft.
+
+The Methods now separates panel construction, generator preparation, candidate
+selection, validity, geometric metrics, recovery, energy, sampling curves,
+size/flexibility, and the four Qwen configurations. Repeated generation details
+were moved out of the multiple-reference metric definition. Unreported analyses,
+release chronology, and proposed dataset-construction procedures were removed
+from the manuscript prose. No numerical records, tables, or figures changed.
+
+| Current result | Procedure and verified evidence |
+| --- | --- |
+| Core94 and ref1044 | Connectivity/stereochemistry intersection; ref selects one crystal per identity independently of model scores. `results-data/ref-panel/selection.json` and `selection.csv` retain the exact ranking, seed, and identities. |
+| PLINDER22 | 1,067 cleaned references, inclusive recovery cutoffs, full supplied pools, separately pooled PB. `plinder22-data/reference-inventory.csv`, `reference-records.csv`, and nearest-distance archives. |
+| Classical raw/minimized comparison | CASF uses separate raw/minimized pools and ChEMBL3D topology seeds; PLINDER pairs raw/minimized conformers. The two independent torsion runs use five graph-derived ETKDG starts with 200 accepted perturbations each. `plinder22-data/independent-torsion/` supersedes the experimental-seed descriptions below. RDKit paired minimization remains documented in `plinder22-data/minimized-runs/`. |
+| Tables 1–2, Figures 1–2 | Greedy cluster counts, largest-cluster fraction, CASF hit/minimum RMSD, PLINDER COV/MAT. Benchmark `analysis/metrics.py`; current per-molecule data and cached nearest distances. |
+| Figure 3 and S9 | Common-hydrogen MMFF94s single-point energies, no hydrogen or heavy-atom optimization, population SD, finite outliers retained. `energy-data/protocol.json`, `results-data/core-ref-protocol/`, and `results-data/qwen-v2/`. |
+| Table 3, Figures 4/B1 | Candidate subsets precede PB; rejected candidates are not replaced. Exact uniform-subset probabilities include PB rejections in the budget. `generation/conformer_sets.py`, `generation/normalizer.py`, `analysis/common_protocol.py`, and archived sampling inputs. |
+| Figure 5 | CASF-only heavy-atom and rotatable-bond strata; fixed target, all-entry recovery denominator. `results-data/size-flexibility/`. |
+| Figure 6 | Connect the same molecule's MAT-R/P across nine methods; highlight the union of each method's worst molecule in either metric. `plinder22-data/molecule-tracking/`. |
+| Figure 7 and Supporting Figure S2 | Four v2 Qwen runs, ref1044 and PLINDER22; paired changes, fraction strictly improved, pooled PB, and per-molecule contribution to the unweighted mean validity change. `results-data/qwen-size-representation/` archives exact run identities, representation specifications, configurations, and measurements. |
+
+Additional checks and clarifications:
+
+- A CASF candidate is a member of the saved pool after generator-specific
+  preparation, not every generation or minimization attempt. The two targets
+  select from each pipeline's pool; raw/minimized pipelines remain distinct.
+- The 2,000-conformer cap in the reference loader is conditional and does not
+  describe the current 1tlp evaluation: the selection manifest records 21
+  conformers of its matching stereoisomer, and the current baseline retains 21.
+  The irrelevant conditional cap was removed from Methods.
+- Qwen binned configurations use 256 interior bins over ±12 Å and overflow
+  symbols; FSQ uses 4,096 geometry codes with a molecular prefix and one code
+  per atom. Config snapshots confirm a one-epoch plan, context length 4,096,
+  and peak learning rate 0.0008. The two sizes share a manifest within each
+  representation; training exports/token exposure differ across representations.
+- The older binned 0.6B step64000 row is distinct from v2 binned step66057.
+  Primary Qwen remains FSQ 1.7B step41054.
+- Intended training exclusions are not an executed audit. The missing tokenizer
+  citation remains commented out with the user-requested visible TODO. Training
+  exclusions, full upstream reference-cleaning provenance, and alignment-fallback
+  frequency remain explicit author follow-ups; they have not been filled by inference.
+
+Validation: current table/data checks and source checks for citations, labels,
+includes, artwork paths, and balanced LaTeX. No local manuscript compilation.
+
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed
