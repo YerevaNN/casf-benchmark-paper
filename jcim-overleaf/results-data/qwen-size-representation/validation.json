@@ -1,0 +1,18 @@
+{
+  "matched_cohorts": {
+    "casf_ref": 1044,
+    "plinder_molecules": 22,
+    "plinder_references": 1067
+  },
+  "aggregate_points_checked": 24,
+  "approved_artwork_sha256_verified": true,
+  "archived_source_sha256_verified": true,
+  "reproduction": "Both figures rebuilt in a temporary directory from archived data; PNG pixels match the approved previews exactly.",
+  "source_checks": [
+    "citation keys",
+    "reference labels",
+    "balanced braces",
+    "figure paths"
+  ],
+  "manuscript_compiled": false
+}

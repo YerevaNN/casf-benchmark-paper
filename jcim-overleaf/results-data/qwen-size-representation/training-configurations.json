@@ -1,0 +1,400 @@
+{
+  "binned06": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/configs/full-local9-acc2.json",
+    "sha256": "f4aa34696188bbdd8293f23d5b039cc6706bcd37e69be5518603bd394b5c8a65",
+    "config": {
+      "data": {
+        "manifest": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/run-20261025-v1/dataset.json",
+        "representation_assertions": {
+          "coordinate_interval": [
+            -12.0,
+            12.0
+          ],
+          "format_version": "legacy-binned-pm12-v1",
+          "interior_bins": 256,
+          "layout": "legacy_interleaved_semicolon",
+          "numbers": "legacy_binned_000_through_257",
+          "overflow_sentinels": [
+            "000",
+            "257"
+          ],
+          "plan": "none",
+          "representation": "legacy_uniform_binned_pm12",
+          "storage": {
+            "one_source_file_per_parquet_file": true,
+            "parquet_compression": "zstd",
+            "parquet_compression_level": 1,
+            "row_group_rows": 32768
+          },
+          "text_transform": "none",
+          "variants_per_molecule": 1
+        },
+        "split": "train"
+      },
+      "export": {
+        "include_final": true,
+        "interval": null,
+        "steps": [
+          66057
+        ]
+      },
+      "start": {
+        "mode": "hf_weights",
+        "new_token_ids": [],
+        "prepared_artifact": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/artifacts/initialization-qwen3-0.6b-legacy-v1",
+        "reference_token_ids": [],
+        "row_method": "model_default",
+        "row_seed": 2025,
+        "source": "/mnt/weka/vtarasov/Qwen3-0.6B-Base/patched_for_titan",
+        "source_tokenizer": "/mnt/weka/vtarasov/code/3DMolGen/src/molgen3D/training/tokenizers/Qwen3_tokenizer_binned_258",
+        "vocabulary_policy": "id_preserving"
+      },
+      "tokenizer": {
+        "bundle": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/tokenizers/qwen3-binned-258-v1",
+        "expected_content_digest": "f8eff8e77251446d443bdab55814284d638d3d64fdeb3e30e8e048760cd590dc"
+      },
+      "training": {
+        "accumulation_steps": 2,
+        "async_prefetch": true,
+        "audit_directory": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/training/audit",
+        "checkpoint_interval": 16515,
+        "context_length": 4096,
+        "data_seed": 2025,
+        "disable_cuda_graphs": true,
+        "effective_dp_degree": 8,
+        "epochs": 1,
+        "expected_reference_index_digest": "9e071e9a1fde16ce622f974037619263d416202d0f7b7f38737c7eaab4afcd86",
+        "local_batch_size": 9,
+        "lr_scheduler": {
+          "checkpoints": [
+            66057
+          ],
+          "decay_steps": 6606,
+          "min_lr_factor": 0.0,
+          "total_steps": 66057,
+          "type": "wsds",
+          "warmup_steps": 500
+        },
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-08,
+          "implementation": "fused",
+          "lr": 0.0008,
+          "weight_decay": 0.1
+        },
+        "optimizer_updates": 66057,
+        "packing_lookahead": 100,
+        "planned_optimizer_updates": 66057,
+        "prefetch_packs": 8,
+        "read_workers": 4,
+        "reference_index": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/run-20261025-v1/text-index-train-v1",
+        "retention_keep_recent": 3,
+        "row_group_cache_size": 64,
+        "shuffle_mode": "row_group_window",
+        "shuffle_window_row_groups": 32,
+        "stopping": "exact_epochs",
+        "tokenization_batch_size": 256
+      }
+    }
+  },
+  "fsq06": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/configs/full-local9-acc2.json",
+    "sha256": "0352002c378fbc0e451ba31e7430c657e6d94611c328c980d2f006ee107ec928",
+    "config": {
+      "data": {
+        "manifest": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/run-20261027-v1/dataset.json",
+        "representation_assertions": {
+          "atom_codes_per_atom": 1,
+          "format_version": "conformer-text-v2-2",
+          "geometry_codebook_size": 4096,
+          "geometry_token_syntax": "<0>_through_<4095>",
+          "index_build_transport_format": "legacy-binned-pm12-v1",
+          "layout": "molecular_code_prefix_then_one_code_per_atom",
+          "molecular_registers": 1,
+          "plan": "none",
+          "representation": "coordtoken_atom12_reg1_casf_epoch2",
+          "source_format_version": "atom12_reg1_prefix_v1",
+          "storage": {
+            "one_source_file_per_parquet_file": true,
+            "parquet_compression": "zstd",
+            "parquet_compression_level": 1,
+            "row_group_rows": 32768
+          },
+          "text_transform": "none",
+          "transport_contract": "opaque-verbatim-text",
+          "variants_per_molecule": 1
+        },
+        "split": "train"
+      },
+      "export": {
+        "include_final": true,
+        "interval": null,
+        "steps": [
+          41054
+        ]
+      },
+      "start": {
+        "mode": "hf_weights",
+        "new_token_ids": [],
+        "prepared_artifact": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/artifacts/initialization-qwen3-0.6b-coordtoken-v1",
+        "reference_token_ids": [],
+        "row_method": "model_default",
+        "row_seed": 2025,
+        "source": "/mnt/weka/vtarasov/Qwen3-0.6B-Base/patched_for_titan",
+        "source_tokenizer": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/tokenizers/final-compat-v1",
+        "vocabulary_policy": "id_preserving"
+      },
+      "tokenizer": {
+        "bundle": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/tokenizers/final-compat-v1",
+        "expected_content_digest": "d1fb4c3cd77b9be4e6810c3f24f8b7ee3509a47169db93b6bf39d23087704d27"
+      },
+      "training": {
+        "accumulation_steps": 2,
+        "async_prefetch": true,
+        "audit_directory": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/training/audit",
+        "checkpoint_interval": 10264,
+        "context_length": 4096,
+        "data_seed": 2025,
+        "disable_cuda_graphs": true,
+        "effective_dp_degree": 8,
+        "epochs": 1,
+        "expected_reference_index_digest": "9c7475f86145a8975c4943d77276ec459c94e7e0437a2b44a07f167a5a9f8892",
+        "local_batch_size": 9,
+        "lr_scheduler": {
+          "checkpoints": [
+            41054
+          ],
+          "decay_steps": 4106,
+          "min_lr_factor": 0.0,
+          "total_steps": 41054,
+          "type": "wsds",
+          "warmup_steps": 500
+        },
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-08,
+          "implementation": "fused",
+          "lr": 0.0008,
+          "weight_decay": 0.1
+        },
+        "optimizer_updates": 41054,
+        "packing_lookahead": 100,
+        "planned_optimizer_updates": 41054,
+        "prefetch_packs": 8,
+        "read_workers": 4,
+        "reference_index": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/run-20261027-v1/text-index-train-v1",
+        "retention_keep_recent": 3,
+        "row_group_cache_size": 64,
+        "shuffle_mode": "row_group_window",
+        "shuffle_window_row_groups": 32,
+        "stopping": "exact_epochs",
+        "tokenization_batch_size": 256
+      }
+    }
+  },
+  "binned17": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/configs/train-local9-acc2.json",
+    "sha256": "1bbb10555722a0775fb85768b7844b8c1caa65749d226f8cc6593beb82b9c4bf",
+    "config": {
+      "data": {
+        "manifest": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/run-20261025-v1/dataset.json",
+        "representation_assertions": {
+          "coordinate_interval": [
+            -12.0,
+            12.0
+          ],
+          "format_version": "legacy-binned-pm12-v1",
+          "interior_bins": 256,
+          "layout": "legacy_interleaved_semicolon",
+          "numbers": "legacy_binned_000_through_257",
+          "overflow_sentinels": [
+            "000",
+            "257"
+          ],
+          "plan": "none",
+          "representation": "legacy_uniform_binned_pm12",
+          "storage": {
+            "one_source_file_per_parquet_file": true,
+            "parquet_compression": "zstd",
+            "parquet_compression_level": 1,
+            "row_group_rows": 32768
+          },
+          "text_transform": "none",
+          "variants_per_molecule": 1
+        },
+        "split": "train"
+      },
+      "export": {
+        "include_final": true,
+        "interval": null,
+        "steps": [
+          66057
+        ]
+      },
+      "start": {
+        "mode": "hf_weights",
+        "new_token_ids": [],
+        "prepared_artifact": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/artifacts/initialization-qwen3-1.7b",
+        "reference_token_ids": [],
+        "row_method": "model_default",
+        "row_seed": 2025,
+        "source": "/mnt/weka/mbedrosian/model-cache/huggingface/models--Qwen--Qwen3-1.7B-Base/snapshots/ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "source_tokenizer": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/tokenizers/qwen3-binned-258-v1",
+        "vocabulary_policy": "id_preserving"
+      },
+      "tokenizer": {
+        "bundle": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/tokenizers/qwen3-binned-258-v1",
+        "expected_content_digest": "f8eff8e77251446d443bdab55814284d638d3d64fdeb3e30e8e048760cd590dc"
+      },
+      "training": {
+        "accumulation_steps": 2,
+        "async_prefetch": true,
+        "audit_directory": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/training/audit",
+        "checkpoint_interval": 16515,
+        "context_length": 4096,
+        "data_seed": 2025,
+        "disable_cuda_graphs": true,
+        "effective_dp_degree": 8,
+        "epochs": 1,
+        "expected_reference_index_digest": "9e071e9a1fde16ce622f974037619263d416202d0f7b7f38737c7eaab4afcd86",
+        "local_batch_size": 9,
+        "lr_scheduler": {
+          "checkpoints": [
+            66057
+          ],
+          "decay_steps": 6606,
+          "min_lr_factor": 0.0,
+          "total_steps": 66057,
+          "type": "wsds",
+          "warmup_steps": 500
+        },
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-08,
+          "implementation": "fused",
+          "lr": 0.0008,
+          "weight_decay": 0.1
+        },
+        "optimizer_updates": 66057,
+        "packing_lookahead": 100,
+        "planned_optimizer_updates": 66057,
+        "prefetch_packs": 8,
+        "read_workers": 4,
+        "reference_index": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/run-20261025-v1/text-index-train-v1",
+        "retention_keep_recent": 3,
+        "row_group_cache_size": 64,
+        "shuffle_mode": "row_group_window",
+        "shuffle_window_row_groups": 32,
+        "stopping": "exact_epochs",
+        "tokenization_batch_size": 256
+      }
+    }
+  },
+  "fsq17": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/configs/train-local9-acc2.json",
+    "sha256": "a6fa617254f8b0033c7d01520495205502aedcb2ff776ce8c31a3fb1255989f5",
+    "config": {
+      "data": {
+        "manifest": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/run-20261027-v1/dataset.json",
+        "representation_assertions": {
+          "atom_codes_per_atom": 1,
+          "format_version": "conformer-text-v2-2",
+          "geometry_codebook_size": 4096,
+          "geometry_token_syntax": "<0>_through_<4095>",
+          "index_build_transport_format": "legacy-binned-pm12-v1",
+          "layout": "molecular_code_prefix_then_one_code_per_atom",
+          "molecular_registers": 1,
+          "plan": "none",
+          "representation": "coordtoken_atom12_reg1_casf_epoch2",
+          "source_format_version": "atom12_reg1_prefix_v1",
+          "storage": {
+            "one_source_file_per_parquet_file": true,
+            "parquet_compression": "zstd",
+            "parquet_compression_level": 1,
+            "row_group_rows": 32768
+          },
+          "text_transform": "none",
+          "transport_contract": "opaque-verbatim-text",
+          "variants_per_molecule": 1
+        },
+        "split": "train"
+      },
+      "export": {
+        "include_final": true,
+        "interval": null,
+        "steps": [
+          41054
+        ]
+      },
+      "start": {
+        "mode": "hf_weights",
+        "new_token_ids": [],
+        "prepared_artifact": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/artifacts/initialization-qwen3-1.7b",
+        "reference_token_ids": [],
+        "row_method": "model_default",
+        "row_seed": 2025,
+        "source": "/mnt/weka/mbedrosian/model-cache/huggingface/models--Qwen--Qwen3-1.7B-Base/snapshots/ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "source_tokenizer": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/tokenizers/final-compat-v1",
+        "vocabulary_policy": "id_preserving"
+      },
+      "tokenizer": {
+        "bundle": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/tokenizers/final-compat-v1",
+        "expected_content_digest": "d1fb4c3cd77b9be4e6810c3f24f8b7ee3509a47169db93b6bf39d23087704d27"
+      },
+      "training": {
+        "accumulation_steps": 2,
+        "async_prefetch": true,
+        "audit_directory": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/audit",
+        "checkpoint_interval": 10264,
+        "context_length": 4096,
+        "data_seed": 2025,
+        "disable_cuda_graphs": true,
+        "effective_dp_degree": 8,
+        "epochs": 1,
+        "expected_reference_index_digest": "9c7475f86145a8975c4943d77276ec459c94e7e0437a2b44a07f167a5a9f8892",
+        "local_batch_size": 9,
+        "lr_scheduler": {
+          "checkpoints": [
+            41054
+          ],
+          "decay_steps": 4106,
+          "min_lr_factor": 0.0,
+          "total_steps": 41054,
+          "type": "wsds",
+          "warmup_steps": 500
+        },
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-08,
+          "implementation": "fused",
+          "lr": 0.0008,
+          "weight_decay": 0.1
+        },
+        "optimizer_updates": 41054,
+        "packing_lookahead": 100,
+        "planned_optimizer_updates": 41054,
+        "prefetch_packs": 8,
+        "read_workers": 4,
+        "reference_index": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/run-20261027-v1/text-index-train-v1",
+        "retention_keep_recent": 3,
+        "row_group_cache_size": 64,
+        "shuffle_mode": "row_group_window",
+        "shuffle_window_row_groups": 32,
+        "stopping": "exact_epochs",
+        "tokenization_batch_size": 256
+      }
+    }
+  }
+}

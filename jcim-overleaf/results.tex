@@ -130,6 +130,24 @@ therefore need not dominate both metrics or both model variants.
 
 \moleculetrackingfigure
 
+To assess how the choice of Qwen configuration affects recovery, we compared the
+0.6B and 1.7B models with binned coordinates and FSQ
+(Figure~\ref{fig:qwen-size-representation}). FSQ has lower mean matching distances
+at both sizes on CASF ref and PLINDER, whereas increasing model size produces
+smaller changes and does not consistently improve PLINDER MAT-R. On CASF ref,
+FSQ improves matching for approximately 66\% of ligands at each size, compared
+with 50--54\% when increasing size within a representation (Supporting Figure S2).
+The molecule-level comparison also shows that Actinonin contributes substantially
+to FSQ's mean matching advantage on PLINDER. Scaling has a clearer effect on
+validity: the pooled PLINDER PoseBusters pass rate rises from 82.7\% to 92.5\%
+for FSQ. This improvement is concentrated in particular molecules, with
+Chloramphenicol and Staurosporine accounting for 86\% of the net increase in the
+mean per-molecule pass rate. These results support FSQ for recovery in the tested
+settings, while the additional benefit of the larger model is more apparent in
+validity than in matching distance.
+
+\qwensizerepresentationfigure
+
 Together, the three evaluation sets support selecting generators by experimental coverage
 and sample concentration, with geometric diversity and energetic dispersion as complementary
 descriptors. Qwen 1.7B FSQ remains a candidate for constructing a larger conformational resource,

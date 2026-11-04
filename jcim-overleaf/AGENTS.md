@@ -1,5 +1,16 @@
 # Manuscript authoring
 
+## Approved Qwen size and representation comparison
+
+Figure 7 compares the four v2 configurations (0.6B/1.7B, binned/FSQ), with size
+effects above representation effects. Supporting Figure S2 contains the approved
+simplified molecule-level scatter, CASF zooms, and only Actinonin labeled.
+Both use ref1044 and PLINDER22. The v2 binned 0.6B step66057 checkpoint in these
+figures is distinct from the older CASF-dedup step64000 row in Table 4/Figure 6.
+Do not replace existing table rows with these additional runs. Training exposure
+differs between representations; do not describe this as an isolated causal
+encoding effect. Sources and reproduction: `results-data/qwen-size-representation/`.
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed

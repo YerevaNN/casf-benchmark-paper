@@ -1,0 +1,56 @@
+{
+  "runs": {
+    "binned06": [
+      "qwen_0p6b_v2_binned_pm12_step66057",
+      "v2_binned_pm12_step66057",
+      "Binned",
+      0.6
+    ],
+    "binned17": [
+      "qwen_1p7b_v2_binned_pm12_step66057",
+      "v2_1p7b_binned_pm12_step66057",
+      "Binned",
+      1.7
+    ],
+    "fsq06": [
+      "qwen_0p6b_v2_fsq_step41054",
+      "v2_fsq_step41054_corrected",
+      "FSQ",
+      0.6
+    ],
+    "fsq17": [
+      "qwen_1p7b_v2_coordtoken_step41054",
+      "v2_1p7b_coordtoken_step41054",
+      "FSQ",
+      1.7
+    ]
+  },
+  "sources": {
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/casf_benchmark_runs/qwen_0p6b_v2_binned_pm12_step66057_core/analysis/tables/geometric_per_ligand_long.csv": "3e09107cbb28684ea677bbc879b9943ea3e16cb6c8e62f03b704b3e6b506a198",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/casf_benchmark_runs/qwen_0p6b_v2_binned_pm12_step66057_ref/analysis/tables/geometric_per_ligand_long.csv": "a18b0c431c6049f27427efecb53de39167de9a43a1508569be383c4641a7b1a0",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_binned_pm12_step66057/plinder_panel/qwen_0p6b_v2_binned_pm12_step66057/per_molecule.csv": "1174bb3148f26625e3ca07b8575334213cf9f087669b38693cbf0ecad18b4db3",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_binned_pm12_step66057/gen_results/qwen_0p6b_v2_binned_pm12_step66057_core/generation_metadata.json": "044e1230cdd81a1902b8a5da8a8b622c59e4e2034120c3cb8f8d5b006be13de6",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_binned_pm12_step66057/gen_results/qwen_0p6b_v2_binned_pm12_step66057_ref/generation_metadata.json": "42f8db2fe269ba8ddae4062da1ed4adddc245a2bb027ef2e1fb4929ec52710f6",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_binned_pm12_step66057/gen_results/qwen_0p6b_v2_binned_pm12_step66057_plinder/generation_metadata.json": "4ce1fdf481daa58db6b4135a8e356ea1224da2131522324551812f1a7cf2bb29",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/casf_benchmark_runs/qwen_1p7b_v2_binned_pm12_step66057_core/analysis/tables/geometric_per_ligand_long.csv": "516f30ebf05e6674e7c7784c10b34b50b7a009b4ce41348025c25c7c388dbbe1",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/casf_benchmark_runs/qwen_1p7b_v2_binned_pm12_step66057_ref/analysis/tables/geometric_per_ligand_long.csv": "eae3ce802ffb279f1e464917d0698ff5d399ea72a458819ccf8a5af003ed5689",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/plinder_panel/qwen_1p7b_v2_binned_pm12_step66057/per_molecule.csv": "ef5f4525838c7c552913e447d87939db1dfd7fa06d4e40825356a9e6ec0d8b5a",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/gen_results/qwen_1p7b_v2_binned_pm12_step66057_core/generation_metadata.json": "c0c778554497286e6fc849dde403f9d8c08bb65c32519339fdb215f2965fb69f",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/gen_results/qwen_1p7b_v2_binned_pm12_step66057_ref/generation_metadata.json": "4451b8a5f366ee017c136959952ed92ef310e1b88154204c8412736b5e55bd8a",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/gen_results/qwen_1p7b_v2_binned_pm12_step66057_plinder/generation_metadata.json": "1746cb23a16664b9d45990b98bcdc0f0d18beacd9e03f9158bf4a8edebaaa7ba",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/casf_benchmark_runs/qwen_0p6b_v2_fsq_step41054_core/analysis/tables/geometric_per_ligand_long.csv": "102626bdc80b6460dfa0875420b21032dc83efb9c7bfd5cc118b5329fac4cbb8",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/casf_benchmark_runs/qwen_0p6b_v2_fsq_step41054_ref/analysis/tables/geometric_per_ligand_long.csv": "f1403ec76fff9bafb0835ed5e3fbedf157291159ed9f8671bdf7211bcb0a1014",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/plinder_panel/qwen_0p6b_v2_fsq_step41054/per_molecule.csv": "0584ed0887c2d7b69840a44458891eb72f64fefbbd98223fcfeaa765d6012e38",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/gen_results/qwen_0p6b_v2_fsq_step41054_core/generation_metadata.json": "193bf6c70e946051befe70f14220a7624efd7a3895929e6ef792e902a4f13779",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/gen_results/qwen_0p6b_v2_fsq_step41054_ref/generation_metadata.json": "9f525eb00ed02e7cf5bd4b90984feaf3dca1ed57be8fb5edce69f7514f460370",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/gen_results/qwen_0p6b_v2_fsq_step41054_plinder/generation_metadata.json": "6885164465c348083c43e37cfa28231f34e9bf33353fb83a2345256a899cd4b3",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/casf_benchmark_runs/qwen_1p7b_v2_coordtoken_step41054_core/analysis/tables/geometric_per_ligand_long.csv": "d639292d4bda78b3fb0c314e5f7671f9da3a226c770fb5cd7b86c3e126b7c11a",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/casf_benchmark_runs/qwen_1p7b_v2_coordtoken_step41054_ref/analysis/tables/geometric_per_ligand_long.csv": "bde578f27562691d11d692209d99d157692cb8c01700dbeb79e4025e1533fcbb",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_panel/qwen_1p7b_v2_coordtoken_step41054/per_molecule.csv": "7037fb384161d69da184a33924ded0baf9207e73d191423bbecb881c2cab35cc",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_core/generation_metadata.json": "758d51f4785bf811724a81f3d255e30c28fd0b7d3f08f9d6b3aabbe4bdc73a88",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_ref/generation_metadata.json": "865168f51b23b4be75910b3ebc84bf796d413bde982ce5668aaf7e20747b157e",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_plinder/generation_metadata.json": "78526d29909091e0ecae50d93e19af5a3eda8ea8cab3fa46d44ba84ef5ceb74e"
+  },
+  "reference_selection": "casf16_ref_dedup_selection_v1",
+  "scope": "Preview only; all four models on identical core94/ref1044/PLINDER22 identities. No new generation, filtering, optimization or alignment."
+}

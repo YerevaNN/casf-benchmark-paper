@@ -1,5 +1,17 @@
 # JCIM manuscript
 
+## Qwen size and representation comparison
+
+Figure 7 adds the approved two-row comparison: model size above and coordinate
+representation below, using CASF ref matching, PLINDER matching, and PLINDER
+validity. Supporting Figure S2 contains the simplified molecule-level scatter
+with CASF zooms and Actinonin labeled. It is included in the separate
+`supporting-information.tex` document. Results explains both; Methods distinguishes
+the four v2 checkpoints from the older 0.6B CASF-dedup row in Table 4.
+The existing tables and Figures 1–6 are unchanged. Inputs, exact identities,
+training configurations, source hashes, and reproduction scripts are archived in
+[results-data/qwen-size-representation/](results-data/qwen-size-representation/README.md).
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed

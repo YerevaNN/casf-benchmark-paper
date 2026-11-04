@@ -1,0 +1,46 @@
+[
+  {
+    "cohort": "ref",
+    "effect": "representation",
+    "n": 1044,
+    "improved_x": 695,
+    "improved_y": 687,
+    "improved_both": 509,
+    "worsened_both": 171,
+    "mean_x": 0.03648461263738371,
+    "mean_y": 0.03362680416803738
+  },
+  {
+    "cohort": "ref",
+    "effect": "size",
+    "n": 1044,
+    "improved_x": 527,
+    "improved_y": 563,
+    "improved_both": 287,
+    "worsened_both": 241,
+    "mean_x": 0.006895279674021718,
+    "mean_y": 0.004037471204675386
+  },
+  {
+    "cohort": "plinder",
+    "effect": "representation",
+    "n": 22,
+    "improved_x": 14,
+    "improved_y": 15,
+    "improved_both": 10,
+    "worsened_both": 3,
+    "mean_x": 0.043137455708305746,
+    "mean_y": 0.032069996229433406
+  },
+  {
+    "cohort": "plinder",
+    "effect": "size",
+    "n": 22,
+    "improved_x": 13,
+    "improved_y": 10,
+    "improved_both": 6,
+    "worsened_both": 5,
+    "mean_x": 0.004414236853228079,
+    "mean_y": -0.006653222625644264
+  }
+]

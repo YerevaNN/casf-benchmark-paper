@@ -116,9 +116,30 @@ molecular SMILES. We use the 1.7-billion-parameter FSQ model at pretraining step
 The coordinate representation is decoded before the common validity evaluation. The checkpoint
 and coordinate-decoder identities are archived with the results.
 
+We additionally compare 0.6B and 1.7B Qwen models with each coordinate
+representation on CASF ref and PLINDER. The binned models use the v2 PM12
+checkpoints at step 66,057, and the FSQ models use the v2 checkpoints at step
+41,054. Within
+each representation, the two sizes share the training-data manifest and planned
+epoch. The training exports and token exposure differ between representations,
+so this comparison does not isolate coordinate encoding from training exposure.
+We use the 1,000-candidate target and existing CASF PoseBusters filtering;
+PLINDER matching uses the full supplied pools, with validity assessed separately.
+Retained ensemble sizes are not equalized. Molecule-level representation
+differences subtract the FSQ distance from the binned distance at each size;
+size differences subtract the 1.7B distance from the 0.6B distance within each
+representation. Positive differences therefore indicate closer matching after
+the change. Contributions to the change in mean validity are calculated from
+per-molecule differences in PoseBusters pass percentages. All four configurations
+use the same 1,044 CASF ref identities and 22 PLINDER molecules.
+Exact run identities, generation metadata, and training
+configuration records are archived with these figures.
+
 An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
 CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}, Supporting Table S4,
-and Figure~\ref{fig:plinder-molecule-tracking}. Both Qwen models use the same cleaned PLINDER
+and Figure~\ref{fig:plinder-molecule-tracking}. This is distinct from the v2 binned
+0.6B checkpoint in the size and representation comparison. This older model and
+the primary 1.7B FSQ model use the same cleaned PLINDER
 references and retain their supplied conformer pools. They differ in model size, coordinate
 representation, and training configuration, so their comparison does not isolate the effect
 of training exclusions. The intended exclusion policy removes core94 exact matches and
@@ -306,10 +327,12 @@ the paper data. PLINDER uses the cleaned reference collection and refreshed
 evaluations from 20 October 2026, supplemented by the finalized minimized classical runs
 and corrected raw-baseline validity checks from 23 October, and the additional Qwen 0.6B
 CASF-dedup evaluation from 26 October. The same ten CASF pipelines and the stored ChEMBL3D-PB
-ensemble are used throughout, and the 22-molecule comparison uses the five external learned
-generators and the same Qwen checkpoint, with four classical baselines in
+ensemble are used in the primary comparisons, and the 22-molecule comparison uses
+the five external learned generators and the same Qwen checkpoint, with four classical baselines in
 Tables~\ref{tab:diversity}, \ref{tab:count-recovery}, and \ref{tab:druglike} and Figure~\ref{fig:druglike}.
 Table~\ref{tab:druglike} and Supporting Table S4 additionally include the Qwen 0.6B variant.
+Figure~\ref{fig:qwen-size-representation} and Supporting Figure S2 use the four
+v2 Qwen configurations described above.
 Main displays are descriptive and omit uncertainty intervals; archived bootstrap intervals
 are shown only in the review appendix. Bold and underlining in the tables identify the best
 and second-best distinct unrounded values among generated methods, with ties sharing emphasis.

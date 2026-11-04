@@ -1,0 +1,28 @@
+{
+  "scope": "Approved Figure 7 and Supporting Figure S2; CASF ref1044 and PLINDER22. No new generation, optimization, filtering or alignment.",
+  "source_preview_directory": "/mnt/weka/mbedrosian/code/casf-benchmark/docs/qwen_four_model_options",
+  "upstream_source_manifest": "sources.json",
+  "archived_casf_subset": "Only fixed-target ref rows and the columns needed for matching/count validation; values preserved.",
+  "approved_artwork": {
+    "figures/figure-qwen-size-representation.pdf": "e45b147b61e89b9185ed40794f0778a9e59f61df539db5408f390e325c74c8f6",
+    "figures/figure-qwen-size-representation.svg": "377151fc910dba1a4a01de72d406a4c890f6448a3c945aed1413db2d6443770e",
+    "figures/figure-qwen-size-representation.png": "ba6dcf3e80bcc47d75383d942190237f720ac59c5d91e0dd704cf18e21cf14cf",
+    "figures/figure-qwen-molecule-effects.pdf": "002d2d002fc309382556973e8453852030c7eff31d40ff786e48787834dba747",
+    "figures/figure-qwen-molecule-effects.svg": "a56da254906e63ecf1f4cab9dce0224a0b60bfb4287288b21147e09099a89209",
+    "figures/figure-qwen-molecule-effects.png": "47c6d211b160a867df8dd5ae62dac0673e7a863bf72992f4d53c325f759534c0"
+  },
+  "archive_sha256": {
+    "plinder-per-molecule.csv": "4ee398109c9f1916c7b6710d2ea23279d02eae615f23dea3d8528f7b6090d1fa",
+    "07-representation-and-size-simplified-points.csv": "ccdbf17ec0912d017b7aafa74ccfb9aacc0365b6cde25e177989bb73e7c02891",
+    "08-main-size-and-representation-values.csv": "88f6ec98a8c8d10b76e79547d1013554deeb5e42a520d48f4966b7968cbf53d5",
+    "07-representation-and-size-simplified-stats.json": "a402c3aad59d622cd71e766f6295a39c3b96ef74c8b0944ff2d770eccbe9ed13",
+    "generation-metadata.json": "6599e987f351f68cae3aa592438b2a94339dc54053fc3920906da9347ec9434d",
+    "plot_main_two_row.py": "b869a463bab475de02273ac5ab52f25d55d46ee14028a594a23734f88378c8f2",
+    "casf-per-entry.csv": "fee765e3329cf4870d2ceaa47a2e644e505ec39e462f7c6e0b63d76ac1342aa3",
+    "plot_two_row.py": "93164c5665293cf39aa0413e3da0a457978aee7e83ac2b827d18d860ecc4799c",
+    "training-configurations.json": "b1f0232786e275164a5c30481cc9d0e8775f15e670c3878e47989a1cff080462",
+    "sources.json": "b0668ee9803b8bbecca5858865ed25b565d018edf734b82bae392fa43e560bb0",
+    "validity-by-molecule.csv": "dd4b42b4a13f71187cde1a342cee2d4a652df4797217038377df0d7115f0d8bd",
+    "summary.csv": "5699692b9eae8b97ca2be05757b7ddd7555bda6d7ee14fdbc55edf86835ccf85"
+  }
+}
