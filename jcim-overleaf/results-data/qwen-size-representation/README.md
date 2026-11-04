@@ -3,7 +3,8 @@
 The approved aggregate comparison is Figure 7, after the PLINDER analysis.
 The simplified molecule-level scatter is Supporting Figure S2 in
 `supporting-information.tex`. Earlier tables and Figures 1–6 are unchanged.
-The artwork was copied byte-for-byte from the approved previews; no conformers
+PDF and PNG artwork was copied byte-for-byte from the approved previews; SVG
+trailing whitespace was normalized without changing the artwork. No conformers
 were generated, optimized, filtered or realigned for this manuscript addition.
 
 ## Exact models

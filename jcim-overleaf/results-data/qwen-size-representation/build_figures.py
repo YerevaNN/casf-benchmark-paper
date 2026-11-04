@@ -13,4 +13,7 @@ for source, destination in [
     ('07-representation-and-size-simplified', 'figure-qwen-molecule-effects'),
 ]:
     for extension in ['pdf', 'svg', 'png']:
-        shutil.copy2(here / f'{source}.{extension}', artwork / f'{destination}.{extension}')
+        target = artwork / f'{destination}.{extension}'
+        shutil.copy2(here / f'{source}.{extension}', target)
+        if extension == 'svg':
+            target.write_text('\n'.join(line.rstrip() for line in target.read_text().splitlines()) + '\n')
