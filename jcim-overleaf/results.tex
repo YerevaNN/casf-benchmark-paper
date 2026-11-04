@@ -18,7 +18,9 @@ three sets, then assess sampling effects within CASF and sample precision within
 Table~\ref{tab:diversity} compares cluster counts at two geometric resolutions. Across the
 three sets, FlowR, Qwen, and raw torsion sampling generally produce more clusters than LoQI
 and the minimized CASF baselines. Their exact ordering depends on the dataset and clustering
-radius: FlowR has the most clusters on PLINDER at both radii. At the finer radius, raw torsion
+radius: raw torsion sampling and FlowR have nearly identical cluster counts on PLINDER
+at the finer radius, with raw torsion slightly higher; FlowR leads at the larger radius.
+At the finer radius, raw torsion
 sampling leads CASF core and Qwen leads ref; FlowR leads both CASF panels at the larger radius.
 
 \input{\manuscriptroot tables/diversity}
@@ -50,7 +52,7 @@ coverage at the primary cutoff, but coverage falls at the tighter cutoff. The sm
 cluster counts therefore do not imply a uniform change in recovery of bound geometries.
 
 Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
-FlowR produces the most clusters but covers fewer references than LoQI, whose ensembles
+FlowR produces many more clusters but covers fewer references than LoQI, whose ensembles
 contain substantially fewer clusters (Figure~\ref{fig:druglike}A--B). The coverage and precision
 curves separate recovery of the observed set from concentration near it.
 
@@ -104,10 +106,11 @@ as uniform coverage of the chemistry needed for a conformational resource.
 PLINDER's multiple experimental references also distinguish coverage from the concentration
 of generated conformers near the observed set. Table~\ref{tab:druglike} reports sample
 precision alongside reference coverage, matching distances, and separately measured validity.
-LoQI covers the most references at the primary cutoff and has the highest precision among
-the learned generators. Qwen has a slightly lower coverage but the lowest MAT-R, while
-minimized torsion places the largest fraction of samples near an observed geometry. Coverage,
-matching distance, and sample precision therefore do not give the same ordering.
+LoQI covers the most references at the primary cutoff and has the highest sample precision.
+Qwen has slightly lower coverage but the lowest MAT-R. Minimizing the independent
+torsion pools increases sample precision from 36.2\% to 56.7\%, while reducing
+geometric diversity. Coverage, matching distance, and sample precision therefore
+do not give the same ordering.
 
 \input{\manuscriptroot tables/druglike}
 

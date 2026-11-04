@@ -1,0 +1,55 @@
+{
+  "methods": {
+    "torsion_independent_raw_druglike": "Torsion raw",
+    "torsion_independent_minimized_druglike": "Torsion minimized"
+  },
+  "replaced_methods": {
+    "torsion_raw_druglike": "torsion_independent_raw_druglike",
+    "torsion_minimized_22_druglike": "torsion_independent_minimized_druglike"
+  },
+  "source_sha256": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_raw_druglike/per_molecule.csv": "e2720280b7bf3988907ef8bf6579ba4496e9b156b7ec41478b1e51d967d59f6f",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_raw_druglike/summary.csv": "a1e2c43fc0af5017b747cc9d7a2ffd11f38214875aebe78a3c69e82d6cd9f2b4",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_raw_druglike/recovery.csv": "3ead3fafcb9cd9070af5ac9c2386773c73361297408b42528d1857bcd822852b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/torsion_independent_raw_druglike/generation_summary.json": "3a45221f054e6ea41058295208247b6bcb9fe6bff404116b5c26c4d47226b261",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/torsion_independent_raw_druglike.npz": "1874ae35daa0efaa47cdade4ea43f558a497fde63d03b719fedd243affe067ec",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_minimized_druglike/per_molecule.csv": "2d1cf51352b8ef29b6a68d796171f0300fa072ddec8d6d3af92f936b1e876b9d",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_minimized_druglike/summary.csv": "9f0dec3155f81406c8e4dfc08aa46f9ef4f55bf7c12caa3d51a900a2fbcf2080",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_minimized_druglike/recovery.csv": "8b78c23889210dea89db67aefb1d8f6f6969167dc4f3e4b6c57f128dbff80d72",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/torsion_independent_minimized_druglike/generation_summary.json": "bd67e65040d9a5a438e97e39dfa8987f856e289c269df8ff45f10f59ac33daa7",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/torsion_independent_minimized_druglike.npz": "45f50283a59d1d3701e7eff99d947dfcc827484833ce4e131b4b850e0cc02d3a",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/4-Hydroxytamoxifen.json": "bc35e3ac1588839b048e3b256af0c02cf84468a9f4f608d74299cac11f9c707b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Acetazolamide.json": "9200c1a5742d2f2c159394bb5973901622b4d46285c495e9e0209a1d2ed6d494",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Actinonin.json": "beb59d854271a725f39445b268bf362a568830c853efc5ea5da19368976de4df",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Amprenavir.json": "c06d85c498f54cb4483e937c4fc10caf54d7ea88ad581c4195a88cf570c9373d",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Bromosporine.json": "66563df1ab5b4f68cd80303da390cab0ac52aaf7927a0c5030b4d59819fccfd0",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Chloramphenicol.json": "353ce076345b2376694d4a0665ce96963e05b383415de141fef3468a061484f0",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Colchicine.json": "5c01d791bc978e539a17171319f286eb2d1519cc5f9686a17014fd91fab41ccb",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Cyclothiazide.json": "7c1a42518072960a5e7096daa155b7ace3739956bf7110d3a0824abcbaf903f5",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Dexamethasone.json": "17124ab9ed91f8cd2cbabb147918e9a03c13cedeeb02d7b1f8b13048edcce327",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Diclofenac.json": "cdba28166a63404236e1793b0cb94817f64251d24273fc3a0ebee6ff1c401581",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Fluconazole.json": "55dc144f4bc0913656c5b7d1256a99fcd238d91a4a9070cdf4115448fe3c2c29",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Fosmidomycin.json": "99ec14d79e7cf087476cbc5f1fa0265068741b154e0841cc8c1bc536eaf0fea8",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/IBMX.json": "ca09501c41e0f0593e0e787aec053ff6abca01b4b7a75f4a878c34a512532ba4",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Imatinib.json": "05a3d9d0f7a44c818850265343dbd02f4c6f7cda2845757e06d8d392fa05417d",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Indomethacin.json": "faa5302fc4040819e6aba165202b5788e4fede15494291cc0783e95a1eb14df1",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Nicotine.json": "a68d3aa318f98d94abf11098ecf62f7fcb2635176e35c5fa94ed9be6b69cdbd3",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Pleconaril.json": "724703816d3cc2a6bbfe3d1a4a8da33f5b5b2382886f5c98a0d85e910f7a69b5",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/S-thalidomide.json": "26c9cf2a1ed9eb9383cf81bc45e4ff88072a78d491a34cc8ec3911f35cd2272e",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Staurosporine.json": "146c2ec17cd1276aedeb3e41ad8ec436adf22cb99849b615a977d9bc32e8ec1b",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Trichostatin_A.json": "233370efc872277982d840dc7184837a237410e75de7c29af3f440cb8cdf52cb",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Triclosan.json": "5f0968705bcfd39f83395e9ea64fbe9581a5da2a48d6aebe1b363b179b80dbc3",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/generation/plinder_independent_torsion/provenance/Trimethoprim.json": "fd33042ee217b47f0ef1525e3806fb43513330cfd4759be838acfc17fc803f9a",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/scripts/run_plinder_independent_torsion.py": "0b59c902b00e39116ce8eab026eda877266e31a1059c33b1d1495b465334cfd1",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/generation/plinder_independent_torsion.py": "fe9b430c35185d2d025592c149e6e79dd47dccc50760e9d51033fdbef782fd0e",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/mapping/casf_torsion_seed_manifest.csv": "4f0c25a064bdc790a606096811030f10fe77b1cb0597098bc58b7e5af119ce2e"
+  },
+  "scope": "PLINDER torsion raw/minimized only; CASF and all other methods unchanged",
+  "protocol": "5 ETKDGv3 starts from isomeric SMILES, 200 accepted torsion samples/start; no experimental coordinates",
+  "scoring": "Published full-pool COV/MAT and clustering; PB separate; inclusive RMSD cutoffs",
+  "reference_counts": {
+    "molecules": 22,
+    "conformations": 1067
+  },
+  "structural_recalculation": false
+}

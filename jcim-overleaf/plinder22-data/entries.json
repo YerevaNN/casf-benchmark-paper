@@ -220,222 +220,222 @@
     "key": "m1_e21"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
     "key": "m2_e0"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
     "key": "m2_e1"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
     "key": "m2_e2"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
     "key": "m2_e3"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
     "key": "m2_e4"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
     "key": "m2_e5"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
     "key": "m2_e6"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
     "key": "m2_e7"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
     "key": "m2_e8"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
     "key": "m2_e9"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
     "key": "m2_e10"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "O=CN(O)CCCP(=O)(O)O",
     "key": "m2_e11"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
     "key": "m2_e12"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
     "key": "m2_e13"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
     "key": "m2_e14"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CN1CCC[C@H]1c1cccnc1",
     "key": "m2_e15"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
     "key": "m2_e16"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
     "key": "m2_e17"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
     "key": "m2_e18"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
     "key": "m2_e19"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
     "key": "m2_e20"
   },
   {
-    "method": "torsion_raw_druglike",
+    "method": "torsion_independent_raw_druglike",
     "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
     "key": "m2_e21"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
     "key": "m3_e0"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
     "key": "m3_e1"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
     "key": "m3_e2"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
     "key": "m3_e3"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
     "key": "m3_e4"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
     "key": "m3_e5"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
     "key": "m3_e6"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
     "key": "m3_e7"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
     "key": "m3_e8"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
     "key": "m3_e9"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
     "key": "m3_e10"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "O=CN(O)CCCP(=O)(O)O",
     "key": "m3_e11"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
     "key": "m3_e12"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
     "key": "m3_e13"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
     "key": "m3_e14"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CN1CCC[C@H]1c1cccnc1",
     "key": "m3_e15"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
     "key": "m3_e16"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
     "key": "m3_e17"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
     "key": "m3_e18"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
     "key": "m3_e19"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
     "key": "m3_e20"
   },
   {
-    "method": "torsion_minimized_22_druglike",
+    "method": "torsion_independent_minimized_druglike",
     "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
     "key": "m3_e21"
   },

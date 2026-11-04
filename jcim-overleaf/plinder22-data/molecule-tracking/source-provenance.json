@@ -5,16 +5,16 @@
     "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "c4c9e87e4b4102abdfbf8c7aeb2af84b35267fc0f02ce44384656fa2cadecd93",
     "/mnt/weka/vtarasov/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/qwen_0p6b_casf_dedup_binned_pm12_step64000.npz": "3e035a49f36a755d0ae4e202daf757f1d002846297a60da8992792406293af1e"
   },
-  "export_sha256": "f995416eaeb9bab62a0d895370f60e730b2e48431be3442262daeb06d7986fd4",
+  "export_sha256": "991dac534a3711c4c35986764fdfd39f803ad4b3f5e341701fe71bdfdc3e1951",
   "methods": {
     "qwen_1p7b_v2_coordtoken_step41054": "Qwen 1.7B\nFSQ",
     "loqi_druglike": "LoQI",
     "torsional_diffusion_druglike": "Torsional\nDiffusion",
     "qwen_0p6b_casf_dedup_binned_pm12_step64000": "Qwen 0.6B\nCASF-dedup\nstep 64000",
     "nextmol_dmt_l_druglike": "NExT-Mol\nDMT-L",
-    "torsion_raw_druglike": "Torsion raw\u2020",
     "mcf_drugs_l_druglike": "MCF\ndrugs-L",
     "flowr_druglike": "FlowR",
+    "torsion_independent_raw_druglike": "Torsion raw",
     "rdkit_random_raw_druglike": "RDKit raw"
   },
   "molecules": 22,
@@ -30,5 +30,14 @@
     "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
     "provenance": "results-data/qwen-v2/provenance.json",
     "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
+  },
+  "independent_torsion_update": {
+    "archive": "plinder22-data/independent-torsion/provenance.json",
+    "methods": {
+      "torsion_independent_raw_druglike": "Torsion raw",
+      "torsion_independent_minimized_druglike": "Torsion minimized"
+    },
+    "experimental_coordinates_used": false,
+    "note": "Supersedes original experimental-seed torsion results; other methods and references unchanged."
   }
 }

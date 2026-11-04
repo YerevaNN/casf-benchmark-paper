@@ -16,12 +16,12 @@
 \midrule
 \rowcolor{tableShade}
 RDKit raw & 70.3 & 46.9 & 0.557 & 0.978 & 1000.0 & \textbf{100.0} \\
-RDKit minimized & 84.0 & 56.5 & 0.509 & 0.868 & 1000.0 & \underline{100.0} \\
+RDKit minimized & 84.0 & 56.5 & 0.509 & \underline{0.868} & 1000.0 & \underline{100.0} \\
 \rowcolor{tableShade}
-Torsion raw$^{\dagger}$ & 83.0 & 51.1 & 0.461 & 0.891 & 1000.0 & 99.8 \\
-Torsion minimized$^{\dagger}$ & 88.2 & \textbf{65.6} & 0.484 & \textbf{0.717} & 1000.0 & 98.3 \\
+Torsion raw & 80.1 & 36.2 & 0.532 & 1.053 & 1000.0 & 99.7 \\
+Torsion minimized & 84.4 & \underline{56.7} & 0.494 & 0.876 & 1000.0 & 98.3 \\
 \rowcolor{tableShade}
-LoQI & \textbf{91.8} & \underline{60.5} & \underline{0.417} & \underline{0.796} & 1000.0 & 90.7 \\
+LoQI & \textbf{91.8} & \textbf{60.5} & \underline{0.417} & \textbf{0.796} & 1000.0 & 90.7 \\
 Torsional Diffusion & 80.2 & 44.4 & 0.439 & 1.159 & 1000.0 & 83.5 \\
 \rowcolor{tableShade}
 MCF drugs-L & 85.0 & 40.6 & 0.463 & 1.195 & 1000.0 & 65.4 \\
@@ -35,6 +35,6 @@ Qwen 0.6B CASF-dedup & 89.3 & 31.8 & 0.441 & 1.113 & 997.8 & 60.5 \\
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-COV-R/P use RMSD $\leq$ 0.75 \AA{}; MAT-R/P are in \AA{}. Supplied N is the mean conformer count. Bold/underlined: best/second best. $\dagger$ Reference-seeded.
+COV-R/P use RMSD $\leq$ 0.75 \AA{}; MAT-R/P are in \AA{}. Supplied N is the mean conformer count. Bold/underlined: best/second best.
 \end{minipage}
 \end{table*}

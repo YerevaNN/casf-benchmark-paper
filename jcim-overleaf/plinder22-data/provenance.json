@@ -2,8 +2,8 @@
   "release": "Cleaned PLINDER references, 2026-10-20; finalized minimized_22 runs added 2026-10-26",
   "molecules": 22,
   "references": 1067,
-  "minimized_protocol": "Existing raw pools, rebuilt H, MMFF94s up to 500 iterations; statuses 0/1 retained; no UFF fallback; 22 x 1000 conformers each",
-  "baseline_validity": "Raw baseline PB and PB-subset energy records refreshed from corrected atom-order evaluation, restricted to the same 22 identities; coverage and clustering unchanged",
+  "minimized_protocol": "RDKit: paired minimization of existing raw pool; torsion: paired minimization of independent ETKDG torsion pool, MMFF94s up to 500 iterations, stereochemistry checks and constrained retry for inversion. See independent-torsion archive.",
+  "baseline_validity": "RDKit retains corrected atom-order validity records; torsion uses the independent-run published evaluation. PB remains separate from geometry and matching.",
   "source_sha256": {
     "/mnt/weka/mbedrosian/data/plinder/cleaned/split_by_molecule_dedup_0.05_anchor_triplet/478.sdf": "3f6a323874eaa17610d2d179399252ce6d88b16dfc1c5cc1e367034e6cfcc551",
     "/mnt/weka/mbedrosian/data/plinder/cleaned/split_by_molecule_dedup_0.05_anchor_triplet/AZM.sdf": "aad80e21d31fc74d9a16dcdf0e0ffc4d573928b1379724205c9bea11b7b70dd3",
@@ -88,8 +88,8 @@
   "methods": {
     "rdkit_random_raw_druglike": "RDKit raw",
     "rdkit_random_minimized_22_druglike": "RDKit minimized",
-    "torsion_raw_druglike": "Torsion raw",
-    "torsion_minimized_22_druglike": "Torsion minimized",
+    "torsion_independent_raw_druglike": "Torsion raw",
+    "torsion_independent_minimized_druglike": "Torsion minimized",
     "loqi_druglike": "LoQI",
     "torsional_diffusion_druglike": "Torsional Diffusion",
     "mcf_drugs_l_druglike": "MCF drugs-L",
@@ -124,5 +124,14 @@
     "checkpoint": "qwen_1p7b_v2_coordtoken_step41054",
     "provenance": "results-data/qwen-v2/provenance.json",
     "calculation_provenance": "results-data/qwen-v2/calculation-provenance.json"
+  },
+  "independent_torsion_update": {
+    "archive": "plinder22-data/independent-torsion/provenance.json",
+    "methods": {
+      "torsion_independent_raw_druglike": "Torsion raw",
+      "torsion_independent_minimized_druglike": "Torsion minimized"
+    },
+    "experimental_coordinates_used": false,
+    "note": "Supersedes original experimental-seed torsion results; other methods and references unchanged."
   }
 }

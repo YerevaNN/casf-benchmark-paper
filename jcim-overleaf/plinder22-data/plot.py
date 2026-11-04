@@ -14,16 +14,15 @@ methods = {
     'loqi_druglike':'loqi_raw', 'torsional_diffusion_druglike':'torsional_diffusion_raw',
     'mcf_drugs_l_druglike':'mcf_drugs_l_raw', 'flowr_druglike':'flowr_raw',
     'nextmol_dmt_l_druglike':'nextmol_dmt_l_raw',
-    'rdkit_random_raw_druglike':'rdkit_random_raw', 'torsion_raw_druglike':'torsion_raw',
+    'rdkit_random_raw_druglike':'rdkit_random_raw', 'torsion_independent_raw_druglike':'torsion_raw',
     'rdkit_random_minimized_22_druglike':'rdkit_random_minimized',
-    'torsion_minimized_22_druglike':'torsion_minimized',
+    'torsion_independent_minimized_druglike':'torsion_minimized',
 }
 curve_methods = [
     'rdkit_random_raw_druglike', 'mcf_drugs_l_druglike', 'flowr_druglike',
     'torsional_diffusion_druglike', 'nextmol_dmt_l_druglike', 'loqi_druglike',
     'qwen_1p7b_v2_coordtoken_step41054',
 ]
-seeded = {'torsion_raw_druglike','torsion_minimized_22_druglike'}
 summary = pd.read_csv(HERE / 'summary.csv').set_index('label')
 points = pd.DataFrame([dict(method=m, name=styles[k][0], color=styles[k][1],
     marker=styles[k][2], clusters_0p5=summary.loc[m, 'mean_clusters_0p5'],
@@ -58,7 +57,7 @@ for r in points.itertuples():
     a.scatter(r.clusters_0p5,r.mat_r,s=65,marker=r.marker,color=r.color,
               edgecolor='white',linewidth=.65,zorder=5)
     dx,dy=offsets[r.name]
-    a.annotate(r.name+('†' if r.method in seeded else ''),
+    a.annotate(r.name,
                (r.clusters_0p5,r.mat_r),xytext=(dx,dy),textcoords='offset points',
                ha='right' if dx<0 else 'left',va='bottom',fontsize=8,color=r.color,
                arrowprops={'arrowstyle':'-','color':r.color,'lw':.55,'alpha':.6})
@@ -72,7 +71,7 @@ for ax,col,title in zip(axes[1:],['recall','precision'],
         d=curves.loc[curves.method.eq(method)]
         ax.plot(d.threshold,100*d[col],color=color,lw=2,
                 ls=(0,(4,2)) if method == 'rdkit_random_raw_druglike' else '-',
-                label=name+('†' if method in seeded else ''))
+                label=name)
         value=100*d.loc[d.threshold.eq(.75),col].iloc[0]
         ax.scatter([.75],[value],s=20,color=color,zorder=4,edgecolor='white',linewidth=.4)
     ax.axvline(.75,color='#626C78',ls=(0,(4,3)),lw=1,zorder=1)
@@ -86,7 +85,7 @@ axes[2].set_ylabel('Sample precision, COV-P (%)')
 handles,labels=axes[1].get_legend_handles_labels()
 fig.legend(handles,labels,loc='lower center',bbox_to_anchor=(.53,.085),ncol=4,
            frameon=False,fontsize=8.5,columnspacing=2.3,handlelength=2.7)
-fig.text(.53,.028,'† Reference-seeded. Dashed curves: RDKit raw.',
+fig.text(.53,.028,'Dashed curves: RDKit raw.',
          ha='center',fontsize=7.7,color='#626C78')
 for ext in ['png','pdf','svg']:fig.savefig(OUT/f'figure-plinder-combined.{ext}',dpi=300)
 plt.close(fig)

@@ -37,7 +37,10 @@ Qwen 1.7B FSQ & Autoregressive generation of discrete coordinate tokens & Projec
 \noindent For PLINDER, RDKit and torsion also include minimized variants of the existing raw
 pools, preserving conformer order rather than drawing new pools. Hydrogens are rebuilt before
 MMFF94s optimization (up to 500 iterations) and removed afterward; unconverged outputs at the
-iteration limit are retained. Both torsion variants start from an experimental reference.
+iteration limit are retained. Torsion sampling uses five ETKDGv3 starts from
+isomeric SMILES and 200 accepted perturbations per start, without experimental
+coordinates. Torsion minimization checks stereochemistry and retries inversions
+with constraints that preserve chirality.
 No additional clash or PB filter is applied to their coverage or clustering. Classical-pool
 validity checks use atom ordering matched to the reference topology.
 \endgroup

@@ -1,0 +1,322 @@
+{
+  "method": "torsion_independent_raw_druglike",
+  "seed": 42,
+  "seed_source": "rdkit_etkdg_v3",
+  "topology_source": "isomeric_smiles",
+  "experimental_coordinates_used": false,
+  "n_etkdg_starts": 5,
+  "conformers_per_start": 200,
+  "n_molecules": 22,
+  "n_success": 22,
+  "total_conformers": 22000,
+  "molecules": [
+    {
+      "molecule_id": "4-Hydroxytamoxifen",
+      "smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        381881046,
+        294359448,
+        1174991685,
+        697106349,
+        1465819599
+      ]
+    },
+    {
+      "molecule_id": "Acetazolamide",
+      "smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1056067875,
+        1936169950,
+        1056986547,
+        1214597387,
+        1123892879
+      ]
+    },
+    {
+      "molecule_id": "Actinonin",
+      "smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1130009538,
+        1868341630,
+        2111200124,
+        1372209916,
+        1883438434
+      ]
+    },
+    {
+      "molecule_id": "Amprenavir",
+      "smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1794417484,
+        237434250,
+        542316909,
+        747182871,
+        1668560550
+      ]
+    },
+    {
+      "molecule_id": "Bromosporine",
+      "smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        997689929,
+        670111479,
+        1409820253,
+        925546861,
+        1405349044
+      ]
+    },
+    {
+      "molecule_id": "Chloramphenicol",
+      "smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1901073579,
+        815695864,
+        2135957407,
+        1991611891,
+        1381636727
+      ]
+    },
+    {
+      "molecule_id": "Colchicine",
+      "smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        196278827,
+        1432210612,
+        1597443943,
+        1233603779,
+        837738496
+      ]
+    },
+    {
+      "molecule_id": "Cyclothiazide",
+      "smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        447891236,
+        436167724,
+        1362363263,
+        2120828841,
+        371601863
+      ]
+    },
+    {
+      "molecule_id": "Dexamethasone",
+      "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        2051132952,
+        1547542254,
+        1382531902,
+        1824097397,
+        503356459
+      ]
+    },
+    {
+      "molecule_id": "Diclofenac",
+      "smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        660823173,
+        817728054,
+        1455062174,
+        1982334378,
+        709259206
+      ]
+    },
+    {
+      "molecule_id": "Fluconazole",
+      "smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1083560219,
+        213314495,
+        921945227,
+        1004255931,
+        2049221050
+      ]
+    },
+    {
+      "molecule_id": "Fosmidomycin",
+      "smiles": "O=CN(O)CCCP(=O)(O)O",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1860964750,
+        1584980108,
+        683407389,
+        779854461,
+        2074157969
+      ]
+    },
+    {
+      "molecule_id": "IBMX",
+      "smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1833453770,
+        198538690,
+        86520498,
+        788328026,
+        964312794
+      ]
+    },
+    {
+      "molecule_id": "Imatinib",
+      "smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1925974668,
+        591124368,
+        665666064,
+        1747783312,
+        2038912574
+      ]
+    },
+    {
+      "molecule_id": "Indomethacin",
+      "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        693985957,
+        1005886558,
+        255721769,
+        287043787,
+        151175478
+      ]
+    },
+    {
+      "molecule_id": "Nicotine",
+      "smiles": "CN1CCC[C@H]1c1cccnc1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        331386420,
+        803413705,
+        1058702819,
+        1526741055,
+        1662384082
+      ]
+    },
+    {
+      "molecule_id": "Pleconaril",
+      "smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        240231868,
+        1622001418,
+        1658246397,
+        785467712,
+        1943203961
+      ]
+    },
+    {
+      "molecule_id": "S-thalidomide",
+      "smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1041265633,
+        644128710,
+        1943470057,
+        7186052,
+        419799463
+      ]
+    },
+    {
+      "molecule_id": "Staurosporine",
+      "smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        717558513,
+        1819595106,
+        355439823,
+        811018881,
+        2096857098
+      ]
+    },
+    {
+      "molecule_id": "Trichostatin A",
+      "smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        1552720080,
+        1204734343,
+        1677912717,
+        2135803649,
+        182819711
+      ]
+    },
+    {
+      "molecule_id": "Triclosan",
+      "smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        436798417,
+        1862861010,
+        1083923100,
+        1818601328,
+        2045187414
+      ]
+    },
+    {
+      "molecule_id": "Trimethoprim",
+      "smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+      "status": "ok",
+      "n_raw": 1000,
+      "n_minimized": 1000,
+      "etkdg_seeds": [
+        110966612,
+        2014904665,
+        329278837,
+        5598787,
+        2087384736
+      ]
+    }
+  ]
+}

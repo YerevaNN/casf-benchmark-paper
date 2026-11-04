@@ -35,11 +35,15 @@ for cohort,n in [('core',94),('ref',1044)]:
  stats=e.groupby('mol_id').energy.agg(['count','mean','min','max','median'])
  for col,src in [('count','n_energy'),('mean','mean_energy'),('min','min_energy'),('max','max_energy'),('median','median_energy')]:np.testing.assert_allclose(stats[col],per.loc[stats.index,src],rtol=1e-12,atol=1e-9)
  np.testing.assert_allclose(e.groupby('mol_id').energy.std(ddof=0),per.loc[stats.index,'std_energy'],rtol=1e-12,atol=1e-9)
-# Every non-Qwen observation remains identical to the previously approved paper.
+# Other observations remain identical except the subsequently approved independent
+# PLINDER torsion replacement, checked by plinder22-data/independent-torsion/verify.py.
 for rel,key in [('plinder22-data/per-molecule.csv','label'),('results-data/ref-panel/per-entry.csv','method'),('figure-data/candidates/core-entries.csv','method'),('energy-data/per_molecule.csv','method'),('results-data/core-ref-protocol/ref/per_molecule.csv','method'),('sampling-data/recovery_curves.csv','method'),('results-data/core-ref-protocol/ref/recovery_curves.csv','method')]:
  old=pd.read_csv(io.StringIO(subprocess.check_output(['git','show',f'ed8b4bf:jcim-overleaf/{rel}'],cwd=REPO,text=True)))
  new=pd.read_csv(P/rel)
  old=old[~old[key].str.startswith(OLD)].reset_index(drop=True);new=new[~new[key].str.startswith(NEW)].reset_index(drop=True)
+ if rel=='plinder22-data/per-molecule.csv':
+  old=old[~old[key].isin(['torsion_raw_druglike','torsion_minimized_22_druglike'])].reset_index(drop=True)
+  new=new[~new[key].isin(['torsion_independent_raw_druglike','torsion_independent_minimized_druglike'])].reset_index(drop=True)
  pd.testing.assert_frame_equal(old,new,check_exact=True)
 # Check highlighted ranks from unrounded values, excluding the stored baseline.
 for number,name,columns in [(1,'diversity',['clusters_0p5','clusters_1p0','largest_percent']),(2,'count-recovery',['recovery_0p5','recovery_0p75','distance'])]:

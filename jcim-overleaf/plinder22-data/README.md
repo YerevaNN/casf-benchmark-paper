@@ -1,5 +1,14 @@
 # Cleaned PLINDER-22 paper results
 
+## Current independent torsion runs
+
+Raw and minimized torsion now use the independent ETKDG runs in
+[independent-torsion/](independent-torsion/README.md). These replace the two
+experimental-seed pools described in older notes below. The new identities are
+recorded in `methods.json`; all reference counts, other generators, and CASF
+results remain unchanged. After a historical export, rerun the independent-torsion
+importer before building current tables and figures. Do not restore the old dagger.
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed

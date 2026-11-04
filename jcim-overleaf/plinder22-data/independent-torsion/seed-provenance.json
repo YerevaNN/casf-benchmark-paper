@@ -1,0 +1,1683 @@
+[
+  {
+    "molecule_id": "4-Hydroxytamoxifen",
+    "input_smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "canonical_isomeric_smiles": "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      381881046,
+      294359448,
+      1174991685,
+      697106349,
+      1465819599
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 381881046,
+        "embed_attempts": 1,
+        "embed_seed_used": 381881046,
+        "attempted": 393,
+        "clash_rejected": 193,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 294359448,
+        "embed_attempts": 1,
+        "embed_seed_used": 294359448,
+        "attempted": 399,
+        "clash_rejected": 199,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1174991685,
+        "embed_attempts": 1,
+        "embed_seed_used": 1174991685,
+        "attempted": 313,
+        "clash_rejected": 113,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 697106349,
+        "embed_attempts": 1,
+        "embed_seed_used": 697106349,
+        "attempted": 281,
+        "clash_rejected": 81,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1465819599,
+        "embed_attempts": 1,
+        "embed_seed_used": 1465819599,
+        "attempted": 338,
+        "clash_rejected": 138,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 989,
+      "1": 11
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "5a3ba078896b382459c9435df0221247be9828180795a0db026fa24ca662f2c4",
+      "minimized_sdf": "55ce97d5a85f9a303497ae775dad648e6e3111fb5f22c2a599d3e0d939b63060",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Acetazolamide",
+    "input_smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "canonical_isomeric_smiles": "CC(=O)Nc1nnc(S(N)(=O)=O)s1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1056067875,
+      1936169950,
+      1056986547,
+      1214597387,
+      1123892879
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1056067875,
+        "embed_attempts": 1,
+        "embed_seed_used": 1056067875,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1936169950,
+        "embed_attempts": 1,
+        "embed_seed_used": 1936169950,
+        "attempted": 201,
+        "clash_rejected": 1,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1056986547,
+        "embed_attempts": 1,
+        "embed_seed_used": 1056986547,
+        "attempted": 203,
+        "clash_rejected": 3,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1214597387,
+        "embed_attempts": 1,
+        "embed_seed_used": 1214597387,
+        "attempted": 211,
+        "clash_rejected": 11,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1123892879,
+        "embed_attempts": 1,
+        "embed_seed_used": 1123892879,
+        "attempted": 204,
+        "clash_rejected": 4,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "720988fa2f542fe7e246000be6f836892104d37b35b444f09db31a247e5f4149",
+      "minimized_sdf": "008e8a1042f467bbdc4704d1cc1e807cca2d60d4c99be28486156049e86d2fe0",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Actinonin",
+    "input_smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "canonical_isomeric_smiles": "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1130009538,
+      1868341630,
+      2111200124,
+      1372209916,
+      1883438434
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1130009538,
+        "embed_attempts": 1,
+        "embed_seed_used": 1130009538,
+        "attempted": 396,
+        "clash_rejected": 196,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1868341630,
+        "embed_attempts": 1,
+        "embed_seed_used": 1868341630,
+        "attempted": 576,
+        "clash_rejected": 376,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 2111200124,
+        "embed_attempts": 1,
+        "embed_seed_used": 2111200124,
+        "attempted": 635,
+        "clash_rejected": 435,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1372209916,
+        "embed_attempts": 1,
+        "embed_seed_used": 1372209916,
+        "attempted": 508,
+        "clash_rejected": 308,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1883438434,
+        "embed_attempts": 1,
+        "embed_seed_used": 1883438434,
+        "attempted": 537,
+        "clash_rejected": 337,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 919,
+      "1": 81
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "1161b6792b68b16d59ac9cec060913d3935dce150eeeb0665205dc4df3e9a99a",
+      "minimized_sdf": "a55997564dee169c1539b0dc26be82037a25cb8568b88aaebda96cb21bd95147",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Amprenavir",
+    "input_smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "canonical_isomeric_smiles": "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1794417484,
+      237434250,
+      542316909,
+      747182871,
+      1668560550
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1794417484,
+        "embed_attempts": 1,
+        "embed_seed_used": 1794417484,
+        "attempted": 1011,
+        "clash_rejected": 811,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 237434250,
+        "embed_attempts": 1,
+        "embed_seed_used": 237434250,
+        "attempted": 1156,
+        "clash_rejected": 956,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 542316909,
+        "embed_attempts": 1,
+        "embed_seed_used": 542316909,
+        "attempted": 902,
+        "clash_rejected": 702,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 747182871,
+        "embed_attempts": 1,
+        "embed_seed_used": 747182871,
+        "attempted": 1003,
+        "clash_rejected": 803,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1668560550,
+        "embed_attempts": 1,
+        "embed_seed_used": 1668560550,
+        "attempted": 1513,
+        "clash_rejected": 1313,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 886,
+      "1": 114
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "d976d88aa3cd11b28cb9dcd5fd238cc6a22b4d5d5b208f300fbcee0f996488d1",
+      "minimized_sdf": "797eed95cab1114fbb12c93ee9ceec1c31a0b0987b9415e8309544d6e0a57ed2",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Bromosporine",
+    "input_smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "canonical_isomeric_smiles": "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      997689929,
+      670111479,
+      1409820253,
+      925546861,
+      1405349044
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 997689929,
+        "embed_attempts": 1,
+        "embed_seed_used": 997689929,
+        "attempted": 226,
+        "clash_rejected": 26,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 670111479,
+        "embed_attempts": 1,
+        "embed_seed_used": 670111479,
+        "attempted": 206,
+        "clash_rejected": 6,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1409820253,
+        "embed_attempts": 1,
+        "embed_seed_used": 1409820253,
+        "attempted": 225,
+        "clash_rejected": 25,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 925546861,
+        "embed_attempts": 1,
+        "embed_seed_used": 925546861,
+        "attempted": 223,
+        "clash_rejected": 23,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1405349044,
+        "embed_attempts": 1,
+        "embed_seed_used": 1405349044,
+        "attempted": 207,
+        "clash_rejected": 7,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 996,
+      "1": 4
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "0f408463e878a652b02d360e3ec2b707110d1f27f67bb4c59026f70490b854a0",
+      "minimized_sdf": "566b1c4acfcf45e9c365254c076d6f0f92d7aa05d20c60f540d954a5ae038fd4",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Chloramphenicol",
+    "input_smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "canonical_isomeric_smiles": "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1901073579,
+      815695864,
+      2135957407,
+      1991611891,
+      1381636727
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1901073579,
+        "embed_attempts": 1,
+        "embed_seed_used": 1901073579,
+        "attempted": 273,
+        "clash_rejected": 73,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 815695864,
+        "embed_attempts": 1,
+        "embed_seed_used": 815695864,
+        "attempted": 295,
+        "clash_rejected": 95,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 2135957407,
+        "embed_attempts": 1,
+        "embed_seed_used": 2135957407,
+        "attempted": 296,
+        "clash_rejected": 96,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1991611891,
+        "embed_attempts": 1,
+        "embed_seed_used": 1991611891,
+        "attempted": 245,
+        "clash_rejected": 45,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1381636727,
+        "embed_attempts": 1,
+        "embed_seed_used": 1381636727,
+        "attempted": 284,
+        "clash_rejected": 84,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "8b251e412265c6dc0af91f4be87bf7ccba6179f723c99886c0db30c9fb528d5b",
+      "minimized_sdf": "3d5722b39cbfba83c32dd614715d6dc29a8d1db1af8ebf32737f7657dd7ab945",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Colchicine",
+    "input_smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "canonical_isomeric_smiles": "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      196278827,
+      1432210612,
+      1597443943,
+      1233603779,
+      837738496
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 196278827,
+        "embed_attempts": 1,
+        "embed_seed_used": 196278827,
+        "attempted": 362,
+        "clash_rejected": 162,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1432210612,
+        "embed_attempts": 1,
+        "embed_seed_used": 1432210612,
+        "attempted": 399,
+        "clash_rejected": 199,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1597443943,
+        "embed_attempts": 1,
+        "embed_seed_used": 1597443943,
+        "attempted": 419,
+        "clash_rejected": 219,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1233603779,
+        "embed_attempts": 1,
+        "embed_seed_used": 1233603779,
+        "attempted": 355,
+        "clash_rejected": 155,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 837738496,
+        "embed_attempts": 1,
+        "embed_seed_used": 837738496,
+        "attempted": 393,
+        "clash_rejected": 193,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 954,
+      "1": 46
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "4879ec37c1d8fdeb1bbbf650029d23e0fa97ec3693ba0b56cb98a2f7e1c043d9",
+      "minimized_sdf": "df2a2f9740090b2325cc459735b6cff96c11311840fd7a98010fb49e78c5cea3",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Cyclothiazide",
+    "input_smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "canonical_isomeric_smiles": "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      447891236,
+      436167724,
+      1362363263,
+      2120828841,
+      371601863
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 447891236,
+        "embed_attempts": 1,
+        "embed_seed_used": 447891236,
+        "attempted": 236,
+        "clash_rejected": 36,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 436167724,
+        "embed_attempts": 1,
+        "embed_seed_used": 436167724,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1362363263,
+        "embed_attempts": 1,
+        "embed_seed_used": 1362363263,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 2120828841,
+        "embed_attempts": 1,
+        "embed_seed_used": 2120828841,
+        "attempted": 204,
+        "clash_rejected": 4,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 371601863,
+        "embed_attempts": 1,
+        "embed_seed_used": 371601863,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "e3bc2907c03ee79baaa05401302d02eec9bdb967057c22ec5f3ff6155f7be18e",
+      "minimized_sdf": "f2c8b3876154f49d4847efc649163a56eeb19be7927225a03efa90e568573d9f",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Dexamethasone",
+    "input_smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "canonical_isomeric_smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      2051132952,
+      1547542254,
+      1382531902,
+      1824097397,
+      503356459
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 2051132952,
+        "embed_attempts": 1,
+        "embed_seed_used": 2051132952,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1547542254,
+        "embed_attempts": 1,
+        "embed_seed_used": 1547542254,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1382531902,
+        "embed_attempts": 1,
+        "embed_seed_used": 1382531902,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1824097397,
+        "embed_attempts": 1,
+        "embed_seed_used": 1824097397,
+        "attempted": 201,
+        "clash_rejected": 1,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 503356459,
+        "embed_attempts": 1,
+        "embed_seed_used": 503356459,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "daa5ce59d828a2ed569b18e99be01904d700dd7ae52dec734e3c08fe2776bc7c",
+      "minimized_sdf": "79bcbdca4f196df52b5df3b8db51e658e70d09950071aba7eb87f119331613c7",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Diclofenac",
+    "input_smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "canonical_isomeric_smiles": "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      660823173,
+      817728054,
+      1455062174,
+      1982334378,
+      709259206
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 660823173,
+        "embed_attempts": 1,
+        "embed_seed_used": 660823173,
+        "attempted": 498,
+        "clash_rejected": 298,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 817728054,
+        "embed_attempts": 1,
+        "embed_seed_used": 817728054,
+        "attempted": 443,
+        "clash_rejected": 243,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1455062174,
+        "embed_attempts": 1,
+        "embed_seed_used": 1455062174,
+        "attempted": 502,
+        "clash_rejected": 302,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1982334378,
+        "embed_attempts": 1,
+        "embed_seed_used": 1982334378,
+        "attempted": 571,
+        "clash_rejected": 371,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 709259206,
+        "embed_attempts": 1,
+        "embed_seed_used": 709259206,
+        "attempted": 482,
+        "clash_rejected": 282,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "b03bf8b9302977f389ae031a5248a249409ccf477944859e5006bac07364950a",
+      "minimized_sdf": "b43b65619dbeaad552a23ec852718f0ebd40e2c1cff139256d29dd590cf88030",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Fluconazole",
+    "input_smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "canonical_isomeric_smiles": "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1083560219,
+      213314495,
+      921945227,
+      1004255931,
+      2049221050
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1083560219,
+        "embed_attempts": 1,
+        "embed_seed_used": 1083560219,
+        "attempted": 368,
+        "clash_rejected": 168,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 213314495,
+        "embed_attempts": 1,
+        "embed_seed_used": 213314495,
+        "attempted": 340,
+        "clash_rejected": 140,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 921945227,
+        "embed_attempts": 1,
+        "embed_seed_used": 921945227,
+        "attempted": 429,
+        "clash_rejected": 229,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1004255931,
+        "embed_attempts": 1,
+        "embed_seed_used": 1004255931,
+        "attempted": 347,
+        "clash_rejected": 147,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2049221050,
+        "embed_attempts": 1,
+        "embed_seed_used": 2049221050,
+        "attempted": 289,
+        "clash_rejected": 89,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "8ada6b81740fc00276db587e7049aad4ae01679f1c4b5921cb29d8e2872c3647",
+      "minimized_sdf": "d70695345adb294c4fc1c4096ca7fd93d1d9a889060151c425987333e020728a",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Fosmidomycin",
+    "input_smiles": "O=CN(O)CCCP(=O)(O)O",
+    "canonical_isomeric_smiles": "O=CN(O)CCCP(=O)(O)O",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1860964750,
+      1584980108,
+      683407389,
+      779854461,
+      2074157969
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1860964750,
+        "embed_attempts": 1,
+        "embed_seed_used": 1860964750,
+        "attempted": 264,
+        "clash_rejected": 64,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1584980108,
+        "embed_attempts": 1,
+        "embed_seed_used": 1584980108,
+        "attempted": 301,
+        "clash_rejected": 101,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 683407389,
+        "embed_attempts": 1,
+        "embed_seed_used": 683407389,
+        "attempted": 244,
+        "clash_rejected": 44,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 779854461,
+        "embed_attempts": 1,
+        "embed_seed_used": 779854461,
+        "attempted": 257,
+        "clash_rejected": 57,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2074157969,
+        "embed_attempts": 1,
+        "embed_seed_used": 2074157969,
+        "attempted": 238,
+        "clash_rejected": 38,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "fbe8ee609897a534f47d3db4b89b11bb90057cd0144e69754251dca0a6e8bbae",
+      "minimized_sdf": "2912e2855c0309bdbc65e6ff73211d479a87c95bd668b98cfc7f6e876a50ae5b",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "IBMX",
+    "input_smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "canonical_isomeric_smiles": "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1833453770,
+      198538690,
+      86520498,
+      788328026,
+      964312794
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1833453770,
+        "embed_attempts": 1,
+        "embed_seed_used": 1833453770,
+        "attempted": 338,
+        "clash_rejected": 138,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 198538690,
+        "embed_attempts": 1,
+        "embed_seed_used": 198538690,
+        "attempted": 336,
+        "clash_rejected": 136,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 86520498,
+        "embed_attempts": 1,
+        "embed_seed_used": 86520498,
+        "attempted": 239,
+        "clash_rejected": 39,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 788328026,
+        "embed_attempts": 1,
+        "embed_seed_used": 788328026,
+        "attempted": 256,
+        "clash_rejected": 56,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 964312794,
+        "embed_attempts": 1,
+        "embed_seed_used": 964312794,
+        "attempted": 259,
+        "clash_rejected": 59,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "88ea0e55dd48e97a4884ec4928560d46ff926681c7476d5cf8ed16247d5af3df",
+      "minimized_sdf": "7752b0d09f1bd34c250c4721af48a9a862a1745c65921ba894f93b386a4ed9c8",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Imatinib",
+    "input_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "canonical_isomeric_smiles": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1925974668,
+      591124368,
+      665666064,
+      1747783312,
+      2038912574
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1925974668,
+        "embed_attempts": 1,
+        "embed_seed_used": 1925974668,
+        "attempted": 205,
+        "clash_rejected": 5,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 591124368,
+        "embed_attempts": 1,
+        "embed_seed_used": 591124368,
+        "attempted": 225,
+        "clash_rejected": 25,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 665666064,
+        "embed_attempts": 1,
+        "embed_seed_used": 665666064,
+        "attempted": 226,
+        "clash_rejected": 26,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1747783312,
+        "embed_attempts": 1,
+        "embed_seed_used": 1747783312,
+        "attempted": 226,
+        "clash_rejected": 26,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2038912574,
+        "embed_attempts": 1,
+        "embed_seed_used": 2038912574,
+        "attempted": 210,
+        "clash_rejected": 10,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 992,
+      "1": 8
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "2c53044c783e1a4188abc7cd133a56be05d11ee63138b1a49df830a822b222ca",
+      "minimized_sdf": "8cf34eddf7d80ed36d46b3b3a8d069db644b6b45f823ccba110874776c193ef3",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Indomethacin",
+    "input_smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "canonical_isomeric_smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      693985957,
+      1005886558,
+      255721769,
+      287043787,
+      151175478
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 693985957,
+        "embed_attempts": 1,
+        "embed_seed_used": 693985957,
+        "attempted": 221,
+        "clash_rejected": 21,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1005886558,
+        "embed_attempts": 1,
+        "embed_seed_used": 1005886558,
+        "attempted": 225,
+        "clash_rejected": 25,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 255721769,
+        "embed_attempts": 1,
+        "embed_seed_used": 255721769,
+        "attempted": 225,
+        "clash_rejected": 25,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 287043787,
+        "embed_attempts": 1,
+        "embed_seed_used": 287043787,
+        "attempted": 244,
+        "clash_rejected": 44,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 151175478,
+        "embed_attempts": 1,
+        "embed_seed_used": 151175478,
+        "attempted": 227,
+        "clash_rejected": 27,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 999,
+      "1": 1
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "02ed055addb52ed387867d7cda4e66b6d20cc326fc47c0b1cd9926c18668a0cb",
+      "minimized_sdf": "766cd82b49608803a6553d8c90638668b33ee31e170ea8a3757d1b9208c16e52",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Nicotine",
+    "input_smiles": "CN1CCC[C@H]1c1cccnc1",
+    "canonical_isomeric_smiles": "CN1CCC[C@H]1c1cccnc1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      331386420,
+      803413705,
+      1058702819,
+      1526741055,
+      1662384082
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 331386420,
+        "embed_attempts": 1,
+        "embed_seed_used": 331386420,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 803413705,
+        "embed_attempts": 1,
+        "embed_seed_used": 803413705,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1058702819,
+        "embed_attempts": 1,
+        "embed_seed_used": 1058702819,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1526741055,
+        "embed_attempts": 1,
+        "embed_seed_used": 1526741055,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1662384082,
+        "embed_attempts": 1,
+        "embed_seed_used": 1662384082,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "d02896eaf40fb541f3f21637e8ad6842ab3afdb0983a8f26f9030ea82d5cf51e",
+      "minimized_sdf": "14ae0e183091787f4a2c9553bafc3c7806728ea180151f1bcd31f7a91d7a6744",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Pleconaril",
+    "input_smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "canonical_isomeric_smiles": "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      240231868,
+      1622001418,
+      1658246397,
+      785467712,
+      1943203961
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 240231868,
+        "embed_attempts": 1,
+        "embed_seed_used": 240231868,
+        "attempted": 300,
+        "clash_rejected": 100,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1622001418,
+        "embed_attempts": 1,
+        "embed_seed_used": 1622001418,
+        "attempted": 283,
+        "clash_rejected": 83,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1658246397,
+        "embed_attempts": 1,
+        "embed_seed_used": 1658246397,
+        "attempted": 257,
+        "clash_rejected": 57,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 785467712,
+        "embed_attempts": 1,
+        "embed_seed_used": 785467712,
+        "attempted": 263,
+        "clash_rejected": 63,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 1943203961,
+        "embed_attempts": 1,
+        "embed_seed_used": 1943203961,
+        "attempted": 259,
+        "clash_rejected": 59,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 945,
+      "1": 55
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "abc425c4823b3fecca5965f82448a95fa8c94bba7935f928f089451eb3af20b4",
+      "minimized_sdf": "0bc1dfd924f51ae11f7132b9c912c8cbf0dd872161617415ed8b2fed41ecc6e8",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "S-thalidomide",
+    "input_smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "canonical_isomeric_smiles": "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1041265633,
+      644128710,
+      1943470057,
+      7186052,
+      419799463
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1041265633,
+        "embed_attempts": 1,
+        "embed_seed_used": 1041265633,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 644128710,
+        "embed_attempts": 1,
+        "embed_seed_used": 644128710,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1943470057,
+        "embed_attempts": 1,
+        "embed_seed_used": 1943470057,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 7186052,
+        "embed_attempts": 1,
+        "embed_seed_used": 7186052,
+        "attempted": 264,
+        "clash_rejected": 64,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 419799463,
+        "embed_attempts": 1,
+        "embed_seed_used": 419799463,
+        "attempted": 250,
+        "clash_rejected": 50,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "8fe971f6f531173ae247e632439d3ecb58370c1f765c9dc639e9224a510fe9f9",
+      "minimized_sdf": "71d86218fad610348b36f08c8c2ca4bd59a976e19b4cca69da2bf94c6dff0d3b",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Staurosporine",
+    "input_smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "canonical_isomeric_smiles": "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      717558513,
+      1819595106,
+      355439823,
+      811018881,
+      2096857098
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 717558513,
+        "embed_attempts": 1,
+        "embed_seed_used": 717558513,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1819595106,
+        "embed_attempts": 1,
+        "embed_seed_used": 1819595106,
+        "attempted": 246,
+        "clash_rejected": 46,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 355439823,
+        "embed_attempts": 1,
+        "embed_seed_used": 355439823,
+        "attempted": 231,
+        "clash_rejected": 31,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 811018881,
+        "embed_attempts": 1,
+        "embed_seed_used": 811018881,
+        "attempted": 287,
+        "clash_rejected": 87,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2096857098,
+        "embed_attempts": 1,
+        "embed_seed_used": 2096857098,
+        "attempted": 303,
+        "clash_rejected": 103,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "4e1084448bb624f1473e766a11500a84f07e5db5558acbf5582a80f8aaae66e2",
+      "minimized_sdf": "3a8dfbbe34cb862787459f0c12e9de22d4bf23c319404aa00456dc8ea5725c4b",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Trichostatin A",
+    "input_smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "canonical_isomeric_smiles": "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      1552720080,
+      1204734343,
+      1677912717,
+      2135803649,
+      182819711
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 1552720080,
+        "embed_attempts": 1,
+        "embed_seed_used": 1552720080,
+        "attempted": 215,
+        "clash_rejected": 15,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1204734343,
+        "embed_attempts": 1,
+        "embed_seed_used": 1204734343,
+        "attempted": 228,
+        "clash_rejected": 28,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1677912717,
+        "embed_attempts": 1,
+        "embed_seed_used": 1677912717,
+        "attempted": 228,
+        "clash_rejected": 28,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 2135803649,
+        "embed_attempts": 1,
+        "embed_seed_used": 2135803649,
+        "attempted": 233,
+        "clash_rejected": 33,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 182819711,
+        "embed_attempts": 1,
+        "embed_seed_used": 182819711,
+        "attempted": 230,
+        "clash_rejected": 30,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "dc9f62185e597804c941a5802dd67edc26b10fd39e93ba4322a341e2fd422a12",
+      "minimized_sdf": "92cb8a6c17f04160982cf7b52824ef20e37f12715f385fd97368caa602907fd2",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Triclosan",
+    "input_smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "canonical_isomeric_smiles": "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      436798417,
+      1862861010,
+      1083923100,
+      1818601328,
+      2045187414
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 436798417,
+        "embed_attempts": 1,
+        "embed_seed_used": 436798417,
+        "attempted": 304,
+        "clash_rejected": 104,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 1862861010,
+        "embed_attempts": 1,
+        "embed_seed_used": 1862861010,
+        "attempted": 200,
+        "clash_rejected": 0,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 1083923100,
+        "embed_attempts": 1,
+        "embed_seed_used": 1083923100,
+        "attempted": 232,
+        "clash_rejected": 32,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 1818601328,
+        "embed_attempts": 1,
+        "embed_seed_used": 1818601328,
+        "attempted": 256,
+        "clash_rejected": 56,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2045187414,
+        "embed_attempts": 1,
+        "embed_seed_used": 2045187414,
+        "attempted": 279,
+        "clash_rejected": 79,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 1000
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "bcb3b0e9e3ff9d7a39bcd66329c06edb13a3550966943d99c66352b74f50593f",
+      "minimized_sdf": "8885830e8a1d7cd3e5fdab2acd4613594ecfaac8ba6ac5a0fe8d4a85acc8d078",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  },
+  {
+    "molecule_id": "Trimethoprim",
+    "input_smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "canonical_isomeric_smiles": "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC",
+    "topology_source": "isomeric_smiles",
+    "seed_source": "rdkit_etkdg_v3",
+    "global_seed": 42,
+    "etkdg_seeds": [
+      110966612,
+      2014904665,
+      329278837,
+      5598787,
+      2087384736
+    ],
+    "starts": [
+      {
+        "etkdg_index": 0,
+        "etkdg_seed": 110966612,
+        "embed_attempts": 1,
+        "embed_seed_used": 110966612,
+        "attempted": 235,
+        "clash_rejected": 35,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 1,
+        "etkdg_seed": 2014904665,
+        "embed_attempts": 1,
+        "embed_seed_used": 2014904665,
+        "attempted": 240,
+        "clash_rejected": 40,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 2,
+        "etkdg_seed": 329278837,
+        "embed_attempts": 1,
+        "embed_seed_used": 329278837,
+        "attempted": 259,
+        "clash_rejected": 59,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 3,
+        "etkdg_seed": 5598787,
+        "embed_attempts": 1,
+        "embed_seed_used": 5598787,
+        "attempted": 237,
+        "clash_rejected": 37,
+        "retained": 200
+      },
+      {
+        "etkdg_index": 4,
+        "etkdg_seed": 2087384736,
+        "embed_attempts": 1,
+        "embed_seed_used": 2087384736,
+        "attempted": 234,
+        "clash_rejected": 34,
+        "retained": 200
+      }
+    ],
+    "raw_conformer_count": 1000,
+    "minimized_conformer_count": 1000,
+    "mmff_status_counts": {
+      "0": 996,
+      "1": 4
+    },
+    "experimental_coordinates_used": false,
+    "reference_topology_matches": true,
+    "status": "ok",
+    "output_hashes": {
+      "raw_sdf": "d71878df1940a2420c64d07ee7f947338bdf6d11d7ee8d9737bb6ad33b83d210",
+      "minimized_sdf": "9c5c2e0ca1ff1138c2e52471ed1a764c720defd483380bac3b1c4fc5861a42c3",
+      "raw_pickle": "7010c72c943704e425909afacd9e05da0e415ef4dce771e2606b656c8342006f",
+      "minimized_pickle": "655d00c41232011fd45086554864d4d8410dfabcf7ba94d1d027f70ffb30e285"
+    }
+  }
+]

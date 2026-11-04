@@ -1,3 +1,10 @@
+# Independent torsion update
+The current figure replaces the experimental-seed raw torsion row with
+`torsion_independent_raw_druglike` and removes its dagger. It retains all 22
+molecules and the same three highlighted identities. Methods are reordered by
+the updated mean MAT-R. Source measurements and the seed audit are archived in
+`../independent-torsion/`; older provenance below records the preceding figure.
+
 # Figure 6: individual PLINDER molecules across methods
 
 ## Primary Qwen checkpoint update, 4 November 2026

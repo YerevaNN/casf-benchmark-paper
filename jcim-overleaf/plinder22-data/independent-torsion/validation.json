@@ -1,0 +1,22 @@
+{
+  "new_runs": [
+    "torsion_independent_raw_druglike",
+    "torsion_independent_minimized_druglike"
+  ],
+  "molecules_per_run": 22,
+  "conformers_per_molecule": 1000,
+  "references_per_run": 1067,
+  "scoring_recomputed": false,
+  "checks": [
+    "22 matched identities and reference counts",
+    "cached minima reproduce published COV/MAT and threshold curves within 1e-12",
+    "executed generation records confirm ETKDG-only starting coordinates",
+    "all non-torsion CSV observations and CASF table cells unchanged",
+    "unrounded best/second-best rankings checked",
+    "198 molecule-tracking records match archived measurements",
+    "no reference-seed markers in active manuscript text/tables",
+    "citations, labels, included files, and figure paths checked",
+    "updated figures visually inspected"
+  ],
+  "manuscript_compiled": false
+}

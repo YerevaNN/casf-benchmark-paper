@@ -36,7 +36,7 @@ def cell(row, metric, peers, digits=1, pending=False):
 
 
 def label(method, plinder):
-    return method + (r'$^{\dagger}$' if plinder and method in {'Torsion raw', 'Torsion minimized'} else '')
+    return method
 
 
 def write(name, caption, ref, columns, head, body, notes):
@@ -53,7 +53,6 @@ def write(name, caption, ref, columns, head, body, notes):
 
 
 rank_note = 'Bold/underlined: best/second best. '
-seed_note = r'$\dagger$ Reference-seeded. '
 group_head = [
     r' & \multicolumn{3}{c}{\textcolor{plinderTeal}{\textbf{PLINDER (22)}}} & \multicolumn{3}{c}{\textbf{CASF core (94)}} & \multicolumn{3}{c}{\textbf{CASF ref (1,044)}} \\',
     r'\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(l){8-10}',
@@ -81,7 +80,7 @@ for index, method in enumerate(methods):
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'C0.5/C1.0: mean cluster counts at 0.5/1.0 \AA{}. Largest: mean largest-cluster '
          r'share at 1.0 \AA{} (\%). CASF uses the ChEMBL-count target. '
-         'Dashes: unavailable. ' + rank_note + seed_note)
+         'Dashes: unavailable. ' + rank_note)
 write('diversity.tex', 'Geometric diversity across three evaluation sets.', 'tab:diversity', columns, head, body, notes)
 
 data = read(2)
@@ -104,7 +103,7 @@ for index, method in enumerate(methods):
                    for m in ('recovery_0p5', 'recovery_0p75', 'distance')]
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'COV-R/Hit are percentages; cutoffs and distances are in \AA{}. '
-         'CASF uses the ChEMBL-count target. Dashes: unavailable. ' + rank_note + seed_note)
+         'CASF uses the ChEMBL-count target. Dashes: unavailable. ' + rank_note)
 write('count-recovery.tex', 'Recovery of observed bound conformations across three evaluation sets.',
       'tab:count-recovery', columns, head, body, notes)
 

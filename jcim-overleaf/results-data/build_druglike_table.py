@@ -10,8 +10,8 @@ PAPER = DATA.parent
 METHODS = [
     ('rdkit_random_raw_druglike', 'RDKit raw'),
     ('rdkit_random_minimized_22_druglike', 'RDKit minimized'),
-    ('torsion_raw_druglike', 'Torsion raw'),
-    ('torsion_minimized_22_druglike', 'Torsion minimized'),
+    ('torsion_independent_raw_druglike', 'Torsion raw'),
+    ('torsion_independent_minimized_druglike', 'Torsion minimized'),
     ('loqi_druglike', 'LoQI'),
     ('torsional_diffusion_druglike', 'Torsional Diffusion'),
     ('mcf_drugs_l_druglike', 'MCF drugs-L'),
@@ -65,17 +65,16 @@ def display(row, key, tex=False):
     return '**' + shown + '**' if rank == 0 else '<u>' + shown + '</u>'
 
 note = ('COV-R/P use RMSD ≤ 0.75 Å; MAT-R/P are in Å. Supplied N is the mean conformer count. '
-        'Bold/underlined: best/second best. † Reference-seeded.')
+        'Bold/underlined: best/second best.')
 tex_rows = []
 md_rows = []
 for index, row in enumerate(rows):
-    seeded = row['label'] in {'torsion_raw_druglike', 'torsion_minimized_22_druglike'}
-    tex_name = row['display_label'] + ('$^{\\dagger}$' if seeded else '')
+    tex_name = row['display_label']
     if index % 2 == 0:
         tex_rows.append(r'\rowcolor{tableShade}')
     tex_rows.append(' & '.join([tex_name] + [display(row, k, True) for k in DISPLAY_COLUMNS]) + r' \\')
-    md_rows.append('| ' + ' | '.join([row['display_label'] + ('†' if seeded else '')] + [display(row, k) for k in DISPLAY_COLUMNS]) + ' |')
-tex_note = note.replace('Å', r'\AA{}').replace('†', r'$\dagger$').replace('≤', r'$\leq$')
+    md_rows.append('| ' + ' | '.join([row['display_label']] + [display(row, k) for k in DISPLAY_COLUMNS]) + ' |')
+tex_note = note.replace('Å', r'\AA{}').replace('≤', r'$\leq$')
 tex = r'''% Sources: results-data/druglike_selected.csv and plinder22-data/qwen-dedup/table-records.csv.
 % Rendered by build_druglike_table.py.
 \begin{table*}[htbp]
@@ -111,7 +110,7 @@ Method & MAT-R (\AA{}) & MAT-P (\AA{}) \\
 \midrule
 """
 for row in rows:
-    name = row['display_label'] + (' (reference-seeded)' if row['label'] in {'torsion_raw_druglike', 'torsion_minimized_22_druglike'} else '')
+    name = row['display_label']
     support += f"{name} & {row['mat_r']:.3f} & {row['mat_p']:.3f}" + r' \\' + '\n'
 support += r"""\bottomrule
 \end{tabular}

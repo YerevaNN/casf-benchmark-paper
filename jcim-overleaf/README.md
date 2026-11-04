@@ -1,5 +1,14 @@
 # JCIM manuscript
 
+## Independent torsion update
+
+The PLINDER raw/minimized torsion rows now use independent ETKDG starting
+conformations. Tables 1/2/4/S4 and Figures 1/6 have refreshed values and rankings;
+the reference-seed marker and explanation are removed. Methods describes the
+five-start generation procedure, and Results/Discussion reflect the new ranking.
+CASF and all other methods are unchanged. See the
+[source archive and checks](plinder22-data/independent-torsion/README.md).
+
 ## Qwen size and representation comparison
 
 Figure 7 adds the approved two-row comparison: model size above and coordinate

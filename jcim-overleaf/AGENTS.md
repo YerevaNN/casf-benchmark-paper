@@ -1,5 +1,16 @@
 # Manuscript authoring
 
+## Independent PLINDER torsion baselines
+
+The current raw/minimized PLINDER torsion rows use
+`torsion_independent_raw_druglike` and `torsion_independent_minimized_druglike`.
+Both start from five ETKDGv3 conformers built from isomeric SMILES, without
+experimental coordinates. The reference-seed dagger and qualification are removed.
+Tables 1/2/4/S4 and Figures 1/6 use the new results. LoQI now leads PLINDER precision;
+raw torsion slightly exceeds FlowR in 0.5 Å clusters. CASF results are unchanged.
+Exact sources, seed audit, and reproduction are in `plinder22-data/independent-torsion/`.
+This supersedes earlier instructions to mark these two rows as reference-seeded.
+
 ## Approved Qwen size and representation comparison
 
 Figure 7 compares the four v2 configurations (0.6B/1.7B, binned/FSQ), with size

@@ -94,11 +94,9 @@ minimized variant adds MMFF94s optimization and a further clash check. Raw and m
 use separately sampled pools, rather than a paired before-and-after experiment. The paired
 PLINDER minimization procedure is described below.
 
-% AUTHOR:  the shared reference loader can fall back to a stereochemically matching CASF MOL2 when the
-% ChEMBL3D topology cannot be loaded. This fallback can also supply the torsion seed, not only the
-% validity reference. Its use in the archived runs has not been counted. Audit it before stating that
-% all torsion seeds were independent of the experimental geometry; rerun affected entries from an
-% independent seed if necessary.
+% AUTHOR: The CASF seed audit records stored ChEMBL3D topology seeds for all 94 core
+% and 1,236 original ref entries; none required replacement. The frozen ref1044
+% subset therefore retains its existing measurements. See the independent-torsion archive.
 
 The learned methods represent complementary approaches to conformational sampling. Torsional
 Diffusion\cite{jing2022torsional} generates conformers by updating torsion angles, while LoQI\cite{nikitin2025loqi} learns low-energy geometries
@@ -282,15 +280,17 @@ empty groups remain unreported.
 
 The 22-molecule comparison includes RDKit raw and random torsion sampling, each with 1,000
 supplied conformers per molecule. RDKit removes the reference coordinates before embedding from the
-molecular graph. The torsion baseline instead starts from the first experimental reference in the
-original collection and perturbs its rotatable bonds by up to $\pm120^\circ$, rejecting severe clashes.
-It therefore has access to a bound geometry and is reported as a reference-seeded baseline.
+molecular graph. The torsion baseline builds five ETKDGv3 starting conformations from
+isomeric SMILES, without experimental coordinates. From each start, rotatable bonds
+are perturbed by up to $\pm120^\circ$, rejecting severe clashes until 200 conformers
+are accepted, for 1,000 conformers per molecule.
 The raw baselines undergo no energy minimization. Their minimized counterparts optimize the
 same conformers individually with MMFF94s after rebuilding hydrogens, for up to 500 iterations.
 Hydrogens are then removed. All conformers of the 22 included molecules are retained, including
 those that reach the iteration limit without convergence; no replacement sampling or additional
-clash filtering is applied. Both torsion variants retain the reference-seeded initialization and are marked with
-$\dagger$ in the displays. The four classical pools are evaluated against the same cleaned references. This paired comparison differs from the
+clash filtering is applied. For torsion minimization, stereochemistry is checked
+and inversions trigger a retry with constraints that preserve chirality.
+The four classical pools are evaluated against the same cleaned references. This paired comparison differs from the
 separately sampled raw and minimized CASF pools.
 
 For each molecule, we compare its supplied generated ensemble with all retained experimental
