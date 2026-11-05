@@ -1,0 +1,30 @@
+% Rebuild with appendix-data/build.py.
+\begin{table}[htbp]
+\centering\small
+\caption{Mean retained ensemble sizes at the two CASF candidate targets.}
+\label{tab:supporting-ensemble-counts}
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{CASF core (94)} & \multicolumn{2}{c}{CASF ref (1,044)} \\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Method & ChEMBL count & 1,000 & ChEMBL count & 1,000 \\
+\midrule
+RDKit raw & 81.2 & 999.9 & 68.9 & 999.8 \\
+RDKit minimized & 81.2 & 1000.0 & 68.8 & 998.7 \\
+Torsion raw & 71.1 & 896.5 & 59.1 & 894.1 \\
+Torsion minimized & 81.2 & 1000.0 & 68.8 & 999.0 \\
+LoQI & 81.2 & 999.3 & 68.6 & 995.9 \\
+Torsional Diffusion & 69.3 & 881.4 & 56.9 & 871.6 \\
+MCF drugs-L & 66.1 & 866.8 & 58.2 & 883.3 \\
+NExT-Mol DMT-L & 66.4 & 871.9 & 59.1 & 889.8 \\
+FlowR & 72.7 & 920.0 & 60.4 & 900.9 \\
+Qwen 1.7B FSQ & 79.0 & 974.7 & 66.4 & 970.3 \\
+\hdashline
+ChEMBL3D-PB & 81.2 & --- & 68.7 & --- \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize Counts are measured after PoseBusters filtering and averaged over all entries, including empty outputs. ChEMBL3D-PB is the same stored ensemble at both targets and is shown once. Rejected conformers are not replaced.
+\end{minipage}
+\end{table}

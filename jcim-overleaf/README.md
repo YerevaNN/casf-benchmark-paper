@@ -1,5 +1,22 @@
 # JCIM manuscript
 
+## Curated Supporting Information, 5 November 2026
+
+The 18-figure review gallery is removed from the compiled main manuscript.
+The current separate SI has Tables S1–S6 and Figures S1–S6. S1/S2 figures remain
+the dataset diagram and approved Qwen scatter. New S3/S4 refresh former C02/C07
+for core94/ref1044; S5/S6 refresh C11/C14 for all Table 4 methods, independent
+torsion pools, and the four-v2 validity comparison. Other candidates remain
+historical assets only. Do not restore the review gallery during later updates.
+
+Table S1 now records retained counts for both CASF panels/targets; S2–S4 are the
+PLINDER screen, statistics, and identities; S5 is generator provenance and S6
+is energy. Former S1/S3/S4 are excluded as unused or repeated summaries. Main
+Methods/Results and captions use the new SI numbering. Current reproduction and
+selection decisions are in `appendix-data/README.md`; use `appendix-data/build.py`
+and `appendix-data/verify.py`, not the historical candidate renderer.
+
+
 ## Independent torsion update
 
 The PLINDER raw/minimized torsion rows now use independent ETKDG starting
@@ -114,7 +131,7 @@ Table 3 are unchanged. See [PLINDER-22 data and reproduction](plinder22-data/REA
 Earlier figure scripts and provenance are retained as history.
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with four main tables, five main figures, nine supporting tables, and one supporting figure.
+and Discussion, with four main tables, seven main figures, six supporting tables, and six supporting figures.
 The separate sampling display is Figure B1. The release checklist (former Table 5) remains removed.
 The current combined PLINDER figure is rendered from `plinder22-data/`;
 `plinder-threshold-data/` preserves the previous 23-molecule threshold figure.
@@ -122,14 +139,13 @@ Title, authors, and end matter still contain upstream examples; Conclusions
 remain to be written. This is a working manuscript, not a
 submission-ready article.
 
-The draft also includes **18 additional figure candidates (C01–C18)** in a
-review appendix. See [FIGURE_CANDIDATES.md](FIGURE_CANDIDATES.md) for the index
-and [the gallery](figures/candidates/additional-figures.pdf) for all options.
-They visualize the HTML report's questions using corrected archived measurements;
-the candidates remain separate from the current main figures. Each candidate has a full caption in
-`figure-candidates.tex`. Remove individual blocks after selection, or comment out
-its input in `acs-template.tex` to hide the whole review appendix.
-Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
+The former 18-figure review gallery is excluded. The separate Supporting Information
+retains the dataset diagram and Qwen scatter, plus four selected analyses refreshed
+from core94, ref1044, PLINDER22, the independent torsion runs, and current Qwen
+checkpoints. See [appendix-data/README.md](appendix-data/README.md) for selection,
+source records, and reproduction. Duplicate supporting tables were removed;
+the SI now contains Tables S1–S6 and Figures S1–S6.
+
 
 ## Files to edit
 
@@ -138,15 +154,13 @@ Recreate this set with `python jcim-overleaf/build_candidate_figures.py`.
 - `results.tex`: geometric diversity, single-reference recovery, energy dispersion,
   candidate targets, size/flexibility, multiple references, and dataset plans.
 - `discussion.tex`: the working Discussion transferred from the Markdown draft.
-- `tables/generation-methods.tex`: generator descriptions (Supporting Table S8).
+- `tables/generation-methods.tex`: generator descriptions (Supporting Table S5).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
   `tables/druglike.tex`: Tables 1–4. The unused `tables/release-status.tex` is historical.
-- `supporting-information.tex`: separate SI document with Tables S1--S9 and Figure S1 (core RMSD,
-  ref recovery, size strata, multi-reference matching distances, and the PLINDER
-  selection criteria, statistics, molecule list, generator descriptions, and energy summaries); switch the Overleaf main document to this file to compile it.
+- `supporting-information.tex`: current separate SI document with six tables and six figures; see `appendix-data/README.md` for the content map.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
-- `plinder23-appendix.tex`: selection account and Supporting Tables S5--S7.
+- `plinder23-appendix.tex`: selection account and Supporting Tables S2--S4.
 - `method-data/`: Methods/appendix drafts, source CSVs, and provenance.
 - `results-data/`: current Results/Discussion snapshot, source CSVs, and figure provenance.
 - `acs-template.bib`: manuscript references.

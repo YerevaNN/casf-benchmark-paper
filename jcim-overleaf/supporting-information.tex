@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \usepackage[style = chem-acs]{biblatex}
 \addbibresource{acs-template.bib}
 \usepackage{longtable,booktabs,array}
@@ -16,13 +17,7 @@
 % AUTHOR: add the final manuscript title and author information before submission.
 Sampling targets and validity filtering are defined in the manuscript Methods.
 ChEMBL3D-PB denotes the stored comparison ensemble after PoseBusters filtering.
-\input{tables/supporting-rmsd}
-\clearpage
-\input{tables/supporting-recovery}
-\clearpage
-\input{tables/size}
-\clearpage
-\input{tables/supporting-druglike}
+\input{tables/supporting-ensemble-counts}
 \clearpage
 \input{plinder23-appendix}
 \clearpage
@@ -36,6 +31,7 @@ ChEMBL3D-PB denotes the stored comparison ensemble after PoseBusters filtering.
 \clearpage
 \section*{Molecule-level effects of representation and model size}
 \input{qwen-comparison-appendix}
+\input{supporting-analyses}
 \clearpage
 \begingroup
 \setlength{\emergencystretch}{1em}

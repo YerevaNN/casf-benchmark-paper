@@ -4,7 +4,7 @@ The evaluated panel derives from an exploratory, manually curated selection from
 release \textbf{2024-06/v2}, rather than an official PLINDER split. Selection began with the
 ligand-per-system table, grouped by complete InChIKey to retain stereoisomers as separate
 identities. The starting collection contained \textbf{51,280 identities}; the physicochemical
-requirements in Table~S5 retained \textbf{25,392 (49.5\%)}.
+requirements in Table~S2 retained \textbf{25,392 (49.5\%)}.
 
 \input{tables/plinder23-screen}
 
@@ -16,10 +16,9 @@ judgment-based categories rather than executable exclusion rules. The original s
 contained 23 molecules, including bortezomib; the evaluated cleaned set excludes bortezomib
 because of covalent annotations.
 
-The panel is not a random sample or simply the most frequent PLINDER ligands. A later screen
-based on DrugBank-derived ATC annotations did not define it, and neither an ATC requirement
-nor a minimum of ten distinct PDB entries should be inferred. Exact reproduction uses the
-saved molecular identities. Training exclusions are a separate operation from panel construction.
+The panel is not a random sample or simply the most frequent PLINDER ligands. Exact
+reproduction uses the saved molecular identities. Training exclusions are a separate
+operation from panel construction.
 
 The supplied cleaned structures were deduplicated at 0.05~\AA{} symmetry-aware RMSD and
 aligned with a fixed anchor atom triplet per molecule. The delivered 22-molecule collection
@@ -41,7 +40,7 @@ are not counts of distinct protein targets or biologically distinct conformation
 
 Molecular descriptors are retained from the saved identity shortlist. The companion
 \texttt{plinder22-molecules.csv} gives molecular identities and descriptors, original selection
-frequencies, and updated coordinate counts in separate columns. Tables~S6--S7 describe the
+frequencies, and updated coordinate counts in separate columns. Tables~S3--S4 describe the
 cleaned collection rather than the original selection frequencies or current PDB contents.
 Source hashes and the per-record reference manifest are archived in \texttt{plinder22-data/}.
 

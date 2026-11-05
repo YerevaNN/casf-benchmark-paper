@@ -1,4 +1,6 @@
-"""Render the optional figure-review appendix from archived corrected data.
+"""Render the historical optional gallery, excluded from the current manuscript.
+
+The selected Supporting Information is rebuilt by appendix-data/build.py.
 
 Run: python jcim-overleaf/build_candidate_figures.py
 Use --plinder-only to refresh PLINDER candidates and the gallery while preserving CASF assets.
@@ -306,7 +308,7 @@ def write_catalog():
            '`python jcim-overleaf/build_candidate_figures.py` recreates the artwork and appendix using archived data only. Source hashes, cohort selection, and bootstrap settings are recorded in `figure-data/candidates/provenance.json`. Derived recovery matrices and confidence intervals are alongside the figures.', '',
            'C01–C10 describe core94 and the ten main generation pipelines, with ChEMBL3D-PB where applicable. Continuous RMSD and diversity summaries are conditional on measurable ensembles; binary recovery counts missing outputs as misses. C11–C18 describe the six selected learned generators on the 22-molecule drug set; coverage uses supplied pools without PoseBusters filtering. No historical energy curves, random-K results, additional recovery cutoffs, reference-cohort results, or training-recipe comparisons were introduced.', '',
            'These are alternatives as well as additions: C01/C02 emphasize uncertainty versus individual gains and losses; C03/C04 show individual outcomes versus pairwise complementarity; C11/C13/C18 show complete molecule profiles versus selected comparisons and examples. Keep the versions that serve the final story.', '']
-    (ROOT / 'FIGURE_CANDIDATES.md').write_text('\n'.join(line.rstrip() for line in md) + '\n')
+    (OUT / 'historical-catalog.md').write_text('\n'.join(line.rstrip() for line in md) + '\n')
 
 
 def main():

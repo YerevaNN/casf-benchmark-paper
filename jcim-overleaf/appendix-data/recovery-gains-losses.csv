@@ -1,0 +1,21 @@
+cohort,method,name,n,gained,lost,shared_hits,shared_misses,net
+core,rdkit_random_raw,RDKit raw,94,9,7,67,11,2
+core,rdkit_random_minimized,RDKit minimized,94,9,9,65,11,0
+core,torsion_raw,Torsion raw,94,9,9,65,11,0
+core,torsion_minimized,Torsion minimized,94,11,10,64,9,1
+core,loqi_raw,LoQI,94,10,3,71,10,7
+core,torsional_diffusion_raw,Torsional Diffusion,94,10,0,74,10,10
+core,mcf_drugs_l_raw,MCF drugs-L,94,13,6,68,7,7
+core,nextmol_dmt_l_raw,NExT-Mol DMT-L,94,12,5,69,8,7
+core,flowr_raw,FlowR,94,10,3,71,10,7
+core,qwen_1p7b_v2_coordtoken_step41054,Qwen 1.7B FSQ,94,13,0,74,7,13
+ref,rdkit_random_raw,RDKit raw,1044,105,76,741,122,29
+ref,rdkit_random_minimized,RDKit minimized,1044,95,116,701,132,-21
+ref,torsion_raw,Torsion raw,1044,92,110,707,135,-18
+ref,torsion_minimized,Torsion minimized,1044,98,117,700,129,-19
+ref,loqi_raw,LoQI,1044,117,33,784,110,84
+ref,torsional_diffusion_raw,Torsional Diffusion,1044,117,38,779,110,79
+ref,mcf_drugs_l_raw,MCF drugs-L,1044,116,58,759,111,58
+ref,nextmol_dmt_l_raw,NExT-Mol DMT-L,1044,114,52,765,113,62
+ref,flowr_raw,FlowR,1044,120,47,770,107,73
+ref,qwen_1p7b_v2_coordtoken_step41054,Qwen 1.7B FSQ,1044,155,15,802,72,140

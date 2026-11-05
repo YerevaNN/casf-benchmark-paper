@@ -61,7 +61,7 @@ Qwen and FlowR have narrower typical energy distributions than raw torsion sampl
 Torsional Diffusion, while LoQI, the minimized baselines, and ChEMBL3D have narrower
 distributions still (Figure~\ref{fig:energy-dispersion}). Extreme ensembles make mean
 energy spreads much larger than medians for several methods, particularly Torsional
-Diffusion and raw torsion sampling on ref (Supporting Table S9).
+Diffusion and raw torsion sampling on ref (Supporting Table S6).
 
 \energyfigure
 
@@ -76,7 +76,9 @@ geometric variation and experimental recovery to different degrees across method
 \input{\manuscriptroot tables/recovery}
 
 Several generators exceed the recovery of the stored ChEMBL3D ensembles at the larger
-target in both CASF panels (Figure~\ref{fig:recovery}).
+target in both CASF panels (Figure~\ref{fig:recovery}). This gain does not imply
+retaining every stored-ensemble hit: on ref, Qwen recovers 155 additional ligands but
+misses 15 recovered by ChEMBL3D (Supporting Figure S3).
 
 \recoveryfigure
 
@@ -85,7 +87,8 @@ target in both CASF panels (Figure~\ref{fig:recovery}).
 Aggregate recovery can conceal differences in molecular difficulty. In CASF core and ref,
 recovery generally declines for larger or more flexible ligands, although the methods differ
 in how strongly performance falls (Figure~\ref{fig:size}). CASF ref extends the comparison
-to more populated strata; the sparse core groups cannot support stable method rankings. These patterns caution against interpreting a panel-wide average
+to more populated strata; the sparse core groups cannot support stable method rankings
+(Supporting Figure S4). These patterns caution against interpreting a panel-wide average
 as uniform coverage of the chemistry needed for a conformational resource.
 
 \sizefigure
@@ -93,6 +96,7 @@ as uniform coverage of the chemistry needed for a conformational resource.
 Similar reference coverage can accompany different sample precision. On PLINDER,
 LoQI and Qwen recover similar fractions of references at 0.75 \AA{}, but LoQI has
 substantially higher precision: 60.5\% versus 44.8\% (Table~\ref{tab:druglike}).
+Supporting Figure S5 shows how both measures vary across individual molecules.
 Minimizing the independent torsion pools increases precision from 36.2\% to 56.7\%,
 while reducing geometric diversity. The paired comparison shows that sampling can
 become more concentrated near observed conformations even as fewer shapes are represented.
@@ -124,7 +128,7 @@ FSQ improves matching for approximately 66\% of ligands at each size, compared
 with 50--54\% when increasing size within a representation (Supporting Figure S2).
 Actinonin contributes substantially to FSQ's mean matching advantage on PLINDER.
 Scaling has a clearer effect on validity: the pooled PLINDER PoseBusters pass rate
-rises from 82.7\% to 92.5\% for FSQ. Training exports and token exposure differ
+rises from 82.7\% to 92.5\% for FSQ (Supporting Figure S6). Training exports and token exposure differ
 between representations, so the matching advantage cannot be attributed to encoding alone.
 
 \qwensizerepresentationfigure

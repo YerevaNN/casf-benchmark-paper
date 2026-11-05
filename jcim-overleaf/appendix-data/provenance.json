@@ -1,0 +1,42 @@
+{
+  "scope": "Selected supporting figures S3\u2013S6 and retained-count Table S1. Current core94/ref1044/PLINDER22; primary Qwen v2 step41054; independent torsion baselines.",
+  "inputs": {
+    "figure-data/candidates/core-entries.csv": "280b0314fcc4c4ef7e90782c57d0177f2f14cbc249b23766204a088b8a65266b",
+    "results-data/ref-panel/per-entry.csv": "bda372d804a63378d48df5ca7c3d637b0173f520b45c3a54238dc54812e125b7",
+    "results-data/three-dataset-tables/table3.csv": "82943dccf2f0a18f427c466a4f9e1274518d108cef40de0eb2d8ebd464a05a71",
+    "results-data/size-flexibility/figure5-strata.csv": "81adad8941a98d559ca56c95660071414c33fc49359dab33175758e831538cc1",
+    "plinder22-data/per-molecule.csv": "260a0e65786dce5ee309fe0b430196d5a5c6cd18d615959a2a747a5b315ef2af",
+    "plinder22-data/qwen-dedup/per-molecule.csv": "0eea4ce4f09ac2e93e19913aff3294f81cdd08ed32ef31cf3559a9059e3e20ed",
+    "results-data/druglike_means.csv": "a397197ae4cff893e017bd733b9de06bbb0b0a1a3b68dd8c3adcd31d8e0f11c8",
+    "results-data/qwen-size-representation/plinder-per-molecule.csv": "4ee398109c9f1916c7b6710d2ea23279d02eae615f23dea3d8528f7b6090d1fa",
+    "results-data/qwen-size-representation/08-main-size-and-representation-values.csv": "88f6ec98a8c8d10b76e79547d1013554deeb5e42a520d48f4966b7968cbf53d5",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "plinder22-data/methods.json": "7dbb791daad203996e2eccaaa2ad33820a7fe74f896e986e4a0511fe4c7630f8"
+  },
+  "outputs": {
+    "figures/supporting/recovery-gains-losses.pdf": "ebe95dff5e3d54e728d86fa84ee5b8b58e2adec41bc3187438f2d21f723ff916",
+    "figures/supporting/recovery-gains-losses.png": "6d8327e1aa2441b053b68d132914ff504a93636e196de0c06989a18f60428ac4",
+    "figures/supporting/recovery-gains-losses.svg": "1b793c57f2c4ea427b603f35abebaed08008a494385bc5914731a755c12ea2ce",
+    "figures/supporting/cohort-composition.pdf": "ed76f6a48fd5ae7592ffd9b8b1a1dea57e7795289ae25fc9ff7495554a97d9e3",
+    "figures/supporting/cohort-composition.png": "477982ba6bc009c3754efe5baefc0aeb161bdc14df0fd4b0b6e9fcc8fcf17358",
+    "figures/supporting/cohort-composition.svg": "394b18cda501fb7fcb3674ebe0cb83075cf9186a85cb0cebf9f58ef296add340",
+    "figures/supporting/plinder-coverage-precision.pdf": "1189db29c8415907bc67a5cb040a0ecaf7ca0e6951609793fbcd7e7fe2d29040",
+    "figures/supporting/plinder-coverage-precision.png": "c3bbd08f1b19f6c2678c6faebb4e9d28e614a3c4be38be3132517a99072aa37b",
+    "figures/supporting/plinder-coverage-precision.svg": "e3357b88b8ba1cfc8e1de05c6194a9cc9ca86c8d996da8ca0402cb5c30c4d58f",
+    "figures/supporting/plinder-validity.pdf": "e391727516a81ab26de4c546c118250603ffebbc1dc14de70e70e8b55b2d7aac",
+    "figures/supporting/plinder-validity.png": "cd281871ce989c354e6e034b94ff5b93732ee015229e8bea3b1a422f71c01f47",
+    "figures/supporting/plinder-validity.svg": "b1e6836d4c39394efda5873ee43a31ce7cd20159d0d6328f38daee54257664e9",
+    "tables/supporting-ensemble-counts.tex": "124fd370fcc58d79c4aa8a9647d6572df73b2a0259b581035f31fde2697adb9a",
+    "appendix-data/recovery-gains-losses.csv": "e8d2c820c20236047569c4b8cb91d895143a4b5f9ba8903e621813712e401889",
+    "appendix-data/cohort-composition.csv": "dc03dbadb2ad6a9345d88455a08adc208083756cc975206b441906874ea98e11",
+    "appendix-data/plinder-by-molecule.csv": "973570505087bc86f1672b44a3cdd2e769a9c8885d49bb21f7a47027a362991a",
+    "appendix-data/qwen-validity-source.csv": "b915537cd2343654ff17f790f6e71ac19fbe763b35d4bcc5365e8b7628679fe3"
+  },
+  "checks": [
+    "All CASF hit means reproduce Table 3",
+    "Gained minus lost equals the net recovery difference",
+    "Joint descriptor margins reproduce Figure 5",
+    "All eleven PLINDER methods reproduce Table 4",
+    "Four v2 pooled validity values reproduce Figure 7"
+  ]
+}

@@ -45,7 +45,7 @@ Records in the ligand-per-system table were grouped by full InChIKey so that dif
 remained separate. Of 51,280 starting identities, 25,392 passed an RDKit-based physicochemical
 screen requiring molecular weight 150--650 Da, cLogP $-$1 to 6, and limits on polarity, hydrogen
 bonding, flexibility, charge, and elemental composition. The full criteria are given in Supporting
-Table S5.
+Table S2.
 
 Survivors were ranked by the number of distinct PDB entries, with PLINDER-system count as the
 secondary ordering. Distinct PDB entries were preferred because one multimeric structure can
@@ -63,7 +63,7 @@ anchor atom triplet for each molecule. Subsequent stereochemical inspection remo
 chloramphenicol records and one staurosporine record with inverted stereocentres. We evaluate
 the retained representatives equally within each molecule, without weighting them by the number
 of original records in their duplicate clusters. This reduces repeated-coordinate weighting but
-does not define biologically distinct conformational states. Supporting Tables S6--S7 describe
+does not define biologically distinct conformational states. Supporting Tables S3--S4 describe
 the cleaned coordinate collection; original selection frequencies are archived separately.
 
 % AUTHOR: Cleaned SDF source paths, record identities, and source hashes are archived.
@@ -78,7 +78,7 @@ The evaluation panels are summarized in Supporting Figure S1.
 
 The generators represent different approaches to conformational sampling. The main comparison
 contains four classical pipelines, five external learned generators, and one Qwen model.
-Supporting Table S8 summarizes their representations, training provenance, initialization,
+Supporting Table S5 summarizes their representations, training provenance, initialization,
 and processing. These methods differ in training data and inference procedures as well as
 architecture, so the comparison evaluates the resulting generation pipelines rather than isolating
 any single modeling choice.
@@ -118,7 +118,7 @@ a graph representation, and NExT-Mol DMT-L\cite{liu2025nextmol} uses a coordinat
 DMT-L adapter does not use the optional MoLlama component. FlowR\cite{cremer2025flowr}
 uses flow matching in a ligand-only configuration with the molecular graph held fixed, followed by
 force-field cleanup and stereochemistry checks. Their representations,
-training resources, and preparation steps are summarized in Supporting Table S8.
+training resources, and preparation steps are summarized in Supporting Table S5.
 
 Qwen represents autoregressive generation of a molecular coordinate representation conditioned on
 molecular SMILES. We use the 1.7-billion-parameter FSQ model at pretraining step 41,054
@@ -127,7 +127,7 @@ The coordinate representation is decoded before the common validity evaluation. 
 and coordinate-decoder identities are archived with the results.
 
 An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
-CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}, Supporting Table S4,
+CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}
 and Figure~\ref{fig:plinder-molecule-tracking}. This is distinct from the v2 binned
 0.6B checkpoint in the size and representation comparison. This older model and
 the primary 1.7B FSQ model use the same cleaned PLINDER
@@ -137,7 +137,7 @@ of training exclusions. Training-overlap documentation is incomplete: the execut
 manifest, similarity definition, and PLINDER exclusion policy remain to be verified.
 These results therefore do not yet establish generalization to molecules excluded from training.
 External pretrained checkpoints are evaluated as supplied; their reported training resources
-are summarized in Supporting Table S8.
+are summarized in Supporting Table S5.
 
 % \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
 \textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}
@@ -179,15 +179,16 @@ method. Recovery includes all 94 core or 1,044 ref entries, counting empty, miss
 unmeasurable outputs as failures. Mean RMSD and diversity summarize entries with defined
 measurements; energy summaries additionally exclude undefined energies. Paired diversity and
 energy summaries use the same entries for each method. Mean retained counts include zeros.
-Per-method ensemble counts and energy-calculation completeness are reported in Supporting
-Table S9, with per-entry records archived alongside the results.
+Mean retained ensemble sizes are reported in Supporting Table S1; measurable energy-pool
+counts and energy-calculation completeness are given in Supporting Table S6.
 
 PLINDER coverage, matching distances, and clustering use the full supplied pools. PoseBusters
 validity is measured separately and pooled across conformers. For its classical baselines,
 atom ordering is matched to the reference topology before validity checking.
 The pooled pass rate is the total number of passing conformers divided by the total number
 supplied across the 22 molecules; it is not the unweighted mean of molecule-level pass rates.
-Mean supplied counts describe the available ensembles before this assessment.
+Mean supplied counts describe the available ensembles before this assessment. Supporting
+Figures S5--S6 report per-molecule coverage, precision, and validity on these same pools.
 Thus, the two benchmarks use different
 filtering conditions, and their absolute performance levels are not directly comparable.
 
@@ -219,7 +220,9 @@ and its experimental reference. An entry is recovered when at least one conforme
 also reports Hit@0.5 at the tighter 0.5 \AA{} cutoff, using the same definition.
 Best RMSD in Table~\ref{tab:count-recovery} and Figure~\ref{fig:diversity-recovery} is the
 mean of the per-entry minimum RMSDs, rather than an average over all conformers or the single
-smallest distance across the panel.
+smallest distance across the panel. Supporting Figure S3 compares each fixed-target
+ensemble with ChEMBL3D-PB on the same ligands, counting those recovered only by the
+generator and those recovered only by the stored ensemble.
 
 \subsection{Coverage of multiple experimental conformations}
 
@@ -232,8 +235,8 @@ conformer to its nearest reference. Each metric is calculated per molecule and t
 equally across the 22 molecules. Table~\ref{tab:count-recovery} also reports COV-R at 0.5 \AA{}.
 All methods use the same inclusive cutoff convention as CASF recovery.
 
-Tables~\ref{tab:count-recovery} and \ref{tab:druglike}, Supporting Table S4, and
-Figure~\ref{fig:druglike} use the same nearest-distance records. Every reference and generated
+Tables~\ref{tab:count-recovery} and \ref{tab:druglike} and Figure~\ref{fig:druglike}
+use the same nearest-distance records. Every reference and generated
 conformer has a finite nearest distance. The threshold curves apply these distances at cutoffs
 from 0 to 1.5 \AA{} in increments of 0.005 \AA{}.
 
@@ -262,10 +265,10 @@ For each molecule and method, we calculate the mean energy and population standa
 across conformers. Figure~\ref{fig:energy-dispersion} reports the median of these standard
 deviations across molecules, alongside mean cluster counts.
 This summary limits the influence of molecules with exceptionally large energy spreads.
-Supporting Table S9 also gives the mean of the standard deviations, the median of per-molecule
+Supporting Table S6 also gives the mean of the standard deviations, the median of per-molecule
 mean energies, and the median paired difference in mean energy relative to the ChEMBL3D
 ensemble of the same molecule. Undefined energies are omitted from the energy moments and counted separately in Supporting
-Table S9; all finite values, including extreme values, remain in the summaries.
+Table S6; all finite values, including extreme values, remain in the summaries.
 Energy spread describes dispersion under this force field; it is neither a count of energy
 basins nor a binding free energy.
 
@@ -297,7 +300,8 @@ reference-derived group assignment is used for every generator. CASF group recov
 1,000-candidate target is accompanied by recovered and total counts. Size and flexibility
 are analyzed separately; neither analysis adjusts for the other descriptor or establishes an
 independent cause of difficulty. Groups with fewer than five entries are marked;
-empty groups remain unreported.
+empty groups remain unreported. Supporting Figure S4 cross-tabulates the two
+descriptors using the same group boundaries and panel denominators.
 
 \subsection{Qwen model size and coordinate representation}
 
@@ -355,8 +359,7 @@ per-molecule measurements, generation records, and input hashes are archived wit
 the tables and figures. Historical exports are retained as provenance but do not
 supply the current ref, PLINDER, or Qwen summaries.
 
-% AUTHOR: The review-only figure appendix retains additional bootstrap analyses;
-% their separate procedures are documented in METHODS_NOTES.md. They are not
-% uncertainty estimates for the four-configuration Qwen comparison.
+% AUTHOR: Historical bootstrap alternatives are archived but excluded from the current
+% manuscript and Supporting Information; no displayed analysis uses those intervals.
 % AUTHOR: Dataset construction and the public release remain future work. Add their
 % molecular selection, generation settings and release version only when finalized.

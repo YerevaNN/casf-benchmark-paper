@@ -1,5 +1,22 @@
 # Methods: evidence and author follow-up
 
+## Curated Supporting Information, 5 November 2026
+
+The 18-figure review gallery is removed from the compiled main manuscript.
+The current separate SI has Tables S1–S6 and Figures S1–S6. S1/S2 figures remain
+the dataset diagram and approved Qwen scatter. New S3/S4 refresh former C02/C07
+for core94/ref1044; S5/S6 refresh C11/C14 for all Table 4 methods, independent
+torsion pools, and the four-v2 validity comparison. Other candidates remain
+historical assets only. Do not restore the review gallery during later updates.
+
+Table S1 now records retained counts for both CASF panels/targets; S2–S4 are the
+PLINDER screen, statistics, and identities; S5 is generator provenance and S6
+is energy. Former S1/S3/S4 are excluded as unused or repeated summaries. Main
+Methods/Results and captions use the new SI numbering. Current reproduction and
+selection decisions are in `appendix-data/README.md`; use `appendix-data/build.py`
+and `appendix-data/verify.py`, not the historical candidate renderer.
+
+
 ## Consolidated Methods, 5 November 2026
 
 This section supersedes the older procedural descriptions below. `methods.tex`

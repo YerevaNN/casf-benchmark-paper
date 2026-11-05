@@ -187,13 +187,12 @@ thank \ldots''.
 
 \section*{Supporting information}
 
-Supporting Information includes core RMSD summaries at both sampling targets
-(Table~S1), recovery and retained ensemble sizes in the larger reference
-cohort (Table~S2), size-stratified recovery in both cohorts (Table~S3),
-exploratory multi-reference matching distances (Table~S4), and PLINDER-22
-selection criteria, panel statistics, and molecular identities (Tables~S5--S7),
-the evaluation-panel diagram (Figure~S1), generator descriptions (Table~S8), energy summaries (Table~S9),
-and molecule-level effects of Qwen representation and model size (Figure~S2).
+Supporting Information includes retained ensemble sizes (Table~S1), PLINDER selection
+criteria, panel statistics, and molecular identities (Tables~S2--S4), generator
+provenance (Table~S5), and energy summaries (Table~S6). Supporting figures show the
+evaluation panels (S1), molecule-level Qwen comparisons (S2), recoveries gained and
+lost relative to ChEMBL3D (S3), joint size and flexibility distributions (S4), and
+per-molecule PLINDER coverage, precision, and validity (S5--S6).
 The companion identity data are provided in \texttt{plinder22-molecules.csv}.
 % AUTHOR: compile supporting-information.tex as the separate SI document and
 % complete its manuscript title and author information before submission.
@@ -205,27 +204,5 @@ The companion identity data are provided in \texttt{plinder22-molecules.csv}.
 \printbibliography
 %\bibliography{acs-template.bib}
 
-\newpage
-
-\rule{0.05in}{1.75in}%
-\begin{minipage}[b][1.75in]{3.25in}
-  \sffamily
-  \frenchspacing
-
-  Some journals require a graphical entry for the Table of Contents. This
-  should be laid out ``print ready'' so that the sizing of the text is correct.
-
-  The space available depends on the journal: J. Am. Chem. Soc. allows 3.25 in
-  by 1.75 in and requires sanserif text. Some journals want different sizes:
-  you can easily adjust here.
-  
-  The two rules either side of the content are there to help judge the height
-  of your material: they may be deleted once not required.
-  
-\end{minipage}%
-\rule{0.05in}{1.75in}
-
-% Review-only options requested by the author; remove this input after selection.
-\input{\manuscriptroot figure-candidates}
-
+% The selected supporting figures are in supporting-information.tex.
 \end{document}
