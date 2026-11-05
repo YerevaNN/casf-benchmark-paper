@@ -1,4 +1,4 @@
-% Working Discussion, transferred without substantive revision.
+% Working Discussion; generator-selection interpretation consolidated from Results.
 \section{Discussion}
 \label{sec:discussion}
 
@@ -32,6 +32,12 @@ conformational space, and the force-field calculations do not represent binding 
 results are also conditional on the selected molecules, generation settings, and sampling budgets.
 Conclusions about Qwen's generalization require a documented audit of the evaluated checkpoint's
 training data and exclusion of the benchmark molecules.
+
+Together, these evaluations support selecting generators by experimental coverage and
+sample concentration, with geometric diversity and energetic dispersion as complementary
+descriptors. Qwen 1.7B FSQ remains a candidate for constructing a larger conformational
+resource. The resulting dataset will require its own characterization of molecular coverage,
+validity, diversity, and energy distributions.
 
 The proposed public release is intended to provide a reproducible resource for structure-based
 drug design and learning molecular geometry, with pharmacophore-conditioned generation among

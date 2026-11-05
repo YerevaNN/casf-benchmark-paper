@@ -1,5 +1,5 @@
 {
-  "description": "Current displays after independent PLINDER torsion replacement and consolidated Methods; numerical results and artwork unchanged.",
+  "description": "Current manuscript after Methods consolidation and Results tightening; numerical results and artwork unchanged.",
   "casf_baseline_commit": "c797287",
   "files": {
     "AGENTS.md": "d2244c723a358624818ea8065da5a11020be0f23227c9662bbc015ba7bd63539",
@@ -7,12 +7,12 @@
     "MANUSCRIPT_OUTLINE.md": "3a2bd2fcb4445f467f2c6547268a8643500e697b734d982c2e5ae3f888b9fb27",
     "METHODS_NOTES.md": "7aff5a3d07071eb3e2d3c2a89411bf0b7cd62e6d85635d890b42dce0a365707e",
     "README.md": "41567fbdc45e28e8b138746801335d671e60d3b3295de1d9e1955ec55c0ff663",
-    "RESULTS_NOTES.md": "4d976229616ae205c81c11fd66784ae737c2f0ca700a76941d1e326f8e071b48",
+    "RESULTS_NOTES.md": "59bd0e955fe1387f60360bd5be78d7698c5aaf6f997eae955a8b171da35daeb0",
     "acs-template.tex": "73506494baf20c309a7f05a5131e2fb7ab86cadd726dbbc067396e0a5545f874",
     "build_candidate_figures.py": "d8db2c45030638d3b4cbba85b90068d98e8747a23a3db1727f56335cfccb4a20",
     "build_figures.py": "4ab6fcfa6df2407fe4fecb28657acf4ef5f8baee80df4b4035075de9b4302362",
     "dataset-figure.tex": "2a00ac93ec73904bfb92d2dda0b55f79fc5b69608440200988dcbcb6112b0e25",
-    "discussion.tex": "d787aee87c328b2559afe45e271216a7ded9971a599ce3391aaa13eb89634fc3",
+    "discussion.tex": "d48244e2a69224412b59836e01dfd1f6491eebb7428d345fdb1461a5c8751494",
     "figure-candidates.tex": "9f0f561a5a9346578d93b77cb4a2fa7269433860e20951063089e2d20c6c4688",
     "figures.tex": "3eebf1f95f2ad0838d0455b624148a7e9cb12b17bb2c88ec916aaa603d662a9f",
     "figures/candidates/additional-figures.pdf": "e085e207ccfd284551e06c26f85effb5e482ee4dd9615c021616ac6b2f236199",
@@ -98,7 +98,7 @@
     "results-data/three-dataset-tables/plot_casf.py": "53e438f9c7d06bf9c9e9bc3f41c09e411225dcadc56bc896eb9443303ade4d12",
     "results-data/three-dataset-tables/table1.csv": "31d949e8e966a340c58a1855909b5db066003a42bea4d3fc17e0ae70397a868f",
     "results-data/three-dataset-tables/table2.csv": "c1ee277da8c62808422b99f35fcf77f45834a14c75e531a4893351202d0e7772",
-    "results.tex": "d52f3b9379609385dd411e24b45a01c14a71ad5a16a0d59acfe6a65d9f7bd254",
+    "results.tex": "4da4ac9002630533239b7e4b8566bd5afdf07211ba483415d8fdb607a3a2eff8",
     "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
     "tables/count-recovery.tex": "fdbd70e59dc7197215d3520f98b1e09b4338f67bb4e21a030584a3ce4694f78d",
     "tables/diversity.tex": "fe57abd41236802c3f221b4e1e3f2b6a70a28d9874a8a82c7c019b7536883834",
@@ -136,6 +136,7 @@
     "results-data/ref-panel/verify.py": "4d337bd2faf473e0fb593c6978fcf34f9c0ada9d3715905145a4056a831a0d4f",
     "results-data/ref-panel/build_supporting.py": "9c9e1ddcebbc86f09c482fef405693b1cfb18216cd09c9ff128dd9cea0cdf36c",
     "results-data/ref-panel/counts.json": "d022d887f44b469da9e115fb01188722cb670f31f146985c27ae0373d1a88b44",
-    "results-data/ref-panel/selection.json": "04610a9d2de555c4bc2387a26c5eea289870bd3b262498fc29f9eb88d92a631c"
+    "results-data/ref-panel/selection.json": "04610a9d2de555c4bc2387a26c5eea289870bd3b262498fc29f9eb88d92a631c",
+    "qwen-comparison-appendix.tex": "c5a997e550cf5b65e835f4d3cf6c0f78a034a399ff0d11dc122ed8f7d6c6f539"
   }
 }

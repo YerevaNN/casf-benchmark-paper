@@ -1,5 +1,25 @@
 # Results: sources and author follow-up
 
+## Results concision revision, 5 November 2026
+
+The approved Results sequence and figure/table placement are preserved. The prose
+is approximately one quarter shorter: the opening and rank-by-rank descriptions
+are reduced, and repeated explanations of coverage versus precision are removed.
+The sampling paragraph now quantifies Qwen's CASF ref recovery and matching gains
+against the stored ensemble; the later PLINDER paragraph emphasizes the LoQI–Qwen
+precision difference. Matching improvements from FSQ are explicitly qualified by
+differences in training exports and token exposure.
+
+The concluding resource-selection interpretation is consolidated into Discussion.
+The 86% contribution of Chloramphenicol/Staurosporine to the net change in mean
+per-molecule FSQ validity is retained in `qwen-comparison-appendix.tex`, separately
+from the pooled pass percentage. All measured values, tables, figures, model
+identities, and the sampling crossover paragraph are unchanged.
+
+Validation checks the emphasized values against archived CSVs, reproduces the
+86% contribution, and checks both documents' citations, cross-references, includes,
+and artwork paths. No manuscript compilation or scientific recalculation.
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed
