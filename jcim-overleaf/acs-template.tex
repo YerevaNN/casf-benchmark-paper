@@ -120,39 +120,21 @@
 \maketitle
 
 \begin{abstract}
-Many small molecules adopt more than one biologically relevant
-three-dimensional conformation. The same molecule can have different bound
-geometries across proteins or across complexes with the same protein. For
-protein-binding applications, a practical goal of conformer generation is
-therefore to produce a finite ensemble that represents these observed shapes.
-Generating such ensembles without conditioning on a particular protein makes
-them reusable across targets and supports the preparation of molecular
-libraries and conformational training data. Their usefulness depends on whether
-the sampled variation includes geometries relevant to molecular recognition, as
-well as on the number and diversity of the structures generated.
+Small molecules can adopt different conformations across protein complexes. We benchmark
+classical and learned conformer generators to identify procedures for building molecular
+libraries that cover these observed bound shapes. Using CASF and a 22-molecule PLINDER
+panel, we evaluate experimental recovery alongside geometric diversity, energy dispersion,
+and structural validity.
 
-We compare classical and learned conformer generators using experimentally observed bound ligand
-structures. A cleaned PLINDER panel of 22 molecules with multiple bound conformations measures
-both coverage of experimental references and the fraction of generated conformers near those
-observations. Complementary CASF core and ref panels assess recovery of individual references
-and compare generated ensembles with stored ChEMBL3D conformers at corresponding candidate
-counts and at a larger target of 1,000 candidates per molecule. We examine recovery alongside
-geometric diversity, structural validity, energy dispersion, molecular size, and flexibility.
+Greater geometric diversity does not consistently improve recovery, and method rankings
+depend on sampling budget and matching tolerance. Increasing Qwen's candidate target to
+1,000 raises CASF ref recovery within 0.75 \AA{} from 75.6\% to 91.7\%. On PLINDER,
+Qwen achieves the lowest mean reference matching distance, while LoQI provides higher
+coverage and sample precision.
 
-% AUTHOR: Insert the principal findings from the final evaluation: the main
-% recovery and sampling result, the relationship between diversity and
-% recovery, and the coverage--precision result for the 22-molecule
-% panel. Include only the numerical comparisons needed to support the
-% conclusion.
-
-% AUTHOR: After generation and characterization are complete, state the
-% selected generator, the size and defining properties of the released
-% dataset, and its availability.
-
-Together, these evaluations provide an empirical basis for selecting a conformer generator for
-broad coverage of observed bound geometries and for constructing a large conformational
-resource intended to support structure-based drug design and learning from three-dimensional
-molecular structure.
+These results support selecting generators according to ensemble size and the balance
+between experimental coverage and sample concentration, providing a basis for constructing
+conformational resources for structure-based drug design.
 \end{abstract}
 
 \section*{Keywords}
