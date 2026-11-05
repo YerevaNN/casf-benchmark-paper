@@ -2,6 +2,8 @@
 
 The former 18-figure review gallery is no longer included in the manuscript.
 The current SI contains six tables and six figures, all linked to the main text.
+It is appended to the main review PDF and also available as a standalone document;
+both entry points include `supporting-content.tex`.
 Existing measurements are reorganized and summarized here; no conformers were
 regenerated, optimized, filtered, or realigned.
 

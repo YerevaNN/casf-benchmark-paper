@@ -1,5 +1,15 @@
 # JCIM manuscript
 
+## Appendix placement in the review manuscript
+
+The curated appendix is included at the end of the main PDF again. Both
+`acs-template.tex` and `supporting-information.tex` use `supporting-content.tex`,
+so the six supporting tables and six supporting figures stay identical and
+numbered S1–S6 in either document. Keep this appendix visible in the main review
+PDF; only the obsolete 18-candidate gallery is excluded. The separate SI entry
+point remains available for eventual submission.
+
+
 ## Curated Supporting Information, 5 November 2026
 
 The 18-figure review gallery is removed from the compiled main manuscript.

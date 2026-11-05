@@ -63,6 +63,10 @@ for forbidden in ['Mean median','tab:supporting-druglike','tab:size','tab:suppor
     assert forbidden not in si
 main=expand(PAPER/'acs-template.tex')
 assert 'figures/candidates/' not in main and 'Additional figure candidates for review' not in main
+assert expand(PAPER/'supporting-content.tex') in main
+assert expand(PAPER/'supporting-content.tex') in si
+for label in ['tab:'+x for x in tables]+['fig:'+x for x in figures]:
+    assert main.count(r'\label{'+label+'}')==1,label
 for source in [main,si]:
     for number in re.findall(r'(?:Supporting )?(?:Table|Figure)s?\s*~?\s*S(\d+)',source):
         assert 1<=int(number)<=6,number

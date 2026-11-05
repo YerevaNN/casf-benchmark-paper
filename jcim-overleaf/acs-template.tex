@@ -64,6 +64,7 @@
 %% Graphic inclusion and scheme and chart support
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \graphicspath{{\manuscriptroot}}
 \usepackage{amsmath}
 \usepackage{float}
@@ -186,5 +187,17 @@ The companion identity data are provided in \texttt{plinder22-molecules.csv}.
 \printbibliography
 %\bibliography{acs-template.bib}
 
-% The selected supporting figures are in supporting-information.tex.
+% Keep the curated appendix visible in the main review PDF.
+\clearpage
+\begingroup
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\ifdefined\theHtable\renewcommand{\theHtable}{supporting.\arabic{table}}\fi
+\ifdefined\theHfigure\renewcommand{\theHfigure}{supporting.\arabic{figure}}\fi
+\section*{Appendix: Supporting Information}
+\input{\manuscriptroot supporting-content}
+\clearpage
+\endgroup
 \end{document}

@@ -1,14 +1,14 @@
 {
-  "description": "Current manuscript with curated Supporting Information: six tables and six figures, including refreshed core94/ref1044/PLINDER22 supporting analyses. Historical candidate gallery excluded.",
+  "description": "Curated Supporting Information is appended to the main review manuscript and shared with the standalone SI entry point; historical candidate gallery excluded.",
   "casf_baseline_commit": "c797287",
   "files": {
-    "AGENTS.md": "c3a5e622a6d0dd0ef9f17c730f9a174908143057cb5a4a3594b5f645bb7d1bb2",
+    "AGENTS.md": "0a85dd31efd8276b7a92568c0e62b20ea3059802034f80e97642821a23a3a72c",
     "FIGURE_CANDIDATES.md": "7b120e13002f47722d2269c7c57fb1094c1aa649d2aaf21743afd774ac59dc30",
     "MANUSCRIPT_OUTLINE.md": "3a2bd2fcb4445f467f2c6547268a8643500e697b734d982c2e5ae3f888b9fb27",
     "METHODS_NOTES.md": "8f2ef768c4ba74fb8168e4666707adadd4ecd0f34b699e8a0db30d74b1a62b36",
-    "README.md": "944a677b0f51754da873fc17f6c0932f67dda2d0b5445b63a79ead08c72fc91b",
+    "README.md": "190b5d085b1206dec72745b3154f2de00397719aa0f0b7f50fcd04bb570cac76",
     "RESULTS_NOTES.md": "792ae28be2771d6d1b586f5ef4de6fd33d8a4dd424d569a12a1c7b6de47d8716",
-    "acs-template.tex": "9f011953ecb1429d3981ddeccae11c4816ca423b84cc53eac43792c945bcfa1b",
+    "acs-template.tex": "a6e4e140294612f61b2b424c68af0ae4c74423be074487673d754373576e89f3",
     "build_candidate_figures.py": "b0ebb86781d0ba2e7e3b8ed72d301dd65d3edf82046848ffcc3c05b17e315f92",
     "build_figures.py": "4ab6fcfa6df2407fe4fecb28657acf4ef5f8baee80df4b4035075de9b4302362",
     "dataset-figure.tex": "110cdd85285c3425939e5e40ee5c753b04f283565bf623f183606ba30ba4a137",
@@ -138,8 +138,9 @@
     "results-data/ref-panel/counts.json": "d022d887f44b469da9e115fb01188722cb670f31f146985c27ae0373d1a88b44",
     "results-data/ref-panel/selection.json": "04610a9d2de555c4bc2387a26c5eea289870bd3b262498fc29f9eb88d92a631c",
     "qwen-comparison-appendix.tex": "13c7d98f4c5314b547f3372353ac7bc302e3ab4a7b0d0bf7690b279cf6619639",
-    "supporting-information.tex": "ef665fb27fc40c8200e87a734f939bd081198b89b8569606dc404eed90f5858a",
+    "supporting-information.tex": "068f3ceff7786b4f5c2a6156fb45cdcd345ef69e69bd0252df9148adecd3dd1a",
     "supporting-analyses.tex": "622ce1500a256a19fa51f9414ca224c55aa813d457b173a30dba5db5b0713703",
-    "tables/supporting-ensemble-counts.tex": "124fd370fcc58d79c4aa8a9647d6572df73b2a0259b581035f31fde2697adb9a"
+    "tables/supporting-ensemble-counts.tex": "124fd370fcc58d79c4aa8a9647d6572df73b2a0259b581035f31fde2697adb9a",
+    "supporting-content.tex": "c2d62b2f53207129ec20b1044a8ef82ae7f4ca7410f625a0924e44febb0616e6"
   }
 }
