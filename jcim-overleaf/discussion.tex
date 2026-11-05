@@ -1,46 +1,64 @@
-% Working Discussion; generator-selection interpretation consolidated from Results.
+% Interpretation of the current core94, ref1044, and PLINDER22 results.
 \section{Discussion}
 \label{sec:discussion}
 
-The central purpose of this study is to identify a practical procedure for constructing a large
-conformational dataset with coverage of experimentally observed ligand geometries. The benchmark
-separates several properties that are often combined under the general description of conformer
-quality. Structural validity determines whether a sample satisfies the specified identity and
-geometry requirements. Geometric diversity describes the variation represented in an ensemble.
-Energy analysis characterizes that variation under a common molecular model, while
-experimental-conformation recovery assesses whether the ensemble includes shapes observed in protein
-complexes.
+Selecting a generator for a conformational library requires balancing coverage of observed
+bound geometries with the distribution of the generated samples. The present comparisons
+show that geometric breadth, experimental recovery, and sample concentration favor different
+methods, and that their ordering depends on the sampling budget and matching tolerance.
+Coverage and precision are particularly useful together: an ensemble can represent many
+experimental references while placing only a small fraction of its samples near them.
+G{\"u}nther et al.\cite{gunther2006representation} established the value of finite conformer
+libraries for representing the multiple bound shapes of a drug. Our results extend this
+question to modern generation procedures by examining both the references reached and the
+conformations supplied around them.
 
-The preliminary results support the value of considering these properties together. Broad geometric
-exploration does not guarantee recovery, and strong recovery by the closest member of an ensemble
-does not establish that most samples lie near observed conformations. The comparison between
-single-reference recovery and multi-reference coverage makes this distinction explicit. It also
-explains why the preferred generator may depend on whether the immediate objective is to recover at
-least one useful conformation, cover several experimental conformations, or concentrate sampling
-near those observations.
+For constructing a large library, Qwen's recovery at the larger CASF budget, low matching
+distances, and broad geometric sampling provide a basis for selecting it for further dataset
+construction. LoQI's higher PLINDER precision favors it when concentration near the available
+observations is the main objective. This tradeoff should be assessed at the intended ensemble
+size: the budget-dependent ordering shows that performance with a small pool does not fully
+predict performance with a larger one. Additional sampling also complements the stored
+ChEMBL3D resource without reproducing every conformation that it already covers. Retaining
+useful stored conformers alongside new generations is therefore worth evaluating, although
+we have not assessed a combined library or its storage and computational costs.
 
-The paired PLINDER classical baselines further separate geometric exploration from proximity
-to observed conformations. Minimization reduces diversity while improving coverage at the
-primary tolerance and concentrating more samples near references, yet it reduces coverage at
-the tighter tolerance. Its benefit therefore depends on the matching criterion. The torsion
-comparison starts from molecular identities without experimental coordinates, and its
-minimized ensembles remain less concentrated near the observed structures than LoQI's.
+Postprocessing is part of this choice because it changes the conformational distribution.
+The different responses to minimization at the two matching tolerances show that its value
+depends on the required geometric agreement. McNutt et al.\cite{mcnutt2023conformers} found
+benefits from minimization while also showing that selecting only the lowest-energy
+conformers was insufficient for the best retrieval of bound geometries. Our paired comparisons
+similarly argue for evaluating postprocessing against the intended structural criterion.
+The energy analysis provides a complementary description: broad geometric sampling can
+coexist with a narrower typical energy spread. A smaller spread alone, however, does not
+establish lower strain or physical plausibility, and the single-point force-field energies
+do not identify occupied energy basins or measure binding free energies.
 
-These evaluations inform dataset construction without establishing that every generated conformer is
-biologically relevant. The experimental collections sample only part of the accessible
-conformational space, and the force-field calculations do not represent binding free energies. The
-results are also conditional on the selected molecules, generation settings, and sampling budgets.
-Conclusions about Qwen's generalization require a documented audit of the evaluated checkpoint's
-training data and exclusion of the benchmark molecules.
+The Qwen comparisons suggest that matching experimental geometry and improving structural
+validity can respond differently to model configuration. The more consistent matching
+advantage of the tested FSQ configurations motivates further evaluation of the coordinate
+representation, while the clearer validity benefit from increasing model size supports
+assessing these outcomes separately when scaling models. Training exports and token exposure
+differ across representations, so the comparison does not isolate an encoding effect.
+The concentration of some PLINDER differences in particular molecules also limits how broadly
+an average improvement can be interpreted. These findings concern the evaluated checkpoints;
+replicated training runs would be needed to establish their stability.
 
-Together, these evaluations support selecting generators by experimental coverage and
-sample concentration, with geometric diversity and energetic dispersion as complementary
-descriptors. Qwen 1.7B FSQ remains a candidate for constructing a larger conformational
-resource. The resulting dataset will require its own characterization of molecular coverage,
-validity, diversity, and energy distributions.
+Several features of the evaluation limit generalization. CASF is restricted to the intersection
+with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
+structures. Large and flexible molecules remain sparsely represented in parts of CASF.
+Experimental references cover only part of accessible conformational space, so low precision
+against them does not establish that unmatched conformers are irrelevant to binding.
+CASF matching uses PoseBusters-filtered ensembles, whereas PLINDER matching uses the supplied
+pools; their absolute performance levels are therefore not directly comparable. Candidate
+budgets also do not equalize computational cost. Conclusions about Qwen's generalization
+require a documented audit of training overlap and the executed benchmark-exclusion policy.
 
-The proposed public release is intended to provide a reproducible resource for structure-based
-drug design and learning molecular geometry, with pharmacophore-conditioned generation among
-its potential applications. Its demonstrated properties will be the structural coverage,
-diversity, and validity measured in this study. Whether training on this resource improves a
-particular downstream model remains a separate question for future work.
+The benchmark provides a basis for choosing a procedure to construct a reusable conformational
+resource for structure-based drug design and learning molecular geometry, including
+pharmacophore-conditioned generation. The released dataset will need its own assessment of
+molecular coverage, validity, diversity, and energy distributions. Its value for docking,
+screening, or model training must also be tested directly. McNutt et al.\cite{mcnutt2023conformers}
+showed that larger ensembles can improve structural recovery without improving screening
+performance. The structural advantages measured here therefore motivate downstream evaluation
+but do not establish its outcome.

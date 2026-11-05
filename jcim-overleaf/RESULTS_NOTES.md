@@ -1,5 +1,32 @@
 # Results: sources and author follow-up
 
+## Discussion revision, 5 November 2026
+
+`discussion.tex` now interprets the revised Results in six paragraphs: the
+coverage/precision tradeoff; generator selection at the intended budget and
+complementarity with ChEMBL3D; postprocessing and energy; the Qwen configuration
+comparison; limits of generalization; and dataset/downstream evaluation.
+No benchmark measurements, tables, or figures were changed.
+
+The discussion distinguishes coverage versus precision from single-reference
+versus multiple-reference evaluation. It explains Qwen's selection rationale
+alongside LoQI's precision advantage, treats a combined stored/generated library
+as an untested possibility, and does not equate narrow energy spread with low
+strain or occupied basins. The Qwen paragraph retains training-exposure and
+single-checkpoint qualifications. The final paragraph requires characterization
+of the released dataset itself, rather than projecting benchmark properties
+onto it. Reference-panel selection, sparse strata, different PB conditions,
+unequal computational cost, and training-overlap documentation delimit the claims.
+
+Literature connections were checked against primary sources:
+
+- Günther et al., [BMC Bioinformatics 2006](https://link.springer.com/content/pdf/10.1186/1471-2105-7-293.pdf): finite conformer libraries represent multiple target-bound drug conformations.
+- McNutt et al., [JCIM 2023](https://pubs.acs.org/doi/10.1021/acs.jcim.3c01245): Discussion sections on minimization, lowest-energy selection, and ensemble size support the distinction between structural recovery and downstream screening performance.
+
+Existing bibliography keys are reused. Source citation/cross-reference and
+archived-data checks are run without compiling a local manuscript preview.
+
+
 ## Curated Supporting Information, 5 November 2026
 
 The 18-figure review gallery is removed from the compiled main manuscript.
