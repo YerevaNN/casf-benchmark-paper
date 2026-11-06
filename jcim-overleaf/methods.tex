@@ -53,20 +53,13 @@ space.
 
 The multiple-reference evaluation uses a cleaned panel of 22 ligand identities derived from an initial 23-molecule selection from PLINDER
 release 2024-06/v2,\cite{durairaj2024plinder} an annotated resource of protein--ligand complexes from the Protein Data Bank.
-Records in the ligand-per-system table were grouped by full InChIKey so that different stereoisomers
-remained separate. Of 51,280 starting identities, 25,392 passed an RDKit-based physicochemical
-screen requiring molecular weight 150--650 Da, cLogP $-$1 to 6, and limits on polarity, hydrogen
-bonding, flexibility, charge, and elemental composition. The full criteria are given in Supporting
-Table S2.
-
-Survivors were ranked by the number of distinct PDB entries, with PLINDER-system count as the
-secondary ordering. Distinct PDB entries were preferred because one multimeric structure can
-contribute many systems. Manual review then selected recognizable drugs and medicinal-chemistry-like
-protein ligands, excluding common crystallization additives, metabolites, cofactors, and other
-compounds outside the intended scope. The initial panel was a manually curated
-exploratory set, not an official PLINDER split or a purely algorithmic selection. Exact reproduction
-uses the saved identities. The molecule list and panel statistics are provided in Supporting
-Information.
+Ligands were grouped by full InChIKey, screened for physicochemical properties, and ranked
+by the number of distinct PDB entries, with system count as the secondary ordering.
+The screen retained 25,392 of 51,280 identities. Manual review selected 23 drugs and
+medicinal-chemistry ligands from this pool. This is an exploratory selection, not an
+official PLINDER split or a random sample. The frozen identity list, screening criteria,
+and original frequency counts are archived; Supporting Tables S2--S4 describe the
+screen and evaluated panel.
 
 The cleaned collection excludes bortezomib because of covalent annotations and contains 1,067
 reference conformations across 22 molecules, with 8--117 per molecule. The supplied structures

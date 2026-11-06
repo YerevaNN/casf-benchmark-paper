@@ -123,3 +123,14 @@ The document's local label “CASF-2016 REF” does not identify the original 4,
 archive or establish its release. That source TODO remains. The supplied description
 also does not reconcile the binned/FSQ export count difference or establish the older
 step-64,000 checkpoint's lineage, so those TODOs remain.
+
+## Additional September filtering records supplied 6 November 2026
+
+See `../selection-audit/plinder/README.md` for the archived audit script, separate
+JSONL writer and verified 285-core/23-PLINDER query list. Their roles agree with the
+author's description, but this September workflow must not replace the October
+normalized-key exclusion procedure established by the v2 input manifests. No new
+checkpoint linkage has been established; the older step-64,000 TODO remains.
+The author also supplied OpenReview records A0QEfcC2J9 and VYRidQUY2s for CoordToken.
+Public-page retrieval was blocked by access/verification responses during this update;
+the existing PDF-based citation remains unchanged pending bibliographic verification.

@@ -2,14 +2,17 @@
 
 The evaluated panel derives from an exploratory, manually curated selection from PLINDER
 release \textbf{2024-06/v2}, rather than an official PLINDER split. Selection began with the
-ligand-per-system table, grouped by complete InChIKey to retain stereoisomers as separate
-identities. The starting collection contained \textbf{51,280 identities}; the physicochemical
+release file \texttt{fingerprints/ligands\_per\_system.parquet}, grouped by its complete
+\texttt{inchikeys} value to retain stereoisomers as separate identities. For each identity,
+we counted distinct PDB identifiers, distinct system identifiers, and table rows as
+ligand instances. The starting collection contained \textbf{51,280 identities}; the physicochemical
 requirements in Table~S2 retained \textbf{25,392 (49.5\%)}.
 
 \input{tables/plinder23-screen}
 
 Surviving identities were ranked by descending number of distinct PDB entries, with system
-count as the secondary ordering. Manual review selected recognizable drugs and
+count as the secondary ordering. PDB count takes priority because one multimeric
+structure can contribute many systems. Manual review selected recognizable drugs and
 medicinal-chemistry-like protein ligands, excluding common crystallization additives,
 metabolites, cofactors, and other compounds outside the intended panel. These were
 judgment-based categories rather than executable exclusion rules. The original selection
@@ -17,8 +20,13 @@ contained 23 molecules, including bortezomib; the evaluated cleaned set excludes
 because of covalent annotations.
 
 The panel is not a random sample or simply the most frequent PLINDER ligands. Exact
-reproduction uses the saved molecular identities. Training exclusions are a separate
-operation from panel construction.
+reproduction uses the archived \texttt{druglike\_curated\_shortlist.tsv}, which records
+all 23 original identities, SMILES, descriptors, and selection frequencies. These
+frequencies were checked against the grouped source table; the current 22 identities
+and SMILES match this shortlist after removal of bortezomib. A later screen using
+DrugBank-derived ATC annotations did not define this panel, and an ATC annotation was
+not an inclusion requirement. Training exclusions are a separate operation from
+panel construction.
 
 The supplied cleaned structures were deduplicated at 0.05~\AA{} symmetry-aware RMSD and
 aligned with a fixed anchor atom triplet per molecule. The delivered 22-molecule collection
@@ -49,4 +57,5 @@ Source hashes and the per-record reference manifest are archived in \texttt{plin
 
 \textbf{[TODO: supply the upstream extraction and cleaning script, confirm the release of
 the delivered coordinates, and document protonation, tautomer, and alternate-location
-handling. These details cannot be inferred from the cleaned SDF files alone.]}
+handling and the precise 0.05~\AA{} clustering and representative-selection procedure.
+These details cannot be inferred from the cleaned SDF files alone.]}

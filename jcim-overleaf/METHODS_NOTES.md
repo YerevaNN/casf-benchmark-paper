@@ -1,5 +1,19 @@
 # Methods: evidence and author follow-up
 
+## PLINDER selection source verification, 6 November 2026
+
+`method-data/selection-audit/plinder/` now archives the frozen original 23-identity
+shortlist, its September query list and the separate audit/corpus-writer scripts.
+All 23 frequency triples agree with the grouped source parquet; all 22 evaluated
+identities and SMILES match the shortlist after bortezomib removal. Methods keeps a
+short selection account; the appendix specifies the source table, count definitions,
+manual curation and the fact that the later ATC screen did not define this panel.
+The October normalized-key v2 exclusion account remains authoritative. September
+scripts are historical evidence, not proof of a checkpoint's training lineage.
+Coordinate-extraction/cleaning, ref source and training follow-up TODOs remain.
+No results, tables or figures changed.
+
+
 ## Full corpus deduplication and panel-specific exclusions, 6 November 2026
 
 The author-supplied full description is archived in

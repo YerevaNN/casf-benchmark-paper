@@ -1,0 +1,41 @@
+{
+  "druglike_curated_shortlist.tsv": {
+    "source": "/mnt/weka/hrant/plinder_frequency/2024-06-v2/druglike_curated_shortlist.tsv",
+    "source_sha256": "96f749b4848dbc69c4cf8ddc010b5f0f2bff90aadf169aa41f74b46575aabcc5",
+    "archive_sha256": "22c9db2378903f884f27eaa4b6381eab71a944fa0ff7d1123916e0f7efa62cb7",
+    "transformation": "CRLF normalized to LF; otherwise unchanged"
+  },
+  "queries.csv": {
+    "source": "/mnt/weka/hrant/dodock_similarity_audit_20260914_casf285_plinder23_only/queries.csv",
+    "source_sha256": "3cf21197a3ed199dce622798a8ad57ff20c95a5a8e46cd5a1f535207b8f958a5",
+    "archive_sha256": "2df6b0e94d51ba50ac85d6219bea25b4172c63de1e4674f2672937116b887cfb",
+    "transformation": "CRLF normalized to LF; otherwise unchanged"
+  },
+  "dodock_similarity_filter_audit.py": {
+    "source": "/mnt/weka/hrant/dodock_similarity_audit_20260914_casf285_plinder23_only/dodock_similarity_filter_audit.py",
+    "source_sha256": "14444257be6a0d1984da3aaa633910d19c6a9cecbab5fad8f03babab58df1ee9",
+    "archive_sha256": "14444257be6a0d1984da3aaa633910d19c6a9cecbab5fad8f03babab58df1ee9",
+    "transformation": "CRLF normalized to LF; otherwise unchanged"
+  },
+  "filter_serialized_jsonl_by_smiles.py": {
+    "source": "/mnt/weka/hrant/dodock_similarity_audit_20260914_casf285_plinder23_only/filter_serialized_jsonl_by_smiles.py",
+    "source_sha256": "042d10080ccfe5cce72b9c4c57e9d18d7a75b3653b12838c47cd7265902ec8fd",
+    "archive_sha256": "042d10080ccfe5cce72b9c4c57e9d18d7a75b3653b12838c47cd7265902ec8fd",
+    "transformation": "CRLF normalized to LF; otherwise unchanged"
+  },
+  "ligands_per_system.parquet": {
+    "source": "/mnt/weka/hrant/plinder_frequency/2024-06-v2/ligands_per_system.parquet",
+    "source_sha256": "5d4ee32a6ac7b97ba597e6a1eed9d43670b75e869cea09073b4de809e29f810c",
+    "archived": false
+  },
+  "ligands_per_inchikey.parquet": {
+    "source": "/mnt/weka/hrant/plinder_frequency/2024-06-v2/ligands_per_inchikey.parquet",
+    "source_sha256": "6ea9c4fd78a8a2d6e197ed3e64c72b007c282aa2929eee5e79529cf714825910",
+    "archived": false
+  },
+  "druglike_physchem_screen.tsv": {
+    "source": "/mnt/weka/hrant/plinder_frequency/2024-06-v2/druglike_physchem_screen.tsv",
+    "source_sha256": "8bf655c82e2ef40b98f201dec333a939e4de5fc8361adc0cd6ed3210091a1b09",
+    "archived": false
+  }
+}

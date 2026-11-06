@@ -1,0 +1,15 @@
+{
+  "source_rows": 690692,
+  "full_inchikey_groups": 51280,
+  "screen_rows": 25392,
+  "saved_shortlist_rows": 23,
+  "all_23_saved_frequency_counts_match_grouped_source": true,
+  "current_22_smiles_and_full_inchikeys_match_shortlist": true,
+  "removed_identity": "BO2 (bortezomib)",
+  "september_query_sets": {
+    "casf": 285,
+    "plinder23": 23
+  },
+  "september_plinder_queries_match_canonical_shortlist_smiles": true,
+  "scope": "Checks of supplied tables and identity manifests; physicochemical screening and coordinate cleaning were not rerun."
+}
