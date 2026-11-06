@@ -1,0 +1,130 @@
+\section*{CoordToken and Qwen training records}
+
+\subsection*{Geometry representation and tokenizer training}
+
+CoordToken\cite{geikyan2026coordtoken} encodes canonical isomeric SMILES together
+with centered heavy-atom coordinates. Coordinates follow the SMILES atom order;
+non-atom tokens retain their graph information but carry no coordinate target.
+The encoder and decoder each have eight transformer layers, width 1,024, 16 attention
+heads, and feed-forward width 4,096. A 12-dimensional bottleneck quantizes each scalar
+to two levels, giving 4,096 possible codes without a learned vector codebook.
+One code is transmitted for each atom, together with one learned molecular register
+code. The decoder receives these codes and SMILES identities and predicts Cartesian
+coordinates. Training minimizes coordinate mean squared error over atom positions,
+masking non-atom tokens and padding.
+
+The benchmark uses the separate filtered release dated 20 October 2026, whose
+checkpoint SHA-256 begins \texttt{37e5aa88c6e3de1d}. It is not the full-corpus model
+used for the headline reconstruction results in the CoordToken paper. Both tokenizer
+epochs use the same 187,398,101-record training manifest. Training begins from random
+initialization and uses eight H100 GPUs, global batch 512, AdamW with peak learning
+rate $5\times10^{-5}$, $\beta_1=0.9$, $\beta_2=0.999$, dropout 0.05, and gradient
+clipping at norm 0.1. Weight decay is 0.01 for matrix parameters and zero for biases
+and normalization parameters. The first epoch warms up over 1,024,000 examples,
+maintains the peak rate until 90\% of the epoch, and then decays to zero by a cosine
+schedule. The second epoch resumes the model and optimizer state, restores the peak
+rate, and decays over its final 20\%. Each epoch contains 366,012 updates. The initial
+seed is 123 and the second-epoch shuffle seed is 124. Computation uses bfloat16 with
+FP32 coordinate and quantization operations; the recorded environment is PyTorch
+2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
+Full checkpoint and data hashes are archived with the training records.
+
+\subsection*{Training collection and benchmark exclusions}
+
+The source collection contains 189,792,028 training records. After benchmark
+exclusions, its largest components are PubChem3D (92,818,460 records), ZINC
+(73,082,070), nablaDFT (8,623,394), GEOM (5,016,456), and ChEMBL3D (1,398,651).
+Other records come from the OMol25 biological- and small-molecule collections,
+SAIR, BindingNet, Binding MOAD, CrossDocked2020, HiQBind, DAVIS-3D, KIBA-3D,
+Kinodata-3D, PLINDER, and SPINDR. Counts refer to conformer records, not distinct
+molecular identities. The complete source counts before and after filtering are
+provided in the companion \texttt{filter-per-source.csv}.
+
+For exclusion matching, temporary molecular copies are uncharged using RDKit's
+protonation-only mode and converted to canonical tautomers. Two keys are compared:
+the connectivity block of the normalized InChIKey and a stereochemistry-independent
+\texttt{HetAtomProtomer} hash. A match under either key is sufficient. The original
+coordinates, charges, and stereochemistry of retained records are not rewritten.
+For the 285 CASF core and original 23 PLINDER queries, matching molecules first form
+an expanded query set. Molecules with ECFP4 Tanimoto similarity strictly greater
+than 0.4 to this set are identified using 2,048-bit radius-2 Morgan fingerprints
+without chirality, calculated on the original molecular forms. Their normalized
+identity matches are also excluded. Previously identified exclusions from the
+plain-identity and tautomer-based screens are retained. This procedure extends
+beyond exact stereoisomer matching and does not apply a recursive similarity expansion.
+For the 1,236 ref ligands, only the normalized identity exclusion is added.
+
+The executed report assigns 2,201,663 removed records to the core-related category,
+163,118 additional records to PLINDER, and 29,146 additional records to ref. These
+categories are mutually exclusive in that order, leaving 187,398,101 records.
+The tokenizer input manifest and FSQ serialization manifest identify this retained
+collection. The binned export is traced to the same filtering project but contains
+183,835,937 records. The difference is retained explicitly in the training comparison.
+
+\textbf{[TODO: reconcile the 3,562,164-record difference between the binned and FSQ
+exports, including conversion exclusions; verify source release identifiers and
+redistribution terms. Complete a residual-overlap report for the final core94,
+ref1044, and PLINDER22 identities against the training exports and tokenizer
+development data. Document the older step-64,000 model separately.]}
+
+\subsection*{Language-model training and generation}
+
+The v2 models initialize from Qwen3-0.6B-Base or Qwen3-1.7B-Base.\cite{yang2025qwen3}
+Molecular records pair a SMILES prompt with a coordinate-enriched SMILES sequence.
+Binned records place three coordinate symbols and a delimiter after each atom,
+using 256 interior bins over $-12$ to $12$ \AA{} and lower/upper overflow symbols.
+FSQ records place one molecular code before the enriched SMILES and one code after
+each atom. Geometry symbols are atomic tokens in the language-model vocabulary.
+The geometry tokenizer remains fixed during language-model training.
+
+Training minimizes next-token cross-entropy over SMILES and geometry tokens in complete
+records packed into contexts of 4,096 tokens. Padding and the final prediction position of each record are
+excluded from the loss, preventing a record from targeting the next packed record.
+The effective batch is 144 packed sequences, using nine sequences per device,
+two accumulation steps, and eight data-parallel workers. AdamW uses learning rate
+$8\times10^{-4}$, $\beta_1=0.9$, $\beta_2=0.95$, $\epsilon=10^{-8}$, and weight decay
+0.1, with gradient clipping at norm 1.0. The rate warms up for 500 updates, stays constant, and decays linearly to zero
+over the last 6,606 updates for binned coordinates or 4,106 updates for FSQ.
+The data seed is 2025. Precision audits record bfloat16 model computation and FP32
+master weights, optimizer states, and gradient reduction. All four evaluated
+checkpoints complete one epoch; they are not subsequent GEOM fine-tuning checkpoints.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Completed v2 Qwen training exposure. Counts are taken from the final training
+records for each run. Input tokens exclude padding and include record separators;
+supervised targets exclude masked positions. Counts describe records and tokens,
+not distinct molecules.}
+\label{tab:qwen-training}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Records & Updates & Input tokens & Supervised targets \\
+\midrule
+0.6B binned & 183,835,937 & 66,057 & 38,617,041,975 & 38,433,206,038 \\
+1.7B binned & 183,835,937 & 66,057 & 38,617,041,975 & 38,433,206,038 \\
+0.6B FSQ & 187,398,101 & 41,054 & 24,094,469,044 & 23,907,070,943 \\
+1.7B FSQ & 187,398,101 & 41,054 & 24,094,469,044 & 23,907,070,943 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Saved generation metadata specify temperature 1.0, top-$p$ 1.0, and 1,000 requested
+samples per molecule for all four models. Core and PLINDER use seed 42; ref uses
+four shards of 261 molecules with seeds 42--45. The inspected generation routine
+limits continuations to 1,000 new tokens and rejects incomplete conformer blocks,
+molecular-graph mismatches, and decoding failures. The FSQ decoder is bound to the
+same filtered tokenizer checkpoint used for the training export. Sampling failures
+are recorded separately from subsequent PoseBusters failures.
+
+\textbf{[TODO: archive the fully resolved generation configuration and environment for
+each run, including inherited top-$k$ and stopping settings, and confirm the
+1,000-token limit against the executed source revision. The saved metadata establish
+temperature, top-$p$, sample count, and seeds, but do not record every library default.
+Add the older Qwen model and external generators' executed settings and checkpoint
+hashes; adapter defaults in Table S5 are not a substitute for these records.]}
+
+\textbf{[TODO: confirm the final public bibliographic record for the supplied CoordToken
+manuscript and provide permanent links for the filtered tokenizer and four evaluated
+Qwen checkpoints.]}

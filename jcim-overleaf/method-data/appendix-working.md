@@ -1,5 +1,10 @@
 # Appendix: working draft
 
+> Historical working draft. The current manuscript is in `../methods.tex`; the
+> training and evaluation additions are in `../training-appendix.tex` and
+> `../evaluation-protocol-appendix.tex`. Evidence and remaining TODOs are listed in
+> `training-audit/README.md`. Use those sources for the current counts and protocols.
+
 ## A. Selection and composition of the Plinder-23 panel
 
 Plinder-23 is an exploratory, manually curated selection from PLINDER release **2024-06/v2**, rather than an official PLINDER split. Selection began with the release's ligand-per-system table. Records were grouped by the complete InChIKey, retaining stereoisomers with different full keys as separate identities. The starting collection contained **51,280 identities**; the physicochemical requirements in Table A1 retained **25,392 (49.5%)**.

@@ -1,0 +1,11 @@
+{
+  "split": "train",
+  "input": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/merged_train.csv",
+  "rule": "K1 or K2 (+ plain / tautomer safety net) + CASF ref exact",
+  "rows": 189792028,
+  "kept": 187398101,
+  "casf_similar": 2201663,
+  "plinder_only_dropped": 163118,
+  "casf_ref_exact": 29146,
+  "removed_percent": 1.2613422308759987
+}

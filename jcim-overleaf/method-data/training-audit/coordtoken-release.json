@@ -1,0 +1,8 @@
+{
+  "status": "completed_checkpoint",
+  "epochs": 2,
+  "checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+  "parent_run": "/mnt/weka/fgeikyan/CoordToken/logs/filtered_epoch2_20261018/run",
+  "training_rows": 187398101,
+  "purpose": "Separate filtered-data Qwen corpus; excluded from current CoordToken manuscript"
+}

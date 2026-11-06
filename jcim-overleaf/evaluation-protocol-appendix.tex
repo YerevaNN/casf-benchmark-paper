@@ -1,0 +1,38 @@
+\section*{Evaluation settings and remaining reproducibility records}
+
+\subsection*{Validity checks and aligned distances}
+
+The configured PoseBusters assessment checks loading, sanitization, InChI conversion,
+connectivity, radicals, molecular formula, bond connectivity, tetrahedral chirality,
+and double-bond stereochemistry. Distance-geometry checks ignore hydrogens and use
+configured tolerances of 0.25 for bond lengths and angles and 0.3 for internal clashes.
+The bounds matrix enables 1--5 bounds, van der Waals scaling, and triangle smoothing,
+and disables the macrocycle 1--4 option. Aromatic five- and six-membered rings and
+trigonal carbon--carbon double bonds have a maximum deviation from planarity of
+0.25 \AA{}. The energy-ratio threshold is 100, with 50 internally generated comparison
+conformers. This validity calculation is separate from the common-hydrogen,
+unoptimized MMFF94s energy analysis reported in the Results. The inspected configuration
+is archived as \texttt{posebusters-config.json}; no receptor-contact tests are included.
+
+RMSD calculations use RDKit's \texttt{GetBestRMS} after removing hydrogens, without
+explicitly overriding its symmetry-search defaults. CASF comparisons that raise an
+alignment exception attempt an index-based atom mapping; failures of both procedures
+are unmeasurable. The PLINDER matching routine instead records failed alignments as
+undefined. All nearest-reference and nearest-generated distances used in the reported
+PLINDER metrics are finite, which does not establish that every pairwise comparison
+succeeded. Greedy cluster representatives remain fixed in saved conformer order.
+
+\textbf{[TODO: archive the executed RDKit and PoseBusters versions and configurations
+for each historical evaluation, including the energy-check random seed and any
+runtime overrides. Count index-mapping fallbacks and failed pairwise alignments,
+and report the symmetry-search limits and rotatable-bond descriptor option for
+those versions. Do not infer these from the currently installed environment.]}
+
+\subsection*{Molecule-level displays}
+
+The trajectories in main Figure 6 identify the union of
+molecules with the largest MAT-R or MAT-P for any displayed method; the other
+molecules are grey. For Supporting Figure S6, each molecule's contribution to the
+validity change is its change in pass percentage divided by the sum of these changes
+across molecules. This decomposes the net change in the unweighted mean pass rate,
+not the pooled rate in the main comparison. Negative contributions remain negative.

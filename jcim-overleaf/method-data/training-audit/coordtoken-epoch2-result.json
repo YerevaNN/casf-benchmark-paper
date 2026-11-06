@@ -1,0 +1,143 @@
+{
+  "status": "complete",
+  "arm": "casf_filtered_epoch2_atom12_reg1",
+  "seed": 123,
+  "steps": 366012,
+  "examples_seen": 187398101,
+  "total_steps": 366012,
+  "training_seconds": 18634.804079838097,
+  "ms_per_step": 50.91309596362441,
+  "validation": {
+    "rows": 4952,
+    "failures": 0,
+    "source_macro_rmsd": 0.09715256687335196,
+    "mean_rmsd": 0.08920766577208851,
+    "bond_mae": 0.019691686773268727,
+    "pair_rmse": 0.07087757100892043,
+    "mean_geometry_bits": 317.57108239095317,
+    "occupied_codes": 3437,
+    "entropy_bits": 11.015339532571518,
+    "per_source": {
+      "BindingMoad": {
+        "n": 119,
+        "mean_rmsd": 0.09303438312867109,
+        "bond_mae": 0.019974868204601173,
+        "pair_rmse": 0.0706270010907109
+      },
+      "BindingNet-High": {
+        "n": 127,
+        "mean_rmsd": 0.10717233947998896,
+        "bond_mae": 0.02187598944003657,
+        "pair_rmse": 0.08643434343375558
+      },
+      "BindingNet-Low": {
+        "n": 512,
+        "mean_rmsd": 0.11813942572916858,
+        "bond_mae": 0.022848584068924538,
+        "pair_rmse": 0.09950796029079356
+      },
+      "BindingNet-Mid": {
+        "n": 326,
+        "mean_rmsd": 0.10811082905649773,
+        "bond_mae": 0.020736134411092916,
+        "pair_rmse": 0.0879915818012108
+      },
+      "CrossDocked2020": {
+        "n": 240,
+        "mean_rmsd": 0.11335650320785741,
+        "bond_mae": 0.03170473863913988,
+        "pair_rmse": 0.10229300308662156
+      },
+      "DAVIS-3D": {
+        "n": 3,
+        "mean_rmsd": 0.12012156595786412,
+        "bond_mae": 0.026656190554300945,
+        "pair_rmse": 0.10653288165728252
+      },
+      "HiQBind": {
+        "n": 28,
+        "mean_rmsd": 0.1184373791994793,
+        "bond_mae": 0.03253025707921812,
+        "pair_rmse": 0.11311095380889517
+      },
+      "KIBA-3D": {
+        "n": 9,
+        "mean_rmsd": 0.07681047626667553,
+        "bond_mae": 0.019096161135368876,
+        "pair_rmse": 0.05664772726595402
+      },
+      "Kinodata-3D": {
+        "n": 95,
+        "mean_rmsd": 0.09594118599044649,
+        "bond_mae": 0.019433704646010148,
+        "pair_rmse": 0.07203036781988646
+      },
+      "OMol25_bio_mols": {
+        "n": 33,
+        "mean_rmsd": 0.10873798450285738,
+        "bond_mae": 0.03143219011976863,
+        "pair_rmse": 0.08612818835359631
+      },
+      "OMol25_small_mols": {
+        "n": 512,
+        "mean_rmsd": 0.10730802919351845,
+        "bond_mae": 0.028238693905223045,
+        "pair_rmse": 0.08940598542722
+      },
+      "Plinder": {
+        "n": 245,
+        "mean_rmsd": 0.11765711847312596,
+        "bond_mae": 0.02626575970528077,
+        "pair_rmse": 0.09670239991831536
+      },
+      "SAIR": {
+        "n": 99,
+        "mean_rmsd": 0.11320612557006604,
+        "bond_mae": 0.02847161360386044,
+        "pair_rmse": 0.09164370573831326
+      },
+      "SPINDR": {
+        "n": 44,
+        "mean_rmsd": 0.10088798183609139,
+        "bond_mae": 0.0250513711520894,
+        "pair_rmse": 0.0838735346597704
+      },
+      "chembl3d": {
+        "n": 512,
+        "mean_rmsd": 0.09428911477152724,
+        "bond_mae": 0.017332915762381162,
+        "pair_rmse": 0.07155334889830556
+      },
+      "geom": {
+        "n": 512,
+        "mean_rmsd": 0.07293606608436676,
+        "bond_mae": 0.015621749557794828,
+        "pair_rmse": 0.05643880044226535
+      },
+      "nablaDFT": {
+        "n": 512,
+        "mean_rmsd": 0.0694591667415807,
+        "bond_mae": 0.016320725859259255,
+        "pair_rmse": 0.05538850649463711
+      },
+      "pubchem3d": {
+        "n": 512,
+        "mean_rmsd": 0.05326028566560126,
+        "bond_mae": 0.012267750665159838,
+        "pair_rmse": 0.04157938029675279
+      },
+      "zinc": {
+        "n": 512,
+        "mean_rmsd": 0.0570328097383026,
+        "bond_mae": 0.011562254388081783,
+        "pair_rmse": 0.03189062762976391
+      }
+    }
+  },
+  "test_evaluated": false,
+  "manifest_sha256": "d539d919c2a302dadd069e71f87f2094bd0274759e26c39a0eba24ab44ab302e",
+  "peak_gpu_bytes": 7570246656,
+  "epoch_number": 2,
+  "cumulative_examples_seen": 374796202,
+  "final_lr": 0.0
+}

@@ -55,14 +55,11 @@ We compare generators that approach conformational sampling in different ways. R
 geometry and experimental torsional preferences, while random torsion sampling provides a baseline
 for broad geometric exploration. Torsional Diffusion\cite{jing2022torsional} learns to generate conformers by changing
 torsion angles. LoQI\cite{nikitin2025loqi} is trained on low-energy conformations, and Qwen generates a molecular
-coordinate representation autoregressively. MCF,\cite{wang2024mcf} NExT-Mol,\cite{liu2025nextmol} and FlowR\cite{cremer2025flowr} broaden the panel of learned
+coordinate representation autoregressively using CoordToken.\cite{geikyan2026coordtoken} MCF,\cite{wang2024mcf} NExT-Mol,\cite{liu2025nextmol} and FlowR\cite{cremer2025flowr} broaden the panel of learned
 methods. These categories describe different aspects of the methods and are not mutually exclusive.
 The comparison concerns the evaluated generation procedures, including their training data and
 processing steps, rather than architecture
 alone.
-
-% \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
-\textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}
 
 We evaluate coverage of multiple bound conformations using a cleaned panel of 22 molecules
 selected from PLINDER,\cite{durairaj2024plinder} an annotated collection of protein--ligand complexes from the Protein

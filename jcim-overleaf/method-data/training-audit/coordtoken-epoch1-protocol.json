@@ -1,0 +1,78 @@
+{
+  "created": "2026-10-12",
+  "status": "registered_before_new_results",
+  "test_access": false,
+  "seed": 123,
+  "reference_global_batch": 1024,
+  "mixed_full": {
+    "architecture": "atom12_reg1",
+    "width": 1024,
+    "layers": 8,
+    "global_batch": 512,
+    "lr": 5e-05,
+    "dropout": 0.05,
+    "world": 8,
+    "epochs": 1,
+    "init": "from scratch",
+    "schedule": "Same tuning prefix: 1,024,000-example warmup, constant until 90% of full corpus, cosine to zero at end",
+    "control": "Do not automatically launch an additional full-corpus control; revisit after winner finishes."
+  },
+  "nabla": {
+    "source": "official dataset_train_full; verified original cache v2; not mixed-corpus nabla",
+    "rows_expected": 8849983,
+    "holdout": "Deterministic 5% of full Standard InChIKeys from official train_full; all conformers of each key kept together. Evaluate fixed up-to-8192 keys, one conformer/key. No test references/scores accessed. These keys may have appeared in earlier research; development evidence only.",
+    "scales": [
+      512,
+      1024
+    ],
+    "layers": 8,
+    "grid": {
+      "512": {
+        "lr": [
+          0.0001,
+          0.0002,
+          0.0004
+        ],
+        "global_batch": [
+          256,
+          512,
+          1024
+        ]
+      },
+      "1024": {
+        "lr": [
+          5e-05,
+          0.0001,
+          0.0002
+        ],
+        "global_batch": [
+          256,
+          512,
+          1024
+        ]
+      }
+    },
+    "fixed": {
+      "bits": 12,
+      "registers": 1,
+      "dropout": 0.05,
+      "weight_decay": 0.01,
+      "clip": 0.1,
+      "beta2": 0.999
+    },
+    "epochs_per_trial": 1,
+    "schedule": "10% linear warmup, 80% constant, 10% cosine decay, measured by training examples and identical across batches. This is a completed one-epoch tuning schedule, not the prefix of 44 epochs.",
+    "primary": "Mean unaligned per-molecule RMSD over one held-out conformer per key; single-source macro equals mean",
+    "guards": "Relative to LR1e-4,batch512 at same scale: bond MAE and pair-distance RMSE <=5% worse. Select lowest primary among passing runs; within1% choose lower LR then batch512 proximity. If no stable reference, use stable closest LR/batch and explicitly record.",
+    "followups": "Independently tune LR/global batch for each width and each bit size:36 grid runs. Per width/bit winner, test dropout0 and0.1 against reused0.05:8 further runs. Compare independently tuned12/13-bit finalists with matched one-epoch exposure and holdout. Prefer12bits unless13bits improves RMSD >=2% and <=5% bond/pair regression. Prefer dropout0.05 unless >=1% gain and geometry guards.",
+    "pruning": "Stop nonfinite training immediately; no adaptive early quality pruning because full one-epoch rank reversals are plausible. No test-driven choices.",
+    "final_refit": "After tuning, full official training pool including holdout is available for fixed-budget final refit. This workflow does not auto-launch a multi-epoch nabla refit.",
+    "limits": "Two scales tuned independently; no claim one-epoch ranking proves44-epoch optimality. The official ID-defined training population is preserved, not re-filtered against full-InChIKey test identities.",
+    "grid_per_codebook": [
+      12,
+      13
+    ]
+  },
+  "resources": "Mixed full uses8H100. Nabla GPU jobs begin after mixed full ends, at most8 concurrent1GPU trials. CPU data preparation runs independently.",
+  "persistence": "Slurm dependency chain plus checkpoints; queued work survives chat closure. Autonomous new reasoning requires an active Codex goal."
+}

@@ -1,0 +1,242 @@
+{
+  "archived": {
+    "coordtoken-release.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/release.json",
+      "sha256": "d047b42f5d8d2e8642579ed79571277f11ead55fcbfd68b3422f24dfa590c3b8",
+      "archive": "coordtoken-release.json"
+    },
+    "coordtoken-epoch2-manifest.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/manifest.json",
+      "sha256": "d539d919c2a302dadd069e71f87f2094bd0274759e26c39a0eba24ab44ab302e",
+      "archive": "coordtoken-epoch2-manifest.json"
+    },
+    "coordtoken-epoch2-result.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/result.json",
+      "sha256": "1eb9f4e4cce0cc42699a362515c7221510250448ea2b553a01dfb9a0db0a5d63",
+      "archive": "coordtoken-epoch2-result.json"
+    },
+    "coordtoken-epoch2-protocol.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/research/filtered_epoch2_20261018/protocol.json",
+      "sha256": "9bfdeab4142b879f2d005dd5252c0bcd04ed0dae76f7b2898bfc7ad2006ae3b7",
+      "archive": "coordtoken-epoch2-protocol.json"
+    },
+    "coordtoken-epoch1-manifest.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/logs/paper_runs_20261013/new_paper/run/manifest.json",
+      "sha256": "9eb60a08cbfe52f5c4a02f1ba4b9b8b326eacbd5fd41d694dae967846f84acc0",
+      "archive": "coordtoken-epoch1-manifest.json"
+    },
+    "coordtoken-epoch1-result.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/logs/paper_runs_20261013/new_paper/run/result.json",
+      "sha256": "47ec819ced9f7c930419b1b7c9caf8c053c30da0e4b9ef864731891e5fe9fec7",
+      "archive": "coordtoken-epoch1-result.json"
+    },
+    "coordtoken-epoch1-protocol.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/research/paper_runs_20261013/training/protocol.json",
+      "sha256": "ee527c5f90483bf7596990d2f25e3867fb51a30100afad918feaf0d584b46894",
+      "archive": "coordtoken-epoch1-protocol.json"
+    },
+    "coordtoken-input-manifest.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/logs/paper_runs_20261013/new_paper/packed/manifest.json",
+      "sha256": "70fcdb4342d399196c335979be2afb3544068ec6dbfc867a410ed52b8d025acb",
+      "archive": "coordtoken-input-manifest.json"
+    },
+    "coordtoken-index-manifest.json": {
+      "source": "/mnt/weka/fgeikyan/CoordToken/logs/paper_runs_20261013/new_paper/indices/manifest.json",
+      "sha256": "9416c948a26249bb2ce7bf56791b833313b8570dc54b6b3b4f01d433415ee43e",
+      "archive": "coordtoken-index-manifest.json"
+    },
+    "filter-summary.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/final/summary_train.json",
+      "sha256": "4b2835911412efda25f40733de48736a47d31312e19e6d9f3f5bd8d42edc64ed",
+      "archive": "filter-summary.json"
+    },
+    "filter-per-source.csv": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/final/per_source_summary_train.csv",
+      "sha256": "931e63c5442d21b8502235668d14fdd27076d485aaced68916b542cbaf8f825b",
+      "archive": "filter-per-source.csv",
+      "source_sha256": "427b55225cd04df7d82b45b61685ca98cef7a38d9e6b80c921162abca7866e84",
+      "transformation": "CRLF converted to LF; CSV fields unchanged"
+    },
+    "filter-normalized-summary.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/pmerge/pmerge_summary.json",
+      "sha256": "3400d9ee92031f011b0756a2721e50556dbc6925b5ab3939629c6aa3d7119d1a",
+      "archive": "filter-normalized-summary.json"
+    },
+    "filter-ref-summary.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/ref_exact/ref_exact_summary.json",
+      "sha256": "5ecba5ef6d8a2dd8592b86ae7a83c2d323463b562d8c9197f1ff9cb8e4eecd45",
+      "archive": "filter-ref-summary.json"
+    },
+    "filter-query-keys.csv": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/query_keys.csv",
+      "sha256": "b3d0b7def7639e414200a0b2ad981ce1a11b12b4fd86008f95f4b01ce1df5ab2",
+      "archive": "filter-query-keys.csv",
+      "source_sha256": "ae8b5fd8254737108628273bf8767711d5c1e176719a1d777cf1b5eb27434067",
+      "transformation": "CRLF converted to LF; CSV fields unchanged"
+    },
+    "filter-safety-net.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/pmerge/safety_net.json",
+      "sha256": "b608d821bf05e4f89bc582d43296ce4ce69cfae7eac72cc88d2a07e9360bbfaf",
+      "archive": "filter-safety-net.json"
+    },
+    "fsq-encoding-manifest.json": {
+      "source": "/mnt/weka/fgeikyan/3dmolgen_bigdata/datasets/coordtoken_atom12_reg1_casf_epoch2_20261020/train/coordtoken_manifest.json",
+      "sha256": "d71c69622c5290c76240846d77c784c179e99d0f02f3b2fbdf79811d37c7275b",
+      "archive": "fsq-encoding-manifest.json"
+    },
+    "binned-dataset.json": {
+      "source": "/mnt/weka/mbedrosian/data/pretraining_v2/bigdata_pm12_legacy/run-20261025-v1/dataset.json",
+      "sha256": "1d77f0b64968b4dc2150cc6b8136ee2b44f76f19797a79c0cc76c63b170222ec",
+      "archive": "binned-dataset.json"
+    },
+    "fsq-dataset.json": {
+      "source": "/mnt/weka/mbedrosian/data/pretraining_v2/coordtoken_atom12_reg1_casf/run-20261027-v1/dataset.json",
+      "sha256": "0a13d104ed422bdd7897f33813876559dca74867e52935c57f14aa06a53800ef",
+      "archive": "fsq-dataset.json"
+    },
+    "binned06-final-update.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/training/audit/updates.jsonl",
+      "extraction": "last JSONL record only",
+      "sha256": "8e036f9a27fb955d1afeaacc22702a36cebc36b3a8afaf98389248fb714c83ce",
+      "archive": "binned06-final-update.json"
+    },
+    "binned06-precision.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/training/audit/precision-rank-0.json",
+      "sha256": "7a0e7ef9fdd63adbd12d01d6edd6665b208875e75a6ec1d5b22b7fe64a33bcd2",
+      "archive": "binned06-precision.json"
+    },
+    "fsq06-final-update.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/training/audit/updates.jsonl",
+      "extraction": "last JSONL record only",
+      "sha256": "d8d691e9cb70a9cb2ea65547d41cf1ffe26f539fc1acddd6fd162af6750a9bd9",
+      "archive": "fsq06-final-update.json"
+    },
+    "fsq06-precision.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/training/audit/precision-rank-0.json",
+      "sha256": "7a0e7ef9fdd63adbd12d01d6edd6665b208875e75a6ec1d5b22b7fe64a33bcd2",
+      "archive": "fsq06-precision.json"
+    },
+    "binned17-final-update.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/training/audit/updates.jsonl",
+      "extraction": "last JSONL record only",
+      "sha256": "f9c186fe7c0f1a7c32e89e01ecabc618321a059d38b295d9444acb0b9f166a2e",
+      "archive": "binned17-final-update.json"
+    },
+    "binned17-precision.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/training/audit/precision-rank-0.json",
+      "sha256": "1fb2223b5f56e4fca0b399ab7aca1645c53157d3effd280b8ea21a043494ae55",
+      "archive": "binned17-precision.json"
+    },
+    "fsq17-final-update.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/audit/updates.jsonl",
+      "extraction": "last JSONL record only",
+      "sha256": "de265b09524f99669ca821fa2a41bcaee3d9baa3ca1154a8bda695b7bec7146f",
+      "archive": "fsq17-final-update.json"
+    },
+    "fsq17-precision.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/audit/precision-rank-0.json",
+      "sha256": "1fb2223b5f56e4fca0b399ab7aca1645c53157d3effd280b8ea21a043494ae55",
+      "archive": "fsq17-precision.json"
+    },
+    "binned06-resolved-config.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/training/resolved_config.json",
+      "sha256": "8659d4c6c335bafe6c5e3a1e918d6c4fca87c5c0480857b5fa9d705d830cc158",
+      "archive": "binned06-resolved-config.json",
+      "source_sha256": "c6d81ad43e86d66d5ca092959760d7f2ad1829e5ec9b1046059337cdc9863329",
+      "extraction": "Resolved training, optimizer, scheduler, loss, parallelism, compile and debug fields plus model name/flavor; repeated architecture and data-file listings omitted."
+    },
+    "fsq06-resolved-config.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/training/resolved_config.json",
+      "sha256": "ac5759788a19937754242b34b8afb03a8ff13d74b1e7f6a9e9fba7ab9d9040eb",
+      "archive": "fsq06-resolved-config.json",
+      "source_sha256": "c5f1df32d47cf9258fa75e4a8a770412781419107a4db8bc62e560ff884636ff",
+      "extraction": "Resolved training, optimizer, scheduler, loss, parallelism, compile and debug fields plus model name/flavor; repeated architecture and data-file listings omitted."
+    },
+    "binned17-resolved-config.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/training/resolved_config.json",
+      "sha256": "dc508a9bdfb135e5462a2ca25e93c44805dc881d4b3e1ca610c8aee97367b5ab",
+      "archive": "binned17-resolved-config.json",
+      "source_sha256": "0c16d8b4e6507490783dd9994034d8824d545bdc564c25f7ab6acdf623f5229f",
+      "extraction": "Resolved training, optimizer, scheduler, loss, parallelism, compile and debug fields plus model name/flavor; repeated architecture and data-file listings omitted."
+    },
+    "fsq17-resolved-config.json": {
+      "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/resolved_config.json",
+      "sha256": "1bbf45bfac5bf89c33855bbffefc3b9a254d7b2d711ce7667aa9e2f755b0fd1e",
+      "archive": "fsq17-resolved-config.json",
+      "source_sha256": "56c120bf055579ccea807b4803f8483dadbf94e285302dc1ad6f3510785272e3",
+      "extraction": "Resolved training, optimizer, scheduler, loss, parallelism, compile and debug fields plus model name/flavor; repeated architecture and data-file listings omitted."
+    }
+  },
+  "inspected_code": [
+    {
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/paper_runs_20261013/training/model.py",
+      "sha256": "f9188bc872e588d561928c1e1e2e184c636cea51317d0c560be2ff78072980a1"
+    },
+    {
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/paper_runs_20261013/training/train_run.py",
+      "sha256": "2219bc332a4058f7bab7d41cab614122e03c997fe476b4c83b38ad8eabe0271f"
+    },
+    {
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/paper_runs_20261013/training/data.py",
+      "sha256": "87b4800b1c7406527113ba7047c55938912fed4608d3b3fd852fb6bf05444ff9"
+    },
+    {
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/paper_runs_20261013/training/quantizer.py",
+      "sha256": "b520f0468c752e8de91c387ece1c6d964833f6c659a6fb12aa1793e3bd10a979"
+    },
+    {
+      "path": "/mnt/weka/vtarasov/code/3DMolGen/scripts/dedup_casf_plinder/dedup_casf_plinder.py",
+      "sha256": "10f2354e9283e52148cadc778f377203343e2e5af9cecf0d02a9ce498276b264"
+    },
+    {
+      "path": "/mnt/weka/vtarasov/code/3DMolGen/scripts/dedup_casf_plinder/protomer_filter.py",
+      "sha256": "e2adc77fc367224ee8a657f10a1a4259474178353580f29ed653a975fb0c5acd"
+    },
+    {
+      "path": "/mnt/weka/vtarasov/code/3DMolGen/scripts/dedup_casf_plinder/tautomer_filter.py",
+      "sha256": "88fc43480a71f6cc9113c29b2565dd62a9a35fc332328b0898fafe668faab536"
+    },
+    {
+      "path": "/mnt/weka/vtarasov/code/3DMolGen/src/molgen3D/evaluation/inference.py",
+      "sha256": "922e963afbad564f1bff8d63ae3ef9a0c3579475648d0d018afa2c01d61fd49e"
+    },
+    {
+      "path": "/mnt/weka/vtarasov/code/3DMolGen/src/molgen3D/config/sampling_config.py",
+      "sha256": "bdd7a4498e9f787d06c9563167e391a1afc4b8f8cec18f936f96775e8ad105f9"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/scripts/run_v2_coordtoken_generation.py",
+      "sha256": "8e52477b05d01225055cceb3ad05e850afd23d62423d84ab2416f5d38947078c"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/generation/conformer_sets.py",
+      "sha256": "4f765dc4a55c3ef3ff9ac1153e321dfbfba6e3483545c3ac4128f9f7e1869e5a"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/analysis/metrics.py",
+      "sha256": "210ea845bfa34cf39a88d511eea232190f09338492eaf2759242d4d7210e57ac"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/analysis/druglike_covmat.py",
+      "sha256": "7f6d6a6c49493d1d1129237db31b30e8ab9a4ba54d5ca5d84ed41b1a3dea97df"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/source/src/molgen3D/training/pretraining_v2/packing.py",
+      "sha256": "0e1859871cdc71b305f8da85f1e0833ee14f931f75fbf2fe0e58eea292f43151"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/source/src/molgen3D/training/pretraining_v2/recipes.py",
+      "sha256": "9d3da8e85dd791cccf6bd3fb7794451f234c00fc4b3b40fe01ccf94ed02fb800"
+    },
+    {
+      "path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/source/src/molgen3D/training/pretraining_v2/wsds.py",
+      "sha256": "ff60195b7bee7da22db2edcd4b314e2d9947b06ed4f9334421f3bf58084cee47"
+    }
+  ],
+  "supplied_paper": {
+    "path": "/home/mbedrosian/.codex/attachments/f86cee6d-8bb9-404b-8888-d9ee65ed2e40/neurips_2026.pdf",
+    "sha256": "3fe9028639af3570f0e5d0ac8540197e41cf613a751515620537afcb833f6f04",
+    "title": "CoordToken: Tokenization of 3D Molecules for Autoregressive Generation and Geometry Refinement",
+    "note": "Bibliographic and method source supplied by the author; not the checkpoint-specific training record."
+  }
+}

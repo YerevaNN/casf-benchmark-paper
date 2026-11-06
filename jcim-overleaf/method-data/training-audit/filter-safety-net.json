@@ -1,0 +1,6 @@
+{
+  "plain_casf": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/merge/casf_skeletons.npy",
+  "plain_plinder_only": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/merge/plinder_only_skeletons.npy",
+  "tautomer_casf": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/tautomer/tmerge/casf_skeletons.npy",
+  "tautomer_plinder_only": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/tautomer/tmerge/plinder_only_skeletons.npy"
+}

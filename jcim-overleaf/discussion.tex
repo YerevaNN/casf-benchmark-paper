@@ -51,8 +51,9 @@ Experimental references cover only part of accessible conformational space, so l
 against them does not establish that unmatched conformers are irrelevant to binding.
 CASF matching uses PoseBusters-filtered ensembles, whereas PLINDER matching uses the supplied
 pools; their absolute performance levels are therefore not directly comparable. Candidate
-budgets also do not equalize computational cost. Conclusions about Qwen's generalization
-require a documented audit of training overlap and the executed benchmark-exclusion policy.
+budgets also do not equalize computational cost. The v2 Qwen training records document
+benchmark exclusions, but a final audit of residual overlap and the older model's training history remains necessary before making a general
+claim of evaluation on unseen molecules.
 
 The benchmark provides a basis for choosing a procedure to construct a reusable conformational
 resource for structure-based drug design and learning molecular geometry, including

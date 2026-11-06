@@ -1,0 +1,98 @@
+{
+  "training": {
+    "local_batch_size": 9,
+    "global_batch_size": 144,
+    "seq_len": 4096,
+    "max_norm": 1.0,
+    "steps": 66057,
+    "enable_cpu_offload": false,
+    "disable_cuda_graphs": true,
+    "dtype": "float32",
+    "mixed_precision_param": "bfloat16",
+    "mixed_precision_reduce": "float32",
+    "gc_freq": 50,
+    "gc_debug": false
+  },
+  "optimizer": {
+    "param_groups": [
+      {
+        "pattern": ".*",
+        "optimizer_name": "AdamW",
+        "optimizer_kwargs": {
+          "lr": 0.0008,
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.1
+        }
+      }
+    ],
+    "implementation": "fused",
+    "optimizer_factory_kwargs_by_name": {}
+  },
+  "lr_scheduler": {
+    "warmup_steps": 500,
+    "total_steps": 66057,
+    "decay_ratio": null,
+    "decay_type": "linear",
+    "min_lr_factor": 0.0,
+    "checkpoints": [
+      66057
+    ],
+    "decay_steps": 6606
+  },
+  "loss": {
+    "num_chunks": 8,
+    "loss_fn": {
+      "global_vocab_size": 151936
+    }
+  },
+  "parallelism": {
+    "data_parallel_replicate_degree": 1,
+    "data_parallel_shard_degree": 8,
+    "fsdp_reshard_after_forward": "default",
+    "enable_fsdp_symm_mem": false,
+    "tensor_parallel_degree": 1,
+    "enable_sequence_parallel": true,
+    "spmd_backend": "spmd_types",
+    "pipeline_parallel_degree": 1,
+    "module_fqns_per_model_part": null,
+    "pipeline_parallel_first_stage_less_layers": 1,
+    "pipeline_parallel_last_stage_less_layers": 1,
+    "pipeline_parallel_layers_per_stage": null,
+    "pipeline_parallel_schedule": "1F1B",
+    "pipeline_parallel_schedule_csv": "",
+    "pipeline_parallel_microbatch_size": 1,
+    "context_parallel_degree": 1,
+    "context_parallel_load_balancer": "headtail",
+    "context_parallel_ptrr_mask_key": null,
+    "expert_parallel_degree": 1
+  },
+  "compile": {
+    "enable": false,
+    "enable_async_tensor_parallel": false,
+    "components": [
+      "model",
+      "loss"
+    ],
+    "backend": "inductor"
+  },
+  "debug": {
+    "seed": 2025,
+    "spmd_typechecking": false,
+    "deterministic": false,
+    "deterministic_warn_only": false,
+    "moe_force_load_balance": false,
+    "detect_anomaly": false,
+    "batch_invariant": false,
+    "print_config": true,
+    "save_config_file": "resolved_config.json",
+    "enable_structured_logging": true
+  },
+  "model": {
+    "name": "qwen3",
+    "flavor": "0.6B"
+  }
+}

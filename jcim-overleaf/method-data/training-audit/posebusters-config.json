@@ -1,0 +1,179 @@
+{
+  "modules": [
+    {
+      "name": "Loading",
+      "function": "loading",
+      "chosen_binary_test_output": [
+        "mol_pred_loaded",
+        "mol_true_loaded"
+      ],
+      "rename_outputs": {
+        "mol_pred_loaded": "File loads",
+        "mol_true_loaded": "Reference file loads"
+      }
+    },
+    {
+      "name": "Chemistry",
+      "function": "rdkit_sanity",
+      "chosen_binary_test_output": [
+        "passes_rdkit_sanity_checks"
+      ],
+      "rename_outputs": {
+        "passes_rdkit_sanity_checks": "Sanitisation"
+      }
+    },
+    {
+      "name": "Chemistry",
+      "function": "inchi_convertible",
+      "chosen_binary_test_output": [
+        "inchi_convertible"
+      ],
+      "rename_outputs": {
+        "inchi_convertible": "InChI convertible"
+      }
+    },
+    {
+      "name": "Chemistry",
+      "function": "atoms_connected",
+      "chosen_binary_test_output": [
+        "all_atoms_connected"
+      ],
+      "rename_outputs": {
+        "all_atoms_connected": "All atoms connected"
+      }
+    },
+    {
+      "name": "Chemistry",
+      "function": "check_radicals",
+      "chosen_binary_test_output": [
+        "no_radicals"
+      ],
+      "rename_outputs": {
+        "no_radicals": "No radicals"
+      }
+    },
+    {
+      "name": "Chemistry",
+      "function": "identity",
+      "parameters": {
+        "inchi_options": "w"
+      },
+      "chosen_binary_test_output": [
+        "formula",
+        "connections",
+        "stereo_tetrahedral",
+        "stereo_dbond"
+      ],
+      "rename_outputs": {
+        "formula": "Molecular formula",
+        "connections": "Bonds",
+        "stereo_tetrahedral": "Tetrahedral chirality",
+        "stereo_dbond": "Double bond stereochemistry"
+      }
+    },
+    {
+      "name": "Geometry",
+      "function": "distance_geometry",
+      "parameters": {
+        "bound_matrix_params": {
+          "set15bounds": true,
+          "scaleVDW": true,
+          "doTriangleSmoothing": true,
+          "useMacrocycle14config": false
+        },
+        "threshold_bad_bond_length": 0.25,
+        "threshold_bad_angle": 0.25,
+        "threshold_clash": 0.3,
+        "ignore_hydrogens": true,
+        "sanitize": true
+      },
+      "chosen_binary_test_output": [
+        "bond_lengths_within_bounds",
+        "bond_angles_within_bounds",
+        "no_internal_clash"
+      ],
+      "rename_outputs": {
+        "bond_lengths_within_bounds": "Bond lengths",
+        "bond_angles_within_bounds": "Bond angles",
+        "no_internal_clash": "Internal steric clash"
+      }
+    },
+    {
+      "name": "Ring flatness",
+      "function": "flatness",
+      "parameters": {
+        "flat_systems": {
+          "aromatic_5_membered_rings_sp2": "[ar5^2]1[ar5^2][ar5^2][ar5^2][ar5^2]1",
+          "aromatic_6_membered_rings_sp2": "[ar6^2]1[ar6^2][ar6^2][ar6^2][ar6^2][ar6^2]1"
+        },
+        "threshold_flatness": 0.25
+      },
+      "chosen_binary_test_output": [
+        "flatness_passes"
+      ],
+      "rename_outputs": {
+        "flatness_passes": "Planar aromatic rings",
+        "num_systems_checked": "number_aromatic_rings_checked",
+        "num_systems_passed": "number_aromatic_rings_pass",
+        "max_distance": "aromatic_ring_maximum_distance_from_plane"
+      }
+    },
+    {
+      "name": "Double bond flatness",
+      "function": "flatness",
+      "parameters": {
+        "flat_systems": {
+          "trigonal_planar_double_bonds": "[C;X3;^2](*)(*)=[C;X3;^2](*)(*)"
+        },
+        "threshold_flatness": 0.25
+      },
+      "chosen_binary_test_output": [
+        "flatness_passes"
+      ],
+      "rename_outputs": {
+        "flatness_passes": "Planar double bonds",
+        "num_systems_checked": "number_double_bonds_checked",
+        "num_systems_passed": "number_double_bonds_pass",
+        "max_distance": "double_bond_maximum_distance_from_plane"
+      }
+    },
+    {
+      "name": "Energy ratio",
+      "function": "energy_ratio",
+      "parameters": {
+        "threshold_energy_ratio": 100.0,
+        "ensemble_number_conformations": 50,
+        "inchi_strict": false
+      },
+      "chosen_binary_test_output": [
+        "energy_ratio_passes"
+      ],
+      "rename_outputs": {
+        "energy_ratio_passes": "Energy ratio"
+      }
+    }
+  ],
+  "loading": {
+    "mol_pred": {
+      "cleanup": false,
+      "sanitize": false,
+      "add_hs": false,
+      "assign_stereo": false,
+      "load_all": true
+    },
+    "mol_true": {
+      "cleanup": false,
+      "sanitize": false,
+      "add_hs": false,
+      "assign_stereo": false,
+      "load_all": true
+    },
+    "mol_cond": {
+      "cleanup": false,
+      "sanitize": false,
+      "add_hs": false,
+      "assign_stereo": false,
+      "proximityBonding": false
+    }
+  }
+}

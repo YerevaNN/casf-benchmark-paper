@@ -1,0 +1,132 @@
+{
+  "rule": "row removed if K1 (normalized InChIKey[:14]) or K2 (HetAtomProtomer) matches a CASF / Plinder ligand, a molecule with ECFP4 > 0.4 (original molecule) to any exact match of a ligand, or an exact match of such a similar molecule; plus rows the plain and tautomer rules removed (safety net). CASF rows preserved, Plinder-only rows dropped",
+  "removal_sets": {
+    "casf": {
+      "ligands": 285,
+      "exact_matches_E": 675,
+      "similar_molecules": 339310,
+      "removal_k1": 235351,
+      "removal_k2": 235606
+    },
+    "plinder23": {
+      "ligands": 23,
+      "exact_matches_E": 100,
+      "similar_molecules": 44609,
+      "removal_k1": 28437,
+      "removal_k2": 28435
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 189792028,
+      "missing_keys": 0,
+      "kept": 187427247,
+      "casf_similar": 2201663,
+      "plinder_only_dropped": 163118,
+      "removed_percent": 1.245985421474078,
+      "safety_net_only": {
+        "rows": 7,
+        "mols": 2,
+        "casf_similar": 7
+      },
+      "funnel": {
+        "casf": {
+          "1_by_k1_only": {
+            "mols": 7,
+            "rows": 36
+          },
+          "1_by_k2_only": {
+            "mols": 2,
+            "rows": 14
+          },
+          "1_exact": {
+            "mols": 734,
+            "rows": 197631,
+            "ligands": 275
+          },
+          "2_similarity": {
+            "mols": 315706,
+            "rows": 1944085
+          },
+          "2_similarity_new_via_exact_matches": {
+            "mols": 80299,
+            "rows": 539530
+          },
+          "3_by_k1_only": {
+            "mols": 334,
+            "rows": 1042
+          },
+          "3_by_k2_only": {
+            "mols": 85,
+            "rows": 611
+          },
+          "3_exact_of_similar": {
+            "mols": 9693,
+            "rows": 59940
+          },
+          "total": {
+            "mols": 326133,
+            "rows": 2201656
+          }
+        },
+        "plinder23": {
+          "1_by_k1_only": {
+            "mols": 0,
+            "rows": 0
+          },
+          "1_by_k2_only": {
+            "mols": 1,
+            "rows": 1
+          },
+          "1_exact": {
+            "mols": 105,
+            "rows": 2169,
+            "ligands": 19
+          },
+          "2_similarity": {
+            "mols": 42916,
+            "rows": 167699
+          },
+          "2_similarity_new_via_exact_matches": {
+            "mols": 1522,
+            "rows": 3699
+          },
+          "3_by_k1_only": {
+            "mols": 0,
+            "rows": 0
+          },
+          "3_by_k2_only": {
+            "mols": 9,
+            "rows": 39
+          },
+          "3_exact_of_similar": {
+            "mols": 2090,
+            "rows": 4075
+          },
+          "total": {
+            "mols": 45111,
+            "rows": 173943
+          }
+        }
+      },
+      "transitions": {
+        "plain_rule": {
+          "kept->casf": 497556,
+          "kept->plinder_only": 3078,
+          "casf->kept": 0,
+          "casf->plinder_only": 0,
+          "plinder_only->kept": 0,
+          "plinder_only->casf": 820
+        },
+        "tautomer_union_rule": {
+          "kept->casf": 491455,
+          "kept->plinder_only": 2861,
+          "casf->kept": 0,
+          "casf->plinder_only": 0,
+          "plinder_only->kept": 0,
+          "plinder_only->casf": 830
+        }
+      }
+    }
+  }
+}

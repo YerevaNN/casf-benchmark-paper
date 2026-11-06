@@ -1,0 +1,320 @@
+{
+  "contract_pass": true,
+  "expected_contract": {
+    "forward_activation": [
+      "bfloat16"
+    ],
+    "forward_parameter": [
+      "bfloat16"
+    ],
+    "gradient_reduce": [
+      "float32"
+    ],
+    "gradient_storage_after_reduction": [
+      "float32"
+    ],
+    "master_storage": [
+      "float32"
+    ],
+    "optimizer_state": [
+      "float32"
+    ],
+    "parameter_compute": [
+      "bfloat16"
+    ]
+  },
+  "forward_probe": {
+    "activation_dtype": "bfloat16",
+    "model_part": 0,
+    "module": "tok_embeddings",
+    "parameter_dtypes": [
+      "bfloat16"
+    ]
+  },
+  "fsdp_runtime_policies": [
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "tok_embeddings",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.0",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.1",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.2",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.3",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.4",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.5",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.6",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.7",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.8",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.9",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.10",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.11",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.12",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.13",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.14",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.15",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.16",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.17",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.18",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.19",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.20",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.21",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.22",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.23",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.24",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.25",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.26",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "layers.27",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "norm",
+      "parameter_compute_dtype": "bfloat16"
+    },
+    {
+      "gradient_reduce_dtype": "float32",
+      "group": 0,
+      "model_part": 0,
+      "module": "lm_head",
+      "parameter_compute_dtype": "bfloat16"
+    }
+  ],
+  "model_master_storage_after_step": {
+    "elements": 74506240,
+    "elements_by_dtype": {
+      "float32": 74506240
+    },
+    "tensor_entries": 254,
+    "tensors_by_dtype": {
+      "float32": 254
+    }
+  },
+  "model_master_storage_before_forward": {
+    "elements": 74506240,
+    "elements_by_dtype": {
+      "float32": 74506240
+    },
+    "tensor_entries": 254,
+    "tensors_by_dtype": {
+      "float32": 254
+    }
+  },
+  "observed_contract": {
+    "forward_activation": [
+      "bfloat16"
+    ],
+    "forward_parameter": [
+      "bfloat16"
+    ],
+    "gradient_reduce": [
+      "float32"
+    ],
+    "gradient_storage_after_reduction": [
+      "float32"
+    ],
+    "master_storage": [
+      "float32"
+    ],
+    "optimizer_state": [
+      "float32"
+    ],
+    "parameter_compute": [
+      "bfloat16"
+    ]
+  },
+  "optimizer_state_after_step": {
+    "elements": 149012734,
+    "elements_by_dtype": {
+      "float32": 149012734
+    },
+    "tensor_entries": 762,
+    "tensors_by_dtype": {
+      "float32": 762
+    }
+  },
+  "rank": 0,
+  "reduced_gradients_after_backward": {
+    "elements": 74506240,
+    "elements_by_dtype": {
+      "float32": 74506240
+    },
+    "tensor_entries": 254,
+    "tensors_by_dtype": {
+      "float32": 254
+    }
+  },
+  "schema_version": "molgen3d.native-precision-observation.v1",
+  "step": 1,
+  "world_size": 8
+}

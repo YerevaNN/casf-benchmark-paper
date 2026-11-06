@@ -4,15 +4,13 @@
 
 \subsection{Evaluation design}
 
-We evaluate how well finite, protein-independent conformer ensembles cover experimentally observed
-bound geometries, with the practical aim of selecting a generation procedure for a large
-conformational dataset. Each method generates an ensemble for a molecule without receiving a protein
-or binding-site structure. The PLINDER panel assesses coverage of multiple bound structures of the same molecule; CASF core
-and ref provide complementary comparisons against individual experimental references and
-stored ChEMBL3D\cite{nikitin2025loqi} ensembles. We examine geometric variation alongside recovery across the three
-sets, with energy and sampling-budget analyses on CASF. Recovery measures similarity of the internal ligand geometry after
-alignment; it does not establish placement within a binding pocket or recovery of protein--ligand
-interactions.
+Each method generates a conformer ensemble from the ligand identity without receiving
+a protein or binding-site structure. PLINDER assesses coverage of multiple bound
+structures of the same molecule; CASF core and ref provide comparisons against
+individual experimental references and stored ChEMBL3D\cite{nikitin2025loqi} ensembles.
+We assess geometric diversity and experimental recovery in all three panels, with
+energy and sampling-budget analyses on CASF. Recovery concerns internal ligand
+geometry after alignment, not placement within a binding pocket.
 
 \subsection{Experimental references and the ChEMBL3D comparison}
 
@@ -132,32 +130,56 @@ uses flow matching in a ligand-only configuration with the molecular graph held 
 force-field cleanup and stereochemistry checks. Their representations,
 training resources, and preparation steps are summarized in Supporting Table S5.
 
-Qwen represents autoregressive generation of a molecular coordinate representation conditioned on
-molecular SMILES. We use the 1.7-billion-parameter FSQ model at pretraining step 41,054
-(the v2 CoordToken checkpoint) for CASF core, CASF ref, and the 22-molecule PLINDER panel.
-The coordinate representation is decoded before the common validity evaluation. The checkpoint
-and coordinate-decoder identities are archived with the results.
+Qwen generates a coordinate-enriched molecular sequence from a SMILES prompt using
+an autoregressive language model. Our primary generator is initialized from
+Qwen3-1.7B-Base\cite{yang2025qwen3} and uses CoordToken,\cite{geikyan2026coordtoken}
+a learned tokenizer that represents geometry with one discrete code per atom and one
+molecular code. The tokenizer's decoder reconstructs coordinates from these codes
+and the molecular graph. We refer to this representation as FSQ, for finite scalar
+quantization. The evaluated model is the v2 1.7B FSQ checkpoint at step 41,054.
 
-An additional 0.6-billion-parameter Qwen model with binned coordinates, identified as
-CASF-dedup PM12 at step 64,000, is evaluated in Table~\ref{tab:druglike}
-and Figure~\ref{fig:plinder-molecule-tracking}. This is distinct from the v2 binned
-0.6B checkpoint in the size and representation comparison. This older model and
-the primary 1.7B FSQ model use the same cleaned PLINDER
-references and retain their supplied conformer pools. They differ in model size, coordinate
-representation, and training configuration, so their comparison does not isolate the effect
-of training exclusions. Training-overlap documentation is incomplete: the executed Qwen training-exclusion
-manifest, similarity definition, and PLINDER exclusion policy remain to be verified.
-These results therefore do not yet establish generalization to molecules excluded from training.
-External pretrained checkpoints are evaluated as supplied; their reported training resources
-are summarized in Supporting Table S5.
+\subsection{CoordToken and Qwen training}
 
-% \cite{qwen_coordinate_tokenizer} % TODO: verify the reference.
-\textbf{[TODO: add the Qwen coordinate-tokenizer citation.]}
-% AUTHOR:  add the Qwen coordinate-tokenizer citation, final training description and exclusion rules. Record checkpoint selection, hashes, dependency versions, decoding settings, seeds, retries, and executed external inference configurations. Current launch defaults do not by themselves establish the settings used for historical outputs.
-% AUTHOR: The intended policy excludes core94 exact matches and similar molecules at
-% fingerprint similarity 0.4, and ref exact matches. The fingerprint, similarity
-% coefficient, equality convention, and PLINDER policy remain unspecified.
-% Record these from the actual exclusion manifest before finalizing the retraining protocol.
+Training proceeds in two stages. First, CoordToken learns to reconstruct centered
+heavy-atom coordinates from a discrete representation conditioned on the molecular
+SMILES. We use a separate tokenizer trained for two epochs on 187,398,101 filtered
+conformer records, rather than the full-corpus checkpoint reported in the CoordToken
+paper. Second, Qwen learns the resulting molecular sequences by next-token prediction,
+with the geometry tokenizer and decoder fixed. The primary model completes one epoch
+on this export. No subsequent task-specific fine-tuning is applied to the evaluated
+v2 checkpoints.
+
+The training collection combines computed conformers and ligand geometries from
+protein complexes. Before training the geometry tokenizer and preparing Qwen exports,
+we exclude matches and chemically similar molecules associated with all 285 CASF core
+ligands and the original 23 PLINDER identities. Similarity uses 2,048-bit Morgan
+fingerprints of radius 2 without chirality and a Tanimoto coefficient strictly greater
+than 0.4. Identity matching also accounts for protonation and tautomer variants.
+Matches to the 1,236 ref ligands before crystal deduplication are removed without an
+additional similarity screen. The executed filter removes 2,393,927 of 189,792,028
+conformer records. The precise matching rules, source composition, optimizer settings,
+and checkpoint records are given in the Supporting Information, including
+Table~\ref{tab:qwen-training}.
+
+For the four v2 models, generation metadata record 1,000 requested samples per molecule,
+temperature 1.0, and top-$p$ 1.0. Decoded coordinates undergo the same downstream
+assessment as the other generators. Failed or incomplete generations reduce the saved
+pool; candidate targets and validity denominators are defined below. Sampling seeds
+and the distinction between recorded settings and inspected implementation defaults
+are documented in the Supporting Information.
+
+An older 0.6B Qwen model with binned coordinates, identified as CASF-dedup PM12 at
+step 64,000, is also evaluated in Table~\ref{tab:druglike} and
+Figure~\ref{fig:plinder-molecule-tracking}. It is distinct from the four v2 models and
+uses the same cleaned PLINDER references. Its training and exclusion history cannot
+be established from its name and is not covered by the v2 records. External pretrained
+models are evaluated as supplied; their reported training resources are summarized
+in Supporting Table S5.
+
+\textbf{[TODO: complete the residual-overlap audit for the final evaluation identities,
+including tokenizer development data, and document the older step-64,000 model's
+training and exclusions. The verified v2 filtering procedure does not establish
+absence of overlap for every evaluated model.]}
 
 \subsection{Sampling targets and retained ensembles}
 
@@ -181,8 +203,9 @@ PLINDER uses the supplied generated ensembles and is not included in this two-ta
 For the CASF comparison, we retain conformers that pass the specified PoseBusters\cite{buttenschoen2024posebusters} checks for
 molecular identity, stereochemistry, and intramolecular geometry. These assess chemical
 consistency, bond lengths and angles, steric clashes, planarity, and excessive strain relative to
-a reference conformer ensemble. No protein-contact checks are
-used. Passing these checks does not guarantee compatibility with a receptor or uniformly favorable
+an internally generated conformer ensemble of the same molecule, not its experimental
+bound structure. No protein-contact checks are used. The configured checks and thresholds
+are recorded in the Supporting Information. Passing these checks does not guarantee compatibility with a receptor or uniformly favorable
 energies under the separate energy analysis.
 
 For some CASF method--entry pairs, every candidate is rejected. At the ChEMBL-count target,
@@ -209,13 +232,13 @@ filtering conditions, and their absolute performance levels are not directly com
 We compare internal conformations using aligned heavy-atom RMSD, allowing equivalent atom mappings
 when identifying the best alignment. The archived CASF evaluation falls back to an index-based
 mapping if this alignment fails; unresolved comparisons are treated as unmeasurable. The frequency
-of this fallback remains to be audited.
+of this fallback remains to be audited; the unresolved audit and software-version
+requirements are listed in the Supporting Information.
 
 Conformers are grouped using greedy clustering in their stored order. Each conformer is assigned to
 the nearest existing representative when the aligned RMSD is strictly below the clustering radius;
 otherwise, it starts a new cluster. Representatives remain fixed. We
-report clustering radii of 0.5 and 1.0 \AA{} in Table~\ref{tab:diversity}. The joint diversity--RMSD plot also uses 0.5 \AA{};
-the larger-ensemble comparison uses the same radius. The count depends on the size and ordering of the retained pool and describes
+report clustering radii of 0.5 and 1.0 \AA{}. The count depends on the size and ordering of the retained pool and describes
 geometric variation rather than occupied energy basins.
 
 To describe how sampling is distributed across clusters, we also calculate the fraction of
@@ -251,12 +274,6 @@ Tables~\ref{tab:count-recovery} and \ref{tab:druglike} and Figure~\ref{fig:drugl
 use the same nearest-distance records. Every reference and generated
 conformer has a finite nearest distance. The threshold curves apply these distances at cutoffs
 from 0 to 1.5 \AA{} in increments of 0.005 \AA{}.
-
-Figure~\ref{fig:plinder-molecule-tracking} connects the per-molecule MAT-R and MAT-P values
-across methods. Colored trajectories identify the union of molecules with the largest value
-for any displayed method in either metric; all other molecules are shown in grey. This
-display uses the two raw classical baselines, the five external learned methods, and both
-Qwen variants listed in Table~\ref{tab:druglike}.
 
 COV-P and MAT-P describe proximity to the available observations. Because experimental
 references do not exhaust accessible conformational space, an unmatched generated conformer
@@ -317,21 +334,17 @@ descriptors using the same group boundaries and panel denominators.
 
 \subsection{Qwen model size and coordinate representation}
 
-We compare four v2 Qwen configurations: 0.6B and 1.7B models with either binned
-coordinates or FSQ tokens. The binned representation discretizes each coordinate into
-256 bins over $-12$ to $12$ \AA{}, with additional overflow symbols. The FSQ
-representation uses a learned geometry tokenizer with 4,096 discrete codes, one token per
-atom and a molecular prefix token, and decodes the sequence into coordinates.
-The binned checkpoints are evaluated at step 66,057 and the FSQ checkpoints at
-step 41,054. The older 0.6B CASF-dedup model in Table~\ref{tab:druglike} is not part
-of this four-configuration comparison.
-
-Within each representation, the two model sizes share the training-data manifest and
-one-epoch training plan. All four configurations use a context length of 4,096 tokens
-and a peak optimizer learning rate of $8\times10^{-4}$. The training exports and token
-exposure differ between representations, so the comparison does not isolate encoding
-from training exposure. Exact checkpoint identities, training configurations, and
-available generation metadata are archived with the figure data.
+We compare 0.6B and 1.7B Qwen models with either binned coordinates or FSQ tokens.
+Binned coordinates use 256 uniform bins over $-12$ to $12$ \AA{}, with two additional
+overflow symbols. FSQ uses 4,096 discrete codes, one per atom plus a molecular prefix.
+The binned checkpoints complete training at step 66,057 and the FSQ checkpoints at
+step 41,054. Within each representation, the two model sizes share the training export
+and one-epoch schedule. All four use a context length of 4,096 tokens and a peak
+learning rate of $8\times10^{-4}$. The binned export contains 183,835,937 records,
+compared with 187,398,101 for FSQ, and requires more tokens per record.
+Thus, the comparison does not isolate representation from training exposure or match
+computational cost. Completed training counts are reported in
+Table~\ref{tab:qwen-training}. The older step-64,000 model is excluded from this comparison.
 
 All four configurations are evaluated on the same 1,044 CASF ref identities and
 22 PLINDER molecules. CASF matching uses the PoseBusters-passing members of the
@@ -347,11 +360,6 @@ size differences subtract 1.7B from 0.6B distances within each representation.
 Positive values indicate closer matching after the change. The reported fraction
 of improved molecules counts strictly positive differences, with ties counted as
 no improvement. Every molecule remains in the comparison, including Actinonin.
-To assess which molecules contribute to the validity change, we calculate the
-per-molecule change in pass percentage. A molecule's contribution is its change
-divided by the sum of those changes across molecules. This decomposes the net change
-in the unweighted mean pass rate, not the change in the pooled rate shown in the
-main figure.
 
 \subsection{Aggregation and reproducibility}
 
@@ -360,9 +368,7 @@ identity equal weight. CASF hit rates retain the full panel denominator, whereas
 continuous metrics use entries with defined measurements as specified above. The
 selection of ref crystals is fixed before comparing methods. Means, paired changes,
 and rankings are calculated from unrounded records; rounding is applied only for
-display. Bold and underlining identify the best and second-best distinct values
-among generated methods, with ties sharing emphasis. ChEMBL3D-PB and supplied
-pool sizes are unranked.
+display. ChEMBL3D-PB remains an unranked stored baseline.
 
 The main comparisons are descriptive and do not display confidence intervals.
 Differences among the four Qwen configurations are comparisons of the evaluated

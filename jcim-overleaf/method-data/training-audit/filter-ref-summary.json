@@ -1,0 +1,46 @@
+{
+  "rule": "row also removed if K1 or K2 equals that of a CASF ref ligand (exact match only); rows already removed by the K1/K2 CASF / Plinder rule keep that category",
+  "ref_ligand_files": 1236,
+  "parse_failures": 0,
+  "parse_failure_examples": [],
+  "ref_k1_keys": 1042,
+  "splits": {
+    "train": {
+      "rows": 189792028,
+      "ref_matched_rows": 47449,
+      "ref_matched_mols": 1923,
+      "of_which_already_removed": {
+        "casf_similar": 17995,
+        "plinder_only_dropped": 308
+      },
+      "newly_removed": {
+        "rows": 29146,
+        "mols": 1484,
+        "by_k1_only_rows": 87,
+        "by_k2_only_rows": 104
+      },
+      "ref_complexes_with_any_match": 1134,
+      "ref_complexes_with_new_removal": 858,
+      "newly_removed_by_source": {
+        "BindingMoad": 951,
+        "BindingNet-High": 661,
+        "BindingNet-Low": 418,
+        "BindingNet-Mid": 316,
+        "CrossDocked2020": 3389,
+        "HiQBind": 1422,
+        "KIBA-3D": 1202,
+        "Kinodata-3D": 107,
+        "OMol25_bio_mols": 8247,
+        "OMol25_small_mols": 4295,
+        "Plinder": 2525,
+        "SAIR": 831,
+        "SPINDR": 708,
+        "chembl3d": 564,
+        "geom": 2162,
+        "nablaDFT": 43,
+        "pubchem3d": 1258,
+        "zinc": 47
+      }
+    }
+  }
+}

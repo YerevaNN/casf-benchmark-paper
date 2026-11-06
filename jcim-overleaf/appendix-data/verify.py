@@ -51,7 +51,7 @@ def expand(path):
         return expand(PAPER/(name if name.endswith('.tex') else name+'.tex'))
     return re.sub(r'\\input\{([^}]+)\}',include,text)
 si=expand(PAPER/'supporting-information.tex')
-expected_tables=['supporting-ensemble-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','energy-summary','selection-counts']
+expected_tables=['supporting-ensemble-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','energy-summary','selection-counts','qwen-training']
 tables=re.findall(r'\\label\{tab:([^}]+)\}',si)
 # Exact IDs are retained from the existing source files.
 assert tables==expected_tables,tables
@@ -69,11 +69,11 @@ for label in ['tab:'+x for x in tables]+['fig:'+x for x in figures]:
     assert main.count(r'\label{'+label+'}')==1,label
 for source in [main,si]:
     for kind,number in re.findall(r'(?:Supporting )?(Table|Figure)s?\s*~?\s*S(\d+)',source):
-        assert 1<=int(number)<=(7 if kind=='Table' else 6),(kind,number)
+        assert 1<=int(number)<=(8 if kind=='Table' else 6),(kind,number)
     for name in re.findall(r'\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}',source):
         assert (PAPER/name).is_file(),name
 print('Verified current source/artwork hashes, 20 paired recovery comparisons, retained counts, 242 PLINDER and 88 v2 validity records.')
-print('Current SI: seven tables and six figures; no historical review gallery or removed tables included.')
+print('Current SI: eight tables and six figures; no historical review gallery or removed tables included.')
 print('SI table order:',tables)
 print('SI figure order:',figures)
 
@@ -97,3 +97,48 @@ selection=json.loads((PAPER/'results-data/ref-panel/selection.json').read_text()
 assert selection['excluded_entries']==192 and selection['selected_entries']==1044
 assert ' & 0 & 192 ' in tex and ' & 94 & 1,044 ' in tex
 print('Verified selection table against archived execution logs and frozen ref selection.')
+
+# Check training statements against completed-run records and upstream filter receipts.
+audit=PAPER/'method-data/training-audit'
+for metadata in json.loads((audit/'sources.json').read_text())['archived'].values():
+    assert hashlib.sha256((audit/metadata['archive']).read_bytes()).hexdigest()==metadata['sha256']
+filtered=json.loads((audit/'filter-summary.json').read_text())
+removed=sum(filtered[k] for k in ['casf_similar','plinder_only_dropped','casf_ref_exact'])
+assert filtered['rows']-removed==filtered['kept']==187398101
+assert removed==2393927
+per_source=pd.read_csv(audit/'filter-per-source.csv')
+for key in ['rows','kept','casf_similar','plinder_only_dropped','casf_ref_exact']:
+    assert int(per_source[key].sum())==filtered[key],key
+for epoch in [1,2]:
+    manifest=json.loads((audit/f'coordtoken-epoch{epoch}-manifest.json').read_text())
+    assert manifest['data_manifest_sha256']==hashlib.sha256((audit/'coordtoken-input-manifest.json').read_bytes()).hexdigest()
+    result=json.loads((audit/f'coordtoken-epoch{epoch}-result.json').read_text())
+    assert result['status']=='complete' and result['steps']==366012
+    assert result['examples_seen']==filtered['kept']
+encoded=json.loads((audit/'fsq-encoding-manifest.json').read_text())
+inputs=json.loads((audit/'coordtoken-input-manifest.json').read_text())
+assert encoded['source']==inputs['sources']['train']['path']
+release=json.loads((audit/'coordtoken-release.json').read_text())
+assert encoded['checkpoint_sha256']==release['checkpoint_sha256']
+tex=(PAPER/'training-appendix.tex').read_text()
+configs=json.loads((PAPER/'results-data/qwen-size-representation/training-configurations.json').read_text())
+generations=json.loads((PAPER/'results-data/qwen-size-representation/generation-metadata.json').read_text())
+for key,label in [('binned06','0.6B binned'),('binned17','1.7B binned'),('fsq06','0.6B FSQ'),('fsq17','1.7B FSQ')]:
+    final=json.loads((audit/f'{key}-final-update.json').read_text())
+    exposure=final['exposure']
+    assert exposure['completed_epochs']==1
+    assert final['update']==configs[key]['config']['training']['optimizer_updates']
+    row=' & '.join([label]+[f'{exposure[k]:,}' for k in ['documents','completed_updates','real_input_tokens','supervised_targets']])
+    assert row in tex,row
+    representation='binned' if key.startswith('binned') else 'fsq'
+    dataset=json.loads((audit/f'{representation}-dataset.json').read_text())
+    assert exposure['documents']==dataset['counts']['train']['accepted']
+    for cohort,metadata in generations[key].items():
+        shards=metadata.get('shards',[metadata])
+        for shard in shards:
+            assert shard['temperature']==shard['top_p']==1
+            assert shard['samples_per_molecule']==1000
+            assert shard['seed']==42+shard.get('shard_index',0)
+            if representation=='fsq':
+                assert shard['coordtoken_checkpoint_sha256']==encoded['checkpoint_sha256']
+print('Verified training filter totals, source counts, tokenizer lineage, completed Qwen exposure and recorded generation settings.')

@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "rows": 187398101,
+  "data_manifest_sha256": "70fcdb4342d399196c335979be2afb3544068ec6dbfc867a410ed52b8d025acb",
+  "order.npy_sha256": "91e172b2274f0efe5ff8be2be344b5ea11ac396bb2416a6386ab24e1ceec494c",
+  "validation.npy_sha256": "24600ba212630a878d668d16a2fb417b72488132810bd003e80bdf72a6c2e2d5",
+  "train_validation_fullkey_overlaps": 0,
+  "all_rows_once": true,
+  "max_length": 194,
+  "test_used": false
+}

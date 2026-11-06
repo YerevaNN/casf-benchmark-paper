@@ -1,10 +1,33 @@
 # Manuscript authoring
 
+## Verified CoordToken and Qwen training, 6 November 2026
+
+The active Methods now distinguishes the filtered, two-epoch CoordToken checkpoint
+(37e5aa88...) from the full-corpus model in the supplied CoordToken manuscript.
+The four v2 Qwen models completed one epoch, verified by their final training audit
+records. The executed core/PLINDER similarity screen and ref identity exclusions
+are documented, including normalized keys, ECFP4 Tanimoto > 0.4, and removal counts.
+The older step-64,000 model still requires its own provenance; neither its name nor
+v2 records establish its training exclusions. Residual overlap, including tokenizer
+development data, remains a follow-up.
+
+Main Methods contains the short account; `training-appendix.tex` and new Table S8
+contain architecture, schedules, source counts and completed exposure.
+`evaluation-protocol-appendix.tex` records checks, alignment and unresolved historical
+runtime settings. Both are included through `supporting-content.tex` in the main
+review PDF and standalone SI. There are now eight supporting tables and six figures;
+S1–S7 and all figures retain their numbering. Results are unchanged.
+
+Evidence and the consolidated TODO list: `method-data/training-audit/README.md`.
+The CoordToken citation is now populated from the supplied PDF; its permanent
+public bibliographic record remains to be confirmed. This supersedes older notes
+that the v2 exclusion definition or PLINDER training policy is wholly unspecified.
+
 ## Appendix placement in the review manuscript
 
 The curated appendix is included at the end of the main PDF again. Both
 `acs-template.tex` and `supporting-information.tex` use `supporting-content.tex`,
-so the seven supporting tables (S1–S7) and six supporting figures (S1–S6) stay
+so the eight supporting tables (S1–S8) and six supporting figures (S1–S6) stay
 identical in either document. Keep this appendix visible in the main review
 PDF; only the obsolete 18-candidate gallery is excluded. The separate SI entry
 point remains available for eventual submission.

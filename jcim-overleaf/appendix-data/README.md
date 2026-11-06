@@ -1,5 +1,9 @@
 # Selected Supporting Information
 
+Table S8 now records completed v2 Qwen training exposure; detailed training and
+evaluation appendices follow S7. Both PDF entry points include all eight tables and
+six figures. Training evidence is in `../method-data/training-audit/`.
+
 The former 18-figure review gallery is no longer included in the manuscript.
 The current SI contains seven tables and six figures, all linked to the main text.
 It is appended to the main review PDF and also available as a standalone document;

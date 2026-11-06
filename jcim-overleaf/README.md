@@ -1,10 +1,17 @@
 # JCIM manuscript
 
+## Training and reproducibility update, 6 November 2026
+
+Methods now describes the filtered CoordToken checkpoint and v2 Qwen training.
+The detailed training appendix adds Table S8; an evaluation appendix records
+validity and alignment settings. All remain visible in the main review PDF.
+See [evidence and remaining TODOs](method-data/training-audit/README.md).
+
 ## Appendix placement in the review manuscript
 
 The curated appendix is included at the end of the main PDF again. Both
 `acs-template.tex` and `supporting-information.tex` use `supporting-content.tex`,
-so the seven supporting tables (S1–S7) and six supporting figures (S1–S6) stay
+so the eight supporting tables (S1–S8) and six supporting figures (S1–S6) stay
 identical in either document. Keep this appendix visible in the main review
 PDF; only the obsolete 18-candidate gallery is excluded. The separate SI entry
 point remains available for eventual submission.

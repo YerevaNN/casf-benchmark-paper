@@ -1,5 +1,10 @@
 # Methods
 
+> Historical working draft. The current manuscript is in `../methods.tex`; the
+> training and evaluation additions are in `../training-appendix.tex` and
+> `../evaluation-protocol-appendix.tex`. Evidence and remaining TODOs are listed in
+> `training-audit/README.md`. Use those sources for the current counts and protocols.
+
 ## Evaluation design
 
 We evaluate how well finite, protein-independent conformer ensembles cover experimentally observed bound geometries, with the practical aim of selecting a generation procedure for a large conformational dataset. Each method generates an ensemble for a molecule without receiving a protein or binding-site structure. We examine geometric variation and energy alongside experimental recovery, before extending the comparison from one reference per CASF entry to multiple bound structures of the same molecule. Recovery measures similarity of the internal ligand geometry after alignment; it does not establish placement within a binding pocket or recovery of protein–ligand interactions.
