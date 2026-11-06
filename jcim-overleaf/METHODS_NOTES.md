@@ -1,5 +1,25 @@
 # Methods: evidence and author follow-up
 
+## Main Methods shortened; procedures retained in appendix, 6 November 2026
+
+At the author's request, main Methods is reduced from approximately 3,600 to 1,600
+words. It retains evaluation design, panel identities, key training-exclusion
+policies, validity/denominator differences, metric definitions, raw energy geometry,
+and interpretation limits. The abstract briefly mentions the four Qwen variants'
+identity and similarity exclusions. No results or data changed.
+
+Exact selection counts stay in the selection appendices. Corpus/split preparation,
+benchmark exclusions, tokenizer architecture/training, and language-model training
+now appear in that order in `training-appendix.tex`. Repeated size/representation
+training details are replaced with a short comparison-scope account. Classical
+sampling, candidate accounting, energy settings, budget calculations, strata, and
+display definitions are consolidated in `evaluation-protocol-appendix.tex`.
+Outstanding provenance/runtime TODOs remain explicit there and in the selection and
+training appendices. Both PDF entry points still include eight SI tables and six SI
+figures; no appendix or result display has been dropped. Do not locally compile for
+this source-only edit unless requested by the author.
+
+
 ## PLINDER selection source verification, 6 November 2026
 
 `method-data/selection-audit/plinder/` now archives the frozen original 23-identity

@@ -1,5 +1,51 @@
 \section*{Evaluation settings and remaining reproducibility records}
 
+\subsection*{Classical generation and minimization}
+
+RDKit ETKDGv3\cite{wang2020etkdg} generates conformers from the molecular graph using distance
+geometry and experimental torsional preferences, with stereochemistry enforced. We evaluate
+both the embedded coordinates and a pipeline that adds MMFF94s\cite{halgren1999mmff94s}
+minimization. The random torsion baseline samples displacements uniformly within
+$\pm120^\circ$ around eligible torsions and rejects severe steric clashes.
+
+For CASF, torsion sampling starts from the matched ChEMBL3D topology coordinates, without
+using the experimental reference coordinates. Its minimized variant adds MMFF94s
+optimization and a further clash check. Raw and minimized CASF pipelines use separately
+sampled pools, so they are not paired before-and-after measurements.
+
+The 22-molecule comparison includes RDKit raw and random torsion sampling, each with 1,000
+supplied conformers per molecule. RDKit removes the reference coordinates before embedding from the
+molecular graph. The torsion baseline builds five ETKDGv3 starting conformations from
+isomeric SMILES, without experimental coordinates. From each start, rotatable bonds
+are perturbed by up to $\pm120^\circ$, rejecting severe clashes until 200 conformers
+are accepted, for 1,000 conformers per molecule. The global random seed is 42, with
+reproducible seeds derived for each molecule and starting conformation.
+The raw baselines undergo no energy minimization. Their minimized counterparts optimize the
+same conformers individually with MMFF94s after rebuilding hydrogens, for up to 500 iterations.
+Hydrogens are then removed. All conformers of the 22 included molecules are retained, including
+those that reach the iteration limit without convergence; no replacement sampling or additional
+clash filtering is applied. For torsion minimization, stereochemistry is checked
+and inversions trigger a retry with constraints that preserve chirality.
+The four classical pools are evaluated against the same cleaned references. This paired comparison differs from the
+separately sampled raw and minimized CASF pools.
+
+\subsection*{Candidate targets and retained pools}
+
+For CASF core and ref, we use two sampling targets to reflect different aspects of dataset construction. At the
+ChEMBL-count target, each method is assigned the stored conformer count for the corresponding
+ChEMBL3D stereoisomer. The subset is drawn without replacement from the available candidate pool and
+capped at the pool size. The second target uses a pool of up to 1,000 candidates per molecule. These
+are two targets applied to existing pools, rather than independent generation runs at each target.
+
+A candidate is a conformer in the saved pool after the generator's own preparation,
+including any method-specific minimization or clash rejection. The target therefore counts
+available candidates, not all attempted embeddings, decoded sequences, or optimization attempts.
+Both targets are defined before PoseBusters filtering. Rejected conformers are not replaced, so
+retained ensemble sizes differ between methods. ChEMBL3D-PB remains the same finite stored
+ensemble when generators receive the larger allowance. Candidate selection is reproducible using
+fixed seeds; the comparisons do not match retained ensemble sizes or computational cost.
+PLINDER uses the supplied generated ensembles and is not included in this two-target comparison.
+
 \subsection*{Validity checks and aligned distances}
 
 The configured PoseBusters assessment checks loading, sanitization, InChI conversion,
@@ -20,13 +66,68 @@ alignment exception attempt an index-based atom mapping; failures of both proced
 are unmeasurable. The PLINDER matching routine instead records failed alignments as
 undefined. All nearest-reference and nearest-generated distances used in the reported
 PLINDER metrics are finite, which does not establish that every pairwise comparison
-succeeded. Greedy cluster representatives remain fixed in saved conformer order.
+succeeded. For the classical PLINDER baselines, atom ordering is matched to the reference
+topology before validity checking. Greedy cluster representatives remain fixed in
+saved conformer order.
 
 \textbf{[TODO: archive the executed RDKit and PoseBusters versions and configurations
 for each historical evaluation, including the energy-check random seed and any
 runtime overrides. Count index-mapping fallbacks and failed pairwise alignments,
 and report the symmetry-search limits and rotatable-bond descriptor option for
 those versions. Do not infer these from the currently installed environment.]}
+
+\subsection*{Common-hydrogen energy calculation}
+
+We evaluate the retained CASF core and ref ChEMBL-count ensembles with MMFF94s in RDKit 2025.09.6, using a common hydrogen
+preparation for every method. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
+energy is calculated without optimizing either hydrogen or heavy-atom positions. This preserves the conformations used for
+clustering and recovery and avoids differences arising from whether a generator supplied
+hydrogen coordinates. Saved PoseBusters membership is preserved in both panels.
+Energies are reported in kcal mol$^{-1}$, with the nonbonded threshold set to 100
+and interfragment interactions ignored. Previously stored energy values are not reused. Calculation settings,
+coordinate-preservation checks, and source records are archived with the energy results.
+
+For each molecule and method, we calculate the mean energy and population standard deviation
+across conformers. Main Figure 3 reports the median of these standard
+deviations across molecules, alongside mean cluster counts.
+This summary limits the influence of molecules with exceptionally large energy spreads.
+Supporting Table S6 also gives the mean of the standard deviations, the median of per-molecule
+mean energies, and the median paired difference in mean energy relative to the ChEMBL3D
+ensemble of the same molecule. Undefined energies are omitted from the energy moments and counted separately in Supporting
+Table S6; all finite values, including extreme values, remain in the summaries.
+Energy spread describes dispersion under this force field; it is neither a count of energy
+basins nor a binding free energy.
+
+\subsection*{Expected recovery across sampling budgets}
+
+To examine how recovery changes with candidate budget, we evaluated each CASF panel at 63
+candidate budgets from 10 to 1,000 using the saved fixed-target pools.
+Figure B1 shows Qwen, LoQI, FlowR, and NExT-Mol. For each entry and budget,
+we calculated the exact probability that a uniformly selected subset without replacement would
+contain at least one retained conformer within the RMSD cutoff. We used the candidate count and the
+number of qualifying conformers to calculate this probability directly, rather than repeatedly
+drawing random subsets. Rejected candidates consume budget but cannot produce a hit. Budgets are
+capped at the available candidate count. Expected recovery averages these probabilities across
+all 94 core or 1,044 ref entries, with empty retained pools contributing zero.
+
+We report expected recovery at a fixed RMSD cutoff of 0.75 \AA{} and, separately, the smallest RMSD
+threshold at which expected recovery reaches 80\% at each budget. The latter is found among the
+observed RMSD values and is calculated from the average recovery across entries. The stored
+ChEMBL3D-PB ensemble supplies a fixed reference in both comparisons. An unattainable
+80\% target is left undefined rather than extrapolated. These calculations describe
+sampling within the available pools; they do not extrapolate beyond them.
+
+\subsection*{Molecular size and flexibility}
+
+We stratify CASF core and ref using descriptors of the reference ligand identities.
+Heavy-atom groups are fewer than 20, 20--29, 30--39, and at least 40 atoms. Flexibility
+uses RDKit's rotatable-bond count, grouped as 0--3, 4--6, 7--8, and at least 9. The same
+reference-derived group assignment is used for every generator. CASF group recovery at the
+1,000-candidate target is accompanied by recovered and total counts. Size and flexibility
+are analyzed separately; neither analysis adjusts for the other descriptor or establishes an
+independent cause of difficulty. Groups with fewer than five entries are marked;
+empty groups remain unreported. Supporting Figure S4 cross-tabulates the two
+descriptors using the same group boundaries and panel denominators.
 
 \subsection*{Molecule-level displays}
 
@@ -36,3 +137,24 @@ molecules are grey. For Supporting Figure S6, each molecule's contribution to th
 validity change is its change in pass percentage divided by the sum of these changes
 across molecules. This decomposes the net change in the unweighted mean pass rate,
 not the pooled rate in the main comparison. Negative contributions remain negative.
+
+Supporting Figure S2 compares matching-distance changes for individual molecules.
+Representation differences subtract FSQ from binned distances at each model size;
+size differences subtract 1.7B from 0.6B distances within each representation.
+Positive values indicate closer matching after the change. The reported fraction
+of improved molecules counts strictly positive differences, with ties counted as
+no improvement. Every molecule remains in the comparison, including Actinonin.
+
+The PLINDER threshold curves use the same nearest-distance records as the main
+recovery tables, evaluated from 0 to 1.5 \AA{} in increments of 0.005 \AA{}.
+Supporting Figure S3 compares each fixed-target CASF ensemble with ChEMBL3D-PB on
+the same ligands, counting entries recovered only by the generator and those recovered
+only by the stored ensemble. At the ChEMBL-count target, 92--94 core and
+1,032--1,044 ref ensembles have defined measurements, depending on the method.
+Mean retained counts include zero-sized ensembles (Supporting Table S1).
+Energy-pool counts and calculation completeness are given in Supporting Table S6.
+
+\textbf{[TODO: confirm the executed seed for selecting ChEMBL-count subsets and
+archive the classical generators' eligible-bond definition, severe-clash criterion,
+retry limits, and chirality-preserving minimization settings. These records must
+identify the evaluated runs, rather than only current implementation defaults.]}

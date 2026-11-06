@@ -1,34 +1,5 @@
 \section*{CoordToken and Qwen training records}
 
-\subsection*{Geometry representation and tokenizer training}
-
-CoordToken\cite{geikyan2026coordtoken} encodes canonical isomeric SMILES together
-with centered heavy-atom coordinates. Coordinates follow the SMILES atom order;
-non-atom tokens retain their graph information but carry no coordinate target.
-The encoder and decoder each have eight transformer layers, width 1,024, 16 attention
-heads, and feed-forward width 4,096. A 12-dimensional bottleneck quantizes each scalar
-to two levels, giving 4,096 possible codes without a learned vector codebook.
-One code is transmitted for each atom, together with one learned molecular register
-code. The decoder receives these codes and SMILES identities and predicts Cartesian
-coordinates. Training minimizes coordinate mean squared error over atom positions,
-masking non-atom tokens and padding.
-
-The benchmark uses the separate filtered release dated 20 October 2026, whose
-checkpoint SHA-256 begins \texttt{37e5aa88c6e3de1d}. It is not the full-corpus model
-used for the headline reconstruction results in the CoordToken paper. Both tokenizer
-epochs use the same 187,398,101-record training manifest. Training begins from random
-initialization and uses eight H100 GPUs, global batch 512, AdamW with peak learning
-rate $5\times10^{-5}$, $\beta_1=0.9$, $\beta_2=0.999$, dropout 0.05, and gradient
-clipping at norm 0.1. Weight decay is 0.01 for matrix parameters and zero for biases
-and normalization parameters. The first epoch warms up over 1,024,000 examples,
-maintains the peak rate until 90\% of the epoch, and then decays to zero by a cosine
-schedule. The second epoch resumes the model and optimizer state, restores the peak
-rate, and decays over its final 20\%. Each epoch contains 366,012 updates. The initial
-seed is 123 and the second-epoch shuffle seed is 124. Computation uses bfloat16 with
-FP32 coordinate and quantization operations; the recorded environment is PyTorch
-2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
-Full checkpoint and data hashes are archived with the training records.
-
 \subsection*{Corpus splitting and exact deduplication}
 
 The source release was assembled before the CASF/PLINDER exclusions. A common parser
@@ -139,6 +110,35 @@ redistribution terms. Complete a residual-overlap report for the final core94,
 ref1044, and PLINDER22 identities against the training exports and tokenizer
 development data. Document the older step-64,000 model separately.]}
 
+\subsection*{Geometry representation and tokenizer training}
+
+CoordToken\cite{geikyan2026coordtoken} encodes canonical isomeric SMILES together
+with centered heavy-atom coordinates. Coordinates follow the SMILES atom order;
+non-atom tokens retain their graph information but carry no coordinate target.
+The encoder and decoder each have eight transformer layers, width 1,024, 16 attention
+heads, and feed-forward width 4,096. A 12-dimensional bottleneck quantizes each scalar
+to two levels, giving 4,096 possible codes without a learned vector codebook.
+One code is transmitted for each atom, together with one learned molecular register
+code. The decoder receives these codes and SMILES identities and predicts Cartesian
+coordinates. Training minimizes coordinate mean squared error over atom positions,
+masking non-atom tokens and padding.
+
+The benchmark uses the separate filtered release dated 20 October 2026, whose
+checkpoint SHA-256 begins \texttt{37e5aa88c6e3de1d}. It is not the full-corpus model
+used for the headline reconstruction results in the CoordToken paper. Both tokenizer
+epochs use the same 187,398,101-record training manifest. Training begins from random
+initialization and uses eight H100 GPUs, global batch 512, AdamW with peak learning
+rate $5\times10^{-5}$, $\beta_1=0.9$, $\beta_2=0.999$, dropout 0.05, and gradient
+clipping at norm 0.1. Weight decay is 0.01 for matrix parameters and zero for biases
+and normalization parameters. The first epoch warms up over 1,024,000 examples,
+maintains the peak rate until 90\% of the epoch, and then decays to zero by a cosine
+schedule. The second epoch resumes the model and optimizer state, restores the peak
+rate, and decays over its final 20\%. Each epoch contains 366,012 updates. The initial
+seed is 123 and the second-epoch shuffle seed is 124. Computation uses bfloat16 with
+FP32 coordinate and quantization operations; the recorded environment is PyTorch
+2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
+Full checkpoint and data hashes are archived with the training records.
+
 \subsection*{Language-model training and generation}
 
 The v2 models initialize from Qwen3-0.6B-Base or Qwen3-1.7B-Base.\cite{yang2025qwen3}
@@ -200,3 +200,18 @@ hashes; adapter defaults in Table S5 are not a substitute for these records.]}
 \textbf{[TODO: confirm the final public bibliographic record for the supplied CoordToken
 manuscript and provide permanent links for the filtered tokenizer and four evaluated
 Qwen checkpoints.]}
+
+\subsection*{Evaluated checkpoints and comparison scope}
+
+The primary generator is the v2 Qwen 1.7B FSQ checkpoint at step 41,054. The size and
+representation comparison uses the two binned checkpoints at step 66,057 and the two
+FSQ checkpoints at step 41,054. Within each representation, the two model sizes share
+the training export and one-epoch schedule. No subsequent task-specific fine-tuning
+is applied. Binned and FSQ exports differ in record count and tokens per record;
+training exposure and computational cost are not matched (Table~\ref{tab:qwen-training}).
+
+The older 0.6B CASF-dedup PM12 binned model at step 64,000 is included in the main
+PLINDER comparison but excluded from the four-v2 analysis. Its training and exclusion
+history cannot be established from its name and is not covered by the v2 records.
+All configurations use the same cleaned PLINDER references. External pretrained models
+are evaluated as supplied; Table S5 summarizes their reported training resources.

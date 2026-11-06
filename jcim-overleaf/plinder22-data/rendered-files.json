@@ -2,13 +2,13 @@
   "description": "Curated Supporting Information is appended to the main review manuscript and shared with the standalone SI entry point; historical candidate gallery excluded.",
   "casf_baseline_commit": "c797287",
   "files": {
-    "AGENTS.md": "30d8df220ba1b74ae2e560f8525a58ff27df5aeeb012bd4be8029795687eb4eb",
+    "AGENTS.md": "24e3ec319eb382c55536162abcaef9b3dc58ee689696f39f05a205df2f365ecd",
     "FIGURE_CANDIDATES.md": "7b120e13002f47722d2269c7c57fb1094c1aa649d2aaf21743afd774ac59dc30",
     "MANUSCRIPT_OUTLINE.md": "a1c06de9b5b64b89fb473b666985faea99f454159cb4c2aa4107b30302ddf4a0",
-    "METHODS_NOTES.md": "cba1c88c2dc4c5e8036c172405b25c2605e52762643e199330a3e66ae4c88d42",
+    "METHODS_NOTES.md": "22c70b234e2eb23d1dda834e2573dc61eaf27ea85c0714716eac7e098b142f77",
     "README.md": "e0d21c843f913423eb8c4b98da32c77e25096c2d94c4a67a606d8f9526fe8d7a",
     "RESULTS_NOTES.md": "792ae28be2771d6d1b586f5ef4de6fd33d8a4dd424d569a12a1c7b6de47d8716",
-    "acs-template.tex": "0567aa5a927fb81fe011be7139fd1df78ca5ca1cb3afc8109b6f75aa36c61bf5",
+    "acs-template.tex": "93e30a95d045eca3a471f8dea8fdcf34f9d7451d3992ba889057de6635fdfe76",
     "build_candidate_figures.py": "b0ebb86781d0ba2e7e3b8ed72d301dd65d3edf82046848ffcc3c05b17e315f92",
     "build_figures.py": "4ab6fcfa6df2407fe4fecb28657acf4ef5f8baee80df4b4035075de9b4302362",
     "dataset-figure.tex": "110cdd85285c3425939e5e40ee5c753b04f283565bf623f183606ba30ba4a137",
@@ -57,7 +57,7 @@
     "introduction.tex": "1554fd23f2064092c1e2430908e575092b33e6e58a74ce3c045f16c7d2cad6d7",
     "method-data/plinder22-molecules.csv": "e39c82600c8b24dbed1dd09925cd25ac6ddab263515a44fe494720bcab372fe7",
     "method-data/plinder23-molecules.csv": "a831c7f7f71500c44ed557e345ac2c4424144e5e91fc95e5d6700cef7d3c24d3",
-    "methods.tex": "f54c87f6bf7f7d3321c840c30ac0aa39316c3a6ded9c0f9c51d7a75c9f742ac6",
+    "methods.tex": "edee3a9cfe674931cbe3dc201f43abed8531b65121af4aeb254d94ebd93e4948",
     "plinder22-data/README.md": "2c654ec19dccb5148edb1d08e06c66e63fe20406a7e78197f15ac9f91863d2ee",
     "plinder22-data/build_inventory.py": "6b074a9a37421523f517c0d46278b03bca093c8df801bf70fa18eb8147978dee",
     "plinder22-data/entries.json": "c6fb73e11a90a3f89266366f913944e1d403b22d7aed9ba94294e8b1d6cf7795",
@@ -142,12 +142,12 @@
     "supporting-analyses.tex": "622ce1500a256a19fa51f9414ca224c55aa813d457b173a30dba5db5b0713703",
     "tables/supporting-ensemble-counts.tex": "124fd370fcc58d79c4aa8a9647d6572df73b2a0259b581035f31fde2697adb9a",
     "supporting-content.tex": "7b8f0df13e1667911258b8340788af8bb32436c93bd249fd3315fc3c0edeeecc",
-    "selection-appendix.tex": "abf116b972727464e198b9a05f46a3b64e4c615dd4413b0bad8bae68c15e30b3",
+    "selection-appendix.tex": "0613190c87d5674040db04e66310f09d5aa8fb24b62f41d31e9c0cd8f1bca9f8",
     "method-data/selection-audit/README.md": "b5b48ffda19d0c3c84b6e45c04dfabad7b0bc62ce67e711664364b48e352134a",
     "method-data/selection-audit/sources.json": "c06232e8941b94152e26d884092f5968f7f46b025824350c5b793531a946eb03",
     "method-data/selection-audit/core-matching-log.txt": "ca5a4537498010c8632b10d78335ebf58e975db742e36139d6d28d9075f0e7bc",
     "method-data/selection-audit/ref-matching-log.txt": "34e943945f1744967d1b3c9cbf644b1a71669a128ef009b41c7a653c2a7991e1",
-    "training-appendix.tex": "33d6ffd09c33ec44c3d47ae1fb32b145d24c4a750323989ff2e1046e7fe687ee",
-    "evaluation-protocol-appendix.tex": "a39ff49e78d0f5c8a6e8404f38b2a2148a8c7e616ec88fa46066bb76cad2ec57"
+    "training-appendix.tex": "1546d57bf6e5aa3f22d190543a9276a0558fd046a638b51da87b4cc1649743bf",
+    "evaluation-protocol-appendix.tex": "5a48e68c3785f7969e7f860229e5f9e7f27594d72b69c9fd7e3fa678ca412b02"
   }
 }

@@ -125,7 +125,8 @@ Small molecules can adopt different conformations across protein complexes. We b
 classical and learned conformer generators to identify procedures for building molecular
 libraries that cover these observed bound shapes. Using CASF and a 22-molecule PLINDER
 panel, we evaluate experimental recovery alongside geometric diversity, energy dispersion,
-and structural validity.
+and structural validity. We train four Qwen variants with panel-specific
+identity and similarity exclusions.
 
 Greater geometric diversity does not consistently improve recovery, and method rankings
 depend on sampling budget and matching tolerance. Increasing Qwen's candidate target to
@@ -186,8 +187,9 @@ Supporting Information includes retained ensemble sizes (Table~S1), PLINDER sele
 criteria, panel statistics, and molecular identities (Tables~S2--S4), generator
 provenance (Table~S5), energy summaries (Table~S6), core/ref selection counts
 (Table~S7), and completed Qwen training exposure (Table~S8). Additional methods
-document CoordToken training, benchmark exclusions, generation settings, and
-validity and alignment procedures. Supporting figures show the
+document corpus preparation, CoordToken and Qwen training, benchmark exclusions,
+generation settings, validity and alignment, raw-geometry energy calculations,
+sampling-budget curves, and molecule-level analyses. Supporting figures show the
 evaluation panels (S1), molecule-level Qwen comparisons (S2), recoveries gained and
 lost relative to ChEMBL3D (S3), joint size and flexibility distributions (S4), and
 per-molecule PLINDER coverage, precision, and validity (S5--S6).
