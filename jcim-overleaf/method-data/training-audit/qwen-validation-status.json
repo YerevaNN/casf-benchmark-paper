@@ -1,0 +1,22 @@
+{
+  "binned06": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261025-pm12-legacy-v2/training/resolved_config.json",
+    "source_sha256": "c6d81ad43e86d66d5ca092959760d7f2ad1829e5ec9b1046059337cdc9863329",
+    "validator_enabled": false
+  },
+  "fsq06": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261027-coordtoken-casf-v2/training/resolved_config.json",
+    "source_sha256": "c5f1df32d47cf9258fa75e4a8a770412781419107a4db8bc62e560ff884636ff",
+    "validator_enabled": false
+  },
+  "binned17": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/binned/training/resolved_config.json",
+    "source_sha256": "0c16d8b4e6507490783dd9994034d8824d545bdc564c25f7ab6acdf623f5229f",
+    "validator_enabled": false
+  },
+  "fsq17": {
+    "source": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/resolved_config.json",
+    "source_sha256": "56c120bf055579ccea807b4803f8483dadbf94e285302dc1ad6f3510785272e3",
+    "validator_enabled": false
+  }
+}

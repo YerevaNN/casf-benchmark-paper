@@ -29,6 +29,44 @@ FP32 coordinate and quantization operations; the recorded environment is PyTorch
 2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
 Full checkpoint and data hashes are archived with the training records.
 
+\subsection*{Corpus splitting and exact deduplication}
+
+The source release was assembled before the CASF/PLINDER exclusions. A common parser
+and RDKit 2025.09.6 validated molecular strings, finite coordinate triplets, and
+agreement between atom and coordinate counts. Molecular identity for split assignment
+was the full Standard InChIKey of the sanitized decoded SMILES, retaining encoded
+stereochemistry and isotopes. No additional salt stripping, stereochemistry removal,
+or scaffold matching was applied. Unresolved identity failures were quarantined,
+rather than treated as new molecules; nine records remained in quarantine. The
+prepared inputs include source-checked ChEMBL3D replacements and historically filtered
+collections, so their counts do not reconstruct every original source release.
+
+For sources with predefined splits, test identities took precedence over validation,
+and validation over training. Lower-priority rows matching protected identities were
+excluded. KIBA-3D, OMol25-small, PubChem3D, and ZINC were then assigned splits in that
+order, targeting 0.5\% of each input pool's rows for each of validation and test.
+Selection used whole InChIKey groups ranked deterministically with seed 42, so quotas
+could be exceeded. Previously assigned holdout identities were respected; remaining
+quotas were filled only with unassigned identities. Holdout candidates omitted because
+of a quota were not returned to training. For nablaDFT, validation targeted 0.5\% of its full collection, taking existing
+validation matches first and filling the remainder from identities absent from the
+other sources' retained training sets. Its predefined conformation test deliberately
+retained molecular overlap with training, while its structure and scaffold tests
+were protected by exact InChIKey matching. This is molecular separation, not scaffold
+separation. GEOM-Revisited was also protected and retained as a separate test file.
+
+After merging, exact equality meant identical coordinate-enriched strings, with no
+rounding, coordinate alignment, or comparison of record names. Hash candidates were
+confirmed by full-string comparison. Within each merged split, the first occurrence
+was retained and removed records were linked to it through a provenance mapping.
+This removed 1,734,217 training, 7,102 validation, and 7,557 test records, leaving
+189,792,028, 1,802,906, and 5,553,421, respectively. The final audit found no repeated
+strings within these merged files or exact strings shared across splits. The separate
+GEOM-Revisited file contains 23,404 records, of which 2,037 also occur in GEOM test;
+this overlap is confined to test resources. Exact-string deduplication does not remove
+all geometrically equivalent conformers or near-duplicates. Corpus split audits and
+CASF/PLINDER exclusions address different forms of overlap.
+
 \subsection*{Training collection and benchmark exclusions}
 
 The source collection contains 189,792,028 training records. After benchmark
@@ -45,21 +83,55 @@ protonation-only mode and converted to canonical tautomers. Two keys are compare
 the connectivity block of the normalized InChIKey and a stereochemistry-independent
 \texttt{HetAtomProtomer} hash. A match under either key is sufficient. The original
 coordinates, charges, and stereochemistry of retained records are not rewritten.
-For the 285 CASF core and original 23 PLINDER queries, matching molecules first form
-an expanded query set. Molecules with ECFP4 Tanimoto similarity strictly greater
-than 0.4 to this set are identified using 2,048-bit radius-2 Morgan fingerprints
+For the 285 CASF core and original 23 PLINDER queries, the ligands and their matching
+molecules found in training and validation form an expanded query set. Molecules with
+ECFP4 Tanimoto similarity strictly greater than 0.4 to this set are identified using 2,048-bit radius-2 Morgan fingerprints
 without chirality, calculated on the original molecular forms. Their normalized
-identity matches are also excluded. Previously identified exclusions from the
-plain-identity and tautomer-based screens are retained. This procedure extends
+identity matches are also excluded, along with the original full InChIKeys of the
+similarity hits, so that normalization cannot return a flagged molecule to training.
+Previously identified exclusions from the plain-identity and tautomer-based screens
+are retained. This procedure extends
 beyond exact stereoisomer matching and does not apply a recursive similarity expansion.
-For the 1,236 ref ligands, only the normalized identity exclusion is added.
+For the 1,236 ref ligands, only the normalized identity exclusion is added: there is
+no separate search for similar molecules around ref. Some ref analogues can nevertheless
+be excluded through their relationship to a core or PLINDER ligand. The same filtered
+training population serves all three evaluation panels.
 
 The executed report assigns 2,201,663 removed records to the core-related category,
 163,118 additional records to PLINDER, and 29,146 additional records to ref. These
 categories are mutually exclusive in that order, leaving 187,398,101 records.
+For core, 197,631 records matched benchmark ligands directly under the normalized
+rule, 1,944,085 were removed at the similarity stage, 59,940 matched those similar
+molecules, and seven were retained as exclusions from earlier screens. Expanding the
+queries to matching molecular variants identified 539,530 similarity-stage training
+records beyond those found from the original ligands alone. Thus, most core-related
+removals extend beyond direct matches. These stages sum to the core-related
+removal category, before the separate ref exclusion.
+
+The overall removal fraction masks different effects on the source composition:
+25.99\% of Binding MOAD and 22.25\% of PLINDER records were excluded, compared with
+0.97\% of PubChem3D and 0.25\% of ZINC. Retained rows were shuffled with seed
+20261012 without changing their molecular strings or coordinates.
+
 The tokenizer input manifest and FSQ serialization manifest identify this retained
 collection. The binned export is traced to the same filtering project but contains
 183,835,937 records. The difference is retained explicitly in the training comparison.
+
+The final normalized-key rule was applied to training only. A separate validation
+export used the earlier connectivity-block rule, retaining 1,779,945 of 1,802,906
+records after 20,910 core-related and 2,051 PLINDER-only exclusions. Corpus test files
+were not CASF/PLINDER-filtered. Similarity removal sets were constructed using hits
+from both training and validation. The evaluated v2 Qwen runs have validation disabled
+in their resolved configurations. CoordToken monitoring instead uses a fixed subset
+of the original corpus validation collection, as recorded in its input manifest;
+the benchmark overlap of this monitoring subset remains to be audited separately
+from the cleaned validation export.
+
+The benchmark filter recomputes identity after removing hydrogens and assigning
+stereochemistry, whereas the corpus split parser uses the stored decoded molecule.
+The resulting full keys differ on 1,812 training and nine validation records.
+Benchmark filtering uses the recomputed keys. The supplied audit records zero decode
+failures and zero missing keys in this filter.
 
 \textbf{[TODO: reconcile the 3,562,164-record difference between the binned and FSQ
 exports, including conversion exclusions; verify source release identifiers and

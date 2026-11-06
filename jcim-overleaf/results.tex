@@ -69,9 +69,10 @@ Increasing the CASF candidate target from the ChEMBL count to 1,000 improves rec
 and reduces Best RMSD for every evaluated generator in both core and ref
 (Table~\ref{tab:recovery}). On ref, Qwen's recovery rises from 75.6\% to 91.7\%, while
 Best RMSD decreases from 0.551 to 0.328 \AA{}. The stored ChEMBL3D ensemble recovers
-78.3\% of references. Qwen retains the highest recovery among generators at the larger
-target, whereas FlowR produces the most clusters. Additional sampling therefore expands
-geometric variation and experimental recovery to different degrees across methods.
+78.3\% of references. Qwen retains the highest recovery among generators in both panels
+at the larger target, reaching 92.6\% on core, where the training filter removed both
+ligand matches and their specified similarity neighborhoods. FlowR produces the most
+clusters. Additional sampling therefore expands geometric variation and experimental recovery to different degrees across methods.
 
 \input{\manuscriptroot tables/recovery}
 

@@ -1,0 +1,14 @@
+{
+  "split": "val",
+  "input": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/merged_val.csv",
+  "rows": 1802906,
+  "kept": 1779945,
+  "casf_similar": 20910,
+  "plinder_only_dropped": 2051,
+  "removed_percent": 1.2735550272726366,
+  "casf_rows_caught_by_inchikey_only": 4557,
+  "plinder_only_rows_caught_by_inchikey_only": 102,
+  "casf_keys_with_rows": 4173,
+  "plinder_only_keys_with_rows": 741,
+  "clean_csv_written": true
+}

@@ -142,3 +142,32 @@ for key,label in [('binned06','0.6B binned'),('binned17','1.7B binned'),('fsq06'
             if representation=='fsq':
                 assert shard['coordtoken_checkpoint_sha256']==encoded['checkpoint_sha256']
 print('Verified training filter totals, source counts, tokenizer lineage, completed Qwen exposure and recorded generation settings.')
+
+# Distinguish source-corpus deduplication from benchmark-specific molecular exclusions.
+corpus=json.loads((audit/'corpus-release-status.json').read_text())
+assert [record['rows'] for record in corpus['files']]==[189792028,1802906,5553421]
+assert corpus['removed_rows']=={'train':1734217,'val':7102,'test':7557}
+assert corpus['exact_cross_split_overlap']==0
+assert corpus['separate_geom_revisited_test_overlap']==2037
+validation=json.loads((audit/'validation-plain-filter-summary.json').read_text())
+assert validation['rows']-validation['casf_similar']-validation['plinder_only_dropped']==validation['kept']==1779945
+assert inputs['sources']['val']['rows']==1802906
+for key,status in json.loads((audit/'qwen-validation-status.json').read_text()).items():
+    assert status['validator_enabled'] is False
+    source=json.loads((audit/'sources.json').read_text())['archived'][key+'-resolved-config.json']
+    assert status['source_sha256']==source['source_sha256']
+shuffle=json.loads((audit/'training-shuffle-summary.json').read_text())
+assert shuffle['seed']==20261012 and shuffle['total_rows']==187398101
+funnel=json.loads((audit/'filter-normalized-summary.json').read_text())['splits']['train']
+core=funnel['funnel']['casf']
+assert sum(core[k]['rows'] for k in ['1_exact','2_similarity','3_exact_of_similar'])+funnel['safety_net_only']['rows']==filtered['casf_similar']
+assert core['2_similarity_new_via_exact_matches']['rows']==539530
+observations=json.loads((audit/'panel-policy-observations.json').read_text())
+assert hashlib.sha256((PAPER/observations['source']).read_bytes()).hexdigest()==observations['source_sha256']
+for name,expected in observations['panels'].items():
+    cohort,budget=name.split('_',1)
+    group=counts[(counts.cohort==cohort)&(counts.budget==budget)&(counts.method!='ChEMBL3D-PB')]
+    row=group[group.method=='Qwen 1.7B FSQ'].iloc[0]
+    np.testing.assert_allclose([row.recovery,row.distance],[expected['qwen_hit_075_percent'],expected['qwen_best_rmsd']])
+    assert expected['qwen_hit_rank']==1+int((group.recovery>row.recovery).sum())==1
+print('Verified corpus deduplication, validation scope, exclusion stages and descriptive core/ref observations.')

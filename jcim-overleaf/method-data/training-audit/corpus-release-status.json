@@ -1,0 +1,47 @@
+{
+  "status": "ready_deduplicated_release",
+  "created_unix": 1791319331.2682157,
+  "manifest": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/manifest.json",
+  "manifest_sha256": "3e2470cc420fe8241b1c25487ff31f4a2136d7841a3c8a0daccc3df5ab1ce649",
+  "post_deduplication_exact_audit": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006_verification/report.json",
+  "post_deduplication_exact_audit_sha256": "f18f71a6127101de59b0a6ef1afe33d9a3bf389641f9a4e81d91c9acea87ca58",
+  "source_statistics": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/duplicate_source_statistics.json",
+  "source_statistics_sha256": "0157bfbc03eeffb7158be101e9b7bdf0dcad70ff250f1095a67d67ba6c39d6b5",
+  "duplicates_within_merged_train": 0,
+  "duplicates_within_merged_val": 0,
+  "duplicates_within_merged_test": 0,
+  "exact_cross_split_overlap": 0,
+  "separate_geom_revisited_test_overlap": 2037,
+  "removed_rows": {
+    "train": 1734217,
+    "val": 7102,
+    "test": 7557
+  },
+  "files": [
+    {
+      "path": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/merged_train.csv",
+      "rows": 189792028,
+      "bytes": 143334916343,
+      "sha256": "24d13d817438ce5123cd3753e33cbf39d2555768456ab3de5a7516f6b3eeec96"
+    },
+    {
+      "path": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/merged_val.csv",
+      "rows": 1802906,
+      "bytes": 1414376467,
+      "sha256": "535a599591f2d1b9737dd77807fdbb93e7e231503575c05c35b0b9f6c242c9f7"
+    },
+    {
+      "path": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/merged_test.csv",
+      "rows": 5553421,
+      "bytes": 4009545439,
+      "sha256": "089c2afd4af973b77e7a894d2eda04544afff5c9e5530e47d6d00aaa999e0211"
+    }
+  ],
+  "duplicate_aliases": {
+    "path": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/duplicate_aliases.csv",
+    "rows": 1748876,
+    "bytes": 268474589,
+    "sha256": "f5524f2b65a00de6a0795844c8c3ea875bbc353c1992cfad839418e959aac1cc"
+  },
+  "scope": "Deduplicated CSV data release; trainer-specific packing and smoke training are separate."
+}

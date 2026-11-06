@@ -150,16 +150,30 @@ on this export. No subsequent task-specific fine-tuning is applied to the evalua
 v2 checkpoints.
 
 The training collection combines computed conformers and ligand geometries from
-protein complexes. Before training the geometry tokenizer and preparing Qwen exports,
-we exclude matches and chemically similar molecules associated with all 285 CASF core
-ligands and the original 23 PLINDER identities. Similarity uses 2,048-bit Morgan
-fingerprints of radius 2 without chirality and a Tanimoto coefficient strictly greater
-than 0.4. Identity matching also accounts for protonation and tautomer variants.
-Matches to the 1,236 ref ligands before crystal deduplication are removed without an
-additional similarity screen. The executed filter removes 2,393,927 of 189,792,028
-conformer records. The precise matching rules, source composition, optimizer settings,
-and checkpoint records are given in the Supporting Information, including
-Table~\ref{tab:qwen-training}.
+protein complexes. Before benchmark-specific filtering, we separate molecular
+identities across source training and holdout splits using full Standard InChIKeys,
+then remove exact duplicate coordinate-enriched strings within each merged split.
+Different conformers and geometric near-duplicates are retained. This produces
+189,792,028 training records. Split allocation, the predefined nablaDFT conformation-test
+exception, and deduplication counts are detailed in the Supporting Information.
+
+We then apply different exclusion policies to the benchmark panels. For all 285 CASF
+core ligands and the original 23 PLINDER identities, we remove both molecular matches
+and a neighborhood of similar molecules. Similarity uses 2,048-bit radius-2 Morgan
+fingerprints without chirality and Tanimoto similarity strictly greater than 0.4.
+The neighborhood includes similarity to protonation and tautomer variants matching
+the benchmark ligands; matching variants of the resulting similar molecules are also
+removed. For ref, we remove only exact matches under the normalized identity rule
+for the 1,236 ligands before crystal deduplication, without a separate similarity
+screen. Here, exact matching is defined by either a normalized InChIKey connectivity
+block or a stereochemistry-independent protomer hash, rather than identical SMILES.
+
+All four v2 models use exports from this jointly filtered training collection.
+Core and PLINDER therefore exclude the specified similarity neighborhoods, whereas
+ref analogues may remain unless removed by the core or PLINDER screen. The filter
+removes 2,393,927 records (1.26\%), leaving 187,398,101. The Supporting Information
+describes the bounded expansion rule, separate treatment of validation and test data,
+and completed training exposure (Table~\ref{tab:qwen-training}).
 
 For the four v2 models, generation metadata record 1,000 requested samples per molecule,
 temperature 1.0, and top-$p$ 1.0. Decoded coordinates undergo the same downstream

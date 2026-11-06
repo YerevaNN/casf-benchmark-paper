@@ -165,6 +165,45 @@
       "archive": "fsq17-resolved-config.json",
       "source_sha256": "56c120bf055579ccea807b4803f8483dadbf94e285302dc1ad6f3510785272e3",
       "extraction": "Resolved training, optimizer, scheduler, loss, parallelism, compile and debug fields plus model name/flavor; repeated architecture and data-file listings omitted."
+    },
+    "deduplication-author-description.md": {
+      "source": "/home/mbedrosian/.codex/attachments/a0942367-532d-491b-b4af-1e4217ac4cb8/Pasted text.txt",
+      "archive": "deduplication-author-description.md",
+      "sha256": "2b7ffb31e835b2e127fc88815fa131ffa9d8dcd23f3cae6dc64ce205260f876c"
+    },
+    "corpus-split-policy.json": {
+      "source": "/mnt/weka/vtarasov/code/3DMolGen/coordtoken/data_collection/prepared_snapshot_20261005/split_policy.json",
+      "archive": "corpus-split-policy.json",
+      "sha256": "742393be53956336b897bc738ae473ea2c7a340900bbda893a801054fca0a25e"
+    },
+    "corpus-release-status.json": {
+      "source": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006/release_status.json",
+      "archive": "corpus-release-status.json",
+      "sha256": "c745f6a1855ab81a54c5ac14a1a1ce41b35715893b2740e6c53c5fef8b61ea86"
+    },
+    "corpus-split-description.md": {
+      "source": "/mnt/weka/vtarasov/code/3DMolGen/coordtoken/data_collection/paper_dataset_split_revision.md",
+      "archive": "corpus-split-description.md",
+      "sha256": "132212dbfdd710e0eddd78393f2c5ee7257603b26b6502d693265d9bb537b9d0"
+    },
+    "validation-plain-filter-summary.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/final/summary_val.json",
+      "archive": "validation-plain-filter-summary.json",
+      "sha256": "9d538a3633d8ef8ce0cb68d9297f46601a8e6c36f47587061434a8fba4534524"
+    },
+    "corpus-post-dedup-audit-summary.json": {
+      "source": "/mnt/weka/fgeikyan/3dmolgen_bigdata/data_handoff/merged_deduplicated_20261006_verification/report.json",
+      "archive": "corpus-post-dedup-audit-summary.json",
+      "sha256": "6df7763534ae545b10926f2225126f3fa7c3ad19a4ff2167c7dd14690671816f",
+      "source_sha256": "f18f71a6127101de59b0a6ef1afe33d9a3bf389641f9a4e81d91c9acea87ca58",
+      "extraction": "Aggregate audit fields only; example molecular strings omitted."
+    },
+    "training-shuffle-summary.json": {
+      "source": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/shuffle/plan.json",
+      "archive": "training-shuffle-summary.json",
+      "sha256": "cfc712bbead1e98abd6ac6f5109fb9cc8e2bbe933f86a44371c674108e024f39",
+      "source_sha256": "32245920fbae606651ee563caa2138ed174cdf701f9e3b9c1e26673783bb5103",
+      "extraction": "Seed, output and total counts only; bucket plan omitted."
     }
   },
   "inspected_code": [

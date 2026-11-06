@@ -1,5 +1,25 @@
 # Methods: evidence and author follow-up
 
+## Full corpus deduplication and panel-specific exclusions, 6 November 2026
+
+The author-supplied full description is archived in
+`method-data/training-audit/deduplication-author-description.md`. Methods now separates
+full-InChIKey corpus splitting and exact-string deduplication from the later benchmark
+exclusions. Core285/PLINDER23 remove normalized matches plus specified fingerprint
+neighborhoods; ref1236 adds normalized matches only. All panels share the jointly
+filtered training source; ref analogues may also be removed by the other screens.
+Do not describe ref exact matches as literal SMILES equality or call these scaffold splits.
+
+The training appendix covers split precedence, whole-molecule holdouts, the nablaDFT
+conformation-test exception, exact-duplicate counts, the bounded similarity expansion,
+training-only final filtering and separate validation treatment. The tokenizer's original
+development subset still needs a residual-overlap audit. Results notes strong Qwen
+core recovery under neighborhood exclusion; Discussion does not attribute core/ref
+performance differences to filtering. The panels are not a controlled exclusion ablation.
+The ref source, older Qwen provenance and binned-export discrepancy TODOs remain.
+No benchmark scores, tables or figures changed; there are still eight SI tables and
+six SI figures, included in both PDF entry points.
+
 ## Verified CoordToken and Qwen training, 6 November 2026
 
 The active Methods now distinguishes the filtered, two-epoch CoordToken checkpoint

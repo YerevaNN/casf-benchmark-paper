@@ -1,0 +1,35 @@
+{
+  "source": "results-data/three-dataset-tables/table3.csv",
+  "source_sha256": "82943dccf2f0a18f427c466a4f9e1274518d108cef40de0eb2d8ebd464a05a71",
+  "note": "Descriptive comparison of different evaluation panels, not an exclusion-policy ablation.",
+  "panels": {
+    "core_chembl_count": {
+      "qwen_hit_075_percent": 79.7872340425532,
+      "qwen_best_rmsd": 0.5351115538790734,
+      "generated_methods": 10,
+      "qwen_hit_rank": 1,
+      "qwen_distance_rank": 1
+    },
+    "core_fixed": {
+      "qwen_hit_075_percent": 92.5531914893617,
+      "qwen_best_rmsd": 0.3330761165076857,
+      "generated_methods": 10,
+      "qwen_hit_rank": 1,
+      "qwen_distance_rank": 1
+    },
+    "ref_chembl_count": {
+      "qwen_hit_075_percent": 75.57471264367817,
+      "qwen_best_rmsd": 0.5510755544488305,
+      "generated_methods": 10,
+      "qwen_hit_rank": 1,
+      "qwen_distance_rank": 1
+    },
+    "ref_fixed": {
+      "qwen_hit_075_percent": 91.66666666666666,
+      "qwen_best_rmsd": 0.32758545050224835,
+      "generated_methods": 10,
+      "qwen_hit_rank": 1,
+      "qwen_distance_rank": 1
+    }
+  }
+}

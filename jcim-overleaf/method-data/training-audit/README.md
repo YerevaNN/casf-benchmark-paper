@@ -86,3 +86,40 @@ Historical PoseBusters membership is preserved; it was not recalculated here.
 
 Older working Markdown drafts and dated audit notes are historical. The active
 LaTeX files above govern this revision. `../../METHODS_NOTES.md` records this update.
+
+## Full deduplication account supplied 6 November 2026
+
+`deduplication-author-description.md` preserves the supplied description; its relative
+links refer to the source project, not this paper repository. The concise scientific
+account is incorporated into Methods, with corpus splitting, exact-string deduplication,
+filter expansion, validation scope and source-specific removal rates in the training
+appendix. No additional result table or figure was introduced.
+
+The release-status receipt, split policy, post-deduplication audit summary, validation
+filter receipt and shuffle summary are archived here. Summary extractions record the
+full-source hash and selected fields in `sources.json`. `qwen-validation-status.json`
+records the disabled validators in all four executed v2 configurations, with source
+hashes matching the existing resolved-configuration receipts. The tokenizer's input
+manifest still points to the original corpus validation file; the author's description
+of a separately cleaned validation export does not prove that tokenizer monitoring
+used it. Its overlap remains a TODO.
+
+**Interpretation:** core285 and the original PLINDER23 receive the normalized-match,
+similarity-to-expanded-query, and match-of-similar exclusions. Ref1236 receives an
+additional normalized-match exclusion only. This is one jointly filtered training
+population, not separate training runs for core and ref. Some ref analogues may also
+be caught by the core/PLINDER screen. “Exact” refers to normalized K1/K2 equality,
+not exact SMILES or the full stereochemical key used for corpus splits.
+
+The current Table 3 records Qwen's Hit@0.75 as 92.5532% on core and 91.6667% on ref
+at 1,000 candidates, highest among generated methods in both panels. Table 2 gives
+the same leading recovery rank at the ChEMBL-count target. Results now connects the
+strong core recovery with its documented neighborhood exclusions. Discussion explicitly
+avoids treating the core/ref difference as a causal comparison of exclusion policies:
+the evaluation molecules differ, and no otherwise-matched training ablation is available.
+External generators have not been shown to use these same exclusions.
+
+The document's local label “CASF-2016 REF” does not identify the original 4,838-ligand
+archive or establish its release. That source TODO remains. The supplied description
+also does not reconcile the binned/FSQ export count difference or establish the older
+step-64,000 checkpoint's lineage, so those TODOs remain.

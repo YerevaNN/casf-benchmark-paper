@@ -1,0 +1,67 @@
+{
+  "status": "identity_policy_confirmed",
+  "working_root": "/mnt/weka/fgeikyan/3D_big_data_owned",
+  "identity": "Full Standard InChIKey from sanitized decoded stored SMILES; preserve encoded stereo/isotopes; no extra salt, stereo-free or tautomer rules",
+  "on_identity_failure": "quarantine; never treat failure as a unique nonoverlapping molecule",
+  "preserve_multiple_conformers": true,
+  "group_a": {
+    "preserve_predefined_partitions": true,
+    "datasets": [
+      "BindingMoad",
+      "BindingNet-High",
+      "BindingNet-Low",
+      "BindingNet-Mid",
+      "CrossDocked2020",
+      "DAVIS-3D",
+      "HiQBind",
+      "Kinodata-3D",
+      "OMol25_bio_mols",
+      "Plinder",
+      "SAIR",
+      "SPINDR",
+      "chembl3d",
+      "geom"
+    ]
+  },
+  "group_b": {
+    "datasets_in_order": [
+      "KIBA-3D",
+      "OMol25_small_mols",
+      "pubchem3d",
+      "zinc"
+    ],
+    "test_target_fraction_of_input_rows": 0.005,
+    "validation_target_fraction_of_input_rows": 0.005,
+    "allocation_unit": "whole full-InChIKey groups",
+    "seed": 42,
+    "ordering": "explicit deterministic order; never unordered Python set iteration",
+    "new_holdout_candidates": "Prefer existing global test/validation key ownership; fill approximately 0.5% targets using unowned keys, without splitting conformer groups. Keys excluded from a target due to quota may not fall back into training."
+  },
+  "group_c": {
+    "dataset": "nablaDFT",
+    "test_files": {
+      "conformations": "grp_c/test/nablaDFT_conformations.csv",
+      "scaffolds": "grp_c/test/nablaDFT_scaffolds.csv",
+      "structures": "grp_c/test/nablaDFT_structures.csv"
+    },
+    "molecule_exclusion_references": [
+      "structures",
+      "scaffolds"
+    ],
+    "conformations_molecule_overlap_with_train": "allowed; do not use conformation-test identities as a molecular blacklist",
+    "validation_target_fraction_of_total_nabla_rows": 0.005,
+    "new_validation_allocation_unit": "whole full-InChIKey groups",
+    "nabla_validation_also_protects_other_training_datasets": true
+  },
+  "global_test_precedence": "Fixed Group A test + nabla structures/scaffolds + GEOM-revisited protected before selecting new Group B/C holdouts; apply protection to training and validation of every source",
+  "global_validation_precedence": "Every selected validation identity excluded from every training dataset",
+  "fixed_test_sets": "Keep separate; report identity overlap between test datasets rather than assigning test molecules to training",
+  "nabla_scaffold_wide_exclusion": false,
+  "exact_conformation_exposure": "report separately from molecule identity overlap; user-requested conformations exception must not be mistaken for a globally molecule-disjoint benchmark",
+  "known_quarantine_plan": "quarantine_resolution/current_quarantine.json",
+  "source_snapshot_limitation": "Surviving grouped inputs may already reflect historical exclusions; this is not a reconstruction of all pristine original source rows. ChEMBL uses later verified replacements with changed populations.",
+  "additional_reserved_validation_keys": "reserved_quarantine_reference_keys.json",
+  "nabla_scaffold_policy_note": "User explicitly chose full InChIKeys only; no Murcko/scaffold or stereo-free matching",
+  "historical_quarantine_plan": "repair_plan.json",
+  "source_backed_restorations": "quarantine_resolution/restoration.json"
+}

@@ -1,0 +1,17 @@
+{
+  "rows_scanned": 197171759,
+  "duplicate_text_groups": 2037,
+  "redundant_rows_global": 2037,
+  "hash_collision_groups": 0,
+  "within_split_redundant_rows": {
+    "test": 2037
+  },
+  "split_pair_shared_texts": {},
+  "category_pair_shared_texts": {
+    "13|59": 2037
+  },
+  "status": "complete_verified_exact_duplicate_audit",
+  "inputs_modified": false,
+  "equality": "exact enriched_text field equality; no canonicalization, rounding, or name comparison",
+  "all_hash_candidates_compared_as_full_strings": true
+}
