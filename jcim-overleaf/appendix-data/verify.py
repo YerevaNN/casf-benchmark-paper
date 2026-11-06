@@ -51,7 +51,7 @@ def expand(path):
         return expand(PAPER/(name if name.endswith('.tex') else name+'.tex'))
     return re.sub(r'\\input\{([^}]+)\}',include,text)
 si=expand(PAPER/'supporting-information.tex')
-expected_tables=['supporting-ensemble-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','energy-summary']
+expected_tables=['supporting-ensemble-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','energy-summary','selection-counts']
 tables=re.findall(r'\\label\{tab:([^}]+)\}',si)
 # Exact IDs are retained from the existing source files.
 assert tables==expected_tables,tables
@@ -68,11 +68,32 @@ assert expand(PAPER/'supporting-content.tex') in si
 for label in ['tab:'+x for x in tables]+['fig:'+x for x in figures]:
     assert main.count(r'\label{'+label+'}')==1,label
 for source in [main,si]:
-    for number in re.findall(r'(?:Supporting )?(?:Table|Figure)s?\s*~?\s*S(\d+)',source):
-        assert 1<=int(number)<=6,number
+    for kind,number in re.findall(r'(?:Supporting )?(Table|Figure)s?\s*~?\s*S(\d+)',source):
+        assert 1<=int(number)<=(7 if kind=='Table' else 6),(kind,number)
     for name in re.findall(r'\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}',source):
         assert (PAPER/name).is_file(),name
 print('Verified current source/artwork hashes, 20 paired recovery comparisons, retained counts, 242 PLINDER and 88 v2 validity records.')
-print('Current SI: six tables and six figures; no historical review gallery or removed tables included.')
+print('Current SI: seven tables and six figures; no historical review gallery or removed tables included.')
 print('SI table order:',tables)
 print('SI figure order:',figures)
+
+# Selection counts come from executed logs, not reconstructed exclusions.
+audit=PAPER/'method-data/selection-audit'
+for metadata in json.loads((audit/'sources.json').read_text()).values():
+    path=audit/metadata['archive']
+    assert hashlib.sha256(path.read_bytes()).hexdigest()==metadata['sha256']
+expected=[('casf_ligands_processed',285,4838),('casf_regen_failures',0,11),
+          ('excluded_no_smiles_match',189,3566),('excluded_missing_topology_sdf',1,12),
+          ('excluded_no_rotatable_bonds',1,13),('exact_matched_ligands',94,1236)]
+tex=(PAPER/'selection-appendix.tex').read_text()
+for key,core,ref in expected:
+    for cohort,value in [('core',core),('ref',ref)]:
+        log=(audit/f'{cohort}-matching-log.txt').read_text()
+        assert re.search(r'^'+key+'='+str(value)+r'$',log,re.M),(cohort,key)
+    assert f' & {core:,} & {ref:,} ' in tex,key
+assert 285-0-189-1-1==94
+assert 4838-11-3566-12-13==1236
+selection=json.loads((PAPER/'results-data/ref-panel/selection.json').read_text())
+assert selection['excluded_entries']==192 and selection['selected_entries']==1044
+assert ' & 0 & 192 ' in tex and ' & 94 & 1,044 ' in tex
+print('Verified selection table against archived execution logs and frozen ref selection.')

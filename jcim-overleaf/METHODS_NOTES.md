@@ -1,5 +1,17 @@
 # Methods: evidence and author follow-up
 
+## Verified filtering counts, 6 November 2026
+
+Methods and Appendix Table S7 now account for every core/ref input using the
+executed matching logs archived in `method-data/selection-audit/`.
+Core: 285 minus 189 unmatched, one topology failure, and one torsional
+eligibility failure leaves 94; all inputs parsed.
+Ref: 4,838 minus 11 parsing/preparation failures, 3,566 unmatched, 12 topology
+failures, and 13 torsional eligibility failures leaves 1,236. The frozen
+identity selection removes 192 additional entries to give 1,044.
+The ref archive source and upstream PLINDER cleaning remain visible TODOs.
+No evaluations were rerun and no result values changed. S1–S6 remain unchanged.
+
 ## Curated Supporting Information, 5 November 2026
 
 The 18-figure review gallery is removed from the compiled main manuscript.

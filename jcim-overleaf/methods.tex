@@ -20,17 +20,31 @@ We compare generated and existing conformer ensembles using CASF-2016,\cite{su20
 protein--ligand crystal complexes. The bound ligand geometries provide experimental references for
 assessing whether a protein-independent ensemble includes an observed conformation.
 
-We match CASF ligands to ChEMBL3D by molecular connectivity and stereochemistry, retaining only
-conformers of the matching stereoisomer. Molecules must have a usable reference structure, a
-corresponding ChEMBL3D topology, and at least one bond eligible for torsional sampling. Selection
-is based on molecular identity rather than similarity to the experimental coordinates. These
-criteria yield 94 core complexes representing 94 ChEMBL parent compounds. Applying the same
-procedure to the larger reference collection, we retain one crystal per stereochemical ligand
-identity. When an identity occurs in multiple complexes, a fixed seeded ranking selects one
-crystal independently of model outputs and recovery scores. This yields the ref panel of
-1,044 crystal complexes with distinct stereochemical ligand identities, representing 1,042
-ChEMBL parent compounds. The collections share 17 parent compounds but no complex identifiers. Both collections
-are included in the main tables and the diversity--proximity, energy, and sampling figures.
+We match ligands to ChEMBL3D using canonical heavy-atom isomeric SMILES regenerated
+from the supplied MOL2 structures. Matching topology records and stored conformers are
+checked against the selected stereoisomer using canonical isomeric SMILES and InChI
+stereochemical layers, with stereochemistry assigned from their coordinates. We retain
+only matching conformers. Molecules must have a readable reference structure, a usable
+matching ChEMBL3D topology, and at least one bond eligible for torsional sampling.
+Selection does not use similarity to the experimental coordinates or model performance.
+
+All 285 core ligands were parsed successfully. Exact matching excluded 189 ligands,
+the topology requirement excluded one, and torsional eligibility excluded one, leaving
+94 core complexes representing 94 ChEMBL parent compounds. The supplied ref archive
+contains 4,838 ligand structures. The same procedure excluded 11 parsing/preparation
+failures, 3,566 structures without an exact SMILES match, 12 without a usable matching
+topology, and 13 without an eligible torsional starting topology, leaving 1,236 complexes.
+Supporting Table~\ref{tab:selection-counts} records these sequential exclusions.
+
+For ref, we then retain one crystal per canonical heavy-atom isomeric SMILES identity.
+A fixed seeded ranking selects one crystal independently of model outputs and recovery
+scores, removing 192 repeated-identity entries. This yields 1,044 crystal complexes
+representing 1,042 ChEMBL parent compounds. The collections share 17 parent compounds but
+no complex identifiers. Both collections are included in the main tables and the
+diversity--proximity, energy, and sampling figures.
+
+\textbf{[TODO: identify the original source, release, and preparation of the supplied ref
+archive. Its local name does not establish that it belongs to the CASF-2016 release.]}
 
 For each molecule, the stored ChEMBL3D ensemble establishes how much of the experimental geometry is
 already represented in an existing computed dataset. This comparison distinguishes coverage already
@@ -66,11 +80,9 @@ of original records in their duplicate clusters. This reduces repeated-coordinat
 does not define biologically distinct conformational states. Supporting Tables S3--S4 describe
 the cleaned coordinate collection; original selection frequencies are archived separately.
 
-% AUTHOR: Cleaned SDF source paths, record identities, and source hashes are archived.
-% Confirm the source release and construction of the larger CASF reference collection.
-% The upstream extraction/cleaning script, protonation and tautomer rules, and alternate-location
-% handling still require documentation. The original selection release is 2024-06/v2;
-% the cleaned delivery has not independently supplied its upstream release manifest.
+\textbf{[TODO: obtain the upstream PLINDER extraction and cleaning script and its release
+manifest; document protonation, tautomer, and alternate-location handling. The verified
+selection and subsequent stereochemical exclusions do not establish these upstream steps.]}
 
 The evaluation panels are summarized in Supporting Figure S1.
 

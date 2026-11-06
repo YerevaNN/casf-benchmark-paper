@@ -1,7 +1,7 @@
 # Selected Supporting Information
 
 The former 18-figure review gallery is no longer included in the manuscript.
-The current SI contains six tables and six figures, all linked to the main text.
+The current SI contains seven tables and six figures, all linked to the main text.
 It is appended to the main review PDF and also available as a standalone document;
 both entry points include `supporting-content.tex`.
 Existing measurements are reorganized and summarized here; no conformers were
@@ -37,6 +37,8 @@ Table S1 now gives retained counts for both CASF panels and both candidate
 targets; recovery percentages already appear in main Table 3. Tables S2–S4
 retain PLINDER selection criteria, statistics, and identities. Table S5 retains
 generator provenance and S6 retains the common-protocol energy summaries.
+Table S7 adds the verified core/ref selection counts; its source logs are in
+`method-data/selection-audit/`. Existing table and figure numbering is unchanged.
 
 Former S1 (core minimum/median RMSD), S3 (size-stratified recovery), and S4
 (PLINDER matching means) are excluded: the first adds an unused summary, and

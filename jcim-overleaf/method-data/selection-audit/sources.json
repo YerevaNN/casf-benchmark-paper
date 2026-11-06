@@ -1,0 +1,10 @@
+{
+  "/mnt/weka/mbedrosian/code/casf-benchmark/outputs/slurm_jobs/stereo_identity_rerun/rematch_casf-stereo-core_266754.out": {
+    "archive": "core-matching-log.txt",
+    "sha256": "ca5a4537498010c8632b10d78335ebf58e975db742e36139d6d28d9075f0e7bc"
+  },
+  "/mnt/weka/mbedrosian/code/casf-benchmark/outputs/slurm_jobs/stereo_identity_rerun/rematch_casf-stereo-ref_266755.out": {
+    "archive": "ref-matching-log.txt",
+    "sha256": "34e943945f1744967d1b3c9cbf644b1a71669a128ef009b41c7a653c2a7991e1"
+  }
+}

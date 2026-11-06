@@ -4,8 +4,8 @@
 
 The curated appendix is included at the end of the main PDF again. Both
 `acs-template.tex` and `supporting-information.tex` use `supporting-content.tex`,
-so the six supporting tables and six supporting figures stay identical and
-numbered S1–S6 in either document. Keep this appendix visible in the main review
+so the seven supporting tables (S1–S7) and six supporting figures (S1–S6) stay
+identical in either document. Keep this appendix visible in the main review
 PDF; only the obsolete 18-candidate gallery is excluded. The separate SI entry
 point remains available for eventual submission.
 
@@ -13,7 +13,7 @@ point remains available for eventual submission.
 ## Curated Supporting Information, 5 November 2026
 
 The 18-figure review gallery is removed from the compiled main manuscript.
-The current separate SI has Tables S1–S6 and Figures S1–S6. S1/S2 figures remain
+The current separate SI has Tables S1–S7 and Figures S1–S6. S1/S2 figures remain
 the dataset diagram and approved Qwen scatter. New S3/S4 refresh former C02/C07
 for core94/ref1044; S5/S6 refresh C11/C14 for all Table 4 methods, independent
 torsion pools, and the four-v2 validity comparison. Other candidates remain
@@ -141,7 +141,7 @@ Table 3 are unchanged. See [PLINDER-22 data and reproduction](plinder22-data/REA
 Earlier figure scripts and provenance are retained as history.
 
 The ACS template now includes a working abstract, Introduction, Methods, Results,
-and Discussion, with four main tables, seven main figures, six supporting tables, and six supporting figures.
+and Discussion, with four main tables, seven main figures, seven supporting tables, and six supporting figures.
 The separate sampling display is Figure B1. The release checklist (former Table 5) remains removed.
 The current combined PLINDER figure is rendered from `plinder22-data/`;
 `plinder-threshold-data/` preserves the previous 23-molecule threshold figure.
@@ -154,7 +154,7 @@ retains the dataset diagram and Qwen scatter, plus four selected analyses refres
 from core94, ref1044, PLINDER22, the independent torsion runs, and current Qwen
 checkpoints. See [appendix-data/README.md](appendix-data/README.md) for selection,
 source records, and reproduction. Duplicate supporting tables were removed;
-the SI now contains Tables S1–S6 and Figures S1–S6.
+the SI now contains Tables S1–S7 and Figures S1–S6.
 
 
 ## Files to edit
@@ -167,7 +167,7 @@ the SI now contains Tables S1–S6 and Figures S1–S6.
 - `tables/generation-methods.tex`: generator descriptions (Supporting Table S5).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
   `tables/druglike.tex`: Tables 1–4. The unused `tables/release-status.tex` is historical.
-- `supporting-information.tex`: current separate SI document with six tables and six figures; see `appendix-data/README.md` for the content map.
+- `supporting-information.tex`: current separate SI document with seven tables and six figures; see `appendix-data/README.md` for the content map.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
 - `plinder23-appendix.tex`: selection account and Supporting Tables S2--S4.

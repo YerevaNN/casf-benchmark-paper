@@ -1,0 +1,50 @@
+\section*{Selection of the core and ref evaluation panels}
+
+Table~\ref{tab:selection-counts} accounts for the input structures in the recorded
+matching runs. Exclusions are sequential and mutually exclusive; a structure rejected
+at an earlier stage is not counted again. These are panel-selection counts, before
+generation or PoseBusters filtering of conformer ensembles.
+
+\begin{table}[htbp]
+\centering
+\caption{Structure selection for the core and ref panels. Exclusion rows give the
+number removed at that step; retained rows give the number remaining.}
+\label{tab:selection-counts}
+\begin{tabular}{@{}p{0.70\linewidth}rr@{}}
+\toprule
+Selection step & Core & Ref \\
+\midrule
+Input ligand structures & 285 & 4,838 \\
+Excluded: parsing or preparation failure & 0 & 11 \\
+Excluded: no exact ChEMBL3D SMILES match & 189 & 3,566 \\
+Excluded: no usable matching topology & 1 & 12 \\
+Excluded: no eligible torsional starting topology & 1 & 13 \\
+\midrule
+Retained matched complexes & 94 & 1,236 \\
+Removed by selecting one crystal per ligand identity & 0 & 192 \\
+\midrule
+Final evaluation complexes & 94 & 1,044 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The matching procedure reads the supplied MOL2 structures with RDKit and generates
+canonical heavy-atom isomeric SMILES. ChEMBL3D index matches must also have a readable
+topology record with matching stereochemistry. Identity checks use canonical isomeric
+SMILES and the stereochemical layers of InChI, assigning stereochemistry from the
+topology coordinates. Other stereoisomers sharing a ChEMBL parent identifier are not
+included. Torsional eligibility is checked on the prepared matching topology. The
+stored conformer count is restricted to the selected stereoisomer.
+
+Within the 1,236 matched ref complexes, 114 ligand identities occur in more than one
+crystal and account for 306 entries. Selecting one crystal for each of these identities
+removes 192 entries. The frozen selection ranks candidates by the SHA-256 digest of a
+fixed seed, the canonical heavy-atom isomeric SMILES, and the crystal identifier, with
+the crystal identifier breaking ties. The seed is
+\texttt{casf-ref-dedup-v1-20261030}. No generated structures or matching scores enter
+this selection. The complete candidate list, selected crystal identifiers, and ranking
+metadata are retained in the selection manifest.
+
+\textbf{[TODO: establish the source, release, and preparation of the supplied ref archive,
+including any exclusions before its 4,838 input structures. The local archive name is
+not evidence of a CASF-2016 release designation.]}

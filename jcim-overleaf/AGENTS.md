@@ -4,11 +4,18 @@
 
 The curated appendix is included at the end of the main PDF again. Both
 `acs-template.tex` and `supporting-information.tex` use `supporting-content.tex`,
-so the six supporting tables and six supporting figures stay identical and
-numbered S1–S6 in either document. Keep this appendix visible in the main review
+so the seven supporting tables (S1–S7) and six supporting figures (S1–S6) stay
+identical in either document. Keep this appendix visible in the main review
 PDF; only the obsolete 18-candidate gallery is excluded. The separate SI entry
 point remains available for eventual submission.
 
+
+## Verified filtering account, 6 November 2026
+
+Methods and Appendix Table S7 now give exact core/ref exclusion counts from
+archived matching logs in `method-data/selection-audit/`. Existing S1–S6 numbers
+are unchanged. The original ref archive source and upstream PLINDER cleaning
+remain visible TODOs; do not infer either from local directory names.
 
 ## Curated Supporting Information, 5 November 2026
 
