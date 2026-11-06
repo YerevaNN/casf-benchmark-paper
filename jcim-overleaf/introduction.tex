@@ -73,7 +73,9 @@ ChEMBL3D counts and at a larger target of 1,000 candidates per molecule.
 These experiments distinguish recovery of one bound conformation from coverage of several
 observations of the same molecule. We also measure sample precision, the proportion of generated
 conformers close to at least one experimental reference, and examine how recovery relates to
-geometric diversity, energy, molecular size, and flexibility. Recovery is measured after aligning
+geometric diversity, energy, molecular size, and flexibility. Within Qwen, we compare two model
+sizes and two coordinate representations to examine how these choices relate to experimental
+recovery and structural validity. Recovery is measured after aligning
 ligand structures, so it describes internal conformation rather than placement within a protein.
 Experimental references provide an observed part of conformational space; a generated structure that
 does not match them is not necessarily irrelevant to binding.

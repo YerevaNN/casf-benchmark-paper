@@ -1,5 +1,14 @@
 # Manuscript authoring
 
+## Dataset release is part of the intended paper
+
+The author plans to construct and publicly release the conformer dataset with this
+paper. Preserve that intended contribution in the Introduction and Discussion; do
+not recast it as a separate future study. Dataset construction and release results
+must be added when available, without describing unfinished work as completed.
+The current benchmark results remain unchanged.
+
+
 ## Present only the evaluated study in manuscript prose
 
 The author requests no history of prior runs, replaced datasets, or revision states

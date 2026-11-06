@@ -44,16 +44,15 @@ The concentration of some PLINDER differences in particular molecules also limit
 an average improvement can be interpreted. These findings concern the evaluated checkpoints;
 replicated training runs would be needed to establish their stability.
 
-The exclusion policy gives the panels different scopes. For the four Qwen configurations in the size and representation comparison, core and
-PLINDER assess recovery after removing benchmark matches and their specified fingerprint
-neighborhoods from the training corpus. Ref excludes normalized identity matches
-without systematically excluding related molecules. Qwen's leading CASF recovery is
-observed under both policies, including the broader core exclusions. However, the
-similar recovery rates on core and ref do not measure the effect of neighborhood
-removal: the panels differ in composition, size, and experimental references. Such an
-effect would require comparing models trained with different exclusion policies on
-the same evaluation molecules. These Qwen-specific exclusions also do not establish
-matched training separation for the external pretrained generators.
+The four Qwen configurations share a training exclusion policy: normalized molecular
+matches and specified similarity neighborhoods are removed around core and PLINDER
+ligands, while ref adds normalized identity exclusions only. Ref analogues can still
+be removed through the core or PLINDER exclusions. Under this shared policy, the
+primary Qwen model has the highest recovery among generators at 0.75 \AA{} on both
+CASF panels. Similar recovery rates across these panels do not measure the effect of
+neighborhood removal, because the evaluation molecules differ. Isolating that effect
+would require varying the training exclusions while holding the evaluation panel fixed.
+The external generators have not been shown to use equivalent training exclusions.
 
 Several features of the evaluation limit generalization. CASF is restricted to the intersection
 with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
