@@ -195,7 +195,7 @@ values=pl.pivot(index='smiles',columns='label',values='pb_pass_rate').loc[names.
 im=heatmap(axes[0],values,short_labels);axes[0].set_title('A   Generators in Table 4',loc='left',pad=12)
 values=v2.pivot(index='smiles',columns=qkey,values='pb_pass_rate').loc[names.index,qorder].to_numpy()*100
 heatmap(axes[1],values,['0.6B\nbinned','1.7B\nbinned','0.6B\nFSQ','1.7B\nFSQ'],False)
-axes[1].set_title('B   Four v2 Qwen models',loc='left',pad=12)
+axes[1].set_title('B   Four Qwen models',loc='left',pad=12)
 cax=fig.add_axes([.43,.045,.32,.015]);fig.colorbar(im,cax=cax,orientation='horizontal',label='PoseBusters pass (%)')
 save(fig,'plinder-validity')
 

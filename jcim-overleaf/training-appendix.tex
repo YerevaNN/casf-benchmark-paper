@@ -29,8 +29,8 @@ rounding, coordinate alignment, or comparison of record names. Hash candidates w
 confirmed by full-string comparison. Within each merged split, the first occurrence
 was retained and removed records were linked to it through a provenance mapping.
 This removed 1,734,217 training, 7,102 validation, and 7,557 test records, leaving
-189,792,028, 1,802,906, and 5,553,421, respectively. The final audit found no repeated
-strings within these merged files or exact strings shared across splits. The separate
+189,792,028, 1,802,906, and 5,553,421, respectively. No identical
+strings occur within the merged files or across their splits. The separate
 GEOM-Revisited file contains 23,404 records, of which 2,037 also occur in GEOM test;
 this overlap is confined to test resources. Exact-string deduplication does not remove
 all geometrically equivalent conformers or near-duplicates. Corpus split audits and
@@ -66,8 +66,8 @@ no separate search for similar molecules around ref. Some ref analogues can neve
 be excluded through their relationship to a core or PLINDER ligand. The same filtered
 training population serves all three evaluation panels.
 
-The executed report assigns 2,201,663 removed records to the core-related category,
-163,118 additional records to PLINDER, and 29,146 additional records to ref. These
+Filtering removes 2,201,663 core-related records, 163,118 additional PLINDER-related
+records, and 29,146 additional ref-related records. These
 categories are mutually exclusive in that order, leaving 187,398,101 records.
 For core, 197,631 records matched benchmark ligands directly under the normalized
 rule, 1,944,085 were removed at the similarity stage, 59,940 matched those similar
@@ -122,7 +122,7 @@ maintains the peak rate until 90\% of the epoch, and then decays to zero by a co
 schedule. The second epoch resumes the model and optimizer state, restores the peak
 rate, and decays over its final 20\%. Each epoch contains 366,012 updates. The initial
 seed is 123 and the second-epoch shuffle seed is 124. Computation uses bfloat16 with
-FP32 coordinate and quantization operations; the recorded environment is PyTorch
+FP32 coordinate and quantization operations. Training uses PyTorch
 2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
 Full checkpoint and data hashes are archived with the training records.
 
@@ -144,7 +144,7 @@ two accumulation steps, and eight data-parallel workers. AdamW uses learning rat
 $8\times10^{-4}$, $\beta_1=0.9$, $\beta_2=0.95$, $\epsilon=10^{-8}$, and weight decay
 0.1, with gradient clipping at norm 1.0. The rate warms up for 500 updates, stays constant, and decays linearly to zero
 over the last 6,606 updates for binned coordinates or 4,106 updates for FSQ.
-The data seed is 2025. Precision audits record bfloat16 model computation and FP32
+The data seed is 2025. Computation uses bfloat16 model operations and FP32
 master weights, optimizer states, and gradient reduction. All four evaluated
 checkpoints complete one epoch without subsequent task-specific fine-tuning.
 
@@ -152,8 +152,7 @@ checkpoints complete one epoch without subsequent task-specific fine-tuning.
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
-\caption{Qwen training exposure for the size and representation comparison. Counts are taken from the final training
-records for each run. Input tokens exclude padding and include record separators;
+\caption{Qwen training exposure for the size and representation comparison. Input tokens exclude padding and include record separators;
 supervised targets exclude masked positions. Counts describe records and tokens,
 not distinct molecules.}
 \label{tab:qwen-training}
@@ -169,7 +168,7 @@ Model & Records & Updates & Input tokens & Supervised targets \\
 \end{tabular}
 \end{table}
 
-Saved generation metadata specify temperature 1.0, top-$p$ 1.0, and 1,000 requested
+Generation uses temperature 1.0, top-$p$ 1.0, and 1,000 requested
 samples per molecule for all four models. Core and PLINDER use seed 42; ref uses
 four shards of 261 molecules with seeds 42--45. The inspected generation routine
 limits continuations to 1,000 new tokens and rejects incomplete conformer blocks,

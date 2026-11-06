@@ -1,5 +1,18 @@
 # Methods: evidence and author follow-up
 
+## Full manuscript presentation review
+
+Reviewed both PDF entry points, every included section/table/caption, and the text in
+all 14 included figures via their SVG artwork. Removed the remaining internal `v2`
+figure heading and audit-report phrasing; kept only study procedures and current
+reproducibility qualifications. Replaced visible ACS sample title/authors/contact and
+acknowledgement instructions with explicit author TODOs; keyword/abbreviation template
+instructions no longer render. Figure S6 changes only its panel title. Source data,
+result values, table/figure inventory and numbering are unchanged. Literature context,
+selection counts, source release IDs, seeds and evaluated checkpoint distinctions are
+necessary study information and remain. Internal archives are not manuscript content.
+
+
 ## Present only the evaluated study in manuscript prose
 
 The author requests no history of prior runs, replaced datasets, or revision states
