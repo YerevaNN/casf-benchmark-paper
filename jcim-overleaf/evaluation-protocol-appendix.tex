@@ -71,10 +71,10 @@ topology before validity checking. Greedy cluster representatives remain fixed i
 saved conformer order.
 
 \textbf{[TODO: archive the executed RDKit and PoseBusters versions and configurations
-for each historical evaluation, including the energy-check random seed and any
+for each evaluation, including the energy-check random seed and any
 runtime overrides. Count index-mapping fallbacks and failed pairwise alignments,
 and report the symmetry-search limits and rotatable-bond descriptor option for
-those versions. Do not infer these from the currently installed environment.]}
+those versions.]}
 
 \subsection*{Common-hydrogen energy calculation}
 
@@ -84,7 +84,7 @@ energy is calculated without optimizing either hydrogen or heavy-atom positions.
 clustering and recovery and avoids differences arising from whether a generator supplied
 hydrogen coordinates. Saved PoseBusters membership is preserved in both panels.
 Energies are reported in kcal mol$^{-1}$, with the nonbonded threshold set to 100
-and interfragment interactions ignored. Previously stored energy values are not reused. Calculation settings,
+and interfragment interactions ignored. Calculation settings,
 coordinate-preservation checks, and source records are archived with the energy results.
 
 For each molecule and method, we calculate the mean energy and population standard deviation
@@ -157,4 +157,4 @@ Energy-pool counts and calculation completeness are given in Supporting Table S6
 \textbf{[TODO: confirm the executed seed for selecting ChEMBL-count subsets and
 archive the classical generators' eligible-bond definition, severe-clash criterion,
 retry limits, and chirality-preserving minimization settings. These records must
-identify the evaluated runs, rather than only current implementation defaults.]}
+identify the evaluated runs.]}

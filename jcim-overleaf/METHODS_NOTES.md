@@ -1,5 +1,17 @@
 # Methods: evidence and author follow-up
 
+## Present only the evaluated study in manuscript prose
+
+The author requests no history of prior runs, replaced datasets, or revision states
+in the main text or appendix. Describe the evaluated panels and generation/training
+procedures directly. Keep actual filtering steps/counts, checkpoint identifiers needed
+to distinguish results, and unresolved reproducibility TODOs. Do not describe a model
+still present in the results as an "older" run or discuss unused validation exports,
+alternative ATC selection, superseded energies, or other checkpoints' results.
+Internal evidence archives remain available for verification; their chronology does
+not belong in rendered manuscript prose. No result rows or figures were removed.
+
+
 ## Main Methods shortened; procedures retained in appendix, 6 November 2026
 
 At the author's request, main Methods is reduced from approximately 3,600 to 1,600

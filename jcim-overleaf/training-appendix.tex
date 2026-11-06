@@ -1,23 +1,21 @@
-\section*{CoordToken and Qwen training records}
+\section*{CoordToken and Qwen training}
 
 \subsection*{Corpus splitting and exact deduplication}
 
-The source release was assembled before the CASF/PLINDER exclusions. A common parser
-and RDKit 2025.09.6 validated molecular strings, finite coordinate triplets, and
+A common parser and RDKit 2025.09.6 validated molecular strings, finite coordinate triplets, and
 agreement between atom and coordinate counts. Molecular identity for split assignment
 was the full Standard InChIKey of the sanitized decoded SMILES, retaining encoded
 stereochemistry and isotopes. No additional salt stripping, stereochemistry removal,
 or scaffold matching was applied. Unresolved identity failures were quarantined,
-rather than treated as new molecules; nine records remained in quarantine. The
-prepared inputs include source-checked ChEMBL3D replacements and historically filtered
-collections, so their counts do not reconstruct every original source release.
+rather than treated as new molecules; nine records were excluded. Counts describe
+the prepared source collections used in this study.
 
 For sources with predefined splits, test identities took precedence over validation,
 and validation over training. Lower-priority rows matching protected identities were
 excluded. KIBA-3D, OMol25-small, PubChem3D, and ZINC were then assigned splits in that
 order, targeting 0.5\% of each input pool's rows for each of validation and test.
 Selection used whole InChIKey groups ranked deterministically with seed 42, so quotas
-could be exceeded. Previously assigned holdout identities were respected; remaining
+could be exceeded. Assigned holdout identities were respected; remaining
 quotas were filled only with unassigned identities. Holdout candidates omitted because
 of a quota were not returned to training. For nablaDFT, validation targeted 0.5\% of its full collection, taking existing
 validation matches first and filling the remainder from identities absent from the
@@ -54,14 +52,14 @@ protonation-only mode and converted to canonical tautomers. Two keys are compare
 the connectivity block of the normalized InChIKey and a stereochemistry-independent
 \texttt{HetAtomProtomer} hash. A match under either key is sufficient. The original
 coordinates, charges, and stereochemistry of retained records are not rewritten.
-For the 285 CASF core and original 23 PLINDER queries, the ligands and their matching
+For the 285 CASF core and 23 shortlisted PLINDER queries, the ligands and their matching
 molecules found in training and validation form an expanded query set. Molecules with
 ECFP4 Tanimoto similarity strictly greater than 0.4 to this set are identified using 2,048-bit radius-2 Morgan fingerprints
 without chirality, calculated on the original molecular forms. Their normalized
 identity matches are also excluded, along with the original full InChIKeys of the
 similarity hits, so that normalization cannot return a flagged molecule to training.
-Previously identified exclusions from the plain-identity and tautomer-based screens
-are retained. This procedure extends
+The exclusion set also includes matches from plain-identity and canonical-tautomer
+screens. This procedure extends
 beyond exact stereoisomer matching and does not apply a recursive similarity expansion.
 For the 1,236 ref ligands, only the normalized identity exclusion is added: there is
 no separate search for similar molecules around ref. Some ref analogues can nevertheless
@@ -73,42 +71,33 @@ The executed report assigns 2,201,663 removed records to the core-related catego
 categories are mutually exclusive in that order, leaving 187,398,101 records.
 For core, 197,631 records matched benchmark ligands directly under the normalized
 rule, 1,944,085 were removed at the similarity stage, 59,940 matched those similar
-molecules, and seven were retained as exclusions from earlier screens. Expanding the
-queries to matching molecular variants identified 539,530 similarity-stage training
-records beyond those found from the original ligands alone. Thus, most core-related
-removals extend beyond direct matches. These stages sum to the core-related
-removal category, before the separate ref exclusion.
+molecules, and seven were excluded only by the plain-identity and tautomer screens.
+These mutually exclusive stages sum to the core-related removal category.
 
 The overall removal fraction masks different effects on the source composition:
 25.99\% of Binding MOAD and 22.25\% of PLINDER records were excluded, compared with
 0.97\% of PubChem3D and 0.25\% of ZINC. Retained rows were shuffled with seed
 20261012 without changing their molecular strings or coordinates.
 
-The tokenizer input manifest and FSQ serialization manifest identify this retained
-collection. The binned export is traced to the same filtering project but contains
-183,835,937 records. The difference is retained explicitly in the training comparison.
+The tokenizer and FSQ training export use 187,398,101 records; the binned export
+contains 183,835,937 records. Table~\ref{tab:qwen-training} reports the exposure for
+each configuration.
 
-The final normalized-key rule was applied to training only. A separate validation
-export used the earlier connectivity-block rule, retaining 1,779,945 of 1,802,906
-records after 20,910 core-related and 2,051 PLINDER-only exclusions. Corpus test files
-were not CASF/PLINDER-filtered. Similarity removal sets were constructed using hits
-from both training and validation. The evaluated v2 Qwen runs have validation disabled
-in their resolved configurations. CoordToken monitoring instead uses a fixed subset
-of the original corpus validation collection, as recorded in its input manifest;
-the benchmark overlap of this monitoring subset remains to be audited separately
-from the cleaned validation export.
+The benchmark exclusions apply to training. Similarity removal sets include hits
+from both training and validation; corpus test files are not benchmark-filtered.
+Validation is disabled for the four size/representation Qwen configurations.
+CoordToken monitoring uses a fixed subset of the corpus validation collection;
+benchmark overlap in this subset remains to be audited.
 
 The benchmark filter recomputes identity after removing hydrogens and assigning
-stereochemistry, whereas the corpus split parser uses the stored decoded molecule.
-The resulting full keys differ on 1,812 training and nine validation records.
-Benchmark filtering uses the recomputed keys. The supplied audit records zero decode
-failures and zero missing keys in this filter.
+stereochemistry. Corpus split assignment uses the stored decoded molecule.
 
 \textbf{[TODO: reconcile the 3,562,164-record difference between the binned and FSQ
 exports, including conversion exclusions; verify source release identifiers and
 redistribution terms. Complete a residual-overlap report for the final core94,
 ref1044, and PLINDER22 identities against the training exports and tokenizer
-development data. Document the older step-64,000 model separately.]}
+development data. Document training and exclusions for the Qwen 0.6B CASF-dedup
+checkpoint at step 64,000.]}
 
 \subsection*{Geometry representation and tokenizer training}
 
@@ -123,10 +112,8 @@ code. The decoder receives these codes and SMILES identities and predicts Cartes
 coordinates. Training minimizes coordinate mean squared error over atom positions,
 masking non-atom tokens and padding.
 
-The benchmark uses the separate filtered release dated 20 October 2026, whose
-checkpoint SHA-256 begins \texttt{37e5aa88c6e3de1d}. It is not the full-corpus model
-used for the headline reconstruction results in the CoordToken paper. Both tokenizer
-epochs use the same 187,398,101-record training manifest. Training begins from random
+The tokenizer is trained for two epochs on the same 187,398,101 filtered conformer
+records. Its checkpoint SHA-256 begins \texttt{37e5aa88c6e3de1d}. Training begins from random
 initialization and uses eight H100 GPUs, global batch 512, AdamW with peak learning
 rate $5\times10^{-5}$, $\beta_1=0.9$, $\beta_2=0.999$, dropout 0.05, and gradient
 clipping at norm 0.1. Weight decay is 0.01 for matrix parameters and zero for biases
@@ -141,7 +128,7 @@ Full checkpoint and data hashes are archived with the training records.
 
 \subsection*{Language-model training and generation}
 
-The v2 models initialize from Qwen3-0.6B-Base or Qwen3-1.7B-Base.\cite{yang2025qwen3}
+The four size/representation configurations initialize from Qwen3-0.6B-Base or Qwen3-1.7B-Base.\cite{yang2025qwen3}
 Molecular records pair a SMILES prompt with a coordinate-enriched SMILES sequence.
 Binned records place three coordinate symbols and a delimiter after each atom,
 using 256 interior bins over $-12$ to $12$ \AA{} and lower/upper overflow symbols.
@@ -159,13 +146,13 @@ $8\times10^{-4}$, $\beta_1=0.9$, $\beta_2=0.95$, $\epsilon=10^{-8}$, and weight 
 over the last 6,606 updates for binned coordinates or 4,106 updates for FSQ.
 The data seed is 2025. Precision audits record bfloat16 model computation and FP32
 master weights, optimizer states, and gradient reduction. All four evaluated
-checkpoints complete one epoch; they are not subsequent GEOM fine-tuning checkpoints.
+checkpoints complete one epoch without subsequent task-specific fine-tuning.
 
 \begin{table}[htbp]
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
-\caption{Completed v2 Qwen training exposure. Counts are taken from the final training
+\caption{Qwen training exposure for the size and representation comparison. Counts are taken from the final training
 records for each run. Input tokens exclude padding and include record separators;
 supervised targets exclude masked positions. Counts describe records and tokens,
 not distinct molecules.}
@@ -194,7 +181,7 @@ are recorded separately from subsequent PoseBusters failures.
 each run, including inherited top-$k$ and stopping settings, and confirm the
 1,000-token limit against the executed source revision. The saved metadata establish
 temperature, top-$p$, sample count, and seeds, but do not record every library default.
-Add the older Qwen model and external generators' executed settings and checkpoint
+Add the Qwen 0.6B CASF-dedup model and external generators' executed settings and checkpoint
 hashes; adapter defaults in Table S5 are not a substitute for these records.]}
 
 \textbf{[TODO: confirm the final public bibliographic record for the supplied CoordToken
@@ -203,15 +190,15 @@ Qwen checkpoints.]}
 
 \subsection*{Evaluated checkpoints and comparison scope}
 
-The primary generator is the v2 Qwen 1.7B FSQ checkpoint at step 41,054. The size and
+The primary generator is the Qwen 1.7B FSQ checkpoint at step 41,054. The size and
 representation comparison uses the two binned checkpoints at step 66,057 and the two
 FSQ checkpoints at step 41,054. Within each representation, the two model sizes share
 the training export and one-epoch schedule. No subsequent task-specific fine-tuning
 is applied. Binned and FSQ exports differ in record count and tokens per record;
 training exposure and computational cost are not matched (Table~\ref{tab:qwen-training}).
 
-The older 0.6B CASF-dedup PM12 binned model at step 64,000 is included in the main
-PLINDER comparison but excluded from the four-v2 analysis. Its training and exclusion
-history cannot be established from its name and is not covered by the v2 records.
-All configurations use the same cleaned PLINDER references. External pretrained models
-are evaluated as supplied; Table S5 summarizes their reported training resources.
+The Qwen 0.6B CASF-dedup PM12 binned checkpoint at step 64,000 appears in the main
+PLINDER comparison. It is distinct from the step-66,057 binned checkpoint used in
+the size and representation comparison. Its training and exclusion settings remain
+to be documented. All configurations use the same PLINDER references. Table S5
+summarizes the external pretrained models and their reported training resources.

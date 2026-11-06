@@ -15,47 +15,42 @@ count as the secondary ordering. PDB count takes priority because one multimeric
 structure can contribute many systems. Manual review selected recognizable drugs and
 medicinal-chemistry-like protein ligands, excluding common crystallization additives,
 metabolites, cofactors, and other compounds outside the intended panel. These were
-judgment-based categories rather than executable exclusion rules. The original selection
-contained 23 molecules, including bortezomib; the evaluated cleaned set excludes bortezomib
-because of covalent annotations.
+judgment-based categories rather than executable exclusion rules. Of 23 shortlisted
+molecules, bortezomib was excluded because of covalent annotations, yielding the
+22-molecule evaluation panel.
 
 The panel is not a random sample or simply the most frequent PLINDER ligands. Exact
 reproduction uses the archived \texttt{druglike\_curated\_shortlist.tsv}, which records
-all 23 original identities, SMILES, descriptors, and selection frequencies. These
-frequencies were checked against the grouped source table; the current 22 identities
-and SMILES match this shortlist after removal of bortezomib. A later screen using
-DrugBank-derived ATC annotations did not define this panel, and an ATC annotation was
-not an inclusion requirement. Training exclusions are a separate operation from
-panel construction.
+the shortlisted identities, SMILES, descriptors, and selection frequencies. The
+evaluated identities are listed in Table S4. Training exclusions use all 23
+shortlisted identities, including bortezomib.
 
-The supplied cleaned structures were deduplicated at 0.05~\AA{} symmetry-aware RMSD and
-aligned with a fixed anchor atom triplet per molecule. The delivered 22-molecule collection
-contained 1,070 representatives. Inspection of stereochemistry from the coordinates identified
-two inverted chloramphenicol records from PDB 2uxp and one staurosporine epimer from PDB 2oic.
-Removing those three records leaves \textbf{1,067 references}, with \textbf{8--117 per molecule}
-and a median of \textbf{40}. Original record identifiers are retained; gaps are intentional.
+Reference structures are deduplicated at 0.05~\AA{} symmetry-aware RMSD and aligned
+using a fixed anchor atom triplet per molecule. Coordinate-based stereochemical
+inspection excludes two inverted chloramphenicol records from PDB 2uxp and one
+staurosporine epimer from PDB 2oic. The panel contains \textbf{1,067 references},
+with \textbf{8--117 per molecule} and a median of \textbf{40}.
 
 \clearpage
 \input{tables/plinder23-statistics}
 
 The retained references span \textbf{552 distinct PDB entries} and \textbf{1,045 PLINDER systems}.
 A system can contain multiple ligand instances, so its identifier is not a unique conformer
-key. Each record is identified by its CCD code and original conformer index. Duplicate-cluster
-membership accounts for 2,258 original records after stereochemical exclusions, but each
+key. Each record is identified by its CCD code and source conformer index. Duplicate-cluster
+membership accounts for 2,258 source records after stereochemical exclusions, but each
 retained representative receives equal weight within its molecule. Pleconaril illustrates the
-effect of deduplication: 716 original records reduce to eight representatives. Reference counts
+effect of deduplication: 716 source records reduce to eight representatives. Reference counts
 are not counts of distinct protein targets or biologically distinct conformational states.
 
-Molecular descriptors are retained from the saved identity shortlist. The companion
-\texttt{plinder22-molecules.csv} gives molecular identities and descriptors, original selection
-frequencies, and updated coordinate counts in separate columns. Tables~S3--S4 describe the
-cleaned collection rather than the original selection frequencies or current PDB contents.
+The companion \texttt{plinder22-molecules.csv} records molecular identities, descriptors,
+selection frequencies, and evaluated reference counts. Tables~S3--S4 describe the
+evaluation panel.
 Source hashes and the per-record reference manifest are archived in \texttt{plinder22-data/}.
 
 \clearpage
 \input{tables/plinder23-molecules}
 
 \textbf{[TODO: supply the upstream extraction and cleaning script, confirm the release of
-the delivered coordinates, and document protonation, tautomer, and alternate-location
+the evaluated coordinates, and document protonation, tautomer, and alternate-location
 handling and the precise 0.05~\AA{} clustering and representative-selection procedure.
 These details cannot be inferred from the cleaned SDF files alone.]}

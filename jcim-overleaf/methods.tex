@@ -65,30 +65,29 @@ and the molecular graph.
 \subsection{Training and benchmark exclusions}
 
 CoordToken is trained to reconstruct centered heavy-atom coordinates from molecular
-SMILES and discrete codes. We use a separate tokenizer trained for two epochs on the
-filtered conformer collection, rather than the full-corpus checkpoint reported in its
-paper. Qwen then learns the molecular sequences by next-token prediction while the
-geometry tokenizer remains fixed. The four v2 models complete one epoch without
+SMILES and discrete codes. The tokenizer is trained for two epochs on the filtered
+conformer collection. Qwen then learns the molecular sequences by next-token prediction
+while the geometry tokenizer remains fixed. The four size/representation configurations
+complete one epoch without
 subsequent task-specific fine-tuning.
 
 The training collection combines computed conformers and ligand structures from protein
 complexes. Source splits are reconciled by molecular identity, with a predefined
 conformation-test exception, and exact duplicate coordinate-enriched strings are removed.
 Benchmark exclusions then remove normalized molecular matches and specified similarity
-neighborhoods around all 285 CASF core ligands and the original 23 PLINDER identities.
+neighborhoods around all 285 CASF core ligands and the 23 shortlisted PLINDER identities.
 Neighborhoods use ECFP4 Tanimoto similarity strictly greater than 0.4, including matching
 protonation and tautomer variants. Ref adds normalized identity exclusions only, without
-a separate similarity screen. All four v2 models use exports from this jointly filtered
+a separate similarity screen. All four size/representation configurations use exports from this jointly filtered
 collection; some ref analogues may also be removed by the core or PLINDER exclusions.
 The training appendix defines normalization, neighborhood expansion, split handling,
 removal counts, tokenizer development data, and completed training exposure
 (Table~\ref{tab:qwen-training}).
 
-The main PLINDER comparison also includes an older 0.6B Qwen model whose training
-history remains unresolved; the v2 exclusion records do not establish its provenance.
-External pretrained models are evaluated as supplied. Outstanding overlap audits and
-run-specific settings are listed in the appendix, rather than assuming equivalent
-training exclusions across methods.
+The main PLINDER comparison also includes a Qwen 0.6B CASF-dedup model. Its training
+exclusions require confirmation, as specified in the appendix. External pretrained
+models are evaluated as supplied; equivalent training exclusions across methods
+are not assumed.
 
 \subsection{Sampling targets and structural validity}
 
@@ -117,7 +116,7 @@ settings, sampling procedures, and failure handling.
 \subsection{Geometric diversity and experimental recovery}
 
 We compare conformations by aligned heavy-atom RMSD, allowing equivalent atom mappings.
-The archived CASF evaluation attempts an index-based mapping if symmetry-aware alignment
+The CASF evaluation attempts an index-based mapping if symmetry-aware alignment
 fails; the frequency of this fallback has not been quantified. Unresolved comparisons
 are unmeasurable.
 Greedy clustering processes conformers in saved order, assigning each to its nearest
@@ -173,7 +172,7 @@ for their association.
 The size and representation comparison evaluates 0.6B and 1.7B Qwen models with binned
 coordinates or FSQ tokens on the same ref and PLINDER panels. CASF uses PoseBusters-passing
 members of the 1,000-candidate pools; PLINDER uses full supplied pools and assesses
-validity separately. The older 0.6B model is excluded from this comparison. Within each
+validity separately. The Qwen 0.6B CASF-dedup model is not part of this comparison. Within each
 representation, both sizes share a training export and one-epoch schedule. Binned and
 FSQ exports differ in record count and tokens per record, so the comparison does not
 isolate representation from training exposure or match computational cost. The appendix

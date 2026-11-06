@@ -44,8 +44,8 @@ The concentration of some PLINDER differences in particular molecules also limit
 an average improvement can be interpreted. These findings concern the evaluated checkpoints;
 replicated training runs would be needed to establish their stability.
 
-The exclusion policy gives the panels different scopes. For Qwen, core and PLINDER
-assess recovery after removing benchmark matches and their specified fingerprint
+The exclusion policy gives the panels different scopes. For the four Qwen configurations in the size and representation comparison, core and
+PLINDER assess recovery after removing benchmark matches and their specified fingerprint
 neighborhoods from the training corpus. Ref excludes normalized identity matches
 without systematically excluding related molecules. Qwen's leading CASF recovery is
 observed under both policies, including the broader core exclusions. However, the
@@ -62,9 +62,10 @@ Experimental references cover only part of accessible conformational space, so l
 against them does not establish that unmatched conformers are irrelevant to binding.
 CASF matching uses PoseBusters-filtered ensembles, whereas PLINDER matching uses the supplied
 pools; their absolute performance levels are therefore not directly comparable. Candidate
-budgets also do not equalize computational cost. The v2 Qwen training records document
-benchmark exclusions, but a final audit of residual overlap and the older model's training history remains necessary before making a general
-claim of evaluation on unseen molecules.
+budgets also do not equalize computational cost. Training exclusions are documented
+for the four Qwen size/representation configurations, but residual overlap and the
+Qwen 0.6B CASF-dedup model's exclusions require verification. These records do not
+establish evaluation on unseen molecules for every model.
 
 The benchmark provides a basis for choosing a procedure to construct a reusable conformational
 resource for structure-based drug design and learning molecular geometry, including

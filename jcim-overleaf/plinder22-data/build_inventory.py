@@ -21,7 +21,7 @@ rows = []
 for r in old.itertuples():
     rows.append(f'{r.rank} & {r.name} & {r.ccd} & {r.n_pdbs} & {r.n_systems} & {r.num_true_confs} & {r.mw:.1f} & {r.heavy_atoms} & {r.rotb}' + r'\\')
 s = s[:start] + '\n'.join(rows) + '\n' + s[end:]
-s = s.replace('The 23 selected molecules in saved PDB-frequency order. CCD denotes the Chemical Component Dictionary code; reference counts describe the evaluated coordinate collection.', 'The 22 retained molecules in their original selection order. CCD denotes the Chemical Component Dictionary code. PDB, system, and reference counts describe the cleaned coordinate collection; original selection frequencies are archived separately.')
+s = s.replace('The 23 selected molecules in saved PDB-frequency order. CCD denotes the Chemical Component Dictionary code; reference counts describe the evaluated coordinate collection.', 'The 22 evaluated molecules in selection order. CCD denotes the Chemical Component Dictionary code. Counts describe the PDB entries, PLINDER systems, and reference conformations represented in the evaluation panel.')
 f.write_text(s)
 f = PAPER / 'tables/plinder23-statistics.tex'; s = f.read_text(); start = s.index('Distinct PDB entries per identity'); end = s.index('\\end{longtable}',start)
 rows=[]
