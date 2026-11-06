@@ -55,3 +55,11 @@
 \caption{Matching distance and validity for four Qwen configurations. The same results are arranged to compare model sizes within each representation (A--C) and representations within each size (D--F). Columns show mean Best RMSD on CASF ref, mean MAT-R on PLINDER, and the pooled PLINDER PoseBusters pass rate. Purple and blue identify binned coordinates and FSQ; open circles and filled diamonds identify 0.6B and 1.7B models. In D--F, solid and dashed lines connect the 0.6B and 1.7B results, respectively. Each column retains the same truncated vertical axis across rows.}
 \label{fig:qwen-size-representation}
 \end{figure}}
+
+\newcommand{\conformerlandscapefigure}{%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.76\textheight,keepaspectratio]{figures/figure-conformer-landscapes.pdf}
+\caption{Generated ensembles relative to experimental reference collections with contrasting geometric breadth. Panels compare LoQI (orange), FlowR (green), and Qwen (blue) for staurosporine (A--C) and actinonin (D--F). Grey diamonds denote cleaned references; darker shading indicates greater aligned heavy-atom RMSD to the nearest reference. Reference cluster counts average 20 greedy clustering orders at 0.5 \AA{}; $N$ is the supplied generated-conformer count. Panels use the same pooled landmark-MDS frame and axis limits within each molecule; frames and scales differ between molecules. COV-R and COV-P use the primary evaluation distances at 0.75 \AA{}, independently of the projection. The two axes retain 38.9\% and 38.8\% of the positive MDS eigenvalue sum for staurosporine and actinonin, respectively; projected overlap is not a recovery criterion.}
+\label{fig:conformer-landscapes}
+\end{figure}}

@@ -1,0 +1,46 @@
+{
+  "qwen": {
+    "page_label": "Qwen 1.7B FSQ",
+    "generation_directory": "/mnt/weka/vtarasov/outputs/outputs/gen_results/20260901_144405_qw1700_fsq_bigdata_step-47023-hf_druglike"
+  },
+  "loqi": {
+    "page_label": "LoQI",
+    "generation_directory": "/mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/loqi_druglike"
+  },
+  "flowr": {
+    "page_label": "FlowR",
+    "generation_directory": "/mnt/weka/vtarasov/code/flowr_root/gen_results/flowr_druglike"
+  },
+  "nextmol": {
+    "page_label": "NExT-Mol DMT-L",
+    "generation_directory": "/mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/nextmol_dmt_l_druglike"
+  },
+  "torsional": {
+    "page_label": "Torsional Diffusion",
+    "generation_directory": "/mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/torsional_diffusion_druglike"
+  },
+  "mcf": {
+    "page_label": "MCF drugs-L",
+    "generation_directory": "/mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/mcf_drugs_l_druglike"
+  },
+  "qwen600": {
+    "page_label": "Qwen 0.6B Binned",
+    "generation_directory": "/mnt/weka/vtarasov/outputs/outputs/gen_results/20261026_001527_qw600_casf_dedup_binned_pm12_step-64000-hf_druglike_one_prompt"
+  },
+  "qwen_v2_b06": {
+    "page_label": "Qwen v2 0.6B Binned",
+    "generation_directory": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_binned_pm12_step66057/gen_results/qwen_0p6b_v2_binned_pm12_step66057_plinder"
+  },
+  "qwen_v2_b17": {
+    "page_label": "Qwen v2 1.7B Binned",
+    "generation_directory": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_binned_pm12_step66057/gen_results/qwen_1p7b_v2_binned_pm12_step66057_plinder"
+  },
+  "qwen_v2_f06": {
+    "page_label": "Qwen v2 0.6B FSQ",
+    "generation_directory": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_fsq_step41054_corrected/gen_results/qwen_0p6b_v2_fsq_step41054_plinder"
+  },
+  "qwen_v2_c17": {
+    "page_label": "Qwen v2 1.7B FSQ",
+    "generation_directory": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_plinder"
+  }
+}

@@ -1,5 +1,20 @@
 # Results: sources and author follow-up
 
+## Diversity visualization addition, 6 November 2026
+
+The visualization contribution is main Figure 6, beside its PLINDER Results text.
+The unchanged molecule-tracking and Qwen size/representation plots are now Figures
+7 and 8. Existing Supporting Figures S1–S6 and all tables retain their numbering.
+Main Methods gives a short visualization account; the evaluation appendix records
+landmark selection, displayed sources, the companion link, reference-count annotations,
+and projection limits. Examples are explicitly illustrative, not representative.
+
+Only the presented landscapes and their explanation are added. Reference-weighting,
+shared-gap reweighting, and sampling-budget experiments remain outside this addition.
+Figure inputs, source hashes, reproduction, and checks are in
+`results-data/conformer-landscapes/`. Leave changes uncommitted as requested.
+
+
 ## Discussion revision, 5 November 2026
 
 `discussion.tex` now interprets the revised Results in six paragraphs: the

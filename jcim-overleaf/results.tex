@@ -104,7 +104,25 @@ become more concentrated near observed conformations even as fewer shapes are re
 
 \input{\manuscriptroot tables/druglike}
 
-The threshold curves extend this comparison (Figure~\ref{fig:druglike}). LoQI has higher
+The conformational maps relate generated ensembles to reference collections with
+contrasting geometric breadth (Figure~\ref{fig:conformer-landscapes}). Staurosporine has
+117 references in a mean of 3.1 geometric clusters at 0.5 \AA{}, whereas actinonin has
+82 references in 34.9 clusters. Reference counts alone therefore do not describe the
+variation among the observed bound geometries.
+
+For staurosporine, all three displayed methods recover every reference, but sample
+precision ranges from 28.5\% to 93.8\%. For actinonin, LoQI and Qwen recover 67.1\%
+and 42.7\% of references, respectively, whereas FlowR recovers none at the same cutoff;
+sample precision is low for all three. Distance-based shading locates generated conformers
+relative to the observations without treating projected overlap as a match. These cases
+illustrate different relationships between reference recovery and sample concentration,
+rather than their prevalence across the panel. Unmatched conformers are not thereby
+classified as physically inaccessible.
+
+\conformerlandscapefigure
+
+The coverage--precision tradeoff also depends on matching tolerance
+(Figure~\ref{fig:druglike}). LoQI has higher
 coverage at 0.5 \AA{}, while Qwen 1.7B FSQ has higher coverage at 1.0 \AA{};
 LoQI maintains higher sample precision than Qwen 1.7B FSQ at both and at the primary cutoff.
 

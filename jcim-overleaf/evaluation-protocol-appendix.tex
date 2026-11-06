@@ -131,7 +131,7 @@ descriptors using the same group boundaries and panel denominators.
 
 \subsection*{Molecule-level displays}
 
-The trajectories in main Figure 6 identify the union of
+The trajectories in main Figure 7 identify the union of
 molecules with the largest MAT-R or MAT-P for any displayed method; the other
 molecules are grey. For Supporting Figure S6, each molecule's contribution to the
 validity change is its change in pass percentage divided by the sum of these changes
@@ -158,3 +158,38 @@ Energy-pool counts and calculation completeness are given in Supporting Table S6
 archive the classical generators' eligible-bond definition, severe-clash criterion,
 retry limits, and chirality-preserving minimization settings. These records must
 identify the evaluated runs.]}
+
+\subsection*{Conformational landscape visualization}
+
+For each molecule, the cleaned experimental references and generated conformers were
+placed in a shared pooled landmark-MDS frame. Up to 70 conformers per source were selected
+using a fixed seed of 42. The landmark pool included experimental references and all eleven
+generated sources in the interactive companion: LoQI, FlowR, NExT-Mol DMT-L, Torsional
+Diffusion, MCF drugs-L, the Qwen 1.7B FSQ and 0.6B binned sources, and the four Qwen
+size/representation configurations. The primary Qwen model in the manuscript corresponds
+to the 1.7B FSQ source in that four-configuration set; model identities for the displayed
+panels and the complete pooled-source definitions accompany the archived figure data.
+Classical MDS was applied to the pairwise symmetry-aware, aligned heavy-atom RMSD matrix
+of the landmarks. Remaining conformers were projected using their distances to the
+landmarks. The pooled frame was fitted using the cleaned references. Displaying only
+three methods did not refit it.
+
+The two-dimensional axes have no independent chemical or energetic interpretation.
+The fraction of the positive MDS eigenvalue sum retained by the displayed axes is reported
+in the caption; it is not a guarantee of pairwise-distance accuracy. Reference-distance
+shading and COV-R/P annotations use the original RMSD measurements, so apparent overlap
+in the projection is not a recovery criterion. Each molecule has identical axis limits
+across methods, but different molecules are fitted and scaled separately.
+
+Staurosporine and actinonin were selected as illustrative examples of concentrated and
+broader experimental reference collections. Reference cluster counts shown in the figure
+use fixed-representative greedy clustering at 0.5 \AA{}, with assignment strictly below
+the radius. Counts average 20 random orders, using NumPy's random generator with seed
+42 plus the molecule's alphabetical index in the full 22-molecule panel. These geometric
+groupings are not assumed to be distinct biological states. No reference reweighting
+or new recovery calculation is used for the figure annotations.
+
+The interactive companion is available at
+\url{https://claude.ai/artifact/4FthdnfhnM8m4zRBRsmUkB?sk=6wjxMW6c2CiD3ISnKB-6JA}.
+The static figure's coordinates, source identities, metric annotations, and reproduction
+records are archived in the accompanying figure data.

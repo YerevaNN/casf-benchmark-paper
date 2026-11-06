@@ -1,0 +1,49 @@
+{
+  "scope": "Only the presented diversity landscapes and the reference clustering annotations.",
+  "main_figure": 6,
+  "primary_qwen": "qwen_1p7b_v2_coordtoken_step41054",
+  "methods": {
+    "loqi_druglike": "LoQI",
+    "flowr_druglike": "FlowR",
+    "qwen_1p7b_v2_coordtoken_step41054": "Qwen 1.7B FSQ"
+  },
+  "molecules": [
+    "Actinonin",
+    "Staurosporine"
+  ],
+  "frame": "Pooled landmark MDS, fitted across all eleven page sources; display selection does not refit it.",
+  "landscape_source_sha256": "379d34bb5f12cb48e95b2b802a706b40e418dce0eebaaa876b60f414c5daeb3b",
+  "reference_sdf_sha256": {
+    "/mnt/weka/mbedrosian/data/plinder/cleaned/split_by_molecule_dedup_0.05_anchor_triplet/BB2.sdf": "29c541f9e61708471dfec559788298d53d2cc269fbe7f2c897607abeacc8dee4",
+    "/mnt/weka/mbedrosian/data/plinder/cleaned/split_by_molecule_dedup_0.05_anchor_triplet/STO.sdf": "07476de37ca8dd79f8ddaa44a352d6a70e1621899c00e38a4303718806f501b5"
+  },
+  "reference_count_radius_A": 0.5,
+  "random_orders": 20,
+  "seed_rule": "default_rng(42 + alphabetical ordinal in the full 22-molecule panel)",
+  "canonical_metrics": "Existing plinder22-data/nearest-distances.npz; inclusive 0.75 \u00c5",
+  "inputs": {
+    "plinder22-data/entries.json": "c6fb73e11a90a3f89266366f913944e1d403b22d7aed9ba94294e8b1d6cf7795",
+    "plinder22-data/nearest-distances.npz": "5f0d74c6d1626a8419f7acb1c409354e369b857b4fba581cd281b041e1b51974",
+    "plinder22-data/reference-records.csv": "c43760cf9a338408c796e9a9a444bc452ea9a90f84528e5072e4cded053c8e40",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "results-data/conformer-landscapes/plot-data.json": "23c29d0b4b1aa1d5f28843f8d63e7184e0faf64752657cb54f3c244f0204ec84",
+    "results-data/conformer-landscapes/landscape-data.json": "1f9c9544eaa62804e8e1c6d3b347cbeab4d54c90561c30566375d669b578dbdf",
+    "results-data/conformer-landscapes/reference_distances.npz": "de11ff9d02471d151bf91f23df1526a26ca4bdfb8f3455a91efc5db087a33bc0",
+    "results-data/conformer-landscapes/build_figure.py": "0a81e578c4adf6523a7c18ace44115f1f8b28ec3eae9f778ffc603ccec4df6fe",
+    "results-data/conformer-landscapes/landmark-sources.json": "376fc8539277b6403f4df77519096cccbe7649c12693329e9b09c606ec5bd74f"
+  },
+  "outputs": {
+    "figures/figure-conformer-landscapes.pdf": "4dd9ee3312af03aa8e42b9deb3cfc6a9abd456248e4ad7da92e60761c9ba38e4",
+    "figures/figure-conformer-landscapes.png": "a90957974aa941d708eb869b2f30860ed88b7be55f1406efb8097bdf962389bf",
+    "figures/figure-conformer-landscapes.svg": "f4f84a5e38c8d374d29c2372556ff8f6e8050508e05fd6ef8a3ef153fdf49617"
+  },
+  "layout": {
+    "width_inches": 6.5,
+    "height_inches": 6.3,
+    "annotation_font_pt": 7.5,
+    "method_title_font_pt": 8,
+    "row_title_font_pt": 9
+  },
+  "companion_url": "https://claude.ai/artifact/4FthdnfhnM8m4zRBRsmUkB?sk=6wjxMW6c2CiD3ISnKB-6JA",
+  "landmark_source_definition_sha256": "077731dcdbe2b48a46a283b262f89c2e11d4c22286c5060e46edcdd4ea9d5c1c"
+}
