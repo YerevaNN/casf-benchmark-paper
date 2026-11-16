@@ -82,7 +82,7 @@ clusters. Additional sampling therefore expands geometric variation and experime
 Several generators exceed the recovery of the stored ChEMBL3D ensembles at the larger
 target in both CASF panels (Figure~\ref{fig:recovery}). This gain does not imply
 retaining every stored-ensemble hit: on ref, Qwen recovers 155 additional ligands but
-misses 15 recovered by ChEMBL3D (Supporting Figure S3).
+misses 15 recovered by ChEMBL3D (Supporting Figure~\ref{fig:supporting-gains-losses}).
 
 \recoveryfigure
 
@@ -92,7 +92,7 @@ Aggregate recovery can conceal differences in molecular difficulty. In CASF core
 recovery generally declines for larger or more flexible ligands, although the methods differ
 in how strongly performance falls (Figure~\ref{fig:size}). CASF ref extends the comparison
 to more populated strata; the sparse core groups cannot support stable method rankings
-(Supporting Figure S4). These patterns caution against interpreting a panel-wide average
+(Supporting Figure~\ref{fig:supporting-composition}). These patterns caution against interpreting a panel-wide average
 as uniform coverage of the chemistry needed for a conformational resource.
 
 \sizefigure
@@ -100,7 +100,7 @@ as uniform coverage of the chemistry needed for a conformational resource.
 Similar reference coverage can accompany different sample precision. On PLINDER,
 LoQI and Qwen recover similar fractions of references at 0.75 \AA{}, but LoQI has
 substantially higher precision: 60.5\% versus 44.8\% (Table~\ref{tab:druglike}).
-Supporting Figure S5 shows how both measures vary across individual molecules.
+Supporting Figure~\ref{fig:supporting-plinder-coverage} shows how both measures vary across individual molecules.
 The minimized torsion pipeline has higher precision than raw torsion sampling,
 55.0\% versus 37.7\%, while producing fewer clusters. Its samples are thus more
 concentrated near observed conformations despite representing fewer shapes.
@@ -133,18 +133,3 @@ The molecule-level distances show that different molecules account for the large
 errors across methods (Supporting Figure~\ref{fig:plinder-molecule-tracking}). Imatinib has the
 largest MAT-R for LoQI, whereas Amprenavir has the largest for Qwen 1.7B FSQ.
 The same molecule need not dominate both metrics or all methods.
-
-The Qwen comparison examines how model size and coordinate representation relate to
-reference matching and structural validity. FSQ has lower mean matching distances than
-binned coordinates at both Qwen model
-sizes on CASF ref and PLINDER
-(Figure~\ref{fig:qwen-size-representation}). Increasing size from 0.6B to 1.7B produces
-smaller changes and does not consistently improve PLINDER MAT-R. On CASF ref,
-FSQ improves matching for approximately 66\% of ligands at each size, compared
-with 50--54\% when increasing size within a representation (Supporting Figure S2).
-Actinonin contributes substantially to FSQ's mean matching advantage on PLINDER.
-Scaling has a clearer effect on validity: the pooled PLINDER PoseBusters pass rate
-rises from 82.7\% to 92.5\% for FSQ (Supporting Figure S6). Training exports and token exposure differ
-between representations, so the matching advantage cannot be attributed to encoding alone.
-
-\qwensizerepresentationfigure

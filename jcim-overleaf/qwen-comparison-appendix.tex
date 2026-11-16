@@ -1,3 +1,24 @@
+The Qwen comparison examines how model size and coordinate representation relate to
+reference matching and structural validity. FSQ has lower mean matching distances than
+binned coordinates at both Qwen model
+sizes on CASF ref and PLINDER
+(Figure~\ref{fig:qwen-size-representation}). Increasing size from 0.6B to 1.7B produces
+smaller changes and does not consistently improve PLINDER MAT-R. On CASF ref,
+FSQ improves matching for approximately 66\% of ligands at each size, compared
+with 50--54\% when increasing size within a representation (Supporting Figure~\ref{fig:qwen-molecule-effects}).
+Actinonin contributes substantially to FSQ's mean matching advantage on PLINDER.
+Scaling has a clearer effect on validity: the pooled PLINDER PoseBusters pass rate
+rises from 82.7\% to 92.5\% for FSQ (Supporting Figure~\ref{fig:supporting-plinder-validity}). Training exports and token exposure differ
+between representations, so the matching advantage cannot be attributed to encoding alone.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-qwen-size-representation.pdf}
+\caption{Matching distance and validity for four Qwen configurations. The same results are arranged to compare model sizes within each representation (A--C) and representations within each size (D--F). Columns show mean Best RMSD on CASF ref, mean MAT-R on PLINDER, and the pooled PLINDER PoseBusters pass rate. Purple and blue identify binned coordinates and FSQ; open circles and filled diamonds identify 0.6B and 1.7B models. In D--F, solid and dashed lines connect the 0.6B and 1.7B results, respectively. Each column retains the same truncated vertical axis across rows.}
+\label{fig:qwen-size-representation}
+\end{figure}
+
+\clearpage
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-qwen-molecule-effects.pdf}

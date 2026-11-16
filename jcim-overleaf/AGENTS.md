@@ -27,12 +27,14 @@ cluster count versus Best RMSD (B,C). Render it and Supporting Figure S8
 `results-data/diversity-combined/render.py`. Old standalone PLINDER/CASF
 artwork remains archived but is not included in either manuscript entry point.
 
-Main figures now run from 1 to 7: combined diversity, energy, two-target
-recovery/diversity, sampling curves, size/flexibility, conformer landscapes,
-and Qwen size/representation. Keep label-based references in the main text.
-Supporting Figures S1–S7 retain their numbering; S8 is the PLINDER threshold
-figure. Both PDF entry points share `supporting-content.tex` and include eight
-supporting tables and eight supporting figures.
+Main figures now run from 1 to 6: combined diversity, energy, two-target
+recovery/diversity, sampling curves, size/flexibility, and conformer landscapes.
+Figure 5 marks sparse groups with asterisks only, without orange outlines.
+The aggregate Qwen size/representation figure and its Results paragraph are in
+the appendix as S2, followed by the molecule-level comparison as S3. Subsequent
+SI figures run S4–S9, ending with PLINDER threshold curves. Keep label-based
+references. Both PDF entry points share `supporting-content.tex` and include
+eight supporting tables and nine supporting figures.
 
 ## Sampling Figure 4
 
@@ -56,9 +58,9 @@ The figure numbering above supersedes the dated notes below.
 
 ## Current Qwen comparison scope
 
-Table 4 contains ten methods; Supporting Figure S7 contains eight (excluding minimized
+Table 4 contains ten methods; Supporting Figure S8 contains eight (excluding minimized
 baselines). Do not reintroduce the step-64000 CASF-dedup Qwen row. Supporting
-Figures S5/S6 follow the same Table 4 selection. Figure 7 and Supporting Figure S2
+Figures S6/S7 follow the same Table 4 selection. Supporting Figures S2/S3
 use only the four v2 models: binned 0.6B/1.7B step66057 and FSQ 0.6B/1.7B
 step41054. Their deduplicated, benchmark-filtered export lineage is documented
 in method-data/training-audit/. Preserve the export-count and residual-overlap

@@ -1,8 +1,8 @@
-# Current Figure 6 display
+# Current Figure 5 display
 
 Cells display whole recovery percentages; colors retain the unrounded values.
 Group denominators appear once beneath each column. Panels A--D share a 0--100%
-scale, orange outlines mark groups with fewer than five ligands, and a horizontal
+scale, asterisks mark groups with fewer than five ligands, and a horizontal
 dashed line separates ChEMBL3D-PB. Exact recovered/total counts remain in
 `figure5-strata.csv` (stable data filename). Only presentation has changed.
 
@@ -57,6 +57,6 @@ its original pool. The builder reproduces every one of the 88 previous core
 cells in `../strata.csv` and verifies group totals of 94/1044 for each method.
 
 Heavy-atom bins are <20, 20–29, 30–39, >=40; rotatable-bond bins are 0–3, 4–6,
-7–8, >=9. Asterisks/dashed outlines mark n<5; empty groups are gray dashes.
+7–8, >=9. Asterisks mark n<5; empty groups are gray dashes.
 The original palette and method order are preserved. No conformers, RMSD
 alignments, or validity checks are recalculated by this renderer.
