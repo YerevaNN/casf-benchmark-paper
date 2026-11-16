@@ -10,6 +10,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
+from matplotlib.patches import Rectangle
 from matplotlib.ticker import FuncFormatter
 import numpy as np
 import pandas as pd
@@ -113,8 +114,8 @@ axes[0].set_yticks(range(len(order)),[styles[k][0] for k in order]);axes[0].inve
 save(fig,'recovery-gains-losses')
 
 fig,axes=plt.subplots(1,2,figsize=(8.8,4.3))
-fig.subplots_adjust(left=.10,right=.95,bottom=.20,top=.78,wspace=.42)
-fig.suptitle('Joint distribution of ligand size and flexibility',x=.10,ha='left',y=.98,fontsize=12)
+fig.subplots_adjust(left=.14,right=.98,bottom=.32,top=.78,wspace=.55)
+fig.suptitle('Joint distribution of ligand size and flexibility',x=.14,ha='left',y=.98,fontsize=12)
 size_order=['<20','20-29','30-39','40+'];rot_order=['0-3','4-6','7-8','9+']
 for ax,cohort,letter in zip(axes,['core','ref'],['A','B']):
     d=composition[composition.cohort==cohort]
@@ -122,12 +123,18 @@ for ax,cohort,letter in zip(axes,['core','ref'],['A','B']):
     perc=d.pivot(index='rotors',columns='size',values='percent').loc[rot_order,size_order]
     im=ax.imshow(perc,cmap='Blues',vmin=0,vmax=45,aspect='auto')
     for y,x in np.ndindex(counts.shape):
-        ax.text(x,y,f'{counts.iloc[y,x]}\n({perc.iloc[y,x]:.1f}%)',ha='center',va='center',fontsize=9,color='white' if perc.iloc[y,x]>27 else INK)
+        value=perc.iloc[y,x]; count=counts.iloc[y,x]
+        ax.text(x,y,f'{value:.1f}%' if count else '—',ha='center',va='center',fontsize=9,color='white' if value>27 else INK)
+        if 0<count<5:
+            ax.add_patch(Rectangle((x-.5,y-.5),1,1,fill=False,edgecolor='#CE6428',ls='--',lw=1,clip_on=False))
     ax.set_title(f'{letter}   CASF {cohort} ({counts.to_numpy().sum():,})',loc='left',pad=11)
-    ax.set_xticks(range(4),['<20','20–29','30–39','≥40']);ax.set_yticks(range(4),['0–3','4–6','7–8','≥9'])
+    ax.set_xticks(range(4),[f'{label}\n(n={n})' for label,n in zip(['<20','20–29','30–39','≥40'],counts.sum(axis=0))])
+    ax.set_yticks(range(4),[f'{label} (n={n})' for label,n in zip(['0–3','4–6','7–8','≥9'],counts.sum(axis=1))])
     ax.set_xlabel('Heavy atoms');ax.set_ylabel('Rotatable bonds')
     ax.tick_params(length=0)
     for spine in ax.spines.values():spine.set_visible(False)
+cax=fig.add_axes([.31,.14,.40,.025]);fig.colorbar(im,cax=cax,orientation='horizontal',label='Ligands in panel (%)')
+fig.text(.14,.025,'Dashed orange outline: fewer than five ligands. Dashes: empty groups.',fontsize=8,color='#626C78')
 save(fig,'cohort-composition')
 
 # All ten Table 4 methods, including the new independent torsion pools.
@@ -151,7 +158,7 @@ def heatmap(ax,values,column_names,show_names=True):
     im=ax.imshow(values,cmap='Blues',norm=Normalize(0,100),aspect='auto')
     for y,x in np.ndindex(values.shape):
         value=values[y,x]
-        ax.text(x,y,f'{value:.0f}',ha='center',va='center',fontsize=7.8,color='white' if value>=60 else INK)
+        ax.text(x,y,f'{value:.0f}%',ha='center',va='center',fontsize=7.8,color='white' if value>=60 else INK)
     ax.set_xticks(range(len(column_names)),column_names,rotation=55,ha='right',fontsize=8)
     ax.set_yticks(range(22),names.tolist() if show_names else [],fontsize=9)
     ax.tick_params(which='both',length=0)

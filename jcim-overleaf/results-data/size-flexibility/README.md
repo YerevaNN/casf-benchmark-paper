@@ -1,3 +1,13 @@
+# Current Figure 6 display
+
+Cells display whole recovery percentages; colors retain the unrounded values.
+Group denominators appear once beneath each column. Panels A--D share a 0--100%
+scale, orange outlines mark groups with fewer than five ligands, and a horizontal
+dashed line separates ChEMBL3D-PB. Exact recovered/total counts remain in
+`figure5-strata.csv` (stable data filename). Only presentation has changed.
+
+The dated source notes below retain their original numbering.
+
 # Figure 5: size and flexibility in CASF core and ref
 
 ## Primary Qwen checkpoint update, 4 November 2026

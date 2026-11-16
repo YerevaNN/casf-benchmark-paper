@@ -1,4 +1,4 @@
-"""Rebuild Figure 5 from archived CASF core and ref strata."""
+"""Rebuild Figure 6 from archived CASF core and ref strata."""
 from pathlib import Path
 import hashlib
 import json
@@ -47,7 +47,7 @@ all_strata.to_csv(OUT/'figure5-strata.csv',index=False)
 
 def sizefigure(cohorts):
     fig,axes=plt.subplots(len(cohorts),2,figsize=(7.2,5.8),squeeze=False)
-    fig.subplots_adjust(left=.24,right=.98,top=.91,bottom=.17,hspace=.64,wspace=.23)
+    fig.subplots_adjust(left=.24,right=.98,top=.86,bottom=.19,hspace=.64,wspace=.23)
     labels={'size':['<20','20–29','30–39','≥40'],'rotors':['0–3','4–6','7–8','≥9']}
     for i,cohort in enumerate(cohorts):
         for j,descriptor in enumerate(groups):
@@ -65,17 +65,21 @@ def sizefigure(cohorts):
                     value=matrix[y,x]
                     if np.isnan(value):text='—'
                     else:
-                        r=d.loc[(key,g)];text=f'{int(r.hits)}/{int(r.n)}'
+                        text=f'{value:.0f}%'
                     ax.text(x,y,text,ha='center',va='center',fontsize=7.2,color='white' if value>=65 else ink)
             ax.set_xticks(range(4),[f'{label}{"*" if 0<n<5 else ""}\n(n={n})' for label,n in zip(labels[descriptor],counts)],fontsize=7.4)
             ax.set_yticks(range(len(keys)),[styles[k][0] for k in keys] if j==0 else [],fontsize=7.4)
             ax.tick_params(which='both',length=0)
             ax.set_xticks(np.arange(-.5,4),minor=True);ax.set_yticks(np.arange(-.5,len(keys)),minor=True);ax.grid(which='minor',color='white',lw=.9)
-            ax.set_title(f'{TITLES[cohort]} · Hit@0.75\n'+('Heavy atoms' if j==0 else 'Rotatable bonds'),loc='left',fontsize=8.2,pad=9)
+            ax.set_title(f'{chr(65+2*i+j)}   CASF {cohort} · '+('Heavy atoms' if j==0 else 'Rotatable bonds'),loc='left',fontsize=8.2,pad=9)
+            ax.axhline(keys.index('chembl3d_gt_pb')-.5,color=ink,ls=(0,(3,2)),lw=.85,zorder=6)
             for x,n in enumerate(counts):
                 if 0<n<5:ax.add_patch(Rectangle((x-.5,-.5),1,len(keys),fill=False,edgecolor='#CE6428',ls='--',lw=1,zorder=5,clip_on=False))
             for spine in ax.spines.values():spine.set_visible(False)
-    cax=fig.add_axes([.40,.065,.42,.012]);fig.colorbar(mesh,cax=cax,orientation='horizontal',label='Recovery (%)')
+    fig.suptitle('Recovery by molecular size and flexibility',x=.24,y=.98,ha='left',fontsize=10)
+    fig.text(.24,.94,'RMSD ≤ 0.75 Å · 1,000-candidate target',fontsize=8,color='#626C78')
+    cax=fig.add_axes([.40,.095,.42,.012]);fig.colorbar(mesh,cax=cax,orientation='horizontal',label='Recovery (%)')
+    fig.text(.24,.015,'Dashed orange outline: fewer than five ligands.',fontsize=7.2,color='#626C78')
     return fig
 
 fig = sizefigure(['core','ref'])
@@ -96,4 +100,4 @@ sources = [OUT/'casf-size-source.csv', OUT/'casf-flexibility-source.csv',
     'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054.',
     'checks':['All 88 current CASF core cells reproduced','CASF group denominators sum to 94/1044']
 },indent=2)+'\n')
-print('Built Figure 5 for CASF core/ref; all 88 current core cells reproduced.')
+print('Built Figure 6 for CASF core/ref; all 88 current core cells reproduced.')
