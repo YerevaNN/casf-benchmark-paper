@@ -1,80 +1,91 @@
-# Independent PLINDER torsion update
+# PLINDER torsion results and procedure
 
-The raw and minimized PLINDER torsion results now use:
+Current source labels:
 
 - `torsion_independent_raw_druglike`
 - `torsion_independent_minimized_druglike`
 
-These replace `torsion_raw_druglike` and `torsion_minimized_22_druglike`, whose
-starting coordinates came from an experimental reference. The replacement
-removes the dagger and reference-seed qualification from the current manuscript.
-Historical exports and dated provenance remain as history.
-
 ## Executed procedure
 
-Each molecular graph is built from isomeric SMILES with no coordinates. Five
-ETKDGv3 starts produce 200 accepted torsion perturbations each, giving 1,000 raw
-conformers per molecule. Torsions are displaced within ±120 degrees, with severe
-clash rejection. Experimental coordinates are not used; a coordinate-free
-reference graph is checked only for molecular identity.
+Each molecular graph is built from isomeric SMILES. One ETKDGv3 starting
+conformer supplies 1,000 accepted raw torsion perturbations. All eligible
+torsions receive uniform displacements within ±120 degrees. The severe-clash
+check uses 0.7 times the RDKit distance-geometry lower bound for heavy-atom
+pairs, excluding bonded and angle-connected pairs. Experimental coordinates
+are not used. The global seed is 42; per-molecule embedding and separate raw
+and minimized sampling seeds are recorded in the source and manifests.
 
-The minimized run preserves raw-conformer order and optimizes each member with
-MMFF94s after adding hydrogens, for up to 500 iterations. Stereo-inverted results
-are retried with chirality-preserving constraints. Converged and iteration-limit
-results are retained after identity checks. All 22 molecules have 1,000 raw and
-1,000 minimized outputs. `seed-provenance.json` retains per-start seeds, attempts,
-counts, minimization-status summaries and output hashes; source hashes identify
-the full upstream per-conformer records. Generation code and summary manifests
-are archived here, but generation and minimization were not rerun for this edit.
+The minimized ensemble is a fresh torsion sample from the same ETKDG geometry,
+not a transformation of the saved raw ensemble. It collects 1,500 candidates
+passing the clash check, applies MMFF94s for up to 500 iterations, and repeats
+the same clash check. Stereo mismatches are rejected. Additional tranches of
+500 candidates fill the pool if necessary. Converged and iteration-limit
+outputs are eligible; other minimization failures are rejected. The active
+path does not use the chirality-constrained retry helper retained in the code.
 
-## Results and scope
+All 22 molecules have 1,000 raw and 1,000 minimized outputs. The records in
+`seed-provenance.json` retain seeds, attempts, rejection counts and output hashes.
+The executed protocol is `fresh_torsion_mmff94s_clash_0.7`. The archived code
+includes its shared generation/minimization implementation. Generation,
+optimization and RMSD alignment were not rerun for the manuscript update.
+PLINDER RDKit remains a paired raw-to-minimized comparison.
 
-| Metric | Raw, previous → current | Minimized, previous → current |
+## Current results and display scope
+
+| Metric | Raw | Minimized |
 |---|---:|---:|
-| COV-R at 0.75 Å (%) | 83.0 → 80.1 | 88.2 → 84.4 |
-| COV-P at 0.75 Å (%) | 51.1 → 36.2 | 65.6 → 56.7 |
-| MAT-R (Å) | 0.461 → 0.532 | 0.484 → 0.494 |
-| MAT-P (Å) | 0.891 → 1.053 | 0.717 → 0.876 |
-| Mean clusters, 0.5 Å | 366.7 → 424.2 | 113.8 → 138.6 |
-| Mean clusters, 1.0 Å | 135.7 → 153.6 | 52.3 → 69.1 |
+| COV-R at 0.75 Å (%) | 66.3 | 78.0 |
+| COV-P at 0.75 Å (%) | 37.7 | 55.0 |
+| MAT-R (Å) | 0.654 | 0.562 |
+| MAT-P (Å) | 1.020 | 0.847 |
+| Mean clusters, 0.5 Å | 359.0 | 122.3 |
+| Mean clusters, 1.0 Å | 133.0 | 62.1 |
 
-Tables 1, 2, 4 and S4 and Figures 1 and 6 use the replacement results. Rankings
-are recomputed from unrounded values; LoQI now leads COV-P and MAT-P, while
-minimized torsion is second for COV-P and minimized RDKit is second for MAT-P.
-Raw torsion slightly exceeds FlowR at the finer clustering radius; FlowR still
-leads at 1.0 Å. All Qwen comparisons and other methods are preserved.
+Tables 1, 2 and 4, main Figures 1 and 7, and Supporting Figures S5 and S6
+use these measurements. Table S5 and the evaluation appendix describe the
+procedure. Rankings use unrounded values, excluding the ChEMBL3D baseline.
+FlowR leads PLINDER clustering at both radii; minimized RDKit is second for
+COV-P and minimized torsion is second for MAT-P. The molecule-tracking figure
+is ordered by mean MAT-R and retains its approved nine-method scope.
 
-The source panel has the same 22 identities and 1,067 reference conformations.
-Matching and geometric diversity use full supplied pools; PB remains separate.
-Cached reference/generated RMSD minima reproduce all published COV/MAT values
-and curves within 1e-12. No alignment or energy calculation was rerun.
+The panel contains 22 identities and 1,067 references. Matching and geometric
+diversity use full supplied pools; PB remains separate. Cached RMSD minima
+reproduce the published COV/MAT values and threshold curves within 1e-12.
+All other methods' measurements remain unchanged.
 
-The separate CASF seed audit reports 94 core and 1,236 original ref entries,
-all with stored ChEMBL3D topology seeds and status `unchanged`. Its frozen
-1,044-entry ref subset is unchanged. `casf-seed-audit.csv` normalizes escaped
-line separators in the supplied manifest; its original hash is in the provenance.
-The PLINDER replacement does not alter CASF tables, energy or sampling data.
+`published-scope.json` records independent checks of the current staged public
+release, `plinder-torsion-minimized-v1`, against its CASF source release. The
+CASF dashboard is byte-identical; all 21 non-PLINDER/non-druglike extended
+SQLite tables have identical rows. The CASF master CSV, per-ligand CSV and
+base dashboard also match the recorded pre-generation hashes. Both public
+PLINDER torsion rows agree with their source summary, per-molecule, recovery
+and sampling-budget CSVs. Core94 and the paper's frozen ref1044 are unchanged.
+The seed audit covers core94 and the 1,236-entry ref collection from which
+that subset was selected, all using stored ChEMBL3D topology coordinates.
 
-## Reproduction
+## Reproduction and validation
 
-From `jcim-overleaf/`, with the benchmark environment activated:
+From the paper repository, with the benchmark environment activated:
 
 ```bash
-python plinder22-data/independent-torsion/update.py /path/to/casf-benchmark
-python results-data/three-dataset-tables/build_tables.py
-python results-data/build_druglike_table.py
-python plinder22-data/plot.py
-python plinder22-data/molecule-tracking/plot.py
+python jcim-overleaf/plinder22-data/independent-torsion/check_published_scope.py /path/to/casf-benchmark
+python jcim-overleaf/plinder22-data/independent-torsion/update.py /path/to/casf-benchmark
+python jcim-overleaf/results-data/three-dataset-tables/build_tables.py
+python jcim-overleaf/results-data/build_druglike_table.py
+python jcim-overleaf/plinder22-data/plot.py
+python jcim-overleaf/plinder22-data/molecule-tracking/plot.py
+python jcim-overleaf/appendix-data/build.py
 ```
 
-Copy the three `plinder22-molecule-tracking.{pdf,png,svg}` files from
-`plinder22-data/molecule-tracking/` to
-`figures/figure-plinder-molecule-tracking.{pdf,png,svg}` after rendering, and
-refresh the rendered-file checksum manifests. `update.py` preserves every
-unaffected CSV observation and method identity. It does not rerun scientific scoring.
+Copy `plinder22-molecule-tracking.{pdf,png,svg}` from the tracking directory
+to `jcim-overleaf/figures/figure-plinder-molecule-tracking.{pdf,png,svg}`.
+Refresh hashes for changed inputs/artwork after verifying that unaffected
+measurements and displays remain identical. The landscape figure uses only
+unchanged LoQI, FlowR and Qwen distances; its shared archive hash changes,
+but its source entries and rendered artwork do not.
 
-Validation includes `verify.py` here, `plinder22-data/verify.py`, and
-`plinder22-data/qwen-dedup/verify.py`. These check unchanged comparator and CASF
-measurements, cached minima, table values/rank emphasis, figure records, citations,
-cross-references and included artwork. The affected figures were visually inspected.
-The full manuscript is reviewed in Overleaf and was not compiled locally.
+Run `independent-torsion/verify.py`, `plinder22-data/verify.py`,
+`plinder22-data/qwen-dedup/verify.py`, `appendix-data/verify.py`, and
+`results-data/conformer-landscapes/verify.py`. These check values, ranks,
+unchanged comparators, included figures, citations and references. The full
+manuscript is reviewed in Overleaf; no local manuscript compilation is needed.

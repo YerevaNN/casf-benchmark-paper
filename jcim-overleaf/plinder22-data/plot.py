@@ -61,9 +61,9 @@ for r in points.itertuples():
                (r.clusters_0p5,r.mat_r),xytext=(dx,dy),textcoords='offset points',
                ha='right' if dx<0 else 'left',va='bottom',fontsize=8,color=r.color,
                arrowprops={'arrowstyle':'-','color':r.color,'lw':.55,'alpha':.6})
-a.set(xlim=(0,480),ylim=(.33,.60),xlabel='Mean geometric clusters at 0.5 Å',
+a.set(xlim=(0,480),ylim=(.33,.70),xlabel='Mean geometric clusters at 0.5 Å',
       ylabel='MAT-R (Å; lower is better)')
-a.set_xticks([100,200,300,400]);a.set_yticks([.35,.40,.45,.50,.55,.60])
+a.set_xticks([100,200,300,400]);a.set_yticks([.35,.40,.45,.50,.55,.60,.65,.70])
 for ax,col,title in zip(axes[1:],['recall','precision'],
                         ['B   Coverage of experimental conformations','C   Precision relative to observed conformations']):
     for method in curve_methods:

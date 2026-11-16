@@ -43,9 +43,13 @@ for method in NEW:
     assert len(group) == 22 and group.num_true_confs.sum() == 1067
     manifest = json.loads((HERE / f'{method}-generation.json').read_text())
     assert manifest['experimental_coordinates_used'] is False
-    assert manifest['n_etkdg_starts'] == 5 and manifest['conformers_per_start'] == 200
+    assert manifest['n_etkdg_starts'] == 1 and manifest['conformers_per_start'] == 1000
     assert manifest['total_conformers'] == 22000
 assert not current.label.isin(OLD).any()
+for record in json.loads((HERE / 'seed-provenance.json').read_text()):
+    assert len(record['starts']) == 1 and record['starts'][0]['retained'] == 1000
+    assert record['minimized_protocol'] == 'fresh_torsion_mmff94s_clash_0.7'
+    assert record['minimized_sampling']['retained'] == 1000
 assert all(r['experimental_coordinates_used'] is False for r in json.loads((HERE / 'seed-provenance.json').read_text()))
 
 for number, filename, columns in [

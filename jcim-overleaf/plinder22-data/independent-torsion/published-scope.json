@@ -1,0 +1,116 @@
+{
+  "baseline": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/v2-1p7b-coordtoken-v1",
+  "release": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/plinder-torsion-minimized-v1",
+  "database_sha256": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/v2-1p7b-coordtoken-v1/casf_analysis_dashboard.sqlite": "9446fc81b8e5375b0d753e0951460c123ec59779dc348f36a58c45620b68075c",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/v2-1p7b-coordtoken-v1/extended_casf_analysis.sqlite": "a959c7bc37e75344a8d03977201a86dc345d767bca0c0dcdcc935a34151137f0",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/plinder-torsion-minimized-v1/casf_analysis_dashboard.sqlite": "9446fc81b8e5375b0d753e0951460c123ec59779dc348f36a58c45620b68075c",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/staging/plinder-torsion-minimized-v1/extended_casf_analysis.sqlite": "552f4a36dc9a12bf9d8cc8f1d8c097b065adab35b74cc84a6d3cd995c6b198db"
+  },
+  "unchanged_casf_files": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_master.csv": "0b9869fdc8d63423e08151828d526796276095e00aa09838d7adb41dcd0c9d3f",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_per_ligand_long.csv": "1bb8f4181bc3ce010445b4483bcbb19512c80e2ef54a97546f331ef4adcf5765",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/casf_analysis_dashboard.sqlite": "9446fc81b8e5375b0d753e0951460c123ec59779dc348f36a58c45620b68075c"
+  },
+  "unchanged_casf_tables": {
+    "extended_bound_pose_difficulty": {
+      "rows": 360,
+      "sha256": "76aeb4138c4c86bd37a2cdf3def8a9ade9f0b7df9e41c14f01a4bef00fdc62a0"
+    },
+    "extended_chembl_k_efficiency_per_ligand__identity": {
+      "rows": 2,
+      "sha256": "82e3086e364f8e578242171722941731975ba9d8bcf36a09c3b81bc4d5c13fe9"
+    },
+    "extended_chembl_k_efficiency_per_ligand__ligands": {
+      "rows": 1330,
+      "sha256": "975a717c27dd450ea621038da7f592361054f28903b662af5e892c195486202e"
+    },
+    "extended_chembl_k_efficiency_per_ligand__values": {
+      "rows": 1343300,
+      "sha256": "762ec69cfb6797652f6177de8b04c89c81931e300138be199756b0cb4666c074"
+    },
+    "extended_energy_window_comparisons": {
+      "rows": 76,
+      "sha256": "e61c8e0b0437015569d22ed349a0524b0d3afdc40e49f2ba440dd77fcb317314"
+    },
+    "extended_energy_window_per_ligand": {
+      "rows": 112000,
+      "sha256": "ba117d3127c9f9317965010235a3f469f861c01931dbca1f55e0ef2514719bad"
+    },
+    "extended_energy_window_summary": {
+      "rows": 190,
+      "sha256": "d1c80be611fd554aa714ff1e18530e5867171f059ac3dfc6b78c2e0ddaa8e7b3"
+    },
+    "extended_frontier_summary": {
+      "rows": 90,
+      "sha256": "99036333808f5d20321c7df2a402cc95ad7c43b3c8c8c4435c45cbc3c32ab344"
+    },
+    "extended_k_efficiency": {
+      "rows": 440,
+      "sha256": "3bcfb0637807fe6b3075911bc90193b4884c5f8c1e81bacbd30153b6189a6340"
+    },
+    "extended_k_efficiency_comparisons": {
+      "rows": 238,
+      "sha256": "95885056660988ee21809e0a7b64175efdc74a6c265dc1ef9ece0fc0693b7446"
+    },
+    "extended_k_efficiency_per_ligand": {
+      "rows": 174830,
+      "sha256": "5b0297d08f932954f8e956e4cc426a08168464395780d6c14c54ad661bd0a4c7"
+    },
+    "extended_k_efficiency_strata": {
+      "rows": 2160,
+      "sha256": "2b8d5eb9b5d2bc9ea1ef0aa8c55e662adb3db1d4843a8e189c47ccdee32006be"
+    },
+    "extended_paired_delta_extreme_ligands_vs_chembl3d_pb": {
+      "rows": 3720,
+      "sha256": "d2a2043a4ffa7fda22b70a29cdf796df6e5fb3963b08b1deb7937ceb48b5fcfb"
+    },
+    "extended_paired_delta_extreme_ligands_vs_rdkit_raw": {
+      "rows": 3720,
+      "sha256": "a934e5b50b664f9e963492b924dddbb15c7e9636633de8058d7848e789a6a49f"
+    },
+    "extended_paired_delta_vs_chembl3d_pb": {
+      "rows": 1539,
+      "sha256": "bbd979df010effea85fcf24e258a35efa6b590d86f351f1db784f2d20b929e7a"
+    },
+    "extended_paired_delta_vs_rdkit_raw": {
+      "rows": 1240,
+      "sha256": "99f3788d63f820cfb6ca12e71e002c6cb0c38fe0e17a2dc4ddb647f4410c8ead"
+    },
+    "extended_pb_failure_mechanisms": {
+      "rows": 144,
+      "sha256": "9890f3800a78065ddc227dff863f81641386341264fca5b53bafc82e004033da"
+    },
+    "extended_pb_failure_tail_ligands": {
+      "rows": 3600,
+      "sha256": "c6b2deeecf3f5e12394f5cb94b01cf4882458755da4c990d830d1e5fc7115353"
+    },
+    "extended_per_conformer_casf_rmsd_manifest": {
+      "rows": 17483,
+      "sha256": "2c3ecdc8c0943cae379c2b01cb3f8f60ee092c6ef9c8fee100e2ddf94cffe7dc"
+    },
+    "extended_rescue_cases": {
+      "rows": 326,
+      "sha256": "509e4ab8067ffd43c2469d7c9b4549b41097749f8b4f71099002294b250f9f2a"
+    },
+    "extended_sanity_checks": {
+      "rows": 11,
+      "sha256": "18aa09692ce58502fec3c07a6521516cd1cb163c06077560355f7610d9f29a58"
+    }
+  },
+  "published_rows_verified": {
+    "torsion_independent_raw_druglike": {
+      "plinder_summary": 1,
+      "plinder_per_molecule": 22,
+      "plinder_recovery_curve": 21,
+      "plinder_k_efficiency": 15
+    },
+    "torsion_independent_minimized_druglike": {
+      "plinder_summary": 1,
+      "plinder_per_molecule": 22,
+      "plinder_recovery_curve": 21,
+      "plinder_k_efficiency": 15
+    }
+  },
+  "structural_recalculation": false
+}

@@ -1,5 +1,21 @@
 # Results: sources and author follow-up
 
+## Current torsion procedure and PLINDER measurements, 16 November 2026
+
+PLINDER torsion uses one ETKDGv3 starting conformer per molecule. Raw and
+minimized pools are sampled separately from that geometry, each retaining
+1,000 conformers. The minimized pipeline uses fresh torsion candidates,
+MMFF94s and DG clash factor 0.7 before and after, with stereo rejection and
+replacement sampling. Only PLINDER RDKit remains paired. Do not restore the
+five-start recipe, raw-pool minimization, or constrained-retry account for torsion.
+
+The published PLINDER raw/minimized rows update Tables 1/2/4, Figures 1/7,
+and Supporting Figures S5/S6. Table S5 and Methods describe the current
+procedure. All CASF results, energy and sampling data, and other methods
+are unchanged, verified against the release databases. Exact source records,
+reproduction and scope checks: `plinder22-data/independent-torsion/`.
+Main Figure 6 landscapes and Figure 8 Qwen comparisons remain unchanged.
+
 ## Diversity visualization addition, 6 November 2026
 
 The visualization contribution is main Figure 6, beside its PLINDER Results text.

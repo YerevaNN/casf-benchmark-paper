@@ -42,9 +42,11 @@ and Qwen. RDKit ETKDGv3\cite{wang2020etkdg} embeds molecular graphs using distan
 and experimental torsional preferences. Random torsion sampling perturbs eligible
 bonds and rejects severe clashes. Both are evaluated with and without
 MMFF94s\cite{halgren1999mmff94s} minimization. CASF torsion sampling starts from matched
-ChEMBL3D topology coordinates; PLINDER torsion sampling starts from independently
-embedded structures. Neither uses the experimental reference coordinates. Raw and
-minimized PLINDER pools are paired, whereas the CASF pools are sampled separately.
+ChEMBL3D topology coordinates; PLINDER torsion sampling starts from one ETKDGv3
+conformer per molecule. Neither uses the experimental reference coordinates. Raw and
+minimized torsion pools are sampled separately from the same starting geometry,
+with clash checks before and after minimization. The PLINDER RDKit comparison instead
+minimizes the saved raw conformers; the CASF RDKit pools are sampled separately.
 
 Torsional Diffusion\cite{jing2022torsional} updates torsion angles;
 LoQI\cite{nikitin2025loqi} learns low-energy geometries from ChEMBL3D through coordinate

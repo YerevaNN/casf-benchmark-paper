@@ -27,8 +27,10 @@ Postprocessing is part of this choice because it changes the conformational dist
 The different responses to minimization at the two matching tolerances show that its value
 depends on the required geometric agreement. McNutt et al.\cite{mcnutt2023conformers} found
 benefits from minimization while also showing that selecting only the lowest-energy
-conformers was insufficient for the best retrieval of bound geometries. Our paired comparisons
-similarly argue for evaluating postprocessing against the intended structural criterion.
+conformers was insufficient for the best retrieval of bound geometries. Our paired PLINDER RDKit
+comparison similarly supports evaluating postprocessing against the intended structural
+criterion. The torsion comparison concerns separately sampled pipelines and does not
+isolate the effect of minimization on identical conformers.
 The energy analysis provides a complementary description: broad geometric sampling can
 coexist with a narrower typical energy spread. A smaller spread alone, however, does not
 establish lower strain or physical plausibility, and the single-point force-field energies

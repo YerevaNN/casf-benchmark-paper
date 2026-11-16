@@ -1,5 +1,21 @@
 # Methods: evidence and author follow-up
 
+## Current torsion procedure and PLINDER measurements, 16 November 2026
+
+PLINDER torsion uses one ETKDGv3 starting conformer per molecule. Raw and
+minimized pools are sampled separately from that geometry, each retaining
+1,000 conformers. The minimized pipeline uses fresh torsion candidates,
+MMFF94s and DG clash factor 0.7 before and after, with stereo rejection and
+replacement sampling. Only PLINDER RDKit remains paired. Do not restore the
+five-start recipe, raw-pool minimization, or constrained-retry account for torsion.
+
+The published PLINDER raw/minimized rows update Tables 1/2/4, Figures 1/7,
+and Supporting Figures S5/S6. Table S5 and Methods describe the current
+procedure. All CASF results, energy and sampling data, and other methods
+are unchanged, verified against the release databases. Exact source records,
+reproduction and scope checks: `plinder22-data/independent-torsion/`.
+Main Figure 6 landscapes and Figure 8 Qwen comparisons remain unchanged.
+
 ## Diversity visualization addition, 6 November 2026
 
 The visualization contribution is main Figure 6, beside its PLINDER Results text.
@@ -163,7 +179,7 @@ from the manuscript prose. No numerical records, tables, or figures changed.
 | --- | --- |
 | Core94 and ref1044 | Connectivity/stereochemistry intersection; ref selects one crystal per identity independently of model scores. `results-data/ref-panel/selection.json` and `selection.csv` retain the exact ranking, seed, and identities. |
 | PLINDER22 | 1,067 cleaned references, inclusive recovery cutoffs, full supplied pools, separately pooled PB. `plinder22-data/reference-inventory.csv`, `reference-records.csv`, and nearest-distance archives. |
-| Classical raw/minimized comparison | CASF uses separate raw/minimized pools and ChEMBL3D topology seeds; PLINDER pairs raw/minimized conformers. The two independent torsion runs use five graph-derived ETKDG starts with 200 accepted perturbations each. `plinder22-data/independent-torsion/` supersedes the experimental-seed descriptions below. RDKit paired minimization remains documented in `plinder22-data/minimized-runs/`. |
+| Classical raw/minimized comparison | Torsion raw/minimized pools are sampled separately from one seed per molecule: stored ChEMBL3D topology coordinates for CASF and graph-derived ETKDGv3 for PLINDER. PLINDER torsion retains 1,000 outputs in each pool; minimized sampling uses MMFF94s with pre/post clash checks. Only PLINDER RDKit pairs raw/minimized conformers. `plinder22-data/independent-torsion/` supersedes the experimental-seed descriptions below. RDKit paired minimization remains documented in `plinder22-data/minimized-runs/`. |
 | Tables 1–2, Figures 1–2 | Greedy cluster counts, largest-cluster fraction, CASF hit/minimum RMSD, PLINDER COV/MAT. Benchmark `analysis/metrics.py`; current per-molecule data and cached nearest distances. |
 | Figure 3 and S9 | Common-hydrogen MMFF94s single-point energies, no hydrogen or heavy-atom optimization, population SD, finite outliers retained. `energy-data/protocol.json`, `results-data/core-ref-protocol/`, and `results-data/qwen-v2/`. |
 | Table 3, Figures 4/B1 | Candidate subsets precede PB; rejected candidates are not replaced. Exact uniform-subset probabilities include PB rejections in the budget. `generation/conformer_sets.py`, `generation/normalizer.py`, `analysis/common_protocol.py`, and archived sampling inputs. |

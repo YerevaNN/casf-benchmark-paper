@@ -88,7 +88,7 @@ for old, method in mapping.items():
     info = json.loads(manifest.read_text())
     assert info['experimental_coordinates_used'] is False
     assert info['seed_source'] == 'rdkit_etkdg_v3'
-    assert info['n_etkdg_starts'] == 5 and info['conformers_per_start'] == 200
+    assert info['n_etkdg_starts'] == 1 and info['conformers_per_start'] == 1000
     assert info['n_success'] == 22 and info['total_conformers'] == 22000
     frame = pd.read_csv(upstream / 'per_molecule.csv')
     assert len(frame) == frame.smiles.nunique() == 22
@@ -172,11 +172,14 @@ for path in sorted((generation / 'provenance').glob('*.json')):
     info = json.loads(record(path).read_text())
     assert info['experimental_coordinates_used'] is False and info['status'] == 'ok'
     assert info['raw_conformer_count'] == info['minimized_conformer_count'] == 1000
-    assert len(info['starts']) == 5 and all(s['retained'] == 200 for s in info['starts'])
+    assert len(info['starts']) == 1 and all(s['retained'] == 1000 for s in info['starts'])
+    assert info['minimized_protocol'] == 'fresh_torsion_mmff94s_clash_0.7'
+    assert info['minimized_sampling']['retained'] == 1000
     records.append({k: v for k, v in info.items() if k != 'mmff_statuses'})
 assert len(records) == 22
 (HERE / 'seed-provenance.json').write_text(json.dumps(records, indent=2) + '\n')
-for relative in ['scripts/run_plinder_independent_torsion.py', 'src/casf_benchmark/generation/plinder_independent_torsion.py']:
+for relative in ['scripts/run_plinder_independent_torsion.py', 'src/casf_benchmark/generation/plinder_independent_torsion.py',
+                 'src/casf_benchmark/generation/conformer_sets.py']:
     shutil.copy2(record(benchmark / relative), HERE / Path(relative).name)
 audit = record(benchmark / 'data/mapping/casf_torsion_seed_manifest.csv')
 audit_text = audit.read_text().replace('\\r\\n', '\n')
@@ -187,7 +190,7 @@ assert audit_rows.seed_source.eq('chembl3d_topology_sdf').all() and audit_rows.s
 (HERE / 'provenance.json').write_text(json.dumps(dict(
     methods=display, replaced_methods=mapping, source_sha256=sources,
     scope='PLINDER torsion raw/minimized only; CASF and all other methods unchanged',
-    protocol='5 ETKDGv3 starts from isomeric SMILES, 200 accepted torsion samples/start; no experimental coordinates',
+    protocol='One ETKDGv3 start from isomeric SMILES; 1000 raw survivors; separately sampled minimized pool with MMFF94s and DG clash factor 0.7 before and after; no experimental coordinates',
     scoring='Published full-pool COV/MAT and clustering; PB separate; inclusive RMSD cutoffs',
     reference_counts=dict(molecules=22, conformations=1067), structural_recalculation=False), indent=2) + '\n')
 print(summary[summary.label.isin(mapping.values())][['label','cov_r_0p75_mean','cov_p_0p75_mean','mat_r_mean','mat_p_mean']].to_string(index=False))

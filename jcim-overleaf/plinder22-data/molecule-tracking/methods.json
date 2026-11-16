@@ -6,6 +6,6 @@
   "nextmol_dmt_l_druglike": "NExT-Mol\nDMT-L",
   "mcf_drugs_l_druglike": "MCF\ndrugs-L",
   "flowr_druglike": "FlowR",
-  "torsion_independent_raw_druglike": "Torsion raw",
-  "rdkit_random_raw_druglike": "RDKit raw"
+  "rdkit_random_raw_druglike": "RDKit raw",
+  "torsion_independent_raw_druglike": "Torsion raw"
 }

@@ -21,6 +21,7 @@ from rdkit.Chem import AllChem, rdMolTransforms
 from casf_benchmark.chembl3d.identity import mol_matches_expected_smiles
 from casf_benchmark.generation.conformer_sets import (
     build_arg_parser,
+    clone_args,
     etkdg_params,
     generate_torsion_batch,
     get_dg_bounds,
@@ -28,17 +29,21 @@ from casf_benchmark.generation.conformer_sets import (
     get_rotatable_torsions,
     has_finite_coordinates,
     minimize,
+    minimize_candidates_parallel,
     stable_seed,
 )
 
-N_ETKDG_STARTS = 5
-CONFORMERS_PER_START = 200
+N_ETKDG_STARTS = 1
+CONFORMERS_PER_START = 1000
 RAW_POOL_SIZE = N_ETKDG_STARTS * CONFORMERS_PER_START
 MAX_EMBED_ATTEMPTS = 8
 MAX_TORSION_BATCHES = 1000
 TORSION_DELTA_DEG = 120.0
 PERTURB_FRACTION = 1.0
 CLASH_CUTOFF = 0.7
+MINIMIZED_PRE_POOL_SIZE = 1500
+MINIMIZED_REFILL_SIZE = 500
+MINIMIZED_PROTOCOL = "fresh_torsion_mmff94s_clash_0.7"
 TOPOLOGY_SOURCE = "isomeric_smiles"
 SEED_SOURCE = "rdkit_etkdg_v3"
 RAW_METHOD = "torsion_independent_raw_druglike"
@@ -79,6 +84,7 @@ class MoleculeGeneration:
     raw_mols: list[Chem.Mol] = field(default_factory=list)
     minimized_mols: list[Chem.Mol] = field(default_factory=list)
     mmff_statuses: list[dict[str, object]] = field(default_factory=list)
+    minimized_sampling: dict[str, int] = field(default_factory=dict)
     reference_topology_matches: bool | None = None
     experimental_coordinates_used: bool = False
     topology_source: str = TOPOLOGY_SOURCE
@@ -209,6 +215,97 @@ def conformers_from_embedded_start(
         if generated == 0:
             break
     return pool[:per_start], attempted, rejected
+
+
+def _minimized_tranche_size(target: int, *, filling: bool) -> int:
+    """CASF uses 1,500 then 500. Smaller tests use the requested pool size."""
+    if target >= RAW_POOL_SIZE:
+        return MINIMIZED_REFILL_SIZE if filling else MINIMIZED_PRE_POOL_SIZE
+    return target
+
+
+def independent_minimized_pool(
+    embedded: Chem.Mol,
+    *,
+    identity: str,
+    global_seed: int,
+    etkdg_index: int,
+    target: int,
+    max_iters: int = 500,
+    ff_variant: str = "MMFF94s",
+    max_batches: int = MAX_TORSION_BATCHES,
+) -> tuple[list[Chem.Mol], dict[str, int]]:
+    """Draw a fresh torsion sample from one ETKDG geometry and minimize it.
+
+    This follows the CASF minimized torsion procedure: clash filter at 0.7,
+    MMFF94s, then the same clash filter again. Sampling continues until
+    `target` stereochemically correct survivors remain. The raw pool is not
+    an input.
+    """
+    torsions = get_rotatable_torsions(embedded)
+    stats = {
+        "attempted": 0,
+        "pre_clash_rejected": 0,
+        "minimization_input": 0,
+        "min_failed": 0,
+        "min_error": 0,
+        "post_clash_rejected": 0,
+        "stereo_rejected": 0,
+        "retained": 0,
+    }
+    if not torsions or embedded.GetNumConformers() != 1:
+        return [], stats
+    args = torsion_args(target)
+    args.max_minimize_iters = int(max_iters)
+    args.ff_variant = ff_variant
+    args.pre_clash_cutoff = CLASH_CUTOFF
+    args.post_clash_cutoff = CLASH_CUTOFF
+    args.generation_batch_size = 1000 if target >= RAW_POOL_SIZE else max(1, int(target))
+    post_args = clone_args(args, post_clash_cutoff=CLASH_CUTOFF)
+    clash = get_dg_bounds(embedded)
+    seed = stable_seed(int(global_seed), f"{identity}:torsion_min:{int(etkdg_index)}")
+    pool: list[Chem.Mol] = []
+    batch_index = 0
+    while len(pool) < target and batch_index < max_batches:
+        pre_target = _minimized_tranche_size(target, filling=bool(pool))
+        pre_pool: list[tuple[Chem.Mol, float, str]] = []
+        while len(pre_pool) < pre_target and batch_index < max_batches:
+            survivors, generated, rejected = generate_torsion_batch(
+                ref_mol=embedded,
+                torsions=torsions,
+                mol_id=identity,
+                batch_size=min(int(args.generation_batch_size), pre_target - len(pre_pool)),
+                batch_index=batch_index,
+                seed=seed,
+                args=args,
+                seed_key=f"torsion_min_pre:{int(etkdg_index)}",
+                dg_clash_data=clash,
+            )
+            batch_index += 1
+            stats["attempted"] += generated
+            stats["pre_clash_rejected"] += rejected
+            pre_pool.extend(survivors)
+            if generated == 0:
+                break
+        if not pre_pool:
+            break
+        stats["minimization_input"] += len(pre_pool)
+        minimized, min_failed, min_error, post_rejected = minimize_candidates_parallel(pre_pool, post_args)
+        stats["min_failed"] += min_failed
+        stats["min_error"] += min_error
+        stats["post_clash_rejected"] += post_rejected
+        for mol, _energy, _ff_name in minimized:
+            heavy = Chem.RemoveHs(mol)
+            if not mol_matches_expected_smiles(heavy, identity, from_3d=True):
+                stats["stereo_rejected"] += 1
+                continue
+            heavy.SetIntProp("etkdg_index", int(etkdg_index))
+            heavy.SetIntProp("minimized_index", len(pool))
+            pool.append(heavy)
+            if len(pool) == target:
+                break
+    stats["retained"] = len(pool)
+    return pool[:target], stats
 
 
 def _chiral_dihedrals(mol: Chem.Mol) -> list[tuple[int, int, int, int, float]]:
@@ -351,10 +448,16 @@ def generate_independent_pools(
     per_start: int = CONFORMERS_PER_START,
     max_embed_attempts: int = MAX_EMBED_ATTEMPTS,
     minimize_pool: bool = True,
+    pools: str = "both",
     max_minimize_iters: int = 500,
     ff_variant: str = "MMFF94s",
 ) -> MoleculeGeneration:
-    """Build raw and minimized torsion pools from SMILES alone."""
+    """Build torsion pools from SMILES alone.
+
+    ``pools="minimized"`` draws only the fresh minimized sample and leaves the
+    raw pool empty. ``pools="both"`` builds the raw pool and, separately, the
+    minimized pool from the same ETKDG geometry.
+    """
     try:
         identity = canonical_isomeric_smiles(smiles)
         topology = topology_from_smiles(identity)
@@ -381,7 +484,10 @@ def generate_independent_pools(
         result.status = "no_rotatable_bonds"
         return result
 
+    build_raw = pools != "minimized"
+    build_minimized = minimize_pool and pools != "raw"
     raw: list[Chem.Mol] = []
+    embedded_starts: list[tuple[int, Chem.Mol]] = []
     for index, primary_seed in enumerate(seeds):
         attempt_seeds = [
             etkdg_attempt_seed(global_seed, identity, index, attempt)
@@ -407,6 +513,20 @@ def generate_independent_pools(
             result.status = "embedding_failed"
             result.raw_mols = []
             return result
+        embedded_starts.append((index, embedded))
+        if not build_raw:
+            result.starts.append(
+                StartRecord(
+                    etkdg_index=index,
+                    etkdg_seed=primary_seed,
+                    embed_attempts=attempts_used,
+                    embed_seed_used=seed_used,
+                    attempted=0,
+                    clash_rejected=0,
+                    retained=0,
+                )
+            )
+            continue
         conformers, attempted, rejected = conformers_from_embedded_start(
             embedded,
             identity=identity,
@@ -435,24 +555,55 @@ def generate_independent_pools(
             for offset, mol in enumerate(conformers)
         )
 
-    if not identity_holds(raw, identity):
-        result.status = "stereo_mismatch"
-        result.raw_mols = []
+    if build_raw:
+        if not identity_holds(raw, identity):
+            result.status = "stereo_mismatch"
+            result.raw_mols = []
+            return result
+        result.raw_mols = raw
+    if not build_minimized:
         return result
-    result.raw_mols = raw
-    if not minimize_pool:
-        return result
-    minimized, statuses, min_status = minimize_raw_pool(
-        raw,
-        max_iters=max_minimize_iters,
-        ff_variant=ff_variant,
-        expected_smiles=identity,
-    )
-    result.mmff_statuses = statuses
-    if min_status != "ok" or len(minimized) != len(raw):
-        result.status = min_status
-        result.minimized_mols = []
-        return result
+    minimized: list[Chem.Mol] = []
+    sampling = {
+        "attempted": 0,
+        "pre_clash_rejected": 0,
+        "minimization_input": 0,
+        "min_failed": 0,
+        "min_error": 0,
+        "post_clash_rejected": 0,
+        "stereo_rejected": 0,
+        "retained": 0,
+    }
+    for index, embedded in embedded_starts:
+        conformers, stats = independent_minimized_pool(
+            embedded,
+            identity=identity,
+            global_seed=int(global_seed),
+            etkdg_index=index,
+            target=per_start,
+            max_iters=max_minimize_iters,
+            ff_variant=ff_variant,
+        )
+        for key, value in stats.items():
+            sampling[key] = sampling.get(key, 0) + int(value)
+        if len(conformers) != per_start:
+            result.status = "failed_to_fill_pool"
+            result.minimized_sampling = sampling
+            result.minimized_mols = []
+            return result
+        base = len(minimized)
+        for offset, mol in enumerate(conformers):
+            mol.SetIntProp("minimized_index", base + offset)
+            minimized.append(mol)
+    result.minimized_sampling = sampling
+    result.mmff_statuses = [
+        {
+            "outcome": "retained",
+            "mmff_status": "0_or_1",
+            "retained": len(minimized),
+            **sampling,
+        }
+    ]
     if not identity_holds(minimized, identity):
         result.status = "stereo_mismatch"
         result.minimized_mols = []
@@ -471,6 +622,7 @@ def generate_from_reference_row(
     per_start: int = CONFORMERS_PER_START,
     max_embed_attempts: int = MAX_EMBED_ATTEMPTS,
     minimize_pool: bool = True,
+    pools: str = "both",
     max_minimize_iters: int = 500,
     ff_variant: str = "MMFF94s",
 ) -> MoleculeGeneration:
@@ -483,6 +635,7 @@ def generate_from_reference_row(
         per_start=per_start,
         max_embed_attempts=max_embed_attempts,
         minimize_pool=minimize_pool,
+        pools=pools,
         max_minimize_iters=max_minimize_iters,
         ff_variant=ff_variant,
     )
@@ -528,6 +681,8 @@ def provenance_document(
         "starts": [start.as_dict() for start in generated.starts],
         "raw_conformer_count": len(generated.raw_mols),
         "minimized_conformer_count": len(generated.minimized_mols),
+        "minimized_protocol": MINIMIZED_PROTOCOL,
+        "minimized_sampling": dict(generated.minimized_sampling),
         "mmff_status_counts": mmff_status_counts(generated.mmff_statuses),
         "mmff_statuses": generated.mmff_statuses,
         "experimental_coordinates_used": False,

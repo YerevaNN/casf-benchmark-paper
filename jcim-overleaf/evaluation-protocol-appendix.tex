@@ -8,26 +8,39 @@ both the embedded coordinates and a pipeline that adds MMFF94s\cite{halgren1999m
 minimization. The random torsion baseline samples displacements uniformly within
 $\pm120^\circ$ around eligible torsions and rejects severe steric clashes.
 
-For CASF, torsion sampling starts from the matched ChEMBL3D topology coordinates, without
-using the experimental reference coordinates. Its minimized variant adds MMFF94s
-optimization and a further clash check. Raw and minimized CASF pipelines use separately
-sampled pools, so they are not paired before-and-after measurements.
+Torsion candidates are sampled from one starting geometry per molecule. CASF uses the
+matched ChEMBL3D topology coordinates, whereas PLINDER embeds the molecular graph
+from isomeric SMILES with ETKDGv3. Neither uses experimental reference coordinates.
+Every candidate begins from the same seed geometry, with all eligible torsions
+perturbed independently. Eligible bonds are non-ring single bonds whose endpoints
+are not terminal atoms or involved in triple bonds; flanking heavy atoms are preferred
+when defining the dihedral. A clash is a heavy-atom distance below 0.7 times the RDKit
+distance-geometry lower bound, excluding bonded pairs and pairs separated by two bonds.
 
-The 22-molecule comparison includes RDKit raw and random torsion sampling, each with 1,000
-supplied conformers per molecule. RDKit removes the reference coordinates before embedding from the
-molecular graph. The torsion baseline builds five ETKDGv3 starting conformations from
-isomeric SMILES, without experimental coordinates. From each start, rotatable bonds
-are perturbed by up to $\pm120^\circ$, rejecting severe clashes until 200 conformers
-are accepted, for 1,000 conformers per molecule. The global random seed is 42, with
-reproducible seeds derived for each molecule and starting conformation.
-The raw baselines undergo no energy minimization. Their minimized counterparts optimize the
-same conformers individually with MMFF94s after rebuilding hydrogens, for up to 500 iterations.
-Hydrogens are then removed. All conformers of the 22 included molecules are retained, including
-those that reach the iteration limit without convergence; no replacement sampling or additional
-clash filtering is applied. For torsion minimization, stereochemistry is checked
-and inversions trigger a retry with constraints that preserve chirality.
-The four classical pools are evaluated against the same cleaned references. This paired comparison differs from the
-separately sampled raw and minimized CASF pools.
+Raw and minimized torsion ensembles use separate random samples from that starting
+geometry. The minimized pipeline first collects 1,500 candidates passing the clash
+check, minimizes them with MMFF94s for up to 500 iterations, and repeats the clash check.
+Converged outputs and outputs reaching the iteration limit are eligible for retention;
+other minimization failures are rejected. Sampling continues in tranches of 500 candidates
+as needed to fill a pool of 1,000 survivors. These are separate pipeline comparisons,
+not paired transformations of the same raw conformers.
+
+For PLINDER, the global seed is 42, with reproducible molecule-specific seeds for
+embedding and separate raw and minimized sampling streams. The single ETKDGv3 start
+allows up to eight embedding attempts and must have finite coordinates and the requested
+stereochemistry. Raw sampling continues until 1,000 clash-passing conformers are obtained.
+Minimized candidates must also retain the requested stereochemistry after optimization;
+mismatches are rejected and replaced through further sampling. Torsion sampling is capped
+at 1,000 batches per pool. Hydrogens are present during generation and minimization and
+removed from the saved conformers. Each of the 22 molecules has 1,000 outputs in each pool.
+
+The PLINDER RDKit comparison instead minimizes the 1,000 saved raw conformers per molecule
+in their original order. Reference coordinates are removed before embedding from the molecular
+graph. Hydrogens are rebuilt before MMFF94s optimization, with a 500-iteration limit,
+and removed afterward. All outputs, including those reaching the iteration limit, are
+retained without replacement sampling or an additional clash check. The CASF RDKit
+raw and minimized pools are sampled separately. All four PLINDER classical pools are
+evaluated against the same cleaned references, with PoseBusters validity assessed separately.
 
 \subsection*{Candidate targets and retained pools}
 
@@ -155,9 +168,8 @@ Mean retained counts include zero-sized ensembles (Supporting Table S1).
 Energy-pool counts and calculation completeness are given in Supporting Table S6.
 
 \textbf{[TODO: confirm the executed seed for selecting ChEMBL-count subsets and
-archive the classical generators' eligible-bond definition, severe-clash criterion,
-retry limits, and chirality-preserving minimization settings. These records must
-identify the evaluated runs.]}
+complete the CASF classical run manifests, including executed retry limits and
+random seeds. These records must identify the evaluated runs.]}
 
 \subsection*{Conformational landscape visualization}
 

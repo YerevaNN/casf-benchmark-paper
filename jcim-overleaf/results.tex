@@ -39,8 +39,9 @@ recovery exceeds that of every generator at the ChEMBL-count target. A method's 
 therefore depends on whether the objective is recovering more experimental references
 within a specified tolerance or reducing the average distance to those references.
 
-Minimizing the existing PLINDER classical pools reduces geometric diversity and increases
-coverage at the primary cutoff, but coverage falls at the tighter cutoff. The smaller
+The minimized PLINDER classical pipelines produce fewer clusters and higher coverage
+at the primary cutoff than their raw counterparts. At the tighter cutoff, coverage
+falls for RDKit and is nearly unchanged for torsion sampling. The smaller
 cluster counts therefore do not imply a uniform change in recovery of bound geometries.
 
 Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
@@ -98,9 +99,9 @@ Similar reference coverage can accompany different sample precision. On PLINDER,
 LoQI and Qwen recover similar fractions of references at 0.75 \AA{}, but LoQI has
 substantially higher precision: 60.5\% versus 44.8\% (Table~\ref{tab:druglike}).
 Supporting Figure S5 shows how both measures vary across individual molecules.
-Minimizing the independent torsion pools increases precision from 36.2\% to 56.7\%,
-while reducing geometric diversity. The paired comparison shows that sampling can
-become more concentrated near observed conformations even as fewer shapes are represented.
+The minimized torsion pipeline has higher precision than raw torsion sampling,
+55.0\% versus 37.7\%, while producing fewer clusters. Its samples are thus more
+concentrated near observed conformations despite representing fewer shapes.
 
 \input{\manuscriptroot tables/druglike}
 

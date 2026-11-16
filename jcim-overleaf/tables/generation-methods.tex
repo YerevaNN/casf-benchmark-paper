@@ -34,13 +34,12 @@ Qwen 1.7B FSQ\cite{geikyan2026coordtoken} & Autoregressive generation of discret
 \noindent Descriptions combine the original method papers and repositories with the inspected CASF adapters. FlowR training resources describe the published ligand-pretraining recipe; the exact training lineage of the local v2.2\_mol checkpoint still requires confirmation. NExT-Mol DMT-L is evaluated without MoLlama conditioning. Optional upstream processing is not assumed to have been enabled. All CASF ensembles subsequently undergo the specified PoseBusters filtering. Executed checkpoint hashes and runtime overrides remain to be verified. Qwen training and benchmark exclusions are described in the training appendix and Table~\ref{tab:qwen-training}; training details for the Qwen 0.6B CASF-dedup checkpoint remain incomplete.
 % AUTHOR: verify exact run metadata; do not substitute current upstream defaults for historical settings.
 \par\smallskip
-\noindent For PLINDER, RDKit and torsion also include minimized variants of the existing raw
-pools, preserving conformer order rather than drawing new pools. Hydrogens are rebuilt before
-MMFF94s optimization (up to 500 iterations) and removed afterward; unconverged outputs at the
-iteration limit are retained. Torsion sampling uses five ETKDGv3 starts from
-isomeric SMILES and 200 accepted perturbations per start, without experimental
-coordinates. Torsion minimization checks stereochemistry and retries inversions
-with constraints that preserve chirality.
-No additional clash or PB filter is applied to their coverage or clustering. Classical-pool
-validity checks use atom ordering matched to the reference topology.
+\noindent For PLINDER, torsion sampling starts from one ETKDGv3 conformer built from
+isomeric SMILES, without experimental coordinates. Raw and minimized pools are sampled
+separately from that geometry, each with 1,000 retained conformers. The minimized pipeline
+applies clash checks before and after MMFF94s optimization and rejects stereochemical
+mismatches. In contrast, PLINDER RDKit minimization operates on the saved raw conformers
+in their original order. Both use up to 500 optimization iterations and permit outputs
+that reach the iteration limit. Classical-pool validity checks use atom ordering matched
+to the reference topology; PoseBusters is not applied as a coverage or clustering filter.
 \endgroup

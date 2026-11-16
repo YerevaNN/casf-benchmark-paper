@@ -16,7 +16,12 @@
     "198 molecule-tracking records match archived measurements",
     "no reference-seed markers in active manuscript text/tables",
     "citations, labels, included files, and figure paths checked",
-    "updated figures visually inspected"
+    "updated figures visually inspected",
+    "published PLINDER summary, per-molecule, recovery and k-efficiency rows match source CSVs",
+    "CASF dashboard and 21 extended CASF tables unchanged",
+    "all non-torsion cached nearest distances unchanged",
+    "main and supporting figures updated and visually inspected"
   ],
-  "manuscript_compiled": false
+  "manuscript_compiled": false,
+  "generation_protocol": "one ETKDGv3 seed; independent raw/minimized torsion sampling; MMFF94s and pre/post clash checks for minimized pool"
 }
