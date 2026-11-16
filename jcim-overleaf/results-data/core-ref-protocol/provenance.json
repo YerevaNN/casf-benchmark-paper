@@ -20,7 +20,7 @@
     "results-data/core-ref-protocol/ref/full-pool-endpoints.csv": "0121ed799c06ced46321f7d590e96316465488f0b6ce3cb2760d54afd173e5bd",
     "results-data/core-ref-protocol/ref/reference.json": "f6fd10e4b4f6440463272ad36e99a9e0d2efbc7b7f3c3c5a6c073ab00882ab84"
   },
-  "figure3": "Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.",
+  "figure3": "Energy figure now main Figure 2: PLINDER plus unchanged core/ref; see results-data/plinder-energy/rendered-files.json.",
   "figure4": "All core/ref endpoints from current Table 3; same method order and scales.",
   "figure5": "PLINDER COV-R/MAT-R and CASF recovery; source and output hashes in results-data/plinder-sampling/rendered-files.json.",
   "mean_chembl_counts": {

@@ -58,31 +58,10 @@ def row_axis(ax, methods, show_names=True):
     ax.set_axisbelow(True)
 
 
-# Figure 2: identical energy protocol and panel scales for both datasets.
-fig, axes = plt.subplots(2, 2, figsize=(8.5, 9.4))
-fig.subplots_adjust(left=.215, right=.965, top=.865, bottom=.16, hspace=.55, wspace=.28)
-methods = energy.label.tolist()
-y = np.arange(len(methods))
-energy_points = []
-for i, cohort in enumerate(['core', 'ref']):
-    for j, metric in enumerate(['clusters', 'energy']):
-        ax = axes[i, j]
-        title = 'Geometric diversity' if j == 0 else 'Energy dispersion'
-        ax.set_title(f'{chr(65+2*i+j)}   {TITLES[cohort]}\n{title}', loc='left', pad=12)
-        row_axis(ax, methods, show_names=j == 0)
-        ax.set_xlim(0, 66 if j == 0 else 49)
-        ax.set_xlabel('Mean clusters at 0.5 Å' if j == 0 else 'Median energy SD (kcal/mol)', labelpad=7)
-        for k, method in enumerate(methods):
-            cohort_energy = energy if cohort == 'core' else ref_energy
-            r = cohort_energy.loc[cohort_energy.label.eq(method)].iloc[0]
-            value = float(r.mean_clusters_0p5 if j == 0 else r.median_energy_std)
-            color = STYLE[KEYS[method]][1]
-            ax.barh(k, value, color=color, height=.58, zorder=3)
-            ax.text(value + (.9 if j == 0 else .65), k, f'{value:.1f}', va='center', fontsize=8)
-            energy_points.append(dict(cohort=cohort, method=method, metric=metric, value=value))
-fig.suptitle('ChEMBL-count target · geometry and energy spread', x=.215, ha='left', y=.974, fontsize=11)
-save(fig, 'figure-energy-dispersion')
-pd.DataFrame(energy_points).to_csv(OUT/'figure3-measured-values.csv', index=False)
+# Figure 2 combines PLINDER with the archived CASF energy measurements.
+import runpy
+with plt.rc_context():
+    runpy.run_path(str(PAPER/'results-data/plinder-energy/render.py'), run_name='__main__')
 
 # Figure 3: every endpoint is available in current Table 3.
 fixed = table3.loc[table3.cohort.eq('core') & table3.budget.eq('fixed')]
@@ -130,7 +109,7 @@ for fig in figures:
     'current_ref_source':'results-data/ref-panel/provenance.json',
     'release':'https://github.com/YerevaNN/casf-benchmark/releases/tag/dashboard-data-ref-protocol-v1',
     'source_hashes':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
-    'figure3':'Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.',
+    'figure3':'Energy figure now main Figure 2: PLINDER plus unchanged core/ref; see results-data/plinder-energy/rendered-files.json.',
     'figure4':'All core/ref endpoints from current Table 3; same method order and scales.',
     'figure5':'PLINDER COV-R/MAT-R and CASF recovery; source and output hashes in results-data/plinder-sampling/rendered-files.json.',
     'mean_chembl_counts':chembl_counts.groupby('cohort').chembl_count.mean().to_dict(),

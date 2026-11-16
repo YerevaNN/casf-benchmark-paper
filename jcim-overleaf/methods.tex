@@ -153,12 +153,15 @@ landmark selection, the interactive companion, reference clustering, and project
 
 \subsection{Energy and sampling-budget analyses}
 
-We calculate MMFF94s single-point energies for the retained CASF ChEMBL-count ensembles.
+We use MMFF94s single-point energies for the PoseBusters-passing PLINDER conformers
+and retained CASF ChEMBL-count ensembles.
 Existing hydrogens are removed and rebuilt consistently across methods; neither
 hydrogen nor heavy-atom positions are optimized. For each molecule, we calculate the
-mean energy and population standard deviation. The principal dispersion summary is
+population standard deviation of energy. The principal dispersion summary is
 the median standard deviation across molecules, limiting the influence of extreme
-spreads. Undefined energies are omitted and counted separately; all finite values
+spreads. Cluster counts are averaged over the same molecules with defined energy SD;
+PLINDER clustering uses the full supplied pools, whereas CASF clustering uses the retained
+ensembles. Undefined energies are omitted and counted separately; all finite values
 are retained. Supporting Table~\ref{tab:energy-summary} and the evaluation appendix give additional
 summaries and calculation settings. These energies do not represent binding free
 energies.

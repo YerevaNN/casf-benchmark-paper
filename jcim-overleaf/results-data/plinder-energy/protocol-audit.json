@@ -1,0 +1,46 @@
+{
+  "protocol": {
+    "force_field": "MMFF94s",
+    "hydrogens": "Remove explicit hydrogens and rebuild explicit hydrogen coordinates; evaluate without any coordinate optimization",
+    "heavy_coordinate_tolerance_angstrom": 1e-10,
+    "nonbonded_threshold": 100.0,
+    "ignore_interfragment_interactions": true,
+    "std_ddof": 0,
+    "coordinate_optimization": false
+  },
+  "energy_pool": "Saved PoseBusters-passing subset; no new PB replay or energy evaluation.",
+  "geometry_pool": "Full supplied ensembles for molecules with defined energy SD (21 for FlowR, 22 for others); not the same conformer subset as energy.",
+  "aggregation": "Median of per-molecule population energy SD; mean cluster count over the same molecules.",
+  "finite_energies": 192356,
+  "pb_passing": 192356,
+  "supplied_conformers": 219067,
+  "source_sha256": {
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "a19597ecb56116f20cd181772c2c394ce30821bfd7d7b402ca25d49c186e47c0",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/flowr_druglike/per_molecule.csv": "95655ab3d2621a9a57b8ad1081e3586ae4ee105ebb08ba347ca6204f4c652680",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/loqi_druglike/per_molecule.csv": "99564c4024321b817173dbed35be8824e571107b3b40b836cd7b6560a9e12735",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/mcf_drugs_l_druglike/per_molecule.csv": "1cd1b08c6d0dba40a5c9d895a9b7df8736d572bc23994bc08064e178f7e41ea8",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/nextmol_dmt_l_druglike/per_molecule.csv": "286a3db134d55ace3082250db6a71f8f8924ce2ede1128097e9002f66cdd3942",
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_panel/qwen_1p7b_v2_coordtoken_step41054/per_molecule.csv": "7037fb384161d69da184a33924ded0baf9207e73d191423bbecb881c2cab35cc",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_minimized_druglike/per_molecule.csv": "7323d572a34ba541f8da75eb29f1e60bf9f7afbb342568c2e2530e6fb3c7da9f",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsion_independent_raw_druglike/per_molecule.csv": "efc7658020d3c1bcfad7f4ef4f8f4977b491d751f6a3fe14ae00fed429adbaca",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/plinder_panel/torsional_diffusion_druglike/per_molecule.csv": "920adb62953cb14016ea176d206b9c3e65c0c2dad60164dc05900c75eb59f8ba",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/minimized-runs/rdkit_random_raw_druglike-corrected-validity-energy.csv": "059e50d95a06c41e2fcf58356e1842f15c399a1a7a4b5da0a319bcc3e7947dda",
+    "/mnt/weka/vtarasov/code/casf-benchmark/data/results/plinder_panel/rdkit_random_minimized_22_druglike/per_molecule.csv": "3d25e78cde1415d7a6e6f47678e6ea19a57f62914dbb9db460917896c4701fa3"
+  },
+  "original_evaluator_sha256": "7a929eeeb322ed65c4429d9dea8632a44c2aba8dbbb46159c40527f136f8d957",
+  "function_comparisons": {
+    "common_hydrogen_mmff_energy": {
+      "main_matches_original": true,
+      "baseline_checkout_matches_original": true
+    },
+    "energy_summary": {
+      "main_matches_original": true,
+      "baseline_checkout_matches_original": true
+    },
+    "score_conformer_pool": {
+      "main_matches_original": true,
+      "baseline_checkout_matches_original": false
+    }
+  },
+  "figure": "Main Figure 2; PLINDER added above unchanged CASF core/ref measurements."
+}

@@ -1,5 +1,16 @@
 # Manuscript authoring
 
+## Energy Figure 2
+
+Figure 2 has PLINDER (A,B), core (C,D), ref (E,F). PLINDER energies are saved
+common-hydrogen MMFF94s single points on PB-passing subsets; clustering uses
+full supplied pools over the same measurable molecules (21 for FlowR, 22 for
+others). No new optimization or PB replay. PLINDER energy axis is logarithmic;
+CASF axes and values stay linear/unchanged. Supporting Table S8 includes
+PLINDER energy SDs; mean energies and paired differences apply to CASF only.
+Reproduce with `results-data/plinder-energy/render.py` and the existing
+`results-data/core-ref-protocol/build_energy_table.py`.
+
 ## Table ordering
 
 Table 1 orders generators by increasing PLINDER C0.5; Table 2 orders them

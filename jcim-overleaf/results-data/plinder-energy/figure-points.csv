@@ -1,0 +1,65 @@
+cohort,method,metric,value,n_molecules
+plinder,RDKit minimized,mean_clusters_0p5,102.1818181818182,22
+plinder,Torsion minimized,mean_clusters_0p5,122.27272727272728,22
+plinder,LoQI,mean_clusters_0p5,112.1818181818182,22
+plinder,MCF drugs-L,mean_clusters_0p5,189.13636363636363,22
+plinder,NExT-Mol DMT-L,mean_clusters_0p5,193.6818181818182,22
+plinder,RDKit raw,mean_clusters_0p5,144.54545454545453,22
+plinder,Torsional Diffusion,mean_clusters_0p5,289.3181818181818,22
+plinder,FlowR,mean_clusters_0p5,403.8571428571428,21
+plinder,Torsion raw,mean_clusters_0p5,358.95454545454544,22
+plinder,Qwen 1.7B FSQ,mean_clusters_0p5,324.09090909090907,22
+plinder,RDKit minimized,median_energy_std,4.372142182784664,22
+plinder,Torsion minimized,median_energy_std,5.065007009125672,22
+plinder,LoQI,median_energy_std,5.32913673571078,22
+plinder,MCF drugs-L,median_energy_std,7.379913510359971,22
+plinder,NExT-Mol DMT-L,median_energy_std,7.110398821172938,22
+plinder,RDKit raw,median_energy_std,14.122172842351924,22
+plinder,Torsional Diffusion,median_energy_std,71.14740744610475,22
+plinder,FlowR,median_energy_std,14.876664227893432,21
+plinder,Torsion raw,median_energy_std,3350.4917845002064,22
+plinder,Qwen 1.7B FSQ,median_energy_std,60.03254433352182,22
+core,RDKit minimized,mean_clusters_0p5,21.71276595744681,94
+core,Torsion minimized,mean_clusters_0p5,21.861702127659573,94
+core,LoQI,mean_clusters_0p5,24.98936170212766,94
+core,MCF drugs-L,mean_clusters_0p5,31.236559139784948,93
+core,NExT-Mol DMT-L,mean_clusters_0p5,31.597826086956523,92
+core,RDKit raw,mean_clusters_0p5,34.265957446808514,94
+core,Torsional Diffusion,mean_clusters_0p5,40.9468085106383,94
+core,FlowR,mean_clusters_0p5,54.08510638297872,94
+core,Torsion raw,mean_clusters_0p5,54.159574468085104,94
+core,Qwen 1.7B FSQ,mean_clusters_0p5,49.95744680851064,94
+core,ChEMBL3D-PB,mean_clusters_0p5,21.71276595744681,94
+core,RDKit minimized,median_energy_std,2.7259932122062542,94
+core,Torsion minimized,median_energy_std,2.799149810546582,94
+core,LoQI,median_energy_std,3.7212925538382486,94
+core,MCF drugs-L,median_energy_std,4.970196879243358,93
+core,NExT-Mol DMT-L,median_energy_std,4.784864237216029,92
+core,RDKit raw,median_energy_std,9.115256150119643,94
+core,Torsional Diffusion,median_energy_std,26.49916951632652,94
+core,FlowR,median_energy_std,11.590867674680114,94
+core,Torsion raw,median_energy_std,40.50150047575613,94
+core,Qwen 1.7B FSQ,median_energy_std,15.665414070078931,94
+core,ChEMBL3D-PB,median_energy_std,2.6893698646152,94
+ref,RDKit minimized,mean_clusters_0p5,22.980824544582934,1043
+ref,Torsion minimized,mean_clusters_0p5,22.08724832214765,1043
+ref,LoQI,mean_clusters_0p5,23.07758620689655,1044
+ref,MCF drugs-L,mean_clusters_0p5,28.975775193798448,1032
+ref,NExT-Mol DMT-L,mean_clusters_0p5,28.73643410852713,1032
+ref,RDKit raw,mean_clusters_0p5,32.900383141762454,1044
+ref,Torsional Diffusion,mean_clusters_0p5,35.34522661523626,1037
+ref,FlowR,mean_clusters_0p5,44.03557692307693,1040
+ref,Torsion raw,mean_clusters_0p5,43.85466794995188,1039
+ref,Qwen 1.7B FSQ,mean_clusters_0p5,44.471716203259824,1043
+ref,ChEMBL3D-PB,mean_clusters_0p5,22.903256704980844,1044
+ref,RDKit minimized,median_energy_std,3.1213845711390595,1043
+ref,Torsion minimized,median_energy_std,3.200824214503184,1043
+ref,LoQI,median_energy_std,3.25986824777571,1044
+ref,MCF drugs-L,median_energy_std,4.941944106018479,1032
+ref,NExT-Mol DMT-L,median_energy_std,4.839552941657205,1032
+ref,RDKit raw,median_energy_std,9.18510120230761,1044
+ref,Torsional Diffusion,median_energy_std,20.90120736010154,1037
+ref,FlowR,median_energy_std,9.037717281142488,1040
+ref,Torsion raw,median_energy_std,31.108173747706363,1039
+ref,Qwen 1.7B FSQ,median_energy_std,13.859713850327235,1043
+ref,ChEMBL3D-PB,median_energy_std,2.837514504371126,1044

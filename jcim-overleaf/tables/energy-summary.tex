@@ -2,11 +2,24 @@
 \centering\footnotesize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.12}
-\caption{Energy summaries after common hydrogen preparation at the ChEMBL-count target, separately for CASF core and ref. All energy values are in kcal/mol.}
+\caption{Energy summaries after common hydrogen preparation for PLINDER and the CASF core/ref ChEMBL-count ensembles. All energy values are in kcal/mol.}
 \label{tab:energy-summary}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
 Method & $n$ & \shortstack{Median\\energy SD} & \shortstack{Mean\\energy SD} & \shortstack{Median\\mean energy} & \shortstack{Median paired\\energy difference} \\
+\midrule
+\multicolumn{6}{l}{\textbf{PLINDER}} \\
+\midrule
+RDKit minimized & 22 & 4.4 & 6.1 & --- & --- \\
+Torsion minimized & 22 & 5.1 & 6.6 & --- & --- \\
+LoQI & 22 & 5.3 & 6.2 & --- & --- \\
+MCF drugs-L & 22 & 7.4 & 7.9 & --- & --- \\
+NExT-Mol DMT-L & 22 & 7.1 & 7.5 & --- & --- \\
+RDKit raw & 22 & 14.1 & 58.2 & --- & --- \\
+Torsional Diffusion & 22 & 71.1 & 3108.5 & --- & --- \\
+FlowR & 21 & 14.9 & 25.2 & --- & --- \\
+Torsion raw & 22 & 3350.5 & 14648.7 & --- & --- \\
+Qwen 1.7B FSQ & 22 & 60.0 & 1355.2 & --- & --- \\
 \midrule
 \multicolumn{6}{l}{\textbf{CASF core}} \\
 \midrule
@@ -41,8 +54,8 @@ ChEMBL3D-PB & 1044 & 2.8 & 3.4 & 41.3 & +0.0 \\
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-$n$: ensembles included. Energy SD: within-ensemble population standard deviation. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
+$n$: ensembles with defined energy SD. PLINDER energies use the PoseBusters-passing subsets; one FlowR molecule has an empty subset. Energy SD: within-ensemble population standard deviation. Mean-energy and paired-difference columns apply to CASF only. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
 
-Finite energies were obtained for 78,058 of 78,058 retained core conformers and 734,951 of 734,952 retained ref conformers. The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
+Finite energies were obtained for 192,356 of 192,356 PoseBusters-passing PLINDER conformers, and for 78,058 of 78,058 retained core conformers and 734,951 of 734,952 retained ref conformers. The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
 \end{minipage}
 \end{table}

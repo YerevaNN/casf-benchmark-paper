@@ -56,12 +56,15 @@ RMSD cutoff of at least one experimental reference (Supporting Figure~\ref{fig:p
 
 \diversityfigure
 
-Energy variation also differs among geometrically diverse ensembles. On both CASF panels,
-Qwen and FlowR have narrower typical energy distributions than raw torsion sampling and
-Torsional Diffusion, while LoQI, the minimized baselines, and ChEMBL3D have narrower
-distributions still (Figure~\ref{fig:energy-dispersion}). Extreme ensembles make mean
-energy spreads much larger than medians for several methods, particularly Torsional
-Diffusion and raw torsion sampling on ref (Supporting Table~\ref{tab:energy-summary}).
+Energy variation also differs among geometrically diverse ensembles (Figure~\ref{fig:energy-dispersion}).
+On PLINDER, raw torsion sampling has by far the widest typical energy spread, followed
+by Torsional Diffusion and Qwen. FlowR combines the highest mean cluster count with a
+narrower typical energy spread than those three methods, while LoQI and the minimized
+baselines have narrower spreads still. On both CASF panels, Qwen and FlowR have narrower
+typical energy distributions than raw torsion sampling and Torsional Diffusion.
+Extreme ensembles make mean energy spreads much larger than medians for several
+methods, including raw torsion sampling, Torsional Diffusion, and Qwen on PLINDER
+(Supporting Table~\ref{tab:energy-summary}).
 
 \energyfigure
 

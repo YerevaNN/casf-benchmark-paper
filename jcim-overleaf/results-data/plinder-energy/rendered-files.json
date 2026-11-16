@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "results-data/plinder-energy/summary.csv": "fb2a2b86e170c566452daf84b62d9d89910a4e19b2f6e8733c687a70d6ef3323",
+    "results-data/plinder-energy/per-molecule.csv": "ed2265f76afcd07256bd273bb2910679a1fde88097d8f9bc66da2edc052bfd66",
+    "results-data/plinder-energy/protocol-audit.json": "190484aa44bbf16e246f597f25b5cd8ebf775b850cca16aaf468d6f6dd56179f",
+    "energy-data/summary.csv": "94855825f0f16b1c62e6265aafb7b5ad723dcde29f1442156835181fdb33b7ba",
+    "results-data/core-ref-protocol/ref/summary.csv": "b117be4bb51ba877d103c711b8f514781b914c3b652a90adc0e388ac2351c0aa",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "results-data/plinder-energy/render.py": "35e0fc7433c9554db3fde99f7dbc6fe0bb6437453992ebc5ace8984a1b6faf1b"
+  },
+  "outputs": {
+    "figures/figure-energy-dispersion.pdf": "e4d83f7eb5d6cacd01d3c2d7befbaa3cd791458ff9db32a242c10fd8e2c7c1c8",
+    "figures/figure-energy-dispersion.png": "77a7b01e235e83419556e14932914799cdeb620c85c7c55f4bf55d7ef2456f30",
+    "figures/figure-energy-dispersion.svg": "69718b190f6639930c4a45db7d9aef06fe7555bf2c1196ceba85480812af7aa7"
+  }
+}

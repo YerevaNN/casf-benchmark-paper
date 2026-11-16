@@ -91,22 +91,30 @@ those versions.]}
 
 \subsection*{Common-hydrogen energy calculation}
 
-We evaluate the retained CASF core and ref ChEMBL-count ensembles with MMFF94s in RDKit 2025.09.6, using a common hydrogen
-preparation for every method. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
+We evaluate the PoseBusters-passing PLINDER subsets and retained CASF core/ref
+ChEMBL-count ensembles with MMFF94s, using a common hydrogen preparation for every method.
+The CASF calculation uses RDKit 2025.09.6; PLINDER uses the saved common-hydrogen
+energy summaries from its evaluation pipeline. Existing hydrogens are removed and rebuilt with assigned coordinates, and a single-point
 energy is calculated without optimizing either hydrogen or heavy-atom positions. This preserves the conformations used for
 clustering and recovery and avoids differences arising from whether a generator supplied
-hydrogen coordinates. Saved PoseBusters membership is preserved in both panels.
+hydrogen coordinates. Saved PoseBusters membership is preserved in all panels.
 Energies are reported in kcal mol$^{-1}$, with the nonbonded threshold set to 100
 and interfragment interactions ignored. Calculation settings,
 coordinate-preservation checks, and source records are archived with the energy results.
 
-For each molecule and method, we calculate the mean energy and population standard deviation
+For each molecule and method, we calculate the population standard deviation of energy
 across conformers. Main Figure 2 reports the median of these standard
-deviations across molecules, alongside mean cluster counts.
+deviations across molecules, alongside mean cluster counts for the same molecules
+with defined energy SD. PLINDER cluster counts use the full supplied pools, whereas
+energies use the PoseBusters-passing subsets. FlowR has no passing conformers for
+4-hydroxytamoxifen, so its two summaries use 21 molecules; other PLINDER methods use
+all 22. All 192,356 passing PLINDER conformers have finite energy evaluations.
+Panel B uses a logarithmic energy axis to display the large spread across methods;
+the CASF axes remain linear.
 This summary limits the influence of molecules with exceptionally large energy spreads.
-Supporting Table~\ref{tab:energy-summary} also gives the mean of the standard deviations, the median of per-molecule
-mean energies, and the median paired difference in mean energy relative to the ChEMBL3D
-ensemble of the same molecule. Undefined energies are omitted from the energy moments and counted separately in Supporting
+Supporting Table~\ref{tab:energy-summary} also gives the mean of the standard deviations.
+For CASF, it additionally reports the median of per-molecule mean energies and the
+median paired difference in mean energy relative to the ChEMBL3D ensemble of the same molecule. Undefined energies are omitted from the energy moments and counted separately in Supporting
 Table~\ref{tab:energy-summary}; all finite values, including extreme values, remain in the summaries.
 Energy spread describes dispersion under this force field; it is neither a count of energy
 basins nor a binding free energy.

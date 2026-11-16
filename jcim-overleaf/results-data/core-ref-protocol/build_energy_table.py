@@ -1,4 +1,4 @@
-"""Render Supporting Table S9 from the common-protocol energy summaries."""
+"""Render Supporting Table S8 from the common-protocol energy summaries."""
 from pathlib import Path
 import math
 import pandas as pd
@@ -6,6 +6,8 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 PAPER = HERE.parents[1]
 core = pd.read_csv(PAPER / 'energy-data/summary.csv')
+plinder = pd.read_csv(PAPER/'results-data/plinder-energy/summary.csv')
+plinder = plinder.set_index('label').loc[[label for label in core.label if label != 'ChEMBL3D-PB']].reset_index()
 ref = pd.read_csv(HERE / 'ref/summary.csv').set_index('method').loc[core.method].reset_index()
 
 
@@ -21,30 +23,30 @@ lines = [r'''\begin{table}[p]
 \centering\footnotesize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.12}
-\caption{Energy summaries after common hydrogen preparation at the ChEMBL-count target, separately for CASF core and ref. All energy values are in kcal/mol.}
+\caption{Energy summaries after common hydrogen preparation for PLINDER and the CASF core/ref ChEMBL-count ensembles. All energy values are in kcal/mol.}
 \label{tab:energy-summary}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
 Method & $n$ & \shortstack{Median\\energy SD} & \shortstack{Mean\\energy SD} & \shortstack{Median\\mean energy} & \shortstack{Median paired\\energy difference} \\
 \midrule''']
-for label, data in [('CASF core', core), ('CASF ref', ref)]:
+for label, data in [('PLINDER', plinder), ('CASF core', core), ('CASF ref', ref)]:
     lines.append(r'\multicolumn{6}{l}{\textbf{' + label + r'}} \\')
     lines.append(r'\midrule')
     for row in data.itertuples():
         if row.method == 'chembl3d_gt_pb':
             lines.append(r'\hdashline')
         values = [row.label, str(row.n_molecules), number(row.median_energy_std),
-                  number(row.mean_energy_std), number(row.median_mean_energy),
-                  number(row.median_mean_energy_delta_chembl, signed=True)]
+                  number(row.mean_energy_std), '---' if label == 'PLINDER' else number(row.median_mean_energy),
+                  '---' if label == 'PLINDER' else number(row.median_mean_energy_delta_chembl, signed=True)]
         lines.append(' & '.join(values) + r' \\')
-    lines.append(r'\midrule' if label == 'CASF core' else r'\bottomrule')
+    lines.append(r'\midrule' if label != 'CASF ref' else r'\bottomrule')
 core_per = pd.read_csv(PAPER / 'energy-data/per_molecule.csv')
 ref_per = pd.read_csv(HERE / 'ref/per_molecule.csv')
-completeness = f'Finite energies were obtained for {int(core_per.n_energy.sum()):,} of {int(core_per.n_retained.sum()):,} retained core conformers and {int(ref_per.n_energy.sum()):,} of {int(ref_per.n_retained.sum()):,} retained ref conformers.'
+completeness = f'Finite energies were obtained for {int(plinder.n_conformers.sum()):,} of {int(plinder.n_pb_pass.sum()):,} PoseBusters-passing PLINDER conformers, and for {int(core_per.n_energy.sum()):,} of {int(core_per.n_retained.sum()):,} retained core conformers and {int(ref_per.n_energy.sum()):,} of {int(ref_per.n_retained.sum()):,} retained ref conformers.'
 lines.append(r'''\end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-$n$: ensembles included. Energy SD: within-ensemble population standard deviation. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
+$n$: ensembles with defined energy SD. PLINDER energies use the PoseBusters-passing subsets; one FlowR molecule has an empty subset. Energy SD: within-ensemble population standard deviation. Mean-energy and paired-difference columns apply to CASF only. Paired energy differences are relative to ChEMBL3D-PB for the same molecule; positive values indicate higher mean energy.
 
 ''' + completeness + r''' The undefined energy belongs to FlowR. Finite extreme values are retained in the energy summaries.
 \end{minipage}
