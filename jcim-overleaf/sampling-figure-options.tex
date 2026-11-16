@@ -1,14 +1,18 @@
 % Sampling-budget analysis in the main figure sequence.
 \clearpage
 The sampling curves show a similar transition in both CASF panels
-(Figure~\ref{fig:sampling-budget}): LoQI leads these four methods at the smallest budget,
+(Figure~\ref{fig:sampling-budget}C,D): LoQI leads these four methods at the smallest budget,
 while Qwen overtakes it as the budget increases. Qwen continues to gain recovery
-beyond the mean ChEMBL conformer count in both panels.
+beyond the mean ChEMBL conformer count in both panels. On PLINDER, LoQI's coverage
+advantage narrows as sampling increases, but remains at the largest budget
+(Figure~\ref{fig:sampling-budget}A). Matching distance shows a different ordering:
+LoQI has lower MAT-R at small budgets, whereas Qwen reaches the lowest MAT-R at
+1,000 conformers (Figure~\ref{fig:sampling-budget}B).
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{figures/figure-budget-combined.pdf}
-\caption{Expected recovery within 0.75 \AA{} as candidate budget increases for Qwen, LoQI, FlowR, and NExT-Mol on CASF core (A) and ref (B). Horizontal dashed lines show stored ChEMBL3D-PB recovery. Vertical dashed lines mark the mean ChEMBL conformer count before filtering: 81.2 on core and 68.9 on ref. These means provide budget references; the ChEMBL-count experiment uses each entry's own count. Endpoint labels give recovery at 1,000 candidates.}
+\caption{Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol. (A,B) Expected COV-R at 0.75 \AA{} and MAT-R on the 22-molecule PLINDER panel. (C,D) Expected recovery within 0.75 \AA{} on CASF core and ref. Higher coverage and lower MAT-R are better. PLINDER uses supplied ensembles without a common PoseBusters filter; CASF counts rejected candidates against the budget. Budgets are capped at each available pool. Horizontal dashed lines show stored ChEMBL3D-PB recovery; vertical dashed lines mark the mean unfiltered ChEMBL counts (81.2 on core and 68.9 on ref), rather than the entry-specific targets of the ChEMBL-count experiment. Endpoint labels give values at the largest budget.}
 \label{fig:sampling-budget}
 \end{figure}
 \clearpage

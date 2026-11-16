@@ -119,73 +119,10 @@ fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.55, .07), ncol=
 save(fig, 'figure-3-sampling-budget')
 table3.to_csv(OUT/'figure4-source-values.csv', index=False)
 
-# Figure 5: recovery at a fixed tolerance, with the mean ChEMBL candidate budget.
-curves = pd.read_csv(PAPER/'sampling-data/recovery_curves.csv')
+# Figure 5 combines the archived PLINDER and CASF sampling curves.
+import runpy
+runpy.run_path(str(PAPER/'results-data/plinder-sampling/render.py'), run_name='__main__')
 chembl_counts = pd.read_csv(OUT/'chembl-candidate-counts.csv')
-assert not chembl_counts.duplicated(['cohort', 'mol_id']).any()
-core_ref = json.loads((PAPER/'sampling-data/reference.json').read_text())
-display = json.loads((PAPER/'sampling-data/display.json').read_text())
-methods = display['methods']
-# Independently checked against the published per-entry database in the calculation audit.
-ref_ends = pd.read_csv(ref_results/'full-pool-endpoints.csv').set_index('method')
-for method, row in ref_ends.iterrows():
-    match = table3.loc[table3.cohort.eq('ref') &
-                       table3.method.eq(STYLE[method.removesuffix('_fixed')][0]) &
-                       table3.budget.eq('chembl_count' if method == 'chembl3d_gt_pb' else 'fixed')]
-    assert len(match) == 1 and np.isclose(row.recovery, match.recovery.iloc[0])
-fig, axes = plt.subplots(1, 2, figsize=(11.8, 4.5))
-fig.subplots_adjust(left=.075, right=.85, top=.76, bottom=.23, wspace=.87)
-short = {methods[0]: 'Qwen', methods[1]: 'LoQI', methods[2]: 'FlowR', methods[3]: 'NExT-Mol'}
-
-def annotate_endpoints(ax, values, precision, unit, min_gap):
-    # Place labels in vertical order, preserving genuine endpoint locations.
-    ordered = sorted(values.items(), key=lambda pair: pair[1])
-    label_positions = []
-    for method, value in ordered:
-        label_positions.append(max(value, label_positions[-1]+min_gap) if label_positions else value)
-    shift = max(0, label_positions[-1] - (ax.get_ylim()[1] - min_gap/2))
-    for (method, value), position in zip(ordered, label_positions):
-        color = STYLE[method.removesuffix('_fixed')][1]
-        ax.plot(1000, value, marker='o', ms=3.5, color=color, clip_on=False)
-        ax.annotate(f'{short[method]}  {value:.{precision}f}{unit}', xy=(1000,value),
-                    xytext=(1.045,position-shift), textcoords=ax.get_yaxis_transform(),
-                    ha='left', va='center', fontsize=8, color=color, annotation_clip=False,
-                    arrowprops=dict(arrowstyle='-',color=color,lw=.7))
-
-for i, cohort in enumerate(['core', 'ref']):
-    ax = axes[i]
-    ax.set_xlim(10,1000)
-    ax.set_xticks([10,100,250,500,1000], ['10','100','250','500','1,000'])
-    ax.grid(color='#E7EBEE',lw=.6)
-    ax.set_axisbelow(True)
-    ax.set_xlabel('Candidate budget')
-    ax.set_ylim(50,95); ax.set_yticks([50,60,70,80,90,95])
-    ax.set_ylabel('Expected recovery (%)')
-    ax.set_title(f'{chr(65+i)}   {TITLES[cohort]}', loc='left',pad=30)
-    counts = chembl_counts.loc[chembl_counts.cohort.eq(cohort), 'chembl_count']
-    assert len(counts) == (94 if cohort == 'core' else 1044)
-    mean_count = counts.mean()
-    ax.axvline(mean_count, color=MUTED, ls=(0,(3,3)), lw=1.1)
-    ax.annotate(f'Mean ChEMBL count: {mean_count:.1f}',
-                xy=(mean_count,1.015), xycoords=ax.get_xaxis_transform(),
-                ha='left', va='bottom', fontsize=8, color=MUTED)
-    ends = {}
-    cohort_curves = curves if cohort == 'core' else pd.read_csv(ref_results/'recovery_curves.csv')
-    for method in methods:
-        color = STYLE[method.removesuffix('_fixed')][1]
-        c = cohort_curves.loc[cohort_curves.method.eq(method) & cohort_curves.threshold.eq(.75)]
-        ax.plot(c.budget,100*c.recovery,color=color,lw=1.9)
-        ends[method] = 100*c.loc[c.budget.eq(1000), 'recovery'].iloc[0]
-        if cohort == 'ref':
-            assert np.isclose(ends[method], ref_ends.loc[method, 'recovery'])
-    reference = 100*core_ref['hit_rates']['0.75'] if cohort=='core' else ref_ends.loc['chembl3d_gt_pb','recovery']
-    ax.axhline(reference,color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2)
-    annotate_endpoints(ax,ends,1,'%',3.4)
-handles = [Line2D([],[],color=STYLE[m.removesuffix('_fixed')][1],lw=1.9,label=STYLE[m.removesuffix('_fixed')][0]) for m in methods]
-handles.append(Line2D([],[],color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2,label='Stored ChEMBL3D-PB'))
-fig.suptitle('Sampling budget and recovery at 0.75 Å',x=.075,ha='left',y=.98,fontsize=11.5)
-fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.015),ncol=3,frameon=False,fontsize=8,columnspacing=1.5)
-save(fig,'figure-budget-combined')
 for fig in figures:
     plt.close(fig)
 (OUT/'provenance.json').write_text(json.dumps({
@@ -195,7 +132,7 @@ for fig in figures:
     'source_hashes':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
     'figure3':'Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.',
     'figure4':'All core/ref endpoints from current Table 3; same method order and scales.',
-    'figure5':'Exact pre-PoseBusters finite-pool recovery curves at 0.75 Å; rejected candidates consume budget. Vertical lines show arithmetic mean unfiltered ChEMBL conformer counts across all panel entries.',
+    'figure5':'PLINDER COV-R/MAT-R and CASF recovery; source and output hashes in results-data/plinder-sampling/rendered-files.json.',
     'mean_chembl_counts':chembl_counts.groupby('cohort').chembl_count.mean().to_dict(),
     'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054 in all panels.',
     'missing_inputs':[]

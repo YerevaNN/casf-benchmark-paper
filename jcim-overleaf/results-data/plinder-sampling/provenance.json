@@ -1,0 +1,39 @@
+{
+  "sources": {
+    "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_cache/qwen_1p7b_v2_coordtoken_step41054.npz": "c920938b64088955a6d0f0c4fb8365f631435682947cf8aa4ed930733fc2e204",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/loqi_druglike.npz": "f899385ad090392afa45f7c56d5f6fa3aaed7849e00cf64ea86774ef08d8f68e",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/flowr_druglike.npz": "402a1c404167e27da48c642a0521395a4491cabaf3364af3b7c1a3677ae3fa2a",
+    "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/nextmol_dmt_l_druglike.npz": "2f15f64b6c8aa0238953b46c5c94b77126fc62efc41c49714ea911985a77d6c3",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/recovery_curves.csv": "2ccad380214d856dd618f7a92d1ca6bb47d93dfe4711ed092a75c58116d2c33e",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/core-ref-protocol/ref/recovery_curves.csv": "d0eb53d089dc080ac554cd7852680dfa36ee368aea97eca8002293a2de554cf3",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/per-molecule.csv": "a19597ecb56116f20cd181772c2c394ce30821bfd7d7b402ca25d49c186e47c0",
+    "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227"
+  },
+  "qwen": "qwen_1p7b_v2_coordtoken_step41054",
+  "threshold": 0.75,
+  "method": "Exact hypergeometric probability of >=1 hit for each reference, averaged within molecule then across 22 molecules. Uniform sampling without replacement, capped to available supplied pool. MAT-R is the exact expectation of each reference minimum under sampling without replacement, using sorted-distance rank probabilities, then equal averaging across molecules. Five nonfinite pairs are treated as infinite distances, with at most one per reference. Every subset at displayed budgets >=10 necessarily includes a finite match, so expected minima are finite and no references are excluded. One-sample expected MAT-R matches matrix mean; full-pool endpoints and monotonicity checked for both metrics. CASF curves reused unchanged.",
+  "plinder_pool_ranges": {
+    "flowr_druglike": {
+      "min": 121,
+      "max": 1000
+    },
+    "loqi_druglike": {
+      "min": 1000,
+      "max": 1000
+    },
+    "nextmol_dmt_l_druglike": {
+      "min": 1000,
+      "max": 1000
+    },
+    "qwen_1p7b_v2_coordtoken_step41054": {
+      "min": 958,
+      "max": 1000
+    }
+  },
+  "figure": "Main Figure 5, panels A and B; panels C and D reuse the archived CASF curves.",
+  "archive_sha256": {
+    "plinder-per-molecule-curves.csv": "0f0cae2315de77a5605f8d91547bf2706c60d8a71511a1414ec352968ba273cb",
+    "plinder-curves.csv": "54bf5020d3fe6c7a60db3481054d250403534cf8ad7efae950490422ec98b8b3",
+    "plinder-reference-hit-counts.csv": "d7431dbca12fbb24fefcd3e15fb0963b998410cbf1702e7f8e36316f316f9778"
+  }
+}

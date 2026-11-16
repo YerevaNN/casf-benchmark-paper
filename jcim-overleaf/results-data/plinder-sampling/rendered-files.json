@@ -1,0 +1,19 @@
+{
+  "inputs": {
+    "results-data/plinder-sampling/plinder-curves.csv": "54bf5020d3fe6c7a60db3481054d250403534cf8ad7efae950490422ec98b8b3",
+    "results-data/plinder-sampling/plinder-per-molecule-curves.csv": "0f0cae2315de77a5605f8d91547bf2706c60d8a71511a1414ec352968ba273cb",
+    "sampling-data/recovery_curves.csv": "2ccad380214d856dd618f7a92d1ca6bb47d93dfe4711ed092a75c58116d2c33e",
+    "results-data/core-ref-protocol/ref/recovery_curves.csv": "d0eb53d089dc080ac554cd7852680dfa36ee368aea97eca8002293a2de554cf3",
+    "results-data/core-ref-protocol/chembl-candidate-counts.csv": "70a3148bf02f79b4ec76bd7de00ed54b1cfe49c59a098eaa4f764b1caac5fa6c",
+    "sampling-data/reference.json": "d60c1499c65ee5d0b528ff3ed6af4841724e926be24f824b019e2fe2f8691031",
+    "results-data/core-ref-protocol/ref/reference.json": "f6fd10e4b4f6440463272ad36e99a9e0d2efbc7b7f3c3c5a6c073ab00882ab84",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "sampling-data/display.json": "dc306cc69a5da0beea4e5fbc4199c04a6ce14a5229ce9ba079c8942ee1d2643a",
+    "results-data/plinder-sampling/render.py": "5dc61c64e3a0091e2a93218ea5f411503037ea8f3eb5f16284929c52eb075ca8"
+  },
+  "outputs": {
+    "figures/figure-budget-combined.pdf": "d0c1d5d64f13922b3fcf2363b2294a9b897f808056f5261da79ad7811c480ab3",
+    "figures/figure-budget-combined.png": "be4c03f9e4c2a84fce9be1392cfd4f9e9fec9c08adbba6c12598827db867fd50",
+    "figures/figure-budget-combined.svg": "26f9881d9163f8199ed3886d26f74fffc1a4b28f7f19434dd44a8210b1b4685b"
+  }
+}

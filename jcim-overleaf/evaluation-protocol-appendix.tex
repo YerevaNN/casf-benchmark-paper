@@ -131,6 +131,24 @@ It is a descriptive reference, not a replacement for the entry-specific targets
 used in the ChEMBL-count experiment. These calculations describe sampling within
 the available pools; they do not extrapolate beyond them.
 
+For PLINDER, we use the same 63 budgets and the saved reference-by-generated RMSD
+matrices for the four methods in Main Figure 5. Sampling uses the supplied
+ensembles without a common PoseBusters filter. Pool sizes range from 958 to 1,000
+for Qwen and from 121 to 1,000 for FlowR; LoQI and NExT-Mol supply 1,000 per molecule.
+A budget exceeding a molecule's pool size uses its entire pool. For each reference,
+expected coverage is the exact probability of selecting at least one conformer
+within 0.75 \AA{}, calculated from its number of qualifying conformers and the pool
+size. To calculate expected MAT-R, we sort each reference's distances to the generated
+conformers and weight each distance by the probability that its rank is the smallest
+selected rank. Both expectations are averaged first across references within each
+molecule, then equally across the 22 molecules.
+
+Five nonfinite pairwise distances (four for LoQI and one for NExT-Mol) are treated
+as infinite. Each affected reference has only one such pair, so every subset of at
+least 10 conformers contains a finite match; no reference is excluded. Full-pool
+COV-R and MAT-R reproduce the reported molecule-level results. These are exact
+expectations within the saved pools, not repeated generation runs or extrapolations.
+
 \subsection*{Molecular size and flexibility}
 
 We stratify CASF core and ref using descriptors of the reference ligand identities.

@@ -2,13 +2,18 @@
 
 ## Sampling Figure 5
 
-Figure 5 contains two recovery-at-0.75 Å panels, core (A) and ref (B).
+Figure 5 contains PLINDER COV-R at 0.75 Å (A) and expected MAT-R (B) above
+CASF core (C) and ref (D) recovery at 0.75 Å. PLINDER uses supplied pools
+without a common PB filter; CASF counts rejected candidates against budget.
 Do not restore the 80% recovery threshold panels. Horizontal dashed lines show
 ChEMBL3D-PB recovery; vertical dashed lines show mean unfiltered ChEMBL counts
 (81.2 core, 68.9 ref). The archived per-entry counts are in
 `results-data/core-ref-protocol/chembl-candidate-counts.csv`. These means are
 descriptive budget references, not the entry-specific ChEMBL-count experiment.
-Rebuild using `results-data/core-ref-protocol/build_figures.py`.
+Rebuild Figure 5 alone using `results-data/plinder-sampling/render.py`; the
+combined `results-data/core-ref-protocol/build_figures.py` calls it too.
+Exact PLINDER calculations, per-molecule curves, cache hashes and validation
+are archived in `results-data/plinder-sampling/`.
 
 ## Appendix organization
 

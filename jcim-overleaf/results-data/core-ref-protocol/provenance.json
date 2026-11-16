@@ -22,7 +22,7 @@
   },
   "figure3": "Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.",
   "figure4": "All core/ref endpoints from current Table 3; same method order and scales.",
-  "figure5": "Exact pre-PoseBusters finite-pool recovery curves at 0.75 \u00c5; rejected candidates consume budget. Vertical lines show arithmetic mean unfiltered ChEMBL conformer counts across all panel entries.",
+  "figure5": "PLINDER COV-R/MAT-R and CASF recovery; source and output hashes in results-data/plinder-sampling/rendered-files.json.",
   "mean_chembl_counts": {
     "core": 81.15957446808511,
     "ref": 68.85823754789271

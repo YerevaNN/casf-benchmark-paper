@@ -163,14 +163,18 @@ are retained. Supporting Table~\ref{tab:energy-summary} and the evaluation appen
 summaries and calculation settings. These energies do not represent binding free
 energies.
 
-Sampling curves describe uniformly selected subsets of the saved CASF candidate pools.
+Sampling curves describe uniformly selected subsets without replacement from saved
+ensembles. CASF curves use the candidate pools.
 For each budget, we calculate the exact probability of including at least one qualifying
 conformer, without repeatedly drawing subsets. Rejected candidates consume budget but
 cannot produce hits, and empty retained pools contribute zero. We report expected
 recovery at 0.75 \AA{}. ChEMBL3D-PB supplies a fixed recovery reference, and the
 mean ChEMBL conformer count before filtering marks a reference budget for each panel.
-Budgets are capped at available candidates. The appendix records the budget
-grid and calculation procedure. No extrapolation beyond the saved pools is made.
+PLINDER curves use the supplied ensembles without a common PoseBusters filter.
+We calculate expected COV-R at 0.75 \AA{} and expected MAT-R, averaging first over
+references within each molecule and then equally over the 22 molecules.
+Budgets are capped at available pool sizes. The appendix records the budget
+grid and exact calculation procedures. No extrapolation beyond the saved pools is made.
 
 \subsection{Molecular complexity and Qwen comparisons}
 
