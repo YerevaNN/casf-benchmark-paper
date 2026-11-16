@@ -1,13 +1,7 @@
-% Combined author-selected sampling panels; main figure numbering is preserved.
+% Sampling-budget analysis in the main figure sequence.
 \clearpage
-\newcounter{samplingfigurebackup}
-\setcounter{samplingfigurebackup}{\value{figure}}
-\begingroup
-\renewcommand{\thefigure}{B\arabic{figure}}
-\ifdefined\theHfigure\renewcommand{\theHfigure}{budgetoption.\arabic{figure}}\fi
-\setcounter{figure}{0}
 The sampling curves show a similar transition in both CASF panels
-(Figure~\ref{fig:sampling-option-b1}): LoQI leads these four methods at the smallest budget,
+(Figure~\ref{fig:sampling-budget}): LoQI leads these four methods at the smallest budget,
 while Qwen overtakes it as the budget increases. The ordering also depends on the matching
 criterion and dataset. At the largest budget, LoQI reaches 80\% recovery at a tighter RMSD
 threshold than Qwen on core, whereas Qwen reaches it at the tightest threshold on ref.
@@ -17,8 +11,6 @@ A ranking at one budget and tolerance therefore does not fully describe sampling
 \centering
 \includegraphics[width=\linewidth]{figures/figure-budget-combined.pdf}
 \caption{Sampling performance of Qwen, LoQI, FlowR, and NExT-Mol on CASF core (A--B) and ref (C--D). (A, C) Expected recovery within 0.75 \AA{}. (B, D) Smallest RMSD threshold required for 80\% expected recovery. Dashed lines show ChEMBL3D-PB. Endpoint labels give values at 1,000 candidates.}
-\label{fig:sampling-option-b1}
+\label{fig:sampling-budget}
 \end{figure}
 \clearpage
-\endgroup
-\setcounter{figure}{\value{samplingfigurebackup}}
