@@ -1,4 +1,4 @@
-"""Render manuscript Figures 3, 4 and 5 from archived core/ref measurements."""
+"""Render manuscript Figures 2, 3 and 4 from archived core/ref measurements."""
 from pathlib import Path
 import hashlib
 import json
@@ -58,7 +58,7 @@ def row_axis(ax, methods, show_names=True):
     ax.set_axisbelow(True)
 
 
-# Figure 3: identical energy protocol and panel scales for both datasets.
+# Figure 2: identical energy protocol and panel scales for both datasets.
 fig, axes = plt.subplots(2, 2, figsize=(8.5, 9.4))
 fig.subplots_adjust(left=.215, right=.965, top=.865, bottom=.16, hspace=.55, wspace=.28)
 methods = energy.label.tolist()
@@ -84,7 +84,7 @@ fig.suptitle('ChEMBL-count target · geometry and energy spread', x=.215, ha='le
 save(fig, 'figure-energy-dispersion')
 pd.DataFrame(energy_points).to_csv(OUT/'figure3-measured-values.csv', index=False)
 
-# Figure 4: every endpoint is available in current Table 3.
+# Figure 3: every endpoint is available in current Table 3.
 fixed = table3.loc[table3.cohort.eq('core') & table3.budget.eq('fixed')]
 methods = fixed.sort_values('distance', ascending=False).method.tolist() + ['ChEMBL3D-PB']
 fig, axes = plt.subplots(2, 2, figsize=(8.5, 9.4))
@@ -119,7 +119,7 @@ fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.55, .07), ncol=
 save(fig, 'figure-3-sampling-budget')
 table3.to_csv(OUT/'figure4-source-values.csv', index=False)
 
-# Figure 5 combines the archived PLINDER and CASF sampling curves.
+# Figure 4 combines the archived PLINDER and CASF sampling curves.
 import runpy
 runpy.run_path(str(PAPER/'results-data/plinder-sampling/render.py'), run_name='__main__')
 chembl_counts = pd.read_csv(OUT/'chembl-candidate-counts.csv')
@@ -137,4 +137,4 @@ for fig in figures:
     'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054 in all panels.',
     'missing_inputs':[]
 },indent=2)+'\n')
-print('Completed Figures 3, 4 and 5 with calculated core/ref energies and exact sampling curves.')
+print('Completed Figures 2, 3 and 4 with calculated core/ref energies and exact sampling curves.')

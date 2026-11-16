@@ -1,4 +1,4 @@
-# Figure 5: PLINDER and CASF sampling
+# Figure 4: PLINDER and CASF sampling
 
 The main figure contains PLINDER COV-R at 0.75 Å and MAT-R above CASF core/ref
 recovery at 0.75 Å. All four methods use the current paper identities, including

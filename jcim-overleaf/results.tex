@@ -44,17 +44,14 @@ falls for RDKit and is nearly unchanged for torsion sampling. The smaller
 cluster counts therefore do not imply a uniform change in recovery of bound geometries.
 
 Broad geometric variation alone does not explain these recovery patterns. On PLINDER,
-FlowR produces many more clusters but covers fewer references than LoQI
-(Figure~\ref{fig:druglike}A--B).
+FlowR produces many more clusters than LoQI but remains farther from the experimental
+references (Figure~\ref{fig:diversity-recovery}A). The CASF comparisons show a related
+distinction (Figure~\ref{fig:diversity-recovery}B,C): raw torsion sampling and FlowR produce
+similar or greater cluster counts than Qwen but have higher Best RMSD, while LoQI and
+ChEMBL3D approach the references with fewer clusters. Diversity is consequently an
+incomplete indicator of recovery of experimental conformations.
 Sample precision measures the fraction of generated conformers within the specified
-RMSD cutoff of at least one experimental reference (Figure~\ref{fig:druglike}C).
-
-\drugfigure
-
-The CASF comparisons show a related distinction (Figure~\ref{fig:diversity-recovery}).
-Raw torsion sampling and FlowR produce similar or greater cluster counts than Qwen but have
-higher Best RMSD, while LoQI and ChEMBL3D approach the references with fewer clusters. Diversity is consequently
-an incomplete indicator of recovery of experimental conformations.
+RMSD cutoff of at least one experimental reference (Supporting Figure~\ref{fig:plinder-thresholds}B).
 
 \diversityfigure
 
@@ -124,7 +121,7 @@ classified as physically inaccessible.
 \conformerlandscapefigure
 
 The coverage--precision tradeoff also depends on matching tolerance
-(Figure~\ref{fig:druglike}). LoQI has higher
+(Supporting Figure~\ref{fig:plinder-thresholds}). LoQI has higher
 coverage at 0.5 \AA{}, while Qwen 1.7B FSQ has higher coverage at 1.0 \AA{};
 LoQI maintains higher sample precision than Qwen 1.7B FSQ at both and at the primary cutoff.
 

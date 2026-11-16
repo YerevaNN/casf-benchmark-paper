@@ -1,4 +1,4 @@
-"""Check the archived Figure 5 curves, full-pool endpoints and rendered artifacts."""
+"""Check the archived Figure 4 curves, full-pool endpoints and rendered artifacts."""
 from pathlib import Path
 import hashlib
 import json

@@ -30,7 +30,7 @@
       "max": 1000
     }
   },
-  "figure": "Main Figure 5, panels A and B; panels C and D reuse the archived CASF curves.",
+  "figure": "Main Figure 4, panels A and B; panels C and D reuse the archived CASF curves.",
   "archive_sha256": {
     "plinder-per-molecule-curves.csv": "0f0cae2315de77a5605f8d91547bf2706c60d8a71511a1414ec352968ba273cb",
     "plinder-curves.csv": "54bf5020d3fe6c7a60db3481054d250403534cf8ad7efae950490422ec98b8b3",

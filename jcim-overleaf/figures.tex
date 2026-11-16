@@ -2,8 +2,8 @@
 \newcommand{\diversityfigure}{%
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{figures/figure-casf-diversity-recovery.pdf}
-\caption{Geometric diversity and proximity to observed bound conformations in CASF core (A) and ref (B), at the ChEMBL-count target. Each point represents one pipeline or ChEMBL3D-PB. Mean cluster count at 0.5 \AA{} is compared with Best RMSD. Dashed guides mark the stored ensemble within each panel.}
+\includegraphics[width=\linewidth]{figures/figure-diversity-proximity.pdf}
+\caption{Geometric diversity and proximity to observed bound conformations. (A) PLINDER supplied ensembles: mean cluster count at 0.5 \AA{} versus MAT-R. (B,C) CASF core and ref at the ChEMBL-count target: mean cluster count at 0.5 \AA{} versus Best RMSD. Each point represents one pipeline or, on CASF, ChEMBL3D-PB. Lower matching distances indicate closer agreement with the references. Axes differ across datasets; dashed guides mark the stored ChEMBL3D-PB ensemble within each CASF panel.}
 \label{fig:diversity-recovery}
 \end{figure}}
 
@@ -30,15 +30,6 @@
 \caption{Recovery by molecular size and flexibility in CASF core (A--B) and ref (C--D), at 0.75 \AA{}. Cells show recovery percentages rounded to whole numbers at the 1,000-candidate target; color uses unrounded percentages. Group sizes appear below the panels; dashes denote empty groups. Dashed horizontal lines separate ChEMBL3D-PB. Orange outlines and asterisks mark groups with fewer than five entries. Exact recovered and total counts are retained in the companion data.}
 \label{fig:size}
 \end{figure}}
-
-\newcommand{\drugfigure}{%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figure-plinder-combined.pdf}
-\caption{Diversity, reference coverage, and sample precision on PLINDER-22. (A) Mean cluster count at 0.5 \AA{} versus MAT-R for all ten methods. (B) COV-R and (C) COV-P across RMSD thresholds for RDKit raw and the six learned methods. Vertical guides mark 0.75 \AA{}; dashed colored curves denote RDKit raw.}
-\label{fig:druglike}
-\end{figure}}
-
 
 \newcommand{\qwensizerepresentationfigure}{%
 \begin{figure}[p]

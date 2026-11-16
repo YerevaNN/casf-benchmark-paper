@@ -101,7 +101,7 @@ and interfragment interactions ignored. Calculation settings,
 coordinate-preservation checks, and source records are archived with the energy results.
 
 For each molecule and method, we calculate the mean energy and population standard deviation
-across conformers. Main Figure 3 reports the median of these standard
+across conformers. Main Figure 2 reports the median of these standard
 deviations across molecules, alongside mean cluster counts.
 This summary limits the influence of molecules with exceptionally large energy spreads.
 Supporting Table~\ref{tab:energy-summary} also gives the mean of the standard deviations, the median of per-molecule
@@ -115,7 +115,7 @@ basins nor a binding free energy.
 
 To examine how recovery changes with candidate budget, we evaluated each CASF panel at 63
 candidate budgets from 10 to 1,000 using the saved fixed-target pools.
-Main Figure 5 shows Qwen, LoQI, FlowR, and NExT-Mol. For each entry and budget,
+Main Figure 4 shows Qwen, LoQI, FlowR, and NExT-Mol. For each entry and budget,
 we calculated the exact probability that a uniformly selected subset without replacement would
 contain at least one retained conformer within the RMSD cutoff. We used the candidate count and the
 number of qualifying conformers to calculate this probability directly, rather than repeatedly
@@ -132,7 +132,7 @@ used in the ChEMBL-count experiment. These calculations describe sampling within
 the available pools; they do not extrapolate beyond them.
 
 For PLINDER, we use the same 63 budgets and the saved reference-by-generated RMSD
-matrices for the four methods in Main Figure 5. Sampling uses the supplied
+matrices for the four methods in Main Figure 4. Sampling uses the supplied
 ensembles without a common PoseBusters filter. Pool sizes range from 958 to 1,000
 for Qwen and from 121 to 1,000 for FlowR; LoQI and NExT-Mol supply 1,000 per molecule.
 A budget exceeding a molecule's pool size uses its entire pool. For each reference,

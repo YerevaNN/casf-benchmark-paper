@@ -9,7 +9,7 @@
     "results-data/core-ref-protocol/ref/reference.json": "f6fd10e4b4f6440463272ad36e99a9e0d2efbc7b7f3c3c5a6c073ab00882ab84",
     "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
     "sampling-data/display.json": "dc306cc69a5da0beea4e5fbc4199c04a6ce14a5229ce9ba079c8942ee1d2643a",
-    "results-data/plinder-sampling/render.py": "5dc61c64e3a0091e2a93218ea5f411503037ea8f3eb5f16284929c52eb075ca8"
+    "results-data/plinder-sampling/render.py": "9e51b018796a000c145561c474e5f80000cd951cc3e729498dedf348cb1fab1b"
   },
   "outputs": {
     "figures/figure-budget-combined.pdf": "d0c1d5d64f13922b3fcf2363b2294a9b897f808056f5261da79ad7811c480ab3",

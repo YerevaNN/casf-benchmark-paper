@@ -2,7 +2,7 @@
 
 ## Current sampling display
 
-Figure 5 shows PLINDER COV-R and MAT-R on top, with CASF core and ref
+Figure 4 shows PLINDER COV-R and MAT-R on top, with CASF core and ref
 recovery at 0.75 Å below. Its renderer and PLINDER calculation archive are
 in `../plinder-sampling/`.
 Vertical dashed lines mark the arithmetic mean unfiltered ChEMBL counts,

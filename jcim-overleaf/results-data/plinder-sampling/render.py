@@ -1,4 +1,4 @@
-"""Render Figure 5 entirely from archived curves; no geometry calculation."""
+"""Render Figure 4 entirely from archived curves; no geometry calculation."""
 from pathlib import Path
 import hashlib,json
 import numpy as np,pandas as pd
@@ -80,4 +80,4 @@ outputs=[P/'figures'/f'figure-budget-combined.{ext}' for ext in ['pdf','png','sv
  'inputs':{str(path.relative_to(P)):hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs},
  'outputs':{str(path.relative_to(P)):hashlib.sha256(path.read_bytes()).hexdigest() for path in outputs}
 },indent=2)+'\n')
-print('Rendered Figure 5: PLINDER COV-R/MAT-R and CASF core/ref recovery.')
+print('Rendered Figure 4: PLINDER COV-R/MAT-R and CASF core/ref recovery.')

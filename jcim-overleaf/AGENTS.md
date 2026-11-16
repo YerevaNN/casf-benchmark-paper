@@ -1,48 +1,49 @@
 # Manuscript authoring
 
-## Sampling Figure 5
+## Current figure layout
 
-Figure 5 contains PLINDER COV-R at 0.75 Å (A) and expected MAT-R (B) above
+Main Figure 1 combines PLINDER diversity/MAT-R (A) with CASF core/ref
+cluster count versus Best RMSD (B,C). Render it and Supporting Figure S8
+(PLINDER threshold coverage/precision curves) with
+`results-data/diversity-combined/render.py`. Old standalone PLINDER/CASF
+artwork remains archived but is not included in either manuscript entry point.
+
+Main figures now run from 1 to 7: combined diversity, energy, two-target
+recovery/diversity, sampling curves, size/flexibility, conformer landscapes,
+and Qwen size/representation. Keep label-based references in the main text.
+Supporting Figures S1–S7 retain their numbering; S8 is the PLINDER threshold
+figure. Both PDF entry points share `supporting-content.tex` and include eight
+supporting tables and eight supporting figures.
+
+## Sampling Figure 4
+
+Figure 4 contains PLINDER COV-R at 0.75 Å (A) and expected MAT-R (B) above
 CASF core (C) and ref (D) recovery at 0.75 Å. PLINDER uses supplied pools
 without a common PB filter; CASF counts rejected candidates against budget.
 Do not restore the 80% recovery threshold panels. Horizontal dashed lines show
 ChEMBL3D-PB recovery; vertical dashed lines show mean unfiltered ChEMBL counts
-(81.2 core, 68.9 ref). The archived per-entry counts are in
-`results-data/core-ref-protocol/chembl-candidate-counts.csv`. These means are
-descriptive budget references, not the entry-specific ChEMBL-count experiment.
-Rebuild Figure 5 alone using `results-data/plinder-sampling/render.py`; the
-combined `results-data/core-ref-protocol/build_figures.py` calls it too.
-Exact PLINDER calculations, per-molecule curves, cache hashes and validation
-are archived in `results-data/plinder-sampling/`.
+(81.2 core, 68.9 ref). These are descriptive budget references, not the
+entry-specific ChEMBL-count experiment. Rebuild with
+`results-data/plinder-sampling/render.py`; the combined
+`results-data/core-ref-protocol/build_figures.py` calls it too.
 
 ## Appendix organization
 
 Supporting content is grouped as evaluation panels, conformer generators and
-training, evaluation procedures, and supporting analyses. Current table order:
-S1 core/ref selection; S2--S4 PLINDER selection/statistics/identities;
+training, evaluation procedures, and supporting analyses. Table order:
+S1 core/ref selection; S2–S4 PLINDER selection/statistics/identities;
 S5 generators; S6 Qwen training; S7 retained ensemble sizes; S8 energy.
-Supporting Figures S1--S7 retain their ordering. Prefer label-based table
-references. Both the main review PDF and standalone SI include supporting-content.tex.
-This order supersedes earlier table-number notes below.
-
-## Main figure numbering
-
-The sampling-budget figure is main Figure 5, labeled `fig:sampling-budget`.
-It uses the normal figure counter. Subsequent main figures are size/flexibility
-(6), landscapes (7), and Qwen size/representation (8). Molecule tracking is
-Supporting Figure S7; Supporting Figures S1--S6 retain their numbering. Appendix references to main figures
-use explicit numbers because the standalone SI does not define main figure labels.
-This supersedes earlier B1 and main-figure numbers in the dated notes below.
+The figure numbering above supersedes the dated notes below.
 
 ## Current Qwen comparison scope
 
 Table 4 contains ten methods; Supporting Figure S7 contains eight (excluding minimized
 baselines). Do not reintroduce the step-64000 CASF-dedup Qwen row. Supporting
-Figures S5/S6 follow the same Table 4 selection. Figure 8 and Supporting Figure S2
+Figures S5/S6 follow the same Table 4 selection. Figure 7 and Supporting Figure S2
 use only the four v2 models: binned 0.6B/1.7B step66057 and FSQ 0.6B/1.7B
 step41054. Their deduplicated, benchmark-filtered export lineage is documented
 in method-data/training-audit/. Preserve the export-count and residual-overlap
-qualifications. Figure 7 retains its existing pooled projection; its full landmark
+qualifications. Figure 6 retains its existing pooled projection; its full landmark
 source definition is necessary provenance, not an additional scored comparison.
 
 

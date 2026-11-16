@@ -1,0 +1,19 @@
+{
+  "inputs": {
+    "plinder22-data/summary.csv": "ff4f91081f84b43f8946afd29c5cc0de65f96485e989da7fe7b03b11e5b79643",
+    "plinder22-data/threshold-curves.csv": "8550afaea525aa50f298963045728dc5b44abfe2cc9f3fb1a60a77296ef2d198",
+    "results-data/three-dataset-tables/table1.csv": "7edf79a626bf0c07b5e629439c1847d515a0a637c47ea8e59b2dcefdd939adea",
+    "results-data/three-dataset-tables/table2.csv": "7dc6d10eb3801012c35b156719b9e626e4668a14011294c020a34d63329f97bd",
+    "sampling-data/palette.json": "52f6eb61c157dda74efdd3466e35d9817d49cb86e359a3c0475b81fd0fdf6227",
+    "results-data/diversity-combined/render.py": "c580d8daed380e872581a33ddebaa79eee006767d42cb906ffb5aa35983e20f6"
+  },
+  "outputs": {
+    "figures/figure-diversity-proximity.png": "dc6e94ca40457e8e7f4d21e91f7ab97f606068936d06b4c071b48b31a7f251fb",
+    "figures/figure-diversity-proximity.pdf": "458cabbe76de5f9ce744339eb8a2615126276431101d14beeeb8bef39a51944f",
+    "figures/figure-diversity-proximity.svg": "e683efb72d414da98d4f1b09f7625a560e1312b2b416f0d9b2f7bef04e36115a",
+    "figures/supporting/plinder-thresholds.png": "82cfe1b1a2d5d37a4024c5228a6db46b8cc0f79594965d7454d9fc222121e407",
+    "figures/supporting/plinder-thresholds.pdf": "5a6140c0ddf323bb705f95bd3868f21d034387e41ac2aeb38f8071d252bdef59",
+    "figures/supporting/plinder-thresholds.svg": "9f7b9b2eed7b42bcc8f554d96d87b3d1eba860d0eed6355a36e6ecfb68d6f49c"
+  },
+  "description": "Main Figure 1 combines PLINDER diversity/MAT-R and CASF diversity/Best RMSD. Supporting Figure S8 shows PLINDER COV-R/P versus threshold. All values unchanged."
+}
