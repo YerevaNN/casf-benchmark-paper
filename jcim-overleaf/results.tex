@@ -10,10 +10,10 @@ We compare geometric diversity and recovery of observed bound conformations acro
 PLINDER, CASF core, and CASF ref. PLINDER provides multiple experimental references per
 molecule, while CASF provides individual references and stored ChEMBL3D ensembles for comparison.
 
-Across the three sets, FlowR, Qwen, and raw torsion sampling generally produce more
-clusters than LoQI and the minimized CASF baselines (Table~\ref{tab:diversity}). Their
-ordering changes with the dataset and clustering radius, but FlowR produces the most
-clusters at 1.0 \AA{} in all three panels.
+On PLINDER, FlowR and raw torsion sampling produce the most clusters at both radii,
+followed by Qwen at 0.5 \AA{} (Table~\ref{tab:diversity}). Rankings change across
+datasets and clustering radii, but FlowR produces the most clusters at 1.0 \AA{}
+in all three panels.
 
 \input{\manuscriptroot tables/diversity}
 
@@ -23,13 +23,14 @@ The stored ChEMBL3D ensembles combine relatively few clusters with less concentr
 than those two methods. Cluster counts and occupancy describe geometric variation;
 neither establishes proximity to observed bound conformations.
 
-Table~\ref{tab:count-recovery} compares proximity to the experimental conformations through
-reference coverage and matching distance.
+Table~\ref{tab:count-recovery} compares MAT-R and reference coverage on PLINDER,
+alongside Best RMSD and single-reference recovery on CASF.
 
 \input{\manuscriptroot tables/count-recovery}
 
-LoQI has the highest PLINDER coverage at both cutoffs, while Qwen has the lowest mean matching
-distance. At 0.75 \AA{}, their coverage is close, at 91.8\% and 91.0\%, respectively. The two CASF
+Qwen has the lowest PLINDER MAT-R, followed by LoQI, while LoQI has the highest
+reference coverage at both cutoffs. At 0.75 \AA{}, their coverage is close,
+at 91.0\% for Qwen and 91.8\% for LoQI. The two CASF
 panels show a related dependence on the metric: among generated methods, LoQI leads at the
 tighter cutoff, whereas Qwen has the highest recovery at the primary cutoff and the lowest
 Best RMSD, although its mean distance on core is nearly identical to LoQI's. The stored

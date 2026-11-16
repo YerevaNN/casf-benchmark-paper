@@ -1,5 +1,14 @@
 # Current three-dataset table sources
 
+## Current display order
+
+Table 1 sorts generators by increasing unrounded PLINDER cluster count at
+0.5 Å. Table 2 sorts by decreasing unrounded PLINDER MAT-R. In both, the
+best generator for the sorting metric is immediately above the separate
+ChEMBL3D-PB baseline. All columnwise bold/underline ranks exclude the baseline.
+The renderer applies these rules independently of the archived CSV row order;
+Table 3 retains its existing CASF ordering.
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed

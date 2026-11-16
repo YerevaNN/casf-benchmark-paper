@@ -61,7 +61,7 @@ columns = r'@{\extracolsep{\fill}}lrrr@{\hspace{8pt}}rrr@{\hspace{8pt}}rrr@{}'
 cohorts = ('plinder', 'core', 'ref')
 
 data = read(1)
-methods = [r['method'] for r in sorted((r for r in data if r['cohort']=='core' and r['method']!=BASELINE), key=lambda r: number(r,'clusters_0p5'))] + [BASELINE]
+methods = [r['method'] for r in sorted((r for r in data if r['cohort']=='plinder' and r['method']!=BASELINE), key=lambda r: number(r,'clusters_0p5'))] + [BASELINE]
 head = group_head + [r'\textbf{Method} & ' + ' & '.join([
     r'C0.5 $\uparrow$', r'C1.0 $\uparrow$', r'Largest $\downarrow$'] * 3) + r' \\']
 body = []
@@ -80,11 +80,14 @@ for index, method in enumerate(methods):
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'C0.5/C1.0: mean cluster counts at 0.5/1.0 \AA{}. Largest: mean largest-cluster '
          r'share at 1.0 \AA{} (\%). CASF uses the ChEMBL-count target. '
-         'Dashes: unavailable. ' + rank_note)
+         'Generators are ordered by increasing PLINDER C0.5. Dashes: unavailable. '
+         + rank_note.replace('best/second best.', 'best/second best among generators.'))
 write('diversity.tex', 'Geometric diversity across three evaluation sets.', 'tab:diversity', columns, head, body, notes)
 
 data = read(2)
-methods = list(dict.fromkeys(r['method'] for r in data))
+methods = [r['method'] for r in sorted(
+    (r for r in data if r['cohort'] == 'plinder' and r['method'] != BASELINE),
+    key=lambda r: number(r, 'distance'), reverse=True)] + [BASELINE]
 head = group_head + [
     r'\textbf{Method} & \shortstack{COV-R\\@0.5 $\uparrow$} & \shortstack{COV-R\\@0.75 $\uparrow$} & MAT-R $\downarrow$ & '
     + ' & '.join([r'\shortstack{Hit\\@0.5 $\uparrow$}', r'\shortstack{Hit\\@0.75 $\uparrow$}',
@@ -103,7 +106,8 @@ for index, method in enumerate(methods):
                    for m in ('recovery_0p5', 'recovery_0p75', 'distance')]
     body.append(' & '.join([label(method, True)] + values) + r' \\')
 notes = (r'COV-R/Hit are percentages; cutoffs and distances are in \AA{}. '
-         'CASF uses the ChEMBL-count target. Dashes: unavailable. ' + rank_note)
+         'CASF uses the ChEMBL-count target. Generators are ordered by decreasing PLINDER MAT-R. '
+         'Dashes: unavailable. ' + rank_note.replace('best/second best.', 'best/second best among generators.'))
 write('count-recovery.tex', 'Recovery of observed bound conformations across three evaluation sets.',
       'tab:count-recovery', columns, head, body, notes)
 

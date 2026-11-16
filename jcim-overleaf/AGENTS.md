@@ -1,5 +1,13 @@
 # Manuscript authoring
 
+## Table ordering
+
+Table 1 orders generators by increasing PLINDER C0.5; Table 2 orders them
+by decreasing PLINDER MAT-R. Thus the best generator under each sorting metric
+is last before the separate dashed ChEMBL3D-PB baseline. Keep generated-only
+bold/underline rankings within each column. The source CSV ordering is not
+a display rule; `results-data/three-dataset-tables/build_tables.py` applies it.
+
 ## Current figure layout
 
 Main Figure 1 combines PLINDER diversity/MAT-R (A) with CASF core/ref
