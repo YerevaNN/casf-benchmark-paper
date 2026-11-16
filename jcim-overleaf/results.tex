@@ -105,6 +105,11 @@ The minimized torsion pipeline has higher precision than raw torsion sampling,
 55.0\% versus 37.7\%, while producing fewer clusters. Its samples are thus more
 concentrated near observed conformations despite representing fewer shapes.
 
+The coverage--precision tradeoff also depends on matching tolerance
+(Supporting Figure~\ref{fig:plinder-thresholds}). LoQI has higher
+coverage at 0.5 \AA{}, while Qwen 1.7B FSQ has higher coverage at 1.0 \AA{};
+LoQI maintains higher sample precision than Qwen 1.7B FSQ at both and at the primary cutoff.
+
 \input{\manuscriptroot tables/druglike}
 
 The conformational maps relate generated ensembles to reference collections with
@@ -124,12 +129,8 @@ classified as physically inaccessible.
 
 \conformerlandscapefigure
 
-The coverage--precision tradeoff also depends on matching tolerance
-(Supporting Figure~\ref{fig:plinder-thresholds}). LoQI has higher
-coverage at 0.5 \AA{}, while Qwen 1.7B FSQ has higher coverage at 1.0 \AA{};
-LoQI maintains higher sample precision than Qwen 1.7B FSQ at both and at the primary cutoff.
-
 The molecule-level distances show that different molecules account for the largest
 errors across methods (Supporting Figure~\ref{fig:plinder-molecule-tracking}). Imatinib has the
 largest MAT-R for LoQI, whereas Amprenavir has the largest for Qwen 1.7B FSQ.
-The same molecule need not dominate both metrics or all methods.
+These molecule-level differences qualify the aggregate rankings: Qwen has the lowest
+mean MAT-R on PLINDER, but other methods provide closer matches for particular molecules.
