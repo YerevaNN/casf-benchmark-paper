@@ -1,6 +1,6 @@
 # Qwen size and representation comparison
 
-The approved aggregate comparison is Figure 7, after the PLINDER analysis.
+The approved aggregate comparison is Figure 8, after the PLINDER analysis.
 The simplified molecule-level scatter is Supporting Figure S2 in
 `supporting-information.tex`. Earlier tables and Figures 1–6 are unchanged.
 PDF and PNG artwork was copied byte-for-byte from the approved previews; SVG
@@ -16,8 +16,8 @@ were generated, optimized, filtered or realigned for this manuscript addition.
 | fsq06 | `qwen_0p6b_v2_fsq_step41054`, corrected export |
 | fsq17 | `qwen_1p7b_v2_coordtoken_step41054` |
 
-The 0.6B binned model is **not** the CASF-dedup PM12 step64000 model in Table 4
-and Figure 6. FSQ 1.7B is the primary model used elsewhere in the paper.
+All four models use the v2 exports from the deduplicated, benchmark-filtered
+collection. FSQ 1.7B is the primary model used elsewhere in the paper.
 
 `sources.json` preserves upstream paths and hashes from the preview analysis;
 its original scope string records that earlier preview stage.
@@ -27,7 +27,9 @@ Training configuration snapshots and source hashes are in
 Within each representation, the sizes share the data manifest and epoch plan.
 Across representations, training exports and token exposure differ. These are
 comparisons of trained configurations, not a pure causal ablation of encoding.
-Executed exclusion manifests remain a separate author follow-up.
+Executed exclusions and completed training records are archived in
+`../../method-data/training-audit/`. Residual overlap, including tokenizer
+development data, and the difference in export counts remain follow-ups.
 
 ## Evaluation and observations
 

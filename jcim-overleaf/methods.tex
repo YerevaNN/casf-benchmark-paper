@@ -86,9 +86,7 @@ The training appendix defines normalization, neighborhood expansion, split handl
 removal counts, tokenizer development data, and completed training exposure
 (Table~\ref{tab:qwen-training}).
 
-The main PLINDER comparison also includes a Qwen 0.6B CASF-dedup model. Its training
-exclusions require confirmation, as specified in the appendix. External pretrained
-models are evaluated as supplied; equivalent training exclusions across methods
+External pretrained models are evaluated as supplied; equivalent training exclusions across methods
 are not assumed.
 
 \subsection{Sampling targets and structural validity}
@@ -185,7 +183,7 @@ for their association.
 The size and representation comparison evaluates 0.6B and 1.7B Qwen models with binned
 coordinates or FSQ tokens on the same ref and PLINDER panels. CASF uses PoseBusters-passing
 members of the 1,000-candidate pools; PLINDER uses full supplied pools and assesses
-validity separately. The Qwen 0.6B CASF-dedup model is not part of this comparison. Within each
+validity separately. Within each
 representation, both sizes share a training export and one-epoch schedule. Binned and
 FSQ exports differ in record count and tokens per record, so the comparison does not
 isolate representation from training exposure or match computational cost. The appendix

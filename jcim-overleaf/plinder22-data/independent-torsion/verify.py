@@ -23,7 +23,8 @@ for relative, key in [
     ('plinder22-data/molecule-tracking/molecule_matching_values.csv', 'label'),
 ]:
     old = subprocess.check_output(['git', 'show', f'{BASE}:jcim-overleaf/{relative}'], cwd=PAPER, text=True)
-    a = [r for r in csv.DictReader(io.StringIO(old)) if r[key] not in OLD]
+    a = [r for r in csv.DictReader(io.StringIO(old)) if r[key] not in OLD
+         and r[key] != 'qwen_0p6b_casf_dedup_binned_pm12_step64000']
     with (PAPER / relative).open() as stream:
         b = [r for r in csv.DictReader(stream) if r[key] not in NEW]
     assert a == b, relative

@@ -24,7 +24,6 @@ SOURCES = [
     'results-data/three-dataset-tables/table3.csv',
     'results-data/size-flexibility/figure5-strata.csv',
     'plinder22-data/per-molecule.csv',
-    'plinder22-data/qwen-dedup/per-molecule.csv',
     'results-data/druglike_means.csv',
     'results-data/qwen-size-representation/plinder-per-molecule.csv',
     'results-data/qwen-size-representation/08-main-size-and-representation-values.csv',
@@ -34,7 +33,6 @@ styles = json.loads((PAPER / 'sampling-data/palette.json').read_text())
 keys = [k for k in styles if k != 'chembl3d_gt_pb']
 REF = 'chembl3d_gt_pb'
 QWEN = 'qwen_1p7b_v2_coordtoken_step41054'
-OLD = 'qwen_0p6b_casf_dedup_binned_pm12_step64000'
 INK = '#29323C'
 plt.rcParams.update({
     'font.family':'DejaVu Sans', 'font.size':9, 'axes.titlesize':11,
@@ -132,13 +130,12 @@ for ax,cohort,letter in zip(axes,['core','ref'],['A','B']):
     for spine in ax.spines.values():spine.set_visible(False)
 save(fig,'cohort-composition')
 
-# All eleven Table 4 methods, including the new independent torsion pools.
-pl=pd.concat([pd.read_csv(PAPER/SOURCES[4]),pd.read_csv(PAPER/SOURCES[5])],ignore_index=True)
+# All ten Table 4 methods, including the new independent torsion pools.
+pl=pd.read_csv(PAPER/'plinder22-data/per-molecule.csv')
 labels=json.loads((PAPER/'plinder22-data/methods.json').read_text())
-labels[OLD]='Qwen 0.6B CASF-dedup'
 means=pd.read_csv(PAPER/'results-data/druglike_means.csv').set_index('label')
 methods=list(labels)
-assert len(methods)==11 and len(pl)==242 and not pl.duplicated(['label','smiles']).any()
+assert len(methods)==10 and len(pl)==220 and not pl.duplicated(['label','smiles']).any()
 names=pl.drop_duplicates('smiles').set_index('smiles').name.sort_values()
 assert len(names)==22 and names.is_unique
 for method in methods:
@@ -148,7 +145,7 @@ for method in methods:
         np.testing.assert_allclose(d[field].mean(),means.loc[method,target],atol=1e-12)
     np.testing.assert_allclose(d.n_pb_pass.sum()/d.n_generated.sum(),means.loc[method,'pooled_pb_pass'],atol=1e-12)
 pl[['label','smiles','name','num_true_confs','n_generated','n_pb_pass','cov_r_0p75','cov_p_0p75']].to_csv(HERE/'plinder-by-molecule.csv',index=False)
-short_labels=['RDKit\nraw','RDKit\nminimized','Torsion\nraw','Torsion\nminimized','LoQI','Torsional\nDiffusion','MCF\ndrugs-L','NExT-Mol\nDMT-L','FlowR','Qwen 1.7B\nFSQ','Qwen 0.6B\nCASF-dedup']
+short_labels=['RDKit\nraw','RDKit\nminimized','Torsion\nraw','Torsion\nminimized','LoQI','Torsional\nDiffusion','MCF\ndrugs-L','NExT-Mol\nDMT-L','FlowR','Qwen 1.7B\nFSQ']
 
 def heatmap(ax,values,column_names,show_names=True):
     im=ax.imshow(values,cmap='Blues',norm=Normalize(0,100),aspect='auto')
@@ -187,7 +184,7 @@ for key in qorder:
     exp=qmeans[(qmeans.panel=='C')&(qmeans.representation==('FSQ' if key.startswith('fsq') else 'Binned'))&(qmeans['size']==(0.6 if key.endswith('06') else 1.7))].value.iloc[0]
     np.testing.assert_allclose(100*d.n_pb_pass.sum()/d.n_generated.sum(),exp,atol=1e-10)
 v2[['model','label','smiles','name','n_generated','n_pb_pass','pb_pass_rate']].to_csv(HERE/'qwen-validity-source.csv',index=False)
-fig,axes=plt.subplots(1,2,figsize=(12.4,8.2),gridspec_kw={'width_ratios':[11,4]})
+fig,axes=plt.subplots(1,2,figsize=(12.4,8.2),gridspec_kw={'width_ratios':[10,4]})
 fig.subplots_adjust(left=.16,right=.985,bottom=.21,top=.88,wspace=.12)
 fig.suptitle('PLINDER: structural validity for each molecule',x=.16,ha='left',y=.98,fontsize=13)
 fig.text(.16,.945,'PoseBusters pass percentages · validity assessed separately from matching',color='#626C78',fontsize=10)

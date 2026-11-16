@@ -35,7 +35,7 @@ for cohort,path in [('core','figure-data/candidates/core-entries.csv'),('ref','r
             assert line.split(' & ')[index+1].replace(r' \\','')==f'{expected.mean_retained:.1f}'
 
 pl=pd.read_csv(HERE/'plinder-by-molecule.csv')
-assert len(pl)==242 and pl.label.nunique()==11 and pl.smiles.nunique()==22
+assert len(pl)==220 and pl.label.nunique()==10 and pl.smiles.nunique()==22
 assert not pl.label.isin(['torsion_raw_druglike','torsion_minimized_22_druglike']).any()
 q=pd.read_csv(HERE/'qwen-validity-source.csv')
 assert len(q)==88 and q.model.nunique()==4
@@ -72,7 +72,7 @@ for source in [main,si]:
         assert 1<=int(number)<=(8 if kind=='Table' else 6),(kind,number)
     for name in re.findall(r'\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}',source):
         assert (PAPER/name).is_file(),name
-print('Verified current source/artwork hashes, 20 paired recovery comparisons, retained counts, 242 PLINDER and 88 v2 validity records.')
+print('Verified current source/artwork hashes, 20 paired recovery comparisons, retained counts, 220 PLINDER and 88 v2 validity records.')
 print('Current SI: eight tables and six figures; no historical review gallery or removed tables included.')
 print('SI table order:',tables)
 print('SI figure order:',figures)
@@ -171,3 +171,42 @@ for name,expected in observations['panels'].items():
     np.testing.assert_allclose([row.recovery,row.distance],[expected['qwen_hit_075_percent'],expected['qwen_best_rmsd']])
     assert expected['qwen_hit_rank']==1+int((group.recovery>row.recovery).sum())==1
 print('Verified corpus deduplication, validation scope, exclusion stages and descriptive core/ref observations.')
+
+# Only the four filtered v2 checkpoints may supply the size/representation comparison.
+expected_runs = {
+    'binned06': 'qwen_0p6b_v2_binned_pm12_step66057',
+    'binned17': 'qwen_1p7b_v2_binned_pm12_step66057',
+    'fsq06': 'qwen_0p6b_v2_fsq_step41054',
+    'fsq17': 'qwen_1p7b_v2_coordtoken_step41054',
+}
+comparison = PAPER/'results-data/qwen-size-representation'
+scored = pd.read_csv(comparison/'plinder-per-molecule.csv')
+assert scored.groupby('model').label.unique().map(list).to_dict() == {k:[v] for k,v in expected_runs.items()}
+assert set(pd.read_csv(comparison/'casf-per-entry.csv').model) == set(expected_runs)
+for key, run in expected_runs.items():
+    step = 66057 if key.startswith('binned') else 41054
+    assert configs[key]['config']['export']['steps'] == [step]
+    for metadata in generations[key].values():
+        for shard in metadata.get('shards',[metadata]):
+            assert shard['run_id'].removesuffix('_core').removesuffix('_ref').removesuffix('_plinder') == run
+            assert shard['model_path'].endswith(f'/step-{step}')
+for prefix in ['binned','fsq']:
+    assert configs[prefix+'06']['config']['data']['manifest'] == configs[prefix+'17']['config']['data']['manifest']
+assert 'dedup_casf285_plinder23_20261007/protomer/' in json.loads((audit/'binned-dataset.json').read_text())['converter']['source']
+assert 'merged_deduplicated_20261006' in filtered['input']
+
+# Figure 7 uses the same eight retained source rows, without changing their scores.
+tracking = PAPER/'plinder22-data/molecule-tracking'
+plot = pd.read_csv(tracking/'molecule_matching_values.csv')
+methods = json.loads((tracking/'methods.json').read_text())
+assert len(plot)==176 and len(methods)==8 and set(plot.label)==set(methods)
+source = pd.read_csv(PAPER/'plinder22-data/per-molecule.csv')
+matched = plot.merge(source,on=['label','smiles'],validate='one_to_one',suffixes=('_plot','_source'))
+assert len(matched)==176
+for column in ['mat_r','mat_p','num_true_confs','num_gen_confs']:
+    np.testing.assert_allclose(matched[column+'_plot'],matched[column+'_source'],atol=1e-12,rtol=0)
+for name,digest in json.loads((tracking/'paper-artifacts.json').read_text()).items():
+    assert hashlib.sha256((PAPER/name).read_bytes()).hexdigest()==digest,name
+for text in [main,si]:
+    assert 'CASF-dedup' not in text and '64000' not in text and '64,000' not in text
+print('Verified four v2 checkpoint identities and shared filtered exports, 176 tracking records, and exclusion of the step-64000 comparison.')

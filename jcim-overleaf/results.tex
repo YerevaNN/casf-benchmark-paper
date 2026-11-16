@@ -5,7 +5,6 @@
 
 % AUTHOR: Tables 1--2 lead with PLINDER, followed by CASF core and ref. Table 3 is
 % CASF-only. The FSQ v2 CoordToken step-41054 checkpoint supplies all primary Qwen comparisons.
-% Table 4 and the molecule-tracking figure additionally include the 0.6B CASF-dedup run.
 
 We compare geometric diversity and recovery of observed bound conformations across
 PLINDER, CASF core, and CASF ref. PLINDER provides multiple experimental references per
@@ -127,16 +126,10 @@ The coverage--precision tradeoff also depends on matching tolerance
 coverage at 0.5 \AA{}, while Qwen 1.7B FSQ has higher coverage at 1.0 \AA{};
 LoQI maintains higher sample precision than Qwen 1.7B FSQ at both and at the primary cutoff.
 
-The additional Qwen 0.6B CASF-dedup model ranks third in reference coverage at the
-primary cutoff, but has the lowest sample precision and PoseBusters pass rate in
-Table~\ref{tab:druglike}. High reference coverage therefore coexists with lower
-sample concentration and validity.
-
 The molecule-level distances show that different molecules account for the largest
 errors across methods (Figure~\ref{fig:plinder-molecule-tracking}). Imatinib has the
 largest MAT-R for LoQI, whereas Amprenavir has the largest for Qwen 1.7B FSQ.
-For the 0.6B CASF-dedup model, Actinonin has the largest MAT-R and Amprenavir the
-largest MAT-P. The same molecule need not dominate both metrics or model variants.
+The same molecule need not dominate both metrics or all methods.
 
 \moleculetrackingfigure
 

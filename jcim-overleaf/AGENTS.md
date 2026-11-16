@@ -1,5 +1,17 @@
 # Manuscript authoring
 
+## Current Qwen comparison scope
+
+Table 4 contains ten methods; Figure 7 contains eight (excluding minimized
+baselines). Do not reintroduce the step-64000 CASF-dedup Qwen row. Supporting
+Figures S5/S6 follow the same Table 4 selection. Figure 8 and Supporting Figure S2
+use only the four v2 models: binned 0.6B/1.7B step66057 and FSQ 0.6B/1.7B
+step41054. Their deduplicated, benchmark-filtered export lineage is documented
+in method-data/training-audit/. Preserve the export-count and residual-overlap
+qualifications. Figure 6 retains its existing pooled projection; its full landmark
+source definition is necessary provenance, not an additional scored comparison.
+
+
 ## Current torsion procedure and PLINDER measurements, 16 November 2026
 
 PLINDER torsion uses one ETKDGv3 starting conformer per molecule. Raw and

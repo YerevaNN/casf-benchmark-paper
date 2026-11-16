@@ -19,7 +19,7 @@ regenerated, optimized, filtered, or realigned.
 | S2 | Per-molecule Qwen representation and size effects | Existing approved scatter |
 | S3 | Recoveries gained and lost versus ChEMBL3D | C02, expanded to core94 and ref1044 |
 | S4 | Joint size/flexibility composition and sparse groups | C07, expanded to both CASF panels |
-| S5 | Per-molecule coverage and precision hidden by the averages | C11, expanded to all eleven Table 4 methods |
+| S5 | Per-molecule coverage and precision hidden by the averages | C11, expanded to all ten Table 4 methods |
 | S6 | Per-molecule validity and the four-Qwen comparison | C14, expanded to Table 4 methods and all four v2 configurations |
 
 S3 uses the fixed 1,000-candidate pools after PB and the unchanged stored baseline.
@@ -31,8 +31,7 @@ rounded to whole percentages, while all calculations retain full precision.
 
 The two PLINDER torsion rows are `torsion_independent_raw_druglike` and
 `torsion_independent_minimized_druglike`. Primary Qwen is
-`qwen_1p7b_v2_coordtoken_step41054`. The older 0.6B CASF-dedup step64000 model
-is distinguished from the v2 binned step66057 configuration. The four-v2 source
+`qwen_1p7b_v2_coordtoken_step41054`. The four-v2 source
 archive records the precise labels and generation/training metadata.
 
 ## Tables and removals

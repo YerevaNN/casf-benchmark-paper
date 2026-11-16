@@ -1,9 +1,8 @@
 {
   "source": "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/plinder22-data/molecule-tracking/molecule_matching_values.csv",
-  "sha256": "5ad1d1760d4a5d3e3fa8d89dd1d98d252760b45f3d539a59dbf4e0b42a2356e8",
+  "sha256": "a3ccbe11da4af43b9470f8ab9ee21ebff3be6f63410f1cbef562a89bb417adc9",
   "highlight_rule": "union of per-method maxima over MAT-R and MAT-P",
   "highlighted_molecules": [
-    "Actinonin",
     "Amprenavir",
     "Imatinib"
   ],

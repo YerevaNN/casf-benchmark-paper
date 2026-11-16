@@ -96,8 +96,7 @@ stereochemistry. Corpus split assignment uses the stored decoded molecule.
 exports, including conversion exclusions; verify source release identifiers and
 redistribution terms. Complete a residual-overlap report for the final core94,
 ref1044, and PLINDER22 identities against the training exports and tokenizer
-development data. Document training and exclusions for the Qwen 0.6B CASF-dedup
-checkpoint at step 64,000.]}
+development data.]}
 
 \subsection*{Geometry representation and tokenizer training}
 
@@ -180,7 +179,7 @@ are recorded separately from subsequent PoseBusters failures.
 each run, including inherited top-$k$ and stopping settings, and confirm the
 1,000-token limit against the executed source revision. The saved metadata establish
 temperature, top-$p$, sample count, and seeds, but do not record every library default.
-Add the Qwen 0.6B CASF-dedup model and external generators' executed settings and checkpoint
+Add external generators' executed settings and checkpoint
 hashes; adapter defaults in Table S5 are not a substitute for these records.]}
 
 \textbf{[TODO: confirm the final public bibliographic record for the supplied CoordToken
@@ -196,8 +195,6 @@ the training export and one-epoch schedule. No subsequent task-specific fine-tun
 is applied. Binned and FSQ exports differ in record count and tokens per record;
 training exposure and computational cost are not matched (Table~\ref{tab:qwen-training}).
 
-The Qwen 0.6B CASF-dedup PM12 binned checkpoint at step 64,000 appears in the main
-PLINDER comparison. It is distinct from the step-66,057 binned checkpoint used in
-the size and representation comparison. Its training and exclusion settings remain
-to be documented. All configurations use the same PLINDER references. Table S5
+All four configurations use exports from the deduplicated, benchmark-filtered
+collection described above and are evaluated against the same PLINDER references. Table S5
 summarizes the external pretrained models and their reported training resources.
