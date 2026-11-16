@@ -131,11 +131,12 @@ for index, method in enumerate(methods):
             row = next(r for r in peers if r['method'] == method)
             values += [cell(row, m, peers, digits=3 if m == 'distance' else 1)
                        for m in ('distance', 'recovery', 'clusters')]
-        target = 'Stored' if method == BASELINE else '1,000' if budget == 'fixed' else 'ChEMBL'
+        target = 'Baseline' if method == BASELINE else '1,000' if budget == 'fixed' else 'C-count'
         body.append(' & '.join([method if i == 0 else '', target] + values) + r' \\')
     if method != BASELINE:
         body.append(r'\addlinespace[2pt]')
-notes = (r'ChEMBL: stored-conformer-count target. Best RMSD is in \AA{}; '
+notes = ("Targets count candidates before filtering. C-count matches each ligand's ChEMBL3D conformer count. "
+         r'Baseline denotes the ChEMBL3D ensemble after PoseBusters filtering. Best RMSD is in \AA{}; '
          r'Hit@0.75 is a percentage; C0.5 is the mean cluster count at 0.5 \AA{}. ' + rank_note)
 write('recovery.tex', 'Recovery and geometric diversity at two candidate targets on CASF core and ref.',
       'tab:recovery', r'@{\extracolsep{\fill}}llrrr@{\hspace{8pt}}rrr@{}', head, body, notes)
