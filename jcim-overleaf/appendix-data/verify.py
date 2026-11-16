@@ -51,7 +51,7 @@ def expand(path):
         return expand(PAPER/(name if name.endswith('.tex') else name+'.tex'))
     return re.sub(r'\\input\{([^}]+)\}',include,text)
 si=expand(PAPER/'supporting-information.tex')
-expected_tables=['supporting-ensemble-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','energy-summary','selection-counts','qwen-training']
+expected_tables=['selection-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','qwen-training','supporting-ensemble-counts','energy-summary']
 tables=re.findall(r'\\label\{tab:([^}]+)\}',si)
 # Exact IDs are retained from the existing source files.
 assert tables==expected_tables,tables

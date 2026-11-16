@@ -104,10 +104,10 @@ For each molecule and method, we calculate the mean energy and population standa
 across conformers. Main Figure 3 reports the median of these standard
 deviations across molecules, alongside mean cluster counts.
 This summary limits the influence of molecules with exceptionally large energy spreads.
-Supporting Table S6 also gives the mean of the standard deviations, the median of per-molecule
+Supporting Table~\ref{tab:energy-summary} also gives the mean of the standard deviations, the median of per-molecule
 mean energies, and the median paired difference in mean energy relative to the ChEMBL3D
 ensemble of the same molecule. Undefined energies are omitted from the energy moments and counted separately in Supporting
-Table S6; all finite values, including extreme values, remain in the summaries.
+Table~\ref{tab:energy-summary}; all finite values, including extreme values, remain in the summaries.
 Energy spread describes dispersion under this force field; it is neither a count of energy
 basins nor a binding free energy.
 
@@ -164,8 +164,8 @@ Supporting Figure S3 compares each fixed-target CASF ensemble with ChEMBL3D-PB o
 the same ligands, counting entries recovered only by the generator and those recovered
 only by the stored ensemble. At the ChEMBL-count target, 92--94 core and
 1,032--1,044 ref ensembles have defined measurements, depending on the method.
-Mean retained counts include zero-sized ensembles (Supporting Table S1).
-Energy-pool counts and calculation completeness are given in Supporting Table S6.
+Mean retained counts include zero-sized ensembles (Supporting Table~\ref{tab:supporting-ensemble-counts}).
+Energy-pool counts and calculation completeness are given in Supporting Table~\ref{tab:energy-summary}.
 
 \textbf{[TODO: confirm the executed seed for selecting ChEMBL-count subsets and
 complete the CASF classical run manifests, including executed retry limits and

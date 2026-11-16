@@ -1,6 +1,6 @@
-\section*{CoordToken and Qwen training}
+\subsection*{CoordToken and Qwen training}
 
-\subsection*{Corpus splitting and exact deduplication}
+\subsubsection*{Corpus splitting and exact deduplication}
 
 A common parser and RDKit 2025.09.6 validated molecular strings, finite coordinate triplets, and
 agreement between atom and coordinate counts. Molecular identity for split assignment
@@ -36,7 +36,7 @@ this overlap is confined to test resources. Exact-string deduplication does not 
 all geometrically equivalent conformers or near-duplicates. Corpus split audits and
 CASF/PLINDER exclusions address different forms of overlap.
 
-\subsection*{Training collection and benchmark exclusions}
+\subsubsection*{Training collection and benchmark exclusions}
 
 The source collection contains 189,792,028 training records. After benchmark
 exclusions, its largest components are PubChem3D (92,818,460 records), ZINC
@@ -98,7 +98,7 @@ redistribution terms. Complete a residual-overlap report for the final core94,
 ref1044, and PLINDER22 identities against the training exports and tokenizer
 development data.]}
 
-\subsection*{Geometry representation and tokenizer training}
+\subsubsection*{Geometry representation and tokenizer training}
 
 CoordToken\cite{geikyan2026coordtoken} encodes canonical isomeric SMILES together
 with centered heavy-atom coordinates. Coordinates follow the SMILES atom order;
@@ -125,7 +125,7 @@ FP32 coordinate and quantization operations. Training uses PyTorch
 2.6.0 with CUDA 12.4. Monitoring uses a fixed 4,952-record development cohort.
 Full checkpoint and data hashes are archived with the training records.
 
-\subsection*{Language-model training and generation}
+\subsubsection*{Language-model training and generation}
 
 The four size/representation configurations initialize from Qwen3-0.6B-Base or Qwen3-1.7B-Base.\cite{yang2025qwen3}
 Molecular records pair a SMILES prompt with a coordinate-enriched SMILES sequence.
@@ -186,7 +186,7 @@ hashes; adapter defaults in Table S5 are not a substitute for these records.]}
 manuscript and provide permanent links for the filtered tokenizer and four evaluated
 Qwen checkpoints.]}
 
-\subsection*{Evaluated checkpoints and comparison scope}
+\subsubsection*{Evaluated checkpoints and comparison scope}
 
 The primary generator is the Qwen 1.7B FSQ checkpoint at step 41,054. The size and
 representation comparison uses the two binned checkpoints at step 66,057 and the two

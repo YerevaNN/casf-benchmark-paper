@@ -1,5 +1,15 @@
 # Manuscript authoring
 
+## Appendix organization
+
+Supporting content is grouped as evaluation panels, conformer generators and
+training, evaluation procedures, and supporting analyses. Current table order:
+S1 core/ref selection; S2--S4 PLINDER selection/statistics/identities;
+S5 generators; S6 Qwen training; S7 retained ensemble sizes; S8 energy.
+Supporting Figures S1--S7 retain their ordering. Prefer label-based table
+references. Both the main review PDF and standalone SI include supporting-content.tex.
+This order supersedes earlier table-number notes below.
+
 ## Main figure numbering
 
 The sampling-budget figure is main Figure 5, labeled `fig:sampling-budget`.
