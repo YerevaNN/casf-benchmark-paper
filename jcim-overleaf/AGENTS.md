@@ -4,16 +4,16 @@
 
 The sampling-budget figure is main Figure 5, labeled `fig:sampling-budget`.
 It uses the normal figure counter. Subsequent main figures are size/flexibility
-(6), landscapes (7), molecule tracking (8), and Qwen size/representation (9).
-Supporting figure numbering is unchanged. Appendix references to main figures
+(6), landscapes (7), and Qwen size/representation (8). Molecule tracking is
+Supporting Figure S7; Supporting Figures S1--S6 retain their numbering. Appendix references to main figures
 use explicit numbers because the standalone SI does not define main figure labels.
 This supersedes earlier B1 and main-figure numbers in the dated notes below.
 
 ## Current Qwen comparison scope
 
-Table 4 contains ten methods; Figure 8 contains eight (excluding minimized
+Table 4 contains ten methods; Supporting Figure S7 contains eight (excluding minimized
 baselines). Do not reintroduce the step-64000 CASF-dedup Qwen row. Supporting
-Figures S5/S6 follow the same Table 4 selection. Figure 9 and Supporting Figure S2
+Figures S5/S6 follow the same Table 4 selection. Figure 8 and Supporting Figure S2
 use only the four v2 models: binned 0.6B/1.7B step66057 and FSQ 0.6B/1.7B
 step41054. Their deduplicated, benchmark-filtered export lineage is documented
 in method-data/training-audit/. Preserve the export-count and residual-overlap
