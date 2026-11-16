@@ -167,9 +167,9 @@ Sampling curves describe uniformly selected subsets of the saved CASF candidate 
 For each budget, we calculate the exact probability of including at least one qualifying
 conformer, without repeatedly drawing subsets. Rejected candidates consume budget but
 cannot produce hits, and empty retained pools contribute zero. We report expected
-recovery at 0.75 \AA{} and the smallest matching tolerance reaching 80\% expected
-recovery. ChEMBL3D-PB supplies a fixed reference. Budgets are capped at available
-candidates; unattainable targets remain undefined. The appendix records the budget
+recovery at 0.75 \AA{}. ChEMBL3D-PB supplies a fixed recovery reference, and the
+mean ChEMBL conformer count before filtering marks a reference budget for each panel.
+Budgets are capped at available candidates. The appendix records the budget
 grid and calculation procedure. No extrapolation beyond the saved pools is made.
 
 \subsection{Molecular complexity and Qwen comparisons}

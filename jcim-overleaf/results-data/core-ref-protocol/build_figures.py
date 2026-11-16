@@ -1,4 +1,4 @@
-"""Render manuscript Figures 3, 4 and B1 from archived core/ref measurements."""
+"""Render manuscript Figures 3, 4 and 5 from archived core/ref measurements."""
 from pathlib import Path
 import hashlib
 import json
@@ -30,7 +30,8 @@ inputs = [DATA / 'table3.csv', PAPER / 'energy-data/summary.csv',
           PAPER / 'energy-data/protocol.json', PAPER / 'sampling-data/palette.json',
           PAPER / 'sampling-data/recovery_curves.csv', PAPER / 'sampling-data/recovery80_frontier.csv',
           PAPER / 'sampling-data/reference.json', PAPER / 'sampling-data/display.json']
-inputs.append(PAPER / 'results-data/ref-panel/provenance.json')
+inputs.extend([PAPER / 'results-data/ref-panel/provenance.json',
+               OUT / 'chembl-candidate-counts.csv'])
 table3 = pd.read_csv(inputs[0])
 energy = pd.read_csv(inputs[1])
 ref_results = OUT / "ref"
@@ -118,9 +119,10 @@ fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.55, .07), ncol=
 save(fig, 'figure-3-sampling-budget')
 table3.to_csv(OUT/'figure4-source-values.csv', index=False)
 
-# Figure B1: core curves are archived; ref full-pool endpoints are independently available.
+# Figure 5: recovery at a fixed tolerance, with the mean ChEMBL candidate budget.
 curves = pd.read_csv(PAPER/'sampling-data/recovery_curves.csv')
-frontier = pd.read_csv(PAPER/'sampling-data/recovery80_frontier.csv')
+chembl_counts = pd.read_csv(OUT/'chembl-candidate-counts.csv')
+assert not chembl_counts.duplicated(['cohort', 'mol_id']).any()
 core_ref = json.loads((PAPER/'sampling-data/reference.json').read_text())
 display = json.loads((PAPER/'sampling-data/display.json').read_text())
 methods = display['methods']
@@ -131,8 +133,8 @@ for method, row in ref_ends.iterrows():
                        table3.method.eq(STYLE[method.removesuffix('_fixed')][0]) &
                        table3.budget.eq('chembl_count' if method == 'chembl3d_gt_pb' else 'fixed')]
     assert len(match) == 1 and np.isclose(row.recovery, match.recovery.iloc[0])
-fig, axes = plt.subplots(2, 2, figsize=(11.8, 8.2))
-fig.subplots_adjust(left=.075, right=.85, top=.86, bottom=.17, hspace=.61, wspace=.87)
+fig, axes = plt.subplots(1, 2, figsize=(11.8, 4.5))
+fig.subplots_adjust(left=.075, right=.85, top=.76, bottom=.23, wspace=.87)
 short = {methods[0]: 'Qwen', methods[1]: 'LoQI', methods[2]: 'FlowR', methods[3]: 'NExT-Mol'}
 
 def annotate_endpoints(ax, values, precision, unit, min_gap):
@@ -151,40 +153,38 @@ def annotate_endpoints(ax, values, precision, unit, min_gap):
                     arrowprops=dict(arrowstyle='-',color=color,lw=.7))
 
 for i, cohort in enumerate(['core', 'ref']):
-    a, b = axes[i]
-    for ax in (a,b):
-        ax.set_xlim(10,1000)
-        ax.set_xticks([10,100,250,500,1000], ['10','100','250','500','1,000'])
-        ax.grid(color='#E7EBEE',lw=.6)
-        ax.set_axisbelow(True)
-        ax.set_xlabel('Candidate budget')
-    a.set_ylim(50,95); a.set_yticks([50,60,70,80,90,95]); a.set_ylabel('Expected recovery (%)')
-    b.set_ylim(0,1.5); b.set_yticks([0,.3,.6,.9,1.2,1.5]); b.set_ylabel('RMSD threshold (Å)')
-    a.set_title(f'{chr(65+2*i)}   {TITLES[cohort]}\nRecovery at 0.75 Å', loc='left',pad=12)
-    b.set_title(f'{chr(66+2*i)}   {TITLES[cohort]}\nThreshold for 80% recovery',loc='left',pad=12)
-    ends_a, ends_b = {}, {}
+    ax = axes[i]
+    ax.set_xlim(10,1000)
+    ax.set_xticks([10,100,250,500,1000], ['10','100','250','500','1,000'])
+    ax.grid(color='#E7EBEE',lw=.6)
+    ax.set_axisbelow(True)
+    ax.set_xlabel('Candidate budget')
+    ax.set_ylim(50,95); ax.set_yticks([50,60,70,80,90,95])
+    ax.set_ylabel('Expected recovery (%)')
+    ax.set_title(f'{chr(65+i)}   {TITLES[cohort]}', loc='left',pad=30)
+    counts = chembl_counts.loc[chembl_counts.cohort.eq(cohort), 'chembl_count']
+    assert len(counts) == (94 if cohort == 'core' else 1044)
+    mean_count = counts.mean()
+    ax.axvline(mean_count, color=MUTED, ls=(0,(3,3)), lw=1.1)
+    ax.annotate(f'Mean ChEMBL count: {mean_count:.1f}',
+                xy=(mean_count,1.015), xycoords=ax.get_xaxis_transform(),
+                ha='left', va='bottom', fontsize=8, color=MUTED)
+    ends = {}
+    cohort_curves = curves if cohort == 'core' else pd.read_csv(ref_results/'recovery_curves.csv')
     for method in methods:
         color = STYLE[method.removesuffix('_fixed')][1]
-        cohort_curves = curves if cohort == 'core' else pd.read_csv(ref_results/'recovery_curves.csv')
-        cohort_frontier = frontier if cohort == 'core' else pd.read_csv(ref_results/'recovery80_frontier.csv')
         c = cohort_curves.loc[cohort_curves.method.eq(method) & cohort_curves.threshold.eq(.75)]
-        f = cohort_frontier.loc[cohort_frontier.method.eq(method)]
-        a.plot(c.budget,100*c.recovery,color=color,lw=1.9)
-        b.plot(f.budget,f.rmsd_threshold,color=color,lw=1.9)
-        ends_a[method] = 100*c.loc[c.budget.eq(1000), 'recovery'].iloc[0]
-        ends_b[method] = f.loc[f.budget.eq(1000), 'rmsd_threshold'].iloc[0]
+        ax.plot(c.budget,100*c.recovery,color=color,lw=1.9)
+        ends[method] = 100*c.loc[c.budget.eq(1000), 'recovery'].iloc[0]
         if cohort == 'ref':
-            assert np.isclose(ends_a[method], ref_ends.loc[method, 'recovery'])
-            assert np.isclose(ends_b[method], ref_ends.loc[method, 'rmsd_threshold'])
-    reference = [100*core_ref['hit_rates']['0.75'],core_ref['rmsd_threshold']] if cohort=='core' else ref_ends.loc['chembl3d_gt_pb',['recovery','rmsd_threshold']].tolist()
-    for ax, value in zip((a,b),reference):
-        ax.axhline(value,color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2)
-    annotate_endpoints(a,ends_a,1,'%',3.4)
-    annotate_endpoints(b,ends_b,3,' Å',.12)
+            assert np.isclose(ends[method], ref_ends.loc[method, 'recovery'])
+    reference = 100*core_ref['hit_rates']['0.75'] if cohort=='core' else ref_ends.loc['chembl3d_gt_pb','recovery']
+    ax.axhline(reference,color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2)
+    annotate_endpoints(ax,ends,1,'%',3.4)
 handles = [Line2D([],[],color=STYLE[m.removesuffix('_fixed')][1],lw=1.9,label=STYLE[m.removesuffix('_fixed')][0]) for m in methods]
 handles.append(Line2D([],[],color=STYLE['chembl3d_gt_pb'][1],ls=(0,(4,3)),lw=1.2,label='Stored ChEMBL3D-PB'))
-fig.suptitle('Sampling budget, recovery, and matching tolerance',x=.075,ha='left',y=.98,fontsize=11.5)
-fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.065),ncol=3,frameon=False,fontsize=8,columnspacing=1.5)
+fig.suptitle('Sampling budget and recovery at 0.75 Å',x=.075,ha='left',y=.98,fontsize=11.5)
+fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.015),ncol=3,frameon=False,fontsize=8,columnspacing=1.5)
 save(fig,'figure-budget-combined')
 for fig in figures:
     plt.close(fig)
@@ -195,8 +195,9 @@ for fig in figures:
     'source_hashes':{str(p.relative_to(PAPER)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
     'figure3':'Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.',
     'figure4':'All core/ref endpoints from current Table 3; same method order and scales.',
-    'figureB1':'Both datasets: exact pre-PoseBusters finite-pool curves; rejected candidates consume budget. Ref endpoint and threshold checks agree with archived per-entry minima.',
+    'figure5':'Exact pre-PoseBusters finite-pool recovery curves at 0.75 Å; rejected candidates consume budget. Vertical lines show arithmetic mean unfiltered ChEMBL conformer counts across all panel entries.',
+    'mean_chembl_counts':chembl_counts.groupby('cohort').chembl_count.mean().to_dict(),
     'qwen':'Qwen 1.7B FSQ v2 CoordToken step41054 in all panels.',
     'missing_inputs':[]
 },indent=2)+'\n')
-print('Completed Figures 3, 4 and B1 with calculated core/ref energies and exact sampling curves.')
+print('Completed Figures 3, 4 and 5 with calculated core/ref energies and exact sampling curves.')

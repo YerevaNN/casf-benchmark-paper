@@ -12,6 +12,7 @@
     "sampling-data/reference.json": "d60c1499c65ee5d0b528ff3ed6af4841724e926be24f824b019e2fe2f8691031",
     "sampling-data/display.json": "dc306cc69a5da0beea4e5fbc4199c04a6ce14a5229ce9ba079c8942ee1d2643a",
     "results-data/ref-panel/provenance.json": "41415c50fa7ce72c4b715ad955514017ba85fc598201450343dfe36708969e77",
+    "results-data/core-ref-protocol/chembl-candidate-counts.csv": "70a3148bf02f79b4ec76bd7de00ed54b1cfe49c59a098eaa4f764b1caac5fa6c",
     "results-data/core-ref-protocol/ref/summary.csv": "b117be4bb51ba877d103c711b8f514781b914c3b652a90adc0e388ac2351c0aa",
     "results-data/core-ref-protocol/ref/provenance.json": "0ff5688e1d4dfc5243bb462433b9540640c05fc365e5c7aae4c3c68fbdbf4b80",
     "results-data/core-ref-protocol/ref/recovery_curves.csv": "d0eb53d089dc080ac554cd7852680dfa36ee368aea97eca8002293a2de554cf3",
@@ -21,7 +22,11 @@
   },
   "figure3": "Core and ref common-hydrogen MMFF94s energies; matched geometric summaries.",
   "figure4": "All core/ref endpoints from current Table 3; same method order and scales.",
-  "figureB1": "Both datasets: exact pre-PoseBusters finite-pool curves; rejected candidates consume budget. Ref endpoint and threshold checks agree with archived per-entry minima.",
+  "figure5": "Exact pre-PoseBusters finite-pool recovery curves at 0.75 \u00c5; rejected candidates consume budget. Vertical lines show arithmetic mean unfiltered ChEMBL conformer counts across all panel entries.",
+  "mean_chembl_counts": {
+    "core": 81.15957446808511,
+    "ref": 68.85823754789271
+  },
   "qwen": "Qwen 1.7B FSQ v2 CoordToken step41054 in all panels.",
   "missing_inputs": []
 }

@@ -123,12 +123,13 @@ drawing random subsets. Rejected candidates consume budget but cannot produce a 
 capped at the available candidate count. Expected recovery averages these probabilities across
 all 94 core or 1,044 ref entries, with empty retained pools contributing zero.
 
-We report expected recovery at a fixed RMSD cutoff of 0.75 \AA{} and, separately, the smallest RMSD
-threshold at which expected recovery reaches 80\% at each budget. The latter is found among the
-observed RMSD values and is calculated from the average recovery across entries. The stored
-ChEMBL3D-PB ensemble supplies a fixed reference in both comparisons. An unattainable
-80\% target is left undefined rather than extrapolated. These calculations describe
-sampling within the available pools; they do not extrapolate beyond them.
+We report expected recovery at an RMSD cutoff of 0.75 \AA{}. The stored
+ChEMBL3D-PB ensemble supplies a fixed recovery reference. The vertical budget marker
+is the arithmetic mean of the matched ChEMBL conformer counts before PoseBusters
+filtering across all entries in each panel (81.2 for core and 68.9 for ref).
+It is a descriptive reference, not a replacement for the entry-specific targets
+used in the ChEMBL-count experiment. These calculations describe sampling within
+the available pools; they do not extrapolate beyond them.
 
 \subsection*{Molecular size and flexibility}
 

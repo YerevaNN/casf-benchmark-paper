@@ -1,0 +1,26 @@
+{
+  "definition": "Arithmetic mean of unfiltered conformer_count in matched ChEMBL topology, one count per evaluated crystal; ref selected=true only. Descriptive budget marker, not the entry-specific ChEMBL-count experiment.",
+  "sources": {
+    "core": {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/data/mapping/casf16_core_chembl3d_exact_intersection.csv",
+      "sha256": "3b961cefdd332177581a53eb59ccb0c119d123c2e1e5d25a9e0da32c62edd258"
+    },
+    "ref": {
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark-paper/jcim-overleaf/results-data/ref-panel/selection.csv",
+      "sha256": "991d9565e87b8a5601fd55e8cc73c7f0337951c59a81204f91063d1bfa367e4f"
+    }
+  },
+  "counts_sha256": "70a3148bf02f79b4ec76bd7de00ed54b1cfe49c59a098eaa4f764b1caac5fa6c",
+  "summary": {
+    "core": {
+      "count": 94,
+      "sum": 7629,
+      "mean": 81.15957446808511
+    },
+    "ref": {
+      "count": 1044,
+      "sum": 71888,
+      "mean": 68.85823754789271
+    }
+  }
+}

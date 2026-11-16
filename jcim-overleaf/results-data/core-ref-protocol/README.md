@@ -1,5 +1,15 @@
 # Completed core/ref energy and sampling figures
 
+## Current sampling display
+
+Figure 5 shows only recovery at 0.75 Å, with core and ref side by side.
+Vertical dashed lines mark the arithmetic mean unfiltered ChEMBL counts,
+81.1596 and 68.8582. `chembl-candidate-counts.csv` archives all 94/1,044
+entry counts; `chembl-count-provenance.json` identifies the source mappings
+and hashes. Horizontal dashed lines retain stored ChEMBL3D-PB recovery.
+The 80% threshold frontiers remain archived but are not presented.
+
+
 ## Primary Qwen checkpoint update, 4 November 2026
 
 All current primary Qwen results use `qwen_1p7b_v2_coordtoken_step41054`, displayed

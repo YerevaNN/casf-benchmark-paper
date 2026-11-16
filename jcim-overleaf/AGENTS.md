@@ -1,5 +1,15 @@
 # Manuscript authoring
 
+## Sampling Figure 5
+
+Figure 5 contains two recovery-at-0.75 Å panels, core (A) and ref (B).
+Do not restore the 80% recovery threshold panels. Horizontal dashed lines show
+ChEMBL3D-PB recovery; vertical dashed lines show mean unfiltered ChEMBL counts
+(81.2 core, 68.9 ref). The archived per-entry counts are in
+`results-data/core-ref-protocol/chembl-candidate-counts.csv`. These means are
+descriptive budget references, not the entry-specific ChEMBL-count experiment.
+Rebuild using `results-data/core-ref-protocol/build_figures.py`.
+
 ## Appendix organization
 
 Supporting content is grouped as evaluation panels, conformer generators and
