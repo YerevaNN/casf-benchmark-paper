@@ -1,0 +1,64 @@
+pilot_id: pharmacophore_plinder_atc48
+paper_label: PLINDER-ATC48 extension panel
+output_dir: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48
+reference_audit: /mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/reference_audit.csv
+pdb_cache: /mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/pdb
+
+backend:
+  name: Pharmit
+  commit: 49d2c0a573f6e58bca62f674b33874bdd42c2274
+  executable: /mnt/weka/mbedrosian/environments/casf-pharmit-pilot/bin/pharmit
+  environment: /mnt/weka/mbedrosian/environments/casf-pharmit-pilot
+  timeout_seconds: 3600
+  workers: 8
+  query_batch_size: 100
+  max_orientations_per_conformer: 1
+  reduce_conformers: 0
+  skip_triplet_fingerprints: true
+  skip_geometric_pruning: true
+
+methods:
+  qwen_1p7b_v2_coordtoken_step41054_atc48:
+    label: Qwen 1.7B FSQ
+    path: /mnt/weka/mbedrosian/pharma_generation_analysis/pharmacophore_atc48_qwen17b/gen_results/qwen_1p7b_v2_coordtoken_step41054_atc48_plinder/generation_results.pickle
+    source: accepted merged generation cache; requested budgets are capped at the supplied 992--1000 conformers
+  loqi_atc48:
+    label: LoQI
+    path: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/loqi/generation_results.pickle
+  rdkit_etkdg_raw_atc48:
+    label: RDKit ETKDG raw
+    path: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/rdkit/rdkit_etkdg_raw.pickle
+  rdkit_etkdg_mmff94s_atc48:
+    label: RDKit ETKDG + MMFF94s
+    path: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/rdkit/rdkit_etkdg_mmff94s.pickle
+
+query:
+  primary_radius: 0.5
+  sensitivity_radii: [0.75, 1.0]
+  positional_only: true
+  contact_cutoff: 6.0
+  native_copy_max_rmsd: 0.01
+  cleaned_native_max_rmsd: 0.001
+  minimum_distinct_centers: 4
+  minimum_center_separation: 0.1
+  minimum_triangle_area: 0.1
+  exclude_covalent: true
+
+analysis:
+  budgets: [10, 20, 50, 100, 200, 500, 1000]
+  bootstrap_replicates: 2000
+  bootstrap_seed: 20261116
+  mixture_sources: [qwen_1p7b_v2_coordtoken_step41054_atc48, loqi_atc48]
+  baseline_methods: [rdkit_etkdg_raw_atc48, rdkit_etkdg_mmff94s_atc48]
+  rmsd_hit_threshold: 0.75
+
+posebusters:
+  enabled: true
+  workers: 8
+  energy_num_threads: 1
+
+publication:
+  difficulty_methods:
+    - qwen_1p7b_v2_coordtoken_step41054_atc48
+    - loqi_atc48
+    - qwen_loqi_equal_mixture

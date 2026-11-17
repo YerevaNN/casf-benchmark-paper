@@ -1,0 +1,9 @@
+method,both_hit_count,pharmacophore_only_count,rmsd_only_count,neither_count
+flowr_druglike,52174,40749,55846,756748
+loqi_druglike,160314,46645,109614,615427
+mcf_drugs_l_druglike,46442,59688,71657,754213
+nextmol_dmt_l_druglike,48124,60202,57626,766048
+qwen_1p7b_v2_coordtoken_step41054,45358,61227,69201,756214
+rdkit_random_minimized_22_druglike,122894,58416,105985,644705
+rdkit_random_raw_druglike,89454,56371,76521,709654
+torsional_diffusion_druglike,116294,48097,74396,693213

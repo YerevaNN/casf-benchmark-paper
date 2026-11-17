@@ -3,9 +3,10 @@
 The shared appendix is grouped into evaluation panels, generators and training,
 evaluation procedures, and supporting analyses. Its tables are S1 selection,
 S2--S4 PLINDER selection/statistics/identities, S5 generators, S6 training,
-S7 retained counts, and S8 energy. Figures S1--S6 retain their contents and order;
-S7 is molecule tracking, moved from the main Results. All eight tables and seven
-figures are included in both the main review PDF and standalone SI.
+S7 retained counts, and S8 energy. Figures S1--S7 retain their contents and order;
+S8 is molecule tracking, S9 contains PLINDER threshold curves, and S10 reports the
+protein-context pharmacophore analysis. All eight tables and ten figures are
+included in both the main review PDF and standalone SI.
 
 The dated organization notes below retain their original numbering.
 

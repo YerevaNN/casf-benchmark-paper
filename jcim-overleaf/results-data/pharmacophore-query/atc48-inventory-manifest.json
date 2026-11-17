@@ -1,0 +1,53 @@
+{
+  "backend": {
+    "commit": "49d2c0a573f6e58bca62f674b33874bdd42c2274",
+    "environment": "/mnt/weka/mbedrosian/environments/casf-pharmit-pilot",
+    "executable": "/mnt/weka/mbedrosian/environments/casf-pharmit-pilot/bin/pharmit",
+    "executable_sha256": "e4da894249f78c26e938374f5acf37006a9215792149af9c430f798bf77bd0d3",
+    "max_orientations_per_conformer": 1,
+    "name": "Pharmit",
+    "query_batch_size": 100,
+    "reduce_conformers": 0,
+    "skip_geometric_pruning": true,
+    "skip_triplet_fingerprints": true,
+    "timeout_seconds": 3600,
+    "workers": 8
+  },
+  "backend_build_manifest_sha256": "e84ee177c3af65203866d787bd0f916ce0b0651ec1eb6ebc9555e584087d3aa7",
+  "budget_semantics": "accepted cached conformers, not attempts or compute; requested draws are capped at the supplied method-molecule pool size",
+  "candidate_count": 191943,
+  "config_path": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/config/pharmacophore_plinder_atc48.yaml",
+  "config_sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+  "method_count": 4,
+  "molecule_count": 48,
+  "original_qwen_hashes": null,
+  "original_qwen_prefix_topology_and_double_coordinates_verified": false,
+  "pool_size_summary": [
+    {
+      "max": 1000,
+      "method": "loqi_atc48",
+      "min": 1000,
+      "sum": 48000
+    },
+    {
+      "max": 1000,
+      "method": "qwen_1p7b_v2_coordtoken_step41054_atc48",
+      "min": 992,
+      "sum": 47943
+    },
+    {
+      "max": 1000,
+      "method": "rdkit_etkdg_mmff94s_atc48",
+      "min": 1000,
+      "sum": 48000
+    },
+    {
+      "max": 1000,
+      "method": "rdkit_etkdg_raw_atc48",
+      "min": 1000,
+      "sum": 48000
+    }
+  ],
+  "reference_count": 379,
+  "status": "passed"
+}

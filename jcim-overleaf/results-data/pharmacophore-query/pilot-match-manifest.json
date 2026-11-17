@@ -1,0 +1,30 @@
+{
+  "all_candidates_exported": true,
+  "all_searches_complete": true,
+  "candidate_manifest_sha256": "b51cde274edd821d857444067c0dbe1b5ec61b28c5cecaee5d1d08a21378597b",
+  "candidate_records": 175120,
+  "config_sha256": "292da2b311f8c548a07bf0c5604e1aeac110cd223f804303aaa8291bb691977c",
+  "eligible_queries": 932,
+  "matching_algorithm": "exhaustive_typed_feature_correspondence_then_proper_kabsch",
+  "methods": [
+    "qwen_1p7b_v2_coordtoken_step41054",
+    "loqi_druglike",
+    "flowr_druglike",
+    "mcf_drugs_l_druglike",
+    "nextmol_dmt_l_druglike",
+    "torsional_diffusion_druglike",
+    "rdkit_random_raw_druglike",
+    "rdkit_random_minimized_22_druglike"
+  ],
+  "molecules": 22,
+  "pharmit_indexed_search_used_for_final_membership": false,
+  "query_freeze_sha256": "0c82daf7b0dd1fd252c468b1e56e2d0b8d290b9adb45952483e1d6434a19501a",
+  "radii": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "radius_membership_monotonicity_violations": 0,
+  "search_completeness_sha256": "bfc5be8f340a6b6cd09af0a3110edb772e0a70f546a09b1f758bc6d691eada10",
+  "status": "complete"
+}

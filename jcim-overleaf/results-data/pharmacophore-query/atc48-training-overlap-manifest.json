@@ -1,0 +1,11 @@
+{
+  "molecule_count": 48,
+  "molecules_with_exact_identity_overlap": 20,
+  "reference_audit": "/mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/reference_audit.csv",
+  "reference_audit_sha256": "fdaa05c96abd7e75432e5372bcf4d85c6bbed02ac7914e85b97547c46ee6b38f",
+  "scope": "exact isomeric InChIKey only; this does not establish absence of near-neighbor or scaffold overlap",
+  "total_matching_training_rows": 869,
+  "training_csv": "/mnt/weka/vtarasov/dedup_casf285_plinder23_20261007/protomer/final/merged_train_clean_shuffled.csv",
+  "training_csv_mtime_ns": 1791817370502833098,
+  "training_csv_size_bytes": 141526806232
+}

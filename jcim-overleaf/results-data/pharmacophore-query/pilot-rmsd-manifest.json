@@ -1,0 +1,14 @@
+{
+  "agreement_aggregation": "candidate category fractions averaged over queries within molecule, then equally over molecules; uncertainty bootstraps molecules",
+  "cache_manifest_sha256": "7d66938b6b37ac31164e858513f20d4dc43047f5ce2690d643d11535bb2da971",
+  "candidate_anchor_checks": 1584,
+  "candidate_anchor_checks_sha256": "6a74a5838eb1ddef9a4d2113a1d703f08b52eddc3e62dddc68f3cc618adfb6fc",
+  "candidate_correspondence": "Matrix columns use indexed generation-pickle records and were checked by recalculating deterministic reference/candidate anchors; Qwen replacement columns were appended in combined-cache order.",
+  "config_sha256": "292da2b311f8c548a07bf0c5604e1aeac110cd223f804303aaa8291bb691977c",
+  "molecule_weighted_summary_sha256": "40a59af61ed1ba7e0a77550f5b2561450a6c9f7d0389fade13dfbb1af3c7db66",
+  "pharmacophore_radius": 0.5,
+  "query_correspondence": "reference audit reference_index into the cleaned SDF and RMSD matrix row; conf_index is retained only as the pre-dedup source key",
+  "status": "complete",
+  "whole_molecule_rmsd_threshold": 0.75,
+  "workers": 80
+}

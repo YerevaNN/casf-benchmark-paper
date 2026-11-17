@@ -1,0 +1,19 @@
+{
+  "config_sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+  "eligible_molecules": 44,
+  "eligible_queries": 311,
+  "exclusions": {
+    "No directly contacting protein chain": 3,
+    "fewer_than_four_distinct_contact_centers": 65
+  },
+  "generator_results_examined_for_eligibility": false,
+  "positional_only": true,
+  "query_manifest_sha256": "245439881403e23ab1a7765129c3d9430d0d30944a3cd4aa50f81d3c35e01e55",
+  "radii": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "status": "frozen",
+  "total_references": 379
+}

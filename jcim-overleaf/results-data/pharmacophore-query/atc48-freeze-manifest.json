@@ -1,0 +1,24 @@
+{
+  "coordinate_source": "RCSB ModelServer ligand instance SDF and RCSB mmCIF",
+  "generator_results_examined": false,
+  "molecule_count": 48,
+  "molecules_below_reference_cap": 2,
+  "outputs": {
+    "cohort.csv": "b7b240260d7c9bea1ce3b9326993ba3882aabd10da756504a7277b1d2607ed01",
+    "cohort_selection_audit.csv": "fc3643ed20fa86aab7d225a2e5a57d540258339919c0514dd2b6793dc4c9533d",
+    "generation_input.pickle": "3baf98ddab9de90e150a1b14a0a49e85fcfd502fbaea32254422b762620e4a09",
+    "reference_audit.csv": "fdaa05c96abd7e75432e5372bcf4d85c6bbed02ac7914e85b97547c46ee6b38f",
+    "reference_extraction_attempts.csv": "c6456b0fc775f191ea941f1313ee711ceb67c13770151e36671ba43409b9d0f7"
+  },
+  "pdb_selection": "one indexed ligand instance per distinct PDB, ordered by seeded SHA-256; first reference-valid noncovalent entries retained",
+  "reference_count": 379,
+  "references_per_molecule_maximum": 8,
+  "selection_rule": "all ATC/DrugBank-annotated PLINDER 2024-06/v2 identities excluding the original PLINDER-23 identities and molecules outside the declared method-panel element set",
+  "selection_seed": "plinder-atc48-v1",
+  "source_files": {
+    "/mnt/weka/hrant/plinder_frequency/2024-06-v2/druglike_atc_candidates.tsv": "f939f2754bb28e8f2732afae58f29acb0d986e0ef45c395a5af655dc0c855d41",
+    "/mnt/weka/hrant/plinder_frequency/2024-06-v2/ligands_per_system.parquet": "5d4ee32a6ac7b97ba597e6a1eed9d43670b75e869cea09073b4de809e29f810c",
+    "docs/plinder23_audit/reference_audit.csv": "3b48eb1fc0063ab02ee153af7169f5325dc8a297e832dd06da4bbc1d19d4ce9c"
+  },
+  "status": "frozen"
+}

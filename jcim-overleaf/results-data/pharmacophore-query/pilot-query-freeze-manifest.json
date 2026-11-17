@@ -1,0 +1,19 @@
+{
+  "config_sha256": "292da2b311f8c548a07bf0c5604e1aeac110cd223f804303aaa8291bb691977c",
+  "eligible_molecules": 22,
+  "eligible_queries": 932,
+  "exclusions": {
+    "covalent_complex_excluded": 2,
+    "fewer_than_four_distinct_contact_centers": 133
+  },
+  "generator_results_examined_for_eligibility": false,
+  "positional_only": true,
+  "query_manifest_sha256": "6a32b6f4fe7776edfff0ab62039215c757a08078d98ca0a6bc05b17d280b61a2",
+  "radii": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "status": "frozen",
+  "total_references": 1067
+}

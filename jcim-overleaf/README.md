@@ -1,5 +1,15 @@
 # JCIM manuscript
 
+## Protein-context pharmacophore analysis, 17 November 2026
+
+Supporting Figure S10 adds exact positional protein-contact pharmacophore-query
+coverage for the PLINDER-22 panel and a generator-blind 48-molecule extension.
+The current SI therefore contains eight tables and ten figures. Methods, Results,
+Discussion, selection/training qualifications, compact source data, and the
+renderer are archived in
+[`results-data/pharmacophore-query/`](results-data/pharmacophore-query/README.md).
+The extension broadens structural coverage but is not an unseen-molecule test.
+
 ## Training and reproducibility update, 6 November 2026
 
 Methods now describes the filtered CoordToken checkpoint and v2 Qwen training.
@@ -174,7 +184,7 @@ the SI now contains Tables S1–S7 and Figures S1–S6.
 - `tables/generation-methods.tex`: generator descriptions (Supporting Table S5).
 - `tables/diversity.tex`, `tables/count-recovery.tex`, `tables/recovery.tex`,
   `tables/druglike.tex`: Tables 1–4. The unused `tables/release-status.tex` is historical.
-- `supporting-information.tex`: current separate SI document with seven tables and six figures; see `appendix-data/README.md` for the content map.
+- `supporting-information.tex`: current separate SI document with eight tables and ten figures; see `appendix-data/README.md` for the content map.
 - `figures.tex`: figure definitions, captions, and references; artwork is in `figures/`.
 - `dataset-figure.tex`: Supporting Figure S1, the experimental-panel diagram, with PDF, SVG, and PNG assets.
 - `plinder23-appendix.tex`: selection account and Supporting Tables S2--S4.

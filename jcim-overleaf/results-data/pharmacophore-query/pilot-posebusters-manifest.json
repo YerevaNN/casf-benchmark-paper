@@ -1,0 +1,66 @@
+{
+  "archived_comparable_replayed_totals": {
+    "flowr_druglike": 17356,
+    "loqi_druglike": 19948,
+    "mcf_drugs_l_druglike": 14381,
+    "nextmol_dmt_l_druglike": 14055,
+    "qwen_1p7b_v2_coordtoken_step41054": 20297,
+    "rdkit_random_minimized_22_druglike": 21999,
+    "rdkit_random_raw_druglike": 22000,
+    "torsional_diffusion_druglike": 18365
+  },
+  "archived_results_overwritten": false,
+  "archived_totals": {
+    "loqi_druglike": 19948,
+    "qwen_1p7b_v2_coordtoken_step41054": 20296,
+    "rdkit_random_minimized_22_druglike": 21999,
+    "rdkit_random_raw_druglike": 22000
+  },
+  "candidate_atom_order": "heavy-atom candidates renumbered to the coordinate-free reference SMILES order, matching the archived evaluator",
+  "candidate_masks_saved": true,
+  "config_sha256": "292da2b311f8c548a07bf0c5604e1aeac110cd223f804303aaa8291bb691977c",
+  "failed_candidates_consume_budget": true,
+  "methods": [
+    "qwen_1p7b_v2_coordtoken_step41054",
+    "loqi_druglike",
+    "flowr_druglike",
+    "mcf_drugs_l_druglike",
+    "nextmol_dmt_l_druglike",
+    "torsional_diffusion_druglike",
+    "rdkit_random_raw_druglike",
+    "rdkit_random_minimized_22_druglike"
+  ],
+  "post_gate_replenishment": false,
+  "replacement_pass_totals": {
+    "flowr_druglike": 0,
+    "loqi_druglike": 0,
+    "mcf_drugs_l_druglike": 0,
+    "nextmol_dmt_l_druglike": 0,
+    "qwen_1p7b_v2_coordtoken_step41054": 50,
+    "rdkit_random_minimized_22_druglike": 0,
+    "rdkit_random_raw_druglike": 0,
+    "torsional_diffusion_druglike": 0
+  },
+  "replayed_totals": {
+    "flowr_druglike": 17356,
+    "loqi_druglike": 19948,
+    "mcf_drugs_l_druglike": 14381,
+    "nextmol_dmt_l_druglike": 14055,
+    "qwen_1p7b_v2_coordtoken_step41054": 20347,
+    "rdkit_random_minimized_22_druglike": 21999,
+    "rdkit_random_raw_druglike": 22000,
+    "torsional_diffusion_druglike": 18365
+  },
+  "settings": {
+    "archived_pass_totals": {
+      "loqi_druglike": 19948,
+      "qwen_1p7b_v2_coordtoken_step41054": 20296,
+      "rdkit_random_minimized_22_druglike": 21999,
+      "rdkit_random_raw_druglike": 22000
+    },
+    "enabled": true,
+    "energy_num_threads": 1,
+    "workers": 8
+  },
+  "status": "complete"
+}

@@ -1,0 +1,403 @@
+{
+  "analysis_date": "2026-11-17",
+  "benchmark_repository": {
+    "base_commit": "02976ef7343ad4dc1ca2b2a9ba7a6e0dadb4b794",
+    "code_source_hashes_are_authoritative": true,
+    "path": "/mnt/weka/mbedrosian/code/casf-benchmark",
+    "working_tree_dirty": true
+  },
+  "code_sources": {
+    "docs/pharmacophore_pilot/REPRODUCING.md": {
+      "bytes": 9488,
+      "sha256": "a528062c9403a8512c22c7a32a2fbcdcf7937f0b7d515a4fd824d714309fa780"
+    },
+    "scripts/audit_pharmacophore_loqi_generation.py": {
+      "bytes": 9159,
+      "sha256": "809dd087e033df2d17820dbce9a7676e9c06308196b1c03a923384cecadfeb48"
+    },
+    "scripts/audit_pharmacophore_training_overlap.py": {
+      "bytes": 4579,
+      "sha256": "81e01c41526c2afdbfa5a707d6ec75edeffaf72c95dbf942ee5568c78c8ca6c7"
+    },
+    "scripts/audit_pharmacophore_training_overlap.sbatch": {
+      "bytes": 519,
+      "sha256": "2a1fb4d8ee96d02bd9481840e3fc2ef02e524e2ba46dc1f6fd30375553c08450"
+    },
+    "scripts/build_pharmacophore_atc48.py": {
+      "bytes": 16703,
+      "sha256": "3acc3880b028df3b25c6e4b657f2f7fc3d3cc817240e3591fc5bf2bdc69d019c"
+    },
+    "scripts/build_pharmit_pilot.sh": {
+      "bytes": 6234,
+      "sha256": "ab64988e7f4623c28430892314b7f8c514fe7160390fb9b6b9b0275202cc11a7"
+    },
+    "scripts/generate_pharmacophore_baselines.py": {
+      "bytes": 6052,
+      "sha256": "94601f9878aa0dfae7bf0d013318df980d9ddd94262da65b93e96e5d301732c0"
+    },
+    "scripts/generate_pharmacophore_baselines.sbatch": {
+      "bytes": 699,
+      "sha256": "d6fc63b03c1b8a6d1c509ca02dcd764c7df2380957f110e0f8a019a05826a187"
+    },
+    "scripts/pharmit_exact_search.patch": {
+      "bytes": 2240,
+      "sha256": "4fbd9f72eea2ab45a5ac40a48350416f4a15a68ad72478d2adab56e3a06f1991"
+    },
+    "scripts/run_off_the_shelf_druglike.py": {
+      "bytes": 15080,
+      "sha256": "9c4ecfd707b26ee80a6afd0659985539f802a0055b3e6725f848fae59539ce6a"
+    },
+    "scripts/run_pharmacophore_loqi_cpu_shard.sbatch": {
+      "bytes": 1179,
+      "sha256": "e0d1f8b136737b664d765d40f2eb0a15236b2f867b95e2e0bc387ee4079d5be1"
+    },
+    "scripts/run_pharmacophore_posebusters.sbatch": {
+      "bytes": 1048,
+      "sha256": "168792ddcc744a2b6acd074e6b1627f96f2d3c5ddb9517b5da687e7a99cd80bb"
+    },
+    "scripts/topup_pharmacophore_qwen.py": {
+      "bytes": 19931,
+      "sha256": "c7d8506a72c8b0ceb2f4c74d1eb74c7aa4a564f801c05dc4d1f83f441a846985"
+    },
+    "scripts/topup_pharmacophore_qwen.sbatch": {
+      "bytes": 745,
+      "sha256": "a9e2e06179c8d73a0e7c715cb6b92b2ab8601d7e01db80875ebe36880ad292db"
+    },
+    "src/casf_benchmark/analysis/pharmacophore.py": {
+      "bytes": 37109,
+      "sha256": "681033a8ea6faed7f6f3bbf5e85834e3c7a23ed13766cff225ebd542059719e6"
+    },
+    "src/casf_benchmark/cli/analyze_pharmacophores.py": {
+      "bytes": 138522,
+      "sha256": "6bb43f916e0d74f3f271305ea93e1d383f0047377f74e6e21b6250f303e5fe2b"
+    }
+  },
+  "copied_results": {
+    "atc48-aggregate-budget-curves.csv": {
+      "bytes": 24881,
+      "sha256": "03d79279a9ba0758dcfbb7fec3221f1babecb26623890c3e1ff1b2d6f2f032d3",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/aggregate_budget_curves.csv"
+    },
+    "atc48-cohort-selection-audit.csv": {
+      "bytes": 13382,
+      "sha256": "fc3643ed20fa86aab7d225a2e5a57d540258339919c0514dd2b6793dc4c9533d",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/cohort_selection_audit.csv"
+    },
+    "atc48-cohort.csv": {
+      "bytes": 10099,
+      "sha256": "b7b240260d7c9bea1ce3b9326993ba3882aabd10da756504a7277b1d2607ed01",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/cohort.csv"
+    },
+    "atc48-config.yaml": {
+      "bytes": 2411,
+      "sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/config/pharmacophore_plinder_atc48.yaml"
+    },
+    "atc48-coverage-breakdowns.csv": {
+      "bytes": 8389,
+      "sha256": "14415e771213d474d0e09f6510bd6473a160b230f6f81cc4e93e86f455a80723",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/coverage_breakdowns.csv"
+    },
+    "atc48-endpoint-comparisons.csv": {
+      "bytes": 1642,
+      "sha256": "dab231a2d7ca3595f893ddd9393e36b2fb48e3ec88881b8cef046e2a069bd828",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/endpoint_comparisons.csv"
+    },
+    "atc48-exact-identity-overlap.csv": {
+      "bytes": 7978,
+      "sha256": "d8d7845cb6264d301eac39c17fea4047f37940c62589420681ccd571883d81d8",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/training_overlap/exact_identity_overlap.csv"
+    },
+    "atc48-findings.md": {
+      "bytes": 5462,
+      "sha256": "e3a6f058f2a63d334bc614ae9c9fd4bd566566e049d38d466af841fc2b9da410",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/FINDINGS.md"
+    },
+    "atc48-freeze-manifest.json": {
+      "bytes": 1586,
+      "sha256": "e0728f2127e223e2692f351aaa3f9b85e3b956749a9f02b4ba86766c36a82a24",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/freeze_manifest.json"
+    },
+    "atc48-inventory-manifest.json": {
+      "bytes": 1745,
+      "sha256": "ebece2591d249f4e5e74402f7fe12efbb9bf586201543731d8e8fbee1bec9130",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/inventory_manifest.json"
+    },
+    "atc48-loqi-generation-summary.json": {
+      "bytes": 7877,
+      "sha256": "14c52ce99e6bb147cd69dfeeea2cc4a25b37a52453911fb85671ca7eed90760a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/loqi/generation_summary.json"
+    },
+    "atc48-loqi-run-manifest.json": {
+      "bytes": 21047,
+      "sha256": "33264cba1a86313c101f40d4c1b0b1d1d1fc90d68ffae253df5a0cee72d40882",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/loqi/run_manifest.json"
+    },
+    "atc48-match-manifest.json": {
+      "bytes": 939,
+      "sha256": "afe1398ebcc9b1659e6718322f7e85edcf7706629f8c90c0eb3dd4ae5da56765",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/match_manifest.json"
+    },
+    "atc48-per-molecule-budget-curves.csv": {
+      "bytes": 1286391,
+      "sha256": "f61de4ed533ba55354e85d485dbb30c3e230b2abb57f5631eb38cd41c2ef5a3a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/per_molecule_budget_curves.csv"
+    },
+    "atc48-pool-inventory.csv": {
+      "bytes": 59224,
+      "sha256": "26ebb81ba853afd525de2c1bd1c69d1241d59c66bd12dd0f2222458771226362",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/pool_inventory_completed.csv"
+    },
+    "atc48-posebusters-manifest.json": {
+      "bytes": 1226,
+      "sha256": "b75091e3c3828c7ba27cce170dd40db5bfdb3b10b0fda120bdc3032939a2bfbb",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/posebusters/manifest.json"
+    },
+    "atc48-posebusters-summary.csv": {
+      "bytes": 62190,
+      "sha256": "f19fb65b78044a34dd4f5a6629dbbec1e00781ff871ad7f9b5f3c2877a608262",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/posebusters/summary.csv"
+    },
+    "atc48-query-freeze-manifest.json": {
+      "bytes": 537,
+      "sha256": "7239e141742987959d9583e1930e386bd91aa622010ca57d5a780ad2efff7b1c",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/query_freeze_manifest.json"
+    },
+    "atc48-query-manifest.csv": {
+      "bytes": 219639,
+      "sha256": "245439881403e23ab1a7765129c3d9430d0d30944a3cd4aa50f81d3c35e01e55",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/query_manifest.csv"
+    },
+    "atc48-rdkit-generation-manifest.json": {
+      "bytes": 15456,
+      "sha256": "582d0e9c8b9ceaa74d6bfbf78352594eb51aca719d54565985b967cef63a310c",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/rdkit/generation_manifest.json"
+    },
+    "atc48-reference-audit.csv": {
+      "bytes": 335716,
+      "sha256": "fdaa05c96abd7e75432e5372bcf4d85c6bbed02ac7914e85b97547c46ee6b38f",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/pharmacophore_atc48/reference_audit.csv"
+    },
+    "atc48-rmsd-cache-manifest.csv": {
+      "bytes": 1917,
+      "sha256": "229ce45aadde4b98504cdc1bf6feed3b485a611832c4e5ca83c2eb97da5f931f",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/rmsd_agreement/cache_manifest.csv"
+    },
+    "atc48-rmsd-manifest.json": {
+      "bytes": 1089,
+      "sha256": "8c8639d8c0141b952e357090e04cba78f2819aa5843ee43f5a14554db8a2cacf",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/rmsd_agreement/manifest.json"
+    },
+    "atc48-rmsd-molecule-summary.csv": {
+      "bytes": 1726,
+      "sha256": "ef09a61986835442c6753935f45b7e198cc15c12fdc774930d750a1d031dd4d2",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/rmsd_agreement/molecule_weighted_summary.csv"
+    },
+    "atc48-rmsd-summary.csv": {
+      "bytes": 276,
+      "sha256": "508e2a645bf471c6b7e7b4673b298174a174f5a7f18aa548bcb41d69c2e80e3a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/rmsd_agreement/summary.csv"
+    },
+    "atc48-summary-manifest.json": {
+      "bytes": 1643,
+      "sha256": "736374cbbeefff11f1fdd16cbeabff2359e4bc1a88d3f6aa9732454aef793a0e",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/summary_manifest.json"
+    },
+    "atc48-training-overlap-manifest.json": {
+      "bytes": 643,
+      "sha256": "92cb9925d9fb8f23f4b72121a7ebf9c03aab4efec29599f73f0ed4b865624dde",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/training_overlap/manifest.json"
+    },
+    "pilot-aggregate-budget-curves.csv": {
+      "bytes": 47233,
+      "sha256": "62625b3558fa2a328ba271f0c2fc36e6707a56997fff66fbbf1ae9fbcc1214d8",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/aggregate_budget_curves.csv"
+    },
+    "pilot-config.yaml": {
+      "bytes": 4855,
+      "sha256": "292da2b311f8c548a07bf0c5604e1aeac110cd223f804303aaa8291bb691977c",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/src/casf_benchmark/config/pharmacophore_plinder22.yaml"
+    },
+    "pilot-coverage-breakdowns.csv": {
+      "bytes": 16580,
+      "sha256": "1f5748633c020faded1b926d14d1c1535971ebb4eebdb22eed6ae8dfc25c7a55",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/coverage_breakdowns.csv"
+    },
+    "pilot-endpoint-comparisons.csv": {
+      "bytes": 2906,
+      "sha256": "9cde0e6a29ac0fe396e2546bb7eef4b767b25258e29244eb91f09bb5ce58ff00",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/endpoint_comparisons.csv"
+    },
+    "pilot-findings.md": {
+      "bytes": 7475,
+      "sha256": "34b7261a625f7c6b75f6798dec1b0441d722006a1bb4aad918ce4ae755e01932",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/FINDINGS.md"
+    },
+    "pilot-match-manifest.json": {
+      "bytes": 1065,
+      "sha256": "c76cc276a52894e83a58fca6cbae2792f70c857ccf709c89bb204abe86ce9bbe",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/match_manifest.json"
+    },
+    "pilot-per-molecule-budget-curves.csv": {
+      "bytes": 1188733,
+      "sha256": "24c60e161b36fbd863e262b57df0dd706309ffde7435d75c2e0bf6928b60d28c",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/per_molecule_budget_curves.csv"
+    },
+    "pilot-pool-inventory.csv": {
+      "bytes": 50720,
+      "sha256": "7892b5d4f9b91aaa1d94260ecd35e28ffa799cf1197b517d18cb1cc56450181a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/pool_inventory_completed.csv"
+    },
+    "pilot-posebusters-manifest.json": {
+      "bytes": 2175,
+      "sha256": "7499f5ac928d791af36046553bd75e25ae6d4909e4a51ed217272681d2ada5d9",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/posebusters/manifest.json"
+    },
+    "pilot-posebusters-summary.csv": {
+      "bytes": 56626,
+      "sha256": "f19f3eb5386c6bc646a277e6d45ecd8aaf5711923c11cb3b9662c1f61378f800",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/posebusters/summary.csv"
+    },
+    "pilot-query-freeze-manifest.json": {
+      "bytes": 528,
+      "sha256": "0c82daf7b0dd1fd252c468b1e56e2d0b8d290b9adb45952483e1d6434a19501a",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/query_freeze_manifest.json"
+    },
+    "pilot-query-manifest.csv": {
+      "bytes": 542751,
+      "sha256": "6a32b6f4fe7776edfff0ab62039215c757a08078d98ca0a6bc05b17d280b61a2",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/query_manifest.csv"
+    },
+    "pilot-qwen-topup-manifest.json": {
+      "bytes": 6977,
+      "sha256": "6958cc4cea7b4019cf780a6d5e355eac385a574ac04883f54ea09d9ce675de01",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/qwen_topup/topup_manifest.json"
+    },
+    "pilot-rmsd-cache-manifest.csv": {
+      "bytes": 3610,
+      "sha256": "7d66938b6b37ac31164e858513f20d4dc43047f5ce2690d643d11535bb2da971",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/rmsd_agreement/cache_manifest.csv"
+    },
+    "pilot-rmsd-manifest.json": {
+      "bytes": 1089,
+      "sha256": "bc232a85ea0a830d6758d695d0be5917f7667d893f2841989d6f90a7b1647a5d",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/rmsd_agreement/manifest.json"
+    },
+    "pilot-rmsd-molecule-summary.csv": {
+      "bytes": 3404,
+      "sha256": "40a59af61ed1ba7e0a77550f5b2561450a6c9f7d0389fade13dfbb1af3c7db66",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/rmsd_agreement/molecule_weighted_summary.csv"
+    },
+    "pilot-rmsd-summary.csv": {
+      "bytes": 479,
+      "sha256": "ab66782231d2731a3b61b487112c4de6d79d8d4463ee30e2625dc51a52364ee8",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/rmsd_agreement/summary.csv"
+    },
+    "pilot-summary-manifest.json": {
+      "bytes": 1643,
+      "sha256": "0a0d6eb88757117161e3f59e21445b780775533b93c317d07a156dfe35ef18f1",
+      "source": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/summary_manifest.json"
+    }
+  },
+  "derived_archive_files": {
+    "atc48-training-overlap-endpoints.csv": {
+      "bytes": 871,
+      "sha256": "7a7cc8d75457122acce92328ba87ac521dc8d6c041fe0b7cff79642ccd478352"
+    },
+    "build_overlap_summary.py": {
+      "bytes": 2766,
+      "sha256": "cc52014358b2314d2862e9cec7ec93fbd34934522b57e7ad94beceffd0a14894"
+    },
+    "build_provenance.py": {
+      "bytes": 10343,
+      "sha256": "2a2f47e337dddbc461cb257c2c118183f353207f3c73770693fdf3e0ccac4ed4"
+    },
+    "render.py": {
+      "bytes": 8886,
+      "sha256": "747bb366ebf0abce6fc4088fb9a3044a965673a3290e00e047ee3700ea29d316"
+    },
+    "rendered-files.json": {
+      "bytes": 968,
+      "sha256": "56d9ab3153b211f0d36f7b759d186d69d4db1e88bebf8b7623d435a4c2ffee93"
+    },
+    "verify.py": {
+      "bytes": 10265,
+      "sha256": "6e95f563a31c0fa4474fa9cb265c8c0f78d0f8c862c1b3693a984674c16b2055"
+    }
+  },
+  "external_artifacts": {
+    "loqi_atc48": {
+      "bytes": 32819361,
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/loqi/generation_results.pickle",
+      "sha256": "740d92a3c641dc47d625fe879586e68d24a40b6b275d735609b21f29683cb278"
+    },
+    "pharmit_executable": {
+      "bytes": 108769984,
+      "path": "/mnt/weka/mbedrosian/environments/casf-pharmit-pilot/bin/pharmit",
+      "sha256": "e4da894249f78c26e938374f5acf37006a9215792149af9c430f798bf77bd0d3"
+    },
+    "qwen_atc48": {
+      "bytes": 32783733,
+      "path": "/mnt/weka/mbedrosian/pharma_generation_analysis/pharmacophore_atc48_qwen17b/gen_results/qwen_1p7b_v2_coordtoken_step41054_atc48_plinder/generation_results.pickle",
+      "sha256": "820bb8ba89dee4dc99675fb8d0771ea631973f130910e399a99b708a5046f894"
+    },
+    "rdkit_mmff94s_atc48": {
+      "bytes": 32819361,
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/rdkit/rdkit_etkdg_mmff94s.pickle",
+      "sha256": "0bd81319742e9320627b08d44c47223aa3a3ccc5dc0511414c76f968ad1b1fe0"
+    },
+    "rdkit_raw_atc48": {
+      "bytes": 32819361,
+      "path": "/mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_atc48/generation/rdkit/rdkit_etkdg_raw.pickle",
+      "sha256": "a7ba48505b03d1dbff32c0aac1eb02cb532eb88b72a48c7d55247266ba5109f2"
+    }
+  },
+  "matching": {
+    "feature_backend": "Pharmit",
+    "indexed_search_used_for_final_membership": false,
+    "membership": "exhaustive typed injective correspondence plus proper Kabsch",
+    "pharmit_commit": "49d2c0a573f6e58bca62f674b33874bdd42c2274",
+    "radii_angstrom": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "radius_monotonicity_violations": 0
+  },
+  "panels": {
+    "PLINDER-22": {
+      "eligible_queries": 932,
+      "molecules": 22,
+      "references": 1067
+    },
+    "PLINDER-ATC48": {
+      "eligible_molecules": 44,
+      "eligible_queries": 311,
+      "references": 379,
+      "selected_molecules": 48
+    }
+  },
+  "sampling": {
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20261116,
+    "budgets": [
+      10,
+      20,
+      50,
+      100,
+      200,
+      500,
+      1000
+    ],
+    "finite_pool_sampling": "exact uniform without replacement",
+    "mixture": "equal Qwen/LoQI allocation; 500 + 500 at budget 1000",
+    "posebusters_failures_consume_budget": true
+  },
+  "training_identity_audit": {
+    "definition": "exact isomeric InChIKey",
+    "eligible_exact_identities": "17/44",
+    "eligible_without_exact_identity": "27/44",
+    "limitation": "does not exclude scaffold or near-neighbor overlap",
+    "overall_exact_identities": "20/48"
+  }
+}

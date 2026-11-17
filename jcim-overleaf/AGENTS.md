@@ -1,5 +1,17 @@
 # Manuscript authoring
 
+## Protein-context pharmacophore analysis, 17 November 2026
+
+Supporting Figure S10 reports positional protein-contact pharmacophore-query
+coverage for the 22-molecule PLINDER panel and the generator-blind ATC48
+extension. It follows the PLINDER threshold curves (S9), bringing the current SI
+to eight tables and ten figures. The exact feature matcher, sampling semantics,
+extension selection, training-identity limitation, compact source tables, and
+figure reproduction are in `results-data/pharmacophore-query/`. Preserve the
+17/27 eligible exact-Qwen-training-identity strata as descriptive only; the audit
+does not rule out scaffold or near-neighbor overlap. Do not recast these results
+as virtual-screening enrichment or as an unseen-molecule benchmark.
+
 ## Energy Figure 2
 
 Figure 2 has PLINDER (A,B), core (C,D), ref (E,F). PLINDER energies are saved

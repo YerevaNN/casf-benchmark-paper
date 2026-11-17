@@ -1,5 +1,30 @@
 # Results: sources and author follow-up
 
+## Protein-context pharmacophore analysis, 17 November 2026
+
+Supporting Figure S10 contains the PLINDER-22 budget curves and endpoint forest,
+the generator-blind ATC48 extension curves, and the descriptive 17/27 eligible
+exact-Qwen-training-identity stratification. The primary result uses 0.5 \AA{}
+positional spheres and requested budget 1,000; all sampling probabilities are
+exact for the supplied finite pools. The pilot Qwen/LoQI mixture covers 78.1\%
+versus 71.2\% for Qwen and 73.6\% for LoQI, with a paired mixture--Qwen difference
+of 6.9 percentage points (95\% molecule-bootstrap interval, 0.3--15.4). Final
+extension coverage is 71.7\% for the mixture, 70.3\% for Qwen, 68.3\% for LoQI,
+57.3\% for minimized RDKit, and 46.7\% for raw RDKit. The paired mixture--Qwen
+difference is 1.4 points (95\% interval, $-1.8$--5.5), so the extension does not
+confirm the pilot mixture advantage. PoseBusters gating changes the mixture by less
+than 0.01 point. For Qwen, molecule-weighted candidate--query fractions are 4.7\%
+pharmacophore-only and 9.5\% RMSD-only. Source hashes, sensitivities, and rendering
+checks are archived in `results-data/pharmacophore-query/`.
+
+The extension selection is independent of generator results, but 17 of 44
+eligible identities have an exact isomeric InChIKey match in the audited Qwen
+training export. Their descriptive Qwen coverage is 66.4\%, versus 72.8\% for the 27
+without an exact match; the intervals are wide and overlapping. This does not
+exclude near-neighbor or scaffold overlap. Preserve that limitation and do not
+describe either panel as enrichment, downstream docking performance, or independent
+generalization.
+
 ## Current torsion procedure and PLINDER measurements, 16 November 2026
 
 PLINDER torsion uses one ETKDGv3 starting conformer per molecule. Raw and

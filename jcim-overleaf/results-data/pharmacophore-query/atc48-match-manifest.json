@@ -1,0 +1,26 @@
+{
+  "all_candidates_exported": true,
+  "all_searches_complete": true,
+  "candidate_manifest_sha256": "84629ce3d210cbab5355915ffce40c2473914e2770de2cf87612046b5dcadee0",
+  "candidate_records": 175950,
+  "config_sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+  "eligible_queries": 311,
+  "matching_algorithm": "exhaustive_typed_feature_correspondence_then_proper_kabsch",
+  "methods": [
+    "qwen_1p7b_v2_coordtoken_step41054_atc48",
+    "loqi_atc48",
+    "rdkit_etkdg_raw_atc48",
+    "rdkit_etkdg_mmff94s_atc48"
+  ],
+  "molecules": 44,
+  "pharmit_indexed_search_used_for_final_membership": false,
+  "query_freeze_sha256": "7239e141742987959d9583e1930e386bd91aa622010ca57d5a780ad2efff7b1c",
+  "radii": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "radius_membership_monotonicity_violations": 0,
+  "search_completeness_sha256": "22cb1c945d8cb76f5880c0465ef2254221c089a9ef0a7ec01f7317c2c16e4d7f",
+  "status": "complete"
+}

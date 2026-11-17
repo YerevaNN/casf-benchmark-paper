@@ -1,0 +1,28 @@
+{
+  "aggregation": "mean queries within molecule, then equal mean across molecules",
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261116,
+  "bootstrap_unit": "molecule",
+  "config_sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+  "mixture": "independent equal draws from completed Qwen and LoQI pools",
+  "outputs": {
+    "FINDINGS.md": "e3a6f058f2a63d334bc614ae9c9fd4bd566566e049d38d466af841fc2b9da410",
+    "aggregate_budget_curves.csv": "03d79279a9ba0758dcfbb7fec3221f1babecb26623890c3e1ff1b2d6f2f032d3",
+    "coverage_breakdowns.csv": "14415e771213d474d0e09f6510bd6473a160b230f6f81cc4e93e86f455a80723",
+    "eligible_query_characteristics.csv": "e49ce6cd689171d63efb975240ec5e3ef9787fd2d04ca434648c59181e7e89e1",
+    "endpoint_comparisons.csv": "dab231a2d7ca3595f893ddd9393e36b2fb48e3ec88881b8cef046e2a069bd828",
+    "per_molecule_budget_curves.csv": "f61de4ed533ba55354e85d485dbb30c3e230b2abb57f5631eb38cd41c2ef5a3a",
+    "per_query_budget_curves.csv": "f37c7918332715b92596df8c6e8f9eee532669e7dc397636d544b3e575d37049",
+    "per_query_match_counts.csv": "0f453efc0381164f0b403a3872cc36fdc7538b537d0a1845b02e3e7f8a5569a0"
+  },
+  "posebusters_sensitivity_included": true,
+  "sampling": "exact hypergeometric uniform subsets without replacement",
+  "status": "complete",
+  "validation": {
+    "all_searches_resolved": true,
+    "availability_semantics": "requested draws are capped at each supplied method-molecule pool; realized_draws is reported per query and budget",
+    "budget_monotonicity_violations": 0,
+    "probabilities_in_unit_interval": true,
+    "radius_monotonicity_violations": 0
+  }
+}

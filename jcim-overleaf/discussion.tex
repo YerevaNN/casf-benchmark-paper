@@ -59,6 +59,22 @@ neighborhood removal, because the evaluation molecules differ. Isolating that ef
 would require varying the training exclusions while holding the evaluation panel fixed.
 The external generators have not been shown to use equivalent training exclusions.
 
+The protein-contact pharmacophore analysis asks a related but distinct structural
+question. The Qwen/LoQI gain in the 22-molecule panel indicates that two libraries
+can complement one another at the level of complete bound feature arrangements,
+even when neither library uniformly dominates by whole-molecule distance. The
+candidate-level disagreements between pharmacophore and RMSD criteria are expected:
+a conformer can reproduce the required feature centers without recovering every
+heavy-atom position, or achieve a low global RMSD while missing a tight feature
+assignment. In the generator-blind extension, Qwen and LoQI retain advantages over
+both RDKit baselines, but the mixture's small increment over Qwen has a paired
+interval spanning zero; complementarity at the pilot magnitude is therefore not
+confirmed over the larger set. Exact Qwen training identity is not associated with
+higher coverage in the descriptive stratification, but the small strata, wide
+intervals, and possibility of analogue overlap preclude either a causal training-data
+interpretation or an unseen-molecule generalization claim. These coverage results
+also do not establish virtual-screening enrichment or docking performance.
+
 Several features of the evaluation limit generalization. CASF is restricted to the intersection
 with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
 structures. Large and flexible molecules remain sparsely represented in parts of CASF.

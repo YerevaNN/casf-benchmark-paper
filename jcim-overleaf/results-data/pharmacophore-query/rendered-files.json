@@ -1,0 +1,13 @@
+{
+  "inputs": {
+    "results-data/pharmacophore-query/pilot-aggregate-budget-curves.csv": "62625b3558fa2a328ba271f0c2fc36e6707a56997fff66fbbf1ae9fbcc1214d8",
+    "results-data/pharmacophore-query/atc48-aggregate-budget-curves.csv": "03d79279a9ba0758dcfbb7fec3221f1babecb26623890c3e1ff1b2d6f2f032d3",
+    "results-data/pharmacophore-query/atc48-training-overlap-endpoints.csv": "7a7cc8d75457122acce92328ba87ac521dc8d6c041fe0b7cff79642ccd478352",
+    "results-data/pharmacophore-query/render.py": "747bb366ebf0abce6fc4088fb9a3044a965673a3290e00e047ee3700ea29d316"
+  },
+  "outputs": {
+    "figures/supporting/pharmacophore-query-coverage.png": "41fcb329d3f80930830e10c733d1801476ecf5e3cbdbac1fe55f8a312e053716",
+    "figures/supporting/pharmacophore-query-coverage.pdf": "0d59bd50f3444063ba27d0e18526f5459f5942d89699e68cb39c60b5fcd18878",
+    "figures/supporting/pharmacophore-query-coverage.svg": "1bb3ba205f5b2ea1448af2c35beb23f35a59ea21e29fa03fb515f1f7d9d9a521"
+  }
+}

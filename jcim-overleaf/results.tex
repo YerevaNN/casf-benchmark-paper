@@ -134,3 +134,29 @@ errors across methods (Supporting Figure~\ref{fig:plinder-molecule-tracking}). I
 largest MAT-R for LoQI, whereas Amprenavir has the largest for Qwen 1.7B FSQ.
 These molecule-level differences qualify the aggregate rankings: Qwen has the lowest
 mean MAT-R on PLINDER, but other methods provide closer matches for particular molecules.
+
+Protein-contact pharmacophore queries directly test whether a library
+contains the complete arrangement of ligand features observed in a binding site
+(Supporting Figure~\ref{fig:pharmacophore-query}A,B). At the 0.5 \AA{} tolerance and
+a requested budget of 1,000, the equal Qwen/LoQI library covers 78.1\% of eligible
+queries, compared with 71.2\% for Qwen and 73.6\% for LoQI. Its paired improvement
+over Qwen is 6.9 percentage points (95\% molecule-bootstrap interval, 0.3 to 15.4
+points). The six learned single-method libraries span 67.1--73.6\%, while raw and
+minimized RDKit cover 52.1\% and 52.9\%, respectively. Keeping PoseBusters failures
+in the sampling denominator changes the mixture endpoint only from 78.1\% to 77.6\%.
+Pharmacophore and whole-molecule recovery are not interchangeable: for Qwen, 6.9\%
+of candidate--query comparisons satisfy only the pharmacophore criterion and 7.8\%
+satisfy only the 0.75 \AA{} whole-molecule RMSD criterion after equal weighting by
+molecule.
+
+The generator-blind extension broadens the analysis to 311 eligible queries from
+44 molecules (Supporting Figure~\ref{fig:pharmacophore-query}C,D). The mixture,
+Qwen, and LoQI cover 71.7\%, 70.3\%, and 68.3\%, respectively, while minimized and
+raw RDKit cover 57.3\% and 46.7\%. The mixture--Qwen difference is only 1.4
+percentage points (95\% molecule-bootstrap interval, $-1.8$ to 5.5 points), so the
+larger panel does not confirm the pilot's mixture advantage. PoseBusters gating
+changes the mixture endpoint by less than 0.01 percentage point. Qwen coverage is
+66.4\% among the 17 eligible identities with an exact isomeric InChIKey match in
+its audited training export and 72.8\% among the other 27; these descriptive strata
+have wide, overlapping intervals and do not exclude scaffold or near-neighbor
+overlap.

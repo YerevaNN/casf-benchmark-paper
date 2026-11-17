@@ -1,5 +1,32 @@
 # Methods: evidence and author follow-up
 
+## Protein-context pharmacophore analysis, 17 November 2026
+
+The analysis freezes positional queries from native PLINDER ligand--protein
+complexes before generator matching. All directly contacting ligand features are
+required, queries need at least four distinct centers, and the primary radius is
+0.5 Å (0.75/1.0 Å sensitivities). Final membership exhaustively enumerates
+injective typed correspondences and applies a proper Kabsch fit; Pharmit supplies
+the pinned feature definitions but its indexed triplet search is not used for
+candidate membership. Uniform-subset probabilities are exact, queries are averaged
+within molecule, and uncertainty resamples molecules. PB failures consume budget
+without replenishment.
+
+The pilot has 932 eligible queries across 22 molecules. The generator-blind ATC48
+extension retains 48 remaining ATC/DrugBank identities and up to eight distinct-PDB
+references per identity; 311 queries across 44 molecules are eligible. Its exact
+Qwen-training-identity audit finds 20/48 identities overall and 17/44 among eligible
+molecules, so this is broader structural coverage rather than an unseen-molecule
+test. The audit does not exclude analog or scaffold overlap. Source summaries,
+hashes, compact results, and figure reproduction are in
+`results-data/pharmacophore-query/`; large membership and RMSD caches remain at the
+recorded benchmark paths.
+
+The Pharmit bibliographic record was verified against the publisher and PubMed:
+Sunseri and Koes, *Nucleic Acids Research* 2016, 44(W1), W442--W448,
+DOI 10.1093/nar/gkw287. Do not describe the present experiment as virtual-screening
+enrichment or treat pharmacophore and whole-molecule RMSD hits as interchangeable.
+
 ## Current torsion procedure and PLINDER measurements, 16 November 2026
 
 PLINDER torsion uses one ETKDGv3 starting conformer per molecule. Raw and

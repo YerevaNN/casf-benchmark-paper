@@ -140,6 +140,19 @@ are inclusive in both panels. All reported PLINDER nearest distances are finite.
 Because experimental references are incomplete, unmatched generated conformers are
 not automatically physically inaccessible.
 
+As a protein-context sensitivity, we also represent each native PLINDER
+ligand--protein complex as a positional pharmacophore query using Pharmit feature
+definitions.\cite{sunseri2016pharmit} We retain every ligand feature directly
+contacting protein and require at least four distinct feature centers. A conformer
+matches only when type-compatible features can be placed by a proper rigid
+transformation with every center within 0.5 \AA{} of its query position; 0.75 and
+1.0 \AA{} are tolerance sensitivities. Exact without-replacement calculations give
+the probability that a sampled library contains at least one match. Queries are
+averaged within molecule and molecules receive equal weight. The analysis includes
+the 22-molecule panel and a generator-blind extension selected from the remaining
+ATC/DrugBank-annotated PLINDER identities. Detailed selection, matching, validity,
+and uncertainty procedures are given in the evaluation appendix.
+
 \subsection{Conformational landscape visualization}
 
 We used shared two-dimensional landmark multidimensional scaling (MDS) maps to visualize

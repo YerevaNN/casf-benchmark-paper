@@ -157,6 +157,66 @@ least 10 conformers contains a finite match; no reference is excluded. Full-pool
 COV-R and MAT-R reproduce the reported molecule-level results. These are exact
 expectations within the saved pools, not repeated generation runs or extrapolations.
 
+\subsection*{Protein-context pharmacophore-query matching}
+
+We reconstructed each native ligand--protein complex before query extraction; the
+independently aligned cleaned ligand SDF was not paired directly with receptor
+coordinates. Ligand identity, stereochemistry, atom correspondence, assembly copy,
+and alternate locations were checked against the frozen PLINDER record. The query
+extractor received the ligand and directly contacting protein chains. Nearby metals,
+nucleic acids, and cofactors were retained in provenance records but were not passed
+as protein. Pharmit feature definitions\cite{sunseri2016pharmit} supplied hydrogen-bond
+donor and acceptor, aromatic, hydrophobic, and charged feature centers. Every directly
+contacting ligand feature was required; no feature subset was selected using generator
+results. Queries with fewer than four distinct centers, covalent complexes, or no
+directly contacting protein chain were ineligible. Eligibility and the positional
+tolerances were frozen from reference-only checks. Each eligible native ligand
+self-matched, and rigidly transformed controls gave unchanged results.
+
+The primary tolerance is a 0.5 \AA{} sphere around every query center, with 0.75 and
+1.0 \AA{} as prespecified sensitivities. Candidate internal geometry remains fixed.
+For every candidate, the search exhaustively enumerates injective type-compatible
+feature correspondences, applies pair-distance bounds only as necessary pruning, and
+then requires a proper Kabsch rotation with every mapped center inside its sphere.
+Thus, the final membership does not depend on a truncated indexed hit list. Stable
+reference and candidate identifiers preserve matrix correspondence, all candidates
+are exported, unresolved searches cannot become negative matches, and membership is
+checked for set inclusion as the radius increases. Candidate-level membership is
+cached before any sampling-budget calculation.
+
+The exploratory panel contributes 932 eligible queries from 1,067 cleaned complexes
+and 22 molecules. For broader structural coverage, we selected all remaining
+ATC/DrugBank-annotated identities in the same PLINDER release after excluding the
+original shortlist and one identity containing an element unsupported by the common
+method panel. Selection did not inspect generator results. Up to eight reference-valid,
+noncovalent complexes from distinct PDB entries were chosen per identity by a seeded
+hash ordering. This extension contains 48 molecules and 379 complexes; 311 queries
+from 44 molecules are eligible. Four molecules have no eligible query. Deposited
+ligand-instance coordinates and mmCIF records were retrieved from RCSB while retaining
+the frozen PLINDER system and ligand-instance selections.
+
+We evaluate requested budgets of 10, 20, 50, 100, 200, 500, and 1,000 accepted cached
+conformers. If $N$ candidates contain $K$ matches, the probability of coverage after
+drawing $n$ without replacement is
+\(1-\binom{N-K}{n}/\binom{N}{n}\), with $n$ capped at the supplied pool size. The
+equal Qwen/LoQI library draws half of an even budget from each source and combines
+their no-hit probabilities. The primary analysis uses supplied pools. In the
+PoseBusters sensitivity, invalid candidates remain in the denominator, consume budget,
+and cannot match; they are not replenished. Coverage is averaged over queries within
+each molecule and then equally across eligible molecules. Confidence intervals and
+paired method differences use 2,000 molecule-level bootstrap resamples with a fixed
+seed. These measurements test same-molecule feature-arrangement coverage, not
+virtual-screening enrichment.
+
+Candidate correspondence to the existing heavy-atom RMSD analysis was checked by
+recalculating deterministic reference--candidate anchors. We compare a pharmacophore
+hit at 0.5 \AA{} with a whole-molecule RMSD hit at 0.75 \AA{} to quantify disagreement;
+neither criterion is treated as a substitute for the other. An exact isomeric
+InChIKey audit of the Qwen training export found 20 of 48 extension identities,
+including 17 of the 44 identities with eligible queries. This audit does not exclude
+near-neighbor or scaffold overlap. The extension therefore broadens the evaluated
+structures but is not interpreted as an unseen-molecule generalization test.
+
 \subsection*{Molecular size and flexibility}
 
 We stratify CASF core and ref using descriptors of the reference ligand identities.

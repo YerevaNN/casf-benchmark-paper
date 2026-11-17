@@ -1,0 +1,143 @@
+{
+  "acceptance_logic": "original molecular identity and CoordToken parsing only",
+  "accepted_additions": 53,
+  "attempts": 59,
+  "base_seed": 20261116,
+  "batch_seed_rule": "base_seed + batch_index",
+  "batch_size": 128,
+  "batches": [
+    {
+      "accepted": 48,
+      "attempts": 53,
+      "batch_index": 0,
+      "seed": 20261116,
+      "surplus_generated_not_retained": 0
+    },
+    {
+      "accepted": 4,
+      "attempts": 5,
+      "batch_index": 1,
+      "seed": 20261117,
+      "surplus_generated_not_retained": 0
+    },
+    {
+      "accepted": 1,
+      "attempts": 1,
+      "batch_index": 2,
+      "seed": 20261118,
+      "surplus_generated_not_retained": 0
+    }
+  ],
+  "combined_cache_sha256": "1b9f7a6629ac6368890968c7af489a2d9c6e7a9e8240f3b630c6765e4d9e49f9",
+  "final_counts": {
+    "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1": 1000,
+    "CC(=O)Nc1nnc(S(N)(=O)=O)s1": 1000,
+    "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1": 1000,
+    "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21": 1000,
+    "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1": 1000,
+    "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C": 1000,
+    "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12": 1000,
+    "CN1CCC[C@H]1c1cccnc1": 1000,
+    "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4": 1000,
+    "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC": 1000,
+    "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2": 1000,
+    "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1": 1000,
+    "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO": 1000,
+    "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1": 1000,
+    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": 1000,
+    "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O": 1000,
+    "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl": 1000,
+    "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl": 1000,
+    "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1": 1000,
+    "O=CN(O)CCCP(=O)(O)O": 1000,
+    "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F": 1000,
+    "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl": 1000
+  },
+  "max_attempts_per_molecule": 500,
+  "original_counts": {
+    "CC(/C=C/C(=O)NO)=C\\[C@@H](C)C(=O)c1ccc(N(C)C)cc1": 999,
+    "CC(=O)Nc1nnc(S(N)(=O)=O)s1": 1000,
+    "CC(C)CN(C[C@@H](O)[C@H](Cc1ccccc1)NC(=O)O[C@H]1CCOC1)S(=O)(=O)c1ccc(N)cc1": 997,
+    "CC(C)Cn1c(=O)n(C)c(=O)c2nc[nH]c21": 999,
+    "CC/C(=C(\\c1ccc(O)cc1)c1ccc(OCCN(C)C)cc1)c1ccccc1": 1000,
+    "CCCCC[C@H](CC(=O)NO)C(=O)N[C@H](C(=O)N1CCC[C@H]1CO)C(C)C": 1000,
+    "CCOC(=O)Nc1cc(-c2ccc(C)c(NS(C)(=O)=O)c2)nn2c(C)nnc12": 1000,
+    "CN1CCC[C@H]1c1cccnc1": 1000,
+    "CN[C@@H]1C[C@H]2O[C@@](C)([C@@H]1OC)n1c3ccccc3c3c4c(c5c6ccccc6n2c5c31)C(=O)NC4": 1000,
+    "COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC": 1000,
+    "COc1cc2c(c(OC)c1OC)-c1ccc(OC)c(=O)cc1[C@@H](NC(C)=O)CC2": 999,
+    "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1": 1000,
+    "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@@]1(O)C(=O)CO": 1000,
+    "Cc1cc(CCCOc2c(C)cc(-c3noc(C(F)(F)F)n3)cc2C)on1": 998,
+    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": 999,
+    "NS(=O)(=O)c1cc2c(cc1Cl)N[C@H]([C@H]1C[C@H]3C=C[C@@H]1C3)NS2(=O)=O": 1000,
+    "O=C(N[C@H](CO)[C@H](O)c1ccc([N+](=O)[O-])cc1)C(Cl)Cl": 999,
+    "O=C(O)Cc1ccccc1Nc1c(Cl)cccc1Cl": 999,
+    "O=C1CC[C@H](N2C(=O)c3ccccc3C2=O)C(=O)N1": 1000,
+    "O=CN(O)CCCP(=O)(O)O": 958,
+    "OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F": 1000,
+    "Oc1cc(Cl)ccc1Oc1ccc(Cl)cc1Cl": 1000
+  },
+  "original_prefix_coordinate_hashes_verified": true,
+  "posebusters_used_for_acceptance": false,
+  "rejections_by_reason": {
+    "smiles_mismatch": 6
+  },
+  "replacement_cache_sha256": "b5477bf953800ca82242344a144840f4e813c518dee5bfccbff879047faaf6c8",
+  "sampling": {
+    "generation_config": "molgen3D sampling_configs['top_p_sampling1']",
+    "max_new_tokens": 1000,
+    "temperature": 1.0,
+    "top_p": 1.0
+  },
+  "source_dir": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_plinder",
+  "source_hashes_after": {
+    "generation_metadata.json": "78526d29909091e0ecae50d93e19af5a3eda8ea8cab3fa46d44ba84ef5ceb74e",
+    "generation_results.pickle": "8f03c57a0895b1a576ffa139f5514fa228f455c7366e8b09f5be13e17f468970"
+  },
+  "source_hashes_before": {
+    "generation_metadata.json": "78526d29909091e0ecae50d93e19af5a3eda8ea8cab3fa46d44ba84ef5ceb74e",
+    "generation_results.pickle": "8f03c57a0895b1a576ffa139f5514fa228f455c7366e8b09f5be13e17f468970"
+  },
+  "source_metadata": {
+    "batch_size": 128,
+    "cohort": "plinder",
+    "coordtoken_checkpoint": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/model.pt",
+    "coordtoken_checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+    "coordtoken_contract": "/mnt/weka/fgeikyan/CoordToken/artifacts/releases/coordtoken-atom12-reg1-casf-epoch2-20261020/qwen_tokenizer/coordtoken_contract.json",
+    "coordtoken_format": "atom12_reg1_prefix_v1",
+    "coordtoken_source_contract_sha256": "86a36047e4f5f7dec37708db04a991095872767e1d732d27c123d79c14fe8562",
+    "coordtoken_source_tokenizer_sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+    "coordtoken_training_export_declared_checkpoint_sha256": "29d487cf3783978c801c5a237e3c3c86cc23ab058aa7edea7eff0aa707c4bc4f",
+    "coordtoken_training_manifest_checkpoint_sha256": "37e5aa88c6e3de1dc04e87797b24ee1289eabc05b629719e3963301711390b32",
+    "coordtoken_training_source_tokenizer": {
+      "num_tokens": 151673,
+      "path": "/mnt/weka/fgeikyan/CoordToken/research/coordtoken_encoding_20261019/source/src/molgen3D/training/tokenizers/Qwen3_tokenizer_coordtoken_atom12_reg1",
+      "sha256": "578607558db4401315ecd6a13c6fe35ff4f21931c2e69ba6e19dbc4e568120f6",
+      "wrapper_extra_tokens": 256
+    },
+    "derived_model_path": "/mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/inference_model",
+    "input_path": "/mnt/weka/vtarasov/druglike_smi.pickle",
+    "input_sha256": "8d3f8eccd4dc4edd081bdfc3247d9e7e2149360fbe6ba7f6f5e3ec24d307fd56",
+    "model_config_sha256": "b179ba37dbd5a98fe8b7eb8bad119dfa635a40fa9d6d432103fa86a668a02ac2",
+    "model_path": "/mnt/weka/mbedrosian/pretraining-runs/20261028-qwen17b-pair-v2/coordtoken/training/hf_exports/step-41054",
+    "model_tokenizer_sha256": "66984970ac8929f6c4234bbb2844020ee7bbabda70c5baec23710850ae44de67",
+    "molgen_source": "/mnt/weka/vtarasov/code/3DMolGen/src",
+    "num_molecules": 22,
+    "num_shards": 1,
+    "run_id": "qwen_1p7b_v2_coordtoken_step41054",
+    "samples_per_molecule": 1000,
+    "seed": 42,
+    "serialization": "coordtoken",
+    "shard_index": 0,
+    "stats": {
+      "mol_parse_fail": 1,
+      "no_eos": 0,
+      "smiles_mismatch": 52
+    },
+    "temperature": 1.0,
+    "top_p": 1.0
+  },
+  "status": "complete",
+  "surplus_samples_generated_not_retained": 0
+}

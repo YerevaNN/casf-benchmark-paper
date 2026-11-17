@@ -1,0 +1,94 @@
+pilot_id: pharmacophore_plinder22
+output_dir: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22
+reference_audit: /mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder22_audit/reference_audit.csv
+pdb_cache: /mnt/weka/mbedrosian/code/casf-benchmark/docs/plinder23_audit/cache
+expected_reference_count: 1067
+
+backend:
+  name: Pharmit
+  commit: 49d2c0a573f6e58bca62f674b33874bdd42c2274
+  executable: /mnt/weka/mbedrosian/environments/casf-pharmit-pilot/bin/pharmit
+  environment: /mnt/weka/mbedrosian/environments/casf-pharmit-pilot
+  timeout_seconds: 3600
+  workers: 8
+  query_batch_size: 100
+  max_orientations_per_conformer: 1
+  reduce_conformers: 0
+  skip_triplet_fingerprints: true
+  skip_geometric_pruning: true
+
+methods:
+  qwen_1p7b_v2_coordtoken_step41054:
+    label: Qwen 1.7B FSQ
+    path: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/pharmacophore_plinder22/qwen_topup/qwen_completed_1000.pickle
+    source: completed Qwen cache; original records followed by unbiased replacements
+  loqi_druglike:
+    label: LoQI
+    path: /mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/loqi_druglike/generation_results.pickle
+  flowr_druglike:
+    label: FlowR
+    path: /mnt/weka/vtarasov/code/flowr_root/gen_results/flowr_druglike/generation_results.pickle
+    minimum_pool_size: 100
+    maximum_pool_size: 1000
+    source: supplied stereochemistry-filtered pool; no post-hoc replenishment
+  mcf_drugs_l_druglike:
+    label: MCF
+    path: /mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/mcf_drugs_l_druglike/generation_results.pickle
+  nextmol_dmt_l_druglike:
+    label: NExT-Mol
+    path: /mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/nextmol_dmt_l_druglike/generation_results.pickle
+  torsional_diffusion_druglike:
+    label: Torsional Diffusion
+    path: /mnt/weka/mbedrosian/codex_dir/druglike_off_the_shelf/gen_results/torsional_diffusion_druglike/generation_results.pickle
+  rdkit_random_raw_druglike:
+    label: RDKit raw
+    path: /mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_raw_druglike/generation_results.pickle
+  rdkit_random_minimized_22_druglike:
+    label: RDKit minimized
+    path: /mnt/weka/vtarasov/outputs/casf_benchmark_runs/druglike_baselines/gen_results/rdkit_random_minimized_22_druglike/generation_results.pickle
+
+original_qwen:
+  path: /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_plinder/generation_results.pickle
+  sha256: 8f03c57a0895b1a576ffa139f5514fa228f455c7366e8b09f5be13e17f468970
+  metadata_path: /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/gen_results/qwen_1p7b_v2_coordtoken_step41054_plinder/generation_metadata.json
+  metadata_sha256: 78526d29909091e0ecae50d93e19af5a3eda8ea8cab3fa46d44ba84ef5ceb74e
+
+query:
+  primary_radius: 0.5
+  sensitivity_radii: [0.75, 1.0]
+  positional_only: true
+  contact_cutoff: 6.0
+  native_copy_max_rmsd: 0.01
+  cleaned_native_max_rmsd: 0.001
+  minimum_distinct_centers: 4
+  minimum_center_separation: 0.1
+  minimum_triangle_area: 0.1
+  exclude_covalent: true
+
+analysis:
+  budgets: [10, 20, 50, 100, 200, 500, 1000]
+  bootstrap_replicates: 2000
+  bootstrap_seed: 20261116
+  mixture_sources: [qwen_1p7b_v2_coordtoken_step41054, loqi_druglike]
+  baseline_methods: [rdkit_random_raw_druglike, rdkit_random_minimized_22_druglike]
+  rmsd_hit_threshold: 0.75
+  rmsd_caches:
+    qwen_1p7b_v2_coordtoken_step41054: /mnt/weka/mbedrosian/pharma_generation_analysis/v2_1p7b_coordtoken_step41054/plinder_cache/qwen_1p7b_v2_coordtoken_step41054.npz
+    loqi_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/loqi_druglike.npz
+    flowr_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/flowr_druglike.npz
+    mcf_drugs_l_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/mcf_drugs_l_druglike.npz
+    nextmol_dmt_l_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/nextmol_dmt_l_druglike.npz
+    torsional_diffusion_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/torsional_diffusion_druglike.npz
+    rdkit_random_raw_druglike: /mnt/weka/mbedrosian/code/casf-benchmark/data/results/cache/plinder_rmsd_matrices/rdkit_random_raw_druglike.npz
+    rdkit_random_minimized_22_druglike: /mnt/weka/vtarasov/code/casf-benchmark/data/results/cache/druglike_rmsd_matrices/rdkit_random_minimized_22_druglike.npz
+
+posebusters:
+  enabled: true
+  workers: 8
+  energy_num_threads: 1
+  archived_pass_totals:
+    qwen_1p7b_v2_coordtoken_step41054: 20296
+    loqi_druglike: 19948
+    rdkit_random_raw_druglike: 22000
+    rdkit_random_minimized_22_druglike: 21999
+

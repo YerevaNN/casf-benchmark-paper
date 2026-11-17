@@ -1,0 +1,5 @@
+method,both_hit_count,pharmacophore_only_count,rmsd_only_count,neither_count
+loqi_atc48,47534,15401,35597,212468
+qwen_1p7b_v2_coordtoken_step41054_atc48,41794,14518,29220,225112
+rdkit_etkdg_mmff94s_atc48,40944,12586,37687,219783
+rdkit_etkdg_raw_atc48,24997,11558,38119,236326

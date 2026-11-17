@@ -1,0 +1,39 @@
+{
+  "archived_comparable_replayed_totals": {
+    "loqi_atc48": 44771,
+    "qwen_1p7b_v2_coordtoken_step41054_atc48": 43768,
+    "rdkit_etkdg_mmff94s_atc48": 47981,
+    "rdkit_etkdg_raw_atc48": 47968
+  },
+  "archived_results_overwritten": false,
+  "archived_totals": {},
+  "candidate_atom_order": "heavy-atom candidates renumbered to the coordinate-free reference SMILES order, matching the archived evaluator",
+  "candidate_masks_saved": true,
+  "config_sha256": "eb83ff6e0b3bb77a1fc44dca4a8699572cddf7638cd047b7612ce3b9ec431b9a",
+  "failed_candidates_consume_budget": true,
+  "methods": [
+    "qwen_1p7b_v2_coordtoken_step41054_atc48",
+    "loqi_atc48",
+    "rdkit_etkdg_raw_atc48",
+    "rdkit_etkdg_mmff94s_atc48"
+  ],
+  "post_gate_replenishment": false,
+  "replacement_pass_totals": {
+    "loqi_atc48": 0,
+    "qwen_1p7b_v2_coordtoken_step41054_atc48": 0,
+    "rdkit_etkdg_mmff94s_atc48": 0,
+    "rdkit_etkdg_raw_atc48": 0
+  },
+  "replayed_totals": {
+    "loqi_atc48": 44771,
+    "qwen_1p7b_v2_coordtoken_step41054_atc48": 43768,
+    "rdkit_etkdg_mmff94s_atc48": 47981,
+    "rdkit_etkdg_raw_atc48": 47968
+  },
+  "settings": {
+    "enabled": true,
+    "energy_num_threads": 1,
+    "workers": 8
+  },
+  "status": "complete"
+}
