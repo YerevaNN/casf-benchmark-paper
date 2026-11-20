@@ -38,3 +38,19 @@
 \caption{Generated ensembles relative to experimental reference collections with contrasting geometric breadth. Panels compare LoQI (orange), FlowR (green), and Qwen (blue) for staurosporine (A--C) and actinonin (D--F). Grey diamonds denote cleaned references; darker shading indicates greater aligned heavy-atom RMSD to the nearest reference. Reference cluster counts average 20 greedy clustering orders at 0.5 \AA{}; $N$ is the supplied generated-conformer count. Panels use the same pooled landmark-MDS frame and axis limits within each molecule; frames and scales differ between molecules. COV-R and COV-P use the primary evaluation distances at 0.75 \AA{}, independently of the projection. The two axes retain 38.9\% and 38.8\% of the positive MDS eigenvalue sum for staurosporine and actinonin, respectively; projected overlap is not a recovery criterion.}
 \label{fig:conformer-landscapes}
 \end{figure}}
+
+\newcommand{\mixturepolicyfigure}{%
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figure-pharmacophore-mixture.pdf}
+\caption{Fixed Qwen/LoQI allocation across four pharmacophore-query families.
+(A--D) Expected coverage for the four-of-four, 0.5~\AA{} reference query across
+attempt budgets. The 50:50 allocation is emphasized. (E) Paired coverage
+differences at budget 20 for 50:50 minus Qwen (blue circles), 75:25 (light-blue
+squares), or LoQI (orange triangles); bars are 95\% molecule-bootstrap intervals.
+(F) Mean exponential-Shannon effective cluster count at 0.5~\AA{} from 20
+reproducible allocation draws per budget. Invalid slots consume budget and are not
+replaced. Coverage averages subsets within a parent, parents within a molecule,
+and then molecules equally.}
+\label{fig:pharmacophore-mixture}
+\end{figure*}}

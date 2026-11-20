@@ -1,0 +1,47 @@
+% Rebuild with results-data/cdpkit-pharmacophore-mixture/render.py.
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Scope of the four CDPKit pharmacophore-query families.}
+\label{tab:cdpkit-query-scope}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Family} & \textbf{Queries} & \textbf{Parents} & \textbf{Any-query molecules} & \textbf{Reference-cell molecules} \\
+\midrule
+Individual ligand & 11,430 & 132 & 22 & 22 \\
+Individual interaction & 7,191 & 132 & 22 & 22 \\
+Shared ligand & 26,388 & 318 & 20 & 20 \\
+Shared protein & 12,450 & 227 & 18 & 14 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\footnotesize
+Queries counts span all feature requirements and radii. The reference cell uses the primary construction rule, four of four features, and a 0.5~\AA{} tolerance. Shared-family eligibility is lower because a shared hypothesis and held-out comparison could not be constructed for every molecule.
+\end{minipage}
+\end{table}
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Expected pharmacophore-query coverage at budget 1,000.}
+\label{tab:cdpkit-endpoint-coverage}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} \\
+\midrule
+\rowcolor{tableShade}
+Qwen & 98.33 & 98.79 & 99.78 & 99.40 \\
+Qwen/LoQI 75:25 & 98.52 & 98.79 & 99.69 & 99.30 \\
+\rowcolor{tableShade}
+\textbf{Qwen/LoQI 50:50} & 98.39 & 98.54 & 99.59 & 99.12 \\
+Qwen/LoQI 25:75 & 98.06 & 98.07 & 99.43 & 98.71 \\
+\rowcolor{tableShade}
+LoQI & 94.39 & 94.77 & 95.74 & 93.10 \\
+RDKit raw & 90.91 & 90.58 & 92.33 & 91.94 \\
+\rowcolor{tableShade}
+RDKit minimized & 89.09 & 89.74 & 93.51 & 86.99 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\footnotesize
+Values are percentages for the four-of-four, 0.5~\AA{} reference query. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally.
+\end{minipage}
+\end{table}

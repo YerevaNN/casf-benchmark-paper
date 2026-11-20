@@ -75,6 +75,26 @@ intervals, and possibility of analogue overlap preclude either a causal training
 interpretation or an unseen-molecule generalization claim. These coverage results
 also do not establish virtual-screening enrichment or docking performance.
 
+The final four-family experiment turns this complementarity question into a fixed
+allocation decision. It does not identify one allocation that dominates every metric
+and budget: Qwen and 75:25 retain more geometric breadth, and one of them has the
+highest high-budget mean in each query family. At budget 20, however, 50:50 is the
+numerical leader under all four independently constructed query families and is
+numerically above either pure source in the aggregate means. It also preserves nearly
+all high-budget coverage while providing approximately twice LoQI's effective
+cluster count. The evidence therefore supports 50:50 as a balanced production
+default for small per-molecule libraries, rather than as a universal optimum.
+
+This recommendation is deliberately operational. The 50:50 and 75:25 means are
+effectively tied at budget 20, so the data do not estimate 50:50 as uniquely superior.
+Equal allocation is preferable when no molecule-specific oracle is available because
+it gives both generators equal opportunity to contribute, avoids fitting a mixture
+weight to only 22 molecules, and has the strongest observed small-budget profile
+without a material high-budget coverage loss. If geometric breadth is valued above
+source balance, the results instead support Qwen or 75:25. The complete primary grid
+and paired intervals are retained to make this policy distinction visible; no
+post hoc combined coverage--diversity score is used.
+
 Several features of the evaluation limit generalization. CASF is restricted to the intersection
 with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
 structures. Large and flexible molecules remain sparsely represented in parts of CASF.

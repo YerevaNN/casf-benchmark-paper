@@ -51,13 +51,12 @@ def expand(path):
         return expand(PAPER/(name if name.endswith('.tex') else name+'.tex'))
     return re.sub(r'\\input\{([^}]+)\}',include,text)
 si=expand(PAPER/'supporting-information.tex')
-expected_tables=['selection-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','qwen-training','supporting-ensemble-counts','energy-summary']
+expected_tables=['selection-counts','plinder23-screen','plinder23-statistics','plinder23-molecules','generators','qwen-training','supporting-ensemble-counts','energy-summary','cdpkit-query-scope','cdpkit-endpoint-coverage']
 tables=re.findall(r'\\label\{tab:([^}]+)\}',si)
 # Exact IDs are retained from the existing source files.
 assert tables==expected_tables,tables
 figures=re.findall(r'\\label\{fig:([^}]+)\}',si)
-assert len(figures)==9,figures
-assert figures[1:]==['qwen-size-representation','qwen-molecule-effects','supporting-gains-losses','supporting-composition','supporting-plinder-coverage','supporting-plinder-validity','plinder-molecule-tracking','plinder-thresholds'],figures
+assert figures==['datasets','qwen-size-representation','qwen-molecule-effects','supporting-gains-losses','supporting-composition','supporting-plinder-coverage','supporting-plinder-validity','plinder-molecule-tracking','plinder-thresholds','pharmacophore-query','cdpkit-query-families','cdpkit-generator-separation'],figures
 assert 'figures/candidates/' not in si
 for forbidden in ['Mean median','tab:supporting-druglike','tab:size','tab:supporting-rmsd']:
     assert forbidden not in si
@@ -69,11 +68,11 @@ for label in ['tab:'+x for x in tables]+['fig:'+x for x in figures]:
     assert main.count(r'\label{'+label+'}')==1,label
 for source in [main,si]:
     for kind,number in re.findall(r'(?:Supporting )?(Table|Figure)s?\s*~?\s*S(\d+)',source):
-        assert 1<=int(number)<=(8 if kind=='Table' else 9),(kind,number)
+        assert 1<=int(number)<=(10 if kind=='Table' else 12),(kind,number)
     for name in re.findall(r'\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}',source):
         assert (PAPER/name).is_file(),name
 print('Verified current source/artwork hashes, 20 paired recovery comparisons, retained counts, 220 PLINDER and 88 v2 validity records.')
-print('Current SI: eight tables and nine figures; no historical review gallery or removed tables included.')
+print('Current SI: ten tables and twelve figures; no historical review gallery or removed tables included.')
 print('SI table order:',tables)
 print('SI figure order:',figures)
 

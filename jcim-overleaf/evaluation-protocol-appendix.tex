@@ -217,6 +217,61 @@ including 17 of the 44 identities with eligible queries. This audit does not exc
 near-neighbor or scaffold overlap. The extension therefore broadens the evaluated
 structures but is not interpreted as an unseen-molecule generalization test.
 
+\subsection*{Four-family CDPKit pharmacophore allocation experiment}
+
+The final allocation experiment uses the existing 1,000-slot Qwen, LoQI, RDKit
+raw, and RDKit minimized pools for each PLINDER-22 identity; no conformers were
+generated for this analysis. CDPKit 1.3.0 supplies feature perception, ligand
+pharmacophore alignment, database construction, and native Boolean matching.
+Queries contain positional centers only: feature directions and exclusion volumes
+are disabled, and candidates may contain additional features.
+
+The four families vary the structural information used to construct a query.
+Individual ligand queries use features perceived from one experimental ligand pose.
+Individual interaction queries retain the ligand features selected in one native
+ligand--protein complex. Up to six poses per molecule were selected
+deterministically across PDB entries and native conformational clusters. Shared
+ligand queries align multiple poses by their ligand features and retain their
+supported feature core. Shared protein queries first align sequence-resolved pocket
+C$\alpha$ atoms and transform the interaction features into that protein-site frame;
+no subsequent feature realignment is applied. The primary shared arm uses two
+construction PDB entries with support in both and excludes all records from a held-out
+PDB entry. Three-construction-entry all-support and two-of-three-support arms are
+retained as sensitivities.
+
+For each parent hypothesis, queries require three of three, four of four, five of
+five, six of six, four of five, or five of six features, together with the full
+available hypothesis. At most five deterministic, non-collinear subsets are retained
+for each requirement using seed 20261118. The same query is reused at 0.5, 0.75,
+and 1.0~\AA{} positional tolerances, so changing the radius does not rebuild the
+hypothesis. The realized grid contains 57,459 unique query contents from 809 parent
+hypotheses (Supporting Table~\ref{tab:cdpkit-query-scope}). References, folds,
+query rules, seeds, validity rules, and source hashes were frozen before full
+candidate screening. Exact-match, rigid-motion, missing-feature, omitted-feature,
+radius-boundary, mirror-identity, duplicate-record, record-axis, and source-coordinate
+controls were checked before the complete screen.
+
+The allocation grid contains pure Qwen and LoQI, Qwen/LoQI ratios of 75:25, 50:50,
+and 25:75, and the two RDKit controls. At budgets of 20, 100, 500, and 1,000, the
+ratios give exact integer source quotas. If a source has 1,000 slots and $h$ valid
+matches for a query, its no-hit probability for $n$ uniformly sampled slots without
+replacement is $\binom{1000-h}{n}/\binom{1000}{n}$. A mixed allocation multiplies
+the source-specific no-hit probabilities. A valid match must pass the native CDPKit
+query, PoseBusters, stored-graph identity, and coordinate-derived identity checks.
+Rejected slots consume the requested budget and are not replenished.
+
+Coverage is averaged first across subset variants within a parent, then across
+parents or folds within a molecule, and finally equally across molecules. The
+primary manuscript arm uses one pose for each individual query, two construction
+poses with all-pose support for each shared query, the four-of-four requirement,
+and a 0.5~\AA{} tolerance. Confidence intervals and paired differences use 5,000
+molecule-level bootstrap resamples and are exploratory without adjustment for the
+full grid. Diversity uses 20 reproducible without-replacement draws per allocation
+and budget. PoseBusters- and identity-passing members are greedily clustered by
+symmetry-aware heavy-atom RMSD at 0.5 and 1.0~\AA{}; the effective cluster count is
+the exponential of Shannon entropy over cluster occupancies. No combined
+coverage--diversity score is constructed.
+
 \subsection*{Molecular size and flexibility}
 
 We stratify CASF core and ref using descriptors of the reference ligand identities.

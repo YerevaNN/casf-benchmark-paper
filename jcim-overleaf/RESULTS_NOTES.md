@@ -1,5 +1,23 @@
 # Results: sources and author follow-up
 
+## Final generator-allocation result, 20 November 2026
+
+At the predeclared four-of-four, 0.5 Å reference setting and budget 20, Qwen/LoQI
+50:50 has the highest mean in all four query families (80.26--87.54%). Its gain
+over Qwen is 2.43--3.19 percentage points; individual-family paired intervals
+exclude zero and shared-family intervals include zero. Its gain over LoQI is
+5.52--6.57 points and all four intervals exclude zero. Against 75:25, the gains
+are only 0.02--0.19 point and every interval includes zero.
+
+At budget 1,000, 50:50 covers 98.39--99.59% and is within 0.28 point of the best
+family-specific allocation. Effective cluster counts are Qwen 233.2, 75:25 185.1,
+50:50 131.8, 25:75 93.0, and LoQI 66.7; valid yields are 91.2%, 90.9%, 90.5%,
+90.2%, and 89.9%, respectively. Frame 50:50 as the best-supported balanced default
+for a fixed untuned production allocation, not the universal empirical winner.
+Qwen/75:25 are defensible when high-budget coverage or geometric breadth is the
+priority. The complete primary grid contains 2,352 cells; do not describe the main
+reference cell as a scan-selected optimum.
+
 ## Protein-context pharmacophore analysis, 17 November 2026
 
 Supporting Figure S10 contains the PLINDER-22 budget curves and endpoint forest,

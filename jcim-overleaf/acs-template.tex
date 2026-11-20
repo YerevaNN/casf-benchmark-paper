@@ -125,11 +125,17 @@ within 0.75 \AA{}, compared with 86.3\% for the next best generator. On PLINDER,
 Qwen has the lowest mean reference matching distance, while LoQI has the highest
 coverage and sample precision at 0.75 \AA{}. Within Qwen, models using learned coordinate
 tokens have lower matching distances than coordinate binning at both model sizes, while
-larger models have higher validity.
+larger models have higher validity. In a final four-family pharmacophore experiment,
+an equal Qwen/LoQI allocation has the highest numerical coverage at an attempt budget
+of 20, improving on pure Qwen by 2.4--3.2 percentage points. At budget 1,000 it
+remains within 0.28 percentage point of the best family-specific allocation while
+approximately doubling LoQI's effective geometric diversity.
 
 These findings guide generator selection for conformational resources in structure-based
 drug design by relating experimental coverage to diversity and sample concentration
-at the intended ensemble size.
+at the intended ensemble size. We recommend 50:50 as the best-supported balanced
+default when one untuned allocation must be used, while not interpreting it as a
+universal performance optimum.
 \end{abstract}
 
 % AUTHOR: supply keywords and an abbreviation list if required for submission.
@@ -147,7 +153,7 @@ at the intended ensemble size.
 
 \input{\manuscriptroot discussion}
 
-% AUTHOR: Conclusions remain to be drafted.
+\input{\manuscriptroot conclusions}
 
 \section*{Data and Software Availability}
 
@@ -171,7 +177,9 @@ PLINDER selection criteria, panel statistics, and molecular identities (Tables~S
 generator provenance (Table~S5), completed Qwen training exposure
 (Table~\ref{tab:qwen-training}), retained ensemble sizes
 (Table~\ref{tab:supporting-ensemble-counts}), and energy summaries
-(Table~\ref{tab:energy-summary}). Additional methods
+(Table~\ref{tab:energy-summary}), together with the four-family pharmacophore
+scope and high-budget endpoints (Tables~\ref{tab:cdpkit-query-scope} and
+\ref{tab:cdpkit-endpoint-coverage}). Additional methods
 document corpus preparation, CoordToken and Qwen training, benchmark exclusions,
 generation settings, validity and alignment, raw-geometry energy calculations,
 sampling-budget curves, and molecule-level analyses. Supporting figures show the
@@ -183,7 +191,10 @@ lost relative to ChEMBL3D (Figure~\ref{fig:supporting-gains-losses}), joint size
 distances across generators (Figure~\ref{fig:plinder-molecule-tracking}), and coverage and precision
 across RMSD thresholds (Figure~\ref{fig:plinder-thresholds}), together with protein-context
 pharmacophore-query coverage in the PLINDER-22 and extension panels
-(Figure~\ref{fig:pharmacophore-query}).
+(Figure~\ref{fig:pharmacophore-query}), representative queries from the four CDPKit
+families (Figure~\ref{fig:cdpkit-query-families}), and Qwen--LoQI separation across
+the complete primary pharmacophore grid
+(Figure~\ref{fig:cdpkit-generator-separation}).
 The companion identity data are provided in \texttt{plinder22-molecules.csv}.
 % AUTHOR: compile supporting-information.tex as the separate SI document and
 % complete its manuscript title and author information before submission.

@@ -1,5 +1,26 @@
 # Methods: evidence and author follow-up
 
+## Four-family CDPKit allocation experiment, 20 November 2026
+
+The final allocation experiment reuses 1,000 supplied slots per method and
+PLINDER-22 molecule; no conformers are newly generated. CDPKit 1.3.0 builds four
+position-only query families: individual ligand, individual interaction, shared
+ligand after ligand-feature alignment, and shared interaction features in a
+pocket-Cα-aligned protein frame. The primary shared arm uses two construction
+PDBs/all support with a held-out PDB. The frozen grid covers seven feature
+requirements, three radii, seven recipes, and four budgets. Invalid slots consume
+budget with no refill. Exact hypergeometric no-hit probabilities are combined
+across source quotas, and aggregation is subset within parent, parent within
+molecule, then equal molecule weighting. Paired intervals use 5,000 molecule
+bootstraps; diversity uses 20 fixed allocation draws and effective cluster counts.
+
+Main Methods contains the short account; `evaluation-protocol-appendix.tex`
+contains construction, validation, sampling, gating, aggregation, uncertainty, and
+diversity details. Exact archived inputs and reproduction are in
+`results-data/cdpkit-pharmacophore-mixture/`. Preserve the distinction from the
+earlier Pharmit protein-contact experiment: this is a broader allocation-policy
+experiment using CDPKit features, not a replication of the same query definition.
+
 ## Protein-context pharmacophore analysis, 17 November 2026
 
 The analysis freezes positional queries from native PLINDER ligand--protein

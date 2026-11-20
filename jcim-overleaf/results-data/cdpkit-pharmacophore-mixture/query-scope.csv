@@ -1,0 +1,5 @@
+family,queries,parents,molecules_with_queries
+individual_interaction,7191,132,22
+individual_ligand,11430,132,22
+shared_ligand,26388,318,20
+shared_protein,12450,227,18

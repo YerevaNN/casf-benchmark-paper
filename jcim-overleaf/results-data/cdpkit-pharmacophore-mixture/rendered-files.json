@@ -1,0 +1,20 @@
+{
+  "inputs": {
+    "results-data/cdpkit-pharmacophore-mixture/coverage-primary.csv": "4ab35a6e505de354a844c46b98d1566079a360701a5ce398eeeefc5075045281",
+    "results-data/cdpkit-pharmacophore-mixture/paired-k20.csv": "85b909b2a09c340ff71b0b2fd26d763b8396f4036786349a06ce009f3c76293a",
+    "results-data/cdpkit-pharmacophore-mixture/diversity-summary.csv": "8d8d04ff58d4049b6141060bee53123ea87f562d8600d9c96f184756040c631c",
+    "results-data/cdpkit-pharmacophore-mixture/query-scope.csv": "43e93227eb0a998a5c773b51d244a85476d7e3fcc2dd24a46655a1536620546f",
+    "results-data/cdpkit-pharmacophore-mixture/query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
+    "results-data/cdpkit-pharmacophore-mixture/generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2",
+    "results-data/cdpkit-pharmacophore-mixture/render.py": "dbcc4a297eee209dda92d73c319b9ae41419820f170ee44e5ac220735b326574"
+  },
+  "outputs": {
+    "figures/figure-pharmacophore-mixture.png": "9077327125034512808582b8332f4f83d206eb08d7c9a1975aedaa80cded7df7",
+    "figures/figure-pharmacophore-mixture.pdf": "f6785830452a0036b35e143e4bec51256952ac46ef88425f33ec96e6b2718e30",
+    "figures/figure-pharmacophore-mixture.svg": "c87cdd5bf0544953a308356c45e76472e2fda485897268d94b161e83fa61d847",
+    "figures/supporting/cdpkit-query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
+    "figures/supporting/cdpkit-generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2",
+    "tables/pharmacophore-mixture.tex": "dd4f2c4154274f8e698973cfbca976a66a9904ab1d89617521a9e8f7d91c23b6",
+    "tables/supporting-pharmacophore-mixture.tex": "9a4a4786047b5382b6cb3359d6692342f09fdce90090939aa5070b49db6df3d3"
+  }
+}

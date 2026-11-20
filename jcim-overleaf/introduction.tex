@@ -71,7 +71,11 @@ ref panel contains 1,044 entries. We compare generators at candidate budgets mat
 ChEMBL3D counts and at a larger target of 1,000 candidates per molecule. As a
 protein-context sensitivity, we additionally ask whether ligand-only ensembles
 reproduce complete arrangements of protein-contact pharmacophore features in the
-22-molecule panel and in a generator-blind 48-molecule extension.
+22-molecule panel and in a generator-blind 48-molecule extension. We close the
+benchmark with an allocation experiment designed to turn the Qwen--LoQI tradeoff
+into a production decision: four ligand- and interaction-feature query families
+compare pure sources with fixed 75:25, 50:50, and 25:75 libraries across sampling
+budgets.
 
 These experiments distinguish recovery of one bound conformation from coverage of several
 observations of the same molecule. We also measure sample precision, the proportion of generated
@@ -87,5 +91,6 @@ The practical objective is to use these comparisons to select a generator, apply
 molecular collection, and release the resulting conformer dataset. The intended uses include
 structure-based drug design and learning from three-dimensional molecular structure, with
 pharmacophore-conditioned generation as one application. The benchmark evaluates the structural
-properties that support this selection. Whether the resulting resource improves a particular
-downstream task remains a separate question.
+properties that support this selection and asks whether a single generator or a fixed mixed
+allocation is the more defensible default when molecule-specific tuning is unavailable. Whether
+the resulting resource improves a particular downstream task remains a separate question.

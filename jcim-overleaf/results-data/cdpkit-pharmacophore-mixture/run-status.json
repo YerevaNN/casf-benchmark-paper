@@ -1,0 +1,17 @@
+{
+  "completed_diversity_shards": 22,
+  "completed_screening_shards": 22,
+  "coverage_summary_sha256": "ab06b59f86ab1993330b30638f12c5ba90fdee62f9f365a3374f99102814ccc7",
+  "diversity_molecules": 22,
+  "diversity_summary_sha256": "9b18ccfe4f0d6f386b62b254eb1334b1577a14dd7e04d1dcca1ae0a68b8b1ddc",
+  "expected_diversity_shards": 22,
+  "expected_screening_shards": 22,
+  "failed_diversity_shards": 0,
+  "failed_screening_shards": 0,
+  "final_analysis_implementation_sha256": "d825e62371f31073e0eda2215cfeb6f850a1e7eff19456616fb3580d6a5068eb",
+  "final_cli_implementation_sha256": "7f5e0544ea1c2538794ef8c6ebb719f64980a228b6ec2892de08832e71652e4d",
+  "queries": 57459,
+  "query_molecules": 22,
+  "report_sha256": "0f57fe30635861d8346e021aa1adb38eb6d0a55e375a261fd664eb38db13e775",
+  "status": "complete"
+}

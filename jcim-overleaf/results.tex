@@ -160,3 +160,40 @@ changes the mixture endpoint by less than 0.01 percentage point. Qwen coverage i
 its audited training export and 72.8\% among the other 27; these descriptive strata
 have wide, overlapping intervals and do not exclude scaffold or near-neighbor
 overlap.
+
+As a final allocation experiment, we expanded the PLINDER-22 analysis from one
+protein-contact query definition to four CDPKit query families: features from an
+individual ligand pose, interaction features from an individual complex, ligand
+features shared across poses, and interaction features shared in an aligned protein
+site (Supporting Figure~\ref{fig:cdpkit-query-families}). This design produced
+57,459 queries from 809 parent hypotheses. We compared pure Qwen and LoQI with
+fixed 75:25, 50:50, and 25:75 allocations at four attempt budgets. The main
+comparison was specified as four of four features within 0.5~\AA{}; the complete
+primary grid contains 2,352 family--requirement--radius--allocation--budget cells,
+rather than only cells favoring a particular allocation.
+
+At the smallest evaluated budget of 20, the 50:50 allocation has the highest
+mean coverage in all four families, spanning 80.26--87.54\%
+(Table~\ref{tab:pharmacophore-mixture}; Figure~\ref{fig:pharmacophore-mixture}A--D).
+Its gain over pure Qwen is 2.43--3.19 percentage points. The paired intervals
+exclude zero for both individual-query families but include zero for both shared
+families (Figure~\ref{fig:pharmacophore-mixture}E). The corresponding gain over
+pure LoQI is 5.52--6.57 points, with all four intervals excluding zero. In contrast,
+50:50 is only 0.02--0.19 point above 75:25, and all four paired intervals include
+zero. Thus, the equal and Qwen-heavy mixtures are not distinguished at this
+budget despite the consistent numerical ordering.
+
+\input{\manuscriptroot tables/pharmacophore-mixture}
+
+At budget 1,000, the 50:50 allocation covers 98.39--99.59\% of the reference
+queries and remains within 0.28 percentage point of the best family-specific
+allocation, although Qwen or 75:25 has the highest mean in every family
+(Supporting Table~\ref{tab:cdpkit-endpoint-coverage}). Its mean effective cluster
+count is 131.8, compared with 66.7 for LoQI, 185.1 for 75:25, and 233.2 for Qwen
+(Figure~\ref{fig:pharmacophore-mixture}F). The corresponding valid yields are
+90.5, 89.9, 90.9, and 91.2\%, respectively. The full primary grid shows the same
+broad distinction: Qwen reaches more hypotheses, whereas LoQI places a larger
+fraction of its valid conformers inside hypotheses that it reaches (Supporting
+Figure~\ref{fig:cdpkit-generator-separation}).
+
+\mixturepolicyfigure

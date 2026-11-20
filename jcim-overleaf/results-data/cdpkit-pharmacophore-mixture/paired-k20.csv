@@ -1,0 +1,13 @@
+family,condition,radius_angstrom,construction_count,support_rule,budget,left,right,difference,ci_low,ci_high,molecules,molecules_left_better,molecules_tied,molecules_right_better,interval_scope
+individual_interaction,4/4,0.5,1,single_pose,20,loqi,qwen50_loqi50,-0.0592986535426082,-0.1099787287492511,-0.0148452705176205,22,8,2,12,"exploratory molecule bootstrap, unadjusted for grid search"
+individual_interaction,4/4,0.5,1,single_pose,20,qwen,qwen50_loqi50,-0.0262192803515263,-0.0541231970071934,-0.0013684562379717,22,7,1,14,"exploratory molecule bootstrap, unadjusted for grid search"
+individual_interaction,4/4,0.5,1,single_pose,20,qwen50_loqi50,qwen75_loqi25,0.0011191348982879,-0.0078708898045379,0.0103101339571348,22,12,2,8,"exploratory molecule bootstrap, unadjusted for grid search"
+individual_ligand,4/4,0.5,1,single_pose,20,loqi,qwen50_loqi50,-0.0552379769481635,-0.1010334490445379,-0.0168365056225532,22,6,2,14,"exploratory molecule bootstrap, unadjusted for grid search"
+individual_ligand,4/4,0.5,1,single_pose,20,qwen,qwen50_loqi50,-0.0319396186182783,-0.0564452237596609,-0.0070990680601507,22,6,1,15,"exploratory molecule bootstrap, unadjusted for grid search"
+individual_ligand,4/4,0.5,1,single_pose,20,qwen50_loqi50,qwen75_loqi25,0.0018961253624273,-0.0065827612844722,0.0101865154747126,22,13,2,7,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_ligand,4/4,0.5,2,all,20,loqi,qwen50_loqi50,-0.0558078538212854,-0.1056802112444273,-0.0143371249619435,20,10,2,8,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_ligand,4/4,0.5,2,all,20,qwen,qwen50_loqi50,-0.0279831828213958,-0.0564135693301089,0.00020810311159,20,6,1,13,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_ligand,4/4,0.5,2,all,20,qwen50_loqi50,qwen75_loqi25,0.0001956350476876,-0.0103590728934896,0.0094092016593639,20,11,2,7,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_protein,4/4,0.5,2,all,20,loqi,qwen50_loqi50,-0.0656883894976094,-0.1355158920602319,-0.0052945778254834,14,9,0,5,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_protein,4/4,0.5,2,all,20,qwen,qwen50_loqi50,-0.0243177732531387,-0.0558004718804399,0.0099759088144113,14,4,0,10,"exploratory molecule bootstrap, unadjusted for grid search"
+shared_protein,4/4,0.5,2,all,20,qwen50_loqi50,qwen75_loqi25,0.0002460866469248,-0.0153921194986087,0.0131464722621975,14,9,0,5,"exploratory molecule bootstrap, unadjusted for grid search"

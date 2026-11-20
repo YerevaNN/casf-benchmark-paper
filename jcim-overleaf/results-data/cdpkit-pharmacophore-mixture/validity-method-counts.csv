@@ -1,0 +1,5 @@
+method,supplied,pb_pass,stored_identity_pass,coordinate_identity_pass,identity_pass,valid_for_coverage
+qwen,22000,20347,21998,21275,21275,20063
+loqi,22000,19948,22000,21479,21479,19772
+rdkit_raw,22000,22000,22000,22000,22000,22000
+rdkit_minimized,22000,21999,22000,22000,22000,21999

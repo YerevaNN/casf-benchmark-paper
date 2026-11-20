@@ -1,0 +1,30 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+Conformer generators differ not only in whether they recover experimental bound
+geometries, but also in how broadly and densely they distribute samples around those
+geometries. Qwen provides broad geometric sampling and the strongest large-budget
+CASF recovery among the evaluated generators. LoQI concentrates a larger fraction of
+its PLINDER samples near the available experimental references. Geometric diversity,
+reference coverage, sample precision, validity, and energy dispersion therefore
+remain separate selection criteria rather than interchangeable measures of quality.
+
+The pharmacophore experiments provide a direct bridge from this benchmark to library
+construction. A mixture advantage observed for one protein-contact query definition
+was smaller in the generator-blind extension, but the final four-family study shows a
+consistent small-budget advantage for mixed Qwen/LoQI libraries. The equal allocation
+has the highest numerical coverage in every query family at 20 attempts and remains
+near the best family-specific coverage at 1,000 attempts, while retaining substantially
+more geometric breadth than pure LoQI.
+
+When one fixed production policy must be chosen without molecule-specific tuning, we
+therefore recommend generating 50\% of the conformers with Qwen and 50\% with LoQI.
+Within the objectives evaluated here, this is the best-supported balanced default:
+it combines Qwen's breadth with LoQI's concentration, performs most strongly at the
+smallest tested budget, and uses an equal split rather than fitting a continuous
+mixture weight to the evaluation molecules.
+The recommendation is not a claim of universal dominance. A 75:25 allocation is
+statistically indistinguishable at the small budget and preserves more diversity,
+while pure Qwen or 75:25 can be preferable at larger budgets. Downstream docking,
+screening, and learning evaluations remain necessary before assigning the resulting
+resource an application-specific advantage.
