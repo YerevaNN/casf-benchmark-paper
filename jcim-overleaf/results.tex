@@ -171,7 +171,8 @@ families. The main display uses the prespecified stringent requirement of six of
 six features within 0.5~\AA{}, comprising 612 queries from 21 molecules for the
 individual-ligand family and 601 queries from 19 molecules for the shared-ligand
 family. The protein-informed families are retained as secondary validation, and
-the complete grid and unequal fixed allocations remain in the Supporting Information.
+the Qwen-heavy 75:25 allocation is displayed as a secondary comparator. The 25:75
+allocation and complete condition grid remain in the Supporting Information.
 
 The ligand-only comparison shows a budget-dependent Qwen--LoQI crossover
 (Figure~\ref{fig:pharmacophore-mixture}A,B). At 20 attempts, LoQI exceeds Qwen
@@ -187,6 +188,14 @@ At budget 1,000, it exceeds the stronger RDKit control by 25.04 points for
 individual-ligand queries and 24.87 points for shared-ligand queries, with both
 intervals excluding zero.
 
+The Qwen-heavy 75:25 allocation is shown under the same coverage comparisons.
+At budget 20, 50:50 exceeds 75:25 by 2.53 points for individual-ligand queries
+and 3.23 points for shared-ligand queries, with both intervals excluding zero.
+From budgets 100 through 1,000, every 50:50--75:25 interval includes zero and the
+largest absolute mean difference is 1.05 points. At budget 1,000, 75:25 is only
+0.26 point above 50:50 for individual-ligand queries and 0.01 point below it for
+shared-ligand queries.
+
 Geometric breadth provides a complementary selection constraint
 (Figure~\ref{fig:pharmacophore-mixture}C). At budget 1,000, the 50:50 allocation
 has 131.8 mean effective clusters, compared with 66.7 for LoQI, 185.1 for 75:25,
@@ -200,9 +209,10 @@ not the diversity maximum.
 The protein-informed families support the learned-versus-RDKit separation at scale
 without determining the allocation (Figure~\ref{fig:pharmacophore-mixture}D,E).
 At budget 1,000, the learned libraries exceed the stronger RDKit control by
-18.8--26.3 points for individual-interaction queries and 20.5--32.7 points for
-shared-protein queries. The equal allocation leads the individual-interaction mean,
-whereas Qwen leads the shared-protein mean. Supporting Table~\ref{tab:cdpkit-endpoint-coverage}
+18.8--26.5 points for individual-interaction queries and 20.5--33.2 points for
+shared-protein queries. The 75:25 allocation has the highest mean in both
+protein-informed families at this budget, but these families do not determine the
+production allocation. Supporting Table~\ref{tab:cdpkit-endpoint-coverage}
 and Supporting Figure~\ref{fig:cdpkit-generator-separation} retain the full endpoint
 and condition grid.
 

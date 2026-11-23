@@ -26,7 +26,14 @@ SUPPORTING = ROOT / "figures" / "supporting"
 REFERENCE_CONDITION = "6/6"
 REFERENCE_RADIUS = 0.5
 RECIPES = ["qwen", "qwen75_loqi25", "qwen50_loqi50", "qwen25_loqi75", "loqi"]
-MAIN_RECIPES = ["qwen", "loqi", "qwen50_loqi50", "rdkit_raw", "rdkit_minimized"]
+MAIN_RECIPES = [
+    "qwen",
+    "loqi",
+    "qwen75_loqi25",
+    "qwen50_loqi50",
+    "rdkit_raw",
+    "rdkit_minimized",
+]
 DIVERSITY_RECIPES = ["qwen", "qwen75_loqi25", "qwen50_loqi50", "loqi"]
 MAIN_LEGEND_RECIPES = [
     "qwen",
@@ -328,9 +335,11 @@ def build_main_table(
     rows = []
     specifications = [
         (20, "LoQI minus Qwen", "loqi", "qwen"),
+        (20, "50:50 minus 75:25", "qwen50_loqi50", "qwen75_loqi25"),
         (100, "50:50 minus stronger pure$^{a}$", "qwen50_loqi50", "best_pure"),
         (500, "50:50 minus stronger pure$^{a}$", "qwen50_loqi50", "best_pure"),
         (1000, "Qwen minus LoQI", "qwen", "loqi"),
+        (1000, "75:25 minus 50:50", "qwen75_loqi25", "qwen50_loqi50"),
         (1000, "50:50 minus best RDKit$^{b}$", "qwen50_loqi50", "best_rdkit"),
     ]
     for budget, label, left, right_rule in specifications:

@@ -11,6 +11,12 @@ cells. Its advantage over the stronger pure source excludes zero for individual-
 ligand queries at budgets 100 and 500. At budget 1,000, it exceeds the stronger
 RDKit control by 25.04 and 24.87 points in the two ligand-only families.
 
+Show 75:25 in every main-figure panel. At budget 20, 50:50 exceeds 75:25 by
+2.53 and 3.23 points in the two ligand-only families, with both intervals excluding
+zero. At budgets 100--1,000, all paired intervals include zero; the largest absolute
+mean gap is 1.05 points. At budget 1,000, 75:25 leads both protein-informed means,
+which remain secondary validation rather than allocation criteria.
+
 At budget 1,000, mean effective cluster counts are Qwen 233.2, 75:25 185.1,
 50:50 131.8, and LoQI 66.7; the same order holds at every budget. Use diversity
 to frame 50:50 as retaining approximately twice LoQI's breadth, not as the diversity
@@ -19,8 +25,9 @@ winner. Qwen or 75:25 is preferable when geometric breadth is the primary object
 Frame 50:50 as the best-supported balanced default for a fixed untuned production
 allocation, not the universal empirical winner. Six of eight increments over the
 stronger pure mean include zero. Protein-informed queries confirm the learned-versus-
-RDKit separation at scale but do not choose the allocation. Unequal fixed ratios,
-all four families, and the complete 2,352-cell grid remain disclosed in the SI.
+RDKit separation at scale but do not choose the allocation. Both unequal fixed ratios,
+all four families, and the complete 2,352-cell grid remain disclosed in the SI; 75:25
+is also shown in the main comparison.
 Do not introduce a coverage--runtime score without a common timing protocol.
 
 ## Protein-context pharmacophore analysis, 17 November 2026

@@ -144,6 +144,10 @@ def main() -> None:
         "+3.38",
         "+25.04",
         "+24.87",
+        "+2.53",
+        "+3.23",
+        "+0.26",
+        "-0.01",
         "233.19",
         "185.09",
         "131.76",
@@ -152,6 +156,7 @@ def main() -> None:
         assert token in main_table, token
     assert "2,352" in results and "57,459" in results
     assert "allocation decision uses the two ligand-only" in results
+    assert "75:25 allocation is shown under the same coverage" in results
     assert "Generation time was not used" in discussion
     assert "recommend generating 50\\%" in conclusions
     print(

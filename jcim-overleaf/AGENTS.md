@@ -19,9 +19,12 @@ of fitting a weight on 19--21 molecules are policy reasons, not extra endpoints.
 At budget 1,000, effective cluster counts are Qwen 233.2, 75:25 185.1, 50:50
 131.8, and LoQI 66.7. Diversity therefore supports 50:50 only as a compromise that
 retains about twice LoQI's breadth; Qwen and 75:25 remain broader.
-Protein-informed queries are secondary validation. Unequal ratios and the complete
-grid remain in the SI; no combined coverage--diversity or coverage--runtime score
-is defined, and timing is excluded without a common execution protocol.
+The 75:25 allocation must be shown in every main-figure panel. At budget 20, 50:50
+exceeds it in both ligand-only families; larger-budget differences are unresolved.
+Protein-informed queries are secondary validation. Both unequal ratios and the complete
+grid remain in the SI; 25:75 stays out of the main display. No combined
+coverage--diversity or coverage--runtime score is defined, and timing is excluded
+without a common execution protocol.
 
 Supporting Tables S9--S10 give query scope and the seven-recipe high-budget
 endpoint. Supporting Figures S11--S12 show the four query constructions and the

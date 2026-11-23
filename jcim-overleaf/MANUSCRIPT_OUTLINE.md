@@ -7,7 +7,8 @@ narrative moves from the earlier protein-contact mixture pilot and its weaker
 generator-blind extension to a target-independent production-policy question.
 Individual- and shared-ligand queries determine the allocation; interaction and
 shared-protein queries are secondary validation. Main Figure 7 carries the coverage
-curves, and Table 5 gives the key paired ligand-only contrasts.
+curves for Qwen, LoQI, 50:50, 75:25, and both RDKit controls, together with the
+allocation-level diversity curves. Table 5 gives the key paired ligand-only contrasts.
 Supporting Tables S9--S10 and Figures S11--S12 retain scope, endpoints, examples,
 and the complete primary Qwen--LoQI grid.
 

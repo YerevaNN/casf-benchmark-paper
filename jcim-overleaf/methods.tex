@@ -157,10 +157,10 @@ To choose a fixed Qwen/LoQI production allocation, we constructed four CDPKit
 query families on PLINDER-22 using either ligand features alone or features selected
 by the protein complex. The allocation decision uses the individual- and shared-ligand
 families because generation does not receive a protein; the two interaction families
-provide secondary validation. Existing Qwen, LoQI, equal Qwen/LoQI, and RDKit pools
-were compared at attempt budgets of 20, 100, 500, and 1,000, with invalid slots
-retained as failed attempts. The main comparison requires six of six features within
-0.5~\AA{}. Queries are averaged within parent and molecule before equal weighting
+provide secondary validation. Existing Qwen, LoQI, Qwen/LoQI 50:50 and 75:25,
+and RDKit pools were compared at attempt budgets of 20, 100, 500, and 1,000, with
+invalid slots retained as failed attempts. The main comparison requires six of six
+features within 0.5~\AA{}. Queries are averaged within parent and molecule before equal weighting
 across molecules, and paired intervals resample molecules. We characterize the
 geometric breadth of each allocation by drawing 20 reproducible libraries per budget,
 clustering valid conformers at 0.5~\AA{}, and reporting the exponential-Shannon
