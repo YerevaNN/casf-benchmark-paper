@@ -13,10 +13,11 @@ libraries for representing the multiple bound shapes of a drug. Our results exte
 question to modern generation procedures by examining both the references reached and the
 conformations supplied around them.
 
-For constructing a large library, Qwen's recovery at the larger CASF budget, low matching
-distances, and broad geometric sampling provide a basis for selecting it for further dataset
+Among single generators, Qwen's recovery at the larger CASF budget, low matching
+distances, and broad geometric sampling make it a strong candidate for large-library
 construction. LoQI's higher PLINDER precision favors it when concentration near the available
-observations is the main objective. This tradeoff should be assessed at the intended ensemble
+observations is the main objective, and these complementary profiles motivate evaluating
+a fixed mixed allocation. This tradeoff should be assessed at the intended ensemble
 size: the budget-dependent ordering shows that performance with a small pool does not fully
 predict performance with a larger one. Additional sampling also complements the stored
 ChEMBL3D resource without reproducing every conformation that it already covers. Retaining
@@ -77,48 +78,35 @@ also do not establish virtual-screening enrichment or docking performance.
 
 The final experiment turns this complementarity question into a fixed allocation
 decision using evidence that matches the intended target-independent generation
-setting. The ligand-only families show different budget profiles: LoQI is stronger
-at a cached-conformer budget of 20, whereas Qwen benefits more from increasing the
-library to 1,000. Both learned sources substantially exceed the RDKit controls at
-the larger budget; this learned-versus-RDKit separation is the clearest result.
-Within the stringent six-feature comparison, the 50:50 allocation exceeds either
-pure source in all eight ligand-only family--budget cells. Its interval relative to
-the stronger pure generator excludes zero in the individual-ligand family at budgets
-100 and 500. At budget 1,000, however, its increments over Qwen are only 1.39 and
-1.00 percentage points in the two ligand-only families, with both intervals spanning
-zero. Against 75:25, equal allocation is higher in both ligand-only families
-at budget 20, whereas all differences at budgets 100--1,000 have intervals spanning
-zero. Diversity supplies a complementary guardrail: at budget 1,000, 50:50 retains
-220 mean clusters per molecule, between LoQI (101) and Qwen (280), while 75:25
-retains 257.
-Coverage and breadth together make equal allocation a reasonable fixed production
-choice rather than a winner on every metric.
+setting. The ligand-only families confirm different Qwen and LoQI budget profiles,
+while the clearest result at scale is that both learned sources substantially exceed
+the RDKit controls. Equal allocation has higher mean coverage than either pure source
+throughout the stringent comparison, but intervals for most increments include zero,
+and the larger protein-contact extension does not establish a mixture advantage.
+At the intended larger budgets, the data also do not reliably distinguish 50:50 from
+75:25. Diversity places the equal allocation between LoQI and the Qwen-heavy options,
+supporting it as a coverage--breadth compromise rather than a winner on every metric.
 
-This choice is operational rather than a claim that 50:50 is a uniquely optimal
-ratio. Six of its eight increments over the stronger pure mean have intervals that
-include zero, the larger protein-contact extension does not establish a mixture
-advantage, and the allocation panel contains only 19--21 independent molecules per
-ligand-only family. Equal allocation nevertheless avoids fitting a source weight to
-this small panel and protects against the observed Qwen--LoQI budget crossover when
-one fixed policy is required. The 75:25 allocation is a reasonable alternative when
-geometric breadth is prioritized: it retains more clusters and becomes numerically
-competitive in coverage at the larger budgets. Selecting that unequal weight,
-however, would tune the policy to this small exploratory panel; pure Qwen remains
-the diversity maximum. Protein-informed queries confirm that the learned sources
-remain stronger than RDKit at scale and provide a useful test of binding-site relevance,
-but the production allocation is led by ligand-only queries because the intended
-output is a reusable, target-independent library. The
-complete condition grid and both unequal fixed ratios remain disclosed in the
-Supporting Information, while 75:25 is also shown in the main comparison; no combined
-coverage--diversity or coverage--runtime score is used.
+When one fixed policy is required, we choose 50:50 for simplicity and balanced source
+representation. Its advantage over 75:25 at budget 20 is relevant to small libraries,
+but does not establish the preferred allocation for a 1,000-conformer release. The
+75:25 allocation remains a reasonable alternative when geometric breadth is prioritized,
+and pure Qwen remains the diversity maximum among the evaluated allocation recipes.
+Protein-informed queries confirm that the learned sources remain stronger than RDKit
+at scale and provide a useful test of binding-site relevance, but the production
+allocation is led by ligand-only queries because the intended output is a reusable,
+target-independent library. No combined coverage--diversity or coverage--runtime
+score is used.
 
 Several features of the evaluation limit generalization. CASF is restricted to the intersection
 with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
 structures. Large and flexible molecules remain sparsely represented in parts of CASF.
 Experimental references cover only part of accessible conformational space, so low precision
 against them does not establish that unmatched conformers are irrelevant to binding.
-CASF matching uses PoseBusters-filtered ensembles, whereas PLINDER matching uses the supplied
-pools; their absolute performance levels are therefore not directly comparable. Candidate
+CASF whole-molecule RMSD matching uses PoseBusters-filtered ensembles, whereas the
+corresponding PLINDER metrics use the supplied pools; the pharmacophore allocation
+analysis applies its own validity gates. Absolute performance levels across these
+analyses are therefore not directly comparable. Candidate
 budgets also do not equalize computational cost. Generation time was not used for
 selection because Qwen and LoQI were not benchmarked under a common hardware,
 batching, and parallel-execution protocol. Training exclusions are documented
@@ -128,7 +116,7 @@ establish evaluation on unseen molecules for every model.
 
 The benchmark provides a basis for choosing a procedure to construct a reusable conformational
 resource for structure-based drug design and learning molecular geometry, including
-pharmacophore-conditioned generation. The released dataset will need its own assessment of
+pharmacophore-conditioned generation. The resulting dataset will need its own assessment of
 molecular coverage, validity, diversity, and energy distributions. Its value for docking,
 screening, or model training must also be tested directly. McNutt et al.\cite{mcnutt2023conformers}
 showed that larger ensembles can improve structural recovery without improving screening

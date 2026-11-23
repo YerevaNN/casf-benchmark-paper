@@ -123,21 +123,20 @@ Greater geometric diversity does not consistently correspond to better recovery.
 At a target of 1,000 candidates per molecule, Qwen recovers 91.7\% of CASF ref structures
 within 0.75 \AA{}, compared with 86.3\% for the next best generator. On PLINDER,
 Qwen has the lowest mean reference matching distance, while LoQI has the highest
-coverage and sample precision at 0.75 \AA{}. Within Qwen, models using learned coordinate
-tokens have lower matching distances than coordinate binning at both model sizes, while
-larger models have higher validity. In a final ligand-only pharmacophore experiment,
-LoQI is stronger at a cached-conformer budget of 20 and Qwen becomes stronger as
-the library expands, whereas an equal Qwen/LoQI allocation exceeds either pure
-source at every tested budget in both query families. At a budget of 1,000, the
-equal allocation exceeds the strongest RDKit control by approximately 25 percentage
-points and retains a mean of 220 geometric clusters per molecule, between LoQI
-(101) and Qwen (280).
+coverage and sample precision at 0.75 \AA{}. In a final ligand-only pharmacophore
+experiment, LoQI is stronger at a cached-conformer budget of 20 and Qwen becomes
+stronger as the library expands. An equal Qwen/LoQI allocation has higher mean
+coverage than either pure source at every tested budget in both query families,
+although intervals for most gains over the stronger pure source include zero. At
+a budget of 1,000, the equal allocation exceeds the strongest RDKit control by
+approximately 25 percentage points and retains a mean of 220 geometric clusters
+per molecule, between LoQI (101) and Qwen (280).
 
-These findings guide generator selection for conformational resources in structure-based
-drug design by relating experimental coverage to diversity and sample concentration
-at the intended ensemble size. We identify 50:50 as a reasonable fixed production
-choice when one untuned allocation must be used, while not interpreting it as a
-uniquely established optimum.
+These findings guide selection of generation policies for conformational resources
+in structure-based drug design by relating experimental coverage to diversity and
+sample concentration at the intended ensemble size. We identify 50:50 as a reasonable
+fixed production choice when one untuned allocation must be used, while not
+interpreting it as a uniquely established optimum.
 \end{abstract}
 
 % AUTHOR: supply keywords and an abbreviation list if required for submission.

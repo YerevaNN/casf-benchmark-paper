@@ -26,8 +26,11 @@ some Qwen breadth, not as the diversity winner. Qwen or 75:25 is preferable when
 geometric breadth is the primary objective.
 
 Frame 50:50 as a reasonable fixed choice for an untuned production allocation,
-not a uniquely established optimum. Six of eight increments over the
-stronger pure mean include zero. Protein-informed queries confirm the learned-versus-
+not a uniquely established optimum. Intervals for six of eight increments over the
+stronger pure mean include zero. Use simplicity and balanced source representation
+as the policy rationale; do not characterize 75:25 as overfit. The small-budget
+advantage does not establish the preferred allocation for a 1,000-conformer release.
+Protein-informed queries confirm the learned-versus-
 RDKit separation and test binding-site relevance, but do not choose the reusable-library
 allocation. Both unequal fixed ratios,
 all four families, and the complete 2,352-cell grid remain disclosed in the SI; 75:25

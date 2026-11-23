@@ -14,14 +14,17 @@ not a uniquely established optimum. The allocation rule uses only individual- an
 shared-ligand queries because they match the intended reusable, target-independent
 library objective; protein-informed queries test binding-site relevance. LoQI leads Qwen
 at budget 20, whereas Qwen gains at larger budgets. The 50:50 allocation exceeds
-either pure source in all eight ligand-only family--budget cells, but six increments over
-the stronger pure source include zero. Equal source representation and avoidance
-of fitting a weight on 19--21 molecules are policy reasons, not extra endpoints.
+either pure source in all eight ligand-only family--budget cells, but intervals for six
+increments over the stronger pure source include zero. Equal allocation is chosen for simplicity and
+balanced source representation, not because the data establish it as better than
+75:25 at the intended larger budgets.
 At budget 1,000, mean cluster counts are Qwen 279.6, 75:25 256.7, 50:50
 220.5, and LoQI 100.7. Diversity therefore supports 50:50 only as a compromise that
 preserves substantial breadth relative to LoQI; Qwen and 75:25 remain broader.
 The 75:25 allocation must be shown in every main-figure panel. At budget 20, 50:50
 exceeds it in both ligand-only families; larger-budget differences are unresolved.
+The small-budget advantage is relevant to small libraries but does not establish the
+preferred allocation for a 1,000-conformer release.
 Protein-informed queries are secondary validation. Both unequal ratios and the complete
 grid remain in the SI; 25:75 stays out of the main display. No combined
 coverage--diversity or coverage--runtime score is defined, and timing is excluded

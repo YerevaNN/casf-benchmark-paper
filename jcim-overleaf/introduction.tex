@@ -21,7 +21,7 @@ Generating these ensembles without reference to a particular protein makes them 
 conformer set can be generated once for each molecule, stored in a molecular library, and used
 across different targets and downstream tasks. This also makes it possible to prepare conformational
 data for millions of molecules before their eventual applications are known. Our interest is in
-selecting a generator for such a resource. We use coverage of experimentally observed bound
+selecting a generation policy for such a resource. We use coverage of experimentally observed bound
 geometries to guide that choice and examine how this coverage relates to the diversity and energy of
 the generated conformers.
 
@@ -87,7 +87,7 @@ ligand structures, so it describes internal conformation rather than placement w
 Experimental references provide an observed part of conformational space; a generated structure that
 does not match them is not necessarily irrelevant to binding.
 
-The practical objective is to use these comparisons to select a generator, apply it to a large
+The practical objective is to use these comparisons to select a generation policy, apply it to a large
 molecular collection, and release the resulting conformer dataset. The intended uses include
 structure-based drug design and learning from three-dimensional molecular structure, with
 pharmacophore-conditioned generation as one application. The benchmark evaluates the structural

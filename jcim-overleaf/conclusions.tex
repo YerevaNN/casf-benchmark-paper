@@ -1,36 +1,14 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-Conformer generators differ not only in whether they recover experimental bound
-geometries, but also in how broadly and densely they distribute samples around those
-geometries. Qwen provides broad geometric sampling and the strongest large-budget
-CASF recovery among the evaluated generators. LoQI concentrates a larger fraction of
-its PLINDER samples near the available experimental references. Geometric diversity,
-reference coverage, sample precision, validity, and energy dispersion therefore
-remain separate selection criteria rather than interchangeable measures of quality.
-
-The pharmacophore experiments provide a direct bridge from this benchmark to library
-construction. A mixture advantage observed for one protein-contact query definition
-was smaller in the generator-blind extension. In the final ligand-only comparison,
-LoQI is stronger at the smallest budget and Qwen becomes stronger as the library
-expands, while both learned sources exceed RDKit at scale. The equal allocation
-exceeds either pure source at all four budgets in both ligand-only families. The
-same allocation retains 220 mean clusters per molecule at budget 1,000, between LoQI (101) and
-Qwen (280), while 75:25 retains 257. Coverage and diversity therefore identify
-50:50 as a compromise rather than a universal optimum. The
-equal allocation exceeds 75:25 in both ligand-only families at budget 20; their
-larger-budget coverage differences are unresolved. The
-protein-informed families retain the learned-versus-RDKit separation and test
-binding-site relevance, but are not used to choose a reusable-library allocation.
-
-When one fixed production policy must be chosen without molecule-specific tuning, we
-therefore select 50\% Qwen and 50\% LoQI as a reasonable production choice. The
-equal split combines complementary coverage and breadth profiles without fitting a
-mixture weight to 19--21 evaluation molecules. It is not a uniquely established
-optimum: most increments over the stronger pure mean include zero, and at budget
-1,000 the ligand-only increments over Qwen are only 1.39 and 1.00 percentage points.
-The 75:25 comparator is
-shown in the main figure, and both unequal fixed ratios remain disclosed as exploratory
-results in the Supporting Information. Downstream docking,
-screening, and learning evaluations remain necessary before assigning the resulting
-resource an application-specific advantage.
+Qwen provides broad geometric sampling and strong large-budget recovery, whereas
+LoQI concentrates more samples near the available PLINDER references. Both learned
+sources substantially exceed RDKit in the final large-budget pharmacophore comparison,
+but intervals for most increments of 50:50 over the stronger pure source include zero,
+and the data do not reliably distinguish 50:50 from 75:25 at the intended larger
+budgets. We therefore select 50\% Qwen and 50\% LoQI as a simple fixed production
+policy with balanced source representation, not as a uniquely established optimum.
+Protein-informed queries support the learned-versus-RDKit separation and assess
+binding-site relevance, while ligand-only evidence leads the reusable-library choice.
+Downstream docking, screening, and learning evaluations remain necessary before
+assigning the resulting resource an application-specific advantage.

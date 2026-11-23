@@ -8,8 +8,8 @@ Each method generates conformers from a ligand identity without receiving a prot
 or binding-site structure. PLINDER assesses coverage of multiple observed bound
 conformations; CASF core and ref compare ensembles with individual experimental
 references and stored ChEMBL3D\cite{nikitin2025loqi} conformers. We measure geometric
-diversity and experimental recovery in all three panels, with energy and
-sampling-budget analyses on CASF. Recovery concerns internal ligand geometry after
+diversity, experimental recovery, energy dispersion, and sampling-budget behavior
+across PLINDER and CASF. Recovery concerns internal ligand geometry after
 alignment, not placement within a binding pocket.
 
 The core panel contains 94 of the 285 protein--ligand complexes in
@@ -106,12 +106,13 @@ contact tests are used. Recovery includes every panel entry, counting empty, mis
 or unmeasurable outputs as failures. Continuous metrics use entries with defined
 measurements; mean retained counts include zeros.
 
-PLINDER coverage and clustering use the full supplied pools, with PoseBusters validity
-assessed separately. Its pass rate is pooled across all supplied conformers, rather
-than averaged across molecules. The panels therefore have different filtering
-conditions, and their absolute performance levels are not directly comparable.
-Supporting Table~\ref{tab:supporting-ensemble-counts} and the evaluation appendix give retained counts, validity
-settings, sampling procedures, and failure handling.
+The whole-molecule PLINDER coverage and clustering metrics use the full supplied
+pools, with PoseBusters validity assessed separately. Its pass rate is pooled across
+all supplied conformers, rather than averaged across molecules. The panels therefore
+have different filtering conditions, and their absolute performance levels are not
+directly comparable. Supporting Table~\ref{tab:supporting-ensemble-counts} and the
+evaluation appendix give retained counts, validity settings, sampling procedures,
+and failure handling.
 
 \subsection{Geometric diversity and experimental recovery}
 
@@ -240,7 +241,9 @@ Except for pooled PLINDER validity, ensemble summaries give each molecule equal 
 CASF hit rates retain the full panel denominator, while continuous metrics use defined
 measurements. Paired diversity and energy summaries use the same entries for each
 method. Means, paired changes, and rankings use unrounded records; ChEMBL3D-PB remains
-an unranked baseline. The comparisons are descriptive, without displayed confidence
-intervals or replicated Qwen training runs. Source manifests, per-molecule measurements,
-and input hashes accompany the tables and figures. The appendix retains detailed
-procedures and identifies incomplete execution records and provenance.
+an unranked baseline. The earlier whole-molecule structural comparisons are descriptive
+and do not display confidence intervals; the pharmacophore analyses instead report
+molecule-level bootstrap intervals. Qwen training runs were not replicated. Source
+manifests, per-molecule measurements, and input hashes accompany the tables and
+figures. The appendix retains detailed procedures and identifies incomplete execution
+records and provenance.
