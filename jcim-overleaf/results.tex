@@ -187,10 +187,18 @@ At budget 1,000, it exceeds the stronger RDKit control by 25.04 points for
 individual-ligand queries and 24.87 points for shared-ligand queries, with both
 intervals excluding zero.
 
+Geometric breadth provides a complementary selection constraint
+(Figure~\ref{fig:pharmacophore-mixture}C). At budget 1,000, the 50:50 allocation
+has 131.8 mean effective clusters, compared with 66.7 for LoQI, 185.1 for 75:25,
+and 233.2 for Qwen. The same ordering holds at every budget. Equal allocation
+therefore retains approximately twice LoQI's breadth while providing less breadth
+relative to the Qwen-heavy alternatives; it is a coverage--diversity compromise,
+not the diversity maximum.
+
 \input{\manuscriptroot tables/pharmacophore-mixture}
 
 The protein-informed families support the learned-versus-RDKit separation at scale
-without determining the allocation (Figure~\ref{fig:pharmacophore-mixture}C,D).
+without determining the allocation (Figure~\ref{fig:pharmacophore-mixture}D,E).
 At budget 1,000, the learned libraries exceed the stronger RDKit control by
 18.8--26.3 points for individual-interaction queries and 20.5--32.7 points for
 shared-protein queries. The equal allocation leads the individual-interaction mean,

@@ -15,14 +15,17 @@ was smaller in the generator-blind extension. In the final ligand-only compariso
 LoQI is stronger at the smallest budget and Qwen becomes stronger as the library
 expands, while both learned sources exceed RDKit at scale. The equal allocation
 exceeds either pure source at all four budgets in both ligand-only families. The
+same allocation retains approximately twice LoQI's effective diversity at budget
+1,000, although Qwen and the 75:25 allocation remain broader. Coverage and diversity
+therefore identify 50:50 as a compromise rather than a universal optimum. The
 protein-informed families retain the learned-versus-RDKit separation but are not used
 to choose the allocation.
 
 When one fixed production policy must be chosen without molecule-specific tuning, we
 therefore recommend generating 50\% of the conformers with Qwen and 50\% with LoQI.
 Within the objectives evaluated here, this is the best-supported balanced default:
-it combines the complementary budget profiles of the two sources and uses an equal
-split rather than fitting a mixture weight to 19--21 evaluation molecules. The
+it combines the complementary coverage and breadth profiles of the two sources and
+uses an equal split rather than fitting a mixture weight to 19--21 evaluation molecules. The
 recommendation is not a claim of universal dominance because most increments over
 the stronger pure mean have intervals that include zero. Unequal fixed ratios remain
 disclosed as exploratory results in the Supporting Information. Downstream docking,

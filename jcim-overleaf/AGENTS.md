@@ -16,6 +16,9 @@ at budget 20, whereas Qwen gains at larger budgets. The 50:50 allocation exceeds
 either pure source in all eight ligand-only family--budget cells, but six increments over
 the stronger pure source include zero. Equal source representation and avoidance
 of fitting a weight on 19--21 molecules are policy reasons, not extra endpoints.
+At budget 1,000, effective cluster counts are Qwen 233.2, 75:25 185.1, 50:50
+131.8, and LoQI 66.7. Diversity therefore supports 50:50 only as a compromise that
+retains about twice LoQI's breadth; Qwen and 75:25 remain broader.
 Protein-informed queries are secondary validation. Unequal ratios and the complete
 grid remain in the SI; no combined coverage--diversity or coverage--runtime score
 is defined, and timing is excluded without a common execution protocol.

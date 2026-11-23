@@ -11,6 +11,11 @@ cells. Its advantage over the stronger pure source excludes zero for individual-
 ligand queries at budgets 100 and 500. At budget 1,000, it exceeds the stronger
 RDKit control by 25.04 and 24.87 points in the two ligand-only families.
 
+At budget 1,000, mean effective cluster counts are Qwen 233.2, 75:25 185.1,
+50:50 131.8, and LoQI 66.7; the same order holds at every budget. Use diversity
+to frame 50:50 as retaining approximately twice LoQI's breadth, not as the diversity
+winner. Qwen or 75:25 is preferable when geometric breadth is the primary objective.
+
 Frame 50:50 as the best-supported balanced default for a fixed untuned production
 allocation, not the universal empirical winner. Six of eight increments over the
 stronger pure mean include zero. Protein-informed queries confirm the learned-versus-

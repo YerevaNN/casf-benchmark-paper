@@ -27,6 +27,15 @@ REFERENCE_CONDITION = "6/6"
 REFERENCE_RADIUS = 0.5
 RECIPES = ["qwen", "qwen75_loqi25", "qwen50_loqi50", "qwen25_loqi75", "loqi"]
 MAIN_RECIPES = ["qwen", "loqi", "qwen50_loqi50", "rdkit_raw", "rdkit_minimized"]
+DIVERSITY_RECIPES = ["qwen", "qwen75_loqi25", "qwen50_loqi50", "loqi"]
+MAIN_LEGEND_RECIPES = [
+    "qwen",
+    "loqi",
+    "qwen50_loqi50",
+    "qwen75_loqi25",
+    "rdkit_raw",
+    "rdkit_minimized",
+]
 FAMILIES = [
     "individual_ligand",
     "individual_interaction",
@@ -70,6 +79,7 @@ MARKERS = {
     "qwen": "o",
     "loqi": "s",
     "qwen50_loqi50": "D",
+    "qwen75_loqi25": "P",
     "rdkit_raw": "^",
     "rdkit_minimized": "v",
 }
@@ -77,6 +87,7 @@ LINESTYLES = {
     "qwen": "-",
     "loqi": "-",
     "qwen50_loqi50": "-",
+    "qwen75_loqi25": "-",
     "rdkit_raw": "--",
     "rdkit_minimized": ":",
 }
@@ -213,7 +224,7 @@ def plot_differences(axis: plt.Axes, frame: pd.DataFrame) -> None:
 
 def plot_diversity(axis: plt.Axes, frame: pd.DataFrame) -> None:
     subset = frame[np.isclose(frame["cluster_radius"], REFERENCE_RADIUS)]
-    for recipe in RECIPES:
+    for recipe in DIVERSITY_RECIPES:
         curve = subset[subset["recipe"] == recipe].sort_values("budget")
         if len(curve) != 4:
             raise ValueError(f"Expected four diversity budgets for {recipe}")
@@ -222,7 +233,8 @@ def plot_diversity(axis: plt.Axes, frame: pd.DataFrame) -> None:
             curve["budget"],
             curve["effective_clusters"],
             color=COLORS[recipe],
-            marker="o",
+            marker=MARKERS[recipe],
+            linestyle=LINESTYLES[recipe],
             markersize=4.5 if highlighted else 3.5,
             linewidth=2.7 if highlighted else 1.35,
             alpha=1.0 if highlighted else 0.85,
@@ -232,9 +244,28 @@ def plot_diversity(axis: plt.Axes, frame: pd.DataFrame) -> None:
     axis.set_xlim(17, 1180)
     axis.set_xticks([20, 100, 500, 1000])
     axis.set_xticklabels(["20", "100", "500", "1,000"])
+    axis.set_ylim(0, 255)
     axis.set_xlabel("Attempt budget")
-    axis.set_ylabel("Mean effective clusters at 0.5 Å")
-    axis.set_title("F   Geometric breadth", loc="left", pad=9, fontweight="bold")
+    axis.set_ylabel("Mean effective clusters")
+    axis.set_title("C   Geometric breadth", loc="left", pad=9, fontweight="bold")
+    axis.annotate(
+        "50:50 retains about\n2$\\times$ LoQI breadth",
+        xy=(1000, 131.76),
+        xytext=(52, 168),
+        color="#67267D",
+        fontsize=7.0,
+        arrowprops=dict(arrowstyle="-", color="#7B3294", linewidth=0.8),
+    )
+    axis.text(
+        0.97,
+        0.96,
+        "0.5 Å clusters",
+        transform=axis.transAxes,
+        ha="right",
+        va="top",
+        fontsize=6.6,
+        color="#66717A",
+    )
     style_axis(axis)
 
 
@@ -283,7 +314,11 @@ def format_contrast(values: tuple[float, float, float]) -> str:
     return text
 
 
-def build_main_table(coverage: pd.DataFrame, paired: pd.DataFrame) -> None:
+def build_main_table(
+    coverage: pd.DataFrame,
+    paired: pd.DataFrame,
+    diversity: pd.DataFrame,
+) -> None:
     reference = reference_coverage(coverage)
     ligand_families = ["individual_ligand", "shared_ligand"]
     means = reference.pivot_table(
@@ -314,12 +349,22 @@ def build_main_table(coverage: pd.DataFrame, paired: pd.DataFrame) -> None:
             cells.append(format_contrast(paired_contrast(paired, family, budget, left, right)))
         rows.append(f"{budget:,} & {label} & {cells[0]} & {cells[1]} \\\\")
 
+    diversity_endpoint = diversity[
+        (diversity["budget"] == 1000)
+        & np.isclose(diversity["cluster_radius"], REFERENCE_RADIUS)
+    ].set_index("recipe")["effective_clusters"]
+    diversity_text = "; ".join(
+        f"{SHORT_LABELS[recipe].replace('/', ':')}: "
+        f"{diversity_endpoint.loc[recipe]:.2f}"
+        for recipe in DIVERSITY_RECIPES
+    )
+
     content = r"""% Rebuild with results-data/cdpkit-pharmacophore-mixture/render.py.
 \begin{table*}[htbp]
 \centering\footnotesize
 \setlength{\tabcolsep}{5.5pt}
 \renewcommand{\arraystretch}{1.22}
-\caption{Key ligand-only contrasts in the stringent pharmacophore comparison.}
+\caption{Key ligand-only contrasts and geometric breadth in the stringent pharmacophore comparison.}
 \label{tab:pharmacophore-mixture}
 \par\smallskip
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlll@{}}
@@ -327,18 +372,25 @@ def build_main_table(coverage: pd.DataFrame, paired: pd.DataFrame) -> None:
 \textbf{Budget} & \textbf{Contrast} & \textbf{Individual ligand (pp [95\% interval])} & \textbf{Shared ligand (pp [95\% interval])} \\
 \midrule
 """ + "\n".join(rows) + r"""
+\midrule
+\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (effective clusters at 0.5~\AA{})}} \\
+\multicolumn{4}{l}{""" + diversity_text + r"""} \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
+Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Effective cluster counts are global allocation-level means across 20 reproducible draws and are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
 \end{minipage}
 \end{table*}
 """
     (ROOT / "tables" / "pharmacophore-mixture.tex").write_text(content)
 
 
-def build_supporting_tables(coverage: pd.DataFrame, scope: pd.DataFrame) -> None:
+def build_supporting_tables(
+    coverage: pd.DataFrame,
+    scope: pd.DataFrame,
+    diversity: pd.DataFrame,
+) -> None:
     reference = reference_coverage(coverage)
     primary_n = (
         reference[reference["budget"] == 20]
@@ -354,6 +406,10 @@ def build_supporting_tables(coverage: pd.DataFrame, scope: pd.DataFrame) -> None
         )
 
     k1000 = reference[reference["budget"] == 1000].pivot(index="recipe", columns="family", values="coverage")
+    endpoint_diversity = diversity[
+        (diversity["budget"] == 1000)
+        & np.isclose(diversity["cluster_radius"], REFERENCE_RADIUS)
+    ].set_index("recipe")["effective_clusters"]
     all_recipes = [
         "qwen", "qwen75_loqi25", "qwen50_loqi50", "qwen25_loqi75", "loqi",
         "rdkit_raw", "rdkit_minimized",
@@ -362,7 +418,10 @@ def build_supporting_tables(coverage: pd.DataFrame, scope: pd.DataFrame) -> None
     for index, recipe in enumerate(all_recipes):
         shade = "\\rowcolor{tableShade}\n" if index % 2 == 0 else ""
         values = " & ".join(f"{100 * k1000.loc[recipe, family]:.2f}" for family in FAMILIES)
-        endpoint_rows.append(f"{shade}{latex_method(recipe)} & {values} \\\\")
+        endpoint_rows.append(
+            f"{shade}{latex_method(recipe)} & {values} & "
+            f"{endpoint_diversity.loc[recipe]:.2f} \\\\"
+        )
 
     content = r"""% Rebuild with results-data/cdpkit-pharmacophore-mixture/render.py.
 \begin{table}[htbp]
@@ -382,22 +441,22 @@ Query counts span all feature requirements and radii. The manuscript display use
 \end{minipage}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering\footnotesize
-\caption{Expected stringent pharmacophore-query coverage at budget 1,000.}
+\caption{Expected stringent pharmacophore-query coverage and geometric breadth at budget 1,000.}
 \label{tab:cdpkit-endpoint-coverage}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrr}
 \toprule
-\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} \\
+\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} & \textbf{Eff. clusters} \\
 \midrule
 """ + "\n".join(endpoint_rows) + r"""
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{0.95\linewidth}\footnotesize
-Values are percentages for the six-of-six, 0.5~\AA{} query. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
+Coverage values are percentages for the six-of-six, 0.5~\AA{} query. Effective clusters use the 0.5~\AA{} RMSD threshold and are global allocation-level means across 20 reproducible draws at budget 1,000. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
 \end{minipage}
-\end{table}
+\end{table*}
 """
     (ROOT / "tables" / "supporting-pharmacophore-mixture.tex").write_text(content)
 
@@ -433,37 +492,38 @@ def main() -> None:
             "savefig.facecolor": "white",
         }
     )
-    figure = plt.figure(figsize=(12.4, 6.1))
+    figure = plt.figure(figsize=(12.4, 7.2))
     grid = GridSpec(
         2,
-        3,
+        6,
         figure=figure,
-        width_ratios=[1.0, 1.0, 0.66],
+        height_ratios=[1.08, 0.82],
         hspace=0.48,
-        wspace=0.30,
+        wspace=0.70,
         left=0.065,
         right=0.985,
-        bottom=0.12,
-        top=0.84,
+        bottom=0.10,
+        top=0.86,
     )
     axes = [
-        figure.add_subplot(grid[:, 0]),
-        figure.add_subplot(grid[:, 1]),
-        figure.add_subplot(grid[0, 2]),
-        figure.add_subplot(grid[1, 2]),
+        figure.add_subplot(grid[0, 0:3]),
+        figure.add_subplot(grid[0, 3:6]),
+        figure.add_subplot(grid[1, 0:2]),
+        figure.add_subplot(grid[1, 2:4]),
+        figure.add_subplot(grid[1, 4:6]),
     ]
     plot_coverage(axes[0], reference, "individual_ligand", "A")
     plot_coverage(axes[1], reference, "shared_ligand", "B")
+    plot_diversity(axes[2], diversity)
     plot_coverage(
-        axes[2], reference, "individual_interaction", "C", secondary=True
+        axes[3], reference, "individual_interaction", "D", secondary=True
     )
-    plot_coverage(axes[3], reference, "shared_protein", "D", secondary=True)
+    plot_coverage(axes[4], reference, "shared_protein", "E", secondary=True)
     axes[1].tick_params(labelleft=False)
     axes[1].set_ylabel("")
-    axes[2].tick_params(labelbottom=False)
-    axes[2].set_xlabel("")
-    axes[2].set_ylabel("Coverage (%)")
     axes[3].set_ylabel("Coverage (%)")
+    axes[4].tick_params(labelleft=False)
+    axes[4].set_ylabel("")
 
     axes[0].annotate(
         "LoQI leads Qwen at $K=20$",
@@ -501,14 +561,14 @@ def main() -> None:
             linewidth=2.7 if recipe == "qwen50_loqi50" else 1.7,
             label=LABELS[recipe],
         )
-        for recipe in MAIN_RECIPES
+        for recipe in MAIN_LEGEND_RECIPES
     ]
     figure.legend(
         handles=handles,
         loc="upper center",
-        ncol=5,
+        ncol=6,
         frameon=False,
-        fontsize=8.2,
+        fontsize=7.7,
         bbox_to_anchor=(0.5, 0.985),
     )
 
@@ -536,8 +596,8 @@ def main() -> None:
         shutil.copy2(HERE / source_name, destination)
         outputs.append(destination)
 
-    build_main_table(coverage, paired_ligand)
-    build_supporting_tables(coverage, scope)
+    build_main_table(coverage, paired_ligand, diversity)
+    build_supporting_tables(coverage, scope, diversity)
     outputs.extend(
         [
             ROOT / "tables" / "pharmacophore-mixture.tex",

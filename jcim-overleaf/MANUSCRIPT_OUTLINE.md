@@ -16,9 +16,11 @@ default when one fixed, untuned allocation is required. LoQI is stronger at budg
 20, Qwen gains with scale, and both learned sources exceed RDKit at budget 1,000.
 The equal allocation exceeds either pure source in all eight ligand-only family--budget
 cells, but most increments over the stronger pure source include zero. The policy
-therefore combines complementary budget profiles, equal representation, and
-avoidance of weight fitting on 19--21 molecules. It is not a universal-winner claim
-and does not introduce a combined coverage/diversity or coverage/runtime score.
+therefore combines complementary budget profiles, retained geometric breadth, equal
+representation, and avoidance of weight fitting on 19--21 molecules. At budget
+1,000, 50:50 has 131.8 effective clusters, approximately twice LoQI but below 75:25
+and Qwen. It is not a universal-winner claim and does not introduce a combined
+coverage/diversity or coverage/runtime score.
 
 ## Verified CoordToken and Qwen training, 6 November 2026
 

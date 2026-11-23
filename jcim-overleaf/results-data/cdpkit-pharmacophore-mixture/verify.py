@@ -113,11 +113,42 @@ def main() -> None:
         )
         assert difference[1] > 0
 
+    diversity_reference = diversity[
+        np.isclose(diversity["cluster_radius"], 0.5)
+    ].pivot(index="budget", columns="recipe", values="effective_clusters")
+    for budget in [20, 100, 500, 1000]:
+        row = diversity_reference.loc[budget]
+        assert (
+            row["qwen"]
+            > row["qwen75_loqi25"]
+            > row["qwen50_loqi50"]
+            > row["loqi"]
+        )
+    np.testing.assert_allclose(
+        diversity_reference.loc[
+            1000,
+            ["qwen", "qwen75_loqi25", "qwen50_loqi50", "loqi"],
+        ],
+        [233.185991, 185.090962, 131.757643, 66.719306],
+        atol=5e-7,
+    )
+
     main_table = (ROOT / "tables" / "pharmacophore-mixture.tex").read_text()
     results = (ROOT / "results.tex").read_text()
     discussion = (ROOT / "discussion.tex").read_text()
     conclusions = (ROOT / "conclusions.tex").read_text()
-    for token in ["+9.97", "+14.60", "+3.97", "+3.38", "+25.04", "+24.87"]:
+    for token in [
+        "+9.97",
+        "+14.60",
+        "+3.97",
+        "+3.38",
+        "+25.04",
+        "+24.87",
+        "233.19",
+        "185.09",
+        "131.76",
+        "66.72",
+    ]:
         assert token in main_table, token
     assert "2,352" in results and "57,459" in results
     assert "allocation decision uses the two ligand-only" in results
@@ -125,7 +156,7 @@ def main() -> None:
     assert "recommend generating 50\\%" in conclusions
     print(
         "Verified 2,352 primary coverage cells, 168 stringent ligand-only contrasts, "
-        "all archived/rendered hashes, and the ligand-led 50:50 manuscript claims."
+        "all archived/rendered hashes, and the coverage--diversity 50:50 claims."
     )
 
 

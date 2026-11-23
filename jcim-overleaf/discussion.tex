@@ -83,15 +83,20 @@ Both learned sources substantially exceed the RDKit controls at the larger budge
 Within the stringent six-feature comparison, the 50:50 allocation exceeds either
 pure source in all eight ligand-only family--budget cells. Its interval relative to
 the stronger pure generator excludes zero in the individual-ligand family at budgets
-100 and 500.
-This supports equal allocation as a balanced production default.
+100 and 500. Diversity supplies a complementary guardrail: at budget 1,000, 50:50
+retains approximately twice LoQI's effective cluster count, although Qwen and 75:25
+remain broader. Coverage and breadth together support equal allocation as a balanced
+production default rather than a winner on every metric.
 
 The recommendation is operational rather than a claim that 50:50 is a uniquely
 optimal ratio. Six of its eight increments over the stronger pure mean have intervals
 that include zero, and the panel contains only 19--21 independent molecules per
 ligand-only family. Equal allocation nevertheless avoids fitting a source weight to
 this small panel and protects against the observed Qwen--LoQI budget crossover when
-one fixed policy is required. Protein-informed queries confirm that the learned
+one fixed policy is required. The 75:25 allocation is a reasonable alternative when
+geometric breadth is prioritized, but selecting that unequal weight would tune the
+policy to this small exploratory panel; pure Qwen remains the diversity maximum.
+Protein-informed queries confirm that the learned
 sources remain stronger than RDKit at scale, but they do not determine the allocation
 because their construction uses information unavailable during generation. The
 complete condition grid and unequal fixed ratios remain disclosed in the Supporting

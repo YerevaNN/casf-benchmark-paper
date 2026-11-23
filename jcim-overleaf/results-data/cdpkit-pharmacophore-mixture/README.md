@@ -33,8 +33,11 @@ Qwen gains relative to LoQI as the library expands. The 50:50 allocation exceeds
 either pure source in all eight ligand-only family--budget cells, although six
 of its eight increments over the stronger pure source have intervals that include
 zero. The recommendation combines this crossover with equal source representation
-and avoidance of fitting a mixture weight on only 19--21 molecules. Unequal fixed
-allocations and the protein-informed families remain in the Supporting Information.
-No combined coverage--diversity or coverage--runtime score is constructed, and
+and avoidance of fitting a mixture weight on only 19--21 molecules. Diversity is a
+secondary selection axis: at budget 1,000, 50:50 has 131.8 effective clusters versus
+66.7 for LoQI, 185.1 for 75:25, and 233.2 for Qwen. Thus 50:50 retains approximately
+twice LoQI's breadth but does not maximize diversity. Unequal fixed allocations and
+the protein-informed families remain in the Supporting Information. No combined
+coverage--diversity or coverage--runtime score is constructed, and
 generation time is excluded because the generators were not benchmarked under a
 common hardware and execution protocol.

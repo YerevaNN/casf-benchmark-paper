@@ -19,29 +19,29 @@ Query counts span all feature requirements and radii. The manuscript display use
 \end{minipage}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering\footnotesize
-\caption{Expected stringent pharmacophore-query coverage at budget 1,000.}
+\caption{Expected stringent pharmacophore-query coverage and geometric breadth at budget 1,000.}
 \label{tab:cdpkit-endpoint-coverage}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrr}
 \toprule
-\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} \\
+\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} & \textbf{Eff. clusters} \\
 \midrule
 \rowcolor{tableShade}
-Qwen & 84.92 & 85.76 & 92.70 & 88.03 \\
-Qwen/LoQI 75:25 & 86.57 & 87.37 & 93.69 & 88.60 \\
+Qwen & 84.92 & 85.76 & 92.70 & 88.03 & 233.19 \\
+Qwen/LoQI 75:25 & 86.57 & 87.37 & 93.69 & 88.60 & 185.09 \\
 \rowcolor{tableShade}
-\textbf{Qwen/LoQI 50:50} & 86.31 & 87.24 & 93.70 & 87.08 \\
-Qwen/LoQI 25:75 & 85.09 & 86.02 & 93.08 & 84.15 \\
+\textbf{Qwen/LoQI 50:50} & 86.31 & 87.24 & 93.70 & 87.08 & 131.76 \\
+Qwen/LoQI 25:75 & 85.09 & 86.02 & 93.08 & 84.15 & 92.97 \\
 \rowcolor{tableShade}
-LoQI & 79.37 & 79.72 & 89.85 & 75.82 \\
-RDKit raw & 61.27 & 46.07 & 66.71 & 53.64 \\
+LoQI & 79.37 & 79.72 & 89.85 & 75.82 & 66.72 \\
+RDKit raw & 61.27 & 46.07 & 66.71 & 53.64 & 120.13 \\
 \rowcolor{tableShade}
-RDKit minimized & 60.63 & 60.91 & 68.83 & 55.36 \\
+RDKit minimized & 60.63 & 60.91 & 68.83 & 55.36 & 89.27 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{0.95\linewidth}\footnotesize
-Values are percentages for the six-of-six, 0.5~\AA{} query. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
+Coverage values are percentages for the six-of-six, 0.5~\AA{} query. Effective clusters use the 0.5~\AA{} RMSD threshold and are global allocation-level means across 20 reproducible draws at budget 1,000. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
 \end{minipage}
-\end{table}
+\end{table*}

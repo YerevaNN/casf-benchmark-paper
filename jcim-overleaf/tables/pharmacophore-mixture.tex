@@ -3,7 +3,7 @@
 \centering\footnotesize
 \setlength{\tabcolsep}{5.5pt}
 \renewcommand{\arraystretch}{1.22}
-\caption{Key ligand-only contrasts in the stringent pharmacophore comparison.}
+\caption{Key ligand-only contrasts and geometric breadth in the stringent pharmacophore comparison.}
 \label{tab:pharmacophore-mixture}
 \par\smallskip
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlll@{}}
@@ -15,10 +15,13 @@
 500 & 50:50 minus stronger pure$^{a}$ & \textbf{+3.38 [0.25, 6.73]} & +2.80 [-1.33, 9.34] \\
 1,000 & Qwen minus LoQI & \textbf{+5.56 [0.79, 11.59]} & +2.85 [-5.06, 13.54] \\
 1,000 & 50:50 minus best RDKit$^{b}$ & \textbf{+25.04 [14.69, 36.02]} & \textbf{+24.87 [12.51, 38.72]} \\
+\midrule
+\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (effective clusters at 0.5~\AA{})}} \\
+\multicolumn{4}{l}{Qwen: 233.19; 75:25: 185.09; 50:50: 131.76; LoQI: 66.72} \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
+Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Effective cluster counts are global allocation-level means across 20 reproducible draws and are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
 \end{minipage}
 \end{table*}
