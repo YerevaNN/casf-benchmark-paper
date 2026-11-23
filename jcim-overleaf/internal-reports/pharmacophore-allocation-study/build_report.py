@@ -25,17 +25,25 @@ ANALYSIS_DIR = Path(
 ANALYSIS_TABLES = ANALYSIS_DIR / "tables"
 
 BUDGETS = [20, 100, 500, 1000]
+# Put ligand-only tasks first because they are the primary evidence for selecting
+# a reusable, protein-agnostic library.
 FAMILIES = [
     "individual_ligand",
-    "individual_interaction",
     "shared_ligand",
+    "individual_interaction",
     "shared_protein",
 ]
 FAMILY_LABELS = {
     "individual_ligand": "Individual ligand",
-    "individual_interaction": "Individual interaction",
     "shared_ligand": "Shared ligand",
+    "individual_interaction": "Individual interaction",
     "shared_protein": "Shared protein",
+}
+FAMILY_INFORMATION = {
+    "individual_ligand": "One ligand pose",
+    "shared_ligand": "Two or three ligand poses",
+    "individual_interaction": "One protein–ligand complex",
+    "shared_protein": "Two or three aligned protein sites",
 }
 RECIPES = [
     "qwen",
@@ -46,6 +54,8 @@ RECIPES = [
     "rdkit_raw",
     "rdkit_minimized",
 ]
+LEARNED_RECIPES = RECIPES[:5]
+RDKIT_RECIPES = RECIPES[-2:]
 RECIPE_LABELS = {
     "qwen": "Qwen",
     "loqi": "LoQI",
@@ -61,7 +71,7 @@ COLORS = {
     "qwen50_loqi50": "#8E44AD",
     "qwen75_loqi25": "#009E73",
     "qwen25_loqi75": "#CC79A7",
-    "rdkit_raw": "#6C757D",
+    "rdkit_raw": "#7B838A",
     "rdkit_minimized": "#343A40",
 }
 LINESTYLES = {
@@ -69,7 +79,7 @@ LINESTYLES = {
     "loqi": "-",
     "qwen50_loqi50": "-",
     "qwen75_loqi25": "-",
-    "qwen25_loqi75": "-",
+    "qwen25_loqi75": "-.",
     "rdkit_raw": "--",
     "rdkit_minimized": ":",
 }
@@ -96,7 +106,13 @@ def markdown_table(headers: list[str], rows: list[list[object]]) -> str:
 def save_figure(fig: plt.Figure, stem: str) -> None:
     FIGURE_DIR.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIGURE_DIR / f"{stem}.png", dpi=220, bbox_inches="tight")
-    fig.savefig(FIGURE_DIR / f"{stem}.svg", bbox_inches="tight")
+    svg_path = FIGURE_DIR / f"{stem}.svg"
+    fig.savefig(svg_path, bbox_inches="tight")
+    svg_text = svg_path.read_text(encoding="utf-8")
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n",
+        encoding="utf-8",
+    )
     plt.close(fig)
 
 
@@ -144,28 +160,26 @@ def plot_strict_coverage(strict: pd.DataFrame) -> None:
                 100 * values["coverage"],
                 marker="o",
                 markersize=4.2,
-                linewidth=2,
+                linewidth=1.6 if recipe == "qwen25_loqi75" else 2.2,
+                alpha=0.75 if recipe == "qwen25_loqi75" else 1.0,
                 color=COLORS[recipe],
                 linestyle=LINESTYLES[recipe],
                 label=RECIPE_LABELS[recipe],
             )
-            ax.fill_between(
-                values["budget"].to_numpy(),
-                (100 * values["ci_low"]).to_numpy(),
-                (100 * values["ci_high"]).to_numpy(),
-                color=COLORS[recipe],
-                alpha=0.045,
-                linewidth=0,
-            )
-        ax.set_title(FAMILY_LABELS[family], loc="left", fontweight="bold")
+        role = (
+            "ligand-only selection task"
+            if family in {"individual_ligand", "shared_ligand"}
+            else "protein-informed check"
+        )
+        ax.set_title(f"{FAMILY_LABELS[family]}\n{role}", loc="left", fontweight="bold")
         ax.set_xscale("log")
         ax.set_xticks(BUDGETS)
         ax.get_xaxis().set_major_formatter(ScalarFormatter())
         ax.tick_params(axis="x", labelbottom=True)
         ax.set_ylim(0, 102)
         ax.set_yticks([0, 20, 40, 60, 80, 100])
-        ax.set_ylabel("Coverage (%)")
-        ax.set_xlabel("Cached-conformer budget")
+        ax.set_ylabel("Queries covered (%)")
+        ax.set_xlabel("Cached candidates allowed")
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(
         handles,
@@ -177,7 +191,7 @@ def plot_strict_coverage(strict: pd.DataFrame) -> None:
         handlelength=2.8,
     )
     fig.suptitle(
-        "Stringent pharmacophore coverage across all four query families",
+        "Hard task: all six features must match within 0.5 Å",
         fontsize=15,
         fontweight="bold",
         y=1.01,
@@ -185,12 +199,12 @@ def plot_strict_coverage(strict: pd.DataFrame) -> None:
     fig.text(
         0.5,
         0.965,
-        "Six of six features within 0.5 Å; shaded regions are 95% molecule-bootstrap intervals",
+        "Each panel is a separate task; values are not averaged across task families",
         ha="center",
         fontsize=10,
         color="#4F5B66",
     )
-    fig.tight_layout(rect=(0, 0.08, 1, 0.95))
+    fig.tight_layout(rect=(0, 0.08, 1, 0.94))
     save_figure(fig, "strict-coverage-by-budget")
 
 
@@ -218,7 +232,7 @@ def plot_full_grid_heatmap(primary: pd.DataFrame) -> None:
             ax.set_yticklabels([RECIPE_LABELS[recipe] for recipe in RECIPES])
         else:
             ax.set_yticklabels([])
-        ax.set_xlabel("Cached-conformer budget")
+        ax.set_xlabel("Cached candidates allowed")
         for row_index in range(matrix.shape[0]):
             for col_index in range(matrix.shape[1]):
                 value = matrix.iloc[row_index, col_index]
@@ -234,17 +248,12 @@ def plot_full_grid_heatmap(primary: pd.DataFrame) -> None:
     assert image is not None
     color_axis = fig.add_axes([0.925, 0.14, 0.016, 0.72])
     colorbar = fig.colorbar(image, cax=color_axis)
-    colorbar.set_label("Mean coverage across 21 query definitions (%)")
-    fig.suptitle(
-        "Complete primary-grid sensitivity summary",
-        fontsize=15,
-        fontweight="bold",
-        y=1.01,
-    )
+    colorbar.set_label("Descriptive mean coverage (%)")
+    fig.suptitle("Full-grid sensitivity check", fontsize=15, fontweight="bold", y=1.01)
     fig.text(
         0.5,
         0.965,
-        "Each cell averages seven feature requirements and three positional tolerances",
+        "Each cell averages seven feature rules and three distance tolerances",
         ha="center",
         fontsize=10,
         color="#4F5B66",
@@ -260,139 +269,44 @@ def plot_full_grid_heatmap(primary: pd.DataFrame) -> None:
     save_figure(fig, "full-grid-mean-coverage")
 
 
-def plot_allocation_difference(primary: pd.DataFrame) -> None:
-    index = [
-        "family",
-        "condition",
-        "radius_angstrom",
-        "construction_count",
-        "support_rule",
-        "budget",
-    ]
-    pivot = primary.pivot_table(index=index, columns="recipe", values="coverage").reset_index()
-    pivot["difference_pp"] = 100 * (
-        pivot["qwen75_loqi25"] - pivot["qwen50_loqi50"]
-    )
-    rng = np.random.default_rng(20261123)
-    fig, axes = plt.subplots(2, 2, figsize=(11.6, 7.8), sharex=True, sharey=True)
-    for panel_index, (ax, family) in enumerate(zip(axes.flat, FAMILIES)):
-        family_data = pivot[pivot["family"] == family]
-        values = [
-            family_data[family_data["budget"] == budget]["difference_pp"].to_numpy()
-            for budget in BUDGETS
-        ]
-        boxes = ax.boxplot(
-            values,
-            positions=np.arange(1, 5),
-            widths=0.55,
-            patch_artist=True,
-            showfliers=False,
-            medianprops={"color": "#17212B", "linewidth": 1.4},
-            whiskerprops={"color": "#6C757D"},
-            capprops={"color": "#6C757D"},
+def plot_diversity(diversity: pd.DataFrame) -> None:
+    selected = diversity[diversity["cluster_radius"] == 0.5]
+    fig, ax = plt.subplots(figsize=(9.6, 5.5))
+    for recipe in RECIPES:
+        values = selected[selected["recipe"] == recipe].sort_values("budget")
+        ax.plot(
+            values["budget"],
+            values["clusters"],
+            marker="o",
+            markersize=4.5,
+            linewidth=1.6 if recipe == "qwen25_loqi75" else 2.2,
+            alpha=0.75 if recipe == "qwen25_loqi75" else 1.0,
+            color=COLORS[recipe],
+            linestyle=LINESTYLES[recipe],
+            label=RECIPE_LABELS[recipe],
         )
-        for box in boxes["boxes"]:
-            box.set_facecolor("#A8D5C2")
-            box.set_edgecolor(COLORS["qwen75_loqi25"])
-        for position, points in enumerate(values, start=1):
-            jitter = rng.uniform(-0.16, 0.16, size=len(points))
-            ax.scatter(
-                position + jitter,
-                points,
-                s=13,
-                color="#4F5B66",
-                alpha=0.45,
-                linewidth=0,
-                zorder=2,
-            )
-            ax.scatter(
-                position,
-                np.mean(points),
-                marker="D",
-                s=32,
-                color="#D55E00",
-                edgecolor="white",
-                linewidth=0.5,
-                zorder=4,
-            )
-        ax.axhline(0, color="#17212B", linewidth=1, linestyle="--")
-        ax.set_title(FAMILY_LABELS[family], loc="left", fontweight="bold")
-        ax.set_xticks(np.arange(1, 5), [str(x) for x in BUDGETS])
-        ax.tick_params(axis="x", labelbottom=True)
-        ax.set_xlabel("Cached-conformer budget")
-        if panel_index % 2 == 0:
-            ax.set_ylabel("75:25 minus 50:50 coverage (percentage points)")
-        ax.set_ylim(-7, 3)
+    ax.set_xscale("log")
+    ax.set_xticks(BUDGETS)
+    ax.get_xaxis().set_major_formatter(ScalarFormatter())
+    ax.set_xlabel("Cached candidates allowed")
+    ax.set_ylabel("Mean number of distinct geometry clusters")
+    ax.set_ylim(bottom=0)
+    ax.legend(ncol=2, loc="upper left")
     fig.suptitle(
-        "The 50:50 and 75:25 ordering changes across query definitions",
+        "Geometric diversity at a 0.5 Å clustering radius",
         fontsize=15,
         fontweight="bold",
         y=1.01,
     )
     fig.text(
         0.5,
-        0.965,
-        "Each box contains all 21 feature-requirement and tolerance combinations; diamonds are means",
+        0.945,
+        "Symmetry-aware heavy-atom RMSD; 20 fixed draws across 22 molecules",
         ha="center",
         fontsize=10,
         color="#4F5B66",
     )
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
-    save_figure(fig, "allocation-difference-full-grid")
-
-
-def plot_diversity(diversity: pd.DataFrame) -> None:
-    selected = diversity[diversity["cluster_radius"] == 0.5]
-    fig, axes = plt.subplots(1, 2, figsize=(12.2, 4.8), sharex=True)
-    measures = [
-        ("clusters", "Mean greedy cluster count"),
-        ("effective_clusters", "Effective cluster count"),
-    ]
-    for ax, (column, label) in zip(axes, measures):
-        for recipe in RECIPES:
-            values = selected[selected["recipe"] == recipe].sort_values("budget")
-            ax.plot(
-                values["budget"],
-                values[column],
-                marker="o",
-                markersize=4.2,
-                linewidth=2,
-                color=COLORS[recipe],
-                linestyle=LINESTYLES[recipe],
-                label=RECIPE_LABELS[recipe],
-            )
-        ax.set_xscale("log")
-        ax.set_xticks(BUDGETS)
-        ax.get_xaxis().set_major_formatter(ScalarFormatter())
-        ax.set_xlabel("Cached-conformer budget")
-        ax.set_ylabel(label)
-        ax.set_title(label, loc="left", fontweight="bold")
-        ax.set_ylim(bottom=0)
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(
-        handles,
-        labels,
-        loc="lower center",
-        ncol=4,
-        bbox_to_anchor=(0.5, -0.08),
-        columnspacing=1.5,
-        handlelength=2.8,
-    )
-    fig.suptitle(
-        "Conformational diversity across the same allocation budgets",
-        fontsize=15,
-        fontweight="bold",
-        y=1.03,
-    )
-    fig.text(
-        0.5,
-        0.955,
-        "Symmetry-aware heavy-atom RMSD clustering at 0.5 Å; 20 fixed draws across 22 molecules",
-        ha="center",
-        fontsize=10,
-        color="#4F5B66",
-    )
-    fig.tight_layout(rect=(0, 0.08, 1, 0.92))
+    fig.tight_layout(rect=(0, 0, 1, 0.91))
     save_figure(fig, "diversity-by-budget")
 
 
@@ -405,251 +319,144 @@ def runtime_frame() -> pd.DataFrame:
         ("qwen25_loqi75", 0.25),
         ("loqi", 0.00),
     ]:
-        relative_qwen_cost = qwen_fraction + 2 * (1 - qwen_fraction)
+        relative_cost = qwen_fraction + 2 * (1 - qwen_fraction)
         rows.append(
             {
                 "recipe": recipe,
-                "qwen_fraction": qwen_fraction,
-                "cost_qwen_units": relative_qwen_cost,
-                "time_vs_50": 100 * relative_qwen_cost / 1.5,
-                "throughput_vs_50": 100 * 1.5 / relative_qwen_cost,
+                "time_vs_50": 100 * relative_cost / 1.5,
+                "throughput_vs_50": 100 * 1.5 / relative_cost,
             }
         )
     return pd.DataFrame(rows)
 
 
 def plot_runtime(runtime: pd.DataFrame) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.7))
+    fig, ax = plt.subplots(figsize=(8.8, 5.0))
     labels = [RECIPE_LABELS[recipe] for recipe in runtime["recipe"]]
     colors = [COLORS[recipe] for recipe in runtime["recipe"]]
     positions = np.arange(len(runtime))
-    for ax, column, title, ylabel in [
-        (
-            axes[0],
-            "time_vs_50",
-            "Estimated generation time",
-            "Time relative to 50:50 (%)",
-        ),
-        (
-            axes[1],
-            "throughput_vs_50",
-            "Estimated equal-time throughput",
-            "Candidates relative to 50:50 (%)",
-        ),
-    ]:
-        bars = ax.bar(positions, runtime[column], color=colors, width=0.68)
-        ax.axhline(100, color="#17212B", linewidth=1, linestyle="--")
-        ax.set_xticks(positions, labels, rotation=25, ha="right")
-        ax.set_ylabel(ylabel)
-        ax.set_title(title, loc="left", fontweight="bold")
-        ax.set_ylim(0, max(runtime[column]) * 1.18)
-        for bar, value in zip(bars, runtime[column]):
-            ax.text(
-                bar.get_x() + bar.get_width() / 2,
-                value + 2.5,
-                f"{value:.1f}%",
-                ha="center",
-                va="bottom",
-                fontsize=9,
-            )
+    bars = ax.bar(positions, runtime["time_vs_50"], color=colors, width=0.68)
+    ax.axhline(100, color="#17212B", linewidth=1, linestyle="--")
+    ax.set_xticks(positions, labels, rotation=20, ha="right")
+    ax.set_ylabel("Estimated time relative to 50:50 (%)")
+    ax.set_ylim(0, max(runtime["time_vs_50"]) * 1.15)
+    for bar, value in zip(bars, runtime["time_vs_50"]):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + 2.5,
+            f"{value:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
     fig.suptitle(
-        "Runtime sensitivity if Qwen throughput is twice LoQI throughput",
+        "Simple timing estimate if Qwen is twice as fast as LoQI",
         fontsize=15,
         fontweight="bold",
-        y=1.03,
+        y=1.01,
     )
     fig.text(
         0.5,
-        0.95,
-        "Calculation only; the pharmacophore experiment did not run a controlled timing benchmark",
+        0.94,
+        "Calculation only; no controlled generator timing was performed in this experiment",
         ha="center",
         fontsize=10,
         color="#4F5B66",
     )
-    fig.tight_layout(rect=(0, 0, 1, 0.91))
+    fig.tight_layout(rect=(0, 0, 1, 0.90))
     save_figure(fig, "runtime-sensitivity")
 
 
-def pairwise_grid_summary(paired: pd.DataFrame) -> pd.DataFrame:
-    selected = paired[primary_mask(paired)].copy()
+def hard_coverage_rows(strict: pd.DataFrame, budget: int) -> list[list[str]]:
+    selected = strict[strict["budget"] == budget].pivot(
+        index="recipe", columns="family", values="coverage"
+    )
     rows = []
-    for comparator in ["loqi", "rdkit_raw", "rdkit_minimized"]:
-        qwen_left = selected[
-            (selected["left"] == "qwen") & (selected["right"] == comparator)
-        ].copy()
-        qwen_right = selected[
-            (selected["left"] == comparator) & (selected["right"] == "qwen")
-        ].copy()
-        if not qwen_right.empty:
-            original_low = qwen_right["ci_low"].copy()
-            qwen_right["difference"] = -qwen_right["difference"]
-            qwen_right["ci_low"] = -qwen_right["ci_high"]
-            qwen_right["ci_high"] = -original_low
-        subset = pd.concat([qwen_left, qwen_right], ignore_index=True)
-        assert len(subset) == 336, (comparator, len(subset))
-        difference = subset["difference"].to_numpy()
-        equality_tolerance = 1e-8
+    for recipe in RECIPES:
         rows.append(
-            {
-                "comparator": comparator,
-                "cells": len(subset),
-                "qwen_higher": int(np.sum(difference > equality_tolerance)),
-                "equal": int(np.sum(np.abs(difference) <= equality_tolerance)),
-                "comparator_higher": int(np.sum(difference < -equality_tolerance)),
-                "interval_qwen": int(np.sum(subset["ci_low"] > 0)),
-                "interval_zero": int(
-                    np.sum((subset["ci_low"] <= 0) & (subset["ci_high"] >= 0))
-                ),
-                "interval_comparator": int(np.sum(subset["ci_high"] < 0)),
-            }
+            [
+                RECIPE_LABELS[recipe],
+                *[f"{100 * selected.loc[recipe, family]:.2f}%" for family in FAMILIES],
+            ]
         )
-    return pd.DataFrame(rows)
+    return rows
+
+
+def signed_points(value: float) -> str:
+    return f"{value:+.2f} points"
 
 
 def build_report(
     coverage: pd.DataFrame,
     full_coverage: pd.DataFrame,
-    paired: pd.DataFrame,
     diversity: pd.DataFrame,
     scope: pd.DataFrame,
     validity: pd.DataFrame,
     runtime: pd.DataFrame,
 ) -> str:
-    primary = coverage.copy()
-    strict = primary[
-        (primary["condition"] == "6/6") & (primary["radius_angstrom"] == 0.5)
+    strict = coverage[
+        (coverage["condition"] == "6/6") & (coverage["radius_angstrom"] == 0.5)
     ].copy()
-    strict_scope = strict[(strict["recipe"] == "qwen") & (strict["budget"] == 1000)][
-        ["family", "molecules", "parents", "queries"]
-    ]
-    scope_table = scope.merge(strict_scope, on="family", how="left")
-    scope_table["family_order"] = scope_table["family"].map(
-        {family: index for index, family in enumerate(FAMILIES)}
-    )
-    scope_table = scope_table.sort_values("family_order")
 
+    strict_scope = strict[(strict["recipe"] == "qwen") & (strict["budget"] == 1000)][
+        ["family", "molecules", "queries"]
+    ].rename(columns={"molecules": "strict_molecules", "queries": "strict_queries"})
+    scope_table = scope.merge(strict_scope, on="family", how="left").set_index("family")
     query_rows = []
-    for row in scope_table.itertuples(index=False):
+    for family in FAMILIES:
+        row = scope_table.loc[family]
         query_rows.append(
             [
-                FAMILY_LABELS[row.family],
-                f"{row.queries_x:,}",
-                f"{row.parents_x:,}",
-                str(row.molecules_with_queries),
-                f"{row.queries_y:,}",
-                str(row.molecules),
+                FAMILY_LABELS[family],
+                FAMILY_INFORMATION[family],
+                f"{int(row.queries):,}",
+                f"{int(row.strict_queries):,}",
+                str(int(row.strict_molecules)),
             ]
         )
 
     validity = validity.copy()
     validity["valid_yield"] = 100 * validity["valid_for_coverage"] / validity["supplied"]
     validity_rows = []
-    validity_order = ["qwen", "loqi", "rdkit_raw", "rdkit_minimized"]
-    for method in validity_order:
+    for method in ["qwen", "loqi", "rdkit_raw", "rdkit_minimized"]:
         row = validity[validity["method"] == method].iloc[0]
         validity_rows.append(
             [
                 RECIPE_LABELS[method],
-                f"{int(row.supplied):,}",
-                f"{int(row.pb_pass):,}",
-                f"{int(row.identity_pass):,}",
-                f"{int(row.valid_for_coverage):,}",
+                f"{int(row.valid_for_coverage):,} of {int(row.supplied):,}",
                 f"{row.valid_yield:.2f}%",
             ]
         )
 
-    diversity_endpoint = diversity[
-        (diversity["cluster_radius"] == 0.5) & (diversity["budget"] == 1000)
-    ].set_index("recipe")
-    diversity_rows = []
-    for recipe in RECIPES:
-        row = diversity_endpoint.loc[recipe]
-        diversity_rows.append(
-            [
-                RECIPE_LABELS[recipe],
-                f"{row.clusters:.2f}",
-                f"{row.effective_clusters:.2f}",
-                f"{100 * row.largest_fraction:.1f}%",
-                f"{100 * row.valid_yield:.2f}%",
-            ]
-        )
-
-    runtime_rows = []
-    for row in runtime.itertuples(index=False):
-        runtime_rows.append(
-            [
-                RECIPE_LABELS[row.recipe],
-                f"{100 * row.qwen_fraction:.0f}%",
-                f"{100 * (1 - row.qwen_fraction):.0f}%",
-                f"{row.cost_qwen_units:.2f}",
-                f"{row.time_vs_50:.1f}%",
-                f"{row.throughput_vs_50:.1f}%",
-            ]
-        )
-
-    full_rank = primary.copy()
-    scenario_keys = [
-        "family",
-        "condition",
-        "radius_angstrom",
-        "construction_count",
-        "support_rule",
-        "budget",
-    ]
-    full_rank["rank"] = full_rank.groupby(scenario_keys)["coverage"].rank(
-        ascending=False, method="average"
+    strict_1000 = strict[strict["budget"] == 1000].pivot(
+        index="recipe", columns="family", values="coverage"
     )
-    rank_summary = (
-        full_rank.groupby("recipe", as_index=False)
-        .agg(mean_coverage=("coverage", "mean"), mean_rank=("rank", "mean"))
-        .set_index("recipe")
-    )
-    rank_rows = []
-    for recipe in RECIPES:
-        row = rank_summary.loc[recipe]
-        rank_rows.append(
-            [
-                RECIPE_LABELS[recipe],
-                "336",
-                f"{100 * row.mean_coverage:.2f}%",
-                f"{row.mean_rank:.2f}",
-            ]
-        )
-
-    pair_summary = pairwise_grid_summary(paired)
-    pair_rows = []
-    for row in pair_summary.itertuples(index=False):
-        pair_rows.append(
-            [
-                RECIPE_LABELS[row.comparator],
-                str(row.cells),
-                str(row.qwen_higher),
-                str(row.equal),
-                str(row.comparator_higher),
-                str(row.interval_qwen),
-                str(row.interval_zero),
-                str(row.interval_comparator),
-            ]
-        )
-
-    secondary = full_coverage[
-        full_coverage["family"].str.startswith("shared")
-        & (full_coverage["condition"] == "6/6")
-        & (full_coverage["radius_angstrom"] == 0.5)
-        & (full_coverage["budget"] == 1000)
-    ]
-    secondary_rows = []
-    for (family, count, support, molecules), group in secondary.groupby(
-        ["family", "construction_count", "support_rule", "molecules"], sort=False
-    ):
-        values = group.set_index("recipe")["coverage"] * 100
-        support_label = "all poses" if support == "all" else "at least two thirds"
-        secondary_rows.append(
+    direct_rows = []
+    for family in FAMILIES:
+        learned = strict_1000.loc[LEARNED_RECIPES, family]
+        rdkit = strict_1000.loc[RDKIT_RECIPES, family]
+        best_learned = learned.idxmax()
+        best_rdkit = rdkit.idxmax()
+        direct_rows.append(
             [
                 FAMILY_LABELS[family],
-                f"{count} poses, {support_label}",
-                str(molecules),
-                *[f"{values.loc[recipe]:.2f}%" for recipe in RECIPES],
+                signed_points(
+                    100
+                    * (
+                        strict_1000.loc["qwen", family]
+                        - strict_1000.loc["loqi", family]
+                    )
+                ),
+                signed_points(
+                    100
+                    * (
+                        strict_1000.loc["qwen75_loqi25", family]
+                        - strict_1000.loc["qwen50_loqi50", family]
+                    )
+                ),
+                f"{RECIPE_LABELS[best_learned]} ({100 * learned.max():.2f}%)",
+                f"{RECIPE_LABELS[best_rdkit]} ({100 * rdkit.max():.2f}%)",
+                signed_points(100 * (learned.max() - rdkit.max())),
             ]
         )
 
@@ -675,358 +482,379 @@ def build_report(
             ]
         )
 
-    strict_tables = []
-    for family in FAMILIES:
-        family_data = strict[strict["family"] == family]
-        rows = []
-        for recipe in RECIPES:
-            values = (
-                family_data[family_data["recipe"] == recipe]
-                .set_index("budget")["coverage"]
-                .reindex(BUDGETS)
-            )
-            rows.append(
-                [RECIPE_LABELS[recipe], *[f"{100 * value:.2f}%" for value in values]]
-            )
-        strict_tables.append(
-            f"### {FAMILY_LABELS[family]}\n\n"
-            + markdown_table(
-                ["Recipe", "Budget 20", "Budget 100", "Budget 500", "Budget 1,000"],
-                rows,
-            )
+    secondary = full_coverage[
+        full_coverage["family"].str.startswith("shared")
+        & (full_coverage["construction_count"] == 3)
+        & (full_coverage["condition"] == "6/6")
+        & (full_coverage["radius_angstrom"] == 0.5)
+        & (full_coverage["budget"] == 1000)
+    ]
+    secondary_rows = []
+    for (family, support, molecules), group in secondary.groupby(
+        ["family", "support_rule", "molecules"], sort=False
+    ):
+        values = group.set_index("recipe")["coverage"] * 100
+        best_rdkit = values.loc[RDKIT_RECIPES].idxmax()
+        secondary_rows.append(
+            [
+                FAMILY_LABELS[family],
+                "All three poses" if support == "all" else "At least two of three",
+                str(molecules),
+                f"{values.loc['qwen']:.2f}%",
+                f"{values.loc['loqi']:.2f}%",
+                f"{values.loc['qwen50_loqi50']:.2f}%",
+                f"{values.loc['qwen75_loqi25']:.2f}%",
+                f"{RECIPE_LABELS[best_rdkit]} ({values.loc[best_rdkit]:.2f}%)",
+            ]
         )
 
+    diversity_endpoint = diversity[
+        (diversity["cluster_radius"] == 0.5) & (diversity["budget"] == 1000)
+    ].set_index("recipe")
+    baseline_clusters = diversity_endpoint.loc["qwen50_loqi50", "clusters"]
+    diversity_rows = []
+    for recipe in RECIPES:
+        clusters = diversity_endpoint.loc[recipe, "clusters"]
+        diversity_rows.append(
+            [
+                RECIPE_LABELS[recipe],
+                f"{clusters:.2f}",
+                f"{clusters - baseline_clusters:+.2f}",
+            ]
+        )
+
+    runtime_rows = []
+    for row in runtime.itertuples(index=False):
+        runtime_rows.append(
+            [
+                RECIPE_LABELS[row.recipe],
+                f"{row.time_vs_50:.1f}%",
+                f"{row.throughput_vs_50:.1f}%",
+            ]
+        )
+
+    hard_headers = [
+        "Recipe",
+        "Individual ligand",
+        "Shared ligand",
+        "Individual interaction",
+        "Shared protein",
+    ]
     source_coverage = ANALYSIS_TABLES / "coverage_summary.csv"
-    source_paired = ANALYSIS_TABLES / "paired_recipe_differences.csv"
-    strict_tables_text = "\n\n".join(strict_tables)
 
     report = f"""# PLINDER-22 pharmacophore allocation experiment
 
 **Internal laboratory report · 23 November 2026**
 
-This experiment compared fixed conformer-library recipes built from Qwen, LoQI,
-three Qwen/LoQI mixtures, and RDKit. The main question was whether a generated library
-contains at least one conformer that satisfies pharmacophore arrangements observed
-in experimental structures. The generators received the ligand only; protein
-information was used only afterward to construct two of the evaluation-query families.
+This study asks a practical question: when we build a reusable conformer library,
+which pure source or fixed Qwen/LoQI allocation should fill its candidate slots?
+RDKit provides the conventional controls. The experiment
+does **not** confirm that 50:50, 75:25, or any other mixture is the single best policy.
+It shows which conclusions are clear, which depend on library size, and where the
+two main mixtures remain almost tied.
 
-The broad result is straightforward. LoQI is strong at small library sizes, Qwen
-improves more as the library grows, and the learned generators separate clearly
-from RDKit in the stringent large-library comparison. At 1,000 conformers, 50:50
-and 75:25 have almost identical coverage. Qwen and 75:25 retain more geometric
-diversity than 50:50. If Qwen is assumed to generate accepted conformers twice as
-fast as LoQI, 75:25 also has an estimated 16.7% generation-time advantage over
-50:50. This timing result is a sensitivity calculation, not a controlled benchmark.
+# Start with the query hypothesis
 
-# Experiment design
+A pharmacophore query is a **small 3D checklist**. It says that particular chemical
+features—for example, an aromatic center, one donor, and two acceptors—should occur
+at particular positions. A generated conformer covers the query if it places every
+requested feature close enough to those positions.
 
-## How the four query groups were constructed
+Imagine that the same ligand has experimental poses A, B, and C:
 
-- **Individual ligand:** Features were read from one experimental ligand pose. No
-  protein information was used. The query asks whether a generated conformer can
-  reproduce that pose-specific ligand feature arrangement.
+- **Individual ligand:** take the feature arrangement from pose A. Example: can a
+  generated conformer reproduce A's ring center, donor, and acceptors?
+- **Shared ligand:** align poses A and B by the ligand and keep the features found
+  in both. Example: can a conformer reproduce the ligand geometry that remains
+  common across the two structures?
+- **Individual interaction:** start from pose A in its protein complex and keep only
+  ligand features involved in contacts. Example: if one acceptor in A does not contact
+  the protein, it is left out of this query.
+- **Shared protein:** align the protein sites for A and B and keep contact features
+  supported in the common site frame. Example: can a conformer place its donor and
+  acceptors where both aligned binding sites use them?
 
-- **Individual interaction:** One experimental protein-ligand complex was used.
-  Only ligand features involved in the native interaction pattern were retained.
-  The query asks whether a ligand-only generated conformer can reproduce those
-  protein-selected ligand features.
-
-- **Shared ligand:** Several experimental poses of the same ligand were aligned by
-  their ligand features. Features supported across the construction poses were
-  retained. A separate PDB entry was held out from construction. The query asks
-  whether the library covers a ligand feature arrangement shared across structures.
-
-- **Shared protein:** Binding pockets were aligned using protein C-alpha atoms, and
-  interaction features were transferred into the common protein-site frame. They
-  were not realigned afterward by ligand features. A separate PDB entry was held
-  out. The query asks whether the library covers an interaction arrangement shared
-  in the aligned binding site.
+The first two families are ligand-only evaluations and are the primary evidence for
+selecting a protein-agnostic library. The last two use protein information only to
+evaluate the already generated conformers; they are useful binding-site relevance
+checks, but they should not by themselves determine a protein-agnostic generation
+policy.
 
 ![Examples of the four query constructions](figures/query-family-examples.png)
 
-The colored points are pharmacophore features. Gray points show the surrounding
-reference geometry. These are examples for explanation, not performance results.
+The colored points are the feature positions in the query. The molecular and protein
+geometry around them is shown only to explain where the hypotheses came from.
 
-## Query and panel size
+# What selection and coverage mean
+
+## Selection
+
+Selection here means **assigning library slots to a source before testing the
+queries**. It does not mean examining all conformers and keeping the best matches.
+
+- Qwen at budget 1,000 uses 1,000 cached Qwen candidates.
+- LoQI at budget 1,000 uses 1,000 cached LoQI candidates.
+- 50:50 uses 500 Qwen and 500 LoQI candidates.
+- 75:25 uses 750 Qwen and 250 LoQI candidates.
+- 25:75 was also run as an unequal-allocation sensitivity check.
+- Each RDKit control uses 1,000 candidates from its own cache.
+
+Rejected candidates still consume their assigned slots. The budget is therefore a
+**cached-candidate budget**, not the number of valid conformers and not the number of
+generation attempts.
+
+## Coverage
+
+One query is covered when at least one candidate:
+
+1. is chemically valid and has the correct molecular identity; and
+2. matches every feature required by that query within the chosen distance.
+
+If a library covers 80% of a set of queries, an intuitive reading is that it satisfies
+about 8 of every 10 3D checklists. The formal calculation first averages related
+queries within their parent hypothesis, then within each molecule, and finally gives
+each molecule equal weight.
+
+The main hard task in this report is **6/6 at 0.5 Å**: all six selected features must
+match, and every feature must be within half an ångström of its target position.
+
+# Experiment setup
+
+## Query scale
 
 {markdown_table(
     [
         "Query family",
-        "All queries",
-        "Parent hypotheses",
-        "Molecules with queries",
-        "Strict 6/6 queries",
-        "Strict molecules",
+        "Information used",
+        "Total queries",
+        "Hard 6/6 queries",
+        "Molecules in hard task",
     ],
     query_rows,
 )}
 
-- The panel contained **22 ligand identities and 1,067 experimental references**.
-- The full query construction produced **57,459 unique queries from 809 parent hypotheses**.
-- The primary allocation grid contained **2,352 coverage cells**: four families,
-  seven feature requirements, three tolerances, seven recipes, and four budgets.
-- Secondary shared-query constructions added another **2,352 cells**, producing
-  **4,704 coverage cells** in the complete analysis.
-- Feature requirements were 3/3, 4/4, 5/5, 6/6, 4/5, 5/6, and the complete available
-  hypothesis. Position tolerances were 0.5, 0.75, and 1.0 Å.
+- The panel contained 22 ligand identities and 1,067 experimental references.
+- Query construction produced 57,459 unique queries from 809 parent hypotheses.
+- The primary grid tested seven feature rules, three distance tolerances, seven
+  recipes, and four candidate budgets: 20, 100, 500, and 1,000.
+- Additional three-pose constructions were tested for the two shared-query families.
 
-## How candidate libraries were tested
-
-- Each source supplied a cache of 1,000 conformers per molecule. No new conformers
-  were generated for this analysis.
-- Candidate budgets were 20, 100, 500, and 1,000 cached conformers. Mixed libraries
-  used exact source quotas. For example, 75:25 at budget 1,000 used 750 Qwen and
-  250 LoQI cache entries.
-- A query was covered when at least one sampled conformer passed the native CDPKit
-  match, PoseBusters, stored-graph identity, and coordinate-derived identity checks.
-- Rejected entries still consumed the candidate budget and were not replaced.
-- Coverage was averaged within each parent hypothesis, then within each molecule,
-  and finally across molecules with equal molecule weight.
-- Intervals used 5,000 molecule-level bootstrap resamples. Queries from one molecule
-  were therefore not treated as independent observations.
-- Query features used positions only. Feature directions and exclusion volumes were
-  disabled, and candidate conformers were allowed to contain additional features.
-
-**Coverage in simple terms:** the expected percentage of pharmacophore queries for
-which a library of the requested size contains at least one valid matching conformer.
-
-## Cache validity before coverage
+## Candidate validity
 
 {markdown_table(
-    ["Source", "Supplied", "PoseBusters pass", "Identity pass", "Final valid", "Valid yield"],
+    ["Source", "Final valid candidates", "Valid share"],
     validity_rows,
 )}
 
-The learned sources lost about 9–10% of their supplied entries to the validity and
-identity gates. RDKit retained essentially every entry. Since rejected entries were
-not replaced, the learned methods achieved their reported coverage with smaller
-effective valid pools.
+The learned sources lost about 9–10% of their cache entries to the validity and
+identity checks, while RDKit retained essentially all entries. Failed entries were
+not replaced, so the learned methods reached their reported coverage with fewer
+valid candidates inside the same nominal budget.
 
-# Coverage results
+# Results
 
-## Stringent comparison used for the main interpretation
+## Hard-task coverage at each library size
 
-The following comparison requires all six selected features to match within 0.5 Å.
-It is deliberately difficult and avoids the strong saturation seen for easier or
-looser queries. The tables report means; the figure also shows the molecule-bootstrap
-intervals.
+The figure keeps the four tasks separate. The top row contains the two ligand-only
+tasks used for selection; the bottom row contains the protein-informed checks.
 
-![Coverage by family and budget](figures/strict-coverage-by-budget.png)
+![Hard-task coverage by family and budget](figures/strict-coverage-by-budget.png)
 
-{strict_tables_text}
+Budget 20 shows small-library behavior, and budget 1,000 shows the intended
+large-library comparison. The figure shows the intermediate budgets.
 
-The budget pattern is consistent across the four families:
+### Budget 20
 
-- LoQI is stronger than Qwen at budget 20.
-- Qwen gains more from increasing the library and is above LoQI at budget 1,000.
-- At budget 1,000, Qwen exceeds the stronger RDKit control by 23.65–32.67 percentage
-  points across the four families. LoQI also exceeds the stronger RDKit control by
-  18.10–21.02 points.
-- The 50:50 and 75:25 mixtures are nearly tied at budget 1,000. The largest difference
-  between them is 1.52 points in the shared-protein task; all four paired intervals
-  include zero.
-- The protein-informed families support the learned-versus-RDKit separation, but the
-  ligand-only families remain the direct evidence for a reusable protein-agnostic library.
+{markdown_table(hard_headers, hard_coverage_rows(strict, 20))}
 
-## Complete primary-grid summary
+### Budget 1,000
 
-The stringent tables above are one predeclared slice, not an average over the full
-experiment. The next figure averages all seven feature requirements and all three
-tolerances within each family, recipe, and budget. This descriptive average is included
-to show the complete pattern; it is not used as a separate optimization score.
+{markdown_table(hard_headers, hard_coverage_rows(strict, 1000))}
 
-![Full primary-grid mean coverage](figures/full-grid-mean-coverage.png)
+At budget 20, LoQI and the LoQI-heavy mixtures are usually strongest. As the library
+grows, Qwen gains more coverage. At budget 1,000, Qwen is above LoQI in every hard
+task, and every learned recipe is clearly above the stronger RDKit control.
 
-{markdown_table(
-    ["Recipe", "Primary-grid cells", "Mean coverage", "Mean rank"],
-    rank_rows,
-)}
+## Direct hard-task differences at budget 1,000
 
-Easy and loose queries often approach 100% coverage, so the full-grid means compress
-the differences. Even in this saturated summary, the Qwen-heavy mixtures occupy the
-top average ranks, while RDKit raw is lowest overall.
-
-The paired table below uses every primary-grid scenario rather than selected cells.
-Intervals are exploratory and are not adjusted for the number of grid comparisons.
+Each row below is one task under the same 6/6, 0.5 Å rule. There is **no averaging
+across the four task families** in this table. Positive differences favor Qwen over
+LoQI or 75:25 over 50:50.
 
 {markdown_table(
     [
-        "Comparator",
-        "Cells",
-        "Qwen higher",
-        "Equal",
-        "Comparator higher",
-        "Interval favors Qwen",
-        "Interval includes zero",
-        "Interval favors comparator",
+        "Hard task",
+        "Qwen − LoQI",
+        "75:25 − 50:50",
+        "Numerically highest learned recipe",
+        "Stronger RDKit control",
+        "Learned − RDKit",
     ],
-    pair_rows,
+    direct_rows,
 )}
 
-Qwen is numerically above LoQI in most cells, but most Qwen-LoQI intervals include
-zero. Separation from RDKit raw is more consistent. This is why the experiment is
-better described as a budget- and task-dependent Qwen-LoQI profile than as a universal
-winner-loser result.
+This table supports three direct observations:
+
+- The learned-versus-RDKit advantage is large in every hard task: about 25–33 points
+  for the numerically highest learned recipe.
+- Qwen's large-budget advantage over LoQI is task dependent: it ranges from 2.85
+  points for shared ligand to 12.21 points for shared protein.
+- The 50:50 and 75:25 coverage values are almost the same in the two ligand-only
+  tasks. Their differences are +0.26 points for individual ligand and −0.01 points
+  for shared ligand. These numbers do not establish either mixture as the structural
+  winner.
+
+## Full-grid sensitivity check
+
+The main comparison above uses the deliberately difficult 6/6, 0.5 Å task. For
+completeness, the next figure summarizes the entire primary grid. Each cell averages
+the seven feature rules and three distance tolerances for one task, recipe, and
+budget. This descriptive average is a check against relying on one hard setting; it
+is not the basis for choosing an allocation.
+
+![Full primary-grid sensitivity summary](figures/full-grid-mean-coverage.png)
+
+The easier rules often approach complete coverage, which compresses differences.
+The broad pattern remains the same: learned libraries separate from RDKit as the
+budget grows, and no single Qwen/LoQI allocation dominates every task and budget.
 
 ## Qwen breadth and LoQI density
 
-Coverage gives the same success score to a query with one matching conformer and a
-query with hundreds of matching conformers. The table below uses the 4/4, 0.5 Å,
-budget-1,000 setting to compare those two views. The valid-hit fraction is the fraction
-of all requested cache slots that are valid matches, averaged with the same molecule
-weighting as coverage.
+Coverage records whether a query is reached at least once. It does not say whether
+one or hundreds of candidates match that query. The table below uses the 4/4,
+0.5 Å, budget-1,000 setting to show both ideas. “Matching candidate share” is the
+percentage of all requested cache slots that are both valid and matching.
 
 {markdown_table(
     [
-        "Family",
+        "Task",
         "Qwen coverage",
         "LoQI coverage",
-        "Qwen valid-hit fraction",
-        "LoQI valid-hit fraction",
+        "Qwen matching candidate share",
+        "LoQI matching candidate share",
     ],
     breadth_rows,
 )}
 
-Qwen reaches more distinct queries, while LoQI supplies a larger fraction of matching
-conformers for the queries it reaches. This breadth-versus-density difference explains
-why LoQI can be efficient at small budgets even though Qwen has greater large-budget
-coverage and geometric diversity.
+Qwen reaches more different queries at this large budget, while LoQI places a larger
+share of its candidates in regions that it already reaches. In simple terms, Qwen
+has greater breadth and LoQI has greater local density. That difference is a
+reasonable motivation for testing mixtures, but it does not by itself prove that
+one mixture ratio is best.
 
-## Complete 50:50 versus 75:25 sensitivity
+## Additional shared-query constructions
 
-![Allocation differences across the primary grid](figures/allocation-difference-full-grid.png)
-
-Each box contains all 21 combinations of feature requirement and positional tolerance.
-Positive values favor 75:25; negative values favor 50:50. The distributions cross zero
-in every family. Across these definitions, the mean difference is smaller than one
-percentage point in all 16 family-budget groups. The allocation ordering is therefore
-sensitive to the query definition and is not a reliable coverage distinction.
-
-## Secondary shared-query constructions
-
-The primary shared queries used two construction poses with support in both poses.
-The complete experiment also tested three construction poses with either support in
-all three or support in at least two thirds. The table shows the stringent 6/6,
-0.5 Å endpoint at budget 1,000.
+The primary shared queries were built from two poses with support required in both.
+The complete experiment also built queries from three poses. The table below keeps
+the hard 6/6, 0.5 Å, budget-1,000 setting and reports the main decision candidates.
+The 25:75 sensitivity results remain in the complete data archive.
 
 {markdown_table(
     [
-        "Family",
-        "Construction",
-        "N",
-        *[RECIPE_LABELS[recipe] for recipe in RECIPES],
+        "Task",
+        "Three-pose rule",
+        "Molecules",
+        "Qwen",
+        "LoQI",
+        "50:50",
+        "75:25",
+        "Stronger RDKit control",
     ],
     secondary_rows,
 )}
 
-The Qwen-heavy recipes remain strong in the secondary constructions. The shared-protein
-rows have only 6–11 eligible molecules, so small differences should not be treated as
-stable allocation rankings.
+The additional constructions preserve the large learned-versus-RDKit separation.
+The shared-protein rows contain only 6–9 eligible molecules, so their small differences
+between learned recipes should be treated as exploratory.
 
 # Geometric diversity
 
-Coverage asks whether at least one conformer matches. Diversity asks how many distinct
-geometries the library contains. Valid conformers were clustered by symmetry-aware
-heavy-atom RMSD. The analysis used 20 fixed draws per allocation and budget across all
-22 molecules.
+Coverage asks whether at least one candidate passes a checklist. Diversity asks how
+many distinct 3D geometries are present. Valid conformers were grouped by
+symmetry-aware heavy-atom RMSD at a 0.5 Å clustering radius. More clusters mean that
+the library explores more distinct shapes.
 
-![Diversity by budget](figures/diversity-by-budget.png)
+![Geometric diversity by candidate budget](figures/diversity-by-budget.png)
 
-At budget 1,000 and a 0.5 Å clustering radius:
+At budget 1,000:
 
 {markdown_table(
-    ["Recipe", "Mean clusters", "Effective clusters", "Largest cluster fraction", "Valid yield"],
+    ["Recipe", "Mean distinct clusters", "Difference from 50:50"],
     diversity_rows,
 )}
 
-- Pure Qwen has the highest diversity at every budget among these allocation recipes.
-- Increasing the LoQI fraction progressively reduces the number of distinct clusters.
-- At budget 1,000, 75:25 has 256.74 mean clusters, compared with 220.46 for 50:50.
-  This is a 16.5% increase over 50:50.
-- RDKit raw is more diverse than LoQI and RDKit minimized, but its pharmacophore
-  coverage is substantially lower at the stringent large-library endpoint.
-- Effective cluster counts give the same overall ordering and show that repeated
-  occupancy within common clusters is strongest for LoQI-heavy libraries.
+Among the tested allocation recipes, pure Qwen has the most clusters. The 75:25
+mixture retains 256.74 clusters on average, compared with 220.46 for 50:50 and
+100.68 for LoQI. Thus, 75:25 gives up some of Qwen's breadth but preserves more of
+it than 50:50.
 
-# Generation-time sensitivity
+# Simple generation-time estimate
 
-Generation time was not measured by this cached-conformer experiment. The following
-calculation uses the laboratory assumption that **Qwen generates accepted conformers
-at twice the LoQI rate**. One Qwen conformer is assigned one time unit and one LoQI
-conformer two time units. The calculation represents accumulated generation work under
-comparable conditions; exact elapsed wall time can differ with batching, memory, and
-parallel execution.
+Generation time was not measured in this cached-conformer experiment. The following
+calculation uses one explicit assumption: **one cached Qwen candidate takes one
+time unit, while one cached LoQI candidate takes two time units**. This represents
+the laboratory expectation that Qwen is about twice as fast. Actual wall time can
+change with batching, GPU memory, and parallel execution.
 
-![Runtime sensitivity](figures/runtime-sensitivity.png)
+![Estimated generation time by allocation](figures/runtime-sensitivity.png)
 
 {markdown_table(
     [
         "Recipe",
-        "Qwen share",
-        "LoQI share",
-        "Relative cost, Qwen = 1",
-        "Time versus 50:50",
-        "Equal-time throughput versus 50:50",
+        "Estimated time versus 50:50",
+        "Candidates in the same time versus 50:50",
     ],
     runtime_rows,
 )}
 
-Under this assumption, a 1,000-conformer 75:25 library costs 1,250 relative time units,
-whereas 50:50 costs 1,500. The 75:25 recipe therefore uses **16.7% less accumulated
-generation time** or produces **20% more candidates in the same generation time**.
-RDKit is excluded from this estimate because its CPU implementation and cost model are
-not comparable to the Qwen-LoQI assumption.
+For 1,000 candidates, 50:50 costs 1,500 relative time units and 75:25 costs 1,250.
+Under the twofold-speed assumption, 75:25 therefore uses 16.7% less generation time,
+or produces 20% more candidates in the same time. This gives 75:25 a practical edge
+over 50:50 **if the speed assumption holds on the production hardware**. It is not
+evidence that 75:25 has better pharmacophore coverage.
 
-# Combined interpretation for internal discussion
+# Selection interpretation
 
-1. **The strongest result is learned versus RDKit at scale.** Qwen, LoQI, and their
-   mixtures cover substantially more stringent queries than RDKit at budget 1,000,
-   despite the learned pools having lower valid yield.
+The ligand-only hard tasks are the appropriate starting point for a protein-agnostic
+library decision:
 
-2. **Qwen and LoQI contribute different sampling profiles.** LoQI is efficient at
-   small budgets and concentrates more samples in covered regions. Qwen expands to
-   broader pharmacophore and geometric coverage as the budget increases.
+- At budget 1,000, 75:25 and 50:50 differ by only +0.26 points on individual ligand
+  and −0.01 points on shared ligand.
+- Their hard-task coverage is therefore effectively tied at the precision useful for
+  this exploratory panel.
+- Diversity favors 75:25 over 50:50.
+- The simple timing estimate also favors 75:25 if Qwen is truly twice as fast.
+- 50:50 remains an easy-to-explain equal-source baseline.
 
-3. **Coverage alone does not distinguish 50:50 from 75:25 at the production budget.**
-   Their budget-1,000 ligand-only means differ by 0.26 and 0.01 percentage points,
-   and both paired intervals include zero.
+The result is a choice between two reasonable policies, not confirmation of one
+optimum. **50:50 is the simpler balanced baseline. 75:25 is the more attractive
+operational candidate when diversity and the current timing assumption are included.**
+A controlled timing run and a larger molecular panel would be needed before calling
+either allocation the confirmed best policy.
 
-4. **Diversity favors the Qwen-heavy allocation.** The 75:25 recipe retains about
-   36 more mean clusters per molecule than 50:50 at budget 1,000.
+# Conclusions
 
-5. **The twofold Qwen-speed assumption also favors 75:25.** It gives an estimated
-   16.7% time saving relative to 50:50. This direction is clear, but the magnitude
-   should remain labeled as an estimate until both generators are timed under one
-   production protocol.
+The clearest result is that learned conformer libraries outperform both RDKit controls
+on the difficult pharmacophore tasks at large scale. Qwen and LoQI also show different
+sampling behavior: Qwen expands to broader coverage and greater geometric diversity,
+whereas LoQI supplies denser matching populations and stronger small-budget coverage.
+This complementarity makes a mixture reasonable. The present experiment does not
+separate 50:50 from 75:25 by hard-task coverage, but diversity and the assumed Qwen
+speed give 75:25 a practical—not yet confirmed—advantage.
 
-6. **Practical internal recommendation:** if the twofold speed difference is confirmed
-   on the intended production hardware, 75:25 is the stronger operational choice for
-   a 1,000-conformer release. It has indistinguishable coverage, higher diversity, and
-   lower estimated generation cost. A 50:50 library remains a simple equal-source
-   baseline, but the present evidence does not make it the best-performing production
-   allocation.
+# Scope and data
 
-# Scope and limitations
-
-- The study contains 22 selected ligand identities and is exploratory.
-- Coverage means proximity to the tested pharmacophore arrangements. It does not
+- The study is exploratory and contains 22 selected ligand identities.
+- Coverage measures agreement with the tested 3D feature arrangements. It does not
   demonstrate binding affinity, docking enrichment, or downstream model improvement.
-- Protein-informed queries evaluate binding-site relevance after ligand-only generation;
-  they do not make the generators protein-conditioned.
-- The same molecule contributes many related queries. Molecules, not queries, are the
-  uncertainty unit.
-- Easy queries and larger tolerances saturate. The stringent 6/6, 0.5 Å condition is
-  more discriminating but has fewer eligible molecules.
-- The runtime section is an explicit sensitivity calculation. It is not a measured
+- Protein-informed queries are after-the-fact relevance checks; the generators still
+  receive ligand information only.
+- The runtime result is a calculation under one speed assumption, not a measured
   hardware-matched benchmark.
-
-# Data and reproduction
-
-- Compact paper archive: `../../results-data/cdpkit-pharmacophore-mixture/`
-- Complete analysis tables: `{ANALYSIS_TABLES}`
-- Complete coverage grid SHA-256: `{sha256(source_coverage)}`
-- Paired-difference grid SHA-256: `{sha256(source_paired)}`
-- Rebuild this report and all figures with `python build_report.py` from this directory.
+- Compact paper archive: ../../results-data/cdpkit-pharmacophore-mixture/
+- Complete analysis tables: {ANALYSIS_TABLES}
+- Complete coverage grid SHA-256: {sha256(source_coverage)}
+- Rebuild the report and figures by running python build_report.py in this directory.
 """
     return report
 
@@ -1038,7 +866,6 @@ def main() -> None:
     scope = pd.read_csv(ARCHIVE_DIR / "query-scope.csv")
     validity = pd.read_csv(ARCHIVE_DIR / "validity-method-counts.csv")
     full_coverage = pd.read_csv(ANALYSIS_TABLES / "coverage_summary.csv")
-    paired = pd.read_csv(ANALYSIS_TABLES / "paired_recipe_differences.csv")
 
     assert len(coverage) == 2352
     assert len(full_coverage) == 4704
@@ -1046,15 +873,13 @@ def main() -> None:
     assert int(scope["parents"].sum()) == 809
     assert set(coverage["recipe"]) == set(RECIPES)
 
-    primary = coverage.copy()
-    strict = primary[
-        (primary["condition"] == "6/6") & (primary["radius_angstrom"] == 0.5)
+    strict = coverage[
+        (coverage["condition"] == "6/6") & (coverage["radius_angstrom"] == 0.5)
     ]
     assert len(strict) == 112
 
     plot_strict_coverage(strict)
-    plot_full_grid_heatmap(primary)
-    plot_allocation_difference(primary)
+    plot_full_grid_heatmap(coverage)
     plot_diversity(diversity)
     runtime = runtime_frame()
     plot_runtime(runtime)
@@ -1068,7 +893,6 @@ def main() -> None:
     report = build_report(
         coverage,
         full_coverage,
-        paired,
         diversity,
         scope,
         validity,
