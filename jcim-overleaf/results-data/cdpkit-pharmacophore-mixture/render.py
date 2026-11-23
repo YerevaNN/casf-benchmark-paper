@@ -158,7 +158,7 @@ def plot_coverage(
     axis.set_xticklabels(["20", "100", "500", "1,000"])
     axis.set_ylim(18, 101)
     axis.set_yticks([20, 40, 60, 80, 100])
-    axis.set_xlabel("Attempt budget")
+    axis.set_xlabel("Cached-conformer budget")
     axis.set_ylabel("Expected query coverage (%)")
     axis.set_title(f"{letter}   {FAMILY_LABELS[family]}", loc="left", pad=9, fontweight="bold")
     if secondary:
@@ -238,7 +238,7 @@ def plot_diversity(axis: plt.Axes, frame: pd.DataFrame) -> None:
         highlighted = recipe == "qwen50_loqi50"
         axis.plot(
             curve["budget"],
-            curve["effective_clusters"],
+            curve["clusters"],
             color=COLORS[recipe],
             marker=MARKERS[recipe],
             linestyle=LINESTYLES[recipe],
@@ -251,14 +251,14 @@ def plot_diversity(axis: plt.Axes, frame: pd.DataFrame) -> None:
     axis.set_xlim(17, 1180)
     axis.set_xticks([20, 100, 500, 1000])
     axis.set_xticklabels(["20", "100", "500", "1,000"])
-    axis.set_ylim(0, 255)
-    axis.set_xlabel("Attempt budget")
-    axis.set_ylabel("Mean effective clusters")
+    axis.set_ylim(0, 305)
+    axis.set_xlabel("Cached-conformer budget")
+    axis.set_ylabel("Mean clusters per molecule")
     axis.set_title("C   Geometric breadth", loc="left", pad=9, fontweight="bold")
     axis.annotate(
-        "50:50 retains about\n2$\\times$ LoQI breadth",
-        xy=(1000, 131.76),
-        xytext=(52, 168),
+        "50:50 retains 220 clusters\n(Qwen 280; LoQI 101)",
+        xy=(1000, 220.46),
+        xytext=(45, 258),
         color="#67267D",
         fontsize=7.0,
         arrowprops=dict(arrowstyle="-", color="#7B3294", linewidth=0.8),
@@ -338,7 +338,7 @@ def build_main_table(
         (20, "50:50 minus 75:25", "qwen50_loqi50", "qwen75_loqi25"),
         (100, "50:50 minus stronger pure$^{a}$", "qwen50_loqi50", "best_pure"),
         (500, "50:50 minus stronger pure$^{a}$", "qwen50_loqi50", "best_pure"),
-        (1000, "Qwen minus LoQI", "qwen", "loqi"),
+        (1000, "50:50 minus stronger pure$^{a}$", "qwen50_loqi50", "best_pure"),
         (1000, "75:25 minus 50:50", "qwen75_loqi25", "qwen50_loqi50"),
         (1000, "50:50 minus best RDKit$^{b}$", "qwen50_loqi50", "best_rdkit"),
     ]
@@ -361,7 +361,7 @@ def build_main_table(
     diversity_endpoint = diversity[
         (diversity["budget"] == 1000)
         & np.isclose(diversity["cluster_radius"], REFERENCE_RADIUS)
-    ].set_index("recipe")["effective_clusters"]
+    ].set_index("recipe")["clusters"]
     diversity_text = "; ".join(
         f"{SHORT_LABELS[recipe].replace('/', ':')}: "
         f"{diversity_endpoint.loc[recipe]:.2f}"
@@ -382,13 +382,13 @@ def build_main_table(
 \midrule
 """ + "\n".join(rows) + r"""
 \midrule
-\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (effective clusters at 0.5~\AA{})}} \\
+\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (mean clusters per molecule at 0.5~\AA{})}} \\
 \multicolumn{4}{l}{""" + diversity_text + r"""} \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Effective cluster counts are global allocation-level means across 20 reproducible draws and are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
+Budgets count accepted cached conformers rather than generation attempts. Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Cluster counts are averaged across 20 reproducible draws and then across 22 molecules; they are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
 \end{minipage}
 \end{table*}
 """
@@ -418,7 +418,7 @@ def build_supporting_tables(
     endpoint_diversity = diversity[
         (diversity["budget"] == 1000)
         & np.isclose(diversity["cluster_radius"], REFERENCE_RADIUS)
-    ].set_index("recipe")["effective_clusters"]
+    ].set_index("recipe")
     all_recipes = [
         "qwen", "qwen75_loqi25", "qwen50_loqi50", "qwen25_loqi75", "loqi",
         "rdkit_raw", "rdkit_minimized",
@@ -429,7 +429,8 @@ def build_supporting_tables(
         values = " & ".join(f"{100 * k1000.loc[recipe, family]:.2f}" for family in FAMILIES)
         endpoint_rows.append(
             f"{shade}{latex_method(recipe)} & {values} & "
-            f"{endpoint_diversity.loc[recipe]:.2f} \\\\"
+            f"{endpoint_diversity.loc[recipe, 'clusters']:.2f} & "
+            f"{endpoint_diversity.loc[recipe, 'effective_clusters']:.2f} \\\\"
         )
 
     content = r"""% Rebuild with results-data/cdpkit-pharmacophore-mixture/render.py.
@@ -452,18 +453,19 @@ Query counts span all feature requirements and radii. The manuscript display use
 
 \begin{table*}[htbp]
 \centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
 \caption{Expected stringent pharmacophore-query coverage and geometric breadth at budget 1,000.}
 \label{tab:cdpkit-endpoint-coverage}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} & \textbf{Eff. clusters} \\
+\textbf{Allocation} & \textbf{Ind. ligand} & \textbf{Ind. interaction} & \textbf{Shared ligand} & \textbf{Shared protein} & \textbf{Clusters} & \textbf{Eff. clusters} \\
 \midrule
 """ + "\n".join(endpoint_rows) + r"""
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{0.95\linewidth}\footnotesize
-Coverage values are percentages for the six-of-six, 0.5~\AA{} query. Effective clusters use the 0.5~\AA{} RMSD threshold and are global allocation-level means across 20 reproducible draws at budget 1,000. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
+Budgets count accepted cached conformers rather than generation attempts. Coverage values are percentages for the six-of-six, 0.5~\AA{} query. Mean greedy cluster counts and exponential-Shannon effective cluster counts use the 0.5~\AA{} RMSD threshold and are averaged across 20 reproducible draws and then across 22 molecules at budget 1,000. Qwen is listed first in mixed allocations. Coverage averages subsets within a parent, parents within a molecule, and then molecules equally. Unequal allocations are retained here as exploratory results and were not used to fit a production ratio.
 \end{minipage}
 \end{table*}
 """

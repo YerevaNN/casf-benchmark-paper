@@ -2,23 +2,25 @@
 
 ## Four-family CDPKit allocation experiment, 20 November 2026
 
-The final allocation experiment reuses 1,000 supplied slots per method and
+The final allocation experiment reuses 1,000 accepted cached conformers per method and
 PLINDER-22 molecule; no conformers are newly generated. CDPKit 1.3.0 builds four
 position-only query families: individual ligand, individual interaction, shared
 ligand after ligand-feature alignment, and shared interaction features in a
 pocket-Cα-aligned protein frame. The primary shared arm uses two construction
 PDBs/all support with a held-out PDB. The frozen grid covers seven feature
-requirements, three radii, seven recipes, and four budgets. Invalid slots consume
-budget with no refill. Exact hypergeometric no-hit probabilities are combined
+requirements, three radii, seven recipes, and four cached-conformer budgets. Entries
+that fail downstream validity gates consume budget with no refill. Exact hypergeometric no-hit probabilities are combined
 across source quotas, and aggregation is subset within parent, parent within
 molecule, then equal molecule weighting. Paired intervals use 5,000 molecule
-bootstraps; diversity uses 20 fixed allocation draws and effective cluster counts.
+bootstraps; diversity uses 20 fixed allocation draws and mean greedy cluster counts,
+with effective cluster counts retained in the SI. The Qwen completion pass is reported
+separately: 59 additional decoding attempts yielded 53 accepted additions.
 
 The main manuscript uses the prespecified stringent six-of-six, 0.5 Å cell and
 bases the allocation only on individual- and shared-ligand queries. Protein-informed
-queries are secondary validation because their construction uses information that
-is unavailable during generation. The main comparison shows Qwen, LoQI, 50:50,
-75:25, and both RDKit controls. Coverage is the primary task-specific criterion; effective
+queries are secondary validation of binding-site relevance; ligand-only queries are
+primary because they match the intended reusable, target-independent library. The main comparison shows Qwen, LoQI, 50:50,
+75:25, and both RDKit controls. Coverage is the primary task-specific criterion; mean
 cluster count at 0.5 Å is a global secondary breadth criterion based on 20 draws per
 allocation and budget. The 25:75 ratio and complete condition grid remain in the SI.
 Generation time is not part of the decision because Qwen and LoQI were not

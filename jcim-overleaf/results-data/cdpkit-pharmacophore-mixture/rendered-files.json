@@ -7,15 +7,15 @@
     "results-data/cdpkit-pharmacophore-mixture/query-scope.csv": "43e93227eb0a998a5c773b51d244a85476d7e3fcc2dd24a46655a1536620546f",
     "results-data/cdpkit-pharmacophore-mixture/query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
     "results-data/cdpkit-pharmacophore-mixture/generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2",
-    "results-data/cdpkit-pharmacophore-mixture/render.py": "ded559897484c281b4109098599e9f8d1b5b93a2ba0d2694158d96616859d931"
+    "results-data/cdpkit-pharmacophore-mixture/render.py": "79f2223c6652b875aa44813ac603a844fd290d39aa7bd66299fe51f687e3d1a1"
   },
   "outputs": {
-    "figures/figure-pharmacophore-mixture.png": "5648006bc3101a48a0190bf555b8e1d2f7d14aaa03ce0589f7b6c831cb2af8ae",
-    "figures/figure-pharmacophore-mixture.pdf": "5b1378165dd2be18d2ac1b53dd8140c09c27ac17a46cdd90c0f1e951dad08981",
-    "figures/figure-pharmacophore-mixture.svg": "60fc1c69805da8748b9ee0313c87aea287a548a66a0578f31a2a26f611284213",
+    "figures/figure-pharmacophore-mixture.png": "8716b807dd4933a052bacdc9005467cb3da4d31dc20fdd48f53f75efda5ec6af",
+    "figures/figure-pharmacophore-mixture.pdf": "9c6a2ca6ad2de5d09ae750fb357ffb5343604ebc4d850118c260b8f3465baaa5",
+    "figures/figure-pharmacophore-mixture.svg": "71d5b0036a1fb2dd22b20992d5eb72606d5bda17cbd9ad77d71e22b2ba9ae1d7",
     "figures/supporting/cdpkit-query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
     "figures/supporting/cdpkit-generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2",
-    "tables/pharmacophore-mixture.tex": "e7cd2c51bcea41878efca58f7a3cb4913accdf3499ba16cf7673a21e20113923",
-    "tables/supporting-pharmacophore-mixture.tex": "faba911930af691dae4b129b1c4712a88ac9a36e1b90b3ee02b7bd5814c204e2"
+    "tables/pharmacophore-mixture.tex": "c8eff7725f3845d8f7e0da40aaf7256765a232286c443b08408391d88bff4eb0",
+    "tables/supporting-pharmacophore-mixture.tex": "2496c9a218ed8176f02036389c7d20a20ea72aebc1c21a8f225cfe51c2b4e7e2"
   }
 }

@@ -14,16 +14,16 @@
 20 & 50:50 minus 75:25 & \textbf{+2.53 [0.62, 4.52]} & \textbf{+3.23 [1.03, 5.68]} \\
 100 & 50:50 minus stronger pure$^{a}$ & \textbf{+3.97 [0.80, 7.29]} & +1.30 [-1.57, 4.49] \\
 500 & 50:50 minus stronger pure$^{a}$ & \textbf{+3.38 [0.25, 6.73]} & +2.80 [-1.33, 9.34] \\
-1,000 & Qwen minus LoQI & \textbf{+5.56 [0.79, 11.59]} & +2.85 [-5.06, 13.54] \\
+1,000 & 50:50 minus stronger pure$^{a}$ & +1.39 [-0.54, 3.12] & +1.00 [-1.89, 4.94] \\
 1,000 & 75:25 minus 50:50 & +0.26 [-0.47, 1.15] & -0.01 [-1.28, 1.13] \\
 1,000 & 50:50 minus best RDKit$^{b}$ & \textbf{+25.04 [14.69, 36.02]} & \textbf{+24.87 [12.51, 38.72]} \\
 \midrule
-\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (effective clusters at 0.5~\AA{})}} \\
-\multicolumn{4}{l}{Qwen: 233.19; 75:25: 185.09; 50:50: 131.76; LoQI: 66.72} \\
+\multicolumn{4}{l}{\textbf{Geometric breadth at budget 1,000 (mean clusters per molecule at 0.5~\AA{})}} \\
+\multicolumn{4}{l}{Qwen: 279.63; 75:25: 256.74; 50:50: 220.46; LoQI: 100.68} \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Effective cluster counts are global allocation-level means across 20 reproducible draws and are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
+Budgets count accepted cached conformers rather than generation attempts. Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. Cluster counts are averaged across 20 reproducible draws and then across 22 molecules; they are not specific to either query family. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
 \end{minipage}
 \end{table*}

@@ -126,17 +126,18 @@ Qwen has the lowest mean reference matching distance, while LoQI has the highest
 coverage and sample precision at 0.75 \AA{}. Within Qwen, models using learned coordinate
 tokens have lower matching distances than coordinate binning at both model sizes, while
 larger models have higher validity. In a final ligand-only pharmacophore experiment,
-LoQI is stronger at 20 attempts and Qwen becomes stronger as the library expands,
-whereas an equal Qwen/LoQI allocation exceeds either pure source at every tested
-budget in both query families. At 1,000 attempts, the equal allocation exceeds the strongest
-RDKit control by approximately 25 percentage points and retains approximately twice
-LoQI's effective geometric diversity, although Qwen remains broader.
+LoQI is stronger at a cached-conformer budget of 20 and Qwen becomes stronger as
+the library expands, whereas an equal Qwen/LoQI allocation exceeds either pure
+source at every tested budget in both query families. At a budget of 1,000, the
+equal allocation exceeds the strongest RDKit control by approximately 25 percentage
+points and retains a mean of 220 geometric clusters per molecule, between LoQI
+(101) and Qwen (280).
 
 These findings guide generator selection for conformational resources in structure-based
 drug design by relating experimental coverage to diversity and sample concentration
-at the intended ensemble size. We recommend 50:50 as the best-supported balanced
-default when one untuned allocation must be used, while not interpreting it as a
-universal performance optimum.
+at the intended ensemble size. We identify 50:50 as a reasonable fixed production
+choice when one untuned allocation must be used, while not interpreting it as a
+uniquely established optimum.
 \end{abstract}
 
 % AUTHOR: supply keywords and an abbreviation list if required for submission.

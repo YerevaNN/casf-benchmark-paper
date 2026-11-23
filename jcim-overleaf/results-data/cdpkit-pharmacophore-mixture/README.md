@@ -5,14 +5,21 @@ generator-allocation experiment. The source is the completed, zero-failure
 `cdpkit_plinder22_exploration_v1` analysis in the benchmark repository.
 
 The study tests four query families (individual ligand, individual interaction,
-shared ligand, and shared protein), seven generation recipes, four attempt
-budgets, seven feature requirements, and three positional tolerances. The main
+shared ligand, and shared protein), seven generation recipes, four cached-conformer
+budgets, seven feature requirements, and three positional tolerances. Here, a budget
+counts accepted cached conformers rather than generation attempts. The main
 manuscript uses the prespecified stringent six-of-six, 0.5 Å setting. The
 allocation decision is based on the individual- and shared-ligand families because
-the generators receive no protein structure; the protein-informed families are
-secondary validation. The complete primary coverage grid is archived in
+they represent the intended reusable, target-independent library; the protein-informed
+families test binding-site relevance as secondary validation. The complete primary coverage grid is archived in
 `coverage-primary.csv`; it is not reduced to cells that favor a particular
 allocation.
+
+Qwen's completed cache is separate from this sampling budget. Its original cache
+contained 21,947 accepted conformers, and a completion pass made 59 additional
+decoding attempts to retain 53 additions. The exact record is archived in
+`../pharmacophore-query/pilot-qwen-topup-manifest.json`; corresponding LoQI timing
+was not measured under a common execution protocol.
 
 Reproduce the archive and manuscript assets from the paper repository root:
 
@@ -27,16 +34,16 @@ and Supporting Figures S11--S12. `provenance.json` records source hashes and
 
 ## Interpretation boundary
 
-The 50:50 allocation is recommended as a balanced default, not as a universal
-empirical winner. LoQI leads Qwen at budget 20 in both ligand-only families, while
+The 50:50 allocation is presented as a reasonable fixed production choice, not as
+a uniquely established optimum. LoQI leads Qwen at budget 20 in both ligand-only families, while
 Qwen gains relative to LoQI as the library expands. The 50:50 allocation exceeds
 either pure source in all eight ligand-only family--budget cells, although six
 of its eight increments over the stronger pure source have intervals that include
 zero. The recommendation combines this crossover with equal source representation
 and avoidance of fitting a mixture weight on only 19--21 molecules. Diversity is a
-secondary selection axis: at budget 1,000, 50:50 has 131.8 effective clusters versus
-66.7 for LoQI, 185.1 for 75:25, and 233.2 for Qwen. Thus 50:50 retains approximately
-twice LoQI's breadth but does not maximize diversity. The Qwen-heavy 75:25 allocation
+secondary selection axis: at budget 1,000, 50:50 has 220.5 mean clusters versus
+100.7 for LoQI, 256.7 for 75:25, and 279.6 for Qwen. Thus 50:50 preserves substantial
+breadth relative to LoQI but does not maximize diversity. The Qwen-heavy 75:25 allocation
 is shown in every main-figure panel; 25:75, the full seven-recipe endpoint table,
 and the complete grid remain in the Supporting Information. No combined
 coverage--diversity or coverage--runtime score is constructed, and

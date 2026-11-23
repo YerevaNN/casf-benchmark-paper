@@ -1,13 +1,13 @@
 \subsection*{Four-family pharmacophore allocation study}
 
 The main allocation rule is derived from the individual- and shared-ligand families
-at the six-of-six, 0.5~\AA{} setting. Individual-interaction and shared-protein
-queries are retained as secondary validation because their construction uses protein
-context that is unavailable to the generator. The tables below retain all four
-families and the unequal fixed allocations. Effective cluster count supplies a global
-geometric-breadth measure alongside the task-specific coverage results; no combined
-score is fitted. The complete condition grid is shown to document saturation and
-reversals outside the main display.
+at the six-of-six, 0.5~\AA{} setting because these queries match the intended reusable,
+target-independent library objective. Individual-interaction and shared-protein
+queries test binding-site relevance as secondary validation. The tables below retain
+all four families and the unequal fixed allocations. Mean greedy cluster count and
+effective cluster count supply global geometric-breadth measures alongside the
+task-specific coverage results; no combined score is fitted. The complete condition
+grid is shown to document saturation and reversals outside the main display.
 
 \input{\manuscriptroot tables/supporting-pharmacophore-mixture}
 
@@ -29,7 +29,7 @@ not generator performance.}
 \includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/supporting/cdpkit-generator-separation-grid.pdf}
 \caption{Qwen-minus-LoQI expected coverage across the complete primary grid.
 The grid contains four query families, seven feature requirements, three positional
-tolerances, and four attempt budgets (336 cells). Positive values favor Qwen and
+tolerances, and four cached-conformer budgets (336 cells). Positive values favor Qwen and
 negative values favor LoQI. Cells are not independent because the same molecules,
 parents, and source pools contribute to multiple settings. Displaying the complete
 grid shows saturation at looser tolerances and larger budgets and prevents the main

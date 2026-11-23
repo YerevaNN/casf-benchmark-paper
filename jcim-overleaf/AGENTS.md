@@ -4,21 +4,22 @@
 
 Main Figure 7 and Table 5 report the ligand-led CDPKit PLINDER-22 allocation
 experiment. The main manuscript cell is the prespecified stringent six-of-six,
-0.5 Å condition, with attempt budgets 20--1,000. Preserve the full-grid disclosure:
+0.5 Å condition, with cached-conformer budgets 20--1,000. Preserve the full-grid disclosure:
 57,459 queries, 809 parents, and 2,352 primary family/requirement/radius/recipe/
 budget cells. The compact evidence, source hashes, renderer, and exact values are
 in `results-data/cdpkit-pharmacophore-mixture/`.
 
-The paper recommends Qwen/LoQI 50:50 as the best-supported **balanced default**,
-not a universal winner. The allocation rule uses only individual- and shared-ligand
-queries because the generators do not receive protein structure. LoQI leads Qwen
+The paper presents Qwen/LoQI 50:50 as a **reasonable fixed production choice**,
+not a uniquely established optimum. The allocation rule uses only individual- and
+shared-ligand queries because they match the intended reusable, target-independent
+library objective; protein-informed queries test binding-site relevance. LoQI leads Qwen
 at budget 20, whereas Qwen gains at larger budgets. The 50:50 allocation exceeds
 either pure source in all eight ligand-only family--budget cells, but six increments over
 the stronger pure source include zero. Equal source representation and avoidance
 of fitting a weight on 19--21 molecules are policy reasons, not extra endpoints.
-At budget 1,000, effective cluster counts are Qwen 233.2, 75:25 185.1, 50:50
-131.8, and LoQI 66.7. Diversity therefore supports 50:50 only as a compromise that
-retains about twice LoQI's breadth; Qwen and 75:25 remain broader.
+At budget 1,000, mean cluster counts are Qwen 279.6, 75:25 256.7, 50:50
+220.5, and LoQI 100.7. Diversity therefore supports 50:50 only as a compromise that
+preserves substantial breadth relative to LoQI; Qwen and 75:25 remain broader.
 The 75:25 allocation must be shown in every main-figure panel. At budget 20, 50:50
 exceeds it in both ligand-only families; larger-budget differences are unresolved.
 Protein-informed queries are secondary validation. Both unequal ratios and the complete

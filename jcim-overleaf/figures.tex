@@ -43,15 +43,15 @@
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/figure-pharmacophore-mixture.pdf}
-\caption{Expected coverage and geometric breadth across conformer attempt budgets.
+\caption{Expected coverage and geometric breadth across cached-conformer budgets.
 Panels A and B show stringent individual- and shared-ligand pharmacophore queries
-used to guide generator allocation. Panel C shows mean exponential-Shannon effective
-cluster counts at a 0.5~\AA{} RMSD threshold from 20 reproducible draws per allocation
-and budget. The exploratory Qwen-heavy 75:25 allocation is shown in every panel. Panels D
-and E show protein-informed families as secondary validation and do not determine
-the allocation. Queries require six of six features within 0.5~\AA{}; shaded regions
-are 95\% molecule-bootstrap intervals. Invalid slots consume budget and are not
-replaced. Coverage averages subsets within a parent, parents within a molecule, and
-then molecules equally.}
+used to guide generator allocation. Panel C shows molecule-averaged mean greedy
+cluster counts at a 0.5~\AA{} RMSD threshold from 20 reproducible draws per
+allocation and budget. The exploratory Qwen-heavy 75:25 allocation is shown in every
+panel. Panels D and E test binding-site relevance as secondary validation and do not
+determine the reusable-library allocation. Queries require six of six features within
+0.5~\AA{}; shaded regions are 95\% molecule-bootstrap intervals. Cached entries that
+fail downstream validity gates consume budget and are not replaced. Coverage averages
+subsets within a parent, parents within a molecule, and then molecules equally.}
 \label{fig:pharmacophore-mixture}
 \end{figure*}}

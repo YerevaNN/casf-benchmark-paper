@@ -153,21 +153,30 @@ the 22-molecule panel and a generator-blind extension selected from the remainin
 ATC/DrugBank-annotated PLINDER identities. Detailed selection, matching, validity,
 and uncertainty procedures are given in the evaluation appendix.
 
-To choose a fixed Qwen/LoQI production allocation, we constructed four CDPKit
-query families on PLINDER-22 using either ligand features alone or features selected
-by the protein complex. The allocation decision uses the individual- and shared-ligand
-families because generation does not receive a protein; the two interaction families
-provide secondary validation. Existing Qwen, LoQI, Qwen/LoQI 50:50 and 75:25,
-and RDKit pools were compared at attempt budgets of 20, 100, 500, and 1,000, with
-invalid slots retained as failed attempts. The main comparison requires six of six
-features within 0.5~\AA{}. Queries are averaged within parent and molecule before equal weighting
-across molecules, and paired intervals resample molecules. We characterize the
-geometric breadth of each allocation by drawing 20 reproducible libraries per budget,
-clustering valid conformers at 0.5~\AA{}, and reporting the exponential-Shannon
-effective cluster count. Coverage and diversity are interpreted alongside one another
-without combining them into a fitted score. The complete grid,
-including other feature requirements, radii, and fixed allocations, together with
-query construction and validation, is described in the evaluation appendix.
+To compare fixed Qwen/LoQI production allocations for a reusable, target-independent
+conformer library, we constructed four CDPKit query families on PLINDER-22 using
+either ligand features alone or features selected by the protein complex. This
+experiment serves a different purpose from the preceding protein-contact analysis:
+the earlier analysis tests recovery of native contact-feature arrangements and extends
+the molecular panel, whereas this analysis compares source allocations across
+individual and shared feature arrangements. The allocation decision prioritizes the
+individual- and shared-ligand families because they represent the intended reusable-library
+objective; the two interaction families test binding-site relevance as secondary validation.
+Existing Qwen, LoQI, Qwen/LoQI 50:50 and 75:25, and RDKit caches were compared at
+cached-conformer budgets of 20, 100, 500, and 1,000. A 50:50 library at budget
+1,000 therefore contains 500 cached Qwen conformers and 500 cached LoQI conformers,
+not 1,000 generation attempts. Entries that fail the subsequent PoseBusters or
+identity gates consume budget and are not replaced. The main comparison requires
+six of six features within 0.5~\AA{}. Queries are averaged within parent and molecule
+before equal weighting across molecules, and paired intervals resample molecules.
+We characterize geometric breadth by drawing 20 reproducible libraries per budget,
+clustering valid conformers at 0.5~\AA{}, and reporting the molecule-averaged mean
+greedy cluster count;
+the exponential-Shannon effective cluster count is retained in the Supporting
+Information. Coverage and diversity are interpreted alongside one another without
+combining them into a fitted score. The complete grid, including other feature
+requirements, radii, fixed allocations, cache acceptance, and generation-attempt
+accounting, is described in the evaluation appendix.
 
 \subsection{Conformational landscape visualization}
 

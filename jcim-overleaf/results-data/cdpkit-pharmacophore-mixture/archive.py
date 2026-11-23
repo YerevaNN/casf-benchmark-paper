@@ -171,8 +171,9 @@ def main() -> None:
         "selection": (
             "Primary individual arms use construction_count=1/single_pose; primary shared arms "
             "use construction_count=2/all. The main allocation decision uses the two ligand-only "
-            "families at the prespecified stringent 6/6-feature, 0.5-angstrom condition; the two "
-            "protein-informed families are secondary validation. The complete grid and unequal "
+            "families at the prespecified stringent 6/6-feature, 0.5-angstrom condition because "
+            "they represent the intended reusable, target-independent library; the two protein-"
+            "informed families test binding-site relevance. The complete grid and unequal "
             "allocations remain archived."
         ),
     }

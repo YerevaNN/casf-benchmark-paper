@@ -71,5 +71,5 @@
     "query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
     "generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2"
   },
-  "selection": "Primary individual arms use construction_count=1/single_pose; primary shared arms use construction_count=2/all. The main allocation decision uses the two ligand-only families at the prespecified stringent 6/6-feature, 0.5-angstrom condition; the two protein-informed families are secondary validation. The complete grid and unequal allocations remain archived."
+  "selection": "Primary individual arms use construction_count=1/single_pose; primary shared arms use construction_count=2/all. The main allocation decision uses the two ligand-only families at the prespecified stringent 6/6-feature, 0.5-angstrom condition because they represent the intended reusable, target-independent library; the two protein-informed families test binding-site relevance. The complete grid and unequal allocations remain archived."
 }

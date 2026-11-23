@@ -115,7 +115,7 @@ def main() -> None:
 
     diversity_reference = diversity[
         np.isclose(diversity["cluster_radius"], 0.5)
-    ].pivot(index="budget", columns="recipe", values="effective_clusters")
+    ].pivot(index="budget", columns="recipe", values="clusters")
     for budget in [20, 100, 500, 1000]:
         row = diversity_reference.loc[budget]
         assert (
@@ -129,36 +129,44 @@ def main() -> None:
             1000,
             ["qwen", "qwen75_loqi25", "qwen50_loqi50", "loqi"],
         ],
-        [233.185991, 185.090962, 131.757643, 66.719306],
+        [279.627273, 256.736364, 220.456818, 100.677273],
         atol=5e-7,
     )
 
     main_table = (ROOT / "tables" / "pharmacophore-mixture.tex").read_text()
     results = (ROOT / "results.tex").read_text()
+    methods = (ROOT / "methods.tex").read_text()
     discussion = (ROOT / "discussion.tex").read_text()
     conclusions = (ROOT / "conclusions.tex").read_text()
+    appendix = (ROOT / "evaluation-protocol-appendix.tex").read_text()
+    figure_definitions = (ROOT / "figures.tex").read_text()
     for token in [
         "+9.97",
         "+14.60",
         "+3.97",
         "+3.38",
+        "+1.39",
+        "+1.00",
         "+25.04",
         "+24.87",
         "+2.53",
         "+3.23",
         "+0.26",
         "-0.01",
-        "233.19",
-        "185.09",
-        "131.76",
-        "66.72",
+        "279.63",
+        "256.74",
+        "220.46",
+        "100.68",
     ]:
         assert token in main_table, token
     assert "2,352" in results and "57,459" in results
-    assert "allocation decision uses the two ligand-only" in results
+    assert "target-independent library" in results
     assert "75:25 allocation is shown under the same coverage" in results
+    assert "not 1,000 generation attempts" in methods
+    assert "59 additional decoding attempts" in appendix and "retained 53 additions" in appendix
+    assert "cached-conformer budgets" in figure_definitions
     assert "Generation time was not used" in discussion
-    assert "recommend generating 50\\%" in conclusions
+    assert "select 50\\% Qwen and 50\\% LoQI" in conclusions
     print(
         "Verified 2,352 primary coverage cells, 168 stringent ligand-only contrasts, "
         "all archived/rendered hashes, and the coverage--diversity 50:50 claims."

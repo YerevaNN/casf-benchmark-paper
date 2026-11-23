@@ -78,31 +78,36 @@ also do not establish virtual-screening enrichment or docking performance.
 The final experiment turns this complementarity question into a fixed allocation
 decision using evidence that matches the intended target-independent generation
 setting. The ligand-only families show different budget profiles: LoQI is stronger
-at 20 attempts, whereas Qwen benefits more from increasing the library to 1,000.
-Both learned sources substantially exceed the RDKit controls at the larger budget.
+at a cached-conformer budget of 20, whereas Qwen benefits more from increasing the
+library to 1,000. Both learned sources substantially exceed the RDKit controls at
+the larger budget; this learned-versus-RDKit separation is the clearest result.
 Within the stringent six-feature comparison, the 50:50 allocation exceeds either
 pure source in all eight ligand-only family--budget cells. Its interval relative to
 the stronger pure generator excludes zero in the individual-ligand family at budgets
-100 and 500. Against 75:25, equal allocation is higher in both ligand-only families
+100 and 500. At budget 1,000, however, its increments over Qwen are only 1.39 and
+1.00 percentage points in the two ligand-only families, with both intervals spanning
+zero. Against 75:25, equal allocation is higher in both ligand-only families
 at budget 20, whereas all differences at budgets 100--1,000 have intervals spanning
-zero. Diversity supplies a complementary guardrail: at budget 1,000, 50:50
-retains approximately twice LoQI's effective cluster count, although Qwen and 75:25
-remain broader. Coverage and breadth together support equal allocation as a balanced
-production default rather than a winner on every metric.
+zero. Diversity supplies a complementary guardrail: at budget 1,000, 50:50 retains
+220 mean clusters per molecule, between LoQI (101) and Qwen (280), while 75:25
+retains 257.
+Coverage and breadth together make equal allocation a reasonable fixed production
+choice rather than a winner on every metric.
 
-The recommendation is operational rather than a claim that 50:50 is a uniquely
-optimal ratio. Six of its eight increments over the stronger pure mean have intervals
-that include zero, and the panel contains only 19--21 independent molecules per
+This choice is operational rather than a claim that 50:50 is a uniquely optimal
+ratio. Six of its eight increments over the stronger pure mean have intervals that
+include zero, the larger protein-contact extension does not establish a mixture
+advantage, and the allocation panel contains only 19--21 independent molecules per
 ligand-only family. Equal allocation nevertheless avoids fitting a source weight to
 this small panel and protects against the observed Qwen--LoQI budget crossover when
 one fixed policy is required. The 75:25 allocation is a reasonable alternative when
-geometric breadth is prioritized: it retains more effective clusters and becomes
-numerically competitive in coverage at the larger budgets. Selecting that unequal
-weight, however, would tune the policy to this small exploratory panel; pure Qwen
-remains the diversity maximum.
-Protein-informed queries confirm that the learned
-sources remain stronger than RDKit at scale, but they do not determine the allocation
-because their construction uses information unavailable during generation. The
+geometric breadth is prioritized: it retains more clusters and becomes numerically
+competitive in coverage at the larger budgets. Selecting that unequal weight,
+however, would tune the policy to this small exploratory panel; pure Qwen remains
+the diversity maximum. Protein-informed queries confirm that the learned sources
+remain stronger than RDKit at scale and provide a useful test of binding-site relevance,
+but the production allocation is led by ligand-only queries because the intended
+output is a reusable, target-independent library. The
 complete condition grid and both unequal fixed ratios remain disclosed in the
 Supporting Information, while 75:25 is also shown in the main comparison; no combined
 coverage--diversity or coverage--runtime score is used.
