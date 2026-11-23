@@ -62,6 +62,7 @@
   "archived_files": {
     "coverage-primary.csv": "4ab35a6e505de354a844c46b98d1566079a360701a5ce398eeeefc5075045281",
     "paired-k20.csv": "85b909b2a09c340ff71b0b2fd26d763b8396f4036786349a06ce009f3c76293a",
+    "paired-ligand-only.csv": "81612f9ee05898eeadc05b399222f2c073d21acfb3aa9b6beead9eceb5a4236d",
     "diversity-summary.csv": "8d8d04ff58d4049b6141060bee53123ea87f562d8600d9c96f184756040c631c",
     "query-scope.csv": "43e93227eb0a998a5c773b51d244a85476d7e3fcc2dd24a46655a1536620546f",
     "validity-method-counts.csv": "b6e2bdef08936f975748a19dbfc8c550b7e1ebdfe126c3302d082ff1b2b37123",
@@ -70,5 +71,5 @@
     "query-family-examples.pdf": "afbada55c0a0339a72b05298457d25b0511d756707b2c49805c4494c1ab24226",
     "generator-separation-grid.pdf": "2e38756db415711e3b6cb6d947e1eb5e3484d085798a20e7d486f68e5493d6e2"
   },
-  "selection": "Primary individual arms use construction_count=1/single_pose; primary shared arms use construction_count=2/all. The manuscript reference condition is 4/4 features at 0.5 angstrom. No result-based query selection is applied."
+  "selection": "Primary individual arms use construction_count=1/single_pose; primary shared arms use construction_count=2/all. The main allocation decision uses the two ligand-only families at the prespecified stringent 6/6-feature, 0.5-angstrom condition; the two protein-informed families are secondary validation. The complete grid and unequal allocations remain archived."
 }

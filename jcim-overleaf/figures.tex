@@ -43,14 +43,12 @@
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/figure-pharmacophore-mixture.pdf}
-\caption{Fixed Qwen/LoQI allocation across four pharmacophore-query families.
-(A--D) Expected coverage for the four-of-four, 0.5~\AA{} reference query across
-attempt budgets. The 50:50 allocation is emphasized. (E) Paired coverage
-differences at budget 20 for 50:50 minus Qwen (blue circles), 75:25 (light-blue
-squares), or LoQI (orange triangles); bars are 95\% molecule-bootstrap intervals.
-(F) Mean exponential-Shannon effective cluster count at 0.5~\AA{} from 20
-reproducible allocation draws per budget. Invalid slots consume budget and are not
-replaced. Coverage averages subsets within a parent, parents within a molecule,
-and then molecules equally.}
+\caption{Expected coverage of stringent pharmacophore queries across conformer
+attempt budgets. Panels A and B show the individual- and shared-ligand families
+used to guide generator allocation. Panels C and D show protein-informed families
+as secondary validation and do not determine the allocation. Queries require six
+of six features within 0.5~\AA{}; shaded regions are 95\% molecule-bootstrap
+intervals. Invalid slots consume budget and are not replaced. Coverage averages
+subsets within a parent, parents within a molecule, and then molecules equally.}
 \label{fig:pharmacophore-mixture}
 \end{figure*}}

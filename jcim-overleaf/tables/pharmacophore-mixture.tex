@@ -1,27 +1,24 @@
 % Rebuild with results-data/cdpkit-pharmacophore-mixture/render.py.
 \begin{table*}[htbp]
 \centering\footnotesize
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{1.25}
-\caption{Fixed Qwen/LoQI allocations in the four-family pharmacophore experiment.}
+\setlength{\tabcolsep}{5.5pt}
+\renewcommand{\arraystretch}{1.22}
+\caption{Key ligand-only contrasts in the stringent pharmacophore comparison.}
 \label{tab:pharmacophore-mixture}
 \par\smallskip
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlll@{}}
 \toprule
- & \multicolumn{4}{c}{Expected coverage at budget 20 (\%)} & \multicolumn{3}{c}{Budget 1,000} \\
-\cmidrule(lr){2-5}\cmidrule(l){6-8}
-\textbf{Allocation} & Ind. ligand & Ind. interaction & Shared ligand & Shared protein & Max. deficit$^{a}$ & Eff. clusters$^{b}$ & Valid yield (\%) \\
+\textbf{Budget} & \textbf{Contrast} & \textbf{Individual ligand (pp [95\% interval])} & \textbf{Shared ligand (pp [95\% interval])} \\
 \midrule
-Qwen & 79.06 & 77.64 & 84.74 & 78.41 & 0.18 & 233.2 & 91.2 \\
-Qwen/LoQI 75:25 & 82.07 & 80.15 & 87.52 & 80.82 & 0.10 & 185.1 & 90.9 \\
-\rowcolor{tableShade}
-\textbf{Qwen/LoQI 50:50} & \textbf{82.26} & \textbf{80.26} & \textbf{87.54} & \textbf{80.84} & 0.28 & 131.8 & 90.5 \\
-Qwen/LoQI 25:75 & 81.30 & 79.28 & 86.56 & 79.68 & 0.72 & 93.0 & 90.2 \\
-LoQI & 76.73 & 74.33 & 81.96 & 74.27 & 6.31 & 66.7 & 89.9 \\
+20 & LoQI minus Qwen & \textbf{+9.97 [0.51, 19.51]} & \textbf{+14.60 [2.44, 27.65]} \\
+100 & 50:50 minus stronger pure$^{a}$ & \textbf{+3.97 [0.80, 7.29]} & +1.30 [-1.57, 4.49] \\
+500 & 50:50 minus stronger pure$^{a}$ & \textbf{+3.38 [0.25, 6.73]} & +2.80 [-1.33, 9.34] \\
+1,000 & Qwen minus LoQI & \textbf{+5.56 [0.79, 11.59]} & +2.85 [-5.06, 13.54] \\
+1,000 & 50:50 minus best RDKit$^{b}$ & \textbf{+25.04 [14.69, 36.02]} & \textbf{+24.87 [12.51, 38.72]} \\
 \bottomrule
 \end{tabular*}
 \par\smallskip
 \begin{minipage}{\linewidth}
-The reference query requires four of four features within 0.5~\AA{}. Qwen is listed first in each allocation. The 50:50 allocation is the numerical leader in all four budget-20 columns; its advantages over 75:25 are 0.02--0.19 percentage point, with paired intervals spanning zero. $^{a}$Largest shortfall from the best allocation in any of the four query families at budget 1,000, in percentage points. $^{b}$Mean exponential-Shannon effective cluster count at 0.5~\AA{}; all diversity summaries use the same 22 molecules.
+Queries require six of six features within 0.5~\AA{}. Intervals resample molecules (individual ligand, $N=21$; shared ligand, $N=19$). Bold values have intervals excluding zero. $^{a}$The pure generator with the higher family-level mean at that budget, not a molecule-specific oracle. $^{b}$The RDKit control with the higher family-level mean at budget 1,000.
 \end{minipage}
 \end{table*}

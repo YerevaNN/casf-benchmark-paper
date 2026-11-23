@@ -14,6 +14,14 @@ across source quotas, and aggregation is subset within parent, parent within
 molecule, then equal molecule weighting. Paired intervals use 5,000 molecule
 bootstraps; diversity uses 20 fixed allocation draws and effective cluster counts.
 
+The main manuscript uses the prespecified stringent six-of-six, 0.5 Å cell and
+bases the allocation only on individual- and shared-ligand queries. Protein-informed
+queries are secondary validation because their construction uses information that
+is unavailable during generation. The main comparison shows Qwen, LoQI, 50:50,
+and both RDKit controls. Unequal ratios and the complete condition grid remain in
+the SI. Generation time is not part of the decision because Qwen and LoQI were not
+timed under common hardware, batching, and parallel-execution conditions.
+
 Main Methods contains the short account; `evaluation-protocol-appendix.tex`
 contains construction, validation, sampling, gating, aggregation, uncertainty, and
 diversity details. Exact archived inputs and reproduction are in

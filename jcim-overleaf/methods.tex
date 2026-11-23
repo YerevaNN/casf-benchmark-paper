@@ -153,22 +153,17 @@ the 22-molecule panel and a generator-blind extension selected from the remainin
 ATC/DrugBank-annotated PLINDER identities. Detailed selection, matching, validity,
 and uncertainty procedures are given in the evaluation appendix.
 
-To choose a fixed Qwen/LoQI production allocation, we separately constructed four
-CDPKit query families on the same PLINDER-22 panel. Individual ligand queries use
-features from one experimental ligand pose, while individual interaction queries
-retain the ligand features selected by one protein complex. Shared ligand queries
-retain features supported across ligand-feature-aligned poses. Shared protein
-queries instead align sequence-resolved pocket C$\alpha$ atoms and retain interaction
-features shared in that protein-site frame. We tested pure Qwen and LoQI, fixed
-75:25, 50:50, and 25:75 allocations, and two RDKit controls at attempt budgets of
-20, 100, 500, and 1,000. Invalid slots consume budget without replacement.
-Requirements from three of three through six of six features, two one-feature
-omission variants, the full available hypothesis, and radii of 0.5, 0.75, and
-1.0~\AA{} were constructed before generator screening. The reference comparison
-uses four of four features at 0.5~\AA{}. Queries are averaged within parent and
-molecule before equal weighting across molecules; paired intervals resample
-molecules. Detailed construction, validation, and diversity procedures are given
-in the evaluation appendix.
+To choose a fixed Qwen/LoQI production allocation, we constructed four CDPKit
+query families on PLINDER-22 using either ligand features alone or features selected
+by the protein complex. The allocation decision uses the individual- and shared-ligand
+families because generation does not receive a protein; the two interaction families
+provide secondary validation. Existing Qwen, LoQI, equal Qwen/LoQI, and RDKit pools
+were compared at attempt budgets of 20, 100, 500, and 1,000, with invalid slots
+retained as failed attempts. The main comparison requires six of six features within
+0.5~\AA{}. Queries are averaged within parent and molecule before equal weighting
+across molecules, and paired intervals resample molecules. The complete grid,
+including other feature requirements, radii, and fixed allocations, together with
+query construction and validation, is described in the evaluation appendix.
 
 \subsection{Conformational landscape visualization}
 

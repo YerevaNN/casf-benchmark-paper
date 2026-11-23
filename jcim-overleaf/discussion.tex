@@ -75,25 +75,27 @@ intervals, and possibility of analogue overlap preclude either a causal training
 interpretation or an unseen-molecule generalization claim. These coverage results
 also do not establish virtual-screening enrichment or docking performance.
 
-The final four-family experiment turns this complementarity question into a fixed
-allocation decision. It does not identify one allocation that dominates every metric
-and budget: Qwen and 75:25 retain more geometric breadth, and one of them has the
-highest high-budget mean in each query family. At budget 20, however, 50:50 is the
-numerical leader under all four independently constructed query families and is
-numerically above either pure source in the aggregate means. It also preserves nearly
-all high-budget coverage while providing approximately twice LoQI's effective
-cluster count. The evidence therefore supports 50:50 as a balanced production
-default for small per-molecule libraries, rather than as a universal optimum.
+The final experiment turns this complementarity question into a fixed allocation
+decision using evidence that matches the intended target-independent generation
+setting. The ligand-only families show different budget profiles: LoQI is stronger
+at 20 attempts, whereas Qwen benefits more from increasing the library to 1,000.
+Both learned sources substantially exceed the RDKit controls at the larger budget.
+Within the stringent six-feature comparison, the 50:50 allocation exceeds either
+pure source in all eight ligand-only family--budget cells. Its interval relative to
+the stronger pure generator excludes zero in the individual-ligand family at budgets
+100 and 500.
+This supports equal allocation as a balanced production default.
 
-This recommendation is deliberately operational. The 50:50 and 75:25 means are
-effectively tied at budget 20, so the data do not estimate 50:50 as uniquely superior.
-Equal allocation is preferable when no molecule-specific oracle is available because
-it gives both generators equal opportunity to contribute, avoids fitting a mixture
-weight to only 22 molecules, and has the strongest observed small-budget profile
-without a material high-budget coverage loss. If geometric breadth is valued above
-source balance, the results instead support Qwen or 75:25. The complete primary grid
-and paired intervals are retained to make this policy distinction visible; no
-post hoc combined coverage--diversity score is used.
+The recommendation is operational rather than a claim that 50:50 is a uniquely
+optimal ratio. Six of its eight increments over the stronger pure mean have intervals
+that include zero, and the panel contains only 19--21 independent molecules per
+ligand-only family. Equal allocation nevertheless avoids fitting a source weight to
+this small panel and protects against the observed Qwen--LoQI budget crossover when
+one fixed policy is required. Protein-informed queries confirm that the learned
+sources remain stronger than RDKit at scale, but they do not determine the allocation
+because their construction uses information unavailable during generation. The
+complete condition grid and unequal fixed ratios remain disclosed in the Supporting
+Information; no combined coverage--diversity or coverage--runtime score is used.
 
 Several features of the evaluation limit generalization. CASF is restricted to the intersection
 with ChEMBL3D, and PLINDER contains a small, manually selected panel with multiple observed
@@ -102,7 +104,9 @@ Experimental references cover only part of accessible conformational space, so l
 against them does not establish that unmatched conformers are irrelevant to binding.
 CASF matching uses PoseBusters-filtered ensembles, whereas PLINDER matching uses the supplied
 pools; their absolute performance levels are therefore not directly comparable. Candidate
-budgets also do not equalize computational cost. Training exclusions are documented
+budgets also do not equalize computational cost. Generation time was not used for
+selection because Qwen and LoQI were not benchmarked under a common hardware,
+batching, and parallel-execution protocol. Training exclusions are documented
 for the four Qwen size/representation configurations, but residual overlap, including
 tokenizer development data, requires verification. These records do not
 establish evaluation on unseen molecules for every model.

@@ -7,9 +7,12 @@ generator-allocation experiment. The source is the completed, zero-failure
 The study tests four query families (individual ligand, individual interaction,
 shared ligand, and shared protein), seven generation recipes, four attempt
 budgets, seven feature requirements, and three positional tolerances. The main
-manuscript uses the predeclared four-of-four, 0.5 Å setting. The complete primary
-coverage grid is archived in `coverage-primary.csv`; it is not reduced to cells
-that favor a particular allocation.
+manuscript uses the prespecified stringent six-of-six, 0.5 Å setting. The
+allocation decision is based on the individual- and shared-ligand families because
+the generators receive no protein structure; the protein-informed families are
+secondary validation. The complete primary coverage grid is archived in
+`coverage-primary.csv`; it is not reduced to cells that favor a particular
+allocation.
 
 Reproduce the archive and manuscript assets from the paper repository root:
 
@@ -25,10 +28,13 @@ and Supporting Figures S11--S12. `provenance.json` records source hashes and
 ## Interpretation boundary
 
 The 50:50 allocation is recommended as a balanced default, not as a universal
-empirical winner. At budget 20 it is the numerical leader in all four query
-families, but its differences from 75:25 are only 0.02--0.19 percentage point and
-their molecule-bootstrap intervals include zero. At larger budgets, Qwen or the
-75:25 allocation can lead. The recommendation therefore combines the observed
-small-budget performance with equal source representation and the avoidance of
-tuning a mixture weight on 22 molecules. No combined coverage/diversity score is
-constructed.
+empirical winner. LoQI leads Qwen at budget 20 in both ligand-only families, while
+Qwen gains relative to LoQI as the library expands. The 50:50 allocation exceeds
+either pure source in all eight ligand-only family--budget cells, although six
+of its eight increments over the stronger pure source have intervals that include
+zero. The recommendation combines this crossover with equal source representation
+and avoidance of fitting a mixture weight on only 19--21 molecules. Unequal fixed
+allocations and the protein-informed families remain in the Supporting Information.
+No combined coverage--diversity or coverage--runtime score is constructed, and
+generation time is excluded because the generators were not benchmarked under a
+common hardware and execution protocol.

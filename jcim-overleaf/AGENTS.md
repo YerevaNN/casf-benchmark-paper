@@ -2,23 +2,23 @@
 
 ## Final generator-allocation experiment, 20 November 2026
 
-Main Figure 7 and Table 5 report the four-family CDPKit PLINDER-22 allocation
-experiment. The predeclared manuscript reference cell is four of four features,
-0.5 Å, with attempt budgets 20--1,000. Preserve the full-grid disclosure:
+Main Figure 7 and Table 5 report the ligand-led CDPKit PLINDER-22 allocation
+experiment. The main manuscript cell is the prespecified stringent six-of-six,
+0.5 Å condition, with attempt budgets 20--1,000. Preserve the full-grid disclosure:
 57,459 queries, 809 parents, and 2,352 primary family/requirement/radius/recipe/
 budget cells. The compact evidence, source hashes, renderer, and exact values are
 in `results-data/cdpkit-pharmacophore-mixture/`.
 
 The paper recommends Qwen/LoQI 50:50 as the best-supported **balanced default**,
-especially for small per-molecule budgets. Do not convert this into a claim of
-universal dominance. At budget 20, 50:50 is the numerical leader in all four
-families and is 2.43--3.19 percentage points above pure Qwen, but it is only
-0.02--0.19 point above 75:25 and all four paired 50:50--75:25 intervals include
-zero. At budget 1,000, Qwen or 75:25 leads each family; 50:50 stays within 0.28
-point of the family best and has 131.8 effective clusters versus 66.7 for LoQI,
-185.1 for 75:25, and 233.2 for Qwen. No combined coverage/diversity score is
-defined. Equal source representation and avoidance of weight fitting on 22
-molecules are policy reasons, not additional empirical endpoints.
+not a universal winner. The allocation rule uses only individual- and shared-ligand
+queries because the generators do not receive protein structure. LoQI leads Qwen
+at budget 20, whereas Qwen gains at larger budgets. The 50:50 allocation exceeds
+either pure source in all eight ligand-only family--budget cells, but six increments over
+the stronger pure source include zero. Equal source representation and avoidance
+of fitting a weight on 19--21 molecules are policy reasons, not extra endpoints.
+Protein-informed queries are secondary validation. Unequal ratios and the complete
+grid remain in the SI; no combined coverage--diversity or coverage--runtime score
+is defined, and timing is excluded without a common execution protocol.
 
 Supporting Tables S9--S10 give query scope and the seven-recipe high-budget
 endpoint. Supporting Figures S11--S12 show the four query constructions and the

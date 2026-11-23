@@ -251,6 +251,14 @@ candidate screening. Exact-match, rigid-motion, missing-feature, omitted-feature
 radius-boundary, mirror-identity, duplicate-record, record-axis, and source-coordinate
 controls were checked before the complete screen.
 
+The main stringent cell requires six of six features within 0.5~\AA{}. The
+individual-ligand arm contains 612 subset queries from 126 parents and 21 molecules;
+the shared-ligand arm contains 601 queries from 124 parents and 19 molecules.
+The corresponding interaction arms contain 271 queries from 72 parents and 18
+molecules and 186 queries from 48 parents and 11 molecules, respectively. Queries
+derived from the same molecule are correlated; the molecule, rather than the query,
+is therefore the resampling unit.
+
 The allocation grid contains pure Qwen and LoQI, Qwen/LoQI ratios of 75:25, 50:50,
 and 25:75, and the two RDKit controls. At budgets of 20, 100, 500, and 1,000, the
 ratios give exact integer source quotas. If a source has 1,000 slots and $h$ valid
@@ -262,15 +270,28 @@ Rejected slots consume the requested budget and are not replenished.
 
 Coverage is averaged first across subset variants within a parent, then across
 parents or folds within a molecule, and finally equally across molecules. The
-primary manuscript arm uses one pose for each individual query, two construction
-poses with all-pose support for each shared query, the four-of-four requirement,
-and a 0.5~\AA{} tolerance. Confidence intervals and paired differences use 5,000
-molecule-level bootstrap resamples and are exploratory without adjustment for the
-full grid. Diversity uses 20 reproducible without-replacement draws per allocation
-and budget. PoseBusters- and identity-passing members are greedily clustered by
-symmetry-aware heavy-atom RMSD at 0.5 and 1.0~\AA{}; the effective cluster count is
-the exponential of Shannon entropy over cluster occupancies. No combined
-coverage--diversity score is constructed.
+main manuscript display uses one pose for each individual query, two construction
+poses with all-pose support for each shared query, the six-of-six requirement,
+and a 0.5~\AA{} tolerance. The allocation rule is based only on the individual-
+and shared-ligand families; interaction queries are reported as secondary validation
+because they introduce protein-derived information that is unavailable during
+generation. Confidence intervals and paired differences use 5,000 molecule-level
+bootstrap resamples and are exploratory without adjustment for the full grid.
+Unequal fixed allocations and the complete condition grid remain in the Supporting
+Information but are not used to fit a production ratio. Diversity uses 20 reproducible
+without-replacement draws per allocation and budget. PoseBusters- and identity-passing
+members are greedily clustered by symmetry-aware heavy-atom RMSD at 0.5 and
+1.0~\AA{}; the effective cluster count is the exponential of Shannon entropy over
+cluster occupancies. No combined coverage--diversity score is constructed.
+
+Generation time is not included in the allocation criterion. This experiment reuses
+saved pools and therefore measures coverage at fixed attempt counts rather than
+hardware-matched generation throughput. Qwen and LoQI use different implementations,
+and their wall times can respond differently to batching, accelerator memory, and
+parallel execution. Without a common hardware and execution protocol, wall time or
+cost per conformer would combine generator behavior with implementation choices.
+The reported allocation consequently reflects structural coverage only; analysis
+runtime is not interpreted as generation time.
 
 \subsection*{Molecular size and flexibility}
 

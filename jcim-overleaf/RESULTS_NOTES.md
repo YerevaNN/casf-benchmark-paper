@@ -2,21 +2,21 @@
 
 ## Final generator-allocation result, 20 November 2026
 
-At the predeclared four-of-four, 0.5 Å reference setting and budget 20, Qwen/LoQI
-50:50 has the highest mean in all four query families (80.26--87.54%). Its gain
-over Qwen is 2.43--3.19 percentage points; individual-family paired intervals
-exclude zero and shared-family intervals include zero. Its gain over LoQI is
-5.52--6.57 points and all four intervals exclude zero. Against 75:25, the gains
-are only 0.02--0.19 point and every interval includes zero.
+The main allocation decision uses only individual- and shared-ligand queries at the
+prespecified stringent six-of-six, 0.5 Å setting. LoQI exceeds Qwen at budget 20
+by 9.97 and 14.60 percentage points, respectively. At budget 1,000, Qwen exceeds
+LoQI by 5.56 and 2.85 points; only the individual-ligand interval excludes zero.
+The 50:50 allocation exceeds either pure source in all eight ligand-only family--budget
+cells. Its advantage over the stronger pure source excludes zero for individual-
+ligand queries at budgets 100 and 500. At budget 1,000, it exceeds the stronger
+RDKit control by 25.04 and 24.87 points in the two ligand-only families.
 
-At budget 1,000, 50:50 covers 98.39--99.59% and is within 0.28 point of the best
-family-specific allocation. Effective cluster counts are Qwen 233.2, 75:25 185.1,
-50:50 131.8, 25:75 93.0, and LoQI 66.7; valid yields are 91.2%, 90.9%, 90.5%,
-90.2%, and 89.9%, respectively. Frame 50:50 as the best-supported balanced default
-for a fixed untuned production allocation, not the universal empirical winner.
-Qwen/75:25 are defensible when high-budget coverage or geometric breadth is the
-priority. The complete primary grid contains 2,352 cells; do not describe the main
-reference cell as a scan-selected optimum.
+Frame 50:50 as the best-supported balanced default for a fixed untuned production
+allocation, not the universal empirical winner. Six of eight increments over the
+stronger pure mean include zero. Protein-informed queries confirm the learned-versus-
+RDKit separation at scale but do not choose the allocation. Unequal fixed ratios,
+all four families, and the complete 2,352-cell grid remain disclosed in the SI.
+Do not introduce a coverage--runtime score without a common timing protocol.
 
 ## Protein-context pharmacophore analysis, 17 November 2026
 

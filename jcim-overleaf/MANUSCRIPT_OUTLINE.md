@@ -2,22 +2,23 @@
 
 ## Closing experiment and conclusion, 20 November 2026
 
-The Results now end with the four-family CDPKit allocation experiment. The
+The Results now end with the ligand-led CDPKit allocation experiment. The
 narrative moves from the earlier protein-contact mixture pilot and its weaker
-generator-blind extension to a direct production-policy question across individual
-and shared ligand/interaction queries. Main Figure 7 carries coverage curves,
-paired budget-20 differences, and diversity; Table 5 gives the decision summary.
+generator-blind extension to a target-independent production-policy question.
+Individual- and shared-ligand queries determine the allocation; interaction and
+shared-protein queries are secondary validation. Main Figure 7 carries the coverage
+curves, and Table 5 gives the key paired ligand-only contrasts.
 Supporting Tables S9--S10 and Figures S11--S12 retain scope, endpoints, examples,
 and the complete primary Qwen--LoQI grid.
 
 The new Conclusions recommend Qwen/LoQI 50:50 as the best-supported balanced
-default when one fixed, untuned allocation is required. The scope is essential:
-50:50 numerically leads all four families at budget 20 but is statistically tied
-with 75:25, while Qwen or 75:25 leads at high budget and preserves more diversity.
-The policy combines the small-budget profile, near-best high-budget coverage,
-equal source representation, and avoidance of fitting a continuous ratio on 22
-molecules. It is not a universal-winner claim and does not introduce a combined
-coverage/diversity score.
+default when one fixed, untuned allocation is required. LoQI is stronger at budget
+20, Qwen gains with scale, and both learned sources exceed RDKit at budget 1,000.
+The equal allocation exceeds either pure source in all eight ligand-only family--budget
+cells, but most increments over the stronger pure source include zero. The policy
+therefore combines complementary budget profiles, equal representation, and
+avoidance of weight fitting on 19--21 molecules. It is not a universal-winner claim
+and does not introduce a combined coverage/diversity or coverage/runtime score.
 
 ## Verified CoordToken and Qwen training, 6 November 2026
 

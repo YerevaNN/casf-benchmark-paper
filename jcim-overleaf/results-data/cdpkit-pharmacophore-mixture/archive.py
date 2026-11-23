@@ -106,6 +106,20 @@ def main() -> None:
         raise ValueError(f"Expected 12 K=20 paired contrasts, found {len(paired)}")
     paired.to_csv(HERE / "paired-k20.csv", index=False)
 
+    paired_ligand = primary_arms(
+        pd.read_csv(required["paired_recipe_differences"], low_memory=False)
+    )
+    paired_ligand = paired_ligand[
+        paired_ligand["family"].isin(["individual_ligand", "shared_ligand"])
+        & (paired_ligand["condition"] == "6/6")
+        & (paired_ligand["radius_angstrom"] == 0.5)
+    ].sort_values(["family", "budget", "left", "right"])
+    if len(paired_ligand) != 168:
+        raise ValueError(
+            f"Expected 168 stringent ligand-only paired contrasts, found {len(paired_ligand)}"
+        )
+    paired_ligand.to_csv(HERE / "paired-ligand-only.csv", index=False)
+
     diversity = pd.read_csv(required["diversity_summary"], low_memory=False)
     diversity = diversity.sort_values(["cluster_radius", "recipe", "budget"])
     diversity.to_csv(HERE / "diversity-summary.csv", index=False)
@@ -134,6 +148,7 @@ def main() -> None:
     archived = [
         "coverage-primary.csv",
         "paired-k20.csv",
+        "paired-ligand-only.csv",
         "diversity-summary.csv",
         "query-scope.csv",
         "validity-method-counts.csv",
@@ -155,8 +170,10 @@ def main() -> None:
         },
         "selection": (
             "Primary individual arms use construction_count=1/single_pose; primary shared arms "
-            "use construction_count=2/all. The manuscript reference condition is 4/4 features "
-            "at 0.5 angstrom. No result-based query selection is applied."
+            "use construction_count=2/all. The main allocation decision uses the two ligand-only "
+            "families at the prespecified stringent 6/6-feature, 0.5-angstrom condition; the two "
+            "protein-informed families are secondary validation. The complete grid and unequal "
+            "allocations remain archived."
         ),
     }
     (HERE / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")

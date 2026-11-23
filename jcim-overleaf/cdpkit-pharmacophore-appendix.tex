@@ -1,5 +1,12 @@
 \subsection*{Four-family pharmacophore allocation study}
 
+The main allocation rule is derived from the individual- and shared-ligand families
+at the six-of-six, 0.5~\AA{} setting. Individual-interaction and shared-protein
+queries are retained as secondary validation because their construction uses protein
+context that is unavailable to the generator. The tables below retain all four
+families and the unequal fixed allocations; the complete condition grid is shown to
+document saturation and reversals outside the main display.
+
 \input{\manuscriptroot tables/supporting-pharmacophore-mixture}
 
 \begin{figure}[htbp]
@@ -24,7 +31,7 @@ tolerances, and four attempt budgets (336 cells). Positive values favor Qwen and
 negative values favor LoQI. Cells are not independent because the same molecules,
 parents, and source pools contribute to multiple settings. Displaying the complete
 grid shows saturation at looser tolerances and larger budgets and prevents the main
-four-of-four, 0.5~\AA{} reference comparison from being interpreted as a
+six-of-six, 0.5~\AA{} comparison from being interpreted as a
 result-selected query. Exploratory bootstrap intervals are not adjusted for this
 grid search.}
 \label{fig:cdpkit-generator-separation}
